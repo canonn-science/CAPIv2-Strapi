@@ -21,10 +21,15 @@ module.exports = {
    */
 
   fetchAll: (params) => {
-    const convertedParams = strapi.utils.models.convertParams('tbsite', params);
+    // Convert `params` object to filters compatible with Bookshelf.
+    const filters = strapi.utils.models.convertParams('tbsite', params);
+    // Select field to populate.
+    const populate = Tbsite.associations
+      .filter(ast => ast.autoPopulate !== false)
+      .map(ast => ast.alias);
 
     return Tbsite.query(function(qb) {
-      _.forEach(convertedParams.where, (where, key) => {
+      _.forEach(filters.where, (where, key) => {
         if (_.isArray(where.value)) {
           for (const value in where.value) {
             qb[value ? 'where' : 'orWhere'](key, where.symbol, where.value[value])
@@ -34,15 +39,14 @@ module.exports = {
         }
       });
 
-      if (convertedParams.sort) {
-        qb.orderBy(convertedParams.sort.key, convertedParams.sort.order);
+      if (filters.sort) {
+        qb.orderBy(filters.sort.key, filters.sort.order);
       }
 
-      qb.offset(convertedParams.start);
-
-      qb.limit(convertedParams.limit);
+      qb.offset(filters.start);
+      qb.limit(filters.limit);
     }).fetchAll({
-      withRelated: _.keys(_.groupBy(_.reject(strapi.models.tbsite.associations, {autoPopulate: false}), 'alias'))
+      withRelated: populate
     });
   },
 
@@ -53,8 +57,13 @@ module.exports = {
    */
 
   fetch: (params) => {
+    // Select field to populate.
+    const populate = Tbsite.associations
+      .filter(ast => ast.autoPopulate !== false)
+      .map(ast => ast.alias);
+
     return Tbsite.forge(_.pick(params, 'id')).fetch({
-      withRelated: _.keys(_.groupBy(_.reject(strapi.models.tbsite.associations, {autoPopulate: false}), 'alias'))
+      withRelated: populate
     });
   },
 
@@ -65,9 +74,15 @@ module.exports = {
    */
 
   add: async (values) => {
-    const data = await Tbsite.forge(_.omit(values, _.keys(_.groupBy(strapi.models.tbsite.associations, 'alias')))).save();
-    await strapi.hook.bookshelf.manageRelations('tbsite', _.merge(_.clone(data.toJSON()), { values }));
-    return data;
+    // Extract values related to relational data.
+    const relations = _.pick(values, Tbsite.associations.map(ast => ast.alias));
+    const data = _.omit(values, Tbsite.associations.map(ast => ast.alias));
+
+    // Create entry with no-relational data.
+    const entry = await Tbsite.forge(data).save();
+
+    // Create relational data and return the entry.
+    return Tbsite.updateRelations({ id: entry.id , values: relations });
   },
 
   /**
@@ -77,8 +92,15 @@ module.exports = {
    */
 
   edit: async (params, values) => {
-    await strapi.hook.bookshelf.manageRelations('tbsite', _.merge(_.clone(params), { values }));
-    return Tbsite.forge(params).save(_.omit(values, _.keys(_.groupBy(strapi.models.tbsite.associations, 'alias'))), {path: true});
+    // Extract values related to relational data.
+    const relations = _.pick(values, Tbsite.associations.map(ast => ast.alias));
+    const data = _.omit(values, Tbsite.associations.map(ast => ast.alias));
+
+    // Create entry with no-relational data.
+    const entry = Tbsite.forge(params).save(data, { path: true });
+
+    // Create relational data and return the entry.
+    return Tbsite.updateRelations(Object.assign(params, { values: relations }));
   },
 
   /**
@@ -87,10 +109,13 @@ module.exports = {
    * @return {Promise}
    */
 
-  remove: (params) => {
-    _.forEach(Tbsite.associations, async association => {
-      await Tbsite.forge(params)[association.alias]().detach();
-    });
+  remove: async (params) => {
+    await Promise.all(
+      Tbsite.associations.map(association =>
+        Tbsite.forge(params)[association.alias]().detach()
+      )
+    );
+
     return Tbsite.forge(params).destroy();
   }
 };

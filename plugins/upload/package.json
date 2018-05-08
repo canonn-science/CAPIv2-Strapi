@@ -1,8 +1,8 @@
 {
   "_from": "strapi-plugin-upload@alpha",
-  "_id": "strapi-plugin-upload@3.0.0-alpha.12.1.3",
+  "_id": "strapi-plugin-upload@3.0.0-alpha.12.2",
   "_inBundle": false,
-  "_integrity": "sha512-3fHfYxb0kSQ0aIoQxoPU4pp4Byn2da34n8vmwXY7K/iESef+cPht0RiujnOtJW/G/yrRTVKMGrsPk3oEeNeY0Q==",
+  "_integrity": "sha512-pUs4QGDwZtOciZb17JWW4f4rETc5HmIC5dTiMqEyKFMYJNGtEw5DeG5xto9VoObaS+vrAXrpWNzvc2fqtZrLMw==",
   "_location": "/strapi-plugin-upload",
   "_phantomChildren": {},
   "_requested": {
@@ -18,24 +18,24 @@
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "https://registry.npmjs.org/strapi-plugin-upload/-/strapi-plugin-upload-3.0.0-alpha.12.1.3.tgz",
-  "_shasum": "a9e11dfaecaa407b333a9132abb32cc9fbfa9280",
+  "_resolved": "https://registry.npmjs.org/strapi-plugin-upload/-/strapi-plugin-upload-3.0.0-alpha.12.2.tgz",
+  "_shasum": "120895178272e926c8c075e5fc21fd74f1efcf40",
   "_spec": "strapi-plugin-upload@alpha",
-  "_where": "/home/ad.derrickmehaffy.com/dmehaffy/CAPIv2-Strapi-Dev",
+  "_where": "/home/ad.derrickmehaffy.com/dmehaffy/CAPIv2-Dev",
   "author": {
     "name": "A Strapi developer"
   },
   "bundleDependencies": false,
   "dependencies": {
     "react-copy-to-clipboard": "^5.0.1",
-    "strapi-upload-local": "3.0.0-alpha.12.1.3",
+    "strapi-upload-local": "3.0.0-alpha.12.2",
     "stream-to-array": "^2.3.0",
     "uuid": "^3.2.1"
   },
   "deprecated": false,
   "description": "This is the description of the plugin.",
   "devDependencies": {
-    "strapi-helper-plugin": "3.0.0-alpha.12.1.3"
+    "strapi-helper-plugin": "3.0.0-alpha.12.2"
   },
   "engines": {
     "node": ">= 7.0.0",
@@ -55,18 +55,17 @@
     "build:clean": "node ./node_modules/strapi-helper-plugin/node_modules/.bin/rimraf admin/build",
     "build:dev": "node ./node_modules/strapi-helper-plugin/node_modules/.bin/cross-env NODE_ENV=development node ./node_modules/strapi-helper-plugin/node_modules/.bin/webpack --config node_modules/strapi-helper-plugin/lib/internals/webpack/webpack.prod.babel.js --color -p --progress",
     "generate": "node ./node_modules/plop/plop.js --plopfile node_modules/strapi-helper-plugin/lib/internals/generators/index.js",
-    "lint": "node ./node_modules/strapi-helper-plugin/node_modules/.bin/eslint --ignore-path .gitignore --ignore-pattern '/admin/build/' --config ./node_modules/strapi-helper-plugin/lib/internals/eslint/.eslintrc.json admin",
     "preanalyze": "npm run analyze:clean",
     "prebuild": "npm run build:clean",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "IS_MONOREPO=true npm run build",
     "prettier": "node ./node_modules/strapi-helper-plugin/node_modules/.bin/prettier --single-quote --trailing-comma es5 --write \"{admin,__{tests,mocks}__}/**/*.js\"",
     "start": "node ./node_modules/strapi-helper-plugin/node_modules/.bin/cross-env NODE_ENV=development node ./node_modules/strapi-helper-plugin/lib/server",
-    "test": "npm run lint"
+    "test": "echo \"Error: no test specified\""
   },
   "strapi": {
     "name": "Files Upload",
     "icon": "cloud-upload",
     "description": "Description of upload plugin."
   },
-  "version": "3.0.0-alpha.12.1.3"
+  "version": "3.0.0-alpha.12.2"
 }

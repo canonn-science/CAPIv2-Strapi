@@ -21,10 +21,15 @@ module.exports = {
    */
 
   fetchAll: (params) => {
-    const convertedParams = strapi.utils.models.convertParams('location', params);
+    // Convert `params` object to filters compatible with Bookshelf.
+    const filters = strapi.utils.models.convertParams('location', params);
+    // Select field to populate.
+    const populate = Location.associations
+      .filter(ast => ast.autoPopulate !== false)
+      .map(ast => ast.alias);
 
     return Location.query(function(qb) {
-      _.forEach(convertedParams.where, (where, key) => {
+      _.forEach(filters.where, (where, key) => {
         if (_.isArray(where.value)) {
           for (const value in where.value) {
             qb[value ? 'where' : 'orWhere'](key, where.symbol, where.value[value])
@@ -34,15 +39,14 @@ module.exports = {
         }
       });
 
-      if (convertedParams.sort) {
-        qb.orderBy(convertedParams.sort.key, convertedParams.sort.order);
+      if (filters.sort) {
+        qb.orderBy(filters.sort.key, filters.sort.order);
       }
 
-      qb.offset(convertedParams.start);
-
-      qb.limit(convertedParams.limit);
+      qb.offset(filters.start);
+      qb.limit(filters.limit);
     }).fetchAll({
-      withRelated: _.keys(_.groupBy(_.reject(strapi.models.location.associations, {autoPopulate: false}), 'alias'))
+      withRelated: populate
     });
   },
 
@@ -53,8 +57,13 @@ module.exports = {
    */
 
   fetch: (params) => {
+    // Select field to populate.
+    const populate = Location.associations
+      .filter(ast => ast.autoPopulate !== false)
+      .map(ast => ast.alias);
+
     return Location.forge(_.pick(params, 'id')).fetch({
-      withRelated: _.keys(_.groupBy(_.reject(strapi.models.location.associations, {autoPopulate: false}), 'alias'))
+      withRelated: populate
     });
   },
 
@@ -65,9 +74,15 @@ module.exports = {
    */
 
   add: async (values) => {
-    const data = await Location.forge(_.omit(values, _.keys(_.groupBy(strapi.models.location.associations, 'alias')))).save();
-    await strapi.hook.bookshelf.manageRelations('location', _.merge(_.clone(data.toJSON()), { values }));
-    return data;
+    // Extract values related to relational data.
+    const relations = _.pick(values, Location.associations.map(ast => ast.alias));
+    const data = _.omit(values, Location.associations.map(ast => ast.alias));
+
+    // Create entry with no-relational data.
+    const entry = await Location.forge(data).save();
+
+    // Create relational data and return the entry.
+    return Location.updateRelations({ id: entry.id , values: relations });
   },
 
   /**
@@ -77,8 +92,15 @@ module.exports = {
    */
 
   edit: async (params, values) => {
-    await strapi.hook.bookshelf.manageRelations('location', _.merge(_.clone(params), { values }));
-    return Location.forge(params).save(_.omit(values, _.keys(_.groupBy(strapi.models.location.associations, 'alias'))), {path: true});
+    // Extract values related to relational data.
+    const relations = _.pick(values, Location.associations.map(ast => ast.alias));
+    const data = _.omit(values, Location.associations.map(ast => ast.alias));
+
+    // Create entry with no-relational data.
+    const entry = Location.forge(params).save(data, { path: true });
+
+    // Create relational data and return the entry.
+    return Location.updateRelations(Object.assign(params, { values: relations }));
   },
 
   /**
@@ -87,10 +109,13 @@ module.exports = {
    * @return {Promise}
    */
 
-  remove: (params) => {
-    _.forEach(Location.associations, async association => {
-      await Location.forge(params)[association.alias]().detach();
-    });
+  remove: async (params) => {
+    await Promise.all(
+      Location.associations.map(association =>
+        Location.forge(params)[association.alias]().detach()
+      )
+    );
+
     return Location.forge(params).destroy();
   }
 };

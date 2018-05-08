@@ -21,10 +21,15 @@ module.exports = {
    */
 
   fetchAll: (params) => {
-    const convertedParams = strapi.utils.models.convertParams('body', params);
+    // Convert `params` object to filters compatible with Bookshelf.
+    const filters = strapi.utils.models.convertParams('body', params);
+    // Select field to populate.
+    const populate = Body.associations
+      .filter(ast => ast.autoPopulate !== false)
+      .map(ast => ast.alias);
 
     return Body.query(function(qb) {
-      _.forEach(convertedParams.where, (where, key) => {
+      _.forEach(filters.where, (where, key) => {
         if (_.isArray(where.value)) {
           for (const value in where.value) {
             qb[value ? 'where' : 'orWhere'](key, where.symbol, where.value[value])
@@ -34,15 +39,14 @@ module.exports = {
         }
       });
 
-      if (convertedParams.sort) {
-        qb.orderBy(convertedParams.sort.key, convertedParams.sort.order);
+      if (filters.sort) {
+        qb.orderBy(filters.sort.key, filters.sort.order);
       }
 
-      qb.offset(convertedParams.start);
-
-      qb.limit(convertedParams.limit);
+      qb.offset(filters.start);
+      qb.limit(filters.limit);
     }).fetchAll({
-      withRelated: _.keys(_.groupBy(_.reject(strapi.models.body.associations, {autoPopulate: false}), 'alias'))
+      withRelated: populate
     });
   },
 
@@ -53,8 +57,13 @@ module.exports = {
    */
 
   fetch: (params) => {
+    // Select field to populate.
+    const populate = Body.associations
+      .filter(ast => ast.autoPopulate !== false)
+      .map(ast => ast.alias);
+
     return Body.forge(_.pick(params, 'id')).fetch({
-      withRelated: _.keys(_.groupBy(_.reject(strapi.models.body.associations, {autoPopulate: false}), 'alias'))
+      withRelated: populate
     });
   },
 
@@ -65,9 +74,15 @@ module.exports = {
    */
 
   add: async (values) => {
-    const data = await Body.forge(_.omit(values, _.keys(_.groupBy(strapi.models.body.associations, 'alias')))).save();
-    await strapi.hook.bookshelf.manageRelations('body', _.merge(_.clone(data.toJSON()), { values }));
-    return data;
+    // Extract values related to relational data.
+    const relations = _.pick(values, Body.associations.map(ast => ast.alias));
+    const data = _.omit(values, Body.associations.map(ast => ast.alias));
+
+    // Create entry with no-relational data.
+    const entry = await Body.forge(data).save();
+
+    // Create relational data and return the entry.
+    return Body.updateRelations({ id: entry.id , values: relations });
   },
 
   /**
@@ -77,8 +92,15 @@ module.exports = {
    */
 
   edit: async (params, values) => {
-    await strapi.hook.bookshelf.manageRelations('body', _.merge(_.clone(params), { values }));
-    return Body.forge(params).save(_.omit(values, _.keys(_.groupBy(strapi.models.body.associations, 'alias'))), {path: true});
+    // Extract values related to relational data.
+    const relations = _.pick(values, Body.associations.map(ast => ast.alias));
+    const data = _.omit(values, Body.associations.map(ast => ast.alias));
+
+    // Create entry with no-relational data.
+    const entry = Body.forge(params).save(data, { path: true });
+
+    // Create relational data and return the entry.
+    return Body.updateRelations(Object.assign(params, { values: relations }));
   },
 
   /**
@@ -87,10 +109,13 @@ module.exports = {
    * @return {Promise}
    */
 
-  remove: (params) => {
-    _.forEach(Body.associations, async association => {
-      await Body.forge(params)[association.alias]().detach();
-    });
+  remove: async (params) => {
+    await Promise.all(
+      Body.associations.map(association =>
+        Body.forge(params)[association.alias]().detach()
+      )
+    );
+
     return Body.forge(params).destroy();
   }
 };

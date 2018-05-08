@@ -21,10 +21,15 @@ module.exports = {
    */
 
   fetchAll: (params) => {
-    const convertedParams = strapi.utils.models.convertParams('system', params);
+    // Convert `params` object to filters compatible with Bookshelf.
+    const filters = strapi.utils.models.convertParams('system', params);
+    // Select field to populate.
+    const populate = System.associations
+      .filter(ast => ast.autoPopulate !== false)
+      .map(ast => ast.alias);
 
     return System.query(function(qb) {
-      _.forEach(convertedParams.where, (where, key) => {
+      _.forEach(filters.where, (where, key) => {
         if (_.isArray(where.value)) {
           for (const value in where.value) {
             qb[value ? 'where' : 'orWhere'](key, where.symbol, where.value[value])
@@ -34,15 +39,14 @@ module.exports = {
         }
       });
 
-      if (convertedParams.sort) {
-        qb.orderBy(convertedParams.sort.key, convertedParams.sort.order);
+      if (filters.sort) {
+        qb.orderBy(filters.sort.key, filters.sort.order);
       }
 
-      qb.offset(convertedParams.start);
-
-      qb.limit(convertedParams.limit);
+      qb.offset(filters.start);
+      qb.limit(filters.limit);
     }).fetchAll({
-      withRelated: _.keys(_.groupBy(_.reject(strapi.models.system.associations, {autoPopulate: false}), 'alias'))
+      withRelated: populate
     });
   },
 
@@ -53,8 +57,13 @@ module.exports = {
    */
 
   fetch: (params) => {
+    // Select field to populate.
+    const populate = System.associations
+      .filter(ast => ast.autoPopulate !== false)
+      .map(ast => ast.alias);
+
     return System.forge(_.pick(params, 'id')).fetch({
-      withRelated: _.keys(_.groupBy(_.reject(strapi.models.system.associations, {autoPopulate: false}), 'alias'))
+      withRelated: populate
     });
   },
 
@@ -65,9 +74,15 @@ module.exports = {
    */
 
   add: async (values) => {
-    const data = await System.forge(_.omit(values, _.keys(_.groupBy(strapi.models.system.associations, 'alias')))).save();
-    await strapi.hook.bookshelf.manageRelations('system', _.merge(_.clone(data.toJSON()), { values }));
-    return data;
+    // Extract values related to relational data.
+    const relations = _.pick(values, System.associations.map(ast => ast.alias));
+    const data = _.omit(values, System.associations.map(ast => ast.alias));
+
+    // Create entry with no-relational data.
+    const entry = await System.forge(data).save();
+
+    // Create relational data and return the entry.
+    return System.updateRelations({ id: entry.id , values: relations });
   },
 
   /**
@@ -77,8 +92,15 @@ module.exports = {
    */
 
   edit: async (params, values) => {
-    await strapi.hook.bookshelf.manageRelations('system', _.merge(_.clone(params), { values }));
-    return System.forge(params).save(_.omit(values, _.keys(_.groupBy(strapi.models.system.associations, 'alias'))), {path: true});
+    // Extract values related to relational data.
+    const relations = _.pick(values, System.associations.map(ast => ast.alias));
+    const data = _.omit(values, System.associations.map(ast => ast.alias));
+
+    // Create entry with no-relational data.
+    const entry = System.forge(params).save(data, { path: true });
+
+    // Create relational data and return the entry.
+    return System.updateRelations(Object.assign(params, { values: relations }));
   },
 
   /**
@@ -87,10 +109,13 @@ module.exports = {
    * @return {Promise}
    */
 
-  remove: (params) => {
-    _.forEach(System.associations, async association => {
-      await System.forge(params)[association.alias]().detach();
-    });
+  remove: async (params) => {
+    await Promise.all(
+      System.associations.map(association =>
+        System.forge(params)[association.alias]().detach()
+      )
+    );
+
     return System.forge(params).destroy();
   }
 };

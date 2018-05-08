@@ -32,10 +32,14 @@
     "type": {
       "type": "enumeration",
       "enum": [
+	"Structure",
         "Type1",
         "Type2",
         "Type3"
       ]
+    },
+    "hasDatabank": {
+      "type": "boolean"
     },
     "verified": {
       "type": "boolean"
