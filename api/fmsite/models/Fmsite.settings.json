@@ -1,0 +1,47 @@
+{
+  "connection": "default",
+  "collectionName": "fmsites",
+  "info": {
+    "name": "fmsite",
+    "description": "Fumarole Sites"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "location": {
+      "model": "location",
+      "via": "fmSite"
+    },
+    "siteID": {
+      "unique": true,
+      "min": 1,
+      "type": "integer",
+      "required": true
+    },
+    "latitude": {
+      "type": "float",
+      "required": true
+    },
+    "longitude": {
+      "type": "float",
+      "required": true
+    },
+    "count": {
+      "min": 1,
+      "type": "integer"
+    },
+    "type": {
+      "type": "string"
+    },
+    "verified": {
+      "type": "boolean"
+    },
+    "visible": {
+      "default": true,
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/tbsite",
+      "handler": "Tbsite.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tbsite/:id",
+      "handler": "Tbsite.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tbsite",
+      "handler": "Tbsite.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tbsite/:id",
+      "handler": "Tbsite.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tbsite/:id",
+      "handler": "Tbsite.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tbsite/:id/relationships/:relation",
+      "handler": "Tbsite.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tbsite/:id/relationships/:relation",
+      "handler": "Tbsite.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tbsite/:id/relationships/:relation",
+      "handler": "Tbsite.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

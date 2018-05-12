@@ -1,0 +1,68 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/fmsite",
+      "handler": "Fmsite.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/fmsite/:id",
+      "handler": "Fmsite.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/fmsite",
+      "handler": "Fmsite.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/fmsite/:id",
+      "handler": "Fmsite.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/fmsite/:id",
+      "handler": "Fmsite.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/fmsite/:id/relationships/:relation",
+      "handler": "Fmsite.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/fmsite/:id/relationships/:relation",
+      "handler": "Fmsite.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/fmsite/:id/relationships/:relation",
+      "handler": "Fmsite.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

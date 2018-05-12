@@ -1,0 +1,68 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/gssite",
+      "handler": "Gssite.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gssite/:id",
+      "handler": "Gssite.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/gssite",
+      "handler": "Gssite.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/gssite/:id",
+      "handler": "Gssite.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/gssite/:id",
+      "handler": "Gssite.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/gssite/:id/relationships/:relation",
+      "handler": "Gssite.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/gssite/:id/relationships/:relation",
+      "handler": "Gssite.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/gssite/:id/relationships/:relation",
+      "handler": "Gssite.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

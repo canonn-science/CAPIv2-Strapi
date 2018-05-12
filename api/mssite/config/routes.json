@@ -1,0 +1,68 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/mssite",
+      "handler": "Mssite.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/mssite/:id",
+      "handler": "Mssite.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/mssite",
+      "handler": "Mssite.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/mssite/:id",
+      "handler": "Mssite.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/mssite/:id",
+      "handler": "Mssite.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/mssite/:id/relationships/:relation",
+      "handler": "Mssite.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/mssite/:id/relationships/:relation",
+      "handler": "Mssite.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/mssite/:id/relationships/:relation",
+      "handler": "Mssite.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

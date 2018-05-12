@@ -1,0 +1,68 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/body",
+      "handler": "Body.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/body/:id",
+      "handler": "Body.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/body",
+      "handler": "Body.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/body/:id",
+      "handler": "Body.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/body/:id",
+      "handler": "Body.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/body/:id/relationships/:relation",
+      "handler": "Body.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/body/:id/relationships/:relation",
+      "handler": "Body.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/body/:id/relationships/:relation",
+      "handler": "Body.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

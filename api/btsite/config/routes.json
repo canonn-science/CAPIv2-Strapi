@@ -1,0 +1,68 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/btsite",
+      "handler": "Btsite.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/btsite/:id",
+      "handler": "Btsite.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/btsite",
+      "handler": "Btsite.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/btsite/:id",
+      "handler": "Btsite.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/btsite/:id",
+      "handler": "Btsite.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/btsite/:id/relationships/:relation",
+      "handler": "Btsite.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/btsite/:id/relationships/:relation",
+      "handler": "Btsite.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/btsite/:id/relationships/:relation",
+      "handler": "Btsite.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

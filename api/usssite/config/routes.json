@@ -1,0 +1,68 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/usssite",
+      "handler": "Usssite.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/usssite/:id",
+      "handler": "Usssite.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/usssite",
+      "handler": "Usssite.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/usssite/:id",
+      "handler": "Usssite.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/usssite/:id",
+      "handler": "Usssite.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/usssite/:id/relationships/:relation",
+      "handler": "Usssite.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/usssite/:id/relationships/:relation",
+      "handler": "Usssite.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/usssite/:id/relationships/:relation",
+      "handler": "Usssite.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

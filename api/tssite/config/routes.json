@@ -1,0 +1,68 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/tssite",
+      "handler": "Tssite.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tssite/:id",
+      "handler": "Tssite.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tssite",
+      "handler": "Tssite.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tssite/:id",
+      "handler": "Tssite.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tssite/:id",
+      "handler": "Tssite.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tssite/:id/relationships/:relation",
+      "handler": "Tssite.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tssite/:id/relationships/:relation",
+      "handler": "Tssite.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tssite/:id/relationships/:relation",
+      "handler": "Tssite.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
