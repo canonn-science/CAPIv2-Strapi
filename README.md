@@ -10,6 +10,7 @@
 - [Prerequisites](#prerequisites)
     - [Installing Git, Node v10, and NPM v6](#installing-git-node-v10-and-npm-v6)
     - [Update NPM to the latest version](#update-npm-to-the-latest-version)
+    - [Install Pm2 to run as a service](#install-pm2-to-run-as-a-service)
     - [Install Strapi Alpha Latest](#install-strapi-alpha-latest)
     - [Setup MariaDB](#setup-mariadb)
 - [Create Database & User for Strapi](#create-database--user-for-strapi)
@@ -19,6 +20,7 @@
     - [Create the Dev database.json](#create-the-dev-databasejson)
     - [Start CAPIv2-Dev for the first time](#start-capiv2-dev-for-the-first-time)
     - [Create the Admin User](#create-the-admin-user)
+    - [Running CAPIv2-Dev as a service](#running-capiv2-dev-as-a-service)
 - [Seed files for testing](#seed-files-for-testing)
 
 <!-- /TOC -->
@@ -60,6 +62,7 @@ You will need the following:
 - Git
 - Node v10 or above
 - NPM v6 or above
+- Node Pm2 (For running API as a service)
 - Strapi Alpha v12.2
 - MariaDB 10.2 or above
 
@@ -83,6 +86,14 @@ Run the following to update NPM from v5 to v6:
 
 `
 sudo npm install -g npm@latest
+`
+
+## Install Pm2 to run as a service
+
+Run the following to install Pm2 globally on your system:
+
+`
+sudo npm install pm2 -g
 `
 
 ## Install Strapi Alpha Latest
@@ -252,6 +263,14 @@ cd /srv/CAPI/CAPIv2-Dev && strapi start
 After strapi has started you can visit `http://localhost:1337` if you are on the machine, else you can change `localhost` to your servers IP.
 
 Currently there is no public frontend, we will however replace this in the future before public release. To create your user go to `http://localhost:1337/admin`
+
+## Running CAPIv2-Dev as a service
+
+To run strapi as a service, a change was made in the package.json, and you have installed Pm2 in a previous step. You will need to navigate to the directory the API is cloned into and run the following:
+
+`
+pm2 start npm -- start
+`
 
 # Seed files for testing
 
