@@ -1,0 +1,68 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/gensite",
+      "handler": "Gensite.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gensite/:id",
+      "handler": "Gensite.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/gensite",
+      "handler": "Gensite.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/gensite/:id",
+      "handler": "Gensite.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/gensite/:id",
+      "handler": "Gensite.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/gensite/:id/relationships/:relation",
+      "handler": "Gensite.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/gensite/:id/relationships/:relation",
+      "handler": "Gensite.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/gensite/:id/relationships/:relation",
+      "handler": "Gensite.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

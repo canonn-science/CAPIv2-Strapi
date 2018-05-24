@@ -1,0 +1,45 @@
+{
+  "connection": "default",
+  "collectionName": "mssites",
+  "info": {
+    "name": "mssite",
+    "description": "Mega-Ship Sites"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "location": {
+      "model": "location",
+      "via": "msSite"
+    },
+    "siteID": {
+      "unique": true,
+      "min": 1,
+      "type": "integer",
+      "required": true
+    },
+    "shipName": {
+      "unique": true,
+      "type": "string",
+      "required": true
+    },
+    "shipTag": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "flightOps": {
+      "type": "boolean"
+    },
+    "flightSchedule": {
+      "type": "boolean"
+    },
+    "dockable": {
+      "type": "boolean"
+    }
+  }
+}

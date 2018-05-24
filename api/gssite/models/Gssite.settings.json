@@ -1,0 +1,52 @@
+{
+  "connection": "default",
+  "collectionName": "gssites",
+  "info": {
+    "name": "gssite",
+    "description": "Guardian Structure Sites"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "location": {
+      "model": "location",
+      "via": "gsSite"
+    },
+    "siteID": {
+      "unique": true,
+      "min": 1,
+      "type": "integer",
+      "required": true
+    },
+    "latitude": {
+      "type": "float",
+      "required": true
+    },
+    "longitude": {
+      "type": "float",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+	"Structure",
+        "Type1",
+        "Type2",
+        "Type3"
+      ]
+    },
+    "hasDatabank": {
+      "type": "boolean"
+    },
+    "verified": {
+      "type": "boolean"
+    },
+    "visible": {
+      "default": true,
+      "type": "boolean"
+    }
+  }
+}

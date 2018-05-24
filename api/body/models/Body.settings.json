@@ -1,0 +1,207 @@
+{
+  "connection": "default",
+  "collectionName": "bodies",
+  "info": {
+    "name": "body",
+    "description": "Bodies stored in the Canonn database"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "system": {
+      "model": "system",
+      "via": "bodies"
+    },
+    "bodyName": {
+      "type": "string",
+      "required": true
+    },
+    "edsmID": {
+      "type": "float"
+    },
+    "edsmID64": {
+      "type": "float"
+    },
+    "edsmType": {
+      "type": "enumeration",
+      "enum": [
+        "NULL",
+        "Star",
+        "Planet"
+      ]
+    },
+    "edsmSubtype": {
+      "type": "enumeration",
+      "enum": [
+        "NULL",
+        "O (Blue-White) Star",
+        "B (Blue-White) Star",
+        "A (Blue-White) Star",
+        "A (Blue-White super giant) Star",
+        "F (White) Star",
+        "F (White super giant) Star",
+        "G (White-Yellow) Star",
+        "K (Yellow-Orange) Star",
+        "K (Yellow-Orange giant) Star",
+        "M (Red dwarf) Star",
+        "M (Red giant) Star",
+        "M (Red super giant) Star",
+        "L (Brown dwarf) Star",
+        "T (Brown dwarf) Star",
+        "Y (Brown dwarf) Star",
+        "T Tauri Star",
+        "Herbig Ae/Be Star",
+        "Wolf-Rayet Star",
+        "Wolf-Rayet N Star",
+        "Wolf-Rayet NC Star",
+        "Wolf-Rayet C Star",
+        "Wolf-Rayet O Star",
+        "CS Star",
+        "C Star",
+        "CN Star",
+        "CJ Star",
+        "CH Star",
+        "CHd Star",
+        "MS-type Star",
+        "S-type Star",
+        "White Dwarf (D) Star",
+        "White Dwarf (DA) Star",
+        "White Dwarf (DAB) Star",
+        "White Dwarf (DAO) Star",
+        "White Dwarf (DAZ) Star",
+        "White Dwarf (DAV) Star",
+        "White Dwarf (DB) Star",
+        "White Dwarf (DBZ) Star",
+        "White Dwarf (DBV) Star",
+        "White Dwarf (DO) Star",
+        "White Dwarf (DOV) Star",
+        "White Dwarf (DQ) Star",
+        "White Dwarf (DC) Star",
+        "White Dwarf (DCV) Star",
+        "White Dwarf (DX) Star",
+        "Neutron Star",
+        "Black Hole",
+        "Supermassive Black Hole",
+        "X",
+        "RoguePlanet",
+        "Nebula",
+        "StellarRemnantNebula",
+        "Metal-rich body",
+        "High metal content world",
+        "Rocky body",
+        "Rocky Ice world",
+        "Icy body",
+        "Earth-like world",
+        "Water world",
+        "Water giant",
+        "Water giant with life",
+        "Ammonia world",
+        "Gas giant with water-based life",
+        "Gas giant with ammonia-based life",
+        "Class I gas giant",
+        "Class II gas giant",
+        "Class III gas giant",
+        "Class IV gas giant",
+        "Class V gas giant",
+        "Helium-rich gas giant",
+        "Helium gas giant"
+      ]
+    },
+    "edsmOffset": {
+      "type": "integer"
+    },
+    "edsmDistanceToArrival": {
+      "type": "float"
+    },
+    "edsmIsMainStar": {
+      "type": "boolean"
+    },
+    "edsmIsScoopable": {
+      "type": "boolean"
+    },
+    "edsmIsLandable": {
+      "type": "boolean"
+    },
+    "edsmAge": {
+      "type": "integer"
+    },
+    "edsmLuminosity": {
+      "type": "string"
+    },
+    "edsmAbsoluteMagnitude": {
+      "type": "float"
+    },
+    "edsmSolarMasses": {
+      "type": "float"
+    },
+    "edsmSolarRadius": {
+      "type": "float"
+    },
+    "edsmGravity": {
+      "type": "float"
+    },
+    "edsmEarthMasses": {
+      "type": "float"
+    },
+    "edsmRadius": {
+      "type": "float"
+    },
+    "edsmSurfaceTemperature": {
+      "type": "float"
+    },
+    "edsmVolcanismType": {
+      "type": "string"
+    },
+    "edsmAtmosphereType": {
+      "type": "string"
+    },
+    "edsmTerraformingState": {
+      "type": "string"
+    },
+    "edsmOrbitalPeriod": {
+      "type": "float"
+    },
+    "edsmSemiMajorAxis": {
+      "type": "float"
+    },
+    "edsmOrbitalEccentricity": {
+      "type": "float"
+    },
+    "edsmOrbitalInclination": {
+      "type": "float"
+    },
+    "edsmArgOfPeriapsis": {
+      "type": "float"
+    },
+    "edsmRotationalPeriod": {
+      "type": "float"
+    },
+    "edsmRotationalPeriodTidallyLocked": {
+      "type": "boolean"
+    },
+    "edsmAxialTilt": {
+      "type": "float"
+    },
+    "rings": {
+      "collection": "ring",
+      "dominant": true,
+      "via": "body"
+    },
+    "atmosphere": {
+      "model": "atmosphere",
+      "via": "body"
+    },
+    "material": {
+      "model": "material",
+      "via": "body"
+    },
+    "bodyLocations": {
+      "collection": "location",
+      "dominant": true,
+      "via": "body"
+    }
+  }
+}

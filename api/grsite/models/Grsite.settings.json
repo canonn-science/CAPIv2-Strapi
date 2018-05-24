@@ -1,0 +1,48 @@
+{
+  "connection": "default",
+  "collectionName": "grsites",
+  "info": {
+    "name": "grsite",
+    "description": "Guardian Ruin Site"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "location": {
+      "model": "location",
+      "via": "grSite"
+    },
+    "siteID": {
+      "unique": true,
+      "min": 1,
+      "type": "integer",
+      "required": true
+    },
+    "latitude": {
+      "type": "float",
+      "required": true
+    },
+    "longitude": {
+      "type": "float",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Alpha",
+        "Beta",
+        "Gamma"
+      ]
+    },
+    "verified": {
+      "type": "boolean"
+    },
+    "visible": {
+      "default": true,
+      "type": "boolean"
+    }
+  }
+}

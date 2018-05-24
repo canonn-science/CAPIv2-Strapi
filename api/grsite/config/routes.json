@@ -1,0 +1,68 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/grsite",
+      "handler": "Grsite.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/grsite/:id",
+      "handler": "Grsite.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/grsite",
+      "handler": "Grsite.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/grsite/:id",
+      "handler": "Grsite.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/grsite/:id",
+      "handler": "Grsite.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/grsite/:id/relationships/:relation",
+      "handler": "Grsite.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/grsite/:id/relationships/:relation",
+      "handler": "Grsite.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/grsite/:id/relationships/:relation",
+      "handler": "Grsite.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

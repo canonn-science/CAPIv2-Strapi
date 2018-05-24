@@ -1,0 +1,68 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/twsite",
+      "handler": "Twsite.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/twsite/:id",
+      "handler": "Twsite.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/twsite",
+      "handler": "Twsite.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/twsite/:id",
+      "handler": "Twsite.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/twsite/:id",
+      "handler": "Twsite.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/twsite/:id/relationships/:relation",
+      "handler": "Twsite.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/twsite/:id/relationships/:relation",
+      "handler": "Twsite.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/twsite/:id/relationships/:relation",
+      "handler": "Twsite.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

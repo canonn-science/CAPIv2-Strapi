@@ -1,0 +1,53 @@
+{
+  "connection": "default",
+  "collectionName": "systems",
+  "info": {
+    "name": "system",
+    "description": "Systems stored in the Canonn database"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "systemName": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "edsmID": {
+      "type": "float"
+    },
+    "edsmID64": {
+      "type": "float"
+    },
+    "edsmCoordX": {
+      "type": "float"
+    },
+    "edsmCoordY": {
+      "type": "float"
+    },
+    "edsmCoordZ": {
+      "type": "float"
+    },
+    "edsmCoordLocked": {
+      "type": "boolean"
+    },
+    "bodies": {
+      "collection": "body",
+      "via": "system",
+      "dominant": true
+    },
+    "systemLocations": {
+      "collection": "location",
+      "dominant": true,
+      "via": "system"
+    },
+    "genSiteDirection": {
+      "collection": "gensite",
+      "dominant": true,
+      "via": "directionSystem"
+    }
+  }
+}

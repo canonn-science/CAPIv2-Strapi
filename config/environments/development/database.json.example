@@ -1,0 +1,19 @@
+{
+  "defaultConnection": "default",
+  "connections": {
+    "default": {
+      "connector": "strapi-bookshelf",
+      "settings": {
+        "client": "mysql",
+        "host": "127.0.0.1",
+        "port": 3306,
+        "database": "exampledatabase",
+        "username": "exampleuser",
+        "password": "examplepassword"
+      },
+      "options": {
+        "ssl": false
+      }
+    }
+  }
+}
