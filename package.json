@@ -6,7 +6,7 @@
   "main": "./server.js",
   "scripts": {
     "setup": "cd admin && npm run setup",
-    "start": "node server.js",
+    "start": "node_modules/strapi/bin/strapi.js start",
     "strapi": "node_modules/strapi/bin/strapi.js",
     "lint": "node_modules/.bin/eslint api/**/*.js config/**/*.js plugins/**/*.js",
     "postinstall": "node node_modules/strapi/lib/utils/post-install.js"
