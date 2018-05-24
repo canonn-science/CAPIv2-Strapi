@@ -192,6 +192,25 @@ cd /srv/CAPI/CAPIv2-Dev && npm install
 
 **Note this may take a while**
 
+If you have missing modules you may need to install the following manually:
+- sendmail
+- graphql
+- graphql-tools
+- graphql-type-json
+- stream-to-array
+- jsonwebtoken
+- request
+- purest
+- bcryptjs
+- apollo-server-koa
+- graphql-playground-middleware-koa
+
+You can use the following command inside the API directory:
+
+```
+npm install sendmail graphql graphql-tools graphql-type-json stream-to-array jsonwebtoken request purest bcryptjs apollo-server-koa graphql-playground-middleware-koa
+```
+
 ## Create the Dev database.json
 
 In order for strapi to talk to the MariaDB database we setup you will need to copy and modify the following file:
@@ -269,7 +288,7 @@ Currently there is no public frontend, we will however replace this in the futur
 To run strapi as a service, a change was made in the package.json, and you have installed Pm2 in a previous step. You will need to navigate to the directory the API is cloned into and run the following:
 
 `
-pm2 start npm -- start
+pm2 start capidev -- start
 `
 
 # Seed files for testing
