@@ -29,6 +29,16 @@ module.exports = {
   },
 
   /**
+   * Count usssite records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx) => {
+    return strapi.services.usssite.count(ctx.query);
+  },
+
+  /**
    * Create a/an usssite record.
    *
    * @return {Object}

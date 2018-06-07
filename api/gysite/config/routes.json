@@ -17,6 +17,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/gysite/count",
+      "handler": "Gysite.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/gysite",
       "handler": "Gysite.create",

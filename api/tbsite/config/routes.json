@@ -17,6 +17,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/tbsite/count",
+      "handler": "Tbsite.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/tbsite",
       "handler": "Tbsite.create",

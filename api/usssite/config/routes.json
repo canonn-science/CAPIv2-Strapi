@@ -17,6 +17,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/usssite/count",
+      "handler": "Usssite.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/usssite",
       "handler": "Usssite.create",

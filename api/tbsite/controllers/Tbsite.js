@@ -29,6 +29,16 @@ module.exports = {
   },
 
   /**
+   * Count tbsite records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx) => {
+    return strapi.services.tbsite.count(ctx.query);
+  },
+
+  /**
    * Create a/an tbsite record.
    *
    * @return {Object}

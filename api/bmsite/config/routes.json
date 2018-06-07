@@ -17,6 +17,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/bmsite/count",
+      "handler": "Bmsite.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/bmsite",
       "handler": "Bmsite.create",

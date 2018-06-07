@@ -17,6 +17,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/ring/count",
+      "handler": "Ring.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/ring",
       "handler": "Ring.create",

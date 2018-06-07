@@ -1,8 +1,8 @@
 """Atmosphere composition of a body"""
 type Atmosphere {
-  id: String
-  created_at: String
-  updated_at: String
+  id: String!
+  createdAt: String!
+  updatedAt: String!
   body: Body
   argon: Float
   ammonia: Float
@@ -21,13 +21,13 @@ type Atmosphere {
 
 """Bark Mound Sites"""
 type Bmsite {
-  id: String
-  created_at: String
-  updated_at: String
+  id: String!
+  createdAt: String!
+  updatedAt: String!
   location: Location
-  siteID: Int
-  latitude: Float
-  longitude: Float
+  siteID: Int!
+  latitude: Float!
+  longitude: Float!
   count: Int
   type: String
   verified: Boolean
@@ -36,11 +36,11 @@ type Bmsite {
 
 """Bodies stored in the Canonn database"""
 type Body {
-  id: String
-  created_at: String
-  updated_at: String
+  id: String!
+  createdAt: String!
+  updatedAt: String!
   system: System
-  bodyName: String
+  bodyName: String!
   edsmID: Float
   edsmID64: Float
   edsmType: String
@@ -78,13 +78,13 @@ type Body {
 
 """Brain Tree Sites"""
 type Btsite {
-  id: String
-  created_at: String
-  updated_at: String
+  id: String!
+  createdAt: String!
+  updatedAt: String!
   location: Location
-  siteID: Int
-  latitude: Float
-  longitude: Float
+  siteID: Int!
+  latitude: Float!
+  longitude: Float!
   count: Int
   verified: Boolean
   visible: Boolean
@@ -92,13 +92,13 @@ type Btsite {
 
 """Fungal Gourd Sites"""
 type Fgsite {
-  id: String
-  created_at: String
-  updated_at: String
+  id: String!
+  createdAt: String!
+  updatedAt: String!
   location: Location
-  siteID: Int
-  latitude: Float
-  longitude: Float
+  siteID: Int!
+  latitude: Float!
+  longitude: Float!
   count: Int
   verified: Boolean
   visible: Boolean
@@ -106,13 +106,13 @@ type Fgsite {
 
 """Fumarole Sites"""
 type Fmsite {
-  id: String
-  created_at: String
-  updated_at: String
+  id: String!
+  createdAt: String!
+  updatedAt: String!
   location: Location
-  siteID: Int
-  latitude: Float
-  longitude: Float
+  siteID: Int!
+  latitude: Float!
+  longitude: Float!
   count: Int
   type: String
   verified: Boolean
@@ -121,25 +121,25 @@ type Fmsite {
 
 """Generation Ship Sites"""
 type Gensite {
-  id: String
-  created_at: String
-  updated_at: String
+  id: String!
+  createdAt: String!
+  updatedAt: String!
   location: Location
-  siteID: Int
-  shipName: String
+  siteID: Int!
+  shipName: String!
   directionSystem: System
   distance: Float
 }
 
 """Guardian Ruin Site"""
 type Grsite {
-  id: String
-  created_at: String
-  updated_at: String
+  id: String!
+  createdAt: String!
+  updatedAt: String!
   location: Location
-  siteID: Int
-  latitude: Float
-  longitude: Float
+  siteID: Int!
+  latitude: Float!
+  longitude: Float!
   type: String
   verified: Boolean
   visible: Boolean
@@ -147,13 +147,13 @@ type Grsite {
 
 """Guardian Structure Sites"""
 type Gssite {
-  id: String
-  created_at: String
-  updated_at: String
+  id: String!
+  createdAt: String!
+  updatedAt: String!
   location: Location
-  siteID: Int
-  latitude: Float
-  longitude: Float
+  siteID: Int!
+  latitude: Float!
+  longitude: Float!
   type: String
   hasDatabank: Boolean
   verified: Boolean
@@ -162,13 +162,13 @@ type Gssite {
 
 """Geyser Sites"""
 type Gysite {
-  id: String
-  created_at: String
-  updated_at: String
+  id: String!
+  createdAt: String!
+  updatedAt: String!
   location: Location
-  siteID: Int
-  latitude: Float
-  longitude: Float
+  siteID: Int!
+  latitude: Float!
+  longitude: Float!
   count: Int
   type: String
   verified: Boolean
@@ -182,9 +182,9 @@ scalar JSON
 
 """Locations for sites within a System, Body, or Ring"""
 type Location {
-  id: String
-  created_at: String
-  updated_at: String
+  id: String!
+  createdAt: String!
+  updatedAt: String!
   system: System
   body: Body
   ring: Ring
@@ -207,13 +207,13 @@ type Location {
 
 """Lave Spout Sites"""
 type Lssite {
-  id: String
-  created_at: String
-  updated_at: String
+  id: String!
+  createdAt: String!
+  updatedAt: String!
   location: Location
-  siteID: Int
-  latitude: Float
-  longitude: Float
+  siteID: Int!
+  latitude: Float!
+  longitude: Float!
   count: Int
   type: String
   verified: Boolean
@@ -222,9 +222,9 @@ type Lssite {
 
 """Material makeup of a body"""
 type Material {
-  id: String
-  created_at: String
-  updated_at: String
+  id: String!
+  createdAt: String!
+  updatedAt: String!
   body: Body
   antimony: Float
   arsenic: Float
@@ -257,12 +257,12 @@ union Morph = Atmosphere | Bmsite | Body | Btsite | Fgsite | Fmsite | Gensite | 
 
 """Mega-Ship Sites"""
 type Mssite {
-  id: String
-  created_at: String
-  updated_at: String
+  id: String!
+  createdAt: String!
+  updatedAt: String!
   location: Location
-  siteID: Int
-  shipName: String
+  siteID: Int!
+  shipName: String!
   shipTag: String
   type: String
   flightOps: Boolean
@@ -324,11 +324,11 @@ type Query {
 
 """Rings stored in the Canonn database"""
 type Ring {
-  id: String
-  created_at: String
-  updated_at: String
+  id: String!
+  createdAt: String!
+  updatedAt: String!
   body: Body
-  ringName: String
+  ringName: String!
   edsmType: String
   edsmMass: Float
   edsmInnerRadius: Float
@@ -338,10 +338,10 @@ type Ring {
 
 """Systems stored in the Canonn database"""
 type System {
-  id: String
-  created_at: String
-  updated_at: String
-  systemName: String
+  id: String!
+  createdAt: String!
+  updatedAt: String!
+  systemName: String!
   edsmID: Float
   edsmID64: Float
   edsmCoordX: Float
@@ -355,13 +355,13 @@ type System {
 
 """Thargoid Barnacle Sites"""
 type Tbsite {
-  id: String
-  created_at: String
-  updated_at: String
+  id: String!
+  createdAt: String!
+  updatedAt: String!
   location: Location
-  siteID: Int
-  latitude: Float
-  longitude: Float
+  siteID: Int!
+  latitude: Float!
+  longitude: Float!
   count: Int
   type: String
   verified: Boolean
@@ -370,13 +370,13 @@ type Tbsite {
 
 """Thargoid Structure Sites"""
 type Tssite {
-  id: String
-  created_at: String
-  updated_at: String
+  id: String!
+  createdAt: String!
+  updatedAt: String!
   location: Location
-  siteID: Int
-  latitude: Float
-  longitude: Float
+  siteID: Int!
+  latitude: Float!
+  longitude: Float!
   status: String
   verified: Boolean
   visible: Boolean
@@ -384,46 +384,46 @@ type Tssite {
 
 """Tube Worm Sites"""
 type Twsite {
-  id: String
-  created_at: String
-  updated_at: String
+  id: String!
+  createdAt: String!
+  updatedAt: String!
   location: Location
-  siteID: Int
-  latitude: Float
-  longitude: Float
+  siteID: Int!
+  latitude: Float!
+  longitude: Float!
   count: Int
   type: String
-  verified: Boolean
+  verified: Boolean!
   visible: Boolean
 }
 
 type UploadFile {
-  id: String
-  created_at: String
-  updated_at: String
-  name: String
-  hash: String
+  id: String!
+  createdAt: String!
+  updatedAt: String!
+  name: String!
+  hash: String!
   ext: String
-  mime: String
-  size: String
-  url: String
-  provider: String
+  mime: String!
+  size: String!
+  url: String!
+  provider: String!
   related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
 }
 
 type UsersPermissionsPermission {
-  id: String
-  type: String
-  controller: String
-  action: String
-  enabled: Boolean
-  policy: String
+  id: String!
+  type: String!
+  controller: String!
+  action: String!
+  enabled: Boolean!
+  policy: String!
   role: UsersPermissionsRole
 }
 
 type UsersPermissionsRole {
-  id: String
-  name: String
+  id: String!
+  name: String!
   description: String
   type: String
   users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
@@ -431,20 +431,18 @@ type UsersPermissionsRole {
 }
 
 type UsersPermissionsUser {
-  id: String
-  username: String
-  email: String
+  id: String!
+  username: String!
+  email: String!
   provider: String
-  password: String
-  resetPasswordToken: String
   role: UsersPermissionsRole
 }
 
 """Unknown Signal Source Sites"""
 type Usssite {
-  id: String
-  created_at: String
-  updated_at: String
+  id: String!
+  createdAt: String!
+  updatedAt: String!
   location: Location
   type: String
   threatLevel: Int

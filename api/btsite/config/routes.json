@@ -17,6 +17,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/btsite/count",
+      "handler": "Btsite.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/btsite",
       "handler": "Btsite.create",

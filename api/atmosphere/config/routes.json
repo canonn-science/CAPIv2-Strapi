@@ -17,6 +17,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/atmosphere/count",
+      "handler": "Atmosphere.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/atmosphere",
       "handler": "Atmosphere.create",

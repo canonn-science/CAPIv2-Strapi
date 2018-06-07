@@ -17,6 +17,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/gssite/count",
+      "handler": "Gssite.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/gssite",
       "handler": "Gssite.create",

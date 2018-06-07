@@ -17,6 +17,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/fmsite/count",
+      "handler": "Fmsite.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/fmsite",
       "handler": "Fmsite.create",

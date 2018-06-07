@@ -29,6 +29,16 @@ module.exports = {
   },
 
   /**
+   * Count body records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx) => {
+    return strapi.services.body.count(ctx.query);
+  },
+
+  /**
    * Create a/an body record.
    *
    * @return {Object}

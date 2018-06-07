@@ -17,6 +17,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/grsite/count",
+      "handler": "Grsite.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/grsite",
       "handler": "Grsite.create",
