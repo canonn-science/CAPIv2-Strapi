@@ -29,6 +29,16 @@ module.exports = {
   },
 
   /**
+   * Count ring records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx) => {
+    return strapi.services.ring.count(ctx.query);
+  },
+
+  /**
    * Create a/an ring record.
    *
    * @return {Object}

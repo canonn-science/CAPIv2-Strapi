@@ -17,6 +17,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/body/count",
+      "handler": "Body.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/body",
       "handler": "Body.create",

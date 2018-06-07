@@ -17,6 +17,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/location/count",
+      "handler": "Location.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/location",
       "handler": "Location.create",

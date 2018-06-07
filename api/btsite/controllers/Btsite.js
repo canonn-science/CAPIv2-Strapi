@@ -29,6 +29,16 @@ module.exports = {
   },
 
   /**
+   * Count btsite records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx) => {
+    return strapi.services.btsite.count(ctx.query);
+  },
+
+  /**
    * Create a/an btsite record.
    *
    * @return {Object}

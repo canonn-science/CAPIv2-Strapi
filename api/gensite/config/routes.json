@@ -17,6 +17,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/gensite/count",
+      "handler": "Gensite.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/gensite",
       "handler": "Gensite.create",

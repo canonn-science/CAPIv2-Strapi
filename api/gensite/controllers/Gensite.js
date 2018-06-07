@@ -29,6 +29,16 @@ module.exports = {
   },
 
   /**
+   * Count gensite records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx) => {
+    return strapi.services.gensite.count(ctx.query);
+  },
+
+  /**
    * Create a/an gensite record.
    *
    * @return {Object}

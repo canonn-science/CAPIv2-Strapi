@@ -29,6 +29,16 @@ module.exports = {
   },
 
   /**
+   * Count gysite records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx) => {
+    return strapi.services.gysite.count(ctx.query);
+  },
+
+  /**
    * Create a/an gysite record.
    *
    * @return {Object}

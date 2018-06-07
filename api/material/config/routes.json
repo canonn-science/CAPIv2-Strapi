@@ -17,6 +17,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/material/count",
+      "handler": "Material.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/material",
       "handler": "Material.create",

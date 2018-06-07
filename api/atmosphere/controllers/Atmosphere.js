@@ -29,6 +29,16 @@ module.exports = {
   },
 
   /**
+   * Count atmosphere records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx) => {
+    return strapi.services.atmosphere.count(ctx.query);
+  },
+
+  /**
    * Create a/an atmosphere record.
    *
    * @return {Object}

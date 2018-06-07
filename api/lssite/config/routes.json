@@ -17,6 +17,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/lssite/count",
+      "handler": "Lssite.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/lssite",
       "handler": "Lssite.create",

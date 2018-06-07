@@ -29,6 +29,16 @@ module.exports = {
   },
 
   /**
+   * Count material records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx) => {
+    return strapi.services.material.count(ctx.query);
+  },
+
+  /**
    * Create a/an material record.
    *
    * @return {Object}

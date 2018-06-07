@@ -29,6 +29,16 @@ module.exports = {
   },
 
   /**
+   * Count system records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx) => {
+    return strapi.services.system.count(ctx.query);
+  },
+
+  /**
    * Create a/an system record.
    *
    * @return {Object}

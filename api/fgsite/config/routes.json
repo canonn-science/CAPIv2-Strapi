@@ -17,6 +17,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/fgsite/count",
+      "handler": "Fgsite.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/fgsite",
       "handler": "Fgsite.create",
