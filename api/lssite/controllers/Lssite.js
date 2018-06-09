@@ -29,6 +29,16 @@ module.exports = {
   },
 
   /**
+   * Count lssite records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx) => {
+    return strapi.services.lssite.count(ctx.query);
+  },
+
+  /**
    * Create a/an lssite record.
    *
    * @return {Object}

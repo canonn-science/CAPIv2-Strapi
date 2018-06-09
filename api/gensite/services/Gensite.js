@@ -68,6 +68,29 @@ module.exports = {
   },
 
   /**
+   * Promise to count a/an gensite.
+   *
+   * @return {Promise}
+   */
+
+  count: (params) => {
+    // Convert `params` object to filters compatible with Bookshelf.
+    const filters = strapi.utils.models.convertParams('gensite', params);
+
+    return Gensite.query(function(qb) {
+      _.forEach(filters.where, (where, key) => {
+        if (_.isArray(where.value)) {
+          for (const value in where.value) {
+            qb[value ? 'where' : 'orWhere'](key, where.symbol, where.value[value])
+          }
+        } else {
+          qb.where(key, where.symbol, where.value);
+        }
+      });
+    }).count();
+  },
+
+  /**
    * Promise to add a/an gensite.
    *
    * @return {Promise}

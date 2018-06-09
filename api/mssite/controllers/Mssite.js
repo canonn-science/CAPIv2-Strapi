@@ -29,6 +29,16 @@ module.exports = {
   },
 
   /**
+   * Count mssite records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx) => {
+    return strapi.services.mssite.count(ctx.query);
+  },
+
+  /**
    * Create a/an mssite record.
    *
    * @return {Object}

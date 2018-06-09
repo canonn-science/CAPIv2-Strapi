@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/atmosphere/count",
+      "handler": "Atmosphere.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/atmosphere/:id",
       "handler": "Atmosphere.findOne",
       "config": {

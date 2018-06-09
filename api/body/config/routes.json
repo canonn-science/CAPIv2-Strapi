@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/body/count",
+      "handler": "Body.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/body/:id",
       "handler": "Body.findOne",
       "config": {

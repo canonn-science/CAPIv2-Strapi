@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/usssite/count",
+      "handler": "Usssite.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/usssite/:id",
       "handler": "Usssite.findOne",
       "config": {

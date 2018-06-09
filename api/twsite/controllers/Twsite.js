@@ -29,6 +29,16 @@ module.exports = {
   },
 
   /**
+   * Count twsite records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx) => {
+    return strapi.services.twsite.count(ctx.query);
+  },
+
+  /**
    * Create a/an twsite record.
    *
    * @return {Object}

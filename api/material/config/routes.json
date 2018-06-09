@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/material/count",
+      "handler": "Material.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/material/:id",
       "handler": "Material.findOne",
       "config": {
