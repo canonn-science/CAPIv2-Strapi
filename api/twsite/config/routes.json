@@ -10,16 +10,16 @@
     },
     {
       "method": "GET",
-      "path": "/twsite/:id",
-      "handler": "Twsite.findOne",
+      "path": "/twsite/count",
+      "handler": "Twsite.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/twsite/count",
-      "handler": "Twsite.count",
+      "path": "/twsite/:id",
+      "handler": "Twsite.findOne",
       "config": {
         "policies": []
       }

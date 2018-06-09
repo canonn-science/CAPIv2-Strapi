@@ -10,16 +10,16 @@
     },
     {
       "method": "GET",
-      "path": "/bmsite/:id",
-      "handler": "Bmsite.findOne",
+      "path": "/bmsite/count",
+      "handler": "Bmsite.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/bmsite/count",
-      "handler": "Bmsite.count",
+      "path": "/bmsite/:id",
+      "handler": "Bmsite.findOne",
       "config": {
         "policies": []
       }

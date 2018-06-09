@@ -10,16 +10,16 @@
     },
     {
       "method": "GET",
-      "path": "/mssite/:id",
-      "handler": "Mssite.findOne",
+      "path": "/mssite/count",
+      "handler": "Mssite.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/mssite/count",
-      "handler": "Mssite.count",
+      "path": "/mssite/:id",
+      "handler": "Mssite.findOne",
       "config": {
         "policies": []
       }
