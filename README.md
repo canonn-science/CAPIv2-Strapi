@@ -184,6 +184,17 @@ sudo mkdir /srv/CAPI && sudo chown YourUserName:YourUserGroup /srv/CAPI
 cd /srv/CAPI && git clone https://github.com/canonn-science/CAPIv2-Strapi.git CAPIv2-Dev
 `
 
+### Make sure you are running the Development version
+
+Due to our development process please do further development in the dev branch, to switch branches we need to create a new local branch and attach it to the origin branch:
+
+```
+cd /srv/CAPI
+git fetch
+git branch development origin/development 
+git pull
+```
+
 ## Enter the directory and install
 
 `
