@@ -10,16 +10,16 @@
     },
     {
       "method": "GET",
-      "path": "/lssite/:id",
-      "handler": "Lssite.findOne",
+      "path": "/lssite/count",
+      "handler": "Lssite.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/lssite/count",
-      "handler": "Lssite.count",
+      "path": "/lssite/:id",
+      "handler": "Lssite.findOne",
       "config": {
         "policies": []
       }

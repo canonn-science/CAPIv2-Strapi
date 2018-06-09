@@ -10,16 +10,16 @@
     },
     {
       "method": "GET",
-      "path": "/ring/:id",
-      "handler": "Ring.findOne",
+      "path": "/ring/count",
+      "handler": "Ring.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/ring/count",
-      "handler": "Ring.count",
+      "path": "/ring/:id",
+      "handler": "Ring.findOne",
       "config": {
         "policies": []
       }

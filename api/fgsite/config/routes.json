@@ -10,16 +10,16 @@
     },
     {
       "method": "GET",
-      "path": "/fgsite/:id",
-      "handler": "Fgsite.findOne",
+      "path": "/fgsite/count",
+      "handler": "Fgsite.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/fgsite/count",
-      "handler": "Fgsite.count",
+      "path": "/fgsite/:id",
+      "handler": "Fgsite.findOne",
       "config": {
         "policies": []
       }

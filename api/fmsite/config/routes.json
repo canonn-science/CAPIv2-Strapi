@@ -10,16 +10,16 @@
     },
     {
       "method": "GET",
-      "path": "/fmsite/:id",
-      "handler": "Fmsite.findOne",
+      "path": "/fmsite/count",
+      "handler": "Fmsite.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/fmsite/count",
-      "handler": "Fmsite.count",
+      "path": "/fmsite/:id",
+      "handler": "Fmsite.findOne",
       "config": {
         "policies": []
       }

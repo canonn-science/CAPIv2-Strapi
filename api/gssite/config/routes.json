@@ -10,16 +10,16 @@
     },
     {
       "method": "GET",
-      "path": "/gssite/:id",
-      "handler": "Gssite.findOne",
+      "path": "/gssite/count",
+      "handler": "Gssite.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/gssite/count",
-      "handler": "Gssite.count",
+      "path": "/gssite/:id",
+      "handler": "Gssite.findOne",
       "config": {
         "policies": []
       }
