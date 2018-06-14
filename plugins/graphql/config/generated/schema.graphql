@@ -1,4 +1,4 @@
-"""Bark Mound Sites"""
+"""Bark Mound sites"""
 type Bmsite {
   id: String!
   createdAt: String!
@@ -73,7 +73,7 @@ type Bodymaterial {
   antimony: Float
 }
 
-"""Body Subtype"""
+"""Subtype of a body"""
 type Bodysubtype {
   id: String!
   createdAt: String!
@@ -89,7 +89,7 @@ type Bodytype {
   type: String!
 }
 
-"""Brain Tree Sites"""
+"""Brain Tree sites"""
 type Btsite {
   id: String!
   createdAt: String!
@@ -120,7 +120,7 @@ enum ENUM_LOCATION_LOCATIONTYPE {
   USS
 }
 
-"""Fungal Gourd Sites"""
+"""Fungal Gourd sites"""
 type Fgsite {
   id: String!
   createdAt: String!
@@ -134,7 +134,7 @@ type Fgsite {
   visible: Boolean
 }
 
-"""Fumarole Sites"""
+"""Fumarole sites"""
 type Fmsite {
   id: String!
   createdAt: String!
@@ -157,7 +157,7 @@ type Fmtype {
   type: String!
 }
 
-"""Generation Ship Sites"""
+"""Generation Ship sites"""
 type Gensite {
   id: String!
   createdAt: String!
@@ -169,7 +169,25 @@ type Gensite {
   distance: Float
 }
 
-"""Artifacts used in the Guardian Ruins"""
+"""Active groups of Obelisks at a Guardian Ruins site"""
+type Gractivegroup {
+  id: String!
+  createdAt: String!
+  updatedAt: String!
+  grSite: Grsite
+  activeGroup: Grobeliskgroup
+}
+
+"""Active Obeliskss at a Guardian Ruin site"""
+type Gractiveobelisk {
+  id: String!
+  createdAt: String!
+  updatedAt: String!
+  grSite: Grsite
+  activeObelisk: Grobelisk
+}
+
+"""Artifacts used at a Guardian Ruin site"""
 type Grartifact {
   id: String!
   createdAt: String!
@@ -197,7 +215,7 @@ type Grcodexdata {
   text: String!
 }
 
-"""Obelisks at a Guardian Ruin Site"""
+"""Obelisks at a Guardian Ruin site"""
 type Grobelisk {
   id: String!
   createdAt: String!
@@ -220,7 +238,7 @@ type Grobeliskgroup {
   amount: Int!
 }
 
-"""Guardian Ruin Site"""
+"""Guardian Ruin site"""
 type Grsite {
   id: String!
   createdAt: String!
@@ -232,9 +250,11 @@ type Grsite {
   type: Grtype
   verified: Boolean
   visible: Boolean
+  activeGroups(sort: String, limit: Int, start: Int, where: JSON): [Gractivegroup]
+  activeObelisks(sort: String, limit: Int, start: Int, where: JSON): [Gractiveobelisk]
 }
 
-"""Guardian Ruin site type"""
+"""Type of a Guardian Ruins site"""
 type Grtype {
   id: String!
   createdAt: String!
@@ -242,7 +262,76 @@ type Grtype {
   type: String!
 }
 
-"""Guardian Structure Sites"""
+"""Active groups of Obelisks at a Guardian Structure site"""
+type Gsactivegroup {
+  id: String!
+  createdAt: String!
+  updatedAt: String!
+  grSite: Gssite
+  activeGroup: Gsobeliskgroup
+}
+
+"""Active Obeliskss at a Guardian Structure site"""
+type Gsactiveobelisk {
+  id: String!
+  createdAt: String!
+  updatedAt: String!
+  gsSite: Gssite
+  gsObelisk: Gsobelisk
+}
+
+"""Artifacts used at a Guardian Structures site"""
+type Gsartifact {
+  id: String!
+  createdAt: String!
+  updatedAt: String!
+  artifactName: String!
+}
+
+"""Category of data recieved from Guardian Structure Obelisks"""
+type Gscodexcategory {
+  id: String!
+  createdAt: String!
+  updatedAt: String!
+  categoryName: String!
+}
+
+"""Data entires received at a Guardian Structure site"""
+type Gscodexdata {
+  id: String!
+  createdAt: String!
+  updatedAt: String!
+  gsCodexCategory: Gscodexcategory
+  gsPrimaryArtifact: Gsartifact
+  gsSecondaryArtifact: Gsartifact
+  codexNumber: Int!
+  text: String!
+}
+
+"""Obelisks at a Guardian Structure site"""
+type Gsobelisk {
+  id: String!
+  createdAt: String!
+  updatedAt: String!
+  gsType: Gstype
+  gsObeliskGroup: Gsobeliskgroup
+  obeliskNumber: Int!
+  broken: Boolean
+  gsCodexData: Gscodexdata
+  verified: Boolean
+}
+
+"""Groups of Obelisks at a Guardian Structure site"""
+type Gsobeliskgroup {
+  id: String!
+  createdAt: String!
+  updatedAt: String!
+  gsType: Gstype
+  groupName: String!
+  amount: Int!
+}
+
+"""Guardian Structure sites"""
 type Gssite {
   id: String!
   createdAt: String!
@@ -255,9 +344,11 @@ type Gssite {
   hasDatabank: Boolean
   verified: Boolean
   visible: Boolean
+  activeGroups(sort: String, limit: Int, start: Int, where: JSON): [Gsactivegroup]
+  activeObelisks(sort: String, limit: Int, start: Int, where: JSON): [Gsactiveobelisk]
 }
 
-"""Guardian Structure site type"""
+"""Type of a Guardian Structures site"""
 type Gstype {
   id: String!
   createdAt: String!
@@ -265,7 +356,7 @@ type Gstype {
   type: String!
 }
 
-"""Geyser Sites"""
+"""Geyser sites"""
 type Gysite {
   id: String!
   createdAt: String!
@@ -280,7 +371,7 @@ type Gysite {
   visible: Boolean
 }
 
-"""Geyser type"""
+"""Type of a Geyser"""
 type Gytype {
   id: String!
   createdAt: String!
@@ -318,7 +409,7 @@ type Location {
   ussSite: Usssite
 }
 
-"""Lava Spout Sites"""
+"""Lava Spout sites"""
 type Lssite {
   id: String!
   createdAt: String!
@@ -333,7 +424,7 @@ type Lssite {
   visible: Boolean
 }
 
-"""Lava Spout type"""
+"""Type of a Lava Spout"""
 type Lstype {
   id: String!
   createdAt: String!
@@ -341,9 +432,9 @@ type Lstype {
   type: String!
 }
 
-union Morph = Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysubtype | Bodytype | Btsite | Fgsite | Fmsite | Fmtype | Gensite | Grartifact | Grcodexcategories | Grcodexdata | Grobelisk | Grobeliskgroup | Grsite | Grtype | Gssite | Gstype | Gysite | Gytype | Location | Lssite | Lstype | Mssite | Mstype | Ring | Ringtype | System | Tbsite | Tbtype | Tssite | Tsstatus | Twsite | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union Morph = Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysubtype | Bodytype | Btsite | Fgsite | Fmsite | Fmtype | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategories | Grcodexdata | Grobelisk | Grobeliskgroup | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gssite | Gstype | Gysite | Gytype | Location | Lssite | Lstype | Mssite | Mstype | Ring | Ringtype | System | Tbsite | Tbtype | Tssite | Tsstatus | Twsite | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
-"""Mega-Ship Sites"""
+"""Mega-Ship sites"""
 type Mssite {
   id: String!
   createdAt: String!
@@ -358,7 +449,7 @@ type Mssite {
   dockable: Boolean
 }
 
-"""Mega-Ship types"""
+"""Ship type of a Mega-ship"""
 type Mstype {
   id: String!
   createdAt: String!
@@ -389,6 +480,10 @@ type Query {
   fmtypes(sort: String, limit: Int, start: Int, where: JSON): [Fmtype]
   gensite(id: String!): Gensite
   gensites(sort: String, limit: Int, start: Int, where: JSON): [Gensite]
+  gractivegroup(id: String!): Gractivegroup
+  gractivegroups(sort: String, limit: Int, start: Int, where: JSON): [Gractivegroup]
+  gractiveobelisk(id: String!): Gractiveobelisk
+  gractiveobelisks(sort: String, limit: Int, start: Int, where: JSON): [Gractiveobelisk]
   grartifact(id: String!): Grartifact
   grartifacts(sort: String, limit: Int, start: Int, where: JSON): [Grartifact]
   grcodexcategory(id: String!): Grcodexcategories
@@ -403,6 +498,20 @@ type Query {
   grsites(sort: String, limit: Int, start: Int, where: JSON): [Grsite]
   grtype(id: String!): Grtype
   grtypes(sort: String, limit: Int, start: Int, where: JSON): [Grtype]
+  gsactivegroup(id: String!): Gsactivegroup
+  gsactivegroups(sort: String, limit: Int, start: Int, where: JSON): [Gsactivegroup]
+  gsactiveobelisk(id: String!): Gsactiveobelisk
+  gsactiveobelisks(sort: String, limit: Int, start: Int, where: JSON): [Gsactiveobelisk]
+  gsartifact(id: String!): Gsartifact
+  gsartifacts(sort: String, limit: Int, start: Int, where: JSON): [Gsartifact]
+  gscodexcategory(id: String!): Gscodexcategory
+  gscodexcategories(sort: String, limit: Int, start: Int, where: JSON): [Gscodexcategory]
+  gscodexdatum(id: String!): Gscodexdata
+  gscodexdata(sort: String, limit: Int, start: Int, where: JSON): [Gscodexdata]
+  gsobelisk(id: String!): Gsobelisk
+  gsobelisks(sort: String, limit: Int, start: Int, where: JSON): [Gsobelisk]
+  gsobeliskgroup(id: String!): Gsobeliskgroup
+  gsobeliskgroups(sort: String, limit: Int, start: Int, where: JSON): [Gsobeliskgroup]
   gssite(id: String!): Gssite
   gssites(sort: String, limit: Int, start: Int, where: JSON): [Gssite]
   gstype(id: String!): Gstype
@@ -466,7 +575,7 @@ type Ring {
   ringLocations(sort: String, limit: Int, start: Int, where: JSON): [Location]
 }
 
-"""Ring type"""
+"""Type of a Ring"""
 type Ringtype {
   id: String!
   createdAt: String!
@@ -491,7 +600,7 @@ type System {
   genSiteDirection(sort: String, limit: Int, start: Int, where: JSON): [Gensite]
 }
 
-"""Thargoid Barnacle Sites"""
+"""Thargoid Barnacle sites"""
 type Tbsite {
   id: String!
   createdAt: String!
@@ -506,7 +615,7 @@ type Tbsite {
   visible: Boolean
 }
 
-"""Thargoid Barnacle type"""
+"""Type of a Thargoid Barnacle"""
 type Tbtype {
   id: String!
   createdAt: String!
@@ -514,7 +623,7 @@ type Tbtype {
   type: String!
 }
 
-"""Thargoid Structure Sites"""
+"""Thargoid Structure sites"""
 type Tssite {
   id: String!
   createdAt: String!
@@ -536,7 +645,7 @@ type Tsstatus {
   status: String!
 }
 
-"""Tube Worm Sites"""
+"""Tube Worm sites"""
 type Twsite {
   id: String!
   createdAt: String!
@@ -591,7 +700,7 @@ type UsersPermissionsUser {
   role: UsersPermissionsRole
 }
 
-"""Unknown Signal Source Sites"""
+"""Unknown Signal Source sites"""
 type Usssite {
   id: String!
   createdAt: String!
