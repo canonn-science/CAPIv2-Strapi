@@ -1,0 +1,20 @@
+{
+  "connection": "default",
+  "collectionName": "lstypes",
+  "info": {
+    "name": "lstype",
+    "description": "Lava Spout type"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "type": {
+      "unique": true,
+      "type": "string",
+      "required": true
+    }
+  }
+}

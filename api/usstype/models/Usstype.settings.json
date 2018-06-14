@@ -1,0 +1,20 @@
+{
+  "connection": "default",
+  "collectionName": "usstypes",
+  "info": {
+    "name": "usstype",
+    "description": "Type of Unknown Signal Sources"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "type": {
+      "unique": true,
+      "type": "string",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "connection": "default",
+  "collectionName": "bodymaterials",
+  "info": {
+    "name": "bodymaterial",
+    "description": "Material makeup of a body"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "body": {
+      "model": "body",
+      "via": "bodyMaterial"
+    },
+    "antimony": {
+      "type": "float"
+    }
+  }
+}

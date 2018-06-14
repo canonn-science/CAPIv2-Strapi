@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/grtype",
+      "handler": "Grtype.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/grtype/count",
+      "handler": "Grtype.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/grtype/:id",
+      "handler": "Grtype.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/grtype",
+      "handler": "Grtype.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/grtype/:id",
+      "handler": "Grtype.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/grtype/:id",
+      "handler": "Grtype.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/grtype/:id/relationships/:relation",
+      "handler": "Grtype.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/grtype/:id/relationships/:relation",
+      "handler": "Grtype.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/grtype/:id/relationships/:relation",
+      "handler": "Grtype.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

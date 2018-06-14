@@ -1,0 +1,34 @@
+{
+  "connection": "default",
+  "collectionName": "grcodexdata",
+  "info": {
+    "name": "grcodexdata",
+    "description": "Data entires received at a Guardian Ruin site"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "grCodexCategory": {
+      "model": "grcodexcategories"
+    },
+    "grPrimaryArtifact": {
+      "model": "grartifact"
+    },
+    "grSecondaryArtifact": {
+      "model": "grartifact"
+    },
+    "codexNumber": {
+      "min": 1,
+      "type": "integer",
+      "required": true
+    },
+    "text": {
+      "unique": true,
+      "type": "text",
+      "required": true
+    }
+  }
+}

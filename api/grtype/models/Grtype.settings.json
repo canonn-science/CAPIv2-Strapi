@@ -1,0 +1,20 @@
+{
+  "connection": "default",
+  "collectionName": "grtypes",
+  "info": {
+    "name": "grtype",
+    "description": "Guardian Ruin site type"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "type": {
+      "unique": true,
+      "type": "string",
+      "required": true
+    }
+  }
+}

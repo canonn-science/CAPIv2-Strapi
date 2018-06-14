@@ -3,7 +3,7 @@
   "collectionName": "lssites",
   "info": {
     "name": "lssite",
-    "description": "Lave Spout Sites"
+    "description": "Lava Spout Sites"
   },
   "options": {
     "increments": true,
@@ -34,7 +34,7 @@
       "type": "integer"
     },
     "type": {
-      "type": "string"
+      "model": "lstype"
     },
     "verified": {
       "type": "boolean"

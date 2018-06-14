@@ -1,24 +1,3 @@
-"""Atmosphere composition of a body"""
-type Atmosphere {
-  id: String!
-  createdAt: String!
-  updatedAt: String!
-  body: Body
-  argon: Float
-  ammonia: Float
-  carbonDioxide: Float
-  hydrogen: Float
-  helium: Float
-  iron: Float
-  neon: Float
-  methane: Float
-  nitrogen: Float
-  oxygen: Float
-  silicates: Float
-  sulphurDioxide: Float
-  water: Float
-}
-
 """Bark Mound Sites"""
 type Bmsite {
   id: String!
@@ -29,7 +8,6 @@ type Bmsite {
   latitude: Float!
   longitude: Float!
   count: Int
-  type: String
   verified: Boolean
   visible: Boolean
 }
@@ -43,8 +21,8 @@ type Body {
   bodyName: String!
   edsmID: Float
   edsmID64: Float
-  edsmType: String
-  edsmSubtype: String
+  bodyType: Bodytype
+  bodySubtype: Bodysubtype
   edsmOffset: Int
   edsmDistanceToArrival: Float
   edsmIsMainStar: Boolean
@@ -61,6 +39,8 @@ type Body {
   edsmSurfaceTemperature: Float
   edsmVolcanismType: String
   edsmAtmosphereType: String
+  bodyAtmosphere: Bodyatmosphere
+  bodyMaterial: Bodymaterial
   edsmTerraformingState: String
   edsmOrbitalPeriod: Float
   edsmSemiMajorAxis: Float
@@ -70,10 +50,43 @@ type Body {
   edsmRotationalPeriod: Float
   edsmRotationalPeriodTidallyLocked: Boolean
   edsmAxialTilt: Float
-  atmosphere: Atmosphere
-  material: Material
   rings(sort: String, limit: Int, start: Int, where: JSON): [Ring]
   bodyLocations(sort: String, limit: Int, start: Int, where: JSON): [Location]
+}
+
+"""Atmosphere makup of a body"""
+type Bodyatmosphere {
+  id: String!
+  createdAt: String!
+  updatedAt: String!
+  body: Body
+  argon: Float
+  ammonia: Float
+}
+
+"""Material makeup of a body"""
+type Bodymaterial {
+  id: String!
+  createdAt: String!
+  updatedAt: String!
+  body: Body
+  antimony: Float
+}
+
+"""Body Subtype"""
+type Bodysubtype {
+  id: String!
+  createdAt: String!
+  updatedAt: String!
+  subtype: String!
+}
+
+"""Type of a body"""
+type Bodytype {
+  id: String!
+  createdAt: String!
+  updatedAt: String!
+  type: String!
 }
 
 """Brain Tree Sites"""
@@ -88,6 +101,23 @@ type Btsite {
   count: Int
   verified: Boolean
   visible: Boolean
+}
+
+enum ENUM_LOCATION_LOCATIONTYPE {
+  BM
+  BT
+  FG
+  FM
+  GEN
+  GR
+  GS
+  GY
+  LS
+  MS
+  TB
+  TS
+  TW
+  USS
 }
 
 """Fungal Gourd Sites"""
@@ -114,9 +144,17 @@ type Fmsite {
   latitude: Float!
   longitude: Float!
   count: Int
-  type: String
+  type: Fmtype
   verified: Boolean
   visible: Boolean
+}
+
+"""Type of Fumarole"""
+type Fmtype {
+  id: String!
+  createdAt: String!
+  updatedAt: String!
+  type: String!
 }
 
 """Generation Ship Sites"""
@@ -131,6 +169,57 @@ type Gensite {
   distance: Float
 }
 
+"""Artifacts used in the Guardian Ruins"""
+type Grartifact {
+  id: String!
+  createdAt: String!
+  updatedAt: String!
+  artifactName: String!
+}
+
+"""Category of data recieved from Guardian Ruin Obelisks"""
+type Grcodexcategories {
+  id: String!
+  createdAt: String!
+  updatedAt: String!
+  categoryName: String
+}
+
+"""Data entires received at a Guardian Ruin site"""
+type Grcodexdata {
+  id: String!
+  createdAt: String!
+  updatedAt: String!
+  grCodexCategory: Grcodexcategories
+  grPrimaryArtifact: Grartifact
+  grSecondaryArtifact: Grartifact
+  codexNumber: Int!
+  text: String!
+}
+
+"""Obelisks at a Guardian Ruin Site"""
+type Grobelisk {
+  id: String!
+  createdAt: String!
+  updatedAt: String!
+  grType: Grtype
+  grObeliskGroup: Grobeliskgroup
+  obeliskNumber: Int!
+  broken: Boolean
+  grCodexData: Grcodexdata
+  verified: Boolean
+}
+
+"""Groups of Obelisks at a Guardian Ruin site"""
+type Grobeliskgroup {
+  id: String!
+  createdAt: String!
+  updatedAt: String!
+  grType: Grtype
+  groupName: String!
+  amount: Int!
+}
+
 """Guardian Ruin Site"""
 type Grsite {
   id: String!
@@ -140,9 +229,17 @@ type Grsite {
   siteID: Int!
   latitude: Float!
   longitude: Float!
-  type: String
+  type: Grtype
   verified: Boolean
   visible: Boolean
+}
+
+"""Guardian Ruin site type"""
+type Grtype {
+  id: String!
+  createdAt: String!
+  updatedAt: String!
+  type: String!
 }
 
 """Guardian Structure Sites"""
@@ -154,10 +251,18 @@ type Gssite {
   siteID: Int!
   latitude: Float!
   longitude: Float!
-  type: String
+  type: Gstype
   hasDatabank: Boolean
   verified: Boolean
   visible: Boolean
+}
+
+"""Guardian Structure site type"""
+type Gstype {
+  id: String!
+  createdAt: String!
+  updatedAt: String!
+  type: String!
 }
 
 """Geyser Sites"""
@@ -170,9 +275,17 @@ type Gysite {
   latitude: Float!
   longitude: Float!
   count: Int
-  type: String
+  type: Gytype
   verified: Boolean
   visible: Boolean
+}
+
+"""Geyser type"""
+type Gytype {
+  id: String!
+  createdAt: String!
+  updatedAt: String!
+  type: String!
 }
 
 """
@@ -188,7 +301,7 @@ type Location {
   system: System
   body: Body
   ring: Ring
-  locationType: String
+  locationType: ENUM_LOCATION_LOCATIONTYPE
   bmSite: Bmsite
   btSite: Btsite
   fgSite: Fgsite
@@ -205,7 +318,7 @@ type Location {
   ussSite: Usssite
 }
 
-"""Lave Spout Sites"""
+"""Lava Spout Sites"""
 type Lssite {
   id: String!
   createdAt: String!
@@ -215,45 +328,20 @@ type Lssite {
   latitude: Float!
   longitude: Float!
   count: Int
-  type: String
+  type: Lstype
   verified: Boolean
   visible: Boolean
 }
 
-"""Material makeup of a body"""
-type Material {
+"""Lava Spout type"""
+type Lstype {
   id: String!
   createdAt: String!
   updatedAt: String!
-  body: Body
-  antimony: Float
-  arsenic: Float
-  cadmium: Float
-  carbon: Float
-  chromium: Float
-  germanium: Float
-  iron: Float
-  manganese: Float
-  mercury: Float
-  molybdenum: Float
-  nickel: Float
-  niobium: Float
-  phosphorus: Float
-  polonium: Float
-  ruthenium: Float
-  selenium: Float
-  sulphur: Float
-  technetium: Float
-  tellurium: Float
-  tin: Float
-  tungsten: Float
-  vanadium: Float
-  yttrium: Float
-  zinc: Float
-  zirconium: Float
+  type: String!
 }
 
-union Morph = Atmosphere | Bmsite | Body | Btsite | Fgsite | Fmsite | Gensite | Grsite | Gssite | Gysite | Location | Lssite | Material | Mssite | Ring | System | Tbsite | Tssite | Twsite | Usssite | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union Morph = Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysubtype | Bodytype | Btsite | Fgsite | Fmsite | Fmtype | Gensite | Grartifact | Grcodexcategories | Grcodexdata | Grobelisk | Grobeliskgroup | Grsite | Grtype | Gssite | Gstype | Gysite | Gytype | Location | Lssite | Lstype | Mssite | Mstype | Ring | Ringtype | System | Tbsite | Tbtype | Tssite | Tsstatus | Twsite | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 """Mega-Ship Sites"""
 type Mssite {
@@ -264,53 +352,95 @@ type Mssite {
   siteID: Int!
   shipName: String!
   shipTag: String
-  type: String
+  type: Mstype
   flightOps: Boolean
   flightSchedule: Boolean
   dockable: Boolean
 }
 
+"""Mega-Ship types"""
+type Mstype {
+  id: String!
+  createdAt: String!
+  updatedAt: String!
+  type: String!
+}
+
 type Query {
-  atmosphere(id: String!): Atmosphere
-  atmospheres(sort: String, limit: Int, start: Int, where: JSON): [Atmosphere]
   bmsite(id: String!): Bmsite
   bmsites(sort: String, limit: Int, start: Int, where: JSON): [Bmsite]
   body(id: String!): Body
   bodies(sort: String, limit: Int, start: Int, where: JSON): [Body]
+  bodyatmosphere(id: String!): Bodyatmosphere
+  bodyatmospheres(sort: String, limit: Int, start: Int, where: JSON): [Bodyatmosphere]
+  bodymaterial(id: String!): Bodymaterial
+  bodymaterials(sort: String, limit: Int, start: Int, where: JSON): [Bodymaterial]
+  bodysubtype(id: String!): Bodysubtype
+  bodysubtypes(sort: String, limit: Int, start: Int, where: JSON): [Bodysubtype]
+  bodytype(id: String!): Bodytype
+  bodytypes(sort: String, limit: Int, start: Int, where: JSON): [Bodytype]
   btsite(id: String!): Btsite
   btsites(sort: String, limit: Int, start: Int, where: JSON): [Btsite]
   fgsite(id: String!): Fgsite
   fgsites(sort: String, limit: Int, start: Int, where: JSON): [Fgsite]
   fmsite(id: String!): Fmsite
   fmsites(sort: String, limit: Int, start: Int, where: JSON): [Fmsite]
+  fmtype(id: String!): Fmtype
+  fmtypes(sort: String, limit: Int, start: Int, where: JSON): [Fmtype]
   gensite(id: String!): Gensite
   gensites(sort: String, limit: Int, start: Int, where: JSON): [Gensite]
+  grartifact(id: String!): Grartifact
+  grartifacts(sort: String, limit: Int, start: Int, where: JSON): [Grartifact]
+  grcodexcategory(id: String!): Grcodexcategories
+  grcodexcategories(sort: String, limit: Int, start: Int, where: JSON): [Grcodexcategories]
+  grcodexdatum(id: String!): Grcodexdata
+  grcodexdata(sort: String, limit: Int, start: Int, where: JSON): [Grcodexdata]
+  grobelisk(id: String!): Grobelisk
+  grobelisks(sort: String, limit: Int, start: Int, where: JSON): [Grobelisk]
+  grobeliskgroup(id: String!): Grobeliskgroup
+  grobeliskgroups(sort: String, limit: Int, start: Int, where: JSON): [Grobeliskgroup]
   grsite(id: String!): Grsite
   grsites(sort: String, limit: Int, start: Int, where: JSON): [Grsite]
+  grtype(id: String!): Grtype
+  grtypes(sort: String, limit: Int, start: Int, where: JSON): [Grtype]
   gssite(id: String!): Gssite
   gssites(sort: String, limit: Int, start: Int, where: JSON): [Gssite]
+  gstype(id: String!): Gstype
+  gstypes(sort: String, limit: Int, start: Int, where: JSON): [Gstype]
   gysite(id: String!): Gysite
   gysites(sort: String, limit: Int, start: Int, where: JSON): [Gysite]
+  gytype(id: String!): Gytype
+  gytypes(sort: String, limit: Int, start: Int, where: JSON): [Gytype]
   location(id: String!): Location
   locations(sort: String, limit: Int, start: Int, where: JSON): [Location]
   lssite(id: String!): Lssite
   lssites(sort: String, limit: Int, start: Int, where: JSON): [Lssite]
-  material(id: String!): Material
-  materials(sort: String, limit: Int, start: Int, where: JSON): [Material]
+  lstype(id: String!): Lstype
+  lstypes(sort: String, limit: Int, start: Int, where: JSON): [Lstype]
   mssite(id: String!): Mssite
   mssites(sort: String, limit: Int, start: Int, where: JSON): [Mssite]
+  mstype(id: String!): Mstype
+  mstypes(sort: String, limit: Int, start: Int, where: JSON): [Mstype]
   ring(id: String!): Ring
   rings(sort: String, limit: Int, start: Int, where: JSON): [Ring]
+  ringtype(id: String!): Ringtype
+  ringtypes(sort: String, limit: Int, start: Int, where: JSON): [Ringtype]
   system(id: String!): System
   systems(sort: String, limit: Int, start: Int, where: JSON): [System]
   tbsite(id: String!): Tbsite
   tbsites(sort: String, limit: Int, start: Int, where: JSON): [Tbsite]
+  tbtype(id: String!): Tbtype
+  tbtypes(sort: String, limit: Int, start: Int, where: JSON): [Tbtype]
   tssite(id: String!): Tssite
   tssites(sort: String, limit: Int, start: Int, where: JSON): [Tssite]
+  tsstatus(id: String!): Tsstatus
+  tsstatuses(sort: String, limit: Int, start: Int, where: JSON): [Tsstatus]
   twsite(id: String!): Twsite
   twsites(sort: String, limit: Int, start: Int, where: JSON): [Twsite]
   usssite(id: String!): Usssite
   usssites(sort: String, limit: Int, start: Int, where: JSON): [Usssite]
+  usstype(id: String!): Usstype
+  usstypes(sort: String, limit: Int, start: Int, where: JSON): [Usstype]
   files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   role(id: String!): UsersPermissionsRole
 
@@ -329,11 +459,19 @@ type Ring {
   updatedAt: String!
   body: Body
   ringName: String!
-  edsmType: String
+  edsmType: Ringtype
   edsmMass: Float
   edsmInnerRadius: Float
   edsmOuterRadius: Float
   ringLocations(sort: String, limit: Int, start: Int, where: JSON): [Location]
+}
+
+"""Ring type"""
+type Ringtype {
+  id: String!
+  createdAt: String!
+  updatedAt: String!
+  type: String!
 }
 
 """Systems stored in the Canonn database"""
@@ -363,9 +501,17 @@ type Tbsite {
   latitude: Float!
   longitude: Float!
   count: Int
-  type: String
+  type: Tbtype
   verified: Boolean
   visible: Boolean
+}
+
+"""Thargoid Barnacle type"""
+type Tbtype {
+  id: String!
+  createdAt: String!
+  updatedAt: String!
+  type: String!
 }
 
 """Thargoid Structure Sites"""
@@ -377,9 +523,17 @@ type Tssite {
   siteID: Int!
   latitude: Float!
   longitude: Float!
-  status: String
+  status: Tsstatus
   verified: Boolean
   visible: Boolean
+}
+
+"""Status of a Thargoid Structure"""
+type Tsstatus {
+  id: String!
+  createdAt: String!
+  updatedAt: String!
+  status: String!
 }
 
 """Tube Worm Sites"""
@@ -392,7 +546,6 @@ type Twsite {
   latitude: Float!
   longitude: Float!
   count: Int
-  type: String
   verified: Boolean!
   visible: Boolean
 }
@@ -444,6 +597,14 @@ type Usssite {
   createdAt: String!
   updatedAt: String!
   location: Location
-  type: String
+  type: Usstype
   threatLevel: Int
+}
+
+"""Type of Unknown Signal Sources"""
+type Usstype {
+  id: String!
+  createdAt: String!
+  updatedAt: String!
+  type: String!
 }
