@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/gractivegroup",
+      "handler": "Gractivegroup.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gractivegroup/count",
+      "handler": "Gractivegroup.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gractivegroup/:id",
+      "handler": "Gractivegroup.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/gractivegroup",
+      "handler": "Gractivegroup.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/gractivegroup/:id",
+      "handler": "Gractivegroup.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/gractivegroup/:id",
+      "handler": "Gractivegroup.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/gractivegroup/:id/relationships/:relation",
+      "handler": "Gractivegroup.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/gractivegroup/:id/relationships/:relation",
+      "handler": "Gractivegroup.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/gractivegroup/:id/relationships/:relation",
+      "handler": "Gractivegroup.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

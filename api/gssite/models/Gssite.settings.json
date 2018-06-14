@@ -3,7 +3,7 @@
   "collectionName": "gssites",
   "info": {
     "name": "gssite",
-    "description": "Guardian Structure Sites"
+    "description": "Guardian Structure sites"
   },
   "options": {
     "increments": true,
@@ -41,6 +41,14 @@
     "visible": {
       "default": true,
       "type": "boolean"
+    },
+    "activeGroups": {
+      "collection": "gsactivegroup",
+      "via": "grSite"
+    },
+    "activeObelisks": {
+      "collection": "gsactiveobelisk",
+      "via": "gsSite"
     }
   }
 }

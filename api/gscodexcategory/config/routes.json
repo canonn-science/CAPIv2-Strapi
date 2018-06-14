@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/gscodexcategory",
+      "handler": "Gscodexcategory.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gscodexcategory/count",
+      "handler": "Gscodexcategory.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gscodexcategory/:id",
+      "handler": "Gscodexcategory.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/gscodexcategory",
+      "handler": "Gscodexcategory.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/gscodexcategory/:id",
+      "handler": "Gscodexcategory.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/gscodexcategory/:id",
+      "handler": "Gscodexcategory.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/gscodexcategory/:id/relationships/:relation",
+      "handler": "Gscodexcategory.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/gscodexcategory/:id/relationships/:relation",
+      "handler": "Gscodexcategory.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/gscodexcategory/:id/relationships/:relation",
+      "handler": "Gscodexcategory.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

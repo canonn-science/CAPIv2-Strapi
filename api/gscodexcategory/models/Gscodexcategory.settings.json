@@ -1,0 +1,20 @@
+{
+  "connection": "default",
+  "collectionName": "gscodexcategories",
+  "info": {
+    "name": "gscodexcategory",
+    "description": "Category of data recieved from Guardian Structure Obelisks"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "categoryName": {
+      "unique": true,
+      "type": "string",
+      "required": true
+    }
+  }
+}

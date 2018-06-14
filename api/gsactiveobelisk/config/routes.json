@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/gsactiveobelisk",
+      "handler": "Gsactiveobelisk.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gsactiveobelisk/count",
+      "handler": "Gsactiveobelisk.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gsactiveobelisk/:id",
+      "handler": "Gsactiveobelisk.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/gsactiveobelisk",
+      "handler": "Gsactiveobelisk.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/gsactiveobelisk/:id",
+      "handler": "Gsactiveobelisk.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/gsactiveobelisk/:id",
+      "handler": "Gsactiveobelisk.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/gsactiveobelisk/:id/relationships/:relation",
+      "handler": "Gsactiveobelisk.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/gsactiveobelisk/:id/relationships/:relation",
+      "handler": "Gsactiveobelisk.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/gsactiveobelisk/:id/relationships/:relation",
+      "handler": "Gsactiveobelisk.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
