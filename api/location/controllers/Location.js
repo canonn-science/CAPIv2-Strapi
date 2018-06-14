@@ -29,6 +29,16 @@ module.exports = {
   },
 
   /**
+   * Count location records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx) => {
+    return strapi.services.location.count(ctx.query);
+  },
+
+  /**
    * Create a/an location record.
    *
    * @return {Object}

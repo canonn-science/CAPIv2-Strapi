@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/tsstatus",
+      "handler": "Tsstatus.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tsstatus/count",
+      "handler": "Tsstatus.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tsstatus/:id",
+      "handler": "Tsstatus.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tsstatus",
+      "handler": "Tsstatus.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tsstatus/:id",
+      "handler": "Tsstatus.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tsstatus/:id",
+      "handler": "Tsstatus.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tsstatus/:id/relationships/:relation",
+      "handler": "Tsstatus.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tsstatus/:id/relationships/:relation",
+      "handler": "Tsstatus.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tsstatus/:id/relationships/:relation",
+      "handler": "Tsstatus.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

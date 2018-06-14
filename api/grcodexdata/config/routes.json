@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/grcodexdata",
+      "handler": "Grcodexdata.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/grcodexdata/count",
+      "handler": "Grcodexdata.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/grcodexdata/:id",
+      "handler": "Grcodexdata.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/grcodexdata",
+      "handler": "Grcodexdata.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/grcodexdata/:id",
+      "handler": "Grcodexdata.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/grcodexdata/:id",
+      "handler": "Grcodexdata.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/grcodexdata/:id/relationships/:relation",
+      "handler": "Grcodexdata.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/grcodexdata/:id/relationships/:relation",
+      "handler": "Grcodexdata.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/grcodexdata/:id/relationships/:relation",
+      "handler": "Grcodexdata.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

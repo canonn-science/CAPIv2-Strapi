@@ -1,0 +1,20 @@
+{
+  "connection": "default",
+  "collectionName": "ringtypes",
+  "info": {
+    "name": "ringtype",
+    "description": "Type of a Ring"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "type": {
+      "unique": true,
+      "type": "string",
+      "required": true
+    }
+  }
+}

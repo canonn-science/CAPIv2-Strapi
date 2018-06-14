@@ -3,7 +3,7 @@
   "collectionName": "tssites",
   "info": {
     "name": "tssite",
-    "description": "Thargoid Structure Sites"
+    "description": "Thargoid Structure sites"
   },
   "options": {
     "increments": true,
@@ -30,11 +30,7 @@
       "required": true
     },
     "status": {
-      "type": "enumeration",
-      "enum": [
-        "Active",
-        "Inactive"
-      ]
+      "model": "tsstatus"
     },
     "verified": {
       "type": "boolean"

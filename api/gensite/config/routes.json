@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/gensite/count",
+      "handler": "Gensite.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/gensite/:id",
       "handler": "Gensite.findOne",
       "config": {

@@ -3,7 +3,7 @@
   "collectionName": "tbsites",
   "info": {
     "name": "tbsite",
-    "description": "Thargoid Barnacle Sites"
+    "description": "Thargoid Barnacle sites"
   },
   "options": {
     "increments": true,
@@ -34,11 +34,7 @@
       "type": "integer"
     },
     "type": {
-      "type": "enumeration",
-      "enum": [
-        "Barnacle",
-        "MegaBarnacle"
-      ]
+      "model": "tbtype"
     },
     "verified": {
       "type": "boolean"

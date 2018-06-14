@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/gsactivegroup",
+      "handler": "Gsactivegroup.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gsactivegroup/count",
+      "handler": "Gsactivegroup.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gsactivegroup/:id",
+      "handler": "Gsactivegroup.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/gsactivegroup",
+      "handler": "Gsactivegroup.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/gsactivegroup/:id",
+      "handler": "Gsactivegroup.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/gsactivegroup/:id",
+      "handler": "Gsactivegroup.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/gsactivegroup/:id/relationships/:relation",
+      "handler": "Gsactivegroup.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/gsactivegroup/:id/relationships/:relation",
+      "handler": "Gsactivegroup.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/gsactivegroup/:id/relationships/:relation",
+      "handler": "Gsactivegroup.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

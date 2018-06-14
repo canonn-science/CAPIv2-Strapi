@@ -3,7 +3,7 @@
   "collectionName": "grsites",
   "info": {
     "name": "grsite",
-    "description": "Guardian Ruin Site"
+    "description": "Guardian Ruin site"
   },
   "options": {
     "increments": true,
@@ -30,12 +30,7 @@
       "required": true
     },
     "type": {
-      "type": "enumeration",
-      "enum": [
-        "Alpha",
-        "Beta",
-        "Gamma"
-      ]
+      "model": "grtype"
     },
     "verified": {
       "type": "boolean"
@@ -43,6 +38,14 @@
     "visible": {
       "default": true,
       "type": "boolean"
+    },
+    "activeGroups": {
+      "collection": "gractivegroup",
+      "via": "grSite"
+    },
+    "activeObelisks": {
+      "collection": "gractiveobelisk",
+      "via": "grSite"
     }
   }
 }

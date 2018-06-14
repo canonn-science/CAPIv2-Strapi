@@ -1,0 +1,20 @@
+{
+  "connection": "default",
+  "collectionName": "bodysubtypes",
+  "info": {
+    "name": "bodysubtype",
+    "description": "Subtype of a body"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "subtype": {
+      "unique": true,
+      "type": "string",
+      "required": true
+    }
+  }
+}

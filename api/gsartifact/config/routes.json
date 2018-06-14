@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/gsartifact",
+      "handler": "Gsartifact.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gsartifact/count",
+      "handler": "Gsartifact.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gsartifact/:id",
+      "handler": "Gsartifact.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/gsartifact",
+      "handler": "Gsartifact.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/gsartifact/:id",
+      "handler": "Gsartifact.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/gsartifact/:id",
+      "handler": "Gsartifact.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/gsartifact/:id/relationships/:relation",
+      "handler": "Gsartifact.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/gsartifact/:id/relationships/:relation",
+      "handler": "Gsartifact.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/gsartifact/:id/relationships/:relation",
+      "handler": "Gsartifact.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

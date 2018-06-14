@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/tbsite/count",
+      "handler": "Tbsite.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/tbsite/:id",
       "handler": "Tbsite.findOne",
       "config": {

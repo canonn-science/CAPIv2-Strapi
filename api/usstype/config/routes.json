@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/usstype",
+      "handler": "Usstype.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/usstype/count",
+      "handler": "Usstype.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/usstype/:id",
+      "handler": "Usstype.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/usstype",
+      "handler": "Usstype.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/usstype/:id",
+      "handler": "Usstype.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/usstype/:id",
+      "handler": "Usstype.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/usstype/:id/relationships/:relation",
+      "handler": "Usstype.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/usstype/:id/relationships/:relation",
+      "handler": "Usstype.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/usstype/:id/relationships/:relation",
+      "handler": "Usstype.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

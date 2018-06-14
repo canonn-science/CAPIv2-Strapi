@@ -3,7 +3,7 @@
   "collectionName": "mssites",
   "info": {
     "name": "mssite",
-    "description": "Mega-Ship Sites"
+    "description": "Mega-Ship sites"
   },
   "options": {
     "increments": true,
@@ -30,7 +30,7 @@
       "type": "string"
     },
     "type": {
-      "type": "string"
+      "model": "mstype"
     },
     "flightOps": {
       "type": "boolean"

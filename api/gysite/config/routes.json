@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/gysite/count",
+      "handler": "Gysite.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/gysite/:id",
       "handler": "Gysite.findOne",
       "config": {

@@ -1,0 +1,20 @@
+{
+  "connection": "default",
+  "collectionName": "grtypes",
+  "info": {
+    "name": "grtype",
+    "description": "Type of a Guardian Ruins site"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "type": {
+      "unique": true,
+      "type": "string",
+      "required": true
+    }
+  }
+}

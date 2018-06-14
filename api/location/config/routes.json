@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/location/count",
+      "handler": "Location.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/location/:id",
       "handler": "Location.findOne",
       "config": {

@@ -3,7 +3,7 @@
   "collectionName": "gssites",
   "info": {
     "name": "gssite",
-    "description": "Guardian Structure Sites"
+    "description": "Guardian Structure sites"
   },
   "options": {
     "increments": true,
@@ -30,13 +30,7 @@
       "required": true
     },
     "type": {
-      "type": "enumeration",
-      "enum": [
-	"Structure",
-        "Type1",
-        "Type2",
-        "Type3"
-      ]
+      "model": "gstype"
     },
     "hasDatabank": {
       "type": "boolean"
@@ -47,6 +41,14 @@
     "visible": {
       "default": true,
       "type": "boolean"
+    },
+    "activeGroups": {
+      "collection": "gsactivegroup",
+      "via": "grSite"
+    },
+    "activeObelisks": {
+      "collection": "gsactiveobelisk",
+      "via": "gsSite"
     }
   }
 }

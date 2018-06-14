@@ -3,7 +3,7 @@
   "collectionName": "usssites",
   "info": {
     "name": "usssite",
-    "description": "Unknown Signal Source Sites"
+    "description": "Unknown Signal Source sites"
   },
   "options": {
     "increments": true,
@@ -16,21 +16,7 @@
       "via": "ussSite"
     },
     "type": {
-      "type": "enumeration",
-      "enum": [
-        "Anomaly",
-        "Ceremonial Comms",
-        "Combat Aftermath",
-        "Convoy Dispersal Pattern",
-        "Degraded Emissions",
-        "Distress Call",
-        "Encoded Emissions",
-        "High Grade Emissions",
-        "Mission Target",
-        "Non-Human Signal Source",
-        "Trading Beacon",
-        "Weapons Fire"
-      ]
+      "model": "usstype"
     },
     "threatLevel": {
       "min": 1,

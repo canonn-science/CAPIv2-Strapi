@@ -29,6 +29,16 @@ module.exports = {
   },
 
   /**
+   * Count grsite records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx) => {
+    return strapi.services.grsite.count(ctx.query);
+  },
+
+  /**
    * Create a/an grsite record.
    *
    * @return {Object}

@@ -1,0 +1,22 @@
+{
+  "connection": "default",
+  "collectionName": "gsactivegroups",
+  "info": {
+    "name": "gsactivegroup",
+    "description": "Active groups of Obelisks at a Guardian Structure site"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "grSite": {
+      "model": "gssite",
+      "via": "activeGroups"
+    },
+    "activeGroup": {
+      "model": "gsobeliskgroup"
+    }
+  }
+}

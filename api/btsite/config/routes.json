@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/btsite/count",
+      "handler": "Btsite.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/btsite/:id",
       "handler": "Btsite.findOne",
       "config": {

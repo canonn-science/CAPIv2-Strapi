@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/gstype",
+      "handler": "Gstype.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gstype/count",
+      "handler": "Gstype.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gstype/:id",
+      "handler": "Gstype.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/gstype",
+      "handler": "Gstype.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/gstype/:id",
+      "handler": "Gstype.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/gstype/:id",
+      "handler": "Gstype.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/gstype/:id/relationships/:relation",
+      "handler": "Gstype.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/gstype/:id/relationships/:relation",
+      "handler": "Gstype.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/gstype/:id/relationships/:relation",
+      "handler": "Gstype.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

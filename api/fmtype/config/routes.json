@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/fmtype",
+      "handler": "Fmtype.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/fmtype/count",
+      "handler": "Fmtype.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/fmtype/:id",
+      "handler": "Fmtype.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/fmtype",
+      "handler": "Fmtype.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/fmtype/:id",
+      "handler": "Fmtype.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/fmtype/:id",
+      "handler": "Fmtype.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/fmtype/:id/relationships/:relation",
+      "handler": "Fmtype.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/fmtype/:id/relationships/:relation",
+      "handler": "Fmtype.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/fmtype/:id/relationships/:relation",
+      "handler": "Fmtype.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
