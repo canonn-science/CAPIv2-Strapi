@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/gytype",
+      "handler": "Gytype.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gytype/count",
+      "handler": "Gytype.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gytype/:id",
+      "handler": "Gytype.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/gytype",
+      "handler": "Gytype.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/gytype/:id",
+      "handler": "Gytype.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/gytype/:id",
+      "handler": "Gytype.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/gytype/:id/relationships/:relation",
+      "handler": "Gytype.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/gytype/:id/relationships/:relation",
+      "handler": "Gytype.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/gytype/:id/relationships/:relation",
+      "handler": "Gytype.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

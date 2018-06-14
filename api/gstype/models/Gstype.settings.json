@@ -1,0 +1,20 @@
+{
+  "connection": "default",
+  "collectionName": "gstypes",
+  "info": {
+    "name": "gstype",
+    "description": "Guardian Structure site type"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "type": {
+      "unique": true,
+      "type": "string",
+      "required": true
+    }
+  }
+}

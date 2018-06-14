@@ -1,0 +1,18 @@
+{
+  "connection": "default",
+  "collectionName": "grcodexcategories",
+  "info": {
+    "name": "grcodexcategories",
+    "description": "Category of data recieved from Guardian Ruin Obelisks"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "categoryName": {
+      "type": "string"
+    }
+  }
+}

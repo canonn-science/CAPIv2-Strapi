@@ -1,0 +1,20 @@
+{
+  "connection": "default",
+  "collectionName": "mstypes",
+  "info": {
+    "name": "mstype",
+    "description": "Mega-Ship types"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "type": {
+      "unique": true,
+      "type": "string",
+      "required": true
+    }
+  }
+}

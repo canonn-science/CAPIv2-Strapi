@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/ringtype",
+      "handler": "Ringtype.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/ringtype/count",
+      "handler": "Ringtype.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/ringtype/:id",
+      "handler": "Ringtype.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/ringtype",
+      "handler": "Ringtype.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/ringtype/:id",
+      "handler": "Ringtype.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/ringtype/:id",
+      "handler": "Ringtype.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/ringtype/:id/relationships/:relation",
+      "handler": "Ringtype.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/ringtype/:id/relationships/:relation",
+      "handler": "Ringtype.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/ringtype/:id/relationships/:relation",
+      "handler": "Ringtype.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/grcodexcategories",
+      "handler": "Grcodexcategories.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/grcodexcategories/count",
+      "handler": "Grcodexcategories.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/grcodexcategories/:id",
+      "handler": "Grcodexcategories.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/grcodexcategories",
+      "handler": "Grcodexcategories.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/grcodexcategories/:id",
+      "handler": "Grcodexcategories.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/grcodexcategories/:id",
+      "handler": "Grcodexcategories.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/grcodexcategories/:id/relationships/:relation",
+      "handler": "Grcodexcategories.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/grcodexcategories/:id/relationships/:relation",
+      "handler": "Grcodexcategories.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/grcodexcategories/:id/relationships/:relation",
+      "handler": "Grcodexcategories.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

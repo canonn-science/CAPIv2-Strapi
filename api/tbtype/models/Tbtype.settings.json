@@ -1,0 +1,20 @@
+{
+  "connection": "default",
+  "collectionName": "tbtypes",
+  "info": {
+    "name": "tbtype",
+    "description": "Thargoid Barnacle type"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "type": {
+      "unique": true,
+      "type": "string",
+      "required": true
+    }
+  }
+}
