@@ -1,0 +1,66 @@
+{
+  "connection": "default",
+  "collectionName": "grreports",
+  "info": {
+    "name": "grreport",
+    "description": "Reporting for Guardian Ruins"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "systemName": {
+      "type": "string",
+      "required": true
+    },
+    "bodyName": {
+      "type": "string",
+      "required": true
+    },
+    "latitude": {
+      "type": "float",
+      "required": true
+    },
+    "longitude": {
+      "type": "float",
+      "required": true
+    },
+    "type": {
+      "enum": [
+        "Alpha",
+        "Beta",
+        "Gamma"
+      ],
+      "type": "enumeration",
+      "required": true
+    },
+    "cmdrName": {
+      "type": "string",
+      "required": true
+    },
+    "reportStatus": {
+      "enum": [
+        "pending",
+        "accepted",
+        "declined",
+        "issue"
+      ],
+      "type": "enumeration",
+      "required": true
+    },
+    "comment": {
+      "type": "text"
+    },
+    "voteCount": {
+      "type": "integer"
+    },
+    "added": {
+      "type": "boolean"
+    },
+    "site": {
+      "model": "bmsite"
+    }
+  }
+}

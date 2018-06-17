@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/msreport",
+      "handler": "Msreport.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/msreport/count",
+      "handler": "Msreport.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/msreport/:id",
+      "handler": "Msreport.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/msreport",
+      "handler": "Msreport.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/msreport/:id",
+      "handler": "Msreport.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/msreport/:id",
+      "handler": "Msreport.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/msreport/:id/relationships/:relation",
+      "handler": "Msreport.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/msreport/:id/relationships/:relation",
+      "handler": "Msreport.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/msreport/:id/relationships/:relation",
+      "handler": "Msreport.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

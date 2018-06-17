@@ -27,11 +27,13 @@
       "required": true
     },
     "directionSystem": {
-      "model": "system",
-      "via": "genSiteDirection"
+      "model": "system"
     },
     "distance": {
       "type": "float"
+    },
+    "discoveredBy": {
+      "model": "cmdr"
     }
   }
 }
