@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/genreport",
+      "handler": "Genreport.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/genreport/count",
+      "handler": "Genreport.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/genreport/:id",
+      "handler": "Genreport.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/genreport",
+      "handler": "Genreport.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/genreport/:id",
+      "handler": "Genreport.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/genreport/:id",
+      "handler": "Genreport.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/genreport/:id/relationships/:relation",
+      "handler": "Genreport.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/genreport/:id/relationships/:relation",
+      "handler": "Genreport.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/genreport/:id/relationships/:relation",
+      "handler": "Genreport.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

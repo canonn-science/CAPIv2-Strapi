@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/fgreport",
+      "handler": "Fgreport.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/fgreport/count",
+      "handler": "Fgreport.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/fgreport/:id",
+      "handler": "Fgreport.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/fgreport",
+      "handler": "Fgreport.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/fgreport/:id",
+      "handler": "Fgreport.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/fgreport/:id",
+      "handler": "Fgreport.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/fgreport/:id/relationships/:relation",
+      "handler": "Fgreport.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/fgreport/:id/relationships/:relation",
+      "handler": "Fgreport.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/fgreport/:id/relationships/:relation",
+      "handler": "Fgreport.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

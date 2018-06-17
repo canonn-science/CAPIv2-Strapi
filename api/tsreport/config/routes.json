@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/tsreport",
+      "handler": "Tsreport.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tsreport/count",
+      "handler": "Tsreport.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tsreport/:id",
+      "handler": "Tsreport.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tsreport",
+      "handler": "Tsreport.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tsreport/:id",
+      "handler": "Tsreport.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tsreport/:id",
+      "handler": "Tsreport.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tsreport/:id/relationships/:relation",
+      "handler": "Tsreport.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tsreport/:id/relationships/:relation",
+      "handler": "Tsreport.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tsreport/:id/relationships/:relation",
+      "handler": "Tsreport.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
