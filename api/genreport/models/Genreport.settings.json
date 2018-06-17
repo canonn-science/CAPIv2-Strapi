@@ -1,0 +1,55 @@
+{
+  "connection": "default",
+  "collectionName": "genreports",
+  "info": {
+    "name": "genreport",
+    "description": "Reporting for Generation Ships"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "systemName": {
+      "type": "string",
+      "required": true
+    },
+    "shipName": {
+      "type": "string",
+      "required": true
+    },
+    "directionSystem": {
+      "type": "string"
+    },
+    "distance": {
+      "type": "float"
+    },
+    "cmdrName": {
+      "type": "string",
+      "required": true
+    },
+    "reportStatus": {
+      "enum": [
+        "pending",
+        "accepted",
+        "declined",
+        "issue"
+      ],
+      "type": "enumeration",
+      "required": true
+    },
+    "comment": {
+      "type": "text"
+    },
+    "voteCount": {
+      "type": "integer"
+    },
+    "added": {
+      "type": "boolean"
+    },
+    "site": {
+      "model": "bmsite"
+    }
+  }
+}

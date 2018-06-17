@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/tbreport",
+      "handler": "Tbreport.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tbreport/count",
+      "handler": "Tbreport.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tbreport/:id",
+      "handler": "Tbreport.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tbreport",
+      "handler": "Tbreport.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tbreport/:id",
+      "handler": "Tbreport.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tbreport/:id",
+      "handler": "Tbreport.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tbreport/:id/relationships/:relation",
+      "handler": "Tbreport.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tbreport/:id/relationships/:relation",
+      "handler": "Tbreport.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tbreport/:id/relationships/:relation",
+      "handler": "Tbreport.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
