@@ -10,6 +10,7 @@ type Bmsite {
   count: Int
   verified: Boolean
   visible: Boolean
+  discoveredBy: Cmdr
 }
 
 """Bodies stored in the Canonn database"""
@@ -101,6 +102,15 @@ type Btsite {
   count: Int
   verified: Boolean
   visible: Boolean
+  discoveredBy: Cmdr
+}
+
+"""CMDRs who have discovered sites"""
+type Cmdr {
+  id: String!
+  createdAt: String!
+  updatedAt: String!
+  cmdrName: String!
 }
 
 enum ENUM_LOCATION_LOCATIONTYPE {
@@ -132,6 +142,7 @@ type Fgsite {
   count: Int
   verified: Boolean
   visible: Boolean
+  discoveredBy: Cmdr
 }
 
 """Fumarole sites"""
@@ -147,6 +158,7 @@ type Fmsite {
   type: Fmtype
   verified: Boolean
   visible: Boolean
+  discoveredBy: Cmdr
 }
 
 """Type of Fumarole"""
@@ -167,6 +179,7 @@ type Gensite {
   shipName: String!
   directionSystem: System
   distance: Float
+  discoveredBy: Cmdr
 }
 
 """Active groups of Obelisks at a Guardian Ruins site"""
@@ -250,6 +263,7 @@ type Grsite {
   type: Grtype
   verified: Boolean
   visible: Boolean
+  discoveredBy: Cmdr
   activeGroups(sort: String, limit: Int, start: Int, where: JSON): [Gractivegroup]
   activeObelisks(sort: String, limit: Int, start: Int, where: JSON): [Gractiveobelisk]
 }
@@ -344,6 +358,7 @@ type Gssite {
   hasDatabank: Boolean
   verified: Boolean
   visible: Boolean
+  discoveredBy: Cmdr
   activeGroups(sort: String, limit: Int, start: Int, where: JSON): [Gsactivegroup]
   activeObelisks(sort: String, limit: Int, start: Int, where: JSON): [Gsactiveobelisk]
 }
@@ -422,6 +437,7 @@ type Lssite {
   type: Lstype
   verified: Boolean
   visible: Boolean
+  discoveredBy: Cmdr
 }
 
 """Type of a Lava Spout"""
@@ -432,7 +448,7 @@ type Lstype {
   type: String!
 }
 
-union Morph = Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysubtype | Bodytype | Btsite | Fgsite | Fmsite | Fmtype | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategories | Grcodexdata | Grobelisk | Grobeliskgroup | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gssite | Gstype | Gysite | Gytype | Location | Lssite | Lstype | Mssite | Mstype | Ring | Ringtype | System | Tbsite | Tbtype | Tssite | Tsstatus | Twsite | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union Morph = Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysubtype | Bodytype | Btsite | Cmdr | Fgsite | Fmsite | Fmtype | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategories | Grcodexdata | Grobelisk | Grobeliskgroup | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gssite | Gstype | Gysite | Gytype | Location | Lssite | Lstype | Mssite | Mstype | Ring | Ringtype | System | Tbsite | Tbtype | Tssite | Tsstatus | Twsite | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 """Mega-Ship sites"""
 type Mssite {
@@ -447,6 +463,7 @@ type Mssite {
   flightOps: Boolean
   flightSchedule: Boolean
   dockable: Boolean
+  discoveredBy: Cmdr
 }
 
 """Ship type of a Mega-ship"""
@@ -472,6 +489,8 @@ type Query {
   bodytypes(sort: String, limit: Int, start: Int, where: JSON): [Bodytype]
   btsite(id: String!): Btsite
   btsites(sort: String, limit: Int, start: Int, where: JSON): [Btsite]
+  cmdr(id: String!): Cmdr
+  cmdrs(sort: String, limit: Int, start: Int, where: JSON): [Cmdr]
   fgsite(id: String!): Fgsite
   fgsites(sort: String, limit: Int, start: Int, where: JSON): [Fgsite]
   fmsite(id: String!): Fmsite
@@ -597,7 +616,6 @@ type System {
   edsmCoordLocked: Boolean
   bodies(sort: String, limit: Int, start: Int, where: JSON): [Body]
   systemLocations(sort: String, limit: Int, start: Int, where: JSON): [Location]
-  genSiteDirection(sort: String, limit: Int, start: Int, where: JSON): [Gensite]
 }
 
 """Thargoid Barnacle sites"""
@@ -613,6 +631,7 @@ type Tbsite {
   type: Tbtype
   verified: Boolean
   visible: Boolean
+  discoveredBy: Cmdr
 }
 
 """Type of a Thargoid Barnacle"""
@@ -635,6 +654,7 @@ type Tssite {
   status: Tsstatus
   verified: Boolean
   visible: Boolean
+  discoveredBy: Cmdr
 }
 
 """Status of a Thargoid Structure"""
@@ -657,6 +677,7 @@ type Twsite {
   count: Int
   verified: Boolean!
   visible: Boolean
+  discoveredBy: Cmdr
 }
 
 type UploadFile {
@@ -708,6 +729,7 @@ type Usssite {
   location: Location
   type: Usstype
   threatLevel: Int
+  discoveredBy: Cmdr
 }
 
 """Type of Unknown Signal Sources"""
