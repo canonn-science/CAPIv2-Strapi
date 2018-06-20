@@ -14,6 +14,7 @@ type Bmreport {
   voteCount: Int
   added: Boolean
   site: Bmsite
+  screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 """Bark Mound sites"""
@@ -606,6 +607,13 @@ type Gstype {
   type: String!
 }
 
+type Gyreport {
+  id: ID!
+  createdAt: String!
+  updatedAt: String!
+  systemName: String!
+}
+
 """Geyser sites"""
 type Gysite {
   id: ID!
@@ -702,7 +710,7 @@ type Lstype {
   type: String!
 }
 
-union Morph = Bmreport | Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysubtype | Bodytype | Btreport | Btsite | Cmdr | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategories | Grcodexdata | Grobelisk | Grobeliskgroup | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsreport | Gssite | Gstype | Gysite | Gytype | Location | Lsreport | Lssite | Lstype | Msreport | Mssite | Mstype | Ring | Ringtype | System | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union Morph = Bmreport | Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysubtype | Bodytype | Btreport | Btsite | Cmdr | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategories | Grcodexdata | Grobelisk | Grobeliskgroup | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsreport | Gssite | Gstype | Gyreport | Gysite | Gytype | Location | Lsreport | Lssite | Lstype | Msreport | Mssite | Mstype | Ring | Ringtype | System | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 """Reporting for Megaships"""
 type Msreport {
@@ -823,6 +831,8 @@ type Query {
   gssites(sort: String, limit: Int, start: Int, where: JSON): [Gssite]
   gstype(id: ID!): Gstype
   gstypes(sort: String, limit: Int, start: Int, where: JSON): [Gstype]
+  gyreport(id: ID!): Gyreport
+  gyreports(sort: String, limit: Int, start: Int, where: JSON): [Gyreport]
   gysite(id: ID!): Gysite
   gysites(sort: String, limit: Int, start: Int, where: JSON): [Gysite]
   gytype(id: ID!): Gytype

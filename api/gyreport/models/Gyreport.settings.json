@@ -1,9 +1,9 @@
 {
   "connection": "default",
-  "collectionName": "bmreports",
+  "collectionName": "gyreports",
   "info": {
-    "name": "bmreport",
-    "description": "Reporting for Bark Mounds"
+    "name": "gyreport",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -26,6 +26,9 @@
     "longitude": {
       "type": "float",
       "required": true
+    },
+    "type": {
+      "type": "string"
     },
     "count": {
       "min": 1,
