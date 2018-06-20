@@ -40,6 +40,11 @@
       "type": "string",
       "required": true
     },
+    "screenshot": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
     "reportStatus": {
       "enum": [
         "pending",
