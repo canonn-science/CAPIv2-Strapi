@@ -1,0 +1,66 @@
+{
+  "connection": "default",
+  "collectionName": "bmreports",
+  "info": {
+    "name": "bmreport",
+    "description": "Reporting for Bark Mounds"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "systemName": {
+      "type": "string",
+      "required": true
+    },
+    "bodyName": {
+      "type": "string",
+      "required": true
+    },
+    "latitude": {
+      "type": "float",
+      "required": true
+    },
+    "longitude": {
+      "type": "float",
+      "required": true
+    },
+    "count": {
+      "min": 1,
+      "type": "integer"
+    },
+    "cmdrName": {
+      "type": "string",
+      "required": true
+    },
+    "screenshot": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "reportStatus": {
+      "enum": [
+        "pending",
+        "accepted",
+        "declined",
+        "issue"
+      ],
+      "type": "enumeration",
+      "required": true
+    },
+    "comment": {
+      "type": "text"
+    },
+    "voteCount": {
+      "type": "integer"
+    },
+    "added": {
+      "type": "boolean"
+    },
+    "site": {
+      "model": "bmsite"
+    }
+  }
+}

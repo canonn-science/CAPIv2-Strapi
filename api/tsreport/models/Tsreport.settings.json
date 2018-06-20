@@ -1,0 +1,65 @@
+{
+  "connection": "default",
+  "collectionName": "tsreports",
+  "info": {
+    "name": "tsreport",
+    "description": "Reporting for Thargoid Structures"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "systemName": {
+      "type": "string",
+      "required": true
+    },
+    "bodyName": {
+      "type": "string",
+      "required": true
+    },
+    "latitude": {
+      "type": "float",
+      "required": true
+    },
+    "longitude": {
+      "type": "float",
+      "required": true
+    },
+    "status": {
+      "enum": [
+        "Active",
+        "Inactive"
+      ],
+      "type": "enumeration",
+      "required": true
+    },
+    "cmdrName": {
+      "type": "string",
+      "required": true
+    },
+    "reportStatus": {
+      "enum": [
+        "pending",
+        "accepted",
+        "declined",
+        "issue"
+      ],
+      "type": "enumeration",
+      "required": true
+    },
+    "comment": {
+      "type": "text"
+    },
+    "voteCount": {
+      "type": "integer"
+    },
+    "added": {
+      "type": "boolean"
+    },
+    "site": {
+      "model": "bmsite"
+    }
+  }
+}

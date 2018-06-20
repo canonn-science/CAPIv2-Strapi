@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/lsreport",
+      "handler": "Lsreport.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/lsreport/count",
+      "handler": "Lsreport.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/lsreport/:id",
+      "handler": "Lsreport.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/lsreport",
+      "handler": "Lsreport.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/lsreport/:id",
+      "handler": "Lsreport.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/lsreport/:id",
+      "handler": "Lsreport.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/lsreport/:id/relationships/:relation",
+      "handler": "Lsreport.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/lsreport/:id/relationships/:relation",
+      "handler": "Lsreport.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/lsreport/:id/relationships/:relation",
+      "handler": "Lsreport.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

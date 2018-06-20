@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/cmdr",
+      "handler": "Cmdr.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/cmdr/count",
+      "handler": "Cmdr.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/cmdr/:id",
+      "handler": "Cmdr.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/cmdr",
+      "handler": "Cmdr.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/cmdr/:id",
+      "handler": "Cmdr.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/cmdr/:id",
+      "handler": "Cmdr.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/cmdr/:id/relationships/:relation",
+      "handler": "Cmdr.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/cmdr/:id/relationships/:relation",
+      "handler": "Cmdr.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/cmdr/:id/relationships/:relation",
+      "handler": "Cmdr.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

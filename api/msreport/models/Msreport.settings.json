@@ -1,0 +1,69 @@
+{
+  "connection": "default",
+  "collectionName": "msreports",
+  "info": {
+    "name": "msreport",
+    "description": "Reporting for Megaships"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "systemName": {
+      "type": "string",
+      "required": true
+    },
+    "shipName": {
+      "type": "string",
+      "required": true
+    },
+    "shipTag": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "flightOps": {
+      "type": "boolean"
+    },
+    "flightSchedule": {
+      "type": "boolean"
+    },
+    "dockable": {
+      "type": "boolean"
+    },
+    "cmdrName": {
+      "type": "string",
+      "required": true
+    },
+    "screenshot": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "reportStatus": {
+      "enum": [
+        "pending",
+        "accepted",
+        "declined",
+        "issue"
+      ],
+      "type": "enumeration",
+      "required": true
+    },
+    "comment": {
+      "type": "text"
+    },
+    "voteCount": {
+      "type": "integer"
+    },
+    "added": {
+      "type": "boolean"
+    },
+    "site": {
+      "model": "bmsite"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/twreport",
+      "handler": "Twreport.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/twreport/count",
+      "handler": "Twreport.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/twreport/:id",
+      "handler": "Twreport.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/twreport",
+      "handler": "Twreport.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/twreport/:id",
+      "handler": "Twreport.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/twreport/:id",
+      "handler": "Twreport.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/twreport/:id/relationships/:relation",
+      "handler": "Twreport.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/twreport/:id/relationships/:relation",
+      "handler": "Twreport.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/twreport/:id/relationships/:relation",
+      "handler": "Twreport.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

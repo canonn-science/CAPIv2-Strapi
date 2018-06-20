@@ -1,8 +1,8 @@
 {
   "_from": "strapi-plugin-email@alpha",
-  "_id": "strapi-plugin-email@3.0.0-alpha.12.4",
+  "_id": "strapi-plugin-email@3.0.0-alpha.12.5",
   "_inBundle": false,
-  "_integrity": "sha512-OOwkwdMUjAdyNyI3j9EtIaWh51CdmupxxqPwOC3NbHTD7kELsEn5OG9cBVFO8lwLxSGO7L0u89LuaxIcbf983Q==",
+  "_integrity": "sha512-KmGrLOkTG9C4bRJI1BcHrpdUZUw+bEnD1E2iy7a0emB1swwVZeHvPbrB3AGankJ42LbkbeFsTbREITBZ4TD4hg==",
   "_location": "/strapi-plugin-email",
   "_phantomChildren": {},
   "_requested": {
@@ -18,10 +18,10 @@
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "https://registry.npmjs.org/strapi-plugin-email/-/strapi-plugin-email-3.0.0-alpha.12.4.tgz",
-  "_shasum": "07459817c81c2bd3795d7fe3c7501470a530dcf4",
+  "_resolved": "https://registry.npmjs.org/strapi-plugin-email/-/strapi-plugin-email-3.0.0-alpha.12.5.tgz",
+  "_shasum": "978f638224516e6fa718a81dcec1efcf9a56894d",
   "_spec": "strapi-plugin-email@alpha",
-  "_where": "/home/ad.derrickmehaffy.com/dmehaffy/CAPIv2-Dev",
+  "_where": "/mnt/nixstorage/Github/CAPIv2-Dev",
   "author": {
     "name": "Strapi team",
     "email": "hi@strapi.io",
@@ -32,12 +32,13 @@
   },
   "bundleDependencies": false,
   "dependencies": {
-    "sendmail": "^1.2.0"
+    "strapi-email-sendmail": "3.0.0-alpha.12.5"
   },
   "deprecated": false,
   "description": "This is the description of the plugin.",
   "devDependencies": {
-    "strapi-helper-plugin": "3.0.0-alpha.12.4"
+    "react-copy-to-clipboard": "5.0.1",
+    "strapi-helper-plugin": "3.0.0-alpha.12.5"
   },
   "engines": {
     "node": ">= 9.0.0",
@@ -63,9 +64,10 @@
     "build": "node ./node_modules/strapi-helper-plugin/node_modules/.bin/cross-env NODE_ENV=production node node_modules/strapi-helper-plugin/node_modules/.bin/webpack --config node_modules/strapi-helper-plugin/lib/internals/webpack/webpack.prod.babel.js --color -p --progress",
     "build:clean": "node ./node_modules/strapi-helper-plugin/node_modules/.bin/rimraf admin/build",
     "build:dev": "node ./node_modules/strapi-helper-plugin/node_modules/.bin/cross-env NODE_ENV=development node ./node_modules/strapi-helper-plugin/node_modules/.bin/webpack --config node_modules/strapi-helper-plugin/lib/internals/webpack/webpack.prod.babel.js --color -p --progress",
-    "generate": "node ./node_modules/strapi-helper-plugin/node_modules/.bin/plop --plopfile ./node_modules/strapi-helper-plugin/lib/internals/generators/index.js",
+    "generate": "node ./node_modules/plop/plop.js --plopfile node_modules/strapi-helper-plugin/lib/internals/generators/index.js",
     "preanalyze": "npm run analyze:clean",
     "prebuild": "npm run build:clean",
+    "prepublishOnly": "IS_MONOREPO=true npm run build",
     "prettier": "node ./node_modules/strapi-helper-plugin/node_modules/.bin/prettier --single-quote --trailing-comma es5 --write \"{admin,__{tests,mocks}__}/**/*.js\"",
     "start": "node ./node_modules/strapi-helper-plugin/node_modules/.bin/cross-env NODE_ENV=development node ./node_modules/strapi-helper-plugin/lib/server",
     "test": "echo \"Error: no test specified\""
@@ -75,5 +77,5 @@
     "icon": "paper-plane",
     "description": "email.plugin.description"
   },
-  "version": "3.0.0-alpha.12.4"
+  "version": "3.0.0-alpha.12.5"
 }
