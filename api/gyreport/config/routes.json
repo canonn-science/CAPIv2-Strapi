@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/gyreport",
+      "handler": "Gyreport.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gyreport/count",
+      "handler": "Gyreport.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gyreport/:id",
+      "handler": "Gyreport.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/gyreport",
+      "handler": "Gyreport.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/gyreport/:id",
+      "handler": "Gyreport.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/gyreport/:id",
+      "handler": "Gyreport.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/gyreport/:id/relationships/:relation",
+      "handler": "Gyreport.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/gyreport/:id/relationships/:relation",
+      "handler": "Gyreport.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/gyreport/:id/relationships/:relation",
+      "handler": "Gyreport.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 """Reporting for Bark Mounds"""
 type Bmreport {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   systemName: String!
@@ -14,11 +14,12 @@ type Bmreport {
   voteCount: Int
   added: Boolean
   site: Bmsite
+  screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 """Bark Mound sites"""
 type Bmsite {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   location: Location
@@ -33,7 +34,7 @@ type Bmsite {
 
 """Bodies stored in the Canonn database"""
 type Body {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   system: System
@@ -75,7 +76,7 @@ type Body {
 
 """Atmosphere makup of a body"""
 type Bodyatmosphere {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   body: Body
@@ -85,7 +86,7 @@ type Bodyatmosphere {
 
 """Material makeup of a body"""
 type Bodymaterial {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   body: Body
@@ -94,7 +95,7 @@ type Bodymaterial {
 
 """Subtype of a body"""
 type Bodysubtype {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   subtype: String!
@@ -102,7 +103,7 @@ type Bodysubtype {
 
 """Type of a body"""
 type Bodytype {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   type: String!
@@ -110,7 +111,7 @@ type Bodytype {
 
 """Reporting for Brain Trees"""
 type Btreport {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   systemName: String!
@@ -124,11 +125,12 @@ type Btreport {
   voteCount: Int
   added: Boolean
   site: Bmsite
+  screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 """Brain Tree sites"""
 type Btsite {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   location: Location
@@ -143,7 +145,7 @@ type Btsite {
 
 """CMDRs who have discovered sites"""
 type Cmdr {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   cmdrName: String!
@@ -213,6 +215,13 @@ enum ENUM_GSREPORT_TYPE {
   Type5
 }
 
+enum ENUM_GYREPORT_REPORTSTATUS {
+  pending
+  accepted
+  declined
+  issue
+}
+
 enum ENUM_LOCATION_LOCATIONTYPE {
   BM
   BT
@@ -277,7 +286,7 @@ enum ENUM_TWREPORT_REPORTSTATUS {
 
 """Reporting for Fungal Gourds"""
 type Fgreport {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   systemName: String!
@@ -291,11 +300,12 @@ type Fgreport {
   voteCount: Int
   added: Boolean
   site: Bmsite
+  screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 """Fungal Gourd sites"""
 type Fgsite {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   location: Location
@@ -310,7 +320,7 @@ type Fgsite {
 
 """Reporting for Fumaroles"""
 type Fmreport {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   systemName: String!
@@ -325,11 +335,12 @@ type Fmreport {
   voteCount: Int
   added: Boolean
   site: Bmsite
+  screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 """Fumarole sites"""
 type Fmsite {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   location: Location
@@ -345,7 +356,7 @@ type Fmsite {
 
 """Type of Fumarole"""
 type Fmtype {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   type: String!
@@ -353,7 +364,7 @@ type Fmtype {
 
 """Reporting for Generation Ships"""
 type Genreport {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   systemName: String!
@@ -366,11 +377,12 @@ type Genreport {
   voteCount: Int
   added: Boolean
   site: Bmsite
+  screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 """Generation Ship sites"""
 type Gensite {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   location: Location
@@ -383,7 +395,7 @@ type Gensite {
 
 """Active groups of Obelisks at a Guardian Ruins site"""
 type Gractivegroup {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   grSite: Grsite
@@ -392,7 +404,7 @@ type Gractivegroup {
 
 """Active Obeliskss at a Guardian Ruin site"""
 type Gractiveobelisk {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   grSite: Grsite
@@ -401,7 +413,7 @@ type Gractiveobelisk {
 
 """Artifacts used at a Guardian Ruin site"""
 type Grartifact {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   artifactName: String!
@@ -409,7 +421,7 @@ type Grartifact {
 
 """Category of data recieved from Guardian Ruin Obelisks"""
 type Grcodexcategories {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   categoryName: String
@@ -417,7 +429,7 @@ type Grcodexcategories {
 
 """Data entires received at a Guardian Ruin site"""
 type Grcodexdata {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   grCodexCategory: Grcodexcategories
@@ -429,7 +441,7 @@ type Grcodexdata {
 
 """Obelisks at a Guardian Ruin site"""
 type Grobelisk {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   grType: Grtype
@@ -442,7 +454,7 @@ type Grobelisk {
 
 """Groups of Obelisks at a Guardian Ruin site"""
 type Grobeliskgroup {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   grType: Grtype
@@ -452,7 +464,7 @@ type Grobeliskgroup {
 
 """Reporting for Guardian Ruins"""
 type Grreport {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   systemName: String!
@@ -466,11 +478,12 @@ type Grreport {
   voteCount: Int
   added: Boolean
   site: Bmsite
+  screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 """Guardian Ruin site"""
 type Grsite {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   location: Location
@@ -487,7 +500,7 @@ type Grsite {
 
 """Type of a Guardian Ruins site"""
 type Grtype {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   type: String!
@@ -495,7 +508,7 @@ type Grtype {
 
 """Active groups of Obelisks at a Guardian Structure site"""
 type Gsactivegroup {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   grSite: Gssite
@@ -504,7 +517,7 @@ type Gsactivegroup {
 
 """Active Obeliskss at a Guardian Structure site"""
 type Gsactiveobelisk {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   gsSite: Gssite
@@ -513,7 +526,7 @@ type Gsactiveobelisk {
 
 """Artifacts used at a Guardian Structures site"""
 type Gsartifact {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   artifactName: String!
@@ -521,7 +534,7 @@ type Gsartifact {
 
 """Category of data recieved from Guardian Structure Obelisks"""
 type Gscodexcategory {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   categoryName: String!
@@ -529,7 +542,7 @@ type Gscodexcategory {
 
 """Data entires received at a Guardian Structure site"""
 type Gscodexdata {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   gsCodexCategory: Gscodexcategory
@@ -541,7 +554,7 @@ type Gscodexdata {
 
 """Obelisks at a Guardian Structure site"""
 type Gsobelisk {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   gsType: Gstype
@@ -554,7 +567,7 @@ type Gsobelisk {
 
 """Groups of Obelisks at a Guardian Structure site"""
 type Gsobeliskgroup {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   gsType: Gstype
@@ -564,7 +577,7 @@ type Gsobeliskgroup {
 
 """Reporting for Guardian Structures"""
 type Gsreport {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   systemName: String!
@@ -578,11 +591,12 @@ type Gsreport {
   voteCount: Int
   added: Boolean
   site: Bmsite
+  screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 """Guardian Structure sites"""
 type Gssite {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   location: Location
@@ -600,15 +614,35 @@ type Gssite {
 
 """Type of a Guardian Structures site"""
 type Gstype {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   type: String!
 }
 
+"""Reporting for Geysers"""
+type Gyreport {
+  id: ID!
+  createdAt: String!
+  updatedAt: String!
+  systemName: String!
+  bodyName: String!
+  latitude: Float!
+  longitude: Float!
+  type: String
+  count: Int
+  cmdrName: String!
+  reportStatus: ENUM_GYREPORT_REPORTSTATUS!
+  comment: String
+  voteCount: Int
+  added: Boolean
+  site: Bmsite
+  screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+}
+
 """Geyser sites"""
 type Gysite {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   location: Location
@@ -623,7 +657,7 @@ type Gysite {
 
 """Type of a Geyser"""
 type Gytype {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   type: String!
@@ -636,7 +670,7 @@ scalar JSON
 
 """Locations for sites within a System, Body, or Ring"""
 type Location {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   system: System
@@ -661,7 +695,7 @@ type Location {
 
 """Reporting for Lava Spouts"""
 type Lsreport {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   systemName: String!
@@ -676,11 +710,12 @@ type Lsreport {
   voteCount: Int
   added: Boolean
   site: Bmsite
+  screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 """Lava Spout sites"""
 type Lssite {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   location: Location
@@ -696,17 +731,17 @@ type Lssite {
 
 """Type of a Lava Spout"""
 type Lstype {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   type: String!
 }
 
-union Morph = Bmreport | Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysubtype | Bodytype | Btreport | Btsite | Cmdr | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategories | Grcodexdata | Grobelisk | Grobeliskgroup | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsreport | Gssite | Gstype | Gysite | Gytype | Location | Lsreport | Lssite | Lstype | Msreport | Mssite | Mstype | Ring | Ringtype | System | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union Morph = Bmreport | Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysubtype | Bodytype | Btreport | Btsite | Cmdr | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategories | Grcodexdata | Grobelisk | Grobeliskgroup | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsreport | Gssite | Gstype | Gyreport | Gysite | Gytype | Location | Lsreport | Lssite | Lstype | Msreport | Mssite | Mstype | Ring | Ringtype | System | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 """Reporting for Megaships"""
 type Msreport {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   systemName: String!
@@ -722,11 +757,12 @@ type Msreport {
   voteCount: Int
   added: Boolean
   site: Bmsite
+  screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 """Mega-Ship sites"""
 type Mssite {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   location: Location
@@ -742,145 +778,147 @@ type Mssite {
 
 """Ship type of a Mega-ship"""
 type Mstype {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   type: String!
 }
 
 type Query {
-  bmreport(id: String!): Bmreport
+  bmreport(id: ID!): Bmreport
   bmreports(sort: String, limit: Int, start: Int, where: JSON): [Bmreport]
-  bmsite(id: String!): Bmsite
+  bmsite(id: ID!): Bmsite
   bmsites(sort: String, limit: Int, start: Int, where: JSON): [Bmsite]
-  body(id: String!): Body
+  body(id: ID!): Body
   bodies(sort: String, limit: Int, start: Int, where: JSON): [Body]
-  bodyatmosphere(id: String!): Bodyatmosphere
+  bodyatmosphere(id: ID!): Bodyatmosphere
   bodyatmospheres(sort: String, limit: Int, start: Int, where: JSON): [Bodyatmosphere]
-  bodymaterial(id: String!): Bodymaterial
+  bodymaterial(id: ID!): Bodymaterial
   bodymaterials(sort: String, limit: Int, start: Int, where: JSON): [Bodymaterial]
-  bodysubtype(id: String!): Bodysubtype
+  bodysubtype(id: ID!): Bodysubtype
   bodysubtypes(sort: String, limit: Int, start: Int, where: JSON): [Bodysubtype]
-  bodytype(id: String!): Bodytype
+  bodytype(id: ID!): Bodytype
   bodytypes(sort: String, limit: Int, start: Int, where: JSON): [Bodytype]
-  btreport(id: String!): Btreport
+  btreport(id: ID!): Btreport
   btreports(sort: String, limit: Int, start: Int, where: JSON): [Btreport]
-  btsite(id: String!): Btsite
+  btsite(id: ID!): Btsite
   btsites(sort: String, limit: Int, start: Int, where: JSON): [Btsite]
-  cmdr(id: String!): Cmdr
+  cmdr(id: ID!): Cmdr
   cmdrs(sort: String, limit: Int, start: Int, where: JSON): [Cmdr]
-  fgreport(id: String!): Fgreport
+  fgreport(id: ID!): Fgreport
   fgreports(sort: String, limit: Int, start: Int, where: JSON): [Fgreport]
-  fgsite(id: String!): Fgsite
+  fgsite(id: ID!): Fgsite
   fgsites(sort: String, limit: Int, start: Int, where: JSON): [Fgsite]
-  fmreport(id: String!): Fmreport
+  fmreport(id: ID!): Fmreport
   fmreports(sort: String, limit: Int, start: Int, where: JSON): [Fmreport]
-  fmsite(id: String!): Fmsite
+  fmsite(id: ID!): Fmsite
   fmsites(sort: String, limit: Int, start: Int, where: JSON): [Fmsite]
-  fmtype(id: String!): Fmtype
+  fmtype(id: ID!): Fmtype
   fmtypes(sort: String, limit: Int, start: Int, where: JSON): [Fmtype]
-  genreport(id: String!): Genreport
+  genreport(id: ID!): Genreport
   genreports(sort: String, limit: Int, start: Int, where: JSON): [Genreport]
-  gensite(id: String!): Gensite
+  gensite(id: ID!): Gensite
   gensites(sort: String, limit: Int, start: Int, where: JSON): [Gensite]
-  gractivegroup(id: String!): Gractivegroup
+  gractivegroup(id: ID!): Gractivegroup
   gractivegroups(sort: String, limit: Int, start: Int, where: JSON): [Gractivegroup]
-  gractiveobelisk(id: String!): Gractiveobelisk
+  gractiveobelisk(id: ID!): Gractiveobelisk
   gractiveobelisks(sort: String, limit: Int, start: Int, where: JSON): [Gractiveobelisk]
-  grartifact(id: String!): Grartifact
+  grartifact(id: ID!): Grartifact
   grartifacts(sort: String, limit: Int, start: Int, where: JSON): [Grartifact]
-  grcodexcategory(id: String!): Grcodexcategories
+  grcodexcategory(id: ID!): Grcodexcategories
   grcodexcategories(sort: String, limit: Int, start: Int, where: JSON): [Grcodexcategories]
-  grcodexdatum(id: String!): Grcodexdata
+  grcodexdatum(id: ID!): Grcodexdata
   grcodexdata(sort: String, limit: Int, start: Int, where: JSON): [Grcodexdata]
-  grobelisk(id: String!): Grobelisk
+  grobelisk(id: ID!): Grobelisk
   grobelisks(sort: String, limit: Int, start: Int, where: JSON): [Grobelisk]
-  grobeliskgroup(id: String!): Grobeliskgroup
+  grobeliskgroup(id: ID!): Grobeliskgroup
   grobeliskgroups(sort: String, limit: Int, start: Int, where: JSON): [Grobeliskgroup]
-  grreport(id: String!): Grreport
+  grreport(id: ID!): Grreport
   grreports(sort: String, limit: Int, start: Int, where: JSON): [Grreport]
-  grsite(id: String!): Grsite
+  grsite(id: ID!): Grsite
   grsites(sort: String, limit: Int, start: Int, where: JSON): [Grsite]
-  grtype(id: String!): Grtype
+  grtype(id: ID!): Grtype
   grtypes(sort: String, limit: Int, start: Int, where: JSON): [Grtype]
-  gsactivegroup(id: String!): Gsactivegroup
+  gsactivegroup(id: ID!): Gsactivegroup
   gsactivegroups(sort: String, limit: Int, start: Int, where: JSON): [Gsactivegroup]
-  gsactiveobelisk(id: String!): Gsactiveobelisk
+  gsactiveobelisk(id: ID!): Gsactiveobelisk
   gsactiveobelisks(sort: String, limit: Int, start: Int, where: JSON): [Gsactiveobelisk]
-  gsartifact(id: String!): Gsartifact
+  gsartifact(id: ID!): Gsartifact
   gsartifacts(sort: String, limit: Int, start: Int, where: JSON): [Gsartifact]
-  gscodexcategory(id: String!): Gscodexcategory
+  gscodexcategory(id: ID!): Gscodexcategory
   gscodexcategories(sort: String, limit: Int, start: Int, where: JSON): [Gscodexcategory]
-  gscodexdatum(id: String!): Gscodexdata
+  gscodexdatum(id: ID!): Gscodexdata
   gscodexdata(sort: String, limit: Int, start: Int, where: JSON): [Gscodexdata]
-  gsobelisk(id: String!): Gsobelisk
+  gsobelisk(id: ID!): Gsobelisk
   gsobelisks(sort: String, limit: Int, start: Int, where: JSON): [Gsobelisk]
-  gsobeliskgroup(id: String!): Gsobeliskgroup
+  gsobeliskgroup(id: ID!): Gsobeliskgroup
   gsobeliskgroups(sort: String, limit: Int, start: Int, where: JSON): [Gsobeliskgroup]
-  gsreport(id: String!): Gsreport
+  gsreport(id: ID!): Gsreport
   gsreports(sort: String, limit: Int, start: Int, where: JSON): [Gsreport]
-  gssite(id: String!): Gssite
+  gssite(id: ID!): Gssite
   gssites(sort: String, limit: Int, start: Int, where: JSON): [Gssite]
-  gstype(id: String!): Gstype
+  gstype(id: ID!): Gstype
   gstypes(sort: String, limit: Int, start: Int, where: JSON): [Gstype]
-  gysite(id: String!): Gysite
+  gyreport(id: ID!): Gyreport
+  gyreports(sort: String, limit: Int, start: Int, where: JSON): [Gyreport]
+  gysite(id: ID!): Gysite
   gysites(sort: String, limit: Int, start: Int, where: JSON): [Gysite]
-  gytype(id: String!): Gytype
+  gytype(id: ID!): Gytype
   gytypes(sort: String, limit: Int, start: Int, where: JSON): [Gytype]
-  location(id: String!): Location
+  location(id: ID!): Location
   locations(sort: String, limit: Int, start: Int, where: JSON): [Location]
-  lsreport(id: String!): Lsreport
+  lsreport(id: ID!): Lsreport
   lsreports(sort: String, limit: Int, start: Int, where: JSON): [Lsreport]
-  lssite(id: String!): Lssite
+  lssite(id: ID!): Lssite
   lssites(sort: String, limit: Int, start: Int, where: JSON): [Lssite]
-  lstype(id: String!): Lstype
+  lstype(id: ID!): Lstype
   lstypes(sort: String, limit: Int, start: Int, where: JSON): [Lstype]
-  msreport(id: String!): Msreport
+  msreport(id: ID!): Msreport
   msreports(sort: String, limit: Int, start: Int, where: JSON): [Msreport]
-  mssite(id: String!): Mssite
+  mssite(id: ID!): Mssite
   mssites(sort: String, limit: Int, start: Int, where: JSON): [Mssite]
-  mstype(id: String!): Mstype
+  mstype(id: ID!): Mstype
   mstypes(sort: String, limit: Int, start: Int, where: JSON): [Mstype]
-  ring(id: String!): Ring
+  ring(id: ID!): Ring
   rings(sort: String, limit: Int, start: Int, where: JSON): [Ring]
-  ringtype(id: String!): Ringtype
+  ringtype(id: ID!): Ringtype
   ringtypes(sort: String, limit: Int, start: Int, where: JSON): [Ringtype]
-  system(id: String!): System
+  system(id: ID!): System
   systems(sort: String, limit: Int, start: Int, where: JSON): [System]
-  tbreport(id: String!): Tbreport
+  tbreport(id: ID!): Tbreport
   tbreports(sort: String, limit: Int, start: Int, where: JSON): [Tbreport]
-  tbsite(id: String!): Tbsite
+  tbsite(id: ID!): Tbsite
   tbsites(sort: String, limit: Int, start: Int, where: JSON): [Tbsite]
-  tbtype(id: String!): Tbtype
+  tbtype(id: ID!): Tbtype
   tbtypes(sort: String, limit: Int, start: Int, where: JSON): [Tbtype]
-  tsreport(id: String!): Tsreport
+  tsreport(id: ID!): Tsreport
   tsreports(sort: String, limit: Int, start: Int, where: JSON): [Tsreport]
-  tssite(id: String!): Tssite
+  tssite(id: ID!): Tssite
   tssites(sort: String, limit: Int, start: Int, where: JSON): [Tssite]
-  tsstatus(id: String!): Tsstatus
+  tsstatus(id: ID!): Tsstatus
   tsstatuses(sort: String, limit: Int, start: Int, where: JSON): [Tsstatus]
-  twreport(id: String!): Twreport
+  twreport(id: ID!): Twreport
   twreports(sort: String, limit: Int, start: Int, where: JSON): [Twreport]
-  twsite(id: String!): Twsite
+  twsite(id: ID!): Twsite
   twsites(sort: String, limit: Int, start: Int, where: JSON): [Twsite]
-  usssite(id: String!): Usssite
+  usssite(id: ID!): Usssite
   usssites(sort: String, limit: Int, start: Int, where: JSON): [Usssite]
-  usstype(id: String!): Usstype
+  usstype(id: ID!): Usstype
   usstypes(sort: String, limit: Int, start: Int, where: JSON): [Usstype]
   files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
-  role(id: String!): UsersPermissionsRole
+  role(id: ID!): UsersPermissionsRole
 
   """
   Retrieve all the existing roles. You can't apply filters on this query.
   """
   roles(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsRole]
-  user(id: String!): UsersPermissionsUser
+  user(id: ID!): UsersPermissionsUser
   users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
 }
 
 """Rings stored in the Canonn database"""
 type Ring {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   body: Body
@@ -894,7 +932,7 @@ type Ring {
 
 """Type of a Ring"""
 type Ringtype {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   type: String!
@@ -902,7 +940,7 @@ type Ringtype {
 
 """Systems stored in the Canonn database"""
 type System {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   systemName: String!
@@ -918,7 +956,7 @@ type System {
 
 """Reporting for Thargoid Barnacles"""
 type Tbreport {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   systemName: String!
@@ -933,11 +971,12 @@ type Tbreport {
   voteCount: Int
   added: Boolean
   site: Bmsite
+  screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 """Thargoid Barnacle sites"""
 type Tbsite {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   location: Location
@@ -953,7 +992,7 @@ type Tbsite {
 
 """Type of a Thargoid Barnacle"""
 type Tbtype {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   type: String!
@@ -961,7 +1000,7 @@ type Tbtype {
 
 """Reporting for Thargoid Structures"""
 type Tsreport {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   systemName: String!
@@ -979,7 +1018,7 @@ type Tsreport {
 
 """Thargoid Structure sites"""
 type Tssite {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   location: Location
@@ -994,7 +1033,7 @@ type Tssite {
 
 """Status of a Thargoid Structure"""
 type Tsstatus {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   status: String!
@@ -1002,7 +1041,7 @@ type Tsstatus {
 
 """Reporting for Tube Worms"""
 type Twreport {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   systemName: String!
@@ -1016,11 +1055,12 @@ type Twreport {
   voteCount: Int
   added: Boolean
   site: Bmsite
+  screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 """Tube Worm sites"""
 type Twsite {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   location: Location
@@ -1034,7 +1074,7 @@ type Twsite {
 }
 
 type UploadFile {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   name: String!
@@ -1048,7 +1088,7 @@ type UploadFile {
 }
 
 type UsersPermissionsPermission {
-  id: String!
+  id: ID!
   type: String!
   controller: String!
   action: String!
@@ -1058,7 +1098,7 @@ type UsersPermissionsPermission {
 }
 
 type UsersPermissionsRole {
-  id: String!
+  id: ID!
   name: String!
   description: String
   type: String
@@ -1067,7 +1107,7 @@ type UsersPermissionsRole {
 }
 
 type UsersPermissionsUser {
-  id: String!
+  id: ID!
   username: String!
   email: String!
   provider: String
@@ -1076,7 +1116,7 @@ type UsersPermissionsUser {
 
 """Unknown Signal Source sites"""
 type Usssite {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   location: Location
@@ -1087,7 +1127,7 @@ type Usssite {
 
 """Type of Unknown Signal Sources"""
 type Usstype {
-  id: String!
+  id: ID!
   createdAt: String!
   updatedAt: String!
   type: String!
