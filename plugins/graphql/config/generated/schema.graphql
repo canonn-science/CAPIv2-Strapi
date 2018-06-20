@@ -125,6 +125,7 @@ type Btreport {
   voteCount: Int
   added: Boolean
   site: Bmsite
+  screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 """Brain Tree sites"""
@@ -214,6 +215,13 @@ enum ENUM_GSREPORT_TYPE {
   Type5
 }
 
+enum ENUM_GYREPORT_REPORTSTATUS {
+  pending
+  accepted
+  declined
+  issue
+}
+
 enum ENUM_LOCATION_LOCATIONTYPE {
   BM
   BT
@@ -292,6 +300,7 @@ type Fgreport {
   voteCount: Int
   added: Boolean
   site: Bmsite
+  screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 """Fungal Gourd sites"""
@@ -326,6 +335,7 @@ type Fmreport {
   voteCount: Int
   added: Boolean
   site: Bmsite
+  screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 """Fumarole sites"""
@@ -367,6 +377,7 @@ type Genreport {
   voteCount: Int
   added: Boolean
   site: Bmsite
+  screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 """Generation Ship sites"""
@@ -467,6 +478,7 @@ type Grreport {
   voteCount: Int
   added: Boolean
   site: Bmsite
+  screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 """Guardian Ruin site"""
@@ -579,6 +591,7 @@ type Gsreport {
   voteCount: Int
   added: Boolean
   site: Bmsite
+  screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 """Guardian Structure sites"""
@@ -607,11 +620,24 @@ type Gstype {
   type: String!
 }
 
+"""Reporting for Geysers"""
 type Gyreport {
   id: ID!
   createdAt: String!
   updatedAt: String!
   systemName: String!
+  bodyName: String!
+  latitude: Float!
+  longitude: Float!
+  type: String
+  count: Int
+  cmdrName: String!
+  reportStatus: ENUM_GYREPORT_REPORTSTATUS!
+  comment: String
+  voteCount: Int
+  added: Boolean
+  site: Bmsite
+  screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 """Geyser sites"""
@@ -684,6 +710,7 @@ type Lsreport {
   voteCount: Int
   added: Boolean
   site: Bmsite
+  screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 """Lava Spout sites"""
@@ -730,6 +757,7 @@ type Msreport {
   voteCount: Int
   added: Boolean
   site: Bmsite
+  screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 """Mega-Ship sites"""
@@ -943,6 +971,7 @@ type Tbreport {
   voteCount: Int
   added: Boolean
   site: Bmsite
+  screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 """Thargoid Barnacle sites"""
@@ -1026,6 +1055,7 @@ type Twreport {
   voteCount: Int
   added: Boolean
   site: Bmsite
+  screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 """Tube Worm sites"""
