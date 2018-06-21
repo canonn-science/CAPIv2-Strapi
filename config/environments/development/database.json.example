@@ -12,7 +12,9 @@
         "password": "examplepassword"
       },
       "options": {
-        "ssl": false
+        "ssl": false,
+        "debug": true,
+        "acquireConnectionTimeout": 100000
       }
     }
   }

@@ -82,6 +82,17 @@ type Bodyatmosphere {
   body: Body
   argon: Float
   ammonia: Float
+  carbonDioxide: Float
+  hydrogen: Float
+  helium: Float
+  iron: Float
+  neon: Float
+  methane: Float
+  nitrogen: Float
+  oxygen: Float
+  silicates: Float
+  sulphurDioxide: Float
+  water: Float
 }
 
 """Material makeup of a body"""
@@ -91,6 +102,33 @@ type Bodymaterial {
   updatedAt: String!
   body: Body
   antimony: Float
+  arsenic: Float
+  boron: Float
+  cadmium: Float
+  carbon: Float
+  chromium: Float
+  germanium: Float
+  iron: Float
+  lead: Float
+  manganese: Float
+  mercury: Float
+  molybdenum: Float
+  nickel: Float
+  niobium: Float
+  phosphorus: Float
+  polonium: Float
+  rhenium: Float
+  ruthenium: Float
+  selenium: Float
+  sulphur: Float
+  technetium: Float
+  tellurium: Float
+  tin: Float
+  tungsten: Float
+  vanadium: Float
+  yttrium: Float
+  zinc: Float
+  zirconium: Float
 }
 
 """Subtype of a body"""
@@ -723,21 +761,12 @@ type Lssite {
   latitude: Float!
   longitude: Float!
   count: Int
-  type: Lstype
   verified: Boolean
   visible: Boolean
   discoveredBy: Cmdr
 }
 
-"""Type of a Lava Spout"""
-type Lstype {
-  id: ID!
-  createdAt: String!
-  updatedAt: String!
-  type: String!
-}
-
-union Morph = Bmreport | Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysubtype | Bodytype | Btreport | Btsite | Cmdr | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategories | Grcodexdata | Grobelisk | Grobeliskgroup | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsreport | Gssite | Gstype | Gyreport | Gysite | Gytype | Location | Lsreport | Lssite | Lstype | Msreport | Mssite | Mstype | Ring | Ringtype | System | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union Morph = Bmreport | Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysubtype | Bodytype | Btreport | Btsite | Cmdr | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategories | Grcodexdata | Grobelisk | Grobeliskgroup | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsreport | Gssite | Gstype | Gyreport | Gysite | Gytype | Location | Lsreport | Lssite | Msreport | Mssite | Mstype | Ring | Ringtype | System | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 """Reporting for Megaships"""
 type Msreport {
@@ -871,8 +900,6 @@ type Query {
   lsreports(sort: String, limit: Int, start: Int, where: JSON): [Lsreport]
   lssite(id: ID!): Lssite
   lssites(sort: String, limit: Int, start: Int, where: JSON): [Lssite]
-  lstype(id: ID!): Lstype
-  lstypes(sort: String, limit: Int, start: Int, where: JSON): [Lstype]
   msreport(id: ID!): Msreport
   msreports(sort: String, limit: Int, start: Int, where: JSON): [Msreport]
   mssite(id: ID!): Mssite
