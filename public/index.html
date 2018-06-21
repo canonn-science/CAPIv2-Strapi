@@ -23,7 +23,7 @@
     
       <script>
         $(function() {
-            setupLanguages(["javascript","python","bash"]);
+            setupLanguages(["examples","javascript","python","bash"]);
         });
       </script>
     
@@ -40,6 +40,8 @@
       <img src="images/logo.png">
       
         <div class="lang-selector">
+          
+              <a href="#" data-language-name="examples">examples</a>
           
               <a href="#" data-language-name="javascript">javascript</a>
           
@@ -72,7 +74,8 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Welcome to the Canonn APIv2! Our API is built to catelog and store information for the game Elite: Dangerous. Within these docs we will show you examples of how to use our data to build tools or to send data to us.</p>
+        <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p><img src="images/rd-logo.png" alt="Canonn R&amp;D Logo" title="Canonn R&amp;D"></p>
+<p>Welcome to the Canonn APIv2! Our API is built to catelog and store information for the game Elite: Dangerous. Within these docs we will show you examples of how to use our data to build tools or to send data to us.</p>
 <p>It should be noted that right now we support a limited number of “sites” and that more will be added as soon as we can.</p>
 <h2 id="Celestial"><a href="#Celestial" class="headerlink" title="Celestial"></a>Celestial</h2><p>Below you will find the different types of celestial data we support and some of our data is cached from EDSM such as the x/y/z coords in <code>Systems</code> and most of the data in <code>Bodies</code> and <code>Rings</code>.</p>
 <p>The celestial bodies are gathered in reports, additional information is pulled from EDSM and cached in our database for <code>x</code> amount of time. (Currently we do not have our script enabled to pull this data).</p>
@@ -111,7 +114,42 @@
 <li>Megaships : MS</li>
 <li>Unknown Signal Sources : USS (Note this endpoint is subject to change often)</li>
 </ul>
-<h1 id="Filters"><a href="#Filters" class="headerlink" title="Filters"></a>Filters</h1><p>Coming Soon!</p>
+<h1 id="Filters-Sort-and-Limit"><a href="#Filters-Sort-and-Limit" class="headerlink" title="Filters, Sort, and Limit"></a>Filters, Sort, and Limit</h1><p>Note that filters can only be used on <code>GET</code> requests. If you feel there is another place these can be used please file an issue on our github.</p>
+<h2 id="Filters"><a href="#Filters" class="headerlink" title="Filters"></a>Filters</h2><blockquote>
+<p>Find Systems matching a certain region:</p>
+</blockquote>
+<pre><code class="highlight plain"><span class="line">GET https://api.canonn.tech/system?systemName_contains=Pleiades Sector</span><br></code></pre>
+<blockquote>
+<p>Find Locations by type:</p>
+</blockquote>
+<pre><code class="highlight plain"><span class="line">GET https://api.canonn.tech/location?type=GR</span><br></code></pre>
+<p>Easily filter results according to fields values.</p>
+<ul>
+<li><code>=</code> : Equals</li>
+<li><code>_ne</code> : Not equals</li>
+<li><code>_lt</code> : Lower than</li>
+<li><code>_gt</code> : Greater than</li>
+<li><code>_lte</code> : Lower than or equal to</li>
+<li><code>_gte</code> : Greater than or equal to</li>
+<li><code>_contains</code> : Contains</li>
+<li><code>_containss</code> : Contains case sensitive</li>
+</ul>
+<p>You can also combine multiple filters to narrow your search, or combine them with some of the options below.</p>
+<h2 id="Sort"><a href="#Sort" class="headerlink" title="Sort"></a>Sort</h2><blockquote>
+<p>Examples of sorting</p>
+</blockquote>
+<pre><code class="highlight plain"><span class="line">GET https://api.canonn.tech/system?_sort=systemName:asc</span><br><span class="line"></span><br><span class="line">GET https://api.canonn.tech/grsite?_sort=type:desc</span><br></code></pre>
+<p>Sorting allows you to sort the response based on whatever part of the data you wish in either ascending or descending</p>
+<h2 id="Limit"><a href="#Limit" class="headerlink" title="Limit"></a>Limit</h2><blockquote>
+<p>Example of limiting the GR Reports</p>
+</blockquote>
+<pre><code class="highlight plain"><span class="line">GET https://api.canonn.tech/grrport?_limit=50</span><br></code></pre>
+<p>Limits by default are set to 100 on all <code>GET</code> requests, however if you need more data you can manually set the limit. Please be careful when doing so, as this could put a high amount of load on our servers thus causing issues for other users.</p>
+<h2 id="Start"><a href="#Start" class="headerlink" title="Start"></a>Start</h2><blockquote>
+<p>Example of paging records</p>
+</blockquote>
+<pre><code class="highlight plain"><span class="line">Grab the first &quot;page&quot;:</span><br><span class="line">GET https://api.canonn.tech/system?_start=0&amp;_limit=50</span><br><span class="line"></span><br><span class="line">Grab the second &quot;page:</span><br><span class="line">GET https://api.canonn.tech/system?_start=50&amp;_limit=50</span><br></code></pre>
+<p>Due to how our limits work, you can also grab data in “pages” by using the start option. In this case the start option allows you define the depth of the records (not by id)</p>
 <h1 id="Reporting"><a href="#Reporting" class="headerlink" title="Reporting"></a>Reporting</h1><aside class="notice"><br>Please remember to only send the data we require, all reports should be sent with the reportStatus as “pending”. Further details will be listed under each endpoint and required fields will be notated; fields labeled as “Canonn Only Use” should never be sent.<br></aside>
 
 <aside class="success"><br>All of these reporting endpoints do not require any authentication and can be used by anyone to send us data. If you have any recommendations please file a feature request on our github.<br></aside>
@@ -120,27 +158,27 @@
 
 <h2 id="Guardians-1"><a href="#Guardians-1" class="headerlink" title="Guardians"></a>Guardians</h2><h3 id="Guardian-Ruins"><a href="#Guardian-Ruins" class="headerlink" title="Guardian Ruins"></a>Guardian Ruins</h3><hr>
 <h4 id="Create-a-new-Report"><a href="#Create-a-new-Report" class="headerlink" title="Create a new Report"></a>Create a new Report</h4><p>To send a new report:</p>
-<p><code>POST https://api.canonn.technology/grreport</code></p>
+<p><code>POST https://api.canonn.tech/grreport</code></p>
 <aside class="notice">Please only send the data we ask for, see the structure docs for more info</aside>
 
 <hr>
 <h4 id="Update-an-existing-Report"><a href="#Update-an-existing-Report" class="headerlink" title="Update an existing Report"></a>Update an existing Report</h4><p>To update a report:</p>
-<p><code>PUT https://api.canonn.technology/grreport/ID</code></p>
+<p><code>PUT https://api.canonn.tech/grreport/ID</code></p>
 <aside class="notice">Replace <code>ID</code> with the report id, you also only need to send changed fields</aside><br><aside class="warning">Please only update reports that belong to you</aside>
 
 <hr>
 <h4 id="Get-a-list-of-all-reports"><a href="#Get-a-list-of-all-reports" class="headerlink" title="Get a list of all reports"></a>Get a list of all reports</h4><p>To get a list of all reports:</p>
-<p><code>GET https://api.canonn.technology/grreport</code></p>
+<p><code>GET https://api.canonn.tech/grreport</code></p>
 <aside class="notice">By default “GET” requests are limited to 100 entries, see the filters info to increase this</aside>
 
 <hr>
 <h4 id="Get-a-specific-report"><a href="#Get-a-specific-report" class="headerlink" title="Get a specific report"></a>Get a specific report</h4><p>To get a specific report by ID:</p>
-<p><code>GET https://api.canonn.technology/grreport/ID</code></p>
+<p><code>GET https://api.canonn.tech/grreport/ID</code></p>
 <aside class="notice">Replace <code>ID</code> with the report id</aside>
 
 <hr>
 <h4 id="Get-a-count-of-all-reports"><a href="#Get-a-count-of-all-reports" class="headerlink" title="Get a count of all reports"></a>Get a count of all reports</h4><p>To get a count of all the reports:</p>
-<p><code>GET https://api.canonn.technology/grreport/count</code></p>
+<p><code>GET https://api.canonn.tech/grreport/count</code></p>
 <hr>
 <h4 id="GR-Report-Structure"><a href="#GR-Report-Structure" class="headerlink" title="GR Report Structure"></a>GR Report Structure</h4><blockquote>
 <p>Example Structure in JSON</p>
@@ -243,30 +281,29 @@
 </tr>
 </tbody>
 </table>
-<hr>
 <h3 id="Guardian-Structures"><a href="#Guardian-Structures" class="headerlink" title="Guardian Structures"></a>Guardian Structures</h3><hr>
 <h4 id="Create-a-new-Report-1"><a href="#Create-a-new-Report-1" class="headerlink" title="Create a new Report"></a>Create a new Report</h4><p>To send a new report:</p>
-<p><code>POST https://api.canonn.technology/gsreport</code></p>
+<p><code>POST https://api.canonn.tech/gsreport</code></p>
 <aside class="notice">Please only send the data we ask for, see the structure docs for more info</aside>
 
 <hr>
 <h4 id="Update-an-existing-Report-1"><a href="#Update-an-existing-Report-1" class="headerlink" title="Update an existing Report"></a>Update an existing Report</h4><p>To update a report:</p>
-<p><code>PUT https://api.canonn.technology/gsreport/ID</code></p>
+<p><code>PUT https://api.canonn.tech/gsreport/ID</code></p>
 <aside class="notice">Replace <code>ID</code> with the report id, you also only need to send changed fields</aside><br><aside class="warning">Please only update reports that belong to you</aside>
 
 <hr>
 <h4 id="Get-a-list-of-all-reports-1"><a href="#Get-a-list-of-all-reports-1" class="headerlink" title="Get a list of all reports"></a>Get a list of all reports</h4><p>To get a list of all reports:</p>
-<p><code>GET https://api.canonn.technology/gsreport</code></p>
+<p><code>GET https://api.canonn.tech/gsreport</code></p>
 <aside class="notice">By default “GET” requests are limited to 100 entries, see the filters info to increase this</aside>
 
 <hr>
 <h4 id="Get-a-specific-report-1"><a href="#Get-a-specific-report-1" class="headerlink" title="Get a specific report"></a>Get a specific report</h4><p>To get a specific report by ID:</p>
-<p><code>GET https://api.canonn.technology/gsreport/ID</code></p>
+<p><code>GET https://api.canonn.tech/gsreport/ID</code></p>
 <aside class="notice">Replace <code>ID</code> with the report id</aside>
 
 <hr>
 <h4 id="Get-a-count-of-all-reports-1"><a href="#Get-a-count-of-all-reports-1" class="headerlink" title="Get a count of all reports"></a>Get a count of all reports</h4><p>To get a count of all the reports:</p>
-<p><code>GET https://api.canonn.technology/gsreport/count</code></p>
+<p><code>GET https://api.canonn.tech/gsreport/count</code></p>
 <hr>
 <h4 id="GS-Report-Structure"><a href="#GS-Report-Structure" class="headerlink" title="GS Report Structure"></a>GS Report Structure</h4><table>
 <thead>
@@ -373,27 +410,27 @@
 </table>
 <h2 id="Thargoids-1"><a href="#Thargoids-1" class="headerlink" title="Thargoids"></a>Thargoids</h2><h3 id="Thargoid-Barnacles"><a href="#Thargoid-Barnacles" class="headerlink" title="Thargoid Barnacles"></a>Thargoid Barnacles</h3><hr>
 <h4 id="Create-a-new-Report-2"><a href="#Create-a-new-Report-2" class="headerlink" title="Create a new Report"></a>Create a new Report</h4><p>To send a new report:</p>
-<p><code>POST https://api.canonn.technology/tbreport</code></p>
+<p><code>POST https://api.canonn.tech/tbreport</code></p>
 <aside class="notice">Please only send the data we ask for, see the structure docs for more info</aside>
 
 <hr>
 <h4 id="Update-an-existing-Report-2"><a href="#Update-an-existing-Report-2" class="headerlink" title="Update an existing Report"></a>Update an existing Report</h4><p>To update a report:</p>
-<p><code>PUT https://api.canonn.technology/tbreport/ID</code></p>
+<p><code>PUT https://api.canonn.tech/tbreport/ID</code></p>
 <aside class="notice">Replace <code>ID</code> with the report id, you also only need to send changed fields</aside><br><aside class="warning">Please only update reports that belong to you</aside>
 
 <hr>
 <h4 id="Get-a-list-of-all-reports-2"><a href="#Get-a-list-of-all-reports-2" class="headerlink" title="Get a list of all reports"></a>Get a list of all reports</h4><p>To get a list of all reports:</p>
-<p><code>GET https://api.canonn.technology/tbreport</code></p>
+<p><code>GET https://api.canonn.tech/tbreport</code></p>
 <aside class="notice">By default “GET” requests are limited to 100 entries, see the filters info to increase this</aside>
 
 <hr>
 <h4 id="Get-a-specific-report-2"><a href="#Get-a-specific-report-2" class="headerlink" title="Get a specific report"></a>Get a specific report</h4><p>To get a specific report by ID:</p>
-<p><code>GET https://api.canonn.technology/tbreport/ID</code></p>
+<p><code>GET https://api.canonn.tech/tbreport/ID</code></p>
 <aside class="notice">Replace <code>ID</code> with the report id</aside>
 
 <hr>
 <h4 id="Get-a-count-of-all-reports-2"><a href="#Get-a-count-of-all-reports-2" class="headerlink" title="Get a count of all reports"></a>Get a count of all reports</h4><p>To get a count of all the reports:</p>
-<p><code>GET https://api.canonn.technology/tbreport/count</code></p>
+<p><code>GET https://api.canonn.tech/tbreport/count</code></p>
 <hr>
 <h4 id="TB-Report-Structure"><a href="#TB-Report-Structure" class="headerlink" title="TB Report Structure"></a>TB Report Structure</h4><blockquote>
 <p>Example Structure in JSON</p>
@@ -503,30 +540,29 @@
 </tr>
 </tbody>
 </table>
-<hr>
 <h3 id="Thargoid-Structures"><a href="#Thargoid-Structures" class="headerlink" title="Thargoid Structures"></a>Thargoid Structures</h3><hr>
 <h4 id="Create-a-new-Report-3"><a href="#Create-a-new-Report-3" class="headerlink" title="Create a new Report"></a>Create a new Report</h4><p>To send a new report:</p>
-<p><code>POST https://api.canonn.technology/tsreport</code></p>
+<p><code>POST https://api.canonn.tech/tsreport</code></p>
 <aside class="notice">Please only send the data we ask for, see the structure docs for more info</aside>
 
 <hr>
 <h4 id="Update-an-existing-Report-3"><a href="#Update-an-existing-Report-3" class="headerlink" title="Update an existing Report"></a>Update an existing Report</h4><p>To update a report:</p>
-<p><code>PUT https://api.canonn.technology/tsreport/ID</code></p>
+<p><code>PUT https://api.canonn.tech/tsreport/ID</code></p>
 <aside class="notice">Replace <code>ID</code> with the report id, you also only need to send changed fields</aside><br><aside class="warning">Please only update reports that belong to you</aside>
 
 <hr>
 <h4 id="Get-a-list-of-all-reports-3"><a href="#Get-a-list-of-all-reports-3" class="headerlink" title="Get a list of all reports"></a>Get a list of all reports</h4><p>To get a list of all reports:</p>
-<p><code>GET https://api.canonn.technology/tsreport</code></p>
+<p><code>GET https://api.canonn.tech/tsreport</code></p>
 <aside class="notice">By default “GET” requests are limited to 100 entries, see the filters info to increase this</aside>
 
 <hr>
 <h4 id="Get-a-specific-report-3"><a href="#Get-a-specific-report-3" class="headerlink" title="Get a specific report"></a>Get a specific report</h4><p>To get a specific report by ID:</p>
-<p><code>GET https://api.canonn.technology/tsreport/ID</code></p>
+<p><code>GET https://api.canonn.tech/tsreport/ID</code></p>
 <aside class="notice">Replace <code>ID</code> with the report id</aside>
 
 <hr>
 <h4 id="Get-a-count-of-all-reports-3"><a href="#Get-a-count-of-all-reports-3" class="headerlink" title="Get a count of all reports"></a>Get a count of all reports</h4><p>To get a count of all the reports:</p>
-<p><code>GET https://api.canonn.technology/tsreport/count</code></p>
+<p><code>GET https://api.canonn.tech/tsreport/count</code></p>
 <hr>
 <h4 id="TS-Report-Structure"><a href="#TS-Report-Structure" class="headerlink" title="TS Report Structure"></a>TS Report Structure</h4><blockquote>
 <p>Example Structure in JSON</p>
@@ -629,30 +665,29 @@
 </tr>
 </tbody>
 </table>
-<hr>
 <h2 id="Biology-1"><a href="#Biology-1" class="headerlink" title="Biology"></a>Biology</h2><h3 id="Brain-Trees"><a href="#Brain-Trees" class="headerlink" title="Brain Trees"></a>Brain Trees</h3><hr>
 <h4 id="Create-a-new-Report-4"><a href="#Create-a-new-Report-4" class="headerlink" title="Create a new Report"></a>Create a new Report</h4><p>To send a new report:</p>
-<p><code>POST https://api.canonn.technology/btreport</code></p>
+<p><code>POST https://api.canonn.tech/btreport</code></p>
 <aside class="notice">Please only send the data we ask for, see the structure docs for more info</aside>
 
 <hr>
 <h4 id="Update-an-existing-Report-4"><a href="#Update-an-existing-Report-4" class="headerlink" title="Update an existing Report"></a>Update an existing Report</h4><p>To update a report:</p>
-<p><code>PUT https://api.canonn.technology/btreport/ID</code></p>
+<p><code>PUT https://api.canonn.tech/btreport/ID</code></p>
 <aside class="notice">Replace <code>ID</code> with the report id, you also only need to send changed fields</aside><br><aside class="warning">Please only update reports that belong to you</aside>
 
 <hr>
 <h4 id="Get-a-list-of-all-reports-4"><a href="#Get-a-list-of-all-reports-4" class="headerlink" title="Get a list of all reports"></a>Get a list of all reports</h4><p>To get a list of all reports:</p>
-<p><code>GET https://api.canonn.technology/btreport</code></p>
+<p><code>GET https://api.canonn.tech/btreport</code></p>
 <aside class="notice">By default “GET” requests are limited to 100 entries, see the filters info to increase this</aside>
 
 <hr>
 <h4 id="Get-a-specific-report-4"><a href="#Get-a-specific-report-4" class="headerlink" title="Get a specific report"></a>Get a specific report</h4><p>To get a specific report by ID:</p>
-<p><code>GET https://api.canonn.technology/btreport/ID</code></p>
+<p><code>GET https://api.canonn.tech/btreport/ID</code></p>
 <aside class="notice">Replace <code>ID</code> with the report id</aside>
 
 <hr>
 <h4 id="Get-a-count-of-all-reports-4"><a href="#Get-a-count-of-all-reports-4" class="headerlink" title="Get a count of all reports"></a>Get a count of all reports</h4><p>To get a count of all the reports:</p>
-<p><code>GET https://api.canonn.technology/btreport/count</code></p>
+<p><code>GET https://api.canonn.tech/btreport/count</code></p>
 <hr>
 <h4 id="BT-Report-Structure"><a href="#BT-Report-Structure" class="headerlink" title="BT Report Structure"></a>BT Report Structure</h4><blockquote>
 <p>Example Structure in JSON</p>
@@ -755,30 +790,29 @@
 </tr>
 </tbody>
 </table>
-<hr>
 <h3 id="Fungal-Gourds"><a href="#Fungal-Gourds" class="headerlink" title="Fungal Gourds"></a>Fungal Gourds</h3><hr>
 <h4 id="Create-a-new-Report-5"><a href="#Create-a-new-Report-5" class="headerlink" title="Create a new Report"></a>Create a new Report</h4><p>To send a new report:</p>
-<p><code>POST https://api.canonn.technology/fgreport</code></p>
+<p><code>POST https://api.canonn.tech/fgreport</code></p>
 <aside class="notice">Please only send the data we ask for, see the structure docs for more info</aside>
 
 <hr>
 <h4 id="Update-an-existing-Report-5"><a href="#Update-an-existing-Report-5" class="headerlink" title="Update an existing Report"></a>Update an existing Report</h4><p>To update a report:</p>
-<p><code>PUT https://api.canonn.technology/fgreport/ID</code></p>
+<p><code>PUT https://api.canonn.tech/fgreport/ID</code></p>
 <aside class="notice">Replace <code>ID</code> with the report id, you also only need to send changed fields</aside><br><aside class="warning">Please only update reports that belong to you</aside>
 
 <hr>
 <h4 id="Get-a-list-of-all-reports-5"><a href="#Get-a-list-of-all-reports-5" class="headerlink" title="Get a list of all reports"></a>Get a list of all reports</h4><p>To get a list of all reports:</p>
-<p><code>GET https://api.canonn.technology/fgreport</code></p>
+<p><code>GET https://api.canonn.tech/fgreport</code></p>
 <aside class="notice">By default “GET” requests are limited to 100 entries, see the filters info to increase this</aside>
 
 <hr>
 <h4 id="Get-a-specific-report-5"><a href="#Get-a-specific-report-5" class="headerlink" title="Get a specific report"></a>Get a specific report</h4><p>To get a specific report by ID:</p>
-<p><code>GET https://api.canonn.technology/fgreport/ID</code></p>
+<p><code>GET https://api.canonn.tech/fgreport/ID</code></p>
 <aside class="notice">Replace <code>ID</code> with the report id</aside>
 
 <hr>
 <h4 id="Get-a-count-of-all-reports-5"><a href="#Get-a-count-of-all-reports-5" class="headerlink" title="Get a count of all reports"></a>Get a count of all reports</h4><p>To get a count of all the reports:</p>
-<p><code>GET https://api.canonn.technology/fgreport/count</code></p>
+<p><code>GET https://api.canonn.tech/fgreport/count</code></p>
 <hr>
 <h4 id="FG-Report-Structure"><a href="#FG-Report-Structure" class="headerlink" title="FG Report Structure"></a>FG Report Structure</h4><blockquote>
 <p>Example Structure in JSON</p>
@@ -881,30 +915,29 @@
 </tr>
 </tbody>
 </table>
-<hr>
 <h3 id="Tube-Worms"><a href="#Tube-Worms" class="headerlink" title="Tube Worms"></a>Tube Worms</h3><hr>
 <h4 id="Create-a-new-Report-6"><a href="#Create-a-new-Report-6" class="headerlink" title="Create a new Report"></a>Create a new Report</h4><p>To send a new report:</p>
-<p><code>POST https://api.canonn.technology/twreport</code></p>
+<p><code>POST https://api.canonn.tech/twreport</code></p>
 <aside class="notice">Please only send the data we ask for, see the structure docs for more info</aside>
 
 <hr>
 <h4 id="Update-an-existing-Report-6"><a href="#Update-an-existing-Report-6" class="headerlink" title="Update an existing Report"></a>Update an existing Report</h4><p>To update a report:</p>
-<p><code>PUT https://api.canonn.technology/twreport/ID</code></p>
+<p><code>PUT https://api.canonn.tech/twreport/ID</code></p>
 <aside class="notice">Replace <code>ID</code> with the report id, you also only need to send changed fields</aside><br><aside class="warning">Please only update reports that belong to you</aside>
 
 <hr>
 <h4 id="Get-a-list-of-all-reports-6"><a href="#Get-a-list-of-all-reports-6" class="headerlink" title="Get a list of all reports"></a>Get a list of all reports</h4><p>To get a list of all reports:</p>
-<p><code>GET https://api.canonn.technology/twreport</code></p>
+<p><code>GET https://api.canonn.tech/twreport</code></p>
 <aside class="notice">By default “GET” requests are limited to 100 entries, see the filters info to increase this</aside>
 
 <hr>
 <h4 id="Get-a-specific-report-6"><a href="#Get-a-specific-report-6" class="headerlink" title="Get a specific report"></a>Get a specific report</h4><p>To get a specific report by ID:</p>
-<p><code>GET https://api.canonn.technology/twreport/ID</code></p>
+<p><code>GET https://api.canonn.tech/twreport/ID</code></p>
 <aside class="notice">Replace <code>ID</code> with the report id</aside>
 
 <hr>
 <h4 id="Get-a-count-of-all-reports-6"><a href="#Get-a-count-of-all-reports-6" class="headerlink" title="Get a count of all reports"></a>Get a count of all reports</h4><p>To get a count of all the reports:</p>
-<p><code>GET https://api.canonn.technology/twreport/count</code></p>
+<p><code>GET https://api.canonn.tech/twreport/count</code></p>
 <hr>
 <h4 id="TW-Report-Structure"><a href="#TW-Report-Structure" class="headerlink" title="TW Report Structure"></a>TW Report Structure</h4><blockquote>
 <p>Example Structure in JSON</p>
@@ -1007,30 +1040,29 @@
 </tr>
 </tbody>
 </table>
-<hr>
 <h2 id="Geology-1"><a href="#Geology-1" class="headerlink" title="Geology"></a>Geology</h2><h3 id="Bark-Mounds"><a href="#Bark-Mounds" class="headerlink" title="Bark Mounds"></a>Bark Mounds</h3><hr>
 <h4 id="Create-a-new-Report-7"><a href="#Create-a-new-Report-7" class="headerlink" title="Create a new Report"></a>Create a new Report</h4><p>To send a new report:</p>
-<p><code>POST https://api.canonn.technology/bmreport</code></p>
+<p><code>POST https://api.canonn.tech/bmreport</code></p>
 <aside class="notice">Please only send the data we ask for, see the structure docs for more info</aside>
 
 <hr>
 <h4 id="Update-an-existing-Report-7"><a href="#Update-an-existing-Report-7" class="headerlink" title="Update an existing Report"></a>Update an existing Report</h4><p>To update a report:</p>
-<p><code>PUT https://api.canonn.technology/bmreport/ID</code></p>
+<p><code>PUT https://api.canonn.tech/bmreport/ID</code></p>
 <aside class="notice">Replace <code>ID</code> with the report id, you also only need to send changed fields</aside><br><aside class="warning">Please only update reports that belong to you</aside>
 
 <hr>
 <h4 id="Get-a-list-of-all-reports-7"><a href="#Get-a-list-of-all-reports-7" class="headerlink" title="Get a list of all reports"></a>Get a list of all reports</h4><p>To get a list of all reports:</p>
-<p><code>GET https://api.canonn.technology/bmreport</code></p>
+<p><code>GET https://api.canonn.tech/bmreport</code></p>
 <aside class="notice">By default “GET” requests are limited to 100 entries, see the filters info to increase this</aside>
 
 <hr>
 <h4 id="Get-a-specific-report-7"><a href="#Get-a-specific-report-7" class="headerlink" title="Get a specific report"></a>Get a specific report</h4><p>To get a specific report by ID:</p>
-<p><code>GET https://api.canonn.technology/bmreport/ID</code></p>
+<p><code>GET https://api.canonn.tech/bmreport/ID</code></p>
 <aside class="notice">Replace <code>ID</code> with the report id</aside>
 
 <hr>
 <h4 id="Get-a-count-of-all-reports-7"><a href="#Get-a-count-of-all-reports-7" class="headerlink" title="Get a count of all reports"></a>Get a count of all reports</h4><p>To get a count of all the reports:</p>
-<p><code>GET https://api.canonn.technology/bmreport/count</code></p>
+<p><code>GET https://api.canonn.tech/bmreport/count</code></p>
 <hr>
 <h4 id="BM-Report-Structure"><a href="#BM-Report-Structure" class="headerlink" title="BM Report Structure"></a>BM Report Structure</h4><blockquote>
 <p>Example Structure in JSON</p>
@@ -1133,30 +1165,29 @@
 </tr>
 </tbody>
 </table>
-<hr>
 <h3 id="Fumaroles"><a href="#Fumaroles" class="headerlink" title="Fumaroles"></a>Fumaroles</h3><hr>
 <h4 id="Create-a-new-Report-8"><a href="#Create-a-new-Report-8" class="headerlink" title="Create a new Report"></a>Create a new Report</h4><p>To send a new report:</p>
-<p><code>POST https://api.canonn.technology/fmreport</code></p>
+<p><code>POST https://api.canonn.tech/fmreport</code></p>
 <aside class="notice">Please only send the data we ask for, see the structure docs for more info</aside>
 
 <hr>
 <h4 id="Update-an-existing-Report-8"><a href="#Update-an-existing-Report-8" class="headerlink" title="Update an existing Report"></a>Update an existing Report</h4><p>To update a report:</p>
-<p><code>PUT https://api.canonn.technology/fmreport/ID</code></p>
+<p><code>PUT https://api.canonn.tech/fmreport/ID</code></p>
 <aside class="notice">Replace <code>ID</code> with the report id, you also only need to send changed fields</aside><br><aside class="warning">Please only update reports that belong to you</aside>
 
 <hr>
 <h4 id="Get-a-list-of-all-reports-8"><a href="#Get-a-list-of-all-reports-8" class="headerlink" title="Get a list of all reports"></a>Get a list of all reports</h4><p>To get a list of all reports:</p>
-<p><code>GET https://api.canonn.technology/fmreport</code></p>
+<p><code>GET https://api.canonn.tech/fmreport</code></p>
 <aside class="notice">By default “GET” requests are limited to 100 entries, see the filters info to increase this</aside>
 
 <hr>
 <h4 id="Get-a-specific-report-8"><a href="#Get-a-specific-report-8" class="headerlink" title="Get a specific report"></a>Get a specific report</h4><p>To get a specific report by ID:</p>
-<p><code>GET https://api.canonn.technology/fmreport/ID</code></p>
+<p><code>GET https://api.canonn.tech/fmreport/ID</code></p>
 <aside class="notice">Replace <code>ID</code> with the report id</aside>
 
 <hr>
 <h4 id="Get-a-count-of-all-reports-8"><a href="#Get-a-count-of-all-reports-8" class="headerlink" title="Get a count of all reports"></a>Get a count of all reports</h4><p>To get a count of all the reports:</p>
-<p><code>GET https://api.canonn.technology/fmreport/count</code></p>
+<p><code>GET https://api.canonn.tech/fmreport/count</code></p>
 <hr>
 <h4 id="FM-Report-Structure"><a href="#FM-Report-Structure" class="headerlink" title="FM Report Structure"></a>FM Report Structure</h4><blockquote>
 <p>Example Structure in JSON</p>
@@ -1266,30 +1297,29 @@
 </tr>
 </tbody>
 </table>
-<hr>
 <h3 id="Geysers"><a href="#Geysers" class="headerlink" title="Geysers"></a>Geysers</h3><hr>
 <h4 id="Create-a-new-Report-9"><a href="#Create-a-new-Report-9" class="headerlink" title="Create a new Report"></a>Create a new Report</h4><p>To send a new report:</p>
-<p><code>POST https://api.canonn.technology/gyreport</code></p>
+<p><code>POST https://api.canonn.tech/gyreport</code></p>
 <aside class="notice">Please only send the data we ask for, see the structure docs for more info</aside>
 
 <hr>
 <h4 id="Update-an-existing-Report-9"><a href="#Update-an-existing-Report-9" class="headerlink" title="Update an existing Report"></a>Update an existing Report</h4><p>To update a report:</p>
-<p><code>PUT https://api.canonn.technology/gyreport/ID</code></p>
+<p><code>PUT https://api.canonn.tech/gyreport/ID</code></p>
 <aside class="notice">Replace <code>ID</code> with the report id, you also only need to send changed fields</aside><br><aside class="warning">Please only update reports that belong to you</aside>
 
 <hr>
 <h4 id="Get-a-list-of-all-reports-9"><a href="#Get-a-list-of-all-reports-9" class="headerlink" title="Get a list of all reports"></a>Get a list of all reports</h4><p>To get a list of all reports:</p>
-<p><code>GET https://api.canonn.technology/gyreport</code></p>
+<p><code>GET https://api.canonn.tech/gyreport</code></p>
 <aside class="notice">By default “GET” requests are limited to 100 entries, see the filters info to increase this</aside>
 
 <hr>
 <h4 id="Get-a-specific-report-9"><a href="#Get-a-specific-report-9" class="headerlink" title="Get a specific report"></a>Get a specific report</h4><p>To get a specific report by ID:</p>
-<p><code>GET https://api.canonn.technology/gyreport/ID</code></p>
+<p><code>GET https://api.canonn.tech/gyreport/ID</code></p>
 <aside class="notice">Replace <code>ID</code> with the report id</aside>
 
 <hr>
 <h4 id="Get-a-count-of-all-reports-9"><a href="#Get-a-count-of-all-reports-9" class="headerlink" title="Get a count of all reports"></a>Get a count of all reports</h4><p>To get a count of all the reports:</p>
-<p><code>GET https://api.canonn.technology/gyreport/count</code></p>
+<p><code>GET https://api.canonn.tech/gyreport/count</code></p>
 <hr>
 <h4 id="GY-Report-Structure"><a href="#GY-Report-Structure" class="headerlink" title="GY Report Structure"></a>GY Report Structure</h4><blockquote>
 <p>Example Structure in JSON</p>
@@ -1399,30 +1429,29 @@
 </tr>
 </tbody>
 </table>
-<hr>
 <h3 id="Lava-Spouts"><a href="#Lava-Spouts" class="headerlink" title="Lava Spouts"></a>Lava Spouts</h3><hr>
 <h4 id="Create-a-new-Report-10"><a href="#Create-a-new-Report-10" class="headerlink" title="Create a new Report"></a>Create a new Report</h4><p>To send a new report:</p>
-<p><code>POST https://api.canonn.technology/lsreport</code></p>
+<p><code>POST https://api.canonn.tech/lsreport</code></p>
 <aside class="notice">Please only send the data we ask for, see the structure docs for more info</aside>
 
 <hr>
 <h4 id="Update-an-existing-Report-10"><a href="#Update-an-existing-Report-10" class="headerlink" title="Update an existing Report"></a>Update an existing Report</h4><p>To update a report:</p>
-<p><code>PUT https://api.canonn.technology/lsreport/ID</code></p>
+<p><code>PUT https://api.canonn.tech/lsreport/ID</code></p>
 <aside class="notice">Replace <code>ID</code> with the report id, you also only need to send changed fields</aside><br><aside class="warning">Please only update reports that belong to you</aside>
 
 <hr>
 <h4 id="Get-a-list-of-all-reports-10"><a href="#Get-a-list-of-all-reports-10" class="headerlink" title="Get a list of all reports"></a>Get a list of all reports</h4><p>To get a list of all reports:</p>
-<p><code>GET https://api.canonn.technology/lsreport</code></p>
+<p><code>GET https://api.canonn.tech/lsreport</code></p>
 <aside class="notice">By default “GET” requests are limited to 100 entries, see the filters info to increase this</aside>
 
 <hr>
 <h4 id="Get-a-specific-report-10"><a href="#Get-a-specific-report-10" class="headerlink" title="Get a specific report"></a>Get a specific report</h4><p>To get a specific report by ID:</p>
-<p><code>GET https://api.canonn.technology/lsreport/ID</code></p>
+<p><code>GET https://api.canonn.tech/lsreport/ID</code></p>
 <aside class="notice">Replace <code>ID</code> with the report id</aside>
 
 <hr>
 <h4 id="Get-a-count-of-all-reports-10"><a href="#Get-a-count-of-all-reports-10" class="headerlink" title="Get a count of all reports"></a>Get a count of all reports</h4><p>To get a count of all the reports:</p>
-<p><code>GET https://api.canonn.technology/lsreport/count</code></p>
+<p><code>GET https://api.canonn.tech/lsreport/count</code></p>
 <hr>
 <h4 id="LS-Report-Structure"><a href="#LS-Report-Structure" class="headerlink" title="LS Report Structure"></a>LS Report Structure</h4><blockquote>
 <p>Example Structure in JSON</p>
@@ -1525,30 +1554,29 @@
 </tr>
 </tbody>
 </table>
-<hr>
 <h2 id="Orbial"><a href="#Orbial" class="headerlink" title="Orbial"></a>Orbial</h2><h3 id="Generation-Ships"><a href="#Generation-Ships" class="headerlink" title="Generation Ships"></a>Generation Ships</h3><hr>
 <h4 id="Create-a-new-Report-11"><a href="#Create-a-new-Report-11" class="headerlink" title="Create a new Report"></a>Create a new Report</h4><p>To send a new report:</p>
-<p><code>POST https://api.canonn.technology/genreport</code></p>
+<p><code>POST https://api.canonn.tech/genreport</code></p>
 <aside class="notice">Please only send the data we ask for, see the structure docs for more info</aside>
 
 <hr>
 <h4 id="Update-an-existing-Report-11"><a href="#Update-an-existing-Report-11" class="headerlink" title="Update an existing Report"></a>Update an existing Report</h4><p>To update a report:</p>
-<p><code>PUT https://api.canonn.technology/genreport/ID</code></p>
+<p><code>PUT https://api.canonn.tech/genreport/ID</code></p>
 <aside class="notice">Replace <code>ID</code> with the report id, you also only need to send changed fields</aside><br><aside class="warning">Please only update reports that belong to you</aside>
 
 <hr>
 <h4 id="Get-a-list-of-all-reports-11"><a href="#Get-a-list-of-all-reports-11" class="headerlink" title="Get a list of all reports"></a>Get a list of all reports</h4><p>To get a list of all reports:</p>
-<p><code>GET https://api.canonn.technology/genreport</code></p>
+<p><code>GET https://api.canonn.tech/genreport</code></p>
 <aside class="notice">By default “GET” requests are limited to 100 entries, see the filters info to increase this</aside>
 
 <hr>
 <h4 id="Get-a-specific-report-11"><a href="#Get-a-specific-report-11" class="headerlink" title="Get a specific report"></a>Get a specific report</h4><p>To get a specific report by ID:</p>
-<p><code>GET https://api.canonn.technology/genreport/ID</code></p>
+<p><code>GET https://api.canonn.tech/genreport/ID</code></p>
 <aside class="notice">Replace <code>ID</code> with the report id</aside>
 
 <hr>
 <h4 id="Get-a-count-of-all-reports-11"><a href="#Get-a-count-of-all-reports-11" class="headerlink" title="Get a count of all reports"></a>Get a count of all reports</h4><p>To get a count of all the reports:</p>
-<p><code>GET https://api.canonn.technology/genreport/count</code></p>
+<p><code>GET https://api.canonn.tech/genreport/count</code></p>
 <hr>
 <h4 id="GEN-Report-Structure"><a href="#GEN-Report-Structure" class="headerlink" title="GEN Report Structure"></a>GEN Report Structure</h4><blockquote>
 <p>Example Structure in JSON</p>
@@ -1651,30 +1679,29 @@
 </tr>
 </tbody>
 </table>
-<hr>
 <h3 id="Megaships"><a href="#Megaships" class="headerlink" title="Megaships"></a>Megaships</h3><hr>
 <h4 id="Create-a-new-Report-12"><a href="#Create-a-new-Report-12" class="headerlink" title="Create a new Report"></a>Create a new Report</h4><p>To send a new report:</p>
-<p><code>POST https://api.canonn.technology/msreport</code></p>
+<p><code>POST https://api.canonn.tech/msreport</code></p>
 <aside class="notice">Please only send the data we ask for, see the structure docs for more info</aside>
 
 <hr>
 <h4 id="Update-an-existing-Report-12"><a href="#Update-an-existing-Report-12" class="headerlink" title="Update an existing Report"></a>Update an existing Report</h4><p>To update a report:</p>
-<p><code>PUT https://api.canonn.technology/msreport/ID</code></p>
+<p><code>PUT https://api.canonn.tech/msreport/ID</code></p>
 <aside class="notice">Replace <code>ID</code> with the report id, you also only need to send changed fields</aside><br><aside class="warning">Please only update reports that belong to you</aside>
 
 <hr>
 <h4 id="Get-a-list-of-all-reports-12"><a href="#Get-a-list-of-all-reports-12" class="headerlink" title="Get a list of all reports"></a>Get a list of all reports</h4><p>To get a list of all reports:</p>
-<p><code>GET https://api.canonn.technology/msreport</code></p>
+<p><code>GET https://api.canonn.tech/msreport</code></p>
 <aside class="notice">By default “GET” requests are limited to 100 entries, see the filters info to increase this</aside>
 
 <hr>
 <h4 id="Get-a-specific-report-12"><a href="#Get-a-specific-report-12" class="headerlink" title="Get a specific report"></a>Get a specific report</h4><p>To get a specific report by ID:</p>
-<p><code>GET https://api.canonn.technology/msreport/ID</code></p>
+<p><code>GET https://api.canonn.tech/msreport/ID</code></p>
 <aside class="notice">Replace <code>ID</code> with the report id</aside>
 
 <hr>
 <h4 id="Get-a-count-of-all-reports-12"><a href="#Get-a-count-of-all-reports-12" class="headerlink" title="Get a count of all reports"></a>Get a count of all reports</h4><p>To get a count of all the reports:</p>
-<p><code>GET https://api.canonn.technology/msreport/count</code></p>
+<p><code>GET https://api.canonn.tech/msreport/count</code></p>
 <hr>
 <h4 id="MS-Report-Structure"><a href="#MS-Report-Structure" class="headerlink" title="MS Report Structure"></a>MS Report Structure</h4><blockquote>
 <p>Example Structure in JSON</p>
@@ -1891,6 +1918,8 @@
       <div class="dark-box">
         
           <div class="lang-selector">
+            
+                <a href="#" data-language-name="examples">examples</a>
             
                 <a href="#" data-language-name="javascript">javascript</a>
             
