@@ -65,7 +65,15 @@
       "type": "boolean"
     },
     "site": {
-      "model": "bmsite"
+      "model": "grsite"
+    },
+    "grobeliskgroupreport": {
+      "collection": "grobeliskgroupreport",
+      "via": "grreport"
+    },
+    "grobeliskreport": {
+      "collection": "grobeliskreport",
+      "via": "grreport"
     }
   }
 }

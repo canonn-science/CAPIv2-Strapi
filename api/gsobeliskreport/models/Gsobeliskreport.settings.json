@@ -1,0 +1,22 @@
+{
+  "connection": "default",
+  "collectionName": "gsobeliskreports",
+  "info": {
+    "name": "gsobeliskreport",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "gsreport": {
+      "model": "gsreport",
+      "via": "gsobeliskreport"
+    },
+    "gsobelisk": {
+      "model": "gsobelisk"
+    }
+  }
+}

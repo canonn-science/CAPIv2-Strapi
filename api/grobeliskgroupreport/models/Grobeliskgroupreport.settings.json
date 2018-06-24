@@ -1,0 +1,22 @@
+{
+  "connection": "default",
+  "collectionName": "grobeliskgroupreports",
+  "info": {
+    "name": "grobeliskgroupreport",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "grreport": {
+      "model": "grreport",
+      "via": "grobeliskgroupreport"
+    },
+    "grobeliskgroup": {
+      "model": "grobeliskgroup"
+    }
+  }
+}

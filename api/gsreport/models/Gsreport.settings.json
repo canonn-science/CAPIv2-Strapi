@@ -68,7 +68,15 @@
       "type": "boolean"
     },
     "site": {
-      "model": "bmsite"
+      "model": "gssite"
+    },
+    "gsobeliskgroupreport": {
+      "collection": "gsobeliskgroupreport",
+      "via": "gsreport"
+    },
+    "gsobeliskreport": {
+      "collection": "gsobeliskreport",
+      "via": "gsreport"
     }
   }
 }

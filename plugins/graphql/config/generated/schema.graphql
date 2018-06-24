@@ -162,7 +162,7 @@ type Btreport {
   comment: String
   voteCount: Int
   added: Boolean
-  site: Bmsite
+  site: Btsite
   screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
@@ -337,7 +337,7 @@ type Fgreport {
   comment: String
   voteCount: Int
   added: Boolean
-  site: Bmsite
+  site: Fgsite
   screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
@@ -372,7 +372,7 @@ type Fmreport {
   comment: String
   voteCount: Int
   added: Boolean
-  site: Bmsite
+  site: Fmsite
   screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
@@ -406,6 +406,7 @@ type Genreport {
   createdAt: String!
   updatedAt: String!
   systemName: String!
+  orbitBody: String
   shipName: String!
   directionSystem: String
   distance: Float
@@ -414,7 +415,7 @@ type Genreport {
   comment: String
   voteCount: Int
   added: Boolean
-  site: Bmsite
+  site: Gensite
   screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
@@ -500,6 +501,22 @@ type Grobeliskgroup {
   amount: Int!
 }
 
+type Grobeliskgroupreport {
+  id: ID!
+  createdAt: String!
+  updatedAt: String!
+  grreport: Grreport
+  grobeliskgroup: Grobeliskgroup
+}
+
+type Grobeliskreport {
+  id: ID!
+  createdAt: String!
+  updatedAt: String!
+  grreport: Grreport
+  grobelisk: Grobelisk
+}
+
 """Reporting for Guardian Ruins"""
 type Grreport {
   id: ID!
@@ -515,8 +532,10 @@ type Grreport {
   comment: String
   voteCount: Int
   added: Boolean
-  site: Bmsite
+  site: Grsite
   screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  grobeliskgroupreport(sort: String, limit: Int, start: Int, where: JSON): [Grobeliskgroupreport]
+  grobeliskreport(sort: String, limit: Int, start: Int, where: JSON): [Grobeliskreport]
 }
 
 """Guardian Ruin site"""
@@ -613,6 +632,22 @@ type Gsobeliskgroup {
   amount: Int!
 }
 
+type Gsobeliskgroupreport {
+  id: ID!
+  createdAt: String!
+  updatedAt: String!
+  gsreport: Gsreport
+  gsobeliskgroup: Gsobeliskgroup
+}
+
+type Gsobeliskreport {
+  id: ID!
+  createdAt: String!
+  updatedAt: String!
+  gsreport: Gsreport
+  gsobelisk: Gsobelisk
+}
+
 """Reporting for Guardian Structures"""
 type Gsreport {
   id: ID!
@@ -628,8 +663,10 @@ type Gsreport {
   comment: String
   voteCount: Int
   added: Boolean
-  site: Bmsite
+  site: Gssite
   screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  gsobeliskgroupreport(sort: String, limit: Int, start: Int, where: JSON): [Gsobeliskgroupreport]
+  gsobeliskreport(sort: String, limit: Int, start: Int, where: JSON): [Gsobeliskreport]
 }
 
 """Guardian Structure sites"""
@@ -674,7 +711,7 @@ type Gyreport {
   comment: String
   voteCount: Int
   added: Boolean
-  site: Bmsite
+  site: Gysite
   screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
@@ -740,14 +777,13 @@ type Lsreport {
   bodyName: String!
   latitude: Float!
   longitude: Float!
-  type: String
   count: Int
   cmdrName: String!
   reportStatus: ENUM_LSREPORT_REPORTSTATUS!
   comment: String
   voteCount: Int
   added: Boolean
-  site: Bmsite
+  site: Lssite
   screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
@@ -766,7 +802,7 @@ type Lssite {
   discoveredBy: Cmdr
 }
 
-union Morph = Bmreport | Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysubtype | Bodytype | Btreport | Btsite | Cmdr | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategories | Grcodexdata | Grobelisk | Grobeliskgroup | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsreport | Gssite | Gstype | Gyreport | Gysite | Gytype | Location | Lsreport | Lssite | Msreport | Mssite | Mstype | Ring | Ringtype | System | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union Morph = Bmreport | Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysubtype | Bodytype | Btreport | Btsite | Cmdr | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategories | Grcodexdata | Grobelisk | Grobeliskgroup | Grobeliskgroupreport | Grobeliskreport | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsobeliskgroupreport | Gsobeliskreport | Gsreport | Gssite | Gstype | Gyreport | Gysite | Gytype | Location | Lsreport | Lssite | Msreport | Mssite | Mstype | Ring | Ringtype | System | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 """Reporting for Megaships"""
 type Msreport {
@@ -774,6 +810,7 @@ type Msreport {
   createdAt: String!
   updatedAt: String!
   systemName: String!
+  orbitBody: String
   shipName: String!
   shipTag: String
   type: String
@@ -785,7 +822,7 @@ type Msreport {
   comment: String
   voteCount: Int
   added: Boolean
-  site: Bmsite
+  site: Mssite
   screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
@@ -862,6 +899,10 @@ type Query {
   grobelisks(sort: String, limit: Int, start: Int, where: JSON): [Grobelisk]
   grobeliskgroup(id: ID!): Grobeliskgroup
   grobeliskgroups(sort: String, limit: Int, start: Int, where: JSON): [Grobeliskgroup]
+  grobeliskgroupreport(id: ID!): Grobeliskgroupreport
+  grobeliskgroupreports(sort: String, limit: Int, start: Int, where: JSON): [Grobeliskgroupreport]
+  grobeliskreport(id: ID!): Grobeliskreport
+  grobeliskreports(sort: String, limit: Int, start: Int, where: JSON): [Grobeliskreport]
   grreport(id: ID!): Grreport
   grreports(sort: String, limit: Int, start: Int, where: JSON): [Grreport]
   grsite(id: ID!): Grsite
@@ -882,6 +923,10 @@ type Query {
   gsobelisks(sort: String, limit: Int, start: Int, where: JSON): [Gsobelisk]
   gsobeliskgroup(id: ID!): Gsobeliskgroup
   gsobeliskgroups(sort: String, limit: Int, start: Int, where: JSON): [Gsobeliskgroup]
+  gsobeliskgroupreport(id: ID!): Gsobeliskgroupreport
+  gsobeliskgroupreports(sort: String, limit: Int, start: Int, where: JSON): [Gsobeliskgroupreport]
+  gsobeliskreport(id: ID!): Gsobeliskreport
+  gsobeliskreports(sort: String, limit: Int, start: Int, where: JSON): [Gsobeliskreport]
   gsreport(id: ID!): Gsreport
   gsreports(sort: String, limit: Int, start: Int, where: JSON): [Gsreport]
   gssite(id: ID!): Gssite
@@ -997,7 +1042,7 @@ type Tbreport {
   comment: String
   voteCount: Int
   added: Boolean
-  site: Bmsite
+  site: Tbsite
   screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
@@ -1040,7 +1085,7 @@ type Tsreport {
   comment: String
   voteCount: Int
   added: Boolean
-  site: Bmsite
+  site: Tssite
 }
 
 """Thargoid Structure sites"""
@@ -1081,7 +1126,7 @@ type Twreport {
   comment: String
   voteCount: Int
   added: Boolean
-  site: Bmsite
+  site: Twsite
   screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
