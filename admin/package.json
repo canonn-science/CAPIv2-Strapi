@@ -1,26 +1,26 @@
 {
-  "_from": "strapi-admin@3.0.0-alpha.12.5",
-  "_id": "strapi-admin@3.0.0-alpha.12.5",
+  "_from": "strapi-admin@3.0.0-alpha.12.6",
+  "_id": "strapi-admin@3.0.0-alpha.12.6",
   "_inBundle": false,
-  "_integrity": "sha512-cxQK1kU/0WMpBimmzK0f4IXcO7AuR1ORIWmWizm0WLr8/TOVNJFMQ5u3+bXL6KAQ/yAMuH00GXA1LBQ1EsIRYw==",
+  "_integrity": "sha512-PFvdVgvbYHXi2VSAEVjQsy3s3lQB5OWm3MaomMQv16WTBnr/Q002d0uKoZRbr+8Lp2J2SxVQtP65EF1Nm1z0ig==",
   "_location": "/strapi/strapi-admin",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "strapi-admin@3.0.0-alpha.12.5",
+    "raw": "strapi-admin@3.0.0-alpha.12.6",
     "name": "strapi-admin",
     "escapedName": "strapi-admin",
-    "rawSpec": "3.0.0-alpha.12.5",
+    "rawSpec": "3.0.0-alpha.12.6",
     "saveSpec": null,
-    "fetchSpec": "3.0.0-alpha.12.5"
+    "fetchSpec": "3.0.0-alpha.12.6"
   },
   "_requiredBy": [
     "/strapi/strapi-generate-admin"
   ],
-  "_resolved": "https://registry.npmjs.org/strapi-admin/-/strapi-admin-3.0.0-alpha.12.5.tgz",
-  "_shasum": "f07b5be275cb9d92e68eb62cc01d6788466f9e1e",
-  "_spec": "strapi-admin@3.0.0-alpha.12.5",
+  "_resolved": "https://registry.npmjs.org/strapi-admin/-/strapi-admin-3.0.0-alpha.12.6.tgz",
+  "_shasum": "b6b3e57c1a08765ac1f715926461340a53599310",
+  "_spec": "strapi-admin@3.0.0-alpha.12.6",
   "_where": "/usr/lib/node_modules/strapi/node_modules/strapi-generate-admin",
   "author": {
     "name": "Strapi"
@@ -38,8 +38,8 @@
   "description": "Strapi Admin",
   "devDependencies": {
     "sanitize.css": "^4.1.0",
-    "strapi-helper-plugin": "3.0.0-alpha.12.5",
-    "strapi-utils": "3.0.0-alpha.12.5"
+    "strapi-helper-plugin": "3.0.0-alpha.12.6",
+    "strapi-utils": "3.0.0-alpha.12.6"
   },
   "engines": {
     "node": ">= 9.0.0",
@@ -75,5 +75,5 @@
     "start": "node ./node_modules/strapi-helper-plugin/node_modules/.bin/cross-env NODE_ENV=development PORT=4000 IS_ADMIN=true node ./node_modules/strapi-helper-plugin/lib/server",
     "test": "echo \"Error: no test specified\""
   },
-  "version": "3.0.0-alpha.12.5"
+  "version": "3.0.0-alpha.12.6"
 }

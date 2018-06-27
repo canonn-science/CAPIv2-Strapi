@@ -1,0 +1,34 @@
+{
+  "connection": "default",
+  "collectionName": "gscodexdata",
+  "info": {
+    "name": "gscodexdata",
+    "description": "Data entires received at a Guardian Structure site"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "gsCodexCategory": {
+      "model": "gscodexcategory"
+    },
+    "gsPrimaryArtifact": {
+      "model": "gsartifact"
+    },
+    "gsSecondaryArtifact": {
+      "model": "gsartifact"
+    },
+    "codexNumber": {
+      "min": 1,
+      "type": "integer",
+      "required": true
+    },
+    "text": {
+      "unique": true,
+      "type": "text",
+      "required": true
+    }
+  }
+}

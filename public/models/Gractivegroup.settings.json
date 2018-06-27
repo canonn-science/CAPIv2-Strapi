@@ -1,0 +1,23 @@
+{
+  "connection": "default",
+  "collectionName": "gractivegroups",
+  "info": {
+    "name": "gractivegroup",
+    "description": "Active groups of Obelisks at a Guardian Ruins site"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "grSite": {
+      "model": "grsite",
+      "via": "activeGroups"
+    },
+    "activeGroup": {
+      "model": "grobeliskgroup",
+      "dominant": true
+    }
+  }
+}

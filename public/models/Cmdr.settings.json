@@ -1,0 +1,20 @@
+{
+  "connection": "default",
+  "collectionName": "cmdrs",
+  "info": {
+    "name": "cmdr",
+    "description": "CMDRs who have discovered sites"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "cmdrName": {
+      "unique": true,
+      "type": "string",
+      "required": true
+    }
+  }
+}

@@ -1,12 +1,14 @@
-# Canonn API v2 - Development (CAPIv2)
+# Canonn API v2 - (CAPIv2)
 
 # Table of Contents
 
 <!-- TOC -->
 
-- [Canonn API v2 - Development (CAPIv2)](#canonn-api-v2---development-capiv2)
+- [Canonn API v2 - (CAPIv2)](#canonn-api-v2---capiv2)
 - [Table of Contents](#table-of-contents)
 - [Intro](#intro)
+    - [Current Version](#current-version)
+- [API Documentation](#api-documentation)
 - [Prerequisites](#prerequisites)
     - [Installing Git, Node v10, and NPM v6](#installing-git-node-v10-and-npm-v6)
     - [Update NPM to the latest version](#update-npm-to-the-latest-version)
@@ -18,9 +20,9 @@
     - [Clone the API](#clone-the-api)
     - [Enter the directory and install](#enter-the-directory-and-install)
     - [Create the Dev database.json](#create-the-dev-databasejson)
-    - [Start CAPIv2-Dev for the first time](#start-capiv2-dev-for-the-first-time)
+    - [Start CAPIv2 for the first time](#start-capiv2-for-the-first-time)
     - [Create the Admin User](#create-the-admin-user)
-    - [Running CAPIv2-Dev as a service](#running-capiv2-dev-as-a-service)
+    - [Running CAPIv2 as a service](#running-capiv2-as-a-service)
 - [Seed files for testing](#seed-files-for-testing)
 
 <!-- /TOC -->
@@ -29,31 +31,41 @@
 
 The Canonn APIv2 is designed to handle all our current science projects. Currently the following sites are planned to be implemented in the inital version:
 
-- Bark Mounds (BM)
-- Brain Trees (BT)
-- Fungal Gourds (FG)
-- Fumaroles (FM)
-- Generation Ships (GEN)
-- Guardian Ruins (GR)
-- Guardian Structures (GS)
-- Geysers (GY)
-- Lava Spouts (LS)
-- Megaships (MS)
-- Thargoid Barnacles (TB)
-- Thargoid Structures (TS)
-- Tubeworms (TW)
-- Unknown Signal Sources (USS)
+* Bark Mounds (BM)
+* Brain Trees (BT)
+* Fungal Gourds (FG)
+* Fumaroles (FM)
+* Generation Ships (GEN)
+* Guardian Ruins (GR)
+  * Guardian Ruins Active Obelisks
+* Guardian Structures (GS)
+  * Guardian Structures Active Obelisks
+* Geysers (GY)
+* Hyperdictions (HD) - **Planned v2.0.7**
+* Lava Spouts (LS)
+* Megaships (MS)
+* Thargoid Barnacles (TB)
+* Thargoid Structures (TS)
+* Tubeworms (TW)
+* Unknown Signal Sources (USS)
 
 Also we are tracking the following:
 
 * Systems
-  * X/Y/Z and Locked status pulled from EDSM (To-Do)
+  * X/Y/Z and Locked status pulled from EDSM - **Planned v2.1.0**
 * Bodies
-  * Atmosphere composition (From EDSM)
-  * Material composition (From EDSM)
-  * All other EDSM body metrics
+  * Atmosphere composition (From EDSM) - **Planned v2.1.0**
+  * Material composition (From EDSM) - **Planned v2.1.0**
+  * All other body metrics (From EDSM) - **Planned v2.1.0**
 * Rings (Currently don't have any use, but in case future data is needed)
 
+## Current Version
+
+The current version of the CAPIv2 is `v2.0.6` and is still in active development and testing. If you would like to contribute please PM DMehaffy on discord `DMehaffy#1337`
+
+# API Documentation
+
+A static copy of our docs is located in the `/public` folder, you can view the progress of this documentation on our Docs repo here: https://github.com/canonn-science/CAPIv2-Docs
 
 # Prerequisites
 
@@ -63,7 +75,7 @@ You will need the following:
 - Node v10 or above
 - NPM v6 or above
 - Node Pm2 (For running API as a service)
-- Strapi Alpha v12.2
+- Strapi Alpha v12.5
 - MariaDB 10.2 or above
 
 ## Installing Git, Node v10, and NPM v6
@@ -77,10 +89,12 @@ curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 Then install Git, Node, and NPM:
 
 `
-sudo apt-get install -y nodejs git
+sudo apt-get install -y nodejs git build-essential
 `
 
 ## Update NPM to the latest version
+
+**Not required with recent NodeJS v10**
 
 Run the following to update NPM from v5 to v6:
 
@@ -98,7 +112,7 @@ sudo npm install pm2 -g
 
 ## Install Strapi Alpha Latest
 
-Run the following to install Strapi Alpha (Current version is Alpha.12.2):
+Run the following to install Strapi Alpha (Current version is Alpha.12.5):
 
 `
 sudo npm i strapi@alpha -g
@@ -161,44 +175,33 @@ mysql -u root -p
 Then create the database and user:
 
 ```
-create database capi;
-create user 'capisystem'@'localhost' identified by 'YourPasswordHere';
-grant all priviledges on capi.* to 'capisystem'@'localhost';
+create database capiv2;
+create user 'capiv2system'@'localhost' identified by 'YourPasswordHere';
+grant all priviledges on capiv2.* to 'capiv2system'@'localhost';
 ```
 
-After this you should have the following database `capi` with the user `capisystem` and a password for use with Strapi.
+After this you should have the following database `capiv2` with the user `capiv2system` and a password for use with Strapi.
 
 # Clone the CAPIv2-Strapi project and Setup
 
-Now that we have the database we can clone the API and install it, we will use `/srv/CAPI/CAPIv2-Dev` but you can install it anywhere.
+Now that we have the database we can clone the API and install it, we will use `/srv/CAPI/CAPIv2` but you can install it anywhere.
 
 ## Clone the API
 
-Lets create our project directory and clone the CAPIv2 Dev Build
+Lets create our project directory and clone the CAPIv2 Build
 
 `
 sudo mkdir /srv/CAPI && sudo chown YourUserName:YourUserGroup /srv/CAPI
 `
 
 `
-cd /srv/CAPI && git clone https://github.com/canonn-science/CAPIv2-Strapi.git CAPIv2-Dev
+cd /srv/CAPI && git clone https://github.com/canonn-science/CAPIv2-Strapi.git CAPIv2
 `
-
-### Make sure you are running the Development version
-
-Due to our development process please do further development in the dev branch, to switch branches we need to create a new local branch and attach it to the origin branch:
-
-```
-cd /srv/CAPI
-git fetch
-git branch development origin/development 
-git pull
-```
 
 ## Enter the directory and install
 
 `
-cd /srv/CAPI/CAPIv2-Dev && npm install
+cd /srv/CAPI/CAPIv2 && npm install
 `
 
 **Note this may take a while**
@@ -226,7 +229,7 @@ npm install sendmail graphql graphql-tools graphql-type-json stream-to-array jso
 
 In order for strapi to talk to the MariaDB database we setup you will need to copy and modify the following file:
 
-`cp /srv/CAPI/CAPIv2-Dev/config/environments/development/database.json.example /srv/CAPI/CAPIv2-Dev/config/environments/development/database.json
+`cp /srv/CAPI/CAPIv2/config/environments/development/database.json.example /srv/CAPI/CAPIv2/config/environments/development/database.json
 `
 
 The example config is also down below, you will just need to modify the Database, User, and password you setup:
@@ -246,7 +249,8 @@ The example config is also down below, you will just need to modify the Database
         "password": "examplepassword"
       },
       "options": {
-        "ssl": false
+        "ssl": false,
+        "acquireConnectionTimeout": 100000
       }
     }
   }
@@ -259,21 +263,22 @@ Optionally you can add database debug to make sure everything starts up smooth:
       },
       "options": {
         "ssl": false,
-        "debug": true
+        "debug": true,
+        "acquireConnectionTimeout": 100000
       }
 ```
 
-## Start CAPIv2-Dev for the first time
+## Start CAPIv2 for the first time
 
 Once it has finished setting up, you can start it once in order to create your admin user:
 
 ```
-cd /srv/CAPI/CAPIv2-Dev && strapi start
+cd /srv/CAPI/CAPIv2 && strapi start
 ```
 
 **Note this may take a while, if you hit any issues with bookshelf taking to long, increase the hook time in the file below:**
 
-`nano /srv/CAPI/CAPIv2-Dev/config/hook.json`
+`nano /srv/CAPI/CAPIv2/config/hook.json`
 
 ```
 {
@@ -290,18 +295,24 @@ cd /srv/CAPI/CAPIv2-Dev && strapi start
 
 ## Create the Admin User
 
-After strapi has started you can visit `http://localhost:1337` if you are on the machine, else you can change `localhost` to your servers IP.
+After strapi has started you can visit `http://localhost:1337` if you are on the machine, else you can change `localhost` to your servers IP. **Note that doing this on the current version will take you to our docs page located in the /public folder**
 
 Currently there is no public frontend, we will however replace this in the future before public release. To create your user go to `http://localhost:1337/admin`
 
-## Running CAPIv2-Dev as a service
+## Running CAPIv2 as a service
 
 To run strapi as a service, a change was made in the package.json, and you have installed Pm2 in a previous step. You will need to navigate to the directory the API is cloned into and run the following:
 
 `
-pm2 start capidev -- start
+NODE_ENV=development pm2 start strapi --no-pmx --name="capiv2" -- start
 `
+
+Alternatively you can modify the `NODE_ENV` for staging or production use
+
+Note you will need to also create the `database.json` located in `config/enviroments/staging` or `config/enviroments/production`
 
 # Seed files for testing
 
-Seed files will be stored in CSV format in the directory `seedFiles` (currently they are not in the repo, but will be added soon)
+Seed files will be stored in CSV format in the directory `seed_files`
+
+We will also include a .sql export of the development database which will include all of the .csv exports including a single admin user called `canonntest` using the password `canonntest`. Permissions have been modified to allow count, find, and findone on all endpoints. As well as adding create and update on the report endpoints.

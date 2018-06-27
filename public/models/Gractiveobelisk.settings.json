@@ -1,0 +1,22 @@
+{
+  "connection": "default",
+  "collectionName": "gractiveobelisks",
+  "info": {
+    "name": "gractiveobelisk",
+    "description": "Active Obeliskss at a Guardian Ruin site"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "grSite": {
+      "model": "grsite",
+      "via": "activeObelisks"
+    },
+    "activeObelisk": {
+      "model": "grobelisk"
+    }
+  }
+}
