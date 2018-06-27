@@ -7,6 +7,7 @@
 - [Canonn API v2 - (CAPIv2)](#canonn-api-v2---capiv2)
 - [Table of Contents](#table-of-contents)
 - [Intro](#intro)
+    - [Current Version](#current-version)
 - [API Documentation](#api-documentation)
 - [Prerequisites](#prerequisites)
     - [Installing Git, Node v10, and NPM v6](#installing-git-node-v10-and-npm-v6)
@@ -36,11 +37,11 @@ The Canonn APIv2 is designed to handle all our current science projects. Current
 * Fumaroles (FM)
 * Generation Ships (GEN)
 * Guardian Ruins (GR)
-  * Guardian Ruins Active Obelisks - **Reporting planned v2.0.6**
+  * Guardian Ruins Active Obelisks
 * Guardian Structures (GS)
-  * Guardian Structures Active Obelisks - **Reporting planned v2.0.6**
+  * Guardian Structures Active Obelisks
 * Geysers (GY)
-* Hyperdictions (HD) - **Planned v2.0.6**
+* Hyperdictions (HD) - **Planned v2.0.7**
 * Lava Spouts (LS)
 * Megaships (MS)
 * Thargoid Barnacles (TB)
@@ -57,6 +58,10 @@ Also we are tracking the following:
   * Material composition (From EDSM) - **Planned v2.1.0**
   * All other body metrics (From EDSM) - **Planned v2.1.0**
 * Rings (Currently don't have any use, but in case future data is needed)
+
+## Current Version
+
+The current version of the CAPIv2 is `v2.0.6` and is still in active development and testing. If you would like to contribute please PM DMehaffy on discord `DMehaffy#1337`
 
 # API Documentation
 

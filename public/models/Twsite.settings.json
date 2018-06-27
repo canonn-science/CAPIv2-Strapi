@@ -1,0 +1,47 @@
+{
+  "connection": "default",
+  "collectionName": "twsites",
+  "info": {
+    "name": "twsite",
+    "description": "Tube Worm sites"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "location": {
+      "model": "location",
+      "via": "twSite"
+    },
+    "siteID": {
+      "unique": true,
+      "min": 1,
+      "type": "integer",
+      "required": true
+    },
+    "latitude": {
+      "type": "float",
+      "required": true
+    },
+    "longitude": {
+      "type": "float",
+      "required": true
+    },
+    "count": {
+      "type": "integer"
+    },
+    "verified": {
+      "type": "boolean",
+      "required": true
+    },
+    "visible": {
+      "default": true,
+      "type": "boolean"
+    },
+    "discoveredBy": {
+      "model": "cmdr"
+    }
+  }
+}

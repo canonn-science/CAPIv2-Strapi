@@ -1,0 +1,22 @@
+{
+  "connection": "default",
+  "collectionName": "gsactiveobelisks",
+  "info": {
+    "name": "gsactiveobelisk",
+    "description": "Active Obeliskss at a Guardian Structure site"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "gsSite": {
+      "model": "gssite",
+      "via": "activeObelisks"
+    },
+    "gsObelisk": {
+      "model": "gsobelisk"
+    }
+  }
+}

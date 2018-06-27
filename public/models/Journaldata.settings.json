@@ -1,0 +1,19 @@
+{
+  "connection": "default",
+  "collectionName": "journaldata",
+  "info": {
+    "name": "journaldata",
+    "description": "Raw journal dumps"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "jsonData": {
+      "type": "json",
+      "required": true
+    }
+  }
+}

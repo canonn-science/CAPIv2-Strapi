@@ -1,0 +1,46 @@
+{
+  "connection": "default",
+  "collectionName": "tssites",
+  "info": {
+    "name": "tssite",
+    "description": "Thargoid Structure sites"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "location": {
+      "model": "location",
+      "via": "tsSite"
+    },
+    "siteID": {
+      "unique": true,
+      "min": 1,
+      "type": "integer",
+      "required": true
+    },
+    "latitude": {
+      "type": "float",
+      "required": true
+    },
+    "longitude": {
+      "type": "float",
+      "required": true
+    },
+    "status": {
+      "model": "tsstatus"
+    },
+    "verified": {
+      "type": "boolean"
+    },
+    "visible": {
+      "default": true,
+      "type": "boolean"
+    },
+    "discoveredBy": {
+      "model": "cmdr"
+    }
+  }
+}

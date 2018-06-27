@@ -1,0 +1,39 @@
+{
+  "connection": "default",
+  "collectionName": "gensites",
+  "info": {
+    "name": "gensite",
+    "description": "Generation Ship sites"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "location": {
+      "model": "location",
+      "via": "genSite"
+    },
+    "siteID": {
+      "unique": true,
+      "min": 1,
+      "type": "integer",
+      "required": true
+    },
+    "shipName": {
+      "unique": true,
+      "type": "string",
+      "required": true
+    },
+    "directionSystem": {
+      "model": "system"
+    },
+    "distance": {
+      "type": "float"
+    },
+    "discoveredBy": {
+      "model": "cmdr"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "connection": "default",
+  "collectionName": "fgsites",
+  "info": {
+    "name": "fgsite",
+    "description": "Fungal Gourd sites"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "location": {
+      "model": "location",
+      "via": "fgSite"
+    },
+    "siteID": {
+      "unique": true,
+      "min": 1,
+      "type": "integer",
+      "required": true
+    },
+    "latitude": {
+      "type": "float",
+      "required": true
+    },
+    "longitude": {
+      "type": "float",
+      "required": true
+    },
+    "count": {
+      "min": 1,
+      "type": "integer"
+    },
+    "verified": {
+      "type": "boolean"
+    },
+    "visible": {
+      "default": true,
+      "type": "boolean"
+    },
+    "discoveredBy": {
+      "model": "cmdr"
+    }
+  }
+}

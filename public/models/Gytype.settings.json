@@ -1,0 +1,20 @@
+{
+  "connection": "default",
+  "collectionName": "gytypes",
+  "info": {
+    "name": "gytype",
+    "description": "Type of a Geyser"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": false,
+    "comment": ""
+  },
+  "attributes": {
+    "type": {
+      "unique": true,
+      "type": "string",
+      "required": true
+    }
+  }
+}

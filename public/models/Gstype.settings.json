@@ -1,0 +1,20 @@
+{
+  "connection": "default",
+  "collectionName": "gstypes",
+  "info": {
+    "name": "gstype",
+    "description": "Type of a Guardian Structures site"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": false,
+    "comment": ""
+  },
+  "attributes": {
+    "type": {
+      "unique": true,
+      "type": "string",
+      "required": true
+    }
+  }
+}

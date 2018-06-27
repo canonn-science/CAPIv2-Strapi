@@ -1,0 +1,20 @@
+{
+  "connection": "default",
+  "collectionName": "fmtypes",
+  "info": {
+    "name": "fmtype",
+    "description": "Type of Fumarole"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": false,
+    "comment": ""
+  },
+  "attributes": {
+    "type": {
+      "unique": true,
+      "type": "string",
+      "required": true
+    }
+  }
+}
