@@ -9,8 +9,9 @@ type Bmreport {
   longitude: Float!
   count: Int
   cmdrName: String!
+  cmdrComment: String
   reportStatus: ENUM_BMREPORT_REPORTSTATUS!
-  comment: String
+  reportComment: String
   voteCount: Int
   added: Boolean
   site: Bmsite
@@ -134,16 +135,12 @@ type Bodymaterial {
 """Subtype of a body"""
 type Bodysubtype {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
   subtype: String!
 }
 
 """Type of a body"""
 type Bodytype {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
   type: String!
 }
 
@@ -158,8 +155,9 @@ type Btreport {
   longitude: Float!
   count: Int
   cmdrName: String!
+  cmdrComment: String
   reportStatus: ENUM_BTREPORT_REPORTSTATUS!
-  comment: String
+  reportComment: String
   voteCount: Int
   added: Boolean
   site: Btsite
@@ -191,6 +189,7 @@ type Cmdr {
 
 enum ENUM_BMREPORT_REPORTSTATUS {
   pending
+  updated
   accepted
   declined
   issue
@@ -198,6 +197,7 @@ enum ENUM_BMREPORT_REPORTSTATUS {
 
 enum ENUM_BTREPORT_REPORTSTATUS {
   pending
+  updated
   accepted
   declined
   issue
@@ -205,6 +205,7 @@ enum ENUM_BTREPORT_REPORTSTATUS {
 
 enum ENUM_FGREPORT_REPORTSTATUS {
   pending
+  updated
   accepted
   declined
   issue
@@ -212,6 +213,7 @@ enum ENUM_FGREPORT_REPORTSTATUS {
 
 enum ENUM_FMREPORT_REPORTSTATUS {
   pending
+  updated
   accepted
   declined
   issue
@@ -219,6 +221,7 @@ enum ENUM_FMREPORT_REPORTSTATUS {
 
 enum ENUM_GENREPORT_REPORTSTATUS {
   pending
+  updated
   accepted
   declined
   issue
@@ -226,6 +229,7 @@ enum ENUM_GENREPORT_REPORTSTATUS {
 
 enum ENUM_GRREPORT_REPORTSTATUS {
   pending
+  updated
   accepted
   declined
   issue
@@ -239,6 +243,7 @@ enum ENUM_GRREPORT_TYPE {
 
 enum ENUM_GSREPORT_REPORTSTATUS {
   pending
+  updated
   accepted
   declined
   issue
@@ -255,6 +260,7 @@ enum ENUM_GSREPORT_TYPE {
 
 enum ENUM_GYREPORT_REPORTSTATUS {
   pending
+  updated
   accepted
   declined
   issue
@@ -279,6 +285,7 @@ enum ENUM_LOCATION_LOCATIONTYPE {
 
 enum ENUM_LSREPORT_REPORTSTATUS {
   pending
+  updated
   accepted
   declined
   issue
@@ -286,6 +293,7 @@ enum ENUM_LSREPORT_REPORTSTATUS {
 
 enum ENUM_MSREPORT_REPORTSTATUS {
   pending
+  updated
   accepted
   declined
   issue
@@ -293,6 +301,7 @@ enum ENUM_MSREPORT_REPORTSTATUS {
 
 enum ENUM_TBREPORT_REPORTSTATUS {
   pending
+  updated
   accepted
   declined
   issue
@@ -305,6 +314,7 @@ enum ENUM_TBREPORT_TYPE {
 
 enum ENUM_TSREPORT_REPORTSTATUS {
   pending
+  updated
   accepted
   declined
   issue
@@ -317,6 +327,7 @@ enum ENUM_TSREPORT_STATUS {
 
 enum ENUM_TWREPORT_REPORTSTATUS {
   pending
+  updated
   accepted
   declined
   issue
@@ -333,8 +344,9 @@ type Fgreport {
   longitude: Float!
   count: Int
   cmdrName: String!
+  cmdrComment: String
   reportStatus: ENUM_FGREPORT_REPORTSTATUS!
-  comment: String
+  reportComment: String
   voteCount: Int
   added: Boolean
   site: Fgsite
@@ -368,8 +380,9 @@ type Fmreport {
   type: String
   count: Int
   cmdrName: String!
+  cmdrComment: String
   reportStatus: ENUM_FMREPORT_REPORTSTATUS!
-  comment: String
+  reportComment: String
   voteCount: Int
   added: Boolean
   site: Fmsite
@@ -395,8 +408,6 @@ type Fmsite {
 """Type of Fumarole"""
 type Fmtype {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
   type: String!
 }
 
@@ -411,8 +422,9 @@ type Genreport {
   directionSystem: String
   distance: Float
   cmdrName: String!
+  cmdrComment: String
   reportStatus: ENUM_GENREPORT_REPORTSTATUS!
-  comment: String
+  reportComment: String
   voteCount: Int
   added: Boolean
   site: Gensite
@@ -503,16 +515,12 @@ type Grobeliskgroup {
 
 type Grobeliskgroupreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
   grreport: Grreport
   grobeliskgroup: Grobeliskgroup
 }
 
 type Grobeliskreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
   grreport: Grreport
   grobelisk: Grobelisk
 }
@@ -528,8 +536,9 @@ type Grreport {
   longitude: Float!
   type: ENUM_GRREPORT_TYPE!
   cmdrName: String!
+  cmdrComment: String
   reportStatus: ENUM_GRREPORT_REPORTSTATUS!
-  comment: String
+  reportComment: String
   voteCount: Int
   added: Boolean
   site: Grsite
@@ -558,8 +567,6 @@ type Grsite {
 """Type of a Guardian Ruins site"""
 type Grtype {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
   type: String!
 }
 
@@ -634,16 +641,12 @@ type Gsobeliskgroup {
 
 type Gsobeliskgroupreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
   gsreport: Gsreport
   gsobeliskgroup: Gsobeliskgroup
 }
 
 type Gsobeliskreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
   gsreport: Gsreport
   gsobelisk: Gsobelisk
 }
@@ -659,8 +662,9 @@ type Gsreport {
   longitude: Float!
   type: ENUM_GSREPORT_TYPE!
   cmdrName: String!
+  cmdrComment: String
   reportStatus: ENUM_GSREPORT_REPORTSTATUS!
-  comment: String
+  reportComment: String
   voteCount: Int
   added: Boolean
   site: Gssite
@@ -690,8 +694,6 @@ type Gssite {
 """Type of a Guardian Structures site"""
 type Gstype {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
   type: String!
 }
 
@@ -707,8 +709,9 @@ type Gyreport {
   type: String
   count: Int
   cmdrName: String!
+  cmdrComment: String
   reportStatus: ENUM_GYREPORT_REPORTSTATUS!
-  comment: String
+  reportComment: String
   voteCount: Int
   added: Boolean
   site: Gysite
@@ -733,9 +736,15 @@ type Gysite {
 """Type of a Geyser"""
 type Gytype {
   id: ID!
+  type: String!
+}
+
+"""Raw journal dumps"""
+type Journaldata {
+  id: ID!
   createdAt: String!
   updatedAt: String!
-  type: String!
+  jsonData: String!
 }
 
 """
@@ -779,8 +788,9 @@ type Lsreport {
   longitude: Float!
   count: Int
   cmdrName: String!
+  cmdrComment: String
   reportStatus: ENUM_LSREPORT_REPORTSTATUS!
-  comment: String
+  reportComment: String
   voteCount: Int
   added: Boolean
   site: Lssite
@@ -802,7 +812,7 @@ type Lssite {
   discoveredBy: Cmdr
 }
 
-union Morph = Bmreport | Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysubtype | Bodytype | Btreport | Btsite | Cmdr | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategories | Grcodexdata | Grobelisk | Grobeliskgroup | Grobeliskgroupreport | Grobeliskreport | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsobeliskgroupreport | Gsobeliskreport | Gsreport | Gssite | Gstype | Gyreport | Gysite | Gytype | Location | Lsreport | Lssite | Msreport | Mssite | Mstype | Ring | Ringtype | System | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union Morph = Bmreport | Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysubtype | Bodytype | Btreport | Btsite | Cmdr | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategories | Grcodexdata | Grobelisk | Grobeliskgroup | Grobeliskgroupreport | Grobeliskreport | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsobeliskgroupreport | Gsobeliskreport | Gsreport | Gssite | Gstype | Gyreport | Gysite | Gytype | Journaldata | Location | Lsreport | Lssite | Msreport | Mssite | Mstype | Ring | Ringtype | System | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 """Reporting for Megaships"""
 type Msreport {
@@ -818,8 +828,9 @@ type Msreport {
   flightSchedule: Boolean
   dockable: Boolean
   cmdrName: String!
+  cmdrComment: String
   reportStatus: ENUM_MSREPORT_REPORTSTATUS!
-  comment: String
+  reportComment: String
   voteCount: Int
   added: Boolean
   site: Mssite
@@ -845,8 +856,6 @@ type Mssite {
 """Ship type of a Mega-ship"""
 type Mstype {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
   type: String!
 }
 
@@ -939,6 +948,8 @@ type Query {
   gysites(sort: String, limit: Int, start: Int, where: JSON): [Gysite]
   gytype(id: ID!): Gytype
   gytypes(sort: String, limit: Int, start: Int, where: JSON): [Gytype]
+  journaldatum(id: ID!): Journaldata
+  journaldata(sort: String, limit: Int, start: Int, where: JSON): [Journaldata]
   location(id: ID!): Location
   locations(sort: String, limit: Int, start: Int, where: JSON): [Location]
   lsreport(id: ID!): Lsreport
@@ -1005,8 +1016,6 @@ type Ring {
 """Type of a Ring"""
 type Ringtype {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
   type: String!
 }
 
@@ -1038,8 +1047,9 @@ type Tbreport {
   type: ENUM_TBREPORT_TYPE!
   count: Int
   cmdrName: String!
+  cmdrComment: String
   reportStatus: ENUM_TBREPORT_REPORTSTATUS!
-  comment: String
+  reportComment: String
   voteCount: Int
   added: Boolean
   site: Tbsite
@@ -1065,8 +1075,6 @@ type Tbsite {
 """Type of a Thargoid Barnacle"""
 type Tbtype {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
   type: String!
 }
 
@@ -1081,11 +1089,13 @@ type Tsreport {
   longitude: Float!
   status: ENUM_TSREPORT_STATUS!
   cmdrName: String!
+  cmdrComment: String
   reportStatus: ENUM_TSREPORT_REPORTSTATUS!
-  comment: String
+  reportComment: String
   voteCount: Int
   added: Boolean
   site: Tssite
+  screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 """Thargoid Structure sites"""
@@ -1106,8 +1116,6 @@ type Tssite {
 """Status of a Thargoid Structure"""
 type Tsstatus {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
   status: String!
 }
 
@@ -1122,8 +1130,9 @@ type Twreport {
   longitude: Float!
   count: Int
   cmdrName: String!
+  cmdrComment: String
   reportStatus: ENUM_TWREPORT_REPORTSTATUS!
-  comment: String
+  reportComment: String
   voteCount: Int
   added: Boolean
   site: Twsite
@@ -1165,7 +1174,7 @@ type UsersPermissionsPermission {
   controller: String!
   action: String!
   enabled: Boolean!
-  policy: String!
+  policy: String
   role: UsersPermissionsRole
 }
 
@@ -1200,7 +1209,5 @@ type Usssite {
 """Type of Unknown Signal Sources"""
 type Usstype {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
   type: String!
 }

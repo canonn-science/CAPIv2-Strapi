@@ -35,6 +35,9 @@
       "type": "string",
       "required": true
     },
+    "cmdrComment": {
+      "type": "text"
+    },
     "screenshot": {
       "collection": "file",
       "via": "related",
@@ -43,6 +46,7 @@
     "reportStatus": {
       "enum": [
         "pending",
+        "updated",
         "accepted",
         "declined",
         "issue"
@@ -50,7 +54,7 @@
       "type": "enumeration",
       "required": true
     },
-    "comment": {
+    "reportComment": {
       "type": "text"
     },
     "voteCount": {
