@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/grobeliskreport",
+      "handler": "Grobeliskreport.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/grobeliskreport/count",
+      "handler": "Grobeliskreport.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/grobeliskreport/:id",
+      "handler": "Grobeliskreport.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/grobeliskreport",
+      "handler": "Grobeliskreport.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/grobeliskreport/:id",
+      "handler": "Grobeliskreport.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/grobeliskreport/:id",
+      "handler": "Grobeliskreport.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/grobeliskreport/:id/relationships/:relation",
+      "handler": "Grobeliskreport.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/grobeliskreport/:id/relationships/:relation",
+      "handler": "Grobeliskreport.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/grobeliskreport/:id/relationships/:relation",
+      "handler": "Grobeliskreport.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

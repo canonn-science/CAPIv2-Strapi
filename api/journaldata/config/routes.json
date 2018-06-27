@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/journaldata",
+      "handler": "Journaldata.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/journaldata/count",
+      "handler": "Journaldata.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/journaldata/:id",
+      "handler": "Journaldata.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/journaldata",
+      "handler": "Journaldata.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/journaldata/:id",
+      "handler": "Journaldata.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/journaldata/:id",
+      "handler": "Journaldata.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/journaldata/:id/relationships/:relation",
+      "handler": "Journaldata.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/journaldata/:id/relationships/:relation",
+      "handler": "Journaldata.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/journaldata/:id/relationships/:relation",
+      "handler": "Journaldata.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
