@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/grobeliskgroupreport",
+      "handler": "Grobeliskgroupreport.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/grobeliskgroupreport/count",
+      "handler": "Grobeliskgroupreport.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/grobeliskgroupreport/:id",
+      "handler": "Grobeliskgroupreport.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/grobeliskgroupreport",
+      "handler": "Grobeliskgroupreport.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/grobeliskgroupreport/:id",
+      "handler": "Grobeliskgroupreport.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/grobeliskgroupreport/:id",
+      "handler": "Grobeliskgroupreport.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/grobeliskgroupreport/:id/relationships/:relation",
+      "handler": "Grobeliskgroupreport.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/grobeliskgroupreport/:id/relationships/:relation",
+      "handler": "Grobeliskgroupreport.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/grobeliskgroupreport/:id/relationships/:relation",
+      "handler": "Grobeliskgroupreport.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

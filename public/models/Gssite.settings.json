@@ -1,0 +1,57 @@
+{
+  "connection": "default",
+  "collectionName": "gssites",
+  "info": {
+    "name": "gssite",
+    "description": "Guardian Structure sites"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "location": {
+      "model": "location",
+      "via": "gsSite"
+    },
+    "siteID": {
+      "unique": true,
+      "min": 1,
+      "type": "integer",
+      "required": true
+    },
+    "latitude": {
+      "type": "float",
+      "required": true
+    },
+    "longitude": {
+      "type": "float",
+      "required": true
+    },
+    "type": {
+      "model": "gstype"
+    },
+    "hasDatabank": {
+      "type": "boolean"
+    },
+    "verified": {
+      "type": "boolean"
+    },
+    "visible": {
+      "default": true,
+      "type": "boolean"
+    },
+    "activeGroups": {
+      "collection": "gsactivegroup",
+      "via": "grSite"
+    },
+    "activeObelisks": {
+      "collection": "gsactiveobelisk",
+      "via": "gsSite"
+    },
+    "discoveredBy": {
+      "model": "cmdr"
+    }
+  }
+}

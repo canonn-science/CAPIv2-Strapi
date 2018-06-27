@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/gsobeliskreport",
+      "handler": "Gsobeliskreport.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gsobeliskreport/count",
+      "handler": "Gsobeliskreport.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gsobeliskreport/:id",
+      "handler": "Gsobeliskreport.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/gsobeliskreport",
+      "handler": "Gsobeliskreport.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/gsobeliskreport/:id",
+      "handler": "Gsobeliskreport.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/gsobeliskreport/:id",
+      "handler": "Gsobeliskreport.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/gsobeliskreport/:id/relationships/:relation",
+      "handler": "Gsobeliskreport.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/gsobeliskreport/:id/relationships/:relation",
+      "handler": "Gsobeliskreport.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/gsobeliskreport/:id/relationships/:relation",
+      "handler": "Gsobeliskreport.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

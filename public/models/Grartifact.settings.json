@@ -1,0 +1,20 @@
+{
+  "connection": "default",
+  "collectionName": "grartifacts",
+  "info": {
+    "name": "grartifact",
+    "description": "Artifacts used at a Guardian Ruin site"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "artifactName": {
+      "unique": true,
+      "type": "string",
+      "required": true
+    }
+  }
+}

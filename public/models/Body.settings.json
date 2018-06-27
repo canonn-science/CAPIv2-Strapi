@@ -1,0 +1,128 @@
+{
+  "connection": "default",
+  "collectionName": "bodies",
+  "info": {
+    "name": "body",
+    "description": "Bodies stored in the Canonn database"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "system": {
+      "model": "system",
+      "via": "bodies"
+    },
+    "bodyName": {
+      "type": "string",
+      "required": true
+    },
+    "edsmID": {
+      "type": "float"
+    },
+    "edsmID64": {
+      "type": "float"
+    },
+    "bodyType": {
+      "model": "bodytype"
+    },
+    "bodySubtype": {
+      "model": "bodysubtype"
+    },
+    "edsmOffset": {
+      "type": "integer"
+    },
+    "edsmDistanceToArrival": {
+      "type": "float"
+    },
+    "edsmIsMainStar": {
+      "type": "boolean"
+    },
+    "edsmIsScoopable": {
+      "type": "boolean"
+    },
+    "edsmIsLandable": {
+      "type": "boolean"
+    },
+    "edsmAge": {
+      "type": "integer"
+    },
+    "edsmLuminosity": {
+      "type": "string"
+    },
+    "edsmAbsoluteMagnitude": {
+      "type": "float"
+    },
+    "edsmSolarMasses": {
+      "type": "float"
+    },
+    "edsmSolarRadius": {
+      "type": "float"
+    },
+    "edsmGravity": {
+      "type": "float"
+    },
+    "edsmEarthMasses": {
+      "type": "float"
+    },
+    "edsmRadius": {
+      "type": "float"
+    },
+    "edsmSurfaceTemperature": {
+      "type": "float"
+    },
+    "edsmVolcanismType": {
+      "type": "string"
+    },
+    "edsmAtmosphereType": {
+      "type": "string"
+    },
+    "bodyAtmosphere": {
+      "model": "bodyatmosphere",
+      "via": "body"
+    },
+    "bodyMaterial": {
+      "model": "bodymaterial",
+      "via": "body"
+    },
+    "edsmTerraformingState": {
+      "type": "string"
+    },
+    "edsmOrbitalPeriod": {
+      "type": "float"
+    },
+    "edsmSemiMajorAxis": {
+      "type": "float"
+    },
+    "edsmOrbitalEccentricity": {
+      "type": "float"
+    },
+    "edsmOrbitalInclination": {
+      "type": "float"
+    },
+    "edsmArgOfPeriapsis": {
+      "type": "float"
+    },
+    "edsmRotationalPeriod": {
+      "type": "float"
+    },
+    "edsmRotationalPeriodTidallyLocked": {
+      "type": "boolean"
+    },
+    "edsmAxialTilt": {
+      "type": "float"
+    },
+    "rings": {
+      "collection": "ring",
+      "via": "body",
+      "dominant": true
+    },
+    "bodyLocations": {
+      "collection": "location",
+      "via": "body",
+      "dominant": true
+    }
+  }
+}

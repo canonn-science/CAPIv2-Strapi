@@ -1,0 +1,35 @@
+{
+  "connection": "default",
+  "collectionName": "gsobelisks",
+  "info": {
+    "name": "gsobelisk",
+    "description": "Obelisks at a Guardian Structure site"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "gsType": {
+      "model": "gstype"
+    },
+    "gsObeliskGroup": {
+      "model": "gsobeliskgroup"
+    },
+    "obeliskNumber": {
+      "min": 1,
+      "type": "integer",
+      "required": true
+    },
+    "broken": {
+      "type": "boolean"
+    },
+    "gsCodexData": {
+      "model": "gscodexdata"
+    },
+    "verified": {
+      "type": "boolean"
+    }
+  }
+}

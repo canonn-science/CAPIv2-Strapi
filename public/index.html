@@ -77,6 +77,7 @@
         <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p><img src="images/rd-logo.png" alt="Canonn R&amp;D Logo" title="Canonn R&amp;D"></p>
 <p>Welcome to the Canonn APIv2! Our API is built to catelog and store information for the game Elite: Dangerous. Within these docs we will show you examples of how to use our data to build tools or to send data to us.</p>
 <p>It should be noted that right now we support a limited number of “sites” and that more will be added as soon as we can.</p>
+<h2 id="Current-Version"><a href="#Current-Version" class="headerlink" title="Current Version"></a>Current Version</h2><p>The current version of the CAPIv2 is <code>v2.0.6</code> and is still in active development and testing. If you would like to contribute please PM DMehaffy on discord <code>DMehaffy#1337</code></p>
 <h2 id="Celestial"><a href="#Celestial" class="headerlink" title="Celestial"></a>Celestial</h2><p>Below you will find the different types of celestial data we support and some of our data is cached from EDSM such as the x/y/z coords in <code>Systems</code> and most of the data in <code>Bodies</code> and <code>Rings</code>.</p>
 <p>The celestial bodies are gathered in reports, additional information is pulled from EDSM and cached in our database for <code>x</code> amount of time. (Currently we do not have our script enabled to pull this data).</p>
 <ul>
@@ -159,26 +160,42 @@
 <h2 id="Guardians-1"><a href="#Guardians-1" class="headerlink" title="Guardians"></a>Guardians</h2><h3 id="Guardian-Ruins"><a href="#Guardian-Ruins" class="headerlink" title="Guardian Ruins"></a>Guardian Ruins</h3><hr>
 <h4 id="Create-a-new-Report"><a href="#Create-a-new-Report" class="headerlink" title="Create a new Report"></a>Create a new Report</h4><p>To send a new report:</p>
 <p><code>POST https://api.canonn.tech/grreport</code></p>
+<p>In addition to the typical report you can also submit active groups and active obelisks:</p>
+<p><code>POST https://api.canonn.tech/grobeliskgroupreport</code></p>
+<p><code>POST https://api.canonn.tech/grobeliskreport</code></p>
+<p>Note that you will need to post a <code>grreport</code> first as both of these endpoints will ask for the report ID. You will also need to reference the following endpoints to get the ID of the obelisk and the obelisk group:</p>
+<p><code>GET https://api.canonn.tech/grobeliskgroup</code></p>
+<p><code>GET https://api.canonn.tech/grobelisk</code></p>
+<p>You can further narrow down these based on the selected type to filter these get requests. Please see the Filters documentation.</p>
 <aside class="notice">Please only send the data we ask for, see the structure docs for more info</aside>
 
 <hr>
 <h4 id="Update-an-existing-Report"><a href="#Update-an-existing-Report" class="headerlink" title="Update an existing Report"></a>Update an existing Report</h4><p>To update a report:</p>
 <p><code>PUT https://api.canonn.tech/grreport/ID</code></p>
+<p>To update an obelisk or obelisk group report use the following endpoints:</p>
+<p><code>PUT https://api.canonn.tech/grobeliskgroupreport/ID</code></p>
+<p><code>PUT https://api.canonn.tech/grobeliskreport/ID</code></p>
 <aside class="notice">Replace <code>ID</code> with the report id, you also only need to send changed fields</aside><br><aside class="warning">Please only update reports that belong to you</aside>
 
 <hr>
 <h4 id="Get-a-list-of-all-reports"><a href="#Get-a-list-of-all-reports" class="headerlink" title="Get a list of all reports"></a>Get a list of all reports</h4><p>To get a list of all reports:</p>
 <p><code>GET https://api.canonn.tech/grreport</code></p>
+<p>Note that this endpoint will also include the related reports with the obelisks and obelisk groups</p>
 <aside class="notice">By default “GET” requests are limited to 100 entries, see the filters info to increase this</aside>
 
 <hr>
 <h4 id="Get-a-specific-report"><a href="#Get-a-specific-report" class="headerlink" title="Get a specific report"></a>Get a specific report</h4><p>To get a specific report by ID:</p>
 <p><code>GET https://api.canonn.tech/grreport/ID</code></p>
+<p>Note that this endpoint will also include the related reports with the obelisks and obelisk groups</p>
 <aside class="notice">Replace <code>ID</code> with the report id</aside>
 
 <hr>
 <h4 id="Get-a-count-of-all-reports"><a href="#Get-a-count-of-all-reports" class="headerlink" title="Get a count of all reports"></a>Get a count of all reports</h4><p>To get a count of all the reports:</p>
 <p><code>GET https://api.canonn.tech/grreport/count</code></p>
+<p>To get a count of the obelisk group reports:</p>
+<p><code>GET https://api.canonn.tech/grobeliskgroupreport/count</code></p>
+<p>To get a count of obelisk reports:</p>
+<p><code>GET https://api.canonn.tech/grobeliskreport/count</code></p>
 <hr>
 <h4 id="GR-Report-Structure"><a href="#GR-Report-Structure" class="headerlink" title="GR Report Structure"></a>GR Report Structure</h4><blockquote>
 <p>Example Structure in JSON</p>
@@ -238,6 +255,13 @@
 <td>Only one CMDR per report please</td>
 </tr>
 <tr>
+<td>cmdrComment</td>
+<td>text</td>
+<td>No</td>
+<td>N/A</td>
+<td>Optional comments provided by the CMDR</td>
+</tr>
+<tr>
 <td>screenshot</td>
 <td>upload</td>
 <td>No</td>
@@ -252,7 +276,7 @@
 <td>You MUST send “pending”</td>
 </tr>
 <tr>
-<td>comment</td>
+<td>reportComment</td>
 <td>text</td>
 <td><strong>CanonnOnly</strong></td>
 <td>N/A</td>
@@ -281,31 +305,111 @@
 </tr>
 </tbody>
 </table>
+<hr>
+<h4 id="GR-Obelisk-amp-Group-Structure"><a href="#GR-Obelisk-amp-Group-Structure" class="headerlink" title="GR Obelisk &amp; Group Structure"></a>GR Obelisk &amp; Group Structure</h4><blockquote>
+<p>Example response with obelisk and obelisk groups (Do not attempt to send this entire response, nested posts are not allowed)</p>
+</blockquote>
+<pre><code class="highlight plain"><span class="line">&#123;</span><br><span class="line">    &quot;id&quot;: 1,</span><br><span class="line">    &quot;systemName&quot;: &quot;SYNUEFE XR-H D11-102&quot;,</span><br><span class="line">    &quot;bodyName&quot;: &quot;1 B&quot;,</span><br><span class="line">    &quot;latitude&quot;: -31.7347,</span><br><span class="line">    &quot;longitude&quot;: -128.9212,</span><br><span class="line">    &quot;type&quot;: &quot;Beta&quot;,</span><br><span class="line">    &quot;cmdrName&quot;: &quot;Dr Arcanonn&quot;,</span><br><span class="line">    &quot;reportStatus&quot;: &quot;pending&quot;,</span><br><span class="line">    &quot;comment&quot;: null,</span><br><span class="line">    &quot;voteCount&quot;: null,</span><br><span class="line">    &quot;added&quot;: false,</span><br><span class="line">    &quot;site&quot;: null,</span><br><span class="line">    &quot;created_at&quot;: &quot;2018-06-24T06:50:58.000Z&quot;,</span><br><span class="line">    &quot;updated_at&quot;: &quot;2018-06-24T07:03:41.000Z&quot;,</span><br><span class="line">    &quot;grobeliskgroupreport&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;id&quot;: 1,</span><br><span class="line">            &quot;grreport&quot;: 1,</span><br><span class="line">            &quot;grobeliskgroup&quot;: 18,</span><br><span class="line">            &quot;created_at&quot;: &quot;2018-06-24T06:53:39.000Z&quot;,</span><br><span class="line">            &quot;updated_at&quot;: &quot;2018-06-24T07:09:58.000Z&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;id&quot;: 2,</span><br><span class="line">            &quot;grreport&quot;: 1,</span><br><span class="line">            &quot;grobeliskgroup&quot;: 20,</span><br><span class="line">            &quot;created_at&quot;: &quot;2018-06-24T06:54:15.000Z&quot;,</span><br><span class="line">            &quot;updated_at&quot;: &quot;2018-06-24T07:09:58.000Z&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;id&quot;: 3,</span><br><span class="line">            &quot;grreport&quot;: 1,</span><br><span class="line">            &quot;grobeliskgroup&quot;: 21,</span><br><span class="line">            &quot;created_at&quot;: &quot;2018-06-24T06:54:31.000Z&quot;,</span><br><span class="line">            &quot;updated_at&quot;: &quot;2018-06-24T07:09:58.000Z&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;id&quot;: 4,</span><br><span class="line">            &quot;grreport&quot;: 1,</span><br><span class="line">            &quot;grobeliskgroup&quot;: 24,</span><br><span class="line">            &quot;created_at&quot;: &quot;2018-06-24T06:54:59.000Z&quot;,</span><br><span class="line">            &quot;updated_at&quot;: &quot;2018-06-24T07:09:58.000Z&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;id&quot;: 5,</span><br><span class="line">            &quot;grreport&quot;: 1,</span><br><span class="line">            &quot;grobeliskgroup&quot;: 27,</span><br><span class="line">            &quot;created_at&quot;: &quot;2018-06-24T06:55:04.000Z&quot;,</span><br><span class="line">            &quot;updated_at&quot;: &quot;2018-06-24T07:09:58.000Z&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;id&quot;: 6,</span><br><span class="line">            &quot;grreport&quot;: 1,</span><br><span class="line">            &quot;grobeliskgroup&quot;: 34,</span><br><span class="line">            &quot;created_at&quot;: &quot;2018-06-24T06:55:25.000Z&quot;,</span><br><span class="line">            &quot;updated_at&quot;: &quot;2018-06-24T07:09:58.000Z&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;id&quot;: 7,</span><br><span class="line">            &quot;grreport&quot;: 1,</span><br><span class="line">            &quot;grobeliskgroup&quot;: 37,</span><br><span class="line">            &quot;created_at&quot;: &quot;2018-06-24T06:55:29.000Z&quot;,</span><br><span class="line">            &quot;updated_at&quot;: &quot;2018-06-24T06:55:29.000Z&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    &quot;grobeliskreport&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;id&quot;: 1,</span><br><span class="line">            &quot;grreport&quot;: 1,</span><br><span class="line">            &quot;grobelisk&quot;: 278,</span><br><span class="line">            &quot;created_at&quot;: &quot;2018-06-24T06:57:38.000Z&quot;,</span><br><span class="line">            &quot;updated_at&quot;: &quot;2018-06-24T07:10:00.000Z&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;id&quot;: 2,</span><br><span class="line">            &quot;grreport&quot;: 1,</span><br><span class="line">            &quot;grobelisk&quot;: 295,</span><br><span class="line">            &quot;created_at&quot;: &quot;2018-06-24T06:59:38.000Z&quot;,</span><br><span class="line">            &quot;updated_at&quot;: &quot;2018-06-24T07:10:00.000Z&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;id&quot;: 3,</span><br><span class="line">            &quot;grreport&quot;: 1,</span><br><span class="line">            &quot;grobelisk&quot;: 301,</span><br><span class="line">            &quot;created_at&quot;: &quot;2018-06-24T07:00:11.000Z&quot;,</span><br><span class="line">            &quot;updated_at&quot;: &quot;2018-06-24T07:10:00.000Z&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;id&quot;: 4,</span><br><span class="line">            &quot;grreport&quot;: 1,</span><br><span class="line">            &quot;grobelisk&quot;: 317,</span><br><span class="line">            &quot;created_at&quot;: &quot;2018-06-24T07:00:38.000Z&quot;,</span><br><span class="line">            &quot;updated_at&quot;: &quot;2018-06-24T07:10:00.000Z&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;id&quot;: 5,</span><br><span class="line">            &quot;grreport&quot;: 1,</span><br><span class="line">            &quot;grobelisk&quot;: 374,</span><br><span class="line">            &quot;created_at&quot;: &quot;2018-06-24T07:02:33.000Z&quot;,</span><br><span class="line">            &quot;updated_at&quot;: &quot;2018-06-24T07:10:00.000Z&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;id&quot;: 6,</span><br><span class="line">            &quot;grreport&quot;: 1,</span><br><span class="line">            &quot;grobelisk&quot;: 376,</span><br><span class="line">            &quot;created_at&quot;: &quot;2018-06-24T07:02:43.000Z&quot;,</span><br><span class="line">            &quot;updated_at&quot;: &quot;2018-06-24T07:10:00.000Z&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;id&quot;: 7,</span><br><span class="line">            &quot;grreport&quot;: 1,</span><br><span class="line">            &quot;grobelisk&quot;: 401,</span><br><span class="line">            &quot;created_at&quot;: &quot;2018-06-24T07:02:56.000Z&quot;,</span><br><span class="line">            &quot;updated_at&quot;: &quot;2018-06-24T07:10:00.000Z&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;id&quot;: 8,</span><br><span class="line">            &quot;grreport&quot;: 1,</span><br><span class="line">            &quot;grobelisk&quot;: 503,</span><br><span class="line">            &quot;created_at&quot;: &quot;2018-06-24T07:03:12.000Z&quot;,</span><br><span class="line">            &quot;updated_at&quot;: &quot;2018-06-24T07:10:00.000Z&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;id&quot;: 9,</span><br><span class="line">            &quot;grreport&quot;: 1,</span><br><span class="line">            &quot;grobelisk&quot;: 553,</span><br><span class="line">            &quot;created_at&quot;: &quot;2018-06-24T07:03:31.000Z&quot;,</span><br><span class="line">            &quot;updated_at&quot;: &quot;2018-06-24T07:10:00.000Z&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;id&quot;: 10,</span><br><span class="line">            &quot;grreport&quot;: 1,</span><br><span class="line">            &quot;grobelisk&quot;: 555,</span><br><span class="line">            &quot;created_at&quot;: &quot;2018-06-24T07:03:41.000Z&quot;,</span><br><span class="line">            &quot;updated_at&quot;: &quot;2018-06-24T07:03:41.000Z&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    &quot;screenshot&quot;: []</span><br><span class="line">&#125;</span><br></code></pre>
+<p><strong>GR Obelisk Group Report</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>grreport</td>
+<td>int</td>
+<td>Yes</td>
+<td>1</td>
+<td>ID of the GR Report</td>
+</tr>
+<tr>
+<td>grobeliskgroup</td>
+<td>int</td>
+<td>Yes</td>
+<td>18</td>
+<td>ID of the Obelisk Group</td>
+</tr>
+</tbody>
+</table>
+<p><strong>GR Obelisk Report</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>grreport</td>
+<td>int</td>
+<td>Yes</td>
+<td>1</td>
+<td>ID of the GR Report</td>
+</tr>
+<tr>
+<td>grobelisk</td>
+<td>int</td>
+<td>Yes</td>
+<td>278</td>
+<td>ID of the Obelisk</td>
+</tr>
+</tbody>
+</table>
 <h3 id="Guardian-Structures"><a href="#Guardian-Structures" class="headerlink" title="Guardian Structures"></a>Guardian Structures</h3><hr>
 <h4 id="Create-a-new-Report-1"><a href="#Create-a-new-Report-1" class="headerlink" title="Create a new Report"></a>Create a new Report</h4><p>To send a new report:</p>
 <p><code>POST https://api.canonn.tech/gsreport</code></p>
+<p>In addition to the typical report you can also submit active groups and active obelisks:</p>
+<p><code>POST https://api.canonn.tech/gsobeliskgroupreport</code></p>
+<p><code>POST https://api.canonn.tech/gsobeliskreport</code></p>
+<p>Note that you will need to post a <code>grreport</code> first as both of these endpoints will ask for the report ID. You will also need to reference the following endpoints to get the ID of the obelisk and the obelisk group:</p>
+<p><code>GET https://api.canonn.tech/gsobeliskgroup</code></p>
+<p><code>GET https://api.canonn.tech/gsobelisk</code></p>
+<p>You can further narrow down these based on the selected type to filter these get requests. Please see the Filters documentation.</p>
 <aside class="notice">Please only send the data we ask for, see the structure docs for more info</aside>
 
 <hr>
 <h4 id="Update-an-existing-Report-1"><a href="#Update-an-existing-Report-1" class="headerlink" title="Update an existing Report"></a>Update an existing Report</h4><p>To update a report:</p>
 <p><code>PUT https://api.canonn.tech/gsreport/ID</code></p>
+<p>To update an obelisk or obelisk group report use the following endpoints:</p>
+<p><code>PUT https://api.canonn.tech/gsobeliskgroupreport/ID</code></p>
+<p><code>PUT https://api.canonn.tech/gsobeliskreport/ID</code></p>
 <aside class="notice">Replace <code>ID</code> with the report id, you also only need to send changed fields</aside><br><aside class="warning">Please only update reports that belong to you</aside>
 
 <hr>
 <h4 id="Get-a-list-of-all-reports-1"><a href="#Get-a-list-of-all-reports-1" class="headerlink" title="Get a list of all reports"></a>Get a list of all reports</h4><p>To get a list of all reports:</p>
 <p><code>GET https://api.canonn.tech/gsreport</code></p>
+<p>Note that this endpoint will also include the related reports with the obelisks and obelisk groups</p>
 <aside class="notice">By default “GET” requests are limited to 100 entries, see the filters info to increase this</aside>
 
 <hr>
 <h4 id="Get-a-specific-report-1"><a href="#Get-a-specific-report-1" class="headerlink" title="Get a specific report"></a>Get a specific report</h4><p>To get a specific report by ID:</p>
 <p><code>GET https://api.canonn.tech/gsreport/ID</code></p>
+<p>Note that this endpoint will also include the related reports with the obelisks and obelisk groups</p>
 <aside class="notice">Replace <code>ID</code> with the report id</aside>
 
 <hr>
 <h4 id="Get-a-count-of-all-reports-1"><a href="#Get-a-count-of-all-reports-1" class="headerlink" title="Get a count of all reports"></a>Get a count of all reports</h4><p>To get a count of all the reports:</p>
 <p><code>GET https://api.canonn.tech/gsreport/count</code></p>
+<p>To get a count of the obelisk group reports:</p>
+<p><code>GET https://api.canonn.tech/gsobeliskgroupreport/count</code></p>
+<p>To get a count of obelisk reports:</p>
+<p><code>GET https://api.canonn.tech/gsobeliskreport/count</code></p>
 <hr>
-<h4 id="GS-Report-Structure"><a href="#GS-Report-Structure" class="headerlink" title="GS Report Structure"></a>GS Report Structure</h4><table>
+<h4 id="GS-Report-Structure"><a href="#GS-Report-Structure" class="headerlink" title="GS Report Structure"></a>GS Report Structure</h4><blockquote>
+<p>Example Structure in JSON coming soon!</p>
+</blockquote>
+<table>
 <thead>
 <tr>
 <th>Parameter</th>
@@ -365,6 +469,13 @@
 <td>Only one CMDR per report please</td>
 </tr>
 <tr>
+<td>cmdrComment</td>
+<td>text</td>
+<td>No</td>
+<td>N/A</td>
+<td>Optional comments provided by the CMDR</td>
+</tr>
+<tr>
 <td>screenshot</td>
 <td>upload</td>
 <td>No</td>
@@ -379,7 +490,7 @@
 <td>You MUST send “pending”</td>
 </tr>
 <tr>
-<td>comment</td>
+<td>reportComment</td>
 <td>text</td>
 <td><strong>CanonnOnly</strong></td>
 <td>N/A</td>
@@ -405,6 +516,66 @@
 <td><strong>CanonnOnly</strong></td>
 <td>N/A</td>
 <td>References the site the report is attached to</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 id="GS-Obelisk-amp-Group-Structure"><a href="#GS-Obelisk-amp-Group-Structure" class="headerlink" title="GS Obelisk &amp; Group Structure"></a>GS Obelisk &amp; Group Structure</h4><blockquote>
+<p>Example response with obelisk and obelisk groups coming soon!</p>
+</blockquote>
+<p><strong>GS Obelisk Group Report</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gsreport</td>
+<td>int</td>
+<td>Yes</td>
+<td>1</td>
+<td>ID of the GS Report</td>
+</tr>
+<tr>
+<td>gsobeliskgroup</td>
+<td>int</td>
+<td>Yes</td>
+<td>18</td>
+<td>ID of the Obelisk Group</td>
+</tr>
+</tbody>
+</table>
+<p><strong>GS Obelisk Report</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gsreport</td>
+<td>int</td>
+<td>Yes</td>
+<td>1</td>
+<td>ID of the GS Report</td>
+</tr>
+<tr>
+<td>gsobelisk</td>
+<td>int</td>
+<td>Yes</td>
+<td>278</td>
+<td>ID of the Obelisk</td>
 </tr>
 </tbody>
 </table>
@@ -497,6 +668,13 @@
 <td>Only one CMDR per report please</td>
 </tr>
 <tr>
+<td>cmdrComment</td>
+<td>text</td>
+<td>No</td>
+<td>N/A</td>
+<td>Optional comments provided by the CMDR</td>
+</tr>
+<tr>
 <td>screenshot</td>
 <td>upload</td>
 <td>No</td>
@@ -511,7 +689,7 @@
 <td>You MUST send “pending”</td>
 </tr>
 <tr>
-<td>comment</td>
+<td>reportComment</td>
 <td>text</td>
 <td><strong>CanonnOnly</strong></td>
 <td>N/A</td>
@@ -622,6 +800,13 @@
 <td>Only one CMDR per report please</td>
 </tr>
 <tr>
+<td>cmdrComment</td>
+<td>text</td>
+<td>No</td>
+<td>N/A</td>
+<td>Optional comments provided by the CMDR</td>
+</tr>
+<tr>
 <td>screenshot</td>
 <td>upload</td>
 <td>No</td>
@@ -636,7 +821,7 @@
 <td>You MUST send “pending”</td>
 </tr>
 <tr>
-<td>comment</td>
+<td>reportComment</td>
 <td>text</td>
 <td><strong>CanonnOnly</strong></td>
 <td>N/A</td>
@@ -747,6 +932,13 @@
 <td>Only one CMDR per report please</td>
 </tr>
 <tr>
+<td>cmdrComment</td>
+<td>text</td>
+<td>No</td>
+<td>N/A</td>
+<td>Optional comments provided by the CMDR</td>
+</tr>
+<tr>
 <td>screenshot</td>
 <td>upload</td>
 <td>No</td>
@@ -761,7 +953,7 @@
 <td>You MUST send “pending”</td>
 </tr>
 <tr>
-<td>comment</td>
+<td>reportComment</td>
 <td>text</td>
 <td><strong>CanonnOnly</strong></td>
 <td>N/A</td>
@@ -872,6 +1064,13 @@
 <td>Only one CMDR per report please</td>
 </tr>
 <tr>
+<td>cmdrComment</td>
+<td>text</td>
+<td>No</td>
+<td>N/A</td>
+<td>Optional comments provided by the CMDR</td>
+</tr>
+<tr>
 <td>screenshot</td>
 <td>upload</td>
 <td>No</td>
@@ -886,7 +1085,7 @@
 <td>You MUST send “pending”</td>
 </tr>
 <tr>
-<td>comment</td>
+<td>reportComment</td>
 <td>text</td>
 <td><strong>CanonnOnly</strong></td>
 <td>N/A</td>
@@ -997,6 +1196,13 @@
 <td>Only one CMDR per report please</td>
 </tr>
 <tr>
+<td>cmdrComment</td>
+<td>text</td>
+<td>No</td>
+<td>N/A</td>
+<td>Optional comments provided by the CMDR</td>
+</tr>
+<tr>
 <td>screenshot</td>
 <td>upload</td>
 <td>No</td>
@@ -1011,7 +1217,7 @@
 <td>You MUST send “pending”</td>
 </tr>
 <tr>
-<td>comment</td>
+<td>reportComment</td>
 <td>text</td>
 <td><strong>CanonnOnly</strong></td>
 <td>N/A</td>
@@ -1122,6 +1328,13 @@
 <td>Only one CMDR per report please</td>
 </tr>
 <tr>
+<td>cmdrComment</td>
+<td>text</td>
+<td>No</td>
+<td>N/A</td>
+<td>Optional comments provided by the CMDR</td>
+</tr>
+<tr>
 <td>screenshot</td>
 <td>upload</td>
 <td>No</td>
@@ -1136,7 +1349,7 @@
 <td>You MUST send “pending”</td>
 </tr>
 <tr>
-<td>comment</td>
+<td>reportComment</td>
 <td>text</td>
 <td><strong>CanonnOnly</strong></td>
 <td>N/A</td>
@@ -1254,6 +1467,13 @@
 <td>Only one CMDR per report please</td>
 </tr>
 <tr>
+<td>cmdrComment</td>
+<td>text</td>
+<td>No</td>
+<td>N/A</td>
+<td>Optional comments provided by the CMDR</td>
+</tr>
+<tr>
 <td>screenshot</td>
 <td>upload</td>
 <td>No</td>
@@ -1268,7 +1488,7 @@
 <td>You MUST send “pending”</td>
 </tr>
 <tr>
-<td>comment</td>
+<td>reportComment</td>
 <td>text</td>
 <td><strong>CanonnOnly</strong></td>
 <td>N/A</td>
@@ -1386,6 +1606,13 @@
 <td>Only one CMDR per report please</td>
 </tr>
 <tr>
+<td>cmdrComment</td>
+<td>text</td>
+<td>No</td>
+<td>N/A</td>
+<td>Optional comments provided by the CMDR</td>
+</tr>
+<tr>
 <td>screenshot</td>
 <td>upload</td>
 <td>No</td>
@@ -1400,7 +1627,7 @@
 <td>You MUST send “pending”</td>
 </tr>
 <tr>
-<td>comment</td>
+<td>reportComment</td>
 <td>text</td>
 <td><strong>CanonnOnly</strong></td>
 <td>N/A</td>
@@ -1511,6 +1738,13 @@
 <td>Only one CMDR per report please</td>
 </tr>
 <tr>
+<td>cmdrComment</td>
+<td>text</td>
+<td>No</td>
+<td>N/A</td>
+<td>Optional comments provided by the CMDR</td>
+</tr>
+<tr>
 <td>screenshot</td>
 <td>upload</td>
 <td>No</td>
@@ -1525,7 +1759,7 @@
 <td>You MUST send “pending”</td>
 </tr>
 <tr>
-<td>comment</td>
+<td>reportComment</td>
 <td>text</td>
 <td><strong>CanonnOnly</strong></td>
 <td>N/A</td>
@@ -1636,6 +1870,13 @@
 <td>Only one CMDR per report please</td>
 </tr>
 <tr>
+<td>cmdrComment</td>
+<td>text</td>
+<td>No</td>
+<td>N/A</td>
+<td>Optional comments provided by the CMDR</td>
+</tr>
+<tr>
 <td>screenshot</td>
 <td>upload</td>
 <td>No</td>
@@ -1650,7 +1891,7 @@
 <td>You MUST send “pending”</td>
 </tr>
 <tr>
-<td>comment</td>
+<td>reportComment</td>
 <td>text</td>
 <td><strong>CanonnOnly</strong></td>
 <td>N/A</td>
@@ -1782,6 +2023,13 @@
 <td>Only one CMDR per report please</td>
 </tr>
 <tr>
+<td>cmdrComment</td>
+<td>text</td>
+<td>No</td>
+<td>N/A</td>
+<td>Optional comments provided by the CMDR</td>
+</tr>
+<tr>
 <td>screenshot</td>
 <td>upload</td>
 <td>No</td>
@@ -1796,7 +2044,7 @@
 <td>You MUST send “pending”</td>
 </tr>
 <tr>
-<td>comment</td>
+<td>reportComment</td>
 <td>text</td>
 <td><strong>CanonnOnly</strong></td>
 <td>N/A</td>
@@ -1895,7 +2143,7 @@
 </tr>
 <tr>
 <td>418</td>
-<td>I’m a <del>teapot</del> Tharoid</td>
+<td>I’m a <del>teapot</del> Thargoid</td>
 </tr>
 <tr>
 <td>429</td>
