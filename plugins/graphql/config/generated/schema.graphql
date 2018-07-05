@@ -695,6 +695,7 @@ type Gssite {
 type Gstype {
   id: ID!
   type: String!
+  journalName: String!
 }
 
 """Reporting for Geysers"""
