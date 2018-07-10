@@ -31,7 +31,7 @@ edsm_api_systems_url = 'https://www.edsm.net/api-v1/systems'
 current_date = datetime.now()
 names_to_update = []
 
-select_sql = 'SELECT systemName, created_at FROM `{}`'.format(table_name)
+select_sql = 'SELECT systemName, updated_at FROM `{}`'.format(table_name)
 
 try:
     with connection.cursor() as cursor:
@@ -39,8 +39,9 @@ try:
         cursor.execute(select_sql)
         result = cursor.fetchall()
         for row in result:
-            systemName = row[0]
-            date_string = row[1]
+            print(row)
+            systemName = row['systemName']
+            date_string = row['updated_at']
             date = datetime.strptime(date_string, '%Y-%m-%d %H:%M:%S')
             elapsed_time = current_date - date
             if elapsed_time.days >= day_difference_threshold:
