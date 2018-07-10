@@ -7,16 +7,18 @@ from datetime import datetime
 """
 Running anywhere needs the following:
 pip3 install PyMySQL
+pip3 install requests
 """
 
 """
 Edit these
 """
 connection = pymysql.connect(host='localhost',
+                             port=3306,
                              user='capiv2system',
                              password='capiv2password',
                              db='capiv2_207',
-                             charset='utf8mb4',
+                             charset='utf8',
                              cursorclass=pymysql.cursors.DictCursor)
 
 """
