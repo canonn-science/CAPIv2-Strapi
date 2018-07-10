@@ -13,14 +13,16 @@ pip3 install PyMySQL
 Edit these
 """
 connection = pymysql.connect(host='localhost',
-                             user='user',
-                             password='passwd',
-                             db='db',
+                             user='capiv2system',
+                             password='capiv2password',
+                             db='capiv2_207',
                              charset='utf8mb4',
                              cursorclass=pymysql.cursors.DictCursor)
 
+"""
 file_path = 'test.db'
-table_name = 'systems-seed-withdate'
+"""
+table_name = 'systems'
 day_difference_threshold = 1
 edsm_api_systems_url = 'https://www.edsm.net/api-v1/systems'
 
