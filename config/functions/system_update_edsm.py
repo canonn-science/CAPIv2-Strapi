@@ -41,8 +41,7 @@ try:
         for row in result:
             print(row)
             systemName = row['systemName']
-            date_string = row['updated_at']
-            date = datetime.strptime(date_string, '%Y-%m-%d %H:%M:%S')
+            date = row['updated_at']
             elapsed_time = current_date - date
             if elapsed_time.days >= day_difference_threshold:
                 names_to_update.append(systemName)
@@ -61,14 +60,14 @@ try:
             file.write(json.dumps(all_systems_data, indent=4, sort_keys=True))
         for system_data in all_systems_data:
             print(system_data)
-            insert_sql = 'UPDATE `{}` SET edsmCoordX=?, edsmCoordY=?, edsmCoordZ=?, edsmCoordLocked=? WHERE systemName LIKE \'{}\''.format(table_name, system_data['name'])
+            insert_sql = 'UPDATE `{}` SET edsmCoordX=%s, edsmCoordY=%s, edsmCoordZ=%s, edsmCoordLocked=%s WHERE systemName LIKE \'{}\''.format(table_name, system_data['name'])
             cursor.execute(
                 insert_sql,
                 (
                     system_data['coords']['x'],
                     system_data['coords']['y'],
                     system_data['coords']['z'],
-                    system_data['coordsLocked']
+                    1 if system_data['coordsLocked'] else 0
                 )
             )
     connection.commit()
