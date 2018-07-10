@@ -15,7 +15,11 @@ module.exports = {
    */
 
   find: async (ctx) => {
-    return strapi.services.grcodexdata.fetchAll(ctx.query);
+    if (ctx.query._q) {
+      return strapi.services.grcodexdata.search(ctx.query);
+    } else {
+      return strapi.services.grcodexdata.fetchAll(ctx.query);
+    }
   },
 
   /**

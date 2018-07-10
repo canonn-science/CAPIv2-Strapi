@@ -133,12 +133,110 @@ module.exports = {
    */
 
   remove: async (params) => {
-    await Promise.all(
-      Gscodexdata.associations.map(association =>
-        Gscodexdata.forge(params)[association.alias]().detach()
-      )
-    );
+    params.values = {};
+    Gscodexdata.associations.map(association => {
+      switch (association.nature) {
+        case 'oneWay':
+        case 'oneToOne':
+        case 'manyToOne':
+        case 'oneToManyMorph':
+          params.values[association.alias] = null;
+          break;
+        case 'oneToMany':
+        case 'manyToMany':
+        case 'manyToManyMorph':
+          params.values[association.alias] = [];
+          break;
+        default:
+      }
+    });
+
+    await Gscodexdata.updateRelations(params);
 
     return Gscodexdata.forge(params).destroy();
+  },
+
+  /**
+   * Promise to search a/an gscodexdata.
+   *
+   * @return {Promise}
+   */
+
+  search: async (params) => {
+    // Convert `params` object to filters compatible with Bookshelf.
+    const filters = strapi.utils.models.convertParams('gscodexdata', params);
+    // Select field to populate.
+    const populate = Gscodexdata.associations
+      .filter(ast => ast.autoPopulate !== false)
+      .map(ast => ast.alias);
+
+    const associations = Gscodexdata.associations.map(x => x.alias);
+    const searchText = Object.keys(Gscodexdata._attributes)
+      .filter(attribute => attribute !== Gscodexdata.primaryKey && !associations.includes(attribute))
+      .filter(attribute => ['string', 'text'].includes(Gscodexdata._attributes[attribute].type));
+
+    const searchNoText = Object.keys(Gscodexdata._attributes)
+      .filter(attribute => attribute !== Gscodexdata.primaryKey && !associations.includes(attribute))
+      .filter(attribute => !['string', 'text', 'boolean', 'integer', 'decimal', 'float'].includes(Gscodexdata._attributes[attribute].type));
+
+    const searchInt = Object.keys(Gscodexdata._attributes)
+      .filter(attribute => attribute !== Gscodexdata.primaryKey && !associations.includes(attribute))
+      .filter(attribute => ['integer', 'decimal', 'float'].includes(Gscodexdata._attributes[attribute].type));
+
+    const searchBool = Object.keys(Gscodexdata._attributes)
+      .filter(attribute => attribute !== Gscodexdata.primaryKey && !associations.includes(attribute))
+      .filter(attribute => ['boolean'].includes(Gscodexdata._attributes[attribute].type));
+
+    const query = (params._q || '').replace(/[^a-zA-Z0-9.-\s]+/g, '');
+
+    return Gscodexdata.query(qb => {
+      // Search in columns which are not text value.
+      searchNoText.forEach(attribute => {
+        qb.orWhereRaw(`LOWER(${attribute}) LIKE '%${_.toLower(query)}%'`);
+      });
+
+      if (!_.isNaN(_.toNumber(query))) {
+        searchInt.forEach(attribute => {
+          qb.orWhereRaw(`${attribute} = ${_.toNumber(query)}`);
+        });
+      }
+
+      if (query === 'true' || query === 'false') {
+        searchBool.forEach(attribute => {
+          qb.orWhereRaw(`${attribute} = ${_.toNumber(query === 'true')}`);
+        });
+      }
+
+      // Search in columns with text using index.
+      switch (Gscodexdata.client) {
+        case 'pg': {
+          const searchQuery = searchText.map(attribute =>
+            _.toLower(attribute) === attribute
+              ? `to_tsvector(${attribute})`
+              : `to_tsvector('${attribute}')`
+          );
+
+          qb.orWhereRaw(`${searchQuery.join(' || ')} @@ to_tsquery(?)`, query);
+          break;
+        }
+        default:
+          qb.orWhereRaw(`MATCH(${searchText.join(',')}) AGAINST(? IN BOOLEAN MODE)`, `*${query}*`);
+          break;
+      }
+
+      if (filters.sort) {
+        qb.orderBy(filters.sort.key, filters.sort.order);
+      }
+
+      if (filters.skip) {
+        qb.offset(_.toNumber(filters.skip));
+      }
+
+      if (filters.limit) {
+        qb.limit(_.toNumber(filters.limit));
+      }
+    }).fetchAll({
+      width: populate
+    });
   }
 };

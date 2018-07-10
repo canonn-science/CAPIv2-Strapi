@@ -15,7 +15,11 @@ module.exports = {
    */
 
   find: async (ctx) => {
-    return strapi.services.grobeliskgroupreport.fetchAll(ctx.query);
+    if (ctx.query._q) {
+      return strapi.services.grobeliskgroupreport.search(ctx.query);
+    } else {
+      return strapi.services.grobeliskgroupreport.fetchAll(ctx.query);
+    }
   },
 
   /**
