@@ -11,6 +11,27 @@
     "comment": ""
   },
   "attributes": {
+    "systemName": {
+      "type": "string"
+    },
+    "bodyName": {
+      "type": "string"
+    },
+    "stationName": {
+      "type": "string"
+    },
+    "cmdrName": {
+      "type": "string"
+    },
+    "latitude": {
+      "type": "float"
+    },
+    "longitude": {
+      "type": "float"
+    },
+    "isBeta": {
+      "type": "boolean"
+    },
     "jsonData": {
       "type": "json",
       "required": true

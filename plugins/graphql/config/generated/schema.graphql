@@ -749,6 +749,13 @@ type Journaldata {
   id: ID!
   createdAt: String!
   updatedAt: String!
+  systemName: String
+  bodyName: String
+  stationName: String
+  cmdrName: String
+  latitude: Float
+  longitude: Float
+  isBeta: Boolean
   jsonData: String!
 }
 
