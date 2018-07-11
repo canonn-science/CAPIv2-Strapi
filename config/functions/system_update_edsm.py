@@ -56,17 +56,19 @@ try:
         print(response.status_code)
         all_systems_data = response.json()
         print(all_systems_data)
-        with open('data.json', 'w') as file:
+        with open('systemData.json', 'w') as file:
             file.write(json.dumps(all_systems_data, indent=4, sort_keys=True))
         for system_data in all_systems_data:
             print(system_data)
-            insert_sql = 'UPDATE `{}` SET edsmCoordX=%s, edsmCoordY=%s, edsmCoordZ=%s, edsmCoordLocked=%s WHERE systemName LIKE \'{}\''.format(table_name, system_data['name'])
+            insert_sql = 'UPDATE `{}` SET edsmCoordX=%s, edsmCoordY=%s, edsmCoordZ=%s, edsmID=%s, edsmID64=%s, edsmCoordLocked=%s WHERE systemName LIKE \'{}\''.format(table_name, system_data['name'])
             cursor.execute(
                 insert_sql,
                 (
                     system_data['coords']['x'],
                     system_data['coords']['y'],
                     system_data['coords']['z'],
+                    system_data['id'],
+                    system_data['id64'],
                     1 if system_data['coordsLocked'] else 0
                 )
             )
