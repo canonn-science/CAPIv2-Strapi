@@ -71,7 +71,8 @@ CREATE TABLE `bmsites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `bmsites_UN` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -167,7 +168,8 @@ CREATE TABLE `bodyatmospheres` (
   `water` double DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `bodyatmospheres_UN` (`body`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -220,7 +222,8 @@ CREATE TABLE `bodymaterials` (
   `zirconium` double DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `bodymaterials_UN` (`body`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -244,6 +247,7 @@ CREATE TABLE `bodysubtypes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `subtype` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `bodysubtypes_UN` (`subtype`),
   FULLTEXT KEY `SEARCH_BODYSUBTYPES` (`subtype`)
 ) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -254,7 +258,7 @@ CREATE TABLE `bodysubtypes` (
 
 LOCK TABLES `bodysubtypes` WRITE;
 /*!40000 ALTER TABLE `bodysubtypes` DISABLE KEYS */;
-INSERT INTO `bodysubtypes` VALUES (1,'O (Blue-White) Star'),(2,'B (Blue-White) Star'),(3,'A (Blue-White) Star'),(4,'A (Blue-White super giant) Star'),(5,'F (White) Star'),(6,'F (White super giant) Star'),(7,'G (White-Yellow) Star'),(8,'K (Yellow-Orange) Star'),(9,'K (Yellow-Orange giant) Star'),(10,'M (Red dwarf) Star'),(11,'M (Red giant) Star'),(12,'M (Red super giant) Star'),(13,'L (Brown dwarf) Star'),(14,'T (Brown dwarf) Star'),(15,'Y (Brown dwarf) Star'),(16,'T Tauri Star'),(17,'Herbig Ae/Be Star'),(18,'Wolf-Rayet Star'),(19,'Wolf-Rayet N Star'),(20,'Wolf-Rayet NC Star'),(21,'Wolf-Rayet C Star'),(22,'Wolf-Rayet O Star'),(23,'CS Star'),(24,'C Star'),(25,'CN Star'),(26,'CJ Star'),(27,'CH Star'),(28,'CHd Star'),(29,'MS-type Star'),(30,'S-type Star'),(31,'White Dwarf (D) Star'),(32,'White Dwarf (DA) Star'),(33,'White Dwarf (DAB) Star'),(34,'White Dwarf (DAO) Star'),(35,'White Dwarf (DAZ) Star'),(36,'White Dwarf (DAV) Star'),(37,'White Dwarf (DB) Star'),(38,'White Dwarf (DBZ) Star'),(39,'White Dwarf (DBV) Star'),(40,'White Dwarf (DO) Star'),(41,'White Dwarf (DOV) Star'),(42,'White Dwarf (DQ) Star'),(43,'White Dwarf (DC) Star'),(44,'White Dwarf (DCV) Star'),(45,'White Dwarf (DX) Star'),(46,'Neutron Star'),(47,'Black Hole'),(48,'Supermassive Black Hole'),(49,'X'),(50,'RoguePlanet'),(51,'Nebula'),(52,'StellarRemnantNebula'),(53,'Metal-rich body'),(54,'High metal content world'),(55,'Rocky body'),(56,'Rocky Ice world'),(57,'Icy body'),(58,'Earth-like world'),(59,'Water world'),(60,'Water giant'),(61,'Water giant with life'),(62,'Ammonia world'),(63,'Gas giant with water-based life'),(64,'Gas giant with ammonia-based life'),(65,'Class I gas giant'),(66,'Class II gas giant'),(67,'Class III gas giant'),(68,'Class IV gas giant'),(69,'Class V gas giant'),(70,'Helium-rich gas giant'),(71,'Helium gas giant');
+INSERT INTO `bodysubtypes` VALUES (4,'A (Blue-White super giant) Star'),(3,'A (Blue-White) Star'),(62,'Ammonia world'),(2,'B (Blue-White) Star'),(47,'Black Hole'),(24,'C Star'),(27,'CH Star'),(28,'CHd Star'),(26,'CJ Star'),(65,'Class I gas giant'),(66,'Class II gas giant'),(67,'Class III gas giant'),(68,'Class IV gas giant'),(69,'Class V gas giant'),(25,'CN Star'),(23,'CS Star'),(58,'Earth-like world'),(6,'F (White super giant) Star'),(5,'F (White) Star'),(7,'G (White-Yellow) Star'),(64,'Gas giant with ammonia-based life'),(63,'Gas giant with water-based life'),(71,'Helium gas giant'),(70,'Helium-rich gas giant'),(17,'Herbig Ae/Be Star'),(54,'High metal content world'),(57,'Icy body'),(9,'K (Yellow-Orange giant) Star'),(8,'K (Yellow-Orange) Star'),(13,'L (Brown dwarf) Star'),(10,'M (Red dwarf) Star'),(11,'M (Red giant) Star'),(12,'M (Red super giant) Star'),(53,'Metal-rich body'),(29,'MS-type Star'),(51,'Nebula'),(46,'Neutron Star'),(1,'O (Blue-White) Star'),(55,'Rocky body'),(56,'Rocky Ice world'),(50,'RoguePlanet'),(30,'S-type Star'),(52,'StellarRemnantNebula'),(48,'Supermassive Black Hole'),(14,'T (Brown dwarf) Star'),(16,'T Tauri Star'),(60,'Water giant'),(61,'Water giant with life'),(59,'Water world'),(31,'White Dwarf (D) Star'),(32,'White Dwarf (DA) Star'),(33,'White Dwarf (DAB) Star'),(34,'White Dwarf (DAO) Star'),(36,'White Dwarf (DAV) Star'),(35,'White Dwarf (DAZ) Star'),(37,'White Dwarf (DB) Star'),(39,'White Dwarf (DBV) Star'),(38,'White Dwarf (DBZ) Star'),(43,'White Dwarf (DC) Star'),(44,'White Dwarf (DCV) Star'),(40,'White Dwarf (DO) Star'),(41,'White Dwarf (DOV) Star'),(42,'White Dwarf (DQ) Star'),(45,'White Dwarf (DX) Star'),(21,'Wolf-Rayet C Star'),(19,'Wolf-Rayet N Star'),(20,'Wolf-Rayet NC Star'),(22,'Wolf-Rayet O Star'),(18,'Wolf-Rayet Star'),(49,'X'),(15,'Y (Brown dwarf) Star');
 /*!40000 ALTER TABLE `bodysubtypes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -269,6 +273,7 @@ CREATE TABLE `bodytypes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `bodytypes_UN` (`type`),
   FULLTEXT KEY `SEARCH_BODYTYPES` (`type`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -279,7 +284,7 @@ CREATE TABLE `bodytypes` (
 
 LOCK TABLES `bodytypes` WRITE;
 /*!40000 ALTER TABLE `bodytypes` DISABLE KEYS */;
-INSERT INTO `bodytypes` VALUES (1,'Star'),(2,'Planet');
+INSERT INTO `bodytypes` VALUES (2,'Planet'),(1,'Star');
 /*!40000 ALTER TABLE `bodytypes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -339,7 +344,8 @@ CREATE TABLE `btsites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `btsites_UN` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -365,6 +371,7 @@ CREATE TABLE `cmdrs` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
+  UNIQUE KEY `cmdrs_UN` (`cmdrName`),
   FULLTEXT KEY `SEARCH_CMDRS` (`cmdrName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -463,7 +470,8 @@ CREATE TABLE `fgsites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `fgsites_UN` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -534,7 +542,8 @@ CREATE TABLE `fmsites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `fmsites_UN` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -558,6 +567,7 @@ CREATE TABLE `fmtypes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `fmtypes_UN` (`type`),
   FULLTEXT KEY `SEARCH_FMTYPES` (`type`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -568,7 +578,7 @@ CREATE TABLE `fmtypes` (
 
 LOCK TABLES `fmtypes` WRITE;
 /*!40000 ALTER TABLE `fmtypes` DISABLE KEYS */;
-INSERT INTO `fmtypes` VALUES (1,'Water Magma'),(2,'Sulphur Dioxide Magma'),(3,'Ammonia Magma'),(4,'Methane Magma'),(5,'Silicate Magma');
+INSERT INTO `fmtypes` VALUES (3,'Ammonia Magma'),(4,'Methane Magma'),(5,'Silicate Magma'),(2,'Sulphur Dioxide Magma'),(1,'Water Magma');
 /*!40000 ALTER TABLE `fmtypes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -627,6 +637,7 @@ CREATE TABLE `gensites` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
+  UNIQUE KEY `gensites_UN` (`siteID`),
   FULLTEXT KEY `SEARCH_GENSITES` (`shipName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -702,9 +713,8 @@ DROP TABLE IF EXISTS `grartifacts`;
 CREATE TABLE `grartifacts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `artifactName` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
+  UNIQUE KEY `grartifacts_UN` (`artifactName`),
   FULLTEXT KEY `SEARCH_GRARTIFACTS` (`artifactName`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -715,7 +725,7 @@ CREATE TABLE `grartifacts` (
 
 LOCK TABLES `grartifacts` WRITE;
 /*!40000 ALTER TABLE `grartifacts` DISABLE KEYS */;
-INSERT INTO `grartifacts` VALUES (1,'Casket','2018-07-10 18:46:32','2018-07-10 18:46:32'),(2,'Orb','2018-07-10 18:46:32','2018-07-10 18:46:32'),(3,'Relic','2018-07-10 18:46:32','2018-07-10 18:46:32'),(4,'Tablet','2018-07-10 18:46:32','2018-07-10 18:46:32'),(5,'Totem','2018-07-10 18:46:32','2018-07-10 18:46:32'),(6,'Urn','2018-07-10 18:46:32','2018-07-10 18:46:32');
+INSERT INTO `grartifacts` VALUES (1,'Casket'),(2,'Orb'),(3,'Relic'),(4,'Tablet'),(5,'Totem'),(6,'Urn');
 /*!40000 ALTER TABLE `grartifacts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -729,9 +739,8 @@ DROP TABLE IF EXISTS `grcodexcategories`;
 CREATE TABLE `grcodexcategories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `categoryName` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
+  UNIQUE KEY `grcodexcategories_UN` (`categoryName`),
   FULLTEXT KEY `SEARCH_GRCODEXCATEGORIES` (`categoryName`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -742,7 +751,7 @@ CREATE TABLE `grcodexcategories` (
 
 LOCK TABLES `grcodexcategories` WRITE;
 /*!40000 ALTER TABLE `grcodexcategories` DISABLE KEYS */;
-INSERT INTO `grcodexcategories` VALUES (1,'Biology','2018-07-10 18:47:03','2018-07-10 18:47:03'),(2,'Culture','2018-07-10 18:47:03','2018-07-10 18:47:03'),(3,'History','2018-07-10 18:47:03','2018-07-10 18:47:03'),(4,'Language','2018-07-10 18:47:03','2018-07-10 18:47:03'),(5,'Technology','2018-07-10 18:47:03','2018-07-10 18:47:03');
+INSERT INTO `grcodexcategories` VALUES (1,'Biology'),(2,'Culture'),(3,'History'),(4,'Language'),(5,'Technology');
 /*!40000 ALTER TABLE `grcodexcategories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -941,7 +950,8 @@ CREATE TABLE `grsites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `grsites_UN` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -965,6 +975,7 @@ CREATE TABLE `grtypes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `grtypes_UN` (`type`),
   FULLTEXT KEY `SEARCH_GRTYPES` (`type`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1041,9 +1052,8 @@ DROP TABLE IF EXISTS `gsartifacts`;
 CREATE TABLE `gsartifacts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `artifactName` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
+  UNIQUE KEY `gsartifacts_UN` (`artifactName`),
   FULLTEXT KEY `SEARCH_GSARTIFACTS` (`artifactName`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1054,7 +1064,7 @@ CREATE TABLE `gsartifacts` (
 
 LOCK TABLES `gsartifacts` WRITE;
 /*!40000 ALTER TABLE `gsartifacts` DISABLE KEYS */;
-INSERT INTO `gsartifacts` VALUES (1,'Casket','2018-07-10 18:48:19','2018-07-10 18:48:19'),(2,'Orb','2018-07-10 18:48:19','2018-07-10 18:48:19'),(3,'Relic','2018-07-10 18:48:19','2018-07-10 18:48:19'),(4,'Tablet','2018-07-10 18:48:19','2018-07-10 18:48:19'),(5,'Totem','2018-07-10 18:48:19','2018-07-10 18:48:19'),(6,'Urn','2018-07-10 18:48:19','2018-07-10 18:48:19'),(7,'Thargoid Sensor','2018-07-10 18:48:19','2018-07-10 18:48:19'),(8,'Thargoid Probe','2018-07-10 18:48:19','2018-07-10 18:48:19'),(9,'Thargoid Link','2018-07-10 18:48:19','2018-07-10 18:48:19'),(10,'Cyclops Tissue','2018-07-10 18:48:19','2018-07-10 18:48:19'),(11,'Basilisk Tissue','2018-07-10 18:48:19','2018-07-10 18:48:19'),(12,'Medusa Tissue','2018-07-10 18:48:19','2018-07-10 18:48:19');
+INSERT INTO `gsartifacts` VALUES (11,'Basilisk Tissue'),(1,'Casket'),(10,'Cyclops Tissue'),(12,'Medusa Tissue'),(2,'Orb'),(3,'Relic'),(4,'Tablet'),(9,'Thargoid Link'),(8,'Thargoid Probe'),(7,'Thargoid Sensor'),(5,'Totem'),(6,'Urn');
 /*!40000 ALTER TABLE `gsartifacts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1068,9 +1078,8 @@ DROP TABLE IF EXISTS `gscodexcategories`;
 CREATE TABLE `gscodexcategories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `categoryName` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
+  UNIQUE KEY `gscodexcategories_UN` (`categoryName`),
   FULLTEXT KEY `SEARCH_GSCODEXCATEGORIES` (`categoryName`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1081,7 +1090,7 @@ CREATE TABLE `gscodexcategories` (
 
 LOCK TABLES `gscodexcategories` WRITE;
 /*!40000 ALTER TABLE `gscodexcategories` DISABLE KEYS */;
-INSERT INTO `gscodexcategories` VALUES (1,'Thargoid','2018-07-10 18:48:35','2018-07-10 18:48:35'),(2,'Civil War','2018-07-10 18:48:35','2018-07-10 18:48:35'),(3,'Technology','2018-07-10 18:48:35','2018-07-10 18:48:35'),(4,'Language','2018-07-10 18:48:35','2018-07-10 18:48:35'),(5,'Body Protectorate','2018-07-10 18:48:35','2018-07-10 18:48:35');
+INSERT INTO `gscodexcategories` VALUES (5,'Body Protectorate'),(2,'Civil War'),(4,'Language'),(3,'Technology'),(1,'Thargoid');
 /*!40000 ALTER TABLE `gscodexcategories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1281,7 +1290,8 @@ CREATE TABLE `gssites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `gssites_UN` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1306,6 +1316,7 @@ CREATE TABLE `gstypes` (
   `type` varchar(255) DEFAULT NULL,
   `journalName` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `gstypes_UN` (`type`),
   FULLTEXT KEY `SEARCH_GSTYPES` (`type`,`journalName`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1377,7 +1388,8 @@ CREATE TABLE `gysites` (
   `visible` tinyint(1) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `gysites_UN` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1538,7 +1550,8 @@ CREATE TABLE `lssites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `lssites_UN` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1612,6 +1625,7 @@ CREATE TABLE `mssites` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
+  UNIQUE KEY `mssites_UN` (`siteID`),
   FULLTEXT KEY `SEARCH_MSSITES` (`shipName`,`shipTag`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1636,6 +1650,7 @@ CREATE TABLE `mstypes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `mstypes_UN` (`type`),
   FULLTEXT KEY `SEARCH_MSTYPES` (`type`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1692,6 +1707,7 @@ CREATE TABLE `ringtypes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `ringtypes_UN` (`type`),
   FULLTEXT KEY `SEARCH_RINGTYPES` (`type`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1702,7 +1718,7 @@ CREATE TABLE `ringtypes` (
 
 LOCK TABLES `ringtypes` WRITE;
 /*!40000 ALTER TABLE `ringtypes` DISABLE KEYS */;
-INSERT INTO `ringtypes` VALUES (1,'Icy'),(2,'Metallic'),(3,'Metal Rich'),(4,'Rocky');
+INSERT INTO `ringtypes` VALUES (1,'Icy'),(3,'Metal Rich'),(2,'Metallic'),(4,'Rocky');
 /*!40000 ALTER TABLE `ringtypes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1725,8 +1741,9 @@ CREATE TABLE `systems` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
+  UNIQUE KEY `systems_UN` (`systemName`),
   FULLTEXT KEY `SEARCH_SYSTEMS` (`systemName`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1735,6 +1752,7 @@ CREATE TABLE `systems` (
 
 LOCK TABLES `systems` WRITE;
 /*!40000 ALTER TABLE `systems` DISABLE KEYS */;
+INSERT INTO `systems` VALUES (1,'SYNUEFE XR-H D11-102',6379187,3515254557027,357.34375,-49.34375,-74.75,1,'2018-07-06 02:38:57','2018-07-08 06:55:28'),(2,'IC 2391 SECTOR GW-V B2-4',6785168,9474831951257,587.9375,-51.03125,-38.53125,1,'2018-07-06 02:39:03','2018-07-08 06:55:28'),(3,'IC 2391 SECTOR ZE-A D101',9084820,3480928373091,526.5,-86.375,-37.9375,1,'2018-07-06 02:39:18','2018-07-08 06:55:28'),(4,'SYNUEFE XO-P C22-17',9084912,4757716439746,546.90625,-56.46875,-97.8125,1,'2018-07-11 13:59:38','2018-07-11 07:03:14'),(5,'SYNUEFE ZL-J D10-119',8850999,4099470772571,834.21875,-51.21875,-154.65625,1,'2018-07-11 13:59:47','2018-07-11 07:03:14'),(6,'COL 173 SECTOR KY-Q D5-47',6400807,1625603164499,1043.875,-100.75,-246.0625,1,'2018-07-11 13:59:55','2018-07-11 07:03:14'),(8,'HIP 39768',5681536,8219259477,866.59375,-119.125,-109.03125,1,'2018-07-11 14:01:32','2018-07-11 07:03:14'),(9,'SYNUEFE TP-F B44-0',9629387,682228131193,838.75,-197.84375,-111.84375,1,'2018-07-11 14:01:42','2018-07-11 07:12:57');
 /*!40000 ALTER TABLE `systems` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1796,7 +1814,8 @@ CREATE TABLE `tbsites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `tbsites_UN` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1820,6 +1839,7 @@ CREATE TABLE `tbtypes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `tbtypes_UN` (`type`),
   FULLTEXT KEY `SEARCH_TBTYPES` (`type`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1890,7 +1910,8 @@ CREATE TABLE `tssites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `tssites_UN` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1914,6 +1935,7 @@ CREATE TABLE `tsstatuses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `status` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `tsstatuses_UN` (`status`),
   FULLTEXT KEY `SEARCH_TSSTATUSES` (`status`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1984,7 +2006,8 @@ CREATE TABLE `twsites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `twsites_UN` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2182,6 +2205,7 @@ CREATE TABLE `usstypes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `usstypes_UN` (`type`),
   FULLTEXT KEY `SEARCH_USSTYPES` (`type`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -2209,4 +2233,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-07-10 12:28:47
+-- Dump completed on 2018-07-11  5:26:28
