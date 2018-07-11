@@ -465,16 +465,12 @@ type Gractiveobelisk {
 """Artifacts used at a Guardian Ruin site"""
 type Grartifact {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
   artifactName: String!
 }
 
 """Category of data recieved from Guardian Ruin Obelisks"""
 type Grcodexcategory {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
   categoryName: String
 }
 
@@ -591,16 +587,12 @@ type Gsactiveobelisk {
 """Artifacts used at a Guardian Structures site"""
 type Gsartifact {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
   artifactName: String!
 }
 
 """Category of data recieved from Guardian Structure Obelisks"""
 type Gscodexcategory {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
   categoryName: String!
 }
 
@@ -740,6 +732,18 @@ type Gytype {
   type: String!
 }
 
+"""Thargoid Hyperdiction sites"""
+type Hdsite {
+  id: ID!
+  createdAt: String!
+  updatedAt: String!
+  fromSystem: Location
+  toSystem: System
+  cmdr: Cmdr
+  thargoidCount: Int
+  isHostile: Boolean
+}
+
 """Raw journal dumps"""
 type Journaldata {
   id: ID!
@@ -776,6 +780,7 @@ type Location {
   tsSite: Tssite
   twSite: Twsite
   ussSite: Usssite
+  hdSite(sort: String, limit: Int, start: Int, where: JSON): [Hdsite]
 }
 
 """Reporting for Lava Spouts"""
@@ -813,7 +818,7 @@ type Lssite {
   discoveredBy: Cmdr
 }
 
-union Morph = Bmreport | Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysubtype | Bodytype | Btreport | Btsite | Cmdr | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategory | Grcodexdata | Grobelisk | Grobeliskgroup | Grobeliskgroupreport | Grobeliskreport | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsobeliskgroupreport | Gsobeliskreport | Gsreport | Gssite | Gstype | Gyreport | Gysite | Gytype | Journaldata | Location | Lsreport | Lssite | Msreport | Mssite | Mstype | Ring | Ringtype | System | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union Morph = Bmreport | Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysubtype | Bodytype | Btreport | Btsite | Cmdr | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategory | Grcodexdata | Grobelisk | Grobeliskgroup | Grobeliskgroupreport | Grobeliskreport | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsobeliskgroupreport | Gsobeliskreport | Gsreport | Gssite | Gstype | Gyreport | Gysite | Gytype | Hdsite | Journaldata | Location | Lsreport | Lssite | Msreport | Mssite | Mstype | Ring | Ringtype | System | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 """Reporting for Megaships"""
 type Msreport {
@@ -949,6 +954,8 @@ type Query {
   gysites(sort: String, limit: Int, start: Int, where: JSON): [Gysite]
   gytype(id: ID!): Gytype
   gytypes(sort: String, limit: Int, start: Int, where: JSON): [Gytype]
+  hdsite(id: ID!): Hdsite
+  hdsites(sort: String, limit: Int, start: Int, where: JSON): [Hdsite]
   journaldatum(id: ID!): Journaldata
   journaldata(sort: String, limit: Int, start: Int, where: JSON): [Journaldata]
   location(id: ID!): Location
