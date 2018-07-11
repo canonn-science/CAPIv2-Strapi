@@ -1,0 +1,32 @@
+{
+  "connection": "default",
+  "collectionName": "hdsites",
+  "info": {
+    "name": "hdsite",
+    "description": "Thargoid Hyperdiction sites"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "fromSystem": {
+      "model": "location",
+      "via": "hdSite"
+    },
+    "toSystem": {
+      "model": "system"
+    },
+    "cmdr": {
+      "model": "cmdr"
+    },
+    "thargoidCount": {
+      "min": 1,
+      "type": "integer"
+    },
+    "isHostile": {
+      "type": "boolean"
+    }
+  }
+}
