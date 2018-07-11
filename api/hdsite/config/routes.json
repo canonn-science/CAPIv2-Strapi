@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/hdsite",
+      "handler": "Hdsite.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/hdsite/count",
+      "handler": "Hdsite.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/hdsite/:id",
+      "handler": "Hdsite.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/hdsite",
+      "handler": "Hdsite.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/hdsite/:id",
+      "handler": "Hdsite.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/hdsite/:id",
+      "handler": "Hdsite.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/hdsite/:id/relationships/:relation",
+      "handler": "Hdsite.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/hdsite/:id/relationships/:relation",
+      "handler": "Hdsite.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/hdsite/:id/relationships/:relation",
+      "handler": "Hdsite.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

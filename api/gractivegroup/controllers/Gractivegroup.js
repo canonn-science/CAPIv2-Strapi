@@ -15,7 +15,11 @@ module.exports = {
    */
 
   find: async (ctx) => {
-    return strapi.services.gractivegroup.fetchAll(ctx.query);
+    if (ctx.query._q) {
+      return strapi.services.gractivegroup.search(ctx.query);
+    } else {
+      return strapi.services.gractivegroup.fetchAll(ctx.query);
+    }
   },
 
   /**
