@@ -133,12 +133,110 @@ module.exports = {
    */
 
   remove: async (params) => {
-    await Promise.all(
-      Gyreport.associations.map(association =>
-        Gyreport.forge(params)[association.alias]().detach()
-      )
-    );
+    params.values = {};
+    Gyreport.associations.map(association => {
+      switch (association.nature) {
+        case 'oneWay':
+        case 'oneToOne':
+        case 'manyToOne':
+        case 'oneToManyMorph':
+          params.values[association.alias] = null;
+          break;
+        case 'oneToMany':
+        case 'manyToMany':
+        case 'manyToManyMorph':
+          params.values[association.alias] = [];
+          break;
+        default:
+      }
+    });
+
+    await Gyreport.updateRelations(params);
 
     return Gyreport.forge(params).destroy();
+  },
+
+  /**
+   * Promise to search a/an gyreport.
+   *
+   * @return {Promise}
+   */
+
+  search: async (params) => {
+    // Convert `params` object to filters compatible with Bookshelf.
+    const filters = strapi.utils.models.convertParams('gyreport', params);
+    // Select field to populate.
+    const populate = Gyreport.associations
+      .filter(ast => ast.autoPopulate !== false)
+      .map(ast => ast.alias);
+
+    const associations = Gyreport.associations.map(x => x.alias);
+    const searchText = Object.keys(Gyreport._attributes)
+      .filter(attribute => attribute !== Gyreport.primaryKey && !associations.includes(attribute))
+      .filter(attribute => ['string', 'text'].includes(Gyreport._attributes[attribute].type));
+
+    const searchNoText = Object.keys(Gyreport._attributes)
+      .filter(attribute => attribute !== Gyreport.primaryKey && !associations.includes(attribute))
+      .filter(attribute => !['string', 'text', 'boolean', 'integer', 'decimal', 'float'].includes(Gyreport._attributes[attribute].type));
+
+    const searchInt = Object.keys(Gyreport._attributes)
+      .filter(attribute => attribute !== Gyreport.primaryKey && !associations.includes(attribute))
+      .filter(attribute => ['integer', 'decimal', 'float'].includes(Gyreport._attributes[attribute].type));
+
+    const searchBool = Object.keys(Gyreport._attributes)
+      .filter(attribute => attribute !== Gyreport.primaryKey && !associations.includes(attribute))
+      .filter(attribute => ['boolean'].includes(Gyreport._attributes[attribute].type));
+
+    const query = (params._q || '').replace(/[^a-zA-Z0-9.-\s]+/g, '');
+
+    return Gyreport.query(qb => {
+      // Search in columns which are not text value.
+      searchNoText.forEach(attribute => {
+        qb.orWhereRaw(`LOWER(${attribute}) LIKE '%${_.toLower(query)}%'`);
+      });
+
+      if (!_.isNaN(_.toNumber(query))) {
+        searchInt.forEach(attribute => {
+          qb.orWhereRaw(`${attribute} = ${_.toNumber(query)}`);
+        });
+      }
+
+      if (query === 'true' || query === 'false') {
+        searchBool.forEach(attribute => {
+          qb.orWhereRaw(`${attribute} = ${_.toNumber(query === 'true')}`);
+        });
+      }
+
+      // Search in columns with text using index.
+      switch (Gyreport.client) {
+        case 'pg': {
+          const searchQuery = searchText.map(attribute =>
+            _.toLower(attribute) === attribute
+              ? `to_tsvector(${attribute})`
+              : `to_tsvector('${attribute}')`
+          );
+
+          qb.orWhereRaw(`${searchQuery.join(' || ')} @@ to_tsquery(?)`, query);
+          break;
+        }
+        default:
+          qb.orWhereRaw(`MATCH(${searchText.join(',')}) AGAINST(? IN BOOLEAN MODE)`, `*${query}*`);
+          break;
+      }
+
+      if (filters.sort) {
+        qb.orderBy(filters.sort.key, filters.sort.order);
+      }
+
+      if (filters.skip) {
+        qb.offset(_.toNumber(filters.skip));
+      }
+
+      if (filters.limit) {
+        qb.limit(_.toNumber(filters.limit));
+      }
+    }).fetchAll({
+      width: populate
+    });
   }
 };

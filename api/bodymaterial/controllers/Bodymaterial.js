@@ -15,7 +15,11 @@ module.exports = {
    */
 
   find: async (ctx) => {
-    return strapi.services.bodymaterial.fetchAll(ctx.query);
+    if (ctx.query._q) {
+      return strapi.services.bodymaterial.search(ctx.query);
+    } else {
+      return strapi.services.bodymaterial.fetchAll(ctx.query);
+    }
   },
 
   /**

@@ -471,7 +471,7 @@ type Grartifact {
 }
 
 """Category of data recieved from Guardian Ruin Obelisks"""
-type Grcodexcategories {
+type Grcodexcategory {
   id: ID!
   createdAt: String!
   updatedAt: String!
@@ -483,7 +483,7 @@ type Grcodexdata {
   id: ID!
   createdAt: String!
   updatedAt: String!
-  grCodexCategory: Grcodexcategories
+  grCodexCategory: Grcodexcategory
   grPrimaryArtifact: Grartifact
   grSecondaryArtifact: Grartifact
   codexNumber: Int!
@@ -695,6 +695,7 @@ type Gssite {
 type Gstype {
   id: ID!
   type: String!
+  journalName: String!
 }
 
 """Reporting for Geysers"""
@@ -812,7 +813,7 @@ type Lssite {
   discoveredBy: Cmdr
 }
 
-union Morph = Bmreport | Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysubtype | Bodytype | Btreport | Btsite | Cmdr | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategories | Grcodexdata | Grobelisk | Grobeliskgroup | Grobeliskgroupreport | Grobeliskreport | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsobeliskgroupreport | Gsobeliskreport | Gsreport | Gssite | Gstype | Gyreport | Gysite | Gytype | Journaldata | Location | Lsreport | Lssite | Msreport | Mssite | Mstype | Ring | Ringtype | System | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union Morph = Bmreport | Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysubtype | Bodytype | Btreport | Btsite | Cmdr | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategory | Grcodexdata | Grobelisk | Grobeliskgroup | Grobeliskgroupreport | Grobeliskreport | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsobeliskgroupreport | Gsobeliskreport | Gsreport | Gssite | Gstype | Gyreport | Gysite | Gytype | Journaldata | Location | Lsreport | Lssite | Msreport | Mssite | Mstype | Ring | Ringtype | System | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 """Reporting for Megaships"""
 type Msreport {
@@ -900,8 +901,8 @@ type Query {
   gractiveobelisks(sort: String, limit: Int, start: Int, where: JSON): [Gractiveobelisk]
   grartifact(id: ID!): Grartifact
   grartifacts(sort: String, limit: Int, start: Int, where: JSON): [Grartifact]
-  grcodexcategory(id: ID!): Grcodexcategories
-  grcodexcategories(sort: String, limit: Int, start: Int, where: JSON): [Grcodexcategories]
+  grcodexcategory(id: ID!): Grcodexcategory
+  grcodexcategories(sort: String, limit: Int, start: Int, where: JSON): [Grcodexcategory]
   grcodexdatum(id: ID!): Grcodexdata
   grcodexdata(sort: String, limit: Int, start: Int, where: JSON): [Grcodexdata]
   grobelisk(id: ID!): Grobelisk

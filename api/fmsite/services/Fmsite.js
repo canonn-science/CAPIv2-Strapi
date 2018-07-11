@@ -133,12 +133,110 @@ module.exports = {
    */
 
   remove: async (params) => {
-    await Promise.all(
-      Fmsite.associations.map(association =>
-        Fmsite.forge(params)[association.alias]().detach()
-      )
-    );
+    params.values = {};
+    Fmsite.associations.map(association => {
+      switch (association.nature) {
+        case 'oneWay':
+        case 'oneToOne':
+        case 'manyToOne':
+        case 'oneToManyMorph':
+          params.values[association.alias] = null;
+          break;
+        case 'oneToMany':
+        case 'manyToMany':
+        case 'manyToManyMorph':
+          params.values[association.alias] = [];
+          break;
+        default:
+      }
+    });
+
+    await Fmsite.updateRelations(params);
 
     return Fmsite.forge(params).destroy();
+  },
+
+  /**
+   * Promise to search a/an fmsite.
+   *
+   * @return {Promise}
+   */
+
+  search: async (params) => {
+    // Convert `params` object to filters compatible with Bookshelf.
+    const filters = strapi.utils.models.convertParams('fmsite', params);
+    // Select field to populate.
+    const populate = Fmsite.associations
+      .filter(ast => ast.autoPopulate !== false)
+      .map(ast => ast.alias);
+
+    const associations = Fmsite.associations.map(x => x.alias);
+    const searchText = Object.keys(Fmsite._attributes)
+      .filter(attribute => attribute !== Fmsite.primaryKey && !associations.includes(attribute))
+      .filter(attribute => ['string', 'text'].includes(Fmsite._attributes[attribute].type));
+
+    const searchNoText = Object.keys(Fmsite._attributes)
+      .filter(attribute => attribute !== Fmsite.primaryKey && !associations.includes(attribute))
+      .filter(attribute => !['string', 'text', 'boolean', 'integer', 'decimal', 'float'].includes(Fmsite._attributes[attribute].type));
+
+    const searchInt = Object.keys(Fmsite._attributes)
+      .filter(attribute => attribute !== Fmsite.primaryKey && !associations.includes(attribute))
+      .filter(attribute => ['integer', 'decimal', 'float'].includes(Fmsite._attributes[attribute].type));
+
+    const searchBool = Object.keys(Fmsite._attributes)
+      .filter(attribute => attribute !== Fmsite.primaryKey && !associations.includes(attribute))
+      .filter(attribute => ['boolean'].includes(Fmsite._attributes[attribute].type));
+
+    const query = (params._q || '').replace(/[^a-zA-Z0-9.-\s]+/g, '');
+
+    return Fmsite.query(qb => {
+      // Search in columns which are not text value.
+      searchNoText.forEach(attribute => {
+        qb.orWhereRaw(`LOWER(${attribute}) LIKE '%${_.toLower(query)}%'`);
+      });
+
+      if (!_.isNaN(_.toNumber(query))) {
+        searchInt.forEach(attribute => {
+          qb.orWhereRaw(`${attribute} = ${_.toNumber(query)}`);
+        });
+      }
+
+      if (query === 'true' || query === 'false') {
+        searchBool.forEach(attribute => {
+          qb.orWhereRaw(`${attribute} = ${_.toNumber(query === 'true')}`);
+        });
+      }
+
+      // Search in columns with text using index.
+      switch (Fmsite.client) {
+        case 'pg': {
+          const searchQuery = searchText.map(attribute =>
+            _.toLower(attribute) === attribute
+              ? `to_tsvector(${attribute})`
+              : `to_tsvector('${attribute}')`
+          );
+
+          qb.orWhereRaw(`${searchQuery.join(' || ')} @@ to_tsquery(?)`, query);
+          break;
+        }
+        default:
+          qb.orWhereRaw(`MATCH(${searchText.join(',')}) AGAINST(? IN BOOLEAN MODE)`, `*${query}*`);
+          break;
+      }
+
+      if (filters.sort) {
+        qb.orderBy(filters.sort.key, filters.sort.order);
+      }
+
+      if (filters.skip) {
+        qb.offset(_.toNumber(filters.skip));
+      }
+
+      if (filters.limit) {
+        qb.limit(_.toNumber(filters.limit));
+      }
+    }).fetchAll({
+      width: populate
+    });
   }
 };

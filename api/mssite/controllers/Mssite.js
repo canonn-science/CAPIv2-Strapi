@@ -15,7 +15,11 @@ module.exports = {
    */
 
   find: async (ctx) => {
-    return strapi.services.mssite.fetchAll(ctx.query);
+    if (ctx.query._q) {
+      return strapi.services.mssite.search(ctx.query);
+    } else {
+      return strapi.services.mssite.fetchAll(ctx.query);
+    }
   },
 
   /**
