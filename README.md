@@ -41,7 +41,7 @@ The Canonn APIv2 is designed to handle all our current science projects. Current
 * Guardian Structures (GS)
   * Guardian Structures Active Obelisks
 * Geysers (GY)
-* Hyperdictions (HD) - **Planned v2.0.7**
+* Hyperdictions (HD) - **Planned v2.0.8**
 * Lava Spouts (LS)
 * Megaships (MS)
 * Thargoid Barnacles (TB)
@@ -61,7 +61,7 @@ Also we are tracking the following:
 
 ## Current Version
 
-The current version of the CAPIv2 is `v2.0.6` and is still in active development and testing. If you would like to contribute please PM DMehaffy on discord `DMehaffy#1337`
+The current version of the CAPIv2 is `v2.0.7` and is still in active development and testing. If you would like to contribute please PM DMehaffy on discord `DMehaffy#1337`
 
 # API Documentation
 

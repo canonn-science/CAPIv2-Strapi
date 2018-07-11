@@ -59,7 +59,8 @@ $RECYCLE.BIN/
 *.swm
 *.out
 *.pid
-
+package-lock.json
+*package-lock.json
 
 ############################
 # Logs and databases
@@ -109,3 +110,10 @@ coverage
 config/environments/development/database.json
 config/environments/staging/database.json
 config/environments/production/database.json
+
+############################
+# Script Storage
+############################
+
+config/functions/systemData.json
+systemData.json

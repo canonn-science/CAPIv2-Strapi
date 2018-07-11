@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Lifecycle callbacks for the `Grcodexcategories` model.
+ * Lifecycle callbacks for the `Hdsite` model.
  */
 
 module.exports = {

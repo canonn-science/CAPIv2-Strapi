@@ -133,12 +133,110 @@ module.exports = {
    */
 
   remove: async (params) => {
-    await Promise.all(
-      Gsartifact.associations.map(association =>
-        Gsartifact.forge(params)[association.alias]().detach()
-      )
-    );
+    params.values = {};
+    Gsartifact.associations.map(association => {
+      switch (association.nature) {
+        case 'oneWay':
+        case 'oneToOne':
+        case 'manyToOne':
+        case 'oneToManyMorph':
+          params.values[association.alias] = null;
+          break;
+        case 'oneToMany':
+        case 'manyToMany':
+        case 'manyToManyMorph':
+          params.values[association.alias] = [];
+          break;
+        default:
+      }
+    });
+
+    await Gsartifact.updateRelations(params);
 
     return Gsartifact.forge(params).destroy();
+  },
+
+  /**
+   * Promise to search a/an gsartifact.
+   *
+   * @return {Promise}
+   */
+
+  search: async (params) => {
+    // Convert `params` object to filters compatible with Bookshelf.
+    const filters = strapi.utils.models.convertParams('gsartifact', params);
+    // Select field to populate.
+    const populate = Gsartifact.associations
+      .filter(ast => ast.autoPopulate !== false)
+      .map(ast => ast.alias);
+
+    const associations = Gsartifact.associations.map(x => x.alias);
+    const searchText = Object.keys(Gsartifact._attributes)
+      .filter(attribute => attribute !== Gsartifact.primaryKey && !associations.includes(attribute))
+      .filter(attribute => ['string', 'text'].includes(Gsartifact._attributes[attribute].type));
+
+    const searchNoText = Object.keys(Gsartifact._attributes)
+      .filter(attribute => attribute !== Gsartifact.primaryKey && !associations.includes(attribute))
+      .filter(attribute => !['string', 'text', 'boolean', 'integer', 'decimal', 'float'].includes(Gsartifact._attributes[attribute].type));
+
+    const searchInt = Object.keys(Gsartifact._attributes)
+      .filter(attribute => attribute !== Gsartifact.primaryKey && !associations.includes(attribute))
+      .filter(attribute => ['integer', 'decimal', 'float'].includes(Gsartifact._attributes[attribute].type));
+
+    const searchBool = Object.keys(Gsartifact._attributes)
+      .filter(attribute => attribute !== Gsartifact.primaryKey && !associations.includes(attribute))
+      .filter(attribute => ['boolean'].includes(Gsartifact._attributes[attribute].type));
+
+    const query = (params._q || '').replace(/[^a-zA-Z0-9.-\s]+/g, '');
+
+    return Gsartifact.query(qb => {
+      // Search in columns which are not text value.
+      searchNoText.forEach(attribute => {
+        qb.orWhereRaw(`LOWER(${attribute}) LIKE '%${_.toLower(query)}%'`);
+      });
+
+      if (!_.isNaN(_.toNumber(query))) {
+        searchInt.forEach(attribute => {
+          qb.orWhereRaw(`${attribute} = ${_.toNumber(query)}`);
+        });
+      }
+
+      if (query === 'true' || query === 'false') {
+        searchBool.forEach(attribute => {
+          qb.orWhereRaw(`${attribute} = ${_.toNumber(query === 'true')}`);
+        });
+      }
+
+      // Search in columns with text using index.
+      switch (Gsartifact.client) {
+        case 'pg': {
+          const searchQuery = searchText.map(attribute =>
+            _.toLower(attribute) === attribute
+              ? `to_tsvector(${attribute})`
+              : `to_tsvector('${attribute}')`
+          );
+
+          qb.orWhereRaw(`${searchQuery.join(' || ')} @@ to_tsquery(?)`, query);
+          break;
+        }
+        default:
+          qb.orWhereRaw(`MATCH(${searchText.join(',')}) AGAINST(? IN BOOLEAN MODE)`, `*${query}*`);
+          break;
+      }
+
+      if (filters.sort) {
+        qb.orderBy(filters.sort.key, filters.sort.order);
+      }
+
+      if (filters.skip) {
+        qb.offset(_.toNumber(filters.skip));
+      }
+
+      if (filters.limit) {
+        qb.limit(_.toNumber(filters.limit));
+      }
+    }).fetchAll({
+      width: populate
+    });
   }
 };
