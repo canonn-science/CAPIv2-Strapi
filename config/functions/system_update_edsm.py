@@ -145,31 +145,34 @@ try:
             elapsed_time = current_date - date
             if elapsed_time.days >= day_difference_threshold:
                 names_to_update.append(systemName)
-            print('Updating {} rows'.format(len(names_to_update)))
-        # add the params manually since they're duplicates
-        url = edsm_api_systems_url + '?showId=1&showCoordinates=1&showPermit=1&'
-        for chunk in list(chunks(names_to_update, args.batch_size)):
-            for index, name in enumerate(chunk):
-                if not index == 0:
-                    url += '&'
-                url += 'systemName[]={}'.format(name)
-            response = requests.get(url)
-            all_systems_data = response.json()
-            for system_data in all_systems_data:
-                print('Updating: {}'.format(system_data['name']))
-                insert_sql = 'UPDATE `systems` SET edsmCoordX=%s, edsmCoordY=%s, edsmCoordZ=%s, edsmID=%s, edsmID64=%s, edsmCoordLocked=%s WHERE systemName LIKE \'{}\''.format(system_data['name'])
-                cursor.execute(
-                    insert_sql,
-                    (
-                        system_data['coords']['x'],
-                        system_data['coords']['y'],
-                        system_data['coords']['z'],
-                        system_data['id'],
-                        system_data['id64'],
-                        1 if system_data['coordsLocked'] else 0
+        print('Updating {} rows'.format(len(names_to_update)))
+        if len(names_to_update) > 0
+            # add the params manually since they're duplicates
+            url = edsm_api_systems_url + '?showId=1&showCoordinates=1&showPermit=1&'
+            for chunk in list(chunks(names_to_update, args.batch_size)):
+                for index, name in enumerate(chunk):
+                    if not index == 0:
+                        url += '&'
+                    url += 'systemName[]={}'.format(name)
+                response = requests.get(url)
+                all_systems_data = response.json()
+                for system_data in all_systems_data:
+                    print('Updating: {}'.format(system_data['name']))
+                    insert_sql = 'UPDATE `systems` SET edsmCoordX=%s, edsmCoordY=%s, edsmCoordZ=%s, edsmID=%s, edsmID64=%s, edsmCoordLocked=%s WHERE systemName LIKE \'{}\''.format(system_data['name'])
+                    cursor.execute(
+                        insert_sql,
+                        (
+                            system_data['coords']['x'],
+                            system_data['coords']['y'],
+                            system_data['coords']['z'],
+                            system_data['id'],
+                            system_data['id64'],
+                            1 if system_data['coordsLocked'] else 0
+                        )
                     )
-                )
-            time.sleep(args.delay_seconds)
+                time.sleep(args.delay_seconds)
+        else:
+          print('No systems to update')
     connection.commit()
 finally:
     print('Closing connection to MySQL DB')
