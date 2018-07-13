@@ -250,12 +250,13 @@ enum ENUM_GSREPORT_REPORTSTATUS {
 }
 
 enum ENUM_GSREPORT_TYPE {
-  Structure
-  Type1
-  Type2
-  Type3
-  Type4
-  Type5
+  Lacrosse
+  Crossroads
+  Fistbump
+  Hammerbot
+  Bear
+  Bowl
+  Turtle
 }
 
 enum ENUM_GYREPORT_REPORTSTATUS {
@@ -275,6 +276,7 @@ enum ENUM_LOCATION_LOCATIONTYPE {
   GR
   GS
   GY
+  HD
   LS
   MS
   TB
@@ -653,6 +655,7 @@ type Gsreport {
   latitude: Float!
   longitude: Float!
   type: ENUM_GSREPORT_TYPE!
+  hasDatabank: Boolean
   cmdrName: String!
   cmdrComment: String
   reportStatus: ENUM_GSREPORT_REPORTSTATUS!
@@ -737,11 +740,11 @@ type Hdsite {
   id: ID!
   createdAt: String!
   updatedAt: String!
-  fromSystem: Location
+  location: Location
   toSystem: System
-  cmdr: Cmdr
   thargoidCount: Int
   isHostile: Boolean
+  discoveredBy: Cmdr
 }
 
 """Raw journal dumps"""
@@ -858,11 +861,11 @@ type Mssite {
   location: Location
   siteID: Int!
   shipName: String!
-  shipTag: String
+  shipTag: String!
   type: Mstype
-  flightOps: Boolean
-  flightSchedule: Boolean
-  dockable: Boolean
+  flightOps: Boolean!
+  flightSchedule: Boolean!
+  dockable: Boolean!
   discoveredBy: Cmdr
 }
 
@@ -1021,7 +1024,7 @@ type Ring {
   updatedAt: String!
   body: Body
   ringName: String!
-  edsmType: Ringtype
+  ringtype: Ringtype
   edsmMass: Float
   edsmInnerRadius: Float
   edsmOuterRadius: Float
@@ -1225,4 +1228,5 @@ type Usssite {
 type Usstype {
   id: ID!
   type: String!
+  journalName: String!
 }

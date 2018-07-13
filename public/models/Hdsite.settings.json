@@ -11,15 +11,12 @@
     "comment": ""
   },
   "attributes": {
-    "fromSystem": {
+    "location": {
       "model": "location",
       "via": "hdSite"
     },
     "toSystem": {
       "model": "system"
-    },
-    "cmdr": {
-      "model": "cmdr"
     },
     "thargoidCount": {
       "min": 1,
@@ -27,6 +24,9 @@
     },
     "isHostile": {
       "type": "boolean"
+    },
+    "discoveredBy": {
+      "model": "cmdr"
     }
   }
 }
