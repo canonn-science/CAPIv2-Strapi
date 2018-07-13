@@ -1,0 +1,6914 @@
+openapi: "3.0.1"
+
+## Information
+info:
+  version: 2.0.7
+  title: Canonn APIv2
+  x-logo:
+    url: "http://localhost:1337/canonn-logo.png"
+  description: |
+    An API for all the Science related information Canonn has in its datastores stored on the Gnosis, built using [Strapi](https://strapi.io) a Nodejs API framework. 
+    
+    We have two different documentation types, our [Redocs](https://api.canonn.tech) or use the [Swagger-UI](https://api.canonn.tech/swaggerui)
+
+    We also have 3 API servers; Live (Production), Beta (Staging), Alpha (Development). You should use the Beta server for testing your application prior to using the Live server. The Alpha server is used by Canonn to test our changes prior to releasing a new version.
+
+    Data between the Live and Beta servers are replicated as needed, eventually we plan to dynamically replicate the data every night at midnight Phoenix, Arizona USA time (MST-Arizona GMT-7)
+
+    Here are the following URLs for each server
+
+    * Live - https://api.canonn.tech
+    * Beta - https://api.canonn.tech:2053
+    * Alpha - https://api.canonn.tech:2083
+
+    Thank you for your support, and thank you to all the CMDRs who supply us with our data!
+
+  contact:
+    name: Canonn R&D Team
+    email: rd@canonn.technology
+    url: https://canonn.science
+  license:
+    name: MIT
+    url: https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE
+
+## Servers
+servers:
+  - url: https://api.canonn.tech:2053
+    description: Beta Staging Server, should be used to test your application prior to deployment. Data is mirrored from Production every few hours.
+  - url: https://api.canonn.tech
+    description: Live Production Server, should be used if your application has been tested and deployed
+  - url: https://api.canonn.tech:2083
+    description: Alpha Development Server, used by Canonn to test development prior to updating Staging and Production. Data here is likely to be wrong or inaccurate.
+    
+## Paths
+paths:
+
+# Authentication
+  /auth/local:
+    post:
+      tags:
+        - Local Auth
+      summary: Login to the Canonn APIv2 Server
+      description: Using local authentication to login to the API, user must already be registered
+      operationId: loginLocal
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/localCreds'
+      responses:
+        '200':
+          description: Authentication successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/authLocal'
+        '400':
+          description: Authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/authError'
+
+# BM Report
+  /bmreport/count:
+    get:
+      tags:
+        - Bark Mound Reports
+      summary: Get a count of all BM Reports
+      description: The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getBMReportsCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+  /bmreport:
+    get:
+      tags:
+        - Bark Mound Reports
+      summary: Get a list of BM Reports
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getBMReports
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of BM Reports
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportPlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - Bark Mound Reports
+      summary: Post a new BM Report
+      description: To be used to submit new Reports to Canonn, note that the reportStatus should always be pending
+      operationId: submitBMReport
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportPlanet'
+      responses:
+        '200':
+          description: Report post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportPlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /bmreport/{id}:
+    get:
+      tags:
+        - Bark Mound Reports
+      summary: Get a Single BM Report
+      description: Provide the ID to get a single report
+      operationId: getBMReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the BM Report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportPlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - Bark Mound Reports
+      summary: Update a BM Report
+      description: You do not need to send the entire report again, you can send only changed fields
+      operationId: updateBMReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportPlanet'
+      responses:
+        '200':
+          description: Report update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportPlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+      
+    delete:
+      tags:
+        - Bark Mound Reports
+      summary: Delete a BM Report
+      description: The response is just an empty JSON, deleting a report requires auth
+      operationId: removeBMReportById
+      security:
+        - canonnAuth: [reportDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+      
+# BM Site
+
+# Body
+
+# Body Atmosphere
+
+# Body Material
+
+# Body Subtype
+
+# Body Type
+
+# BT Report
+  /btreport/count:
+    get:
+      tags:
+        - Brain Tree Reports
+      summary: Get a count of all BT Reports
+      description: The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getBTReportsCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+  /btreport:
+    get:
+      tags:
+        - Brain Tree Reports
+      summary: Get a list of BT Reports
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getBTReports
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of BT Reports
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportPlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - Brain Tree Reports
+      summary: Post a new BT Report
+      description: To be used to submit new Reports to Canonn, note that the reportStatus should always be pending
+      operationId: submitBTReport
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportPlanet'
+      responses:
+        '200':
+          description: Report post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportPlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /btreport/{id}:
+    get:
+      tags:
+        - Brain Tree Reports
+      summary: Get a Single BT Report
+      description: Provide the ID to get a single report
+      operationId: getBTReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the BT Report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportPlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - Brain Tree Reports
+      summary: Update a BT Report
+      description: You do not need to send the entire report again, you can send only changed fields
+      operationId: updateBTReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportPlanet'
+      responses:
+        '200':
+          description: Report update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportPlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+      
+    delete:
+      tags:
+        - Brain Tree Reports
+      summary: Delete a BT Report
+      description: The response is just an empty JSON, deleting a report requires auth
+      operationId: removeBTReportById
+      security:
+        - canonnAuth: [reportDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+# BT Site
+
+# CMDR
+
+# FG Report
+  /fgreport/count:
+    get:
+      tags:
+        - Fungal Gourd Reports
+      summary: Get a count of all FG Reports
+      description: The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getFGReportsCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+  /fgreport:
+    get:
+      tags:
+        - Fungal Gourd Reports
+      summary: Get a list of FG Reports
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getFGReports
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of FG Reports
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportPlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - Fungal Gourd Reports
+      summary: Post a new FG Report
+      description: To be used to submit new Reports to Canonn, note that the reportStatus should always be pending
+      operationId: submitFGReport
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportPlanet'
+      responses:
+        '200':
+          description: Report post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportPlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /fgreport/{id}:
+    get:
+      tags:
+        - Fungal Gourd Reports
+      summary: Get a Single FG Report
+      description: Provide the ID to get a single report
+      operationId: getFGReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the FG Report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportPlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - Fungal Gourd Reports
+      summary: Update a FG Report
+      description: You do not need to send the entire report again, you can send only changed fields
+      operationId: updateFGReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportPlanet'
+      responses:
+        '200':
+          description: Report update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportPlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+      
+    delete:
+      tags:
+        - Fungal Gourd Reports
+      summary: Delete a FG Report
+      description: The response is just an empty JSON, deleting a report requires auth
+      operationId: removeFGReportById
+      security:
+        - canonnAuth: [reportDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+# FG Site
+
+# FM Report
+  /fmreport/count:
+    get:
+      tags:
+        - Fumarole Reports
+      summary: Get a count of all FM Reports
+      description: The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getFMReportsCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+  /fmreport:
+    get:
+      tags:
+        - Fumarole Reports
+      summary: Get a list of FM Reports
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getFMReports
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of FM Reports
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportFM'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - Fumarole Reports
+      summary: Post a new FM Report
+      description: To be used to submit new Reports to Canonn, note that the reportStatus should always be pending
+      operationId: submitFMReport
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportPlanetWithType'
+      responses:
+        '200':
+          description: Report post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportFM'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /fmreport/{id}:
+    get:
+      tags:
+        - Fumarole Reports
+      summary: Get a Single FM Report
+      description: Provide the ID to get a single report
+      operationId: getFMReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the FM Report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportFM'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - Fumarole Reports
+      summary: Update a FM Report
+      description: You do not need to send the entire report again, you can send only changed fields
+      operationId: updateFMReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportPlanetWithType'
+      responses:
+        '200':
+          description: Report update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportFM'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+      
+    delete:
+      tags:
+        - Fumarole Reports
+      summary: Delete a FM Report
+      description: The response is just an empty JSON, deleting a report requires auth
+      operationId: removeFMReportById
+      security:
+        - canonnAuth: [reportDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+# FM Site
+
+# FM Type
+
+# GEN Report
+  /genreport/count:
+    get:
+      tags:
+        - Generation Ship Reports
+      summary: Get a count of all GEN Reports
+      description: The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getGENReportsCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+  /genreport:
+    get:
+      tags:
+        - Generation Ship Reports
+      summary: Get a list of GEN Reports
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getGENReports
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of GEN Reports
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGEN'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - Generation Ship Reports
+      summary: Post a new GEN Report
+      description: To be used to submit new Reports to Canonn, note that the reportStatus should always be pending
+      operationId: submitGENReport
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportGEN'
+      responses:
+        '200':
+          description: Report post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGEN'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /genreport/{id}:
+    get:
+      tags:
+        - Generation Ship Reports
+      summary: Get a Single GEN Report
+      description: Provide the ID to get a single report
+      operationId: getGENReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the GEN Report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGEN'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - Generation Ship Reports
+      summary: Update a GEN Report
+      description: You do not need to send the entire report again, you can send only changed fields
+      operationId: updateGENReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportGEN'
+      responses:
+        '200':
+          description: Report update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGEN'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+      
+    delete:
+      tags:
+        - Generation Ship Reports
+      summary: Delete a GEN Report
+      description: The response is just an empty JSON, deleting a report requires auth
+      operationId: removeGENReportById
+      security:
+        - canonnAuth: [reportDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+# GEN Site
+
+# GR Active Group
+
+# GR Active Obelisk
+
+# GR Artifact
+
+# GR Codex Category
+
+# GR Codex Data
+
+# GR Obelisk
+
+# GR Obelisk Group
+
+# GR Obelisk Group Report
+  /grobeliskgroupreport/count:
+    get:
+      tags:
+        - Guardian Ruin Reports
+      summary: Get a count of all GR Obelisk Group Reports
+      description: The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getGROGReportsCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+  /grobeliskgroupreport:
+    get:
+      tags:
+        - Guardian Ruin Reports
+      summary: Get a list of GR Obelisk Group Reports
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getGROGReports
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of GR Obelisk Group Reports
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGRObeliskGroup'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - Guardian Ruin Reports
+      summary: Post a new GR Obelisk Group Report
+      description: To be used to submit new Reports to Canonn, note that the reportStatus should always be pending
+      operationId: submitGROGReport
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportGRObeliskGroup'
+      responses:
+        '200':
+          description: Report post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGRObeliskGroup'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /grobeliskgroupreport/{id}:
+    get:
+      tags:
+        - Guardian Ruin Reports
+      summary: Get a Single GR Obelisk Group Report
+      description: Provide the ID to get a single report
+      operationId: getGROGReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the GR Obelisk Group Report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGRObeliskGroup'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - Guardian Ruin Reports
+      summary: Update a GR Obelisk Group Report
+      description: You do not need to send the entire report again, you can send only changed fields
+      operationId: updateGROGReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportGRObeliskGroup'
+      responses:
+        '200':
+          description: Report update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGRObeliskGroup'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+      
+    delete:
+      tags:
+        - Guardian Ruin Reports
+      summary: Delete a GR Obelisk Group Report
+      description: The response is just an empty JSON, deleting a report requires auth
+      operationId: removeGROGReportById
+      security:
+        - canonnAuth: [reportDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+# GR Obelisk Report
+  /grobeliskreport/count:
+    get:
+      tags:
+        - Guardian Ruin Reports
+      summary: Get a count of all GR Obelisk Reports
+      description: The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getGROReportsCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+  /grobeliskreport:
+    get:
+      tags:
+        - Guardian Ruin Reports
+      summary: Get a list of GR Obelisk Reports
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getGROReports
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of GR Obelisk Reports
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGRObelisk'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - Guardian Ruin Reports
+      summary: Post a new GR Obelisk Report
+      description: To be used to submit new Reports to Canonn, note that the reportStatus should always be pending
+      operationId: submitGROReport
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportGRObelisk'
+      responses:
+        '200':
+          description: Report post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGRObelisk'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /grobeliskreport/{id}:
+    get:
+      tags:
+        - Guardian Ruin Reports
+      summary: Get a Single GR Obelisk Report
+      description: Provide the ID to get a single report
+      operationId: getGROReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the GR Obelisk Report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGRObelisk'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - Guardian Ruin Reports
+      summary: Update a GR Obelisk Report
+      description: You do not need to send the entire report again, you can send only changed fields
+      operationId: updateGROReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportGRObelisk'
+      responses:
+        '200':
+          description: Report update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGRObelisk'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+      
+    delete:
+      tags:
+        - Guardian Ruin Reports
+      summary: Delete a GR Obelisk Report
+      description: The response is just an empty JSON, deleting a report requires auth
+      operationId: removeGROReportById
+      security:
+        - canonnAuth: [reportDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+# GR Report
+  /grreport/count:
+    get:
+      tags:
+        - Guardian Ruin Reports
+      summary: Get a count of all GR Reports
+      description: The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getGRReportsCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+  /grreport:
+    get:
+      tags:
+        - Guardian Ruin Reports
+      summary: Get a list of GR Reports
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getGRReports
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of GR Reports
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGR'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - Guardian Ruin Reports
+      summary: Post a new GR Report
+      description: To be used to submit new Reports to Canonn, note that the reportStatus should always be pending
+      operationId: submitGRReport
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportGR'
+      responses:
+        '200':
+          description: Report post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGR'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /grreport/{id}:
+    get:
+      tags:
+        - Guardian Ruin Reports
+      summary: Get a Single GR Report
+      description: Provide the ID to get a single report
+      operationId: getGRReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the GR Report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGR'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - Guardian Ruin Reports
+      summary: Update a GR Report
+      description: You do not need to send the entire report again, you can send only changed fields
+      operationId: updateGRReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportGR'
+      responses:
+        '200':
+          description: Report update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGR'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+      
+    delete:
+      tags:
+        - Guardian Ruin Reports
+      summary: Delete a GR Report
+      description: The response is just an empty JSON, deleting a report requires auth
+      operationId: removeGRReportById
+      security:
+        - canonnAuth: [reportDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+# GR Site
+
+# GR Type
+
+# GS Active Group
+
+# GS Active Obelisk
+
+# GS Artifact
+
+# GS Codex Category
+
+# GS Codex Data
+
+# GS Obelisk
+
+# GS Obelisk Group
+
+# GS Obelisk Group Report
+  /gsobeliskgroupreport/count:
+    get:
+      tags:
+        - Guardian Structure Reports
+      summary: Get a count of all GS Obelisk Group Reports
+      description: The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getGSOGReportsCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+  /gsobeliskgroupreport:
+    get:
+      tags:
+        - Guardian Structure Reports
+      summary: Get a list of GS Obelisk Group Reports
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getGSOGReports
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of GS Obelisk Group Reports
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGSObeliskGroup'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - Guardian Structure Reports
+      summary: Post a new GS Obelisk Group Report
+      description: To be used to submit new Reports to Canonn, note that the reportStatus should always be pending
+      operationId: submitGSOGReport
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportGSObeliskGroup'
+      responses:
+        '200':
+          description: Report post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGSObeliskGroup'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /gsobeliskgroupreport/{id}:
+    get:
+      tags:
+        - Guardian Structure Reports
+      summary: Get a Single GS Obelisk Group Report
+      description: Provide the ID to get a single report
+      operationId: getGSOGReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the GS Obelisk Group Report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGSObeliskGroup'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - Guardian Structure Reports
+      summary: Update a GS Obelisk Group Report
+      description: You do not need to send the entire report again, you can send only changed fields
+      operationId: updateGSOGReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportGSObeliskGroup'
+      responses:
+        '200':
+          description: Report update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGSObeliskGroup'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+      
+    delete:
+      tags:
+        - Guardian Structure Reports
+      summary: Delete a GS Obelisk Group Report
+      description: The response is just an empty JSON, deleting a report requires auth
+      operationId: removeGSOGReportById
+      security:
+        - canonnAuth: [reportDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+# GS Obelisk Report
+  /gsobeliskreport/count:
+    get:
+      tags:
+        - Guardian Structure Reports
+      summary: Get a count of all GS Obelisk Reports
+      description: The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getGSOReportsCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+  /gsobeliskreport:
+    get:
+      tags:
+        - Guardian Structure Reports
+      summary: Get a list of GS Obelisk Reports
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getGSOReports
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of GS Obelisk Reports
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGSObelisk'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - Guardian Structure Reports
+      summary: Post a new GS Obelisk Report
+      description: To be used to submit new Reports to Canonn, note that the reportStatus should always be pending
+      operationId: submitGSOReport
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportGSObelisk'
+      responses:
+        '200':
+          description: Report post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGSObelisk'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /gsobeliskreport/{id}:
+    get:
+      tags:
+        - Guardian Structure Reports
+      summary: Get a Single GS Obelisk Report
+      description: Provide the ID to get a single report
+      operationId: getGSOReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the GS Obelisk Report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGSObelisk'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - Guardian Structure Reports
+      summary: Update a GS Obelisk Report
+      description: You do not need to send the entire report again, you can send only changed fields
+      operationId: updateGSOReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportGSObelisk'
+      responses:
+        '200':
+          description: Report update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGSObelisk'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+      
+    delete:
+      tags:
+        - Guardian Structure Reports
+      summary: Delete a GS Obelisk Report
+      description: The response is just an empty JSON, deleting a report requires auth
+      operationId: removeGSOReportById
+      security:
+        - canonnAuth: [reportDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+# GS Report
+  /gsreport/count:
+    get:
+      tags:
+        - Guardian Structure Reports
+      summary: Get a count of all GS Reports
+      description: The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getGSReportsCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+  /gsreport:
+    get:
+      tags:
+        - Guardian Structure Reports
+      summary: Get a list of GS Reports
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getGSReports
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of GS Reports
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGS'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - Guardian Structure Reports
+      summary: Post a new GS Report
+      description: To be used to submit new Reports to Canonn, note that the reportStatus should always be pending
+      operationId: submitGSReport
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportGS'
+      responses:
+        '200':
+          description: Report post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGS'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /gsreport/{id}:
+    get:
+      tags:
+        - Guardian Structure Reports
+      summary: Get a Single GS Report
+      description: Provide the ID to get a single report
+      operationId: getGSReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the GS Report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGS'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - Guardian Structure Reports
+      summary: Update a GS Report
+      description: You do not need to send the entire report again, you can send only changed fields
+      operationId: updateGSReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportGS'
+      responses:
+        '200':
+          description: Report update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGS'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+      
+    delete:
+      tags:
+        - Guardian Structure Reports
+      summary: Delete a GS Report
+      description: The response is just an empty JSON, deleting a report requires auth
+      operationId: removeGSReportById
+      security:
+        - canonnAuth: [reportDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+# GS Site
+
+# GS Type
+
+# GY Report
+  /gyreport/count:
+    get:
+      tags:
+        - Geyser Reports
+      summary: Get a count of all GY Reports
+      description: The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getGYReportsCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+  /gyreport:
+    get:
+      tags:
+        - Geyser Reports
+      summary: Get a list of GY Reports
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getGYReports
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of GY Reports
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGY'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - Geyser Reports
+      summary: Post a new GY Report
+      description: To be used to submit new Reports to Canonn, note that the reportStatus should always be pending
+      operationId: submitGYReport
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportPlanetWithType'
+      responses:
+        '200':
+          description: Report post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGY'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /gyreport/{id}:
+    get:
+      tags:
+        - Geyser Reports
+      summary: Get a Single GY Report
+      description: Provide the ID to get a single report
+      operationId: getGYReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the GY Report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGY'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - Geyser Reports
+      summary: Update a GY Report
+      description: You do not need to send the entire report again, you can send only changed fields
+      operationId: updateGYReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportPlanetWithType'
+      responses:
+        '200':
+          description: Report update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGY'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+      
+    delete:
+      tags:
+        - Geyser Reports
+      summary: Delete a GY Report
+      description: The response is just an empty JSON, deleting a report requires auth
+      operationId: removeGYReportById
+      security:
+        - canonnAuth: [reportDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+# GY Site
+
+# GY Type
+
+# HD Site
+
+# Journal Data
+
+# Location
+
+# LS Report
+  /lsreport/count:
+    get:
+      tags:
+        - Lava Spout Reports
+      summary: Get a count of all LS Reports
+      description: The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getLSReportsCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+  /lsreport:
+    get:
+      tags:
+        - Lava Spout Reports
+      summary: Get a list of LS Reports
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getLSReports
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of LS Reports
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportPlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - Lava Spout Reports
+      summary: Post a new LS Report
+      description: To be used to submit new Reports to Canonn, note that the reportStatus should always be pending
+      operationId: submitLSReport
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportPlanet'
+      responses:
+        '200':
+          description: Report post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportPlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /lsreport/{id}:
+    get:
+      tags:
+        - Lava Spout Reports
+      summary: Get a Single LS Report
+      description: Provide the ID to get a single report
+      operationId: getLSReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the LS Report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportPlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - Lava Spout Reports
+      summary: Update a LS Report
+      description: You do not need to send the entire report again, you can send only changed fields
+      operationId: updateLSReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportPlanet'
+      responses:
+        '200':
+          description: Report update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportPlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+      
+    delete:
+      tags:
+        - Lava Spout Reports
+      summary: Delete a LS Report
+      description: The response is just an empty JSON, deleting a report requires auth
+      operationId: removeLSReportById
+      security:
+        - canonnAuth: [reportDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+# MS Report
+  /msreport/count:
+    get:
+      tags:
+        - Megaship Reports
+      summary: Get a count of all MS Reports
+      description: The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getMSReportsCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+  /msreport:
+    get:
+      tags:
+        - Megaship Reports
+      summary: Get a list of MS Reports
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getMSReports
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of MS Reports
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportMS'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - Megaship Reports
+      summary: Post a new MS Report
+      description: To be used to submit new Reports to Canonn, note that the reportStatus should always be pending
+      operationId: submitMSReport
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportMS'
+      responses:
+        '200':
+          description: Report post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportMS'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /msreport/{id}:
+    get:
+      tags:
+        - Megaship Reports
+      summary: Get a Single MS Report
+      description: Provide the ID to get a single report
+      operationId: getMSReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the MS Report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportMS'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - Megaship Reports
+      summary: Update a MS Report
+      description: You do not need to send the entire report again, you can send only changed fields
+      operationId: updateMSReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportMS'
+      responses:
+        '200':
+          description: Report update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportMS'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+      
+    delete:
+      tags:
+        - Megaship Reports
+      summary: Delete a MS Report
+      description: The response is just an empty JSON, deleting a report requires auth
+      operationId: removeMSReportById
+      security:
+        - canonnAuth: [reportDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+# MS Site
+
+# MS Type
+
+# Ring
+
+# Ring Type
+
+# System
+
+# TB Report
+  /tbreport/count:
+    get:
+      tags:
+        - Thargoid Barnacle Reports
+      summary: Get a count of all TB Reports
+      description: The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getTBReportsCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+  /tbreport:
+    get:
+      tags:
+        - Thargoid Barnacle Reports
+      summary: Get a list of TB Reports
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getTBReports
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of TB Reports
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportTB'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - Thargoid Barnacle Reports
+      summary: Post a new TB Report
+      description: To be used to submit new Reports to Canonn, note that the reportStatus should always be pending
+      operationId: submitTBReport
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportTB'
+      responses:
+        '200':
+          description: Report post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportTB'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /tbreport/{id}:
+    get:
+      tags:
+        - Thargoid Barnacle Reports
+      summary: Get a Single TB Report
+      description: Provide the ID to get a single report
+      operationId: getTBReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the TB Report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportTB'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - Thargoid Barnacle Reports
+      summary: Update a TB Report
+      description: You do not need to send the entire report again, you can send only changed fields
+      operationId: updateTBReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportTB'
+      responses:
+        '200':
+          description: Report update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportTB'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+      
+    delete:
+      tags:
+        - Thargoid Barnacle Reports
+      summary: Delete a TB Report
+      description: The response is just an empty JSON, deleting a report requires auth
+      operationId: removeTBReportById
+      security:
+        - canonnAuth: [reportDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+# TB Site
+
+# TB Type
+
+# TS Report
+  /tsreport/count:
+    get:
+      tags:
+        - Thargoid Structure Reports
+      summary: Get a count of all TS Reports
+      description: The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getTSReportsCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+  /tsreport:
+    get:
+      tags:
+        - Thargoid Structure Reports
+      summary: Get a list of TS Reports
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getTSReports
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of TS Reports
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportTS'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - Thargoid Structure Reports
+      summary: Post a new TS Report
+      description: To be used to submit new Reports to Canonn, note that the reportStatus should always be pending
+      operationId: submitTSReport
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportTS'
+      responses:
+        '200':
+          description: Report post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportTS'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /tsreport/{id}:
+    get:
+      tags:
+        - Thargoid Structure Reports
+      summary: Get a Single TS Report
+      description: Provide the ID to get a single report
+      operationId: getTSReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the TS Report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportTS'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - Thargoid Structure Reports
+      summary: Update a TS Report
+      description: You do not need to send the entire report again, you can send only changed fields
+      operationId: updateTSReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportTS'
+      responses:
+        '200':
+          description: Report update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportTS'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+      
+    delete:
+      tags:
+        - Thargoid Structure Reports
+      summary: Delete a TS Report
+      description: The response is just an empty JSON, deleting a report requires auth
+      operationId: removeTSReportById
+      security:
+        - canonnAuth: [reportDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+# TS Site
+
+# TS Status
+
+# TW Report
+  /twreport/count:
+    get:
+      tags:
+        - Tube Worm Reports
+      summary: Get a count of all TW Reports
+      description: The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getTWReportsCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+  /twreport:
+    get:
+      tags:
+        - Tube Worm Reports
+      summary: Get a list of TW Reports
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getTWReports
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of TW Reports
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportPlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - Tube Worm Reports
+      summary: Post a new TW Report
+      description: To be used to submit new Reports to Canonn, note that the reportStatus should always be pending
+      operationId: submitTWReport
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportPlanet'
+      responses:
+        '200':
+          description: Report post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportPlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /twreport/{id}:
+    get:
+      tags:
+        - Tube Worm Reports
+      summary: Get a Single TW Report
+      description: Provide the ID to get a single report
+      operationId: getTWReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the TW Report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportPlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - Tube Worm Reports
+      summary: Update a TW Report
+      description: You do not need to send the entire report again, you can send only changed fields
+      operationId: updateTWReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportPlanet'
+      responses:
+        '200':
+          description: Report update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportPlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+      
+    delete:
+      tags:
+        - Tube Worm Reports
+      summary: Delete a TW Report
+      description: The response is just an empty JSON, deleting a report requires auth
+      operationId: removeTWReportById
+      security:
+        - canonnAuth: [reportDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+# TW Site
+
+# USS Site
+
+# USS Type
+
+## Components
+components:
+  ## Responses
+  responses:
+    error400:
+      description: You have made an error in your request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/responseError'
+    error403:
+      description: Forbidden, you are not logged in
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/responseError'
+    error404:
+      description: Count is Zero or Entry not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/responseError'
+    error500:
+      description: Server Error, please create an issue on Github
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/responseError'
+  ## Path GET Parameters
+  parameters:
+    start:
+      in: query
+      name: _start
+      required: false
+      schema:
+        type: integer
+      description: Used to page results, combine with _limit to get pages smaller than 100
+    limit:
+      in: query
+      name: _limit
+      required: false
+      schema:
+        type: integer
+        maximum: 250
+      description: By default our API limits responses to 100 entries, you can expand this however do so with caution. Large queries can be damaging to our system, abuse will not be tolerated.
+    search:
+      in: query
+      name: _q
+      required: false
+      schema:
+        type: string
+      description: Global search of all data in a response, useful if you aren't sure what your looking for.
+    byId:
+      in: path
+      name: id
+      required: true
+      schema:
+        type: integer
+      description: Search by Id
+
+  ## Security Schemes
+  securitySchemes:
+#    userAuthDiscord:
+#      description: (Coming Soon) Canonn verification team authentication using Discord OAuth
+#      type: oauth2
+    userAuth:
+      description: Canonn verification team authentication using JWT
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    canonnAuth:
+      description: Canonn admin team authentication using JWT
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+
+  ## Path Schemes
+  schemas:
+
+  ## Errors
+    responseError:
+      properties:
+        statusCode:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+
+  ## Authentication
+    localCreds:
+      required:
+        - identifier
+        - password
+      properties:
+        identifier:
+          type: string
+        password:
+          type: string
+          format: password
+
+    authError:
+      properties:
+        statuscode:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+
+    authLocal:
+      properties:
+        jwt:
+          type: string
+        user:
+          $ref: '#/components/schemas/authUser'
+
+    authUser:
+      properties:
+        username:
+          type: string
+        id:
+          type: integer
+        email:
+          type: string
+        provider:
+          type: string
+        role:
+          $ref: '#/components/schemas/authRole'
+
+    authRole:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+
+  ## GET Reports
+    getReportPlanet:
+      properties:
+        id:
+          type: integer
+        systemName:
+          type: string
+        bodyName:
+          type: string
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        count:
+          type: integer
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        reportStatus:
+          type: string
+        reportComment:
+          type: string
+        voteCount:
+          type: integer
+        added:
+          type: boolean
+        site:
+          $ref: '#/components/schemas/getSitePlanet'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getReportFM:
+      properties:
+        id:
+          type: integer
+        systemName:
+          type: string
+        bodyName:
+          type: string
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        count:
+          type: integer
+        type:
+          type: string
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        reportStatus:
+          type: string
+        reportComment:
+          type: string
+        voteCount:
+          type: integer
+        added:
+          type: boolean
+        site:
+          $ref: '#/components/schemas/getSiteFM'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getReportGEN:
+      properties:
+        id:
+          type: integer
+        systemName:
+          type: string
+        orbitBody:
+          type: string
+        shipName:
+          type: string
+        directionSystem:
+          type: string
+        distance:
+          type: number
+          format: float
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        reportStatus:
+          type: string
+        reportComment:
+          type: string
+        voteCount:
+          type: integer
+        added:
+          type: boolean
+        site:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getReportGR:
+      properties:
+        id:
+          type: integer
+        systemName:
+          type: string
+        bodyName:
+          type: string
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        type:
+          type: string
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        reportStatus:
+          type: string
+        reportComment:
+          type: string
+        voteCount:
+          type: integer
+        added:
+          type: boolean
+        site:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getReportGRObeliskGroup:
+      properties:
+        id:
+          type: integer
+        grreport:
+          type: integer
+        grobeliskgroup:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getReportGRObelisk:
+      properties:
+        id:
+          type: integer
+        grreport:
+          type: integer
+        grobelisk:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getReportGS:
+      properties:
+        id:
+          type: integer
+        systemName:
+          type: string
+        bodyName:
+          type: string
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        type:
+          type: string
+        hasDatabank:
+          type: boolean
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        reportStatus:
+          type: string
+        reportComment:
+          type: string
+        voteCount:
+          type: integer
+        added:
+          type: boolean
+        site:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getReportGSObeliskGroup:
+      properties:
+        id:
+          type: integer
+        gsreport:
+          type: integer
+        gsobeliskgroup:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getReportGSObelisk:
+      properties:
+        id:
+          type: integer
+        gsreport:
+          type: integer
+        gsobelisk:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    getReportGY:
+      properties:
+        id:
+          type: integer
+        systemName:
+          type: string
+        bodyName:
+          type: string
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        count:
+          type: integer
+        type:
+          type: string
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        reportStatus:
+          type: string
+        reportComment:
+          type: string
+        voteCount:
+          type: integer
+        added:
+          type: boolean
+        site:
+          $ref: '#/components/schemas/getSiteGY'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getReportMS:
+      properties:
+        id:
+          type: integer
+        systemName:
+          type: string
+        orbitBody:
+          type: string
+        shipName:
+          type: string
+        shipTag:
+          type: string
+        type:
+          type: string
+        flightOps:
+          type: boolean
+        flightSchedule:
+          type: boolean
+        dockable:
+          type: boolean
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        reportStatus:
+          type: string
+        reportComment:
+          type: string
+        voteCount:
+          type: integer
+        added:
+          type: boolean
+        site:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getReportTB:
+      properties:
+        id:
+          type: integer
+        systemName:
+          type: string
+        bodyName:
+          type: string
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        type:
+          type: string
+        count:
+          type: integer
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        reportStatus:
+          type: string
+        reportComment:
+          type: string
+        voteCount:
+          type: integer
+        added:
+          type: boolean
+        site:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getReportTS:
+      properties:
+        id:
+          type: integer
+        systemName:
+          type: string
+        bodyName:
+          type: string
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        status:
+          type: string
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        reportStatus:
+          type: string
+        reportComment:
+          type: string
+        voteCount:
+          type: integer
+        added:
+          type: boolean
+        site:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+  ## GET Locations
+    getLocationSystem:
+      properties:
+        id:
+          type: integer
+        systemName:
+          type: string
+        edsmID:
+          type: number
+          format: float
+        edsmID64:
+          type: number
+          format: double
+        edsmCoordX:
+          type: number
+          format: double
+        edsmCoordY:
+          type: number
+          format: double
+        edsmCoordZ:
+          type: number
+          format: double
+        edsmCoordLocked:
+          type: boolean
+        bodies:
+          $ref: '#/components/schemas/getLocationBody'
+        systemLocations:
+          $ref: '#/components/schemas/getLocation'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getLocationBody:
+      properties:
+        id:
+          type: integer
+        system:
+          $ref: '#/components/schemas/getLocationSystem'
+        bodyName:
+          type: string
+        edsmID:
+          type: number
+          format: float
+        edsmID64:
+          type: number
+          format: double
+        bodyType:
+          $ref: '#/components/schemas/getLocationBodyType'
+        bodySubtype:
+          $ref: '#/components/schemas/getLocationBodySubtype'
+        edsmOffset:
+          type: integer
+        edsmDistanceToArrival:
+          type: number
+          format: float
+        edsmIsMainStar:
+          type: boolean
+        edsmIsScoopable:
+          type: boolean
+        edsmIsLandable:
+          type: boolean
+        edsmAge:
+          type: integer
+        edsmLuminosity:
+          type: string
+        edsmAbsoluteMagnitude:
+          type: number
+          format: float
+        edsmSolarMasses:
+          type: number
+          format: float
+        edsmSolarRadius:
+          type: number
+          format: float
+        edsmGravity:
+          type: number
+          format: float
+        edsmEarthMasses:
+          type: number
+          format: float
+        edsmRadius:
+          type: number
+          format: float
+        edsmSurfaceTemperature:
+          type: number
+          format: float
+        edsmVolcanismType:
+          type: string
+        edsmAtmosphereType:
+          type: string
+        bodyAtmosphere:
+          $ref: '#/components/schemas/getLocationBodyAtmosphere'
+        bodyMaterial:
+          $ref: '#/components/schemas/getLocationBodyMaterial'
+        edsmTerraformingState:
+          type: string
+        edsmOrbitalPeriod:
+          type: number
+          format: float
+        edsmSemiMajorAxis:
+          type: number
+          format: float
+        edsmOrbitalEccentricity:
+          type: number
+          format: float
+        edsmOrbitalInclination:
+          type: number
+          format: float
+        edsmArgOfPeriapsis:
+          type: number
+          format: float
+        edsmRotationalPeriod:
+          type: number
+          format: float
+        edsmRotationalPeriodTidallyLocked:
+          type: boolean
+        edsmAxialTilt:
+          type: number
+          format: float
+        rings:
+          $ref: '#/components/schemas/getLocationRing'
+        bodyLocations:
+          $ref: '#/components/schemas/getLocation'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getLocationBodyType:
+      properties:
+        id:
+          type: integer
+        type:
+          type: string
+
+    getLocationBodySubtype:
+      properties:
+        id:
+          type: integer
+        subtype:
+          type: string
+
+    getLocationBodyAtmosphere:
+      properties:
+        id:
+          type: integer
+        body:
+          type: integer
+        argon:
+          type: number
+          format: float
+        ammonia:
+          type: number
+          format: float
+        carbonDioxide:
+          type: number
+          format: float
+        hydrogen:
+          type: number
+          format: float
+        helium:
+          type: number
+          format: float
+        iron:
+          type: number
+          format: float
+        neon:
+          type: number
+          format: float
+        methane:
+          type: number
+          format: float
+        nitrogen:
+          type: number
+          format: float
+        oxygen:
+          type: number
+          format: float
+        silicates:
+          type: number
+          format: float
+        sulphurDioxide:
+          type: number
+          format: float
+        water:
+          type: number
+          format: float
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getLocationBodyMaterial:
+      properties:
+        id:
+          type: integer
+        body:
+          type: integer
+        antimony:
+          type: number
+          format: float
+        arsenic:
+          type: number
+          format: float
+        boron:
+          type: number
+          format: float
+        cadmium:
+          type: number
+          format: float
+        carbon:
+          type: number
+          format: float
+        chromium:
+          type: number
+          format: float
+        germanium:
+          type: number
+          format: float
+        iron:
+          type: number
+          format: float
+        lead:
+          type: number
+          format: float
+        manganese:
+          type: number
+          format: float
+        mercury:
+          type: number
+          format: float
+        molybdenum:
+          type: number
+          format: float
+        nickel:
+          type: number
+          format: float
+        niobium:
+          type: number
+          format: float
+        phosphorus:
+          type: number
+          format: float
+        polonium:
+          type: number
+          format: float
+        rhenium:
+          type: number
+          format: float
+        ruthenium:
+          type: number
+          format: float
+        selenium:
+          type: number
+          format: float
+        sulphur:
+          type: number
+          format: float
+        technetium:
+          type: number
+          format: float
+        tellurium:
+          type: number
+          format: float
+        tin:
+          type: number
+          format: float
+        tungsten:
+          type: number
+          format: float
+        vanadium:
+          type: number
+          format: float
+        yttrium:
+          type: number
+          format: float
+        zinc:
+          type: number
+          format: float
+        zirconium:
+          type: number
+          format: float
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getLocationRing:
+      properties:
+        id:
+          type: integer
+        body:
+          $ref: '#/components/schemas/getLocationBody'
+        ringName:
+          type: string
+        ringtype:
+          $ref: '#/components/schemas/getLocationRingType'
+        edsmMass:
+          type: number
+          format: float
+        edsmInnerRadius:
+          type: number
+          format: float
+        edsmOuterRadius:
+          type: number
+          format: float
+        ringLocations:
+          $ref: '#/components/schemas/getLocation'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getLocationRingType:
+      properties:
+        id:
+          type: integer
+        type:
+          type: string
+
+    getLocation:
+      properties:
+        id:
+          type: integer
+        system:
+          type: integer
+        body:
+          type: integer
+        ring:
+          type: integer
+        locationType:
+          type: string
+        bmSite:
+          $ref: '#/components/schemas/getSitePlanet'
+        btSite:
+          $ref: '#/components/schemas/getSitePlanet'
+        fgSite:
+          $ref: '#/components/schemas/getSitePlanet'
+        fmSite:
+          $ref: '#/components/schemas/getSiteFM'
+        genSite:
+          $ref: '#/components/schemas/getSiteGEN'
+        grSite:
+          $ref: '#/components/schemas/getSiteGR'
+        gsSite:
+          $ref: '#/components/schemas/getSiteGR'
+        gySite:
+          $ref: '#/components/schemas/getSiteGY'
+        hdSite:
+          $ref: '#/components/schemas/getSiteHD'
+        lsSite:
+          $ref: '#/components/schemas/getSitePlanet'
+        msSite:
+          $ref: '#/components/schemas/getSiteMS'
+        tbSite:
+          $ref: '#/components/schemas/getSiteTB'
+        tsSite:
+          $ref: '#/components/schemas/getSiteTS'
+        twSite:
+          $ref: '#/components/schemas/getSitePlanet'
+        ussSite:
+          $ref: '#/components/schemas/getSiteUSS'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+  ## GET CMDRs
+    getCMDR:
+      properties:
+        id:
+          type: integer
+        cmdrName:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+  ## GET Uploads
+
+  ## GET JournalDumps
+    getJournalData:
+      properties:
+        id:
+          type: integer
+        systemName:
+          type: string
+        bodyName:
+          type: string
+        stationName:
+          type: string
+        cmdrName:
+          type: string
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        isBeta:
+          type: boolean
+        jsonData:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+  ## GET Sites
+    getSitePlanet:
+      properties:
+        location:
+          $ref: '#/components/schemas/getLocation'
+        siteID:
+          type: integer
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        count:
+          type: integer
+        verified:
+          type: boolean
+        visible:
+          type: boolean
+        discoveredBy:
+          $ref: '#/components/schemas/getCMDR'
+
+    getSiteFM:
+      properties:
+        id:
+          type: integer
+        location:
+          $ref: '#/components/schemas/getLocation'
+        siteID:
+          type: integer
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        count:
+          type: integer
+        type:
+          $ref: '#/components/schemas/getSiteFMType'
+        verified:
+          type: boolean
+        visible:
+          type: boolean
+        discoveredBy:
+          $ref: '#/components/schemas/getCMDR'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getSiteFMType:
+      properties:
+        id:
+          type: integer
+        type:
+          type: string
+
+    getSiteGEN:
+      properties:
+        id:
+          type: integer
+        location:
+          $ref: '#/components/schemas/getLocation'
+        siteID:
+          type: integer
+        shipName:
+          type: string
+        directionSystem:
+          $ref: '#/components/schemas/getLocationSystem'
+        distance:
+          type: number
+          format: float
+        discoveredBy:
+          $ref: '#/components/schemas/getCMDR'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getSiteGR:
+      properties:
+        id:
+          type: integer
+        location:
+          $ref: '#/components/schemas/getLocation'
+        siteID:
+          type: integer
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        type:
+          $ref: '#/components/schemas/getSiteGRType'
+        verified:
+          type: boolean
+        visible:
+          type: boolean
+        discoveredBy:
+          $ref: '#/components/schemas/getCMDR'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getSiteGRType:
+      properties:
+        id:
+          type: integer
+        type:
+          type: string
+
+    getSiteGRActiveGroup:
+      properties:
+        grSite:
+          $ref: '#/components/schemas/getSiteGR'
+        activeGroup:
+          $ref: '#/components/schemas/getSiteGRObeliskGroup'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getSiteGRActiveObelisk:
+      properties:
+        id:
+          type: integer
+        grSite:
+          $ref: '#/components/schemas/getSiteGR'
+        activeObelisk:
+          $ref: '#/components/schemas/getSiteGRObelisk'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getSiteGRArtifact:
+      properties:
+        id:
+          type: integer
+        artifactName:
+          type: string
+
+    getSiteGRCodexCategory:
+      properties:
+        id:
+          type: integer
+        categoryName:
+          type: string
+
+    getSiteGRCodexData:
+      properties:
+        id:
+          type: integer
+        grCodexCategory:
+          $ref: '#/components/schemas/getSiteGRCodexCategory'
+        grPrimaryArtifact:
+          $ref: '#/components/schemas/getSiteGRArtifact'
+        grSecondaryArtifact:
+          $ref: '#/components/schemas/getSiteGRArtifact'
+        codexNumber:
+          type: integer
+        text:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getSiteGRObelisk:
+      properties:
+        id:
+          type: integer
+        grType:
+          $ref: '#/components/schemas/getSiteGRType'
+        grObeliskGroup:
+          $ref: '#/components/schemas/getSiteGRObeliskGroup'
+        obeliskNumber:
+          type: integer
+        broken:
+          type: boolean
+        grCodexData:
+          $ref: '#/components/schemas/getSiteGRCodexData'
+        verified:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getSiteGRObeliskGroup:
+      properties:
+        id:
+          type: integer
+        grType:
+          $ref: '#/components/schemas/getSiteGRType'
+        groupName:
+          type: string
+        amount:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getSiteGS:
+      properties:
+        id:
+          type: integer
+        location:
+          $ref: '#/components/schemas/getLocation'
+        siteID:
+          type: integer
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        type:
+          $ref: '#/components/schemas/getSiteGSType'
+        hasDatabank:
+          type: boolean
+        verified:
+          type: boolean
+        visible:
+          type: boolean
+        discoveredBy:
+          $ref: '#/components/schemas/getCMDR'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getSiteGSType:
+      properties:
+        id:
+          type: integer
+        type:
+          type: string
+        journalName:
+          type: string
+
+    getSiteGSActiveGroup:
+      properties:
+        id:
+          type: integer
+        gsSite:
+          $ref: '#/components/schemas/getSiteGS'
+        activeGroup:
+          $ref: '#/components/schemas/getSiteGSObeliskGroup'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getSiteGSActiveObelisk:
+      properties:
+        id:
+          type: integer
+        gsSite:
+          $ref: '#/components/schemas/getSiteGS'
+        activeObelisk:
+          $ref: '#/components/schemas/getSiteGSObelisk'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getSiteGSArtifact:
+      properties:
+        id:
+          type: integer
+        artifactName:
+          type: string
+
+    getSiteGSCodexCategory:
+      properties:
+        id:
+          type: integer
+        categoryName:
+          type: string
+
+    getSiteGSCodexData:
+      properties:
+        id:
+          type: integer
+        gsCodexCategory:
+          $ref: '#/components/schemas/getSiteGSCodexCategory'
+        gsPrimaryArtifact:
+          $ref: '#/components/schemas/getSiteGSArtifact'
+        gsSecondaryArtifact:
+          $ref: '#/components/schemas/getSiteGSArtifact'
+        codexNumber:
+          type: integer
+        text:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getSiteGSObelisk:
+      properties:
+        id:
+          type: integer
+        gsType:
+          $ref: '#/components/schemas/getSiteGSType'
+        gsObeliskGroup:
+          $ref: '#/components/schemas/getSiteGSObeliskGroup'
+        obeliskNumber:
+          type: integer
+        broken:
+          type: boolean
+        gsCodexData:
+          $ref: '#/components/schemas/getSiteGSCodexData'
+        verified:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getSiteGSObeliskGroup:
+      properties:
+        id:
+          type: integer
+        gsType:
+          $ref: '#/components/schemas/getSiteGSType'
+        gsoupName:
+          type: string
+        amount:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getSiteGY:
+      properties:
+        id:
+          type: integer
+        location:
+          $ref: '#/components/schemas/getLocation'
+        siteID:
+          type: integer
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        count:
+          type: integer
+        type:
+          $ref: '#/components/schemas/getSiteGYType'
+        verified:
+          type: boolean
+        visible:
+          type: boolean
+        discoveredBy:
+          $ref: '#/components/schemas/getCMDR'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getSiteGYType:
+      properties:
+        id:
+          type: integer
+        type:
+          type: string
+
+    getSiteHD:
+      properties:
+        id:
+          type: integer
+        location:
+          $ref: '#/components/schemas/getLocation'
+        toSystem:
+          $ref: '#/components/schemas/getLocationSystem'
+        thargoidCount:
+          type: integer
+        isHostile:
+          type: boolean
+        discoveredBy:
+          $ref: '#/components/schemas/getCMDR'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getSiteMS:
+      properties:
+        id:
+          type: integer
+        location:
+          $ref: '#/components/schemas/getLocation'
+        siteID:
+          type: integer
+        shipName:
+          type: string
+        shipTag:
+          type: string
+        type:
+          $ref: '#/components/schemas/getSiteMSType'
+        flightOps:
+          type: boolean
+        flightSchedule:
+          type: boolean
+        dockable:
+          type: boolean
+        discoveredBy:
+          $ref: '#/components/schemas/getCMDR'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getSiteMSType:
+      properties:
+        id:
+          type: integer
+        type:
+          type: string
+
+    getSiteTB:
+      properties:
+        id:
+          type: integer
+        location:
+          $ref: '#/components/schemas/getLocation'
+        siteID:
+          type: integer
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        type:
+          $ref: '#/components/schemas/getSiteTBType'
+        verified:
+          type: boolean
+        visible:
+          type: boolean
+        discoveredBy:
+          $ref: '#/components/schemas/getCMDR'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getSiteTBType:
+      properties:
+        id:
+          type: integer
+        type:
+          type: string
+
+    getSiteTS:
+      properties:
+        id:
+          type: integer
+        location:
+          $ref: '#/components/schemas/getLocation'
+        siteID:
+          type: integer
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        status:
+          $ref: '#/components/schemas/getSiteTSStatus'
+        verified:
+          type: boolean
+        visible:
+          type: boolean
+        discoveredBy:
+          $ref: '#/components/schemas/getCMDR'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getSiteTSStatus:
+      properties:
+        id:
+          type: integer
+        type:
+          type: string
+
+    getSiteUSS:
+      properties:
+        id:
+          type: integer
+        location:
+          $ref: '#/components/schemas/getLocation'
+        type:
+          $ref: '#/components/schemas/getSiteUSSType'
+        threatLevel:
+          type: integer
+        discoveredBy:
+          $ref: '#/components/schemas/getCMDR'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getSiteUSSType:
+      properties:
+        id:
+          type: integer
+        type:
+          type: string
+        journalName:
+          type: string
+
+  ## POST Reports
+    postReportPlanet:
+      required:
+        - systemName
+        - bodyName
+        - latitude
+        - longitude
+        - cmdrName
+        - reportStatus
+      properties:
+        systemName:
+          type: string
+        bodyName:
+          type: string
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        count:
+          type: integer
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        reportStatus:
+          type: string
+          enum:
+            - pending
+            - updated
+            - accepted
+            - declined
+            - issue
+          default: pending
+        reportComment:
+          type: string
+        voteCount:
+          type: integer
+        added:
+          type: boolean
+        site:
+          type: integer
+
+    postReportPlanetWithType:
+      required:
+        - systemName
+        - bodyName
+        - latitude
+        - longitude
+        - type
+        - cmdrName
+        - reportStatus
+      properties:
+        systemName:
+          type: string
+        bodyName:
+          type: string
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        count:
+          type: integer
+        type:
+          type: string
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        reportStatus:
+          type: string
+          enum:
+            - pending
+            - updated
+            - accepted
+            - declined
+            - issue
+          default: pending
+        reportComment:
+          type: string
+        voteCount:
+          type: integer
+        added:
+          type: boolean
+        site:
+          type: integer
+
+    postReportGEN:
+      required:
+        - systemName
+        - shipName
+        - cmdrName
+        - reportStatus
+      properties:
+        systemName:
+          type: string
+        orbitBody:
+          type: string
+        shipName:
+          type: string
+        directionSystem:
+          type: string
+        distance:
+          type: number
+          format: float
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        reportStatus:
+          type: string
+          enum:
+            - pending
+            - updated
+            - accepted
+            - declined
+            - issue
+          default: pending
+        reportComment:
+          type: string
+        voteCount:
+          type: integer
+        added:
+          type: boolean
+        site:
+          type: integer
+
+    postReportGR:
+      required:
+        - systemName
+        - bodyName
+        - latitude
+        - longitude
+        - type
+        - cmdrName
+        - reportStatus
+      properties:
+        systemName:
+          type: string
+        bodyName:
+          type: string
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        type:
+          type: string
+          enum:
+            - Alpha
+            - Beta
+            - Gamma
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        reportStatus:
+          type: string
+          enum:
+            - pending
+            - updated
+            - accepted
+            - declined
+            - issue
+          default: pending
+        reportComment:
+          type: string
+        voteCount:
+          type: integer
+        added:
+          type: boolean
+        site:
+          type: integer
+
+    postReportGRObeliskGroup:
+      required:
+        - grreport
+        - grobeliskgroup
+      properties:
+        grreport:
+          type: integer
+        grobeliskgroup:
+          type: integer
+
+    postReportGRObelisk:
+      required:
+        - grreport
+        - grobelisk
+      properties:
+        grreport:
+          type: integer
+        grobelisk:
+          type: integer
+
+    postReportGS:
+      required:
+        - systemName
+        - bodyName
+        - latitude
+        - longitude
+        - type
+        - hasDatabank
+        - cmdrName
+        - reportStatus
+      properties:
+        systemName:
+          type: string
+        bodyName:
+          type: string
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        type:
+          type: string
+          enum:
+            - Lacrosse
+            - Crossroads
+            - Fistbump
+            - Hammerbot
+            - Bear
+            - Bowl
+            - Turtle
+        hasDatabank:
+          type: boolean
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        reportStatus:
+          type: string
+          enum:
+            - pending
+            - updated
+            - accepted
+            - declined
+            - issue
+          default: pending
+        reportComment:
+          type: string
+        voteCount:
+          type: integer
+        added:
+          type: boolean
+        site:
+          type: integer
+
+    postReportGSObeliskGroup:
+      required:
+        - gsreport
+        - gsobeliskgroup
+      properties:
+        gsreport:
+          type: integer
+        gsobeliskgroup:
+          type: integer
+
+    postReportGSObelisk:
+      required:
+        - gsreport
+        - gsobelisk
+      properties:
+        gsreport:
+          type: integer
+        gsobelisk:
+          type: integer
+
+    postReportMS:
+      required:
+        - systemName
+        - shipName
+        - type
+        - flightOps
+        - flightSchedule
+        - dockable
+        - cmdrName
+        - reportStatus
+      properties:
+        systemName:
+          type: string
+        orbitBody:
+          type: string
+        shipName:
+          type: string
+        shipTag:
+          type: string
+        type:
+          type: string
+        flightOps:
+          type: boolean
+        flightSchedule:
+          type: boolean
+        dockable:
+          type: boolean
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        reportStatus:
+          type: string
+          enum:
+            - pending
+            - updated
+            - accepted
+            - declined
+            - issue
+          default: pending
+        reportComment:
+          type: string
+        voteCount:
+          type: integer
+        added:
+          type: boolean
+        site:
+          type: integer
+
+    postReportTB:
+      required:
+        - systemName
+        - bodyName
+        - latitude
+        - longitude
+        - type
+        - cmdrName
+        - reportStatus
+      properties:
+        systemName:
+          type: string
+        bodyName:
+          type: string
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        type:
+          type: string
+          enum:
+            - Barnacle
+            - Megabarnacle
+        count:
+          type: integer
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        reportStatus:
+          type: string
+          enum:
+            - pending
+            - updated
+            - accepted
+            - declined
+            - issue
+          default: pending
+        reportComment:
+          type: string
+        voteCount:
+          type: integer
+        added:
+          type: boolean
+        site:
+          type: integer
+
+    postReportTS:
+      required:
+        - systemName
+        - bodyName
+        - latitude
+        - longitude
+        - status
+        - cmdrName
+        - reportStatus
+      properties:
+        systemName:
+          type: string
+        bodyName:
+          type: string
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        status:
+          type: string
+          enum:
+            - Active
+            - Inactive
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        reportStatus:
+          type: string
+          enum:
+            - pending
+            - updated
+            - accepted
+            - declined
+            - issue
+          default: pending
+        reportComment:
+          type: string
+        voteCount:
+          type: integer
+        added:
+          type: boolean
+        site:
+          type: integer
+
+  ## POST Locations
+    postLocationSystem:
+      required:
+        - systemName
+      properties:
+        systemName:
+          type: string
+        edsmID:
+          type: number
+          format: float
+        edsmID64:
+          type: number
+          format: double
+        edsmCoordX:
+          type: number
+          format: double
+        edsmCoordY:
+          type: number
+          format: double
+        edsmCoordZ:
+          type: number
+          format: double
+        edsmCoordLocked:
+          type: boolean
+
+    postLocationBody:
+      required:
+        - bodyName
+      properties:
+        system:
+          type: integer
+        bodyName:
+          type: string
+        edsmID:
+          type: number
+          format: float
+        edsmID64:
+          type: number
+          format: double
+        bodyType:
+          type: integer
+        bodySubtype:
+          type: integer
+        edsmOffset:
+          type: integer
+        edsmDistanceToArrival:
+          type: number
+          format: float
+        edsmIsMainStar:
+          type: boolean
+        edsmIsScoopable:
+          type: boolean
+        edsmIsLandable:
+          type: boolean
+        edsmAge:
+          type: integer
+        edsmLuminosity:
+          type: string
+        edsmAbsoluteMagnitude:
+          type: number
+          format: float
+        edsmSolarMasses:
+          type: number
+          format: float
+        edsmSolarRadius:
+          type: number
+          format: float
+        edsmGravity:
+          type: number
+          format: float
+        edsmEarthMasses:
+          type: number
+          format: float
+        edsmRadius:
+          type: number
+          format: float
+        edsmSurfaceTemperature:
+          type: number
+          format: float
+        edsmVolcanismType:
+          type: string
+        edsmAtmosphereType:
+          type: string
+        edsmTerraformingState:
+          type: string
+        edsmOrbitalPeriod:
+          type: number
+          format: float
+        edsmSemiMajorAxis:
+          type: number
+          format: float
+        edsmOrbitalEccentricity:
+          type: number
+          format: float
+        edsmOrbitalInclination:
+          type: number
+          format: float
+        edsmArgOfPeriapsis:
+          type: number
+          format: float
+        edsmRotationalPeriod:
+          type: number
+          format: float
+        edsmRotationalPeriodTidallyLocked:
+          type: boolean
+        edsmAxialTilt:
+          type: number
+          format: float
+
+    postLocationBodyType:
+      required:
+        - type
+      properties:
+        type:
+          type: string
+
+    postLocationBodySubtype:
+      required:
+        - subtype
+      properties:
+        subtype:
+          type: string
+
+    postLocationBodyAtmosphere:
+      required:
+        - body
+      properties:
+        body:
+          type: integer
+        argon:
+          type: number
+          format: float
+        ammonia:
+          type: number
+          format: float
+        carbonDioxide:
+          type: number
+          format: float
+        hydrogen:
+          type: number
+          format: float
+        helium:
+          type: number
+          format: float
+        iron:
+          type: number
+          format: float
+        neon:
+          type: number
+          format: float
+        methane:
+          type: number
+          format: float
+        nitrogen:
+          type: number
+          format: float
+        oxygen:
+          type: number
+          format: float
+        silicates:
+          type: number
+          format: float
+        sulphurDioxide:
+          type: number
+          format: float
+        water:
+          type: number
+          format: float
+
+    postLocationBodyMaterial:
+      required:
+        - body
+      properties:
+        body:
+          type: integer
+        antimony:
+          type: number
+          format: float
+        arsenic:
+          type: number
+          format: float
+        boron:
+          type: number
+          format: float
+        cadmium:
+          type: number
+          format: float
+        carbon:
+          type: number
+          format: float
+        chromium:
+          type: number
+          format: float
+        germanium:
+          type: number
+          format: float
+        iron:
+          type: number
+          format: float
+        lead:
+          type: number
+          format: float
+        manganese:
+          type: number
+          format: float
+        mercury:
+          type: number
+          format: float
+        molybdenum:
+          type: number
+          format: float
+        nickel:
+          type: number
+          format: float
+        niobium:
+          type: number
+          format: float
+        phosphorus:
+          type: number
+          format: float
+        polonium:
+          type: number
+          format: float
+        rhenium:
+          type: number
+          format: float
+        ruthenium:
+          type: number
+          format: float
+        selenium:
+          type: number
+          format: float
+        sulphur:
+          type: number
+          format: float
+        technetium:
+          type: number
+          format: float
+        tellurium:
+          type: number
+          format: float
+        tin:
+          type: number
+          format: float
+        tungsten:
+          type: number
+          format: float
+        vanadium:
+          type: number
+          format: float
+        yttrium:
+          type: number
+          format: float
+        zinc:
+          type: number
+          format: float
+        zirconium:
+          type: number
+          format: float
+
+    postLocationRing:
+      required:
+        - body
+        - ringName
+      properties:
+        body:
+          type: integer
+        ringName:
+          type: string
+        ringtype:
+          type: integer
+        edsmMass:
+          type: number
+          format: float
+        edsmInnerRadius:
+          type: number
+          format: float
+        edsmOuterRadius:
+          type: number
+          format: float
+
+    postLocationRingType:
+      required:
+        - type
+      properties:
+        type:
+          type: string
+
+    postLocation:
+      required:
+        - system
+        - locationType
+      properties:
+        system:
+          type: integer
+        body:
+          type: integer
+        ring:
+          type: integer
+        locationType:
+          type: string
+          enum:
+            - BM
+            - BT
+            - FG
+            - FM
+            - GEN
+            - GR
+            - GS
+            - GY
+            - HD
+            - LS
+            - MS
+            - TB
+            - TS
+            - TW
+            - USS
+
+  ## POST CMDRs
+    postCMDR:
+      required:
+        - cmdrName
+      properties:
+        cmdrName:
+          type: string
+
+  ## POST Uploads
+
+  ## POST JournalDumps
+    postJournalData:
+      required:
+        - jsonData
+      properties:
+        systemName:
+          type: string
+        bodyName:
+          type: string
+        stationName:
+          type: string
+        cmdrName:
+          type: string
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        isBeta:
+          type: boolean
+        jsonData:
+          type: string
+
+  ## POST Sites
+    postSitePlanet:
+      required:
+        - locationType
+        - siteID
+        - latitude
+        - longitude
+        - verified
+        - discoveredBy
+      properties:
+        location:
+          type: integer
+        siteID:
+          type: integer
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        count:
+          type: integer
+        verified:
+          type: boolean
+        visible:
+          type: boolean
+        discoveredBy:
+          type: integer
+
+    postSiteFM:
+      required:
+        - location
+        - siteID
+        - latitude
+        - longitude
+        - type
+        - verified
+        - discoveredBy
+      properties:
+        location:
+          type: integer
+        siteID:
+          type: integer
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        count:
+          type: integer
+        type:
+          type: integer
+        verified:
+          type: boolean
+        visible:
+          type: boolean
+        discoveredBy:
+          type: integer
+
+    postSiteFMType:
+      required:
+        - type
+      properties:
+        type:
+          type: string
+
+    postSiteGEN:
+      required:
+        - location
+        - siteID
+        - shipName
+        - discoveredBy
+      properties:
+        location:
+          type: integer
+        siteID:
+          type: integer
+        shipName:
+          type: string
+        directionSystem:
+          type: integer
+        distance:
+          type: number
+          format: float
+        discoveredBy:
+          type: integer
+
+    postSiteGR:
+      required:
+        - location
+        - siteID
+        - latitude
+        - longitude
+        - type
+        - verified
+        - discoveredBy
+      properties:
+        location:
+          type: integer
+        siteID:
+          type: integer
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        type:
+          type: integer
+        verified:
+          type: boolean
+        visible:
+          type: boolean
+        discoveredBy:
+          type: integer
+
+    postSiteGRType:
+      required:
+        - type
+      properties:
+        type:
+          type: string
+
+    postSiteGRActiveGroup:
+      required:
+        - grSite
+        - activeGroup
+      properties:
+        grSite:
+          type: integer
+        activeGroup:
+          type: integer
+
+    postSiteGRActiveObelisk:
+      required:
+        - grSite
+        - activeObelisk
+      properties:
+        grSite:
+          type: integer
+        activeObelisk:
+          type: integer
+
+    postSiteGRArtifact:
+      required:
+        - artifactName
+      properties:
+        artifactName:
+          type: string
+
+    postSiteGRCodexCategory:
+      required:
+        - categoryName
+      properties:
+        categoryName:
+          type: string
+
+    postSiteGRCodexData:
+      required:
+        - grCodexCategory
+        - grPrimaryArtifact
+        - grSecondaryArtifact
+        - codexNumber
+        - text
+      properties:
+        grCodexCategory:
+          type: integer
+        grPrimaryArtifact:
+          type: integer
+        grSecondaryArtifact:
+          type: integer
+        codexNumber:
+          type: integer
+        text:
+          type: string
+
+    postSiteGRObelisk:
+      required:
+        - grType
+        - grObeliskGroup
+        - obeliskNumber
+        - broken
+        - grCodexData
+        - verified
+      properties:
+        grType:
+          type: integer
+        grObeliskGroup:
+          type: string
+        obeliskNumber:
+          type: integer
+        broken:
+          type: boolean
+        grCodexData:
+          type: integer
+        verified:
+          type: boolean
+
+    postSiteGRObeliskGroup:
+      required:
+        - grType
+        - groupName
+        - amount
+      properties:
+        grType:
+          type: integer
+        groupName:
+          type: string
+        amount:
+          type: integer
+
+    postSiteGS:
+      required:
+        - location
+        - siteID
+        - latitude
+        - longitude
+        - type
+        - hasDatabank
+        - verified
+        - discoveredBy
+      properties:
+        location:
+          type: integer
+        siteID:
+          type: integer
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        type:
+          type: integer
+        hasDatabank:
+          type: boolean
+        verified:
+          type: boolean
+        visible:
+          type: boolean
+        discoveredBy:
+          type: integer
+
+    postSiteGSType:
+      required:
+        - type
+        - journalName
+      properties:
+        type:
+          type: string
+        journalName:
+          type: string
+
+    postSiteGSActiveGroup:
+      required:
+        - gsSite
+        - activeGroup
+      properties:
+        gsSite:
+          type: integer
+        activeGroup:
+          type: integer
+
+    postSiteGSActiveObelisk:
+      required:
+        - gsSite
+        - activeObelisk
+      properties:
+        gsSite:
+          type: integer
+        activeObelisk:
+          type: integer
+
+    postSiteGSArtifact:
+      required:
+        - artifactName
+      properties:
+        artifactName:
+          type: string
+
+    postSiteGSCodexCategory:
+      required:
+        - categoryName
+      properties:
+        categoryName:
+          type: string
+
+    postSiteGSCodexData:
+      required:
+        - gsCodexCategory
+        - gsPrimaryArtifact
+        - gsSecondaryArtifact
+        - codexNumber
+        - text
+      properties:
+        gsCodexCategory:
+          type: integer
+        gsPrimaryArtifact:
+          type: integer
+        gsSecondaryArtifact:
+          type: integer
+        codexNumber:
+          type: integer
+        text:
+          type: string
+
+    postSiteGSObelisk:
+      required:
+        - gsType
+        - gsObeliskGroup
+        - obeliskNumber
+        - broken
+        - gsCodexData
+        - verified
+      properties:
+        gsType:
+          type: integer
+        gsObeliskGroup:
+          type: string
+        obeliskNumber:
+          type: integer
+        broken:
+          type: boolean
+        gsCodexData:
+          type: integer
+        verified:
+          type: boolean
+
+    postSiteGSObeliskGroup:
+      required:
+        - gsType
+        - gsoupName
+        - amount
+      properties:
+        gsType:
+          type: integer
+        gsoupName:
+          type: string
+        amount:
+          type: integer
+
+    postSiteGY:
+      required:
+        - location
+        - siteID
+        - latitude
+        - longitude
+        - type
+        - verified
+        - discoveredBy
+      properties:
+        location:
+          type: integer
+        siteID:
+          type: integer
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        count:
+          type: integer
+        type:
+          type: integer
+        verified:
+          type: boolean
+        visible:
+          type: boolean
+        discoveredBy:
+          type: integer
+
+    postSiteGYType:
+      required:
+        - type
+      properties:
+        type:
+          type: string
+
+    postSiteHD:
+      required:
+        - location
+        - toSystem
+        - thargoidCount
+        - isHostile
+        - discoveredBy
+      properties:
+        location:
+          type: integer
+        toSystem:
+          type: integer
+        thargoidCount:
+          type: integer
+        isHostile:
+          type: boolean
+        discoveredBy:
+          type: integer
+
+    postSiteMS:
+      required:
+        - location
+        - siteID
+        - shipName
+        - shipTag
+        - type
+        - flightOps
+        - flightSchedule
+        - dockable
+        - discoveredBy
+      properties:
+        location:
+          type: integer
+        siteID:
+          type: integer
+        shipName:
+          type: string
+        shipTag:
+          type: string
+        type:
+          type: integer
+        flightOps:
+          type: boolean
+        flightSchedule:
+          type: boolean
+        dockable:
+          type: boolean
+        discoveredBy:
+          type: integer
+
+    postSiteMSType:
+      required:
+        - type
+      properties:
+        type:
+          type: string
+
+    postSiteTB:
+      required:
+        - location
+        - siteID
+        - latitude
+        - longitude
+        - type
+        - verified
+        - discoveredBy
+      properties:
+        location:
+          type: integer
+        siteID:
+          type: integer
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        type:
+          type: integer
+        verified:
+          type: boolean
+        visible:
+          type: boolean
+        discoveredBy:
+          type: integer
+
+    postSiteTBType:
+      required:
+        - type
+      properties:
+        type:
+          type: string
+
+    postSiteTS:
+      required:
+        - location
+        - siteID
+        - latitude
+        - longitude
+        - type
+        - verified
+        - discoveredBy
+      properties:
+        location:
+          type: integer
+        siteID:
+          type: integer
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        status:
+          type: integer
+        verified:
+          type: boolean
+        visible:
+          type: boolean
+        discoveredBy:
+          type: integer
+
+    postSiteTSStatus:
+      required:
+        - status
+      properties:
+        type:
+          type: string
+
+    postSiteUSS:
+      required:
+        - location
+        - type
+        - threatLevel
+        - discoveredBy
+      properties:
+        location:
+          type: integer
+        type:
+          type: integer
+        threatLevel:
+          type: integer
+        discoveredBy:
+          type: integer
+
+    postSiteUSSType:
+      required:
+        - type
+        - journalName
+      properties:
+        type:
+          type: string
+        journalName:
+          type: string
+
+  ## PUT Reports
+    putReportPlanet:
+      properties:
+        systemName:
+          type: string
+        bodyName:
+          type: string
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        count:
+          type: integer
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        reportStatus:
+          type: string
+          enum:
+            - pending
+            - updated
+            - accepted
+            - declined
+            - issue
+          default: pending
+        reportComment:
+          type: string
+        voteCount:
+          type: integer
+        added:
+          type: boolean
+        site:
+          type: integer
+
+    putReportPlanetWithType:
+      properties:
+        systemName:
+          type: string
+        bodyName:
+          type: string
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        count:
+          type: integer
+        type:
+          type: string
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        reportStatus:
+          type: string
+          enum:
+            - pending
+            - updated
+            - accepted
+            - declined
+            - issue
+          default: pending
+        reportComment:
+          type: string
+        voteCount:
+          type: integer
+        added:
+          type: boolean
+        site:
+          type: integer
+
+    putReportGEN:
+      properties:
+        systemName:
+          type: string
+        orbitBody:
+          type: string
+        shipName:
+          type: string
+        directionSystem:
+          type: string
+        distance:
+          type: number
+          format: float
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        reportStatus:
+          type: string
+          enum:
+            - pending
+            - updated
+            - accepted
+            - declined
+            - issue
+          default: pending
+        reportComment:
+          type: string
+        voteCount:
+          type: integer
+        added:
+          type: boolean
+        site:
+          type: integer
+
+    putReportGR:
+      properties:
+        systemName:
+          type: string
+        bodyName:
+          type: string
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        type:
+          type: string
+          enum:
+            - Alpha
+            - Beta
+            - Gamma
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        reportStatus:
+          type: string
+          enum:
+            - pending
+            - updated
+            - accepted
+            - declined
+            - issue
+          default: pending
+        reportComment:
+          type: string
+        voteCount:
+          type: integer
+        added:
+          type: boolean
+        site:
+          type: integer
+
+    putReportGRObeliskGroup:
+      properties:
+        grreport:
+          type: integer
+        grobeliskgroup:
+          type: integer
+
+    putReportGRObelisk:
+      properties:
+        grreport:
+          type: integer
+        grobelisk:
+          type: integer
+
+    putReportGS:
+      properties:
+        systemName:
+          type: string
+        bodyName:
+          type: string
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        type:
+          type: string
+          enum:
+            - Lacrosse
+            - Crossroads
+            - Fistbump
+            - Hammerbot
+            - Bear
+            - Bowl
+            - Turtle
+        hasDatabank:
+          type: boolean
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        reportStatus:
+          type: string
+          enum:
+            - pending
+            - updated
+            - accepted
+            - declined
+            - issue
+          default: pending
+        reportComment:
+          type: string
+        voteCount:
+          type: integer
+        added:
+          type: boolean
+        site:
+          type: integer
+
+    putReportGSObeliskGroup:
+      properties:
+        gsreport:
+          type: integer
+        gsobeliskgroup:
+          type: integer
+
+    putReportGSObelisk:
+      properties:
+        gsreport:
+          type: integer
+        gsobelisk:
+          type: integer
+
+    putReportMS:
+      properties:
+        systemName:
+          type: string
+        orbitBody:
+          type: string
+        shipName:
+          type: string
+        shipTag:
+          type: string
+        type:
+          type: string
+        flightOps:
+          type: boolean
+        flightSchedule:
+          type: boolean
+        dockable:
+          type: boolean
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        reportStatus:
+          type: string
+          enum:
+            - pending
+            - updated
+            - accepted
+            - declined
+            - issue
+          default: pending
+        reportComment:
+          type: string
+        voteCount:
+          type: integer
+        added:
+          type: boolean
+        site:
+          type: integer
+
+    putReportTB:
+      properties:
+        systemName:
+          type: string
+        bodyName:
+          type: string
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        type:
+          type: string
+          enum:
+            - Barnacle
+            - Megabarnacle
+        count:
+          type: integer
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        reportStatus:
+          type: string
+          enum:
+            - pending
+            - updated
+            - accepted
+            - declined
+            - issue
+          default: pending
+        reportComment:
+          type: string
+        voteCount:
+          type: integer
+        added:
+          type: boolean
+        site:
+          type: integer
+
+    putReportTS:
+      properties:
+        systemName:
+          type: string
+        bodyName:
+          type: string
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        status:
+          type: string
+          enum:
+            - Active
+            - Inactive
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        reportStatus:
+          type: string
+          enum:
+            - pending
+            - updated
+            - accepted
+            - declined
+            - issue
+          default: pending
+        reportComment:
+          type: string
+        voteCount:
+          type: integer
+        added:
+          type: boolean
+        site:
+          type: integer
+
+  ## PUT Locations
+    putLocationSystem:
+      properties:
+        systemName:
+          type: string
+        edsmID:
+          type: number
+          format: float
+        edsmID64:
+          type: number
+          format: double
+        edsmCoordX:
+          type: number
+          format: double
+        edsmCoordY:
+          type: number
+          format: double
+        edsmCoordZ:
+          type: number
+          format: double
+        edsmCoordLocked:
+          type: boolean
+
+    putLocationBody:
+      properties:
+        system:
+          type: integer
+        bodyName:
+          type: string
+        edsmID:
+          type: number
+          format: float
+        edsmID64:
+          type: number
+          format: double
+        bodyType:
+          type: integer
+        bodySubtype:
+          type: integer
+        edsmOffset:
+          type: integer
+        edsmDistanceToArrival:
+          type: number
+          format: float
+        edsmIsMainStar:
+          type: boolean
+        edsmIsScoopable:
+          type: boolean
+        edsmIsLandable:
+          type: boolean
+        edsmAge:
+          type: integer
+        edsmLuminosity:
+          type: string
+        edsmAbsoluteMagnitude:
+          type: number
+          format: float
+        edsmSolarMasses:
+          type: number
+          format: float
+        edsmSolarRadius:
+          type: number
+          format: float
+        edsmGravity:
+          type: number
+          format: float
+        edsmEarthMasses:
+          type: number
+          format: float
+        edsmRadius:
+          type: number
+          format: float
+        edsmSurfaceTemperature:
+          type: number
+          format: float
+        edsmVolcanismType:
+          type: string
+        edsmAtmosphereType:
+          type: string
+        edsmTerraformingState:
+          type: string
+        edsmOrbitalPeriod:
+          type: number
+          format: float
+        edsmSemiMajorAxis:
+          type: number
+          format: float
+        edsmOrbitalEccentricity:
+          type: number
+          format: float
+        edsmOrbitalInclination:
+          type: number
+          format: float
+        edsmArgOfPeriapsis:
+          type: number
+          format: float
+        edsmRotationalPeriod:
+          type: number
+          format: float
+        edsmRotationalPeriodTidallyLocked:
+          type: boolean
+        edsmAxialTilt:
+          type: number
+          format: float
+
+    putLocationBodyType:
+      properties:
+        type:
+          type: string
+
+    putLocationBodySubtype:
+      properties:
+        subtype:
+          type: string
+
+    putLocationBodyAtmosphere:
+      properties:
+        body:
+          type: integer
+        argon:
+          type: number
+          format: float
+        ammonia:
+          type: number
+          format: float
+        carbonDioxide:
+          type: number
+          format: float
+        hydrogen:
+          type: number
+          format: float
+        helium:
+          type: number
+          format: float
+        iron:
+          type: number
+          format: float
+        neon:
+          type: number
+          format: float
+        methane:
+          type: number
+          format: float
+        nitrogen:
+          type: number
+          format: float
+        oxygen:
+          type: number
+          format: float
+        silicates:
+          type: number
+          format: float
+        sulphurDioxide:
+          type: number
+          format: float
+        water:
+          type: number
+          format: float
+
+    putLocationBodyMaterial:
+      properties:
+        body:
+          type: integer
+        antimony:
+          type: number
+          format: float
+        arsenic:
+          type: number
+          format: float
+        boron:
+          type: number
+          format: float
+        cadmium:
+          type: number
+          format: float
+        carbon:
+          type: number
+          format: float
+        chromium:
+          type: number
+          format: float
+        germanium:
+          type: number
+          format: float
+        iron:
+          type: number
+          format: float
+        lead:
+          type: number
+          format: float
+        manganese:
+          type: number
+          format: float
+        mercury:
+          type: number
+          format: float
+        molybdenum:
+          type: number
+          format: float
+        nickel:
+          type: number
+          format: float
+        niobium:
+          type: number
+          format: float
+        phosphorus:
+          type: number
+          format: float
+        polonium:
+          type: number
+          format: float
+        rhenium:
+          type: number
+          format: float
+        ruthenium:
+          type: number
+          format: float
+        selenium:
+          type: number
+          format: float
+        sulphur:
+          type: number
+          format: float
+        technetium:
+          type: number
+          format: float
+        tellurium:
+          type: number
+          format: float
+        tin:
+          type: number
+          format: float
+        tungsten:
+          type: number
+          format: float
+        vanadium:
+          type: number
+          format: float
+        yttrium:
+          type: number
+          format: float
+        zinc:
+          type: number
+          format: float
+        zirconium:
+          type: number
+          format: float
+
+    putLocationRing:
+      properties:
+        body:
+          type: integer
+        ringName:
+          type: string
+        ringtype:
+          type: integer
+        edsmMass:
+          type: number
+          format: float
+        edsmInnerRadius:
+          type: number
+          format: float
+        edsmOuterRadius:
+          type: number
+          format: float
+
+    putLocationRingType:
+      properties:
+        type:
+          type: string
+
+    putLocation:
+      properties:
+        system:
+          type: integer
+        body:
+          type: integer
+        ring:
+          type: integer
+        locationType:
+          type: string
+          enum:
+            - BM
+            - BT
+            - FG
+            - FM
+            - GEN
+            - GR
+            - GS
+            - GY
+            - HD
+            - LS
+            - MS
+            - TB
+            - TS
+            - TW
+            - USS
+
+  ## PUT CMDRs
+    putCMDR:
+      properties:
+        cmdrName:
+          type: string
+
+  ## PUT Uploads
+
+  ## PUT JournalDumps
+    putJournalData:
+      properties:
+        systemName:
+          type: string
+        bodyName:
+          type: string
+        stationName:
+          type: string
+        cmdrName:
+          type: string
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        isBeta:
+          type: boolean
+        jsonData:
+          type: string
+
+  ## PUT Sites
+    putSitePlanet:
+      properties:
+        location:
+          type: integer
+        siteID:
+          type: integer
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        count:
+          type: integer
+        verified:
+          type: boolean
+        visible:
+          type: boolean
+        discoveredBy:
+          type: integer
+
+    putSiteFM:
+      properties:
+        location:
+          type: integer
+        siteID:
+          type: integer
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        count:
+          type: integer
+        type:
+          type: integer
+        verified:
+          type: boolean
+        visible:
+          type: boolean
+        discoveredBy:
+          type: integer
+
+    putSiteFMType:
+      properties:
+        type:
+          type: string
+
+    putSiteGEN:
+      properties:
+        location:
+          type: integer
+        siteID:
+          type: integer
+        shipName:
+          type: string
+        directionSystem:
+          type: integer
+        distance:
+          type: number
+          format: float
+        discoveredBy:
+          type: integer
+
+    putSiteGR:
+      properties:
+        location:
+          type: integer
+        siteID:
+          type: integer
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        type:
+          type: integer
+        verified:
+          type: boolean
+        visible:
+          type: boolean
+        discoveredBy:
+          type: integer
+
+    putSiteGRType:
+      properties:
+        type:
+          type: string
+
+    putSiteGRActiveGroup:
+      properties:
+        grSite:
+          type: integer
+        activeGroup:
+          type: integer
+
+    putSiteGRActiveObelisk:
+      properties:
+        grSite:
+          type: integer
+        activeObelisk:
+          type: integer
+
+    putSiteGRArtifact:
+      properties:
+        artifactName:
+          type: string
+
+    putSiteGRCodexCategory:
+      properties:
+        categoryName:
+          type: string
+
+    putSiteGRCodexData:
+      properties:
+        grCodexCategory:
+          type: integer
+        grPrimaryArtifact:
+          type: integer
+        grSecondaryArtifact:
+          type: integer
+        codexNumber:
+          type: integer
+        text:
+          type: string
+
+    putSiteGRObelisk:
+      properties:
+        grType:
+          type: integer
+        grObeliskGroup:
+          type: string
+        obeliskNumber:
+          type: integer
+        broken:
+          type: boolean
+        grCodexData:
+          type: integer
+        verified:
+          type: boolean
+
+    putSiteGRObeliskGroup:
+      properties:
+        grType:
+          type: integer
+        groupName:
+          type: string
+        amount:
+          type: integer
+
+    putSiteGS:
+      properties:
+        location:
+          type: integer
+        siteID:
+          type: integer
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        type:
+          type: integer
+        hasDatabank:
+          type: boolean
+        verified:
+          type: boolean
+        visible:
+          type: boolean
+        discoveredBy:
+          type: integer
+
+    putSiteGSType:
+      properties:
+        type:
+          type: string
+        journalName:
+          type: string
+
+    putSiteGSActiveGroup:
+      properties:
+        gsSite:
+          type: integer
+        activeGroup:
+          type: integer
+
+    putSiteGSActiveObelisk:
+      properties:
+        gsSite:
+          type: integer
+        activeObelisk:
+          type: integer
+
+    putSiteGSArtifact:
+      properties:
+        artifactName:
+          type: string
+
+    putSiteGSCodexCategory:
+      properties:
+        categoryName:
+          type: string
+
+    putSiteGSCodexData:
+      properties:
+        gsCodexCategory:
+          type: integer
+        gsPrimaryArtifact:
+          type: integer
+        gsSecondaryArtifact:
+          type: integer
+        codexNumber:
+          type: integer
+        text:
+          type: string
+
+    putSiteGSObelisk:
+      properties:
+        gsType:
+          type: integer
+        gsObeliskGroup:
+          type: string
+        obeliskNumber:
+          type: integer
+        broken:
+          type: boolean
+        gsCodexData:
+          type: integer
+        verified:
+          type: boolean
+
+    putSiteGSObeliskGroup:
+      properties:
+        gsType:
+          type: integer
+        gsoupName:
+          type: string
+        amount:
+          type: integer
+
+    putSiteGY:
+      properties:
+        location:
+          type: integer
+        siteID:
+          type: integer
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        count:
+          type: integer
+        type:
+          type: integer
+        verified:
+          type: boolean
+        visible:
+          type: boolean
+        discoveredBy:
+          type: integer
+
+    putSiteGYType:
+      properties:
+        type:
+          type: string
+
+    putSiteHD:
+      properties:
+        location:
+          type: integer
+        toSystem:
+          type: integer
+        thargoidCount:
+          type: integer
+        isHostile:
+          type: boolean
+        discoveredBy:
+          type: integer
+
+    putSiteMS:
+      properties:
+        location:
+          type: integer
+        siteID:
+          type: integer
+        shipName:
+          type: string
+        shipTag:
+          type: string
+        type:
+          type: integer
+        flightOps:
+          type: boolean
+        flightSchedule:
+          type: boolean
+        dockable:
+          type: boolean
+        discoveredBy:
+          type: integer
+
+    putSiteMSType:
+      properties:
+        type:
+          type: string
+
+    putSiteTB:
+      properties:
+        location:
+          type: integer
+        siteID:
+          type: integer
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        type:
+          type: integer
+        verified:
+          type: boolean
+        visible:
+          type: boolean
+        discoveredBy:
+          type: integer
+
+    putSiteTBType:
+      properties:
+        type:
+          type: string
+
+    putSiteTS:
+      properties:
+        location:
+          type: integer
+        siteID:
+          type: integer
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        status:
+          type: integer
+        verified:
+          type: boolean
+        visible:
+          type: boolean
+        discoveredBy:
+          type: integer
+
+    putSiteTSStatus:
+      properties:
+        type:
+          type: string
+
+    putSiteUSS:
+      properties:
+        location:
+          type: integer
+        type:
+          type: integer
+        threatLevel:
+          type: integer
+        discoveredBy:
+          type: integer
+
+    putSiteUSSType:
+      properties:
+        type:
+          type: string
+        journalName:
+          type: string
+
+security:
+  - userAuth: [locationWrite, cmdrWrite, uploadWrite, siteWrite]
+  - canonnAuth: [reportDelete, locationDelete, cmdrDelete, uploadDelete, journalDelete, siteDelete]
+
+## Tags
+x-tagGroups:
+  - name: API Auth
+    tags:
+      - Local Auth
+      - Discord OAuth2
+  - name: Reports
+    tags:
+      - CMDRs
+      - Uploads
+      - Bark Mound Reports
+      - Brain Tree Reports
+      - Fungal Gourd Reports
+      - Fumarole Reports
+      - Generation Ship Reports
+      - Guardian Ruin Reports
+      - Guardian Structure Reports
+      - Geyser Reports
+      - Hyperdiction Reports
+      - Lava Spout Reports
+      - Megaship Reports
+      - Thargoid Barnacle Reports
+      - Thargoid Structure Reports
+      - Tube Worm Reports
+      - Unknown Signal Source Reports
+  - name: Celestial and Locations
+    tags:
+      - Systems
+      - Bodies
+      - Rings
+      - Locations
+  - name: Sites
+    tags:
+      - Bark Mounds
+      - Brain Trees
+      - Fungal Gourds
+      - Fumaroles
+      - Generation Ships
+      - Guardian Ruins
+      - Guardian Structures
+      - Geysers
+      - Hyperdictions
+      - Lava Spouts
+      - Megaships
+      - Thargoid Barnacles
+      - Thargoid Structures
+      - Tube Worms
+      - Unknown Signal Sources
+  - name: Testing and Canonn Use
+    tags:
+      - Journal Data Dumps
+tags: 
+  - name: Local Auth
+    description: Local Authentication for the API
+  - name: Discord OAuth2
+    description: (Coming Soon) Discord OAuth authentication for the API
+  - name: Systems
+    description: Systems stored in our API to use as references for sites
+  - name: Bodies
+    description: Bodies stored in our API to use as references for sites
+  - name: Rings
+    description: Rings stored in our API to use as references for sites
+  - name: Locations
+    description: Combines System, Bodies, and Rings into one endpoint used by sites as a reference
+  - name: CMDRs
+    description: List of commanders credited with finding sites
+  - name: Uploads
+    description: Coming soon for storing reporting Screenshots in the API
+  - name: Journal Data Dumps
+    description: Testing platform for raw journal dumps, Canonn Only Use
+  - name: Bark Mounds
+    description: Code Name - BM 
+  - name: Bark Mound Reports
+    description: Public Reporting of BM 
+  - name: Brain Trees
+    description: Code Name - BT
+  - name: Brain Tree Reports
+    description: Public Reporting of BT
+  - name: Fungal Gourds
+    description: Code Name - FG
+  - name: Fungal Gourd Reports
+    description: Public Reporting of FG
+  - name: Fumaroles
+    description: Code Name - FM
+  - name: Fumarole Reports
+    description: Public Reporting of FM
+  - name: Generation Ships
+    description: Code Name - GEN
+  - name: Generation Ship Reports
+    description: Public Reporting of GEN
+  - name: Guardian Ruins
+    description: Code Name - GR
+  - name: Guardian Ruin Reports
+    description: Public Reporting of GR
+  - name: Guardian Structures
+    description: Code Name - GS
+  - name: Guardian Structure Reports
+    description: Public Reporting of GS
+  - name: Geysers
+    description: Code Name - GY
+  - name: Geyser Reports
+    description: Public Reporting of GY
+  - name: Hyperdictions
+    description: Code Name - HD
+  - name: Hyperdiction Reports
+    description: Public Reporting of HD
+  - name: Lava Spouts
+    description: Code Name - LS
+  - name: Lava Spout Reports
+    description: Public Reporting of LS
+  - name: Megaships
+    description: Code Name - MS
+  - name: Megaship Reports
+    description: Public Reporting of MS
+  - name: Thargoid Barnacles
+    description: Code Name - TB
+  - name: Thargoid Barnacle Reports
+    description: Public Reporting of TB
+  - name: Thargoid Structures
+    description: Code Name - TS
+  - name: Thargoid Structure Reports
+    description: Public Reporting of TS
+  - name: Tube Worms
+    description: Code Name - TW
+  - name: Tube Worm Reports
+    description: Public Reporting of TW
+  - name: Unknown Signal Sources
+    description: Code Name - USS
+  - name: Unknown Signal Source Reports
+    description: Public Reporting of USS

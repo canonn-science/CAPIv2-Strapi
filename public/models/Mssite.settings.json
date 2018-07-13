@@ -27,19 +27,24 @@
       "required": true
     },
     "shipTag": {
-      "type": "string"
+      "unique": true,
+      "type": "string",
+      "required": true
     },
     "type": {
       "model": "mstype"
     },
     "flightOps": {
-      "type": "boolean"
+      "type": "boolean",
+      "required": true
     },
     "flightSchedule": {
-      "type": "boolean"
+      "type": "boolean",
+      "required": true
     },
     "dockable": {
-      "type": "boolean"
+      "type": "boolean",
+      "required": true
     },
     "discoveredBy": {
       "model": "cmdr"
