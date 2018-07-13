@@ -29,15 +29,19 @@
     },
     "type": {
       "enum": [
-        "Structure",
-        "Type1",
-        "Type2",
-        "Type3",
-        "Type4",
-        "Type5"
+        "Lacrosse",
+        "Crossroads",
+        "Fistbump",
+        "Hammerbot",
+        "Bear",
+        "Bowl",
+        "Turtle"
       ],
       "type": "enumeration",
       "required": true
+    },
+    "hasDatabank": {
+      "type": "boolean"
     },
     "cmdrName": {
       "type": "string",
