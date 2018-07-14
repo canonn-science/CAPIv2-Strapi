@@ -579,6 +579,166 @@ paths:
           $ref: '#/components/responses/error500'
 
 # BT Site
+  /btsite/count:
+    get:
+      tags:
+        - Brain Trees
+      summary: Get a count of all BT Sites
+      description: The API will respond with just a number, which is the total amount of sites on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getBTSitesCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+  /btsite:
+    get:
+      tags:
+        - Brain Trees
+      summary: Get a list of BT Sites
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getBTSites
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of BT Sites
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSitePlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - Brain Trees
+      summary: Post a new BT Site
+      description: To be used to add a new site to the Canonn database, these are sites verified by Canonn
+      operationId: submitBTSite
+      security:
+        - canonnAuth: [siteWrite]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postSitePlanet'
+      responses:
+        '200':
+          description: Site post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSitePlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /btsite/{id}:
+    get:
+      tags:
+        - Brain Trees
+      summary: Get a Single BT Site
+      description: Provide the ID to get a single site
+      operationId: getBTSiteById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the BT Site
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSitePlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - Brain Trees
+      summary: Update a BT Site
+      description: You do not need to send the entire site again, you can send only changed fields
+      operationId: updateBTSiteById
+      security:
+        - canonnAuth: [siteWrite]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putSitePlanet'
+      responses:
+        '200':
+          description: Site update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSitePlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    delete:
+      tags:
+        - Brain Trees
+      summary: Delete a BT Site
+      description: The response is just an empty JSON, deleting a site requires auth
+      operationId: removeBTSiteById
+      security:
+        - canonnAuth: [siteDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
 
 # CMDR
   /cmdr/count:
@@ -903,6 +1063,166 @@ paths:
           $ref: '#/components/responses/error500'
 
 # FG Site
+  /fgsite/count:
+    get:
+      tags:
+        - Fungal Gourds
+      summary: Get a count of all FG Sites
+      description: The API will respond with just a number, which is the total amount of sites on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getFGSitesCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+  /fgsite:
+    get:
+      tags:
+        - Fungal Gourds
+      summary: Get a list of FG Sites
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getFGSites
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of FG Sites
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSitePlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - Fungal Gourds
+      summary: Post a new FG Site
+      description: To be used to add a new site to the Canonn database, these are sites verified by Canonn
+      operationId: submitFGSite
+      security:
+        - canonnAuth: [siteWrite]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postSitePlanet'
+      responses:
+        '200':
+          description: Site post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSitePlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /fgsite/{id}:
+    get:
+      tags:
+        - Fungal Gourds
+      summary: Get a Single FG Site
+      description: Provide the ID to get a single site
+      operationId: getFGSiteById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the FG Site
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSitePlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - Fungal Gourds
+      summary: Update a FG Site
+      description: You do not need to send the entire site again, you can send only changed fields
+      operationId: updateFGSiteById
+      security:
+        - canonnAuth: [siteWrite]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putSitePlanet'
+      responses:
+        '200':
+          description: Site update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSitePlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    delete:
+      tags:
+        - Fungal Gourds
+      summary: Delete a FG Site
+      description: The response is just an empty JSON, deleting a site requires auth
+      operationId: removeFGSiteById
+      security:
+        - canonnAuth: [siteDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
 
 # FM Report
   /fmreport/count:
@@ -2556,6 +2876,168 @@ paths:
         '500':
           $ref: '#/components/responses/error500'
 
+# LS Site
+  /lssite/count:
+    get:
+      tags:
+        - Lava Spouts
+      summary: Get a count of all LS Sites
+      description: The API will respond with just a number, which is the total amount of sites on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getLSSitesCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+  /lssite:
+    get:
+      tags:
+        - Lava Spouts
+      summary: Get a list of LS Sites
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getLSSites
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of LS Sites
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSitePlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - Lava Spouts
+      summary: Post a new LS Site
+      description: To be used to add a new site to the Canonn database, these are sites verified by Canonn
+      operationId: submitLSSite
+      security:
+        - canonnAuth: [siteWrite]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postSitePlanet'
+      responses:
+        '200':
+          description: Site post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSitePlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /lssite/{id}:
+    get:
+      tags:
+        - Lava Spouts
+      summary: Get a Single LS Site
+      description: Provide the ID to get a single site
+      operationId: getLSSiteById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the LS Site
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSitePlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - Lava Spouts
+      summary: Update a LS Site
+      description: You do not need to send the entire site again, you can send only changed fields
+      operationId: updateLSSiteById
+      security:
+        - canonnAuth: [siteWrite]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putSitePlanet'
+      responses:
+        '200':
+          description: Site update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSitePlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    delete:
+      tags:
+        - Lava Spouts
+      summary: Delete a LS Site
+      description: The response is just an empty JSON, deleting a site requires auth
+      operationId: removeLSSiteById
+      security:
+        - canonnAuth: [siteDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
 # MS Report
   /msreport/count:
     get:
@@ -3215,6 +3697,166 @@ paths:
           $ref: '#/components/responses/error500'
 
 # TW Site
+  /twsite/count:
+    get:
+      tags:
+        - Tube Worms
+      summary: Get a count of all TW Sites
+      description: The API will respond with just a number, which is the total amount of sites on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getTWSitesCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+  /twsite:
+    get:
+      tags:
+        - Tube Worms
+      summary: Get a list of TW Sites
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getTWSites
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of TW Sites
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSitePlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - Tube Worms
+      summary: Post a new TW Site
+      description: To be used to add a new site to the Canonn database, these are sites verified by Canonn
+      operationId: submitTWSite
+      security:
+        - canonnAuth: [siteWrite]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postSitePlanet'
+      responses:
+        '200':
+          description: Site post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSitePlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /twsite/{id}:
+    get:
+      tags:
+        - Tube Worms
+      summary: Get a Single TW Site
+      description: Provide the ID to get a single site
+      operationId: getTWSiteById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the TW Site
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSitePlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - Tube Worms
+      summary: Update a TW Site
+      description: You do not need to send the entire site again, you can send only changed fields
+      operationId: updateTWSiteById
+      security:
+        - canonnAuth: [siteWrite]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putSitePlanet'
+      responses:
+        '200':
+          description: Site update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSitePlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    delete:
+      tags:
+        - Tube Worms
+      summary: Delete a TW Site
+      description: The response is just an empty JSON, deleting a site requires auth
+      operationId: removeTWSiteById
+      security:
+        - canonnAuth: [siteDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
 
 # USS Site
 
