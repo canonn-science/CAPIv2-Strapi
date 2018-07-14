@@ -752,6 +752,7 @@ type Journaldata {
   id: ID!
   createdAt: String!
   updatedAt: String!
+  eventName: String
   systemName: String
   bodyName: String
   stationName: String
