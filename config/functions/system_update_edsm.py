@@ -146,7 +146,7 @@ try:
             if elapsed_time.days >= day_difference_threshold:
                 names_to_update.append(systemName)
         print('Updating {} rows'.format(len(names_to_update)))
-        if len(names_to_update) > 0
+        if len(names_to_update) > 0:
             # add the params manually since they're duplicates
             url = edsm_api_systems_url + '?showId=1&showCoordinates=1&showPermit=1&'
             for chunk in list(chunks(names_to_update, args.batch_size)):
