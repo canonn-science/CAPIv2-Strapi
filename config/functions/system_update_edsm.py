@@ -130,9 +130,12 @@ edsm_api_systems_url = 'https://www.edsm.net/api-v1/systems'
 current_date = datetime.now()
 names_to_update = []
 
-select_sql = 'SELECT systemName, updated_at FROM systems'
+updated_at_select_sql = 'SELECT systemName, updated_at FROM systems'
+null_edsm_id_select_sql = 'SELECT systemName FROM systems WHERE edsmID is NULL'
+insert_sql = 'UPDATE `systems` SET edsmCoordX=%s, edsmCoordY=%s, edsmCoordZ=%s, edsmID=%s, edsmID64=%s, edsmCoordLocked=%s WHERE systemName LIKE \'{}\''
 
 
+# Reference:
 # https://stackoverflow.com/questions/312443/how-do-you-split-a-list-into-evenly-sized-chunks
 def chunks(l, n):
     # Yield successive n-sized chunks from l
@@ -140,19 +143,25 @@ def chunks(l, n):
         yield l[i:i + n]
 
 
+print('Running in update missing mode' if args.update_missing_mode else 'Running in last updated mode')
 try:
     print('Opening connection to MySQL DB')
     with connection.cursor() as cursor:
-        # Create a new record
-        cursor.execute(select_sql)
-        result = cursor.fetchall()
-        for row in result:
-            print(row)
-            systemName = row['systemName']
-            date = row['updated_at']
-            elapsed_time = current_date - date
-            if elapsed_time.days >= day_difference_threshold:
+        if args.update_missing_mode:
+            cursor.execute(null_edsm_id_select_sql)
+            result = cursor.fetchall()
+            for row in result:
+                systemName = row['systemName']
                 names_to_update.append(systemName)
+        else:
+            cursor.execute(updated_at_select_sql)
+            result = cursor.fetchall()
+            for row in result:
+                systemName = row['systemName']
+                date = row['updated_at']
+                elapsed_time = current_date - date
+                if elapsed_time.days >= day_difference_threshold:
+                    names_to_update.append(systemName)
         print('Updating {} rows'.format(len(names_to_update)))
         if len(names_to_update) > 0:
             # add the params manually since they're duplicates
@@ -166,9 +175,8 @@ try:
                 all_systems_data = response.json()
                 for system_data in all_systems_data:
                     print('Updating: {}'.format(system_data['name']))
-                    insert_sql = 'UPDATE `systems` SET edsmCoordX=%s, edsmCoordY=%s, edsmCoordZ=%s, edsmID=%s, edsmID64=%s, edsmCoordLocked=%s WHERE systemName LIKE \'{}\''.format(system_data['name'])
                     cursor.execute(
-                        insert_sql,
+                        insert_sql.format(system_data['name']),
                         (
                             system_data['coords']['x'],
                             system_data['coords']['y'],
