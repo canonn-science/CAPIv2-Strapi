@@ -1,25 +1,39 @@
-openapi: "3.0.1"
+# A Swagger 3.0.0 (a.k.a. OpenAPI) definition of the Engine API.
+#
+# Some style notes:
+# - This file is used by ReDoc, which allows GitHub Flavored Markdown in
+#   descriptions.
+# - There is no maximum line length, for ease of editing and pretty diffs.
+# - operationIds are in the format "NounVerb", with a singular noun.
+
+openapi: "3.0.0"
 
 ## Information
 info:
   version: 2.0.7
   title: Canonn APIv2
   x-logo:
-    url: "https://api.canonn.tech/canonn-logo.png"
+    url: "./canonn-logo.png"
   description: |
-    An API for all the Science related information Canonn has in its datastores stored on the Gnosis, built using [Strapi](https://strapi.io) a Nodejs API framework. 
-    
-    We have two different documentation types, our [Redocs](https://api.canonn.tech) or use the [Swagger-UI](https://api.canonn.tech/swaggerui)
+    An API for all the Science related information Canonn has in its datastores stored on the Gnosis, built using [Strapi](https://strapi.io) a Nodejs API framework.
+
+    # Documentation
+    We have two different documentation types
+
+    * [Redocs](https://api.canonn.tech)
+    * [Swagger-UI](https://api.canonn.tech/swaggerui)
+
+    # Servers
 
     We also have 3 API servers; Live (Production), Beta (Staging), Alpha (Development). You should use the Beta server for testing your application prior to using the Live server. The Alpha server is used by Canonn to test our changes prior to releasing a new version.
 
     Data between the Live and Beta servers are replicated as needed, eventually we plan to dynamically replicate the data every night at midnight Phoenix, Arizona USA time (MST-Arizona GMT-7)
 
-    Here are the following URLs for each server
-
-    * Live - https://api.canonn.tech
-    * Beta - https://api.canonn.tech:2053
-    * Alpha - https://api.canonn.tech:2083
+    Server Name  | Server Type | Server URL | Server version
+    ----------------|-------------|-------------|---------
+    Live | Production | https://api.canonn.tech | v2.0.7
+    Beta | Production | https://api.canonn.tech:2053 | v2.0.7
+    Alpha | Production | https://api.canonn.tech:2083 | v2.0.7
 
     Thank you for your support, and thank you to all the CMDRs who supply us with our data!
 
@@ -39,7 +53,7 @@ servers:
     description: Live Production Server, should be used if your application has been tested and deployed
   - url: https://api.canonn.tech:2083
     description: Alpha Development Server, used by Canonn to test development prior to updating Staging and Production. Data here is likely to be wrong or inaccurate.
-    
+
 ## Paths
 paths:
 
@@ -193,7 +207,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/postReportPlanet'
+              $ref: '#/components/schemas/putReportPlanet'
       responses:
         '200':
           description: Report update successful
@@ -209,7 +223,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-      
+
     delete:
       tags:
         - Bark Mound Reports
@@ -231,8 +245,168 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-      
+
 # BM Site
+  /bmsite/count:
+    get:
+      tags:
+        - Bark Mounds
+      summary: Get a count of all BM Sites
+      description: The API will respond with just a number, which is the total amount of sites on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getBMSitesCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+  /bmsite:
+    get:
+      tags:
+        - Bark Mounds
+      summary: Get a list of BM Sites
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getBMSites
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of BM Sites
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSitePlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - Bark Mounds
+      summary: Post a new BM Site
+      description: To be used to add a new site to the Canonn database, these are sites verified by Canonn
+      operationId: submitBMSite
+      security:
+        - canonnAuth: [siteWrite]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postSitePlanet'
+      responses:
+        '200':
+          description: Site post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSitePlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /bmsite/{id}:
+    get:
+      tags:
+        - Bark Mounds
+      summary: Get a Single BM Site
+      description: Provide the ID to get a single site
+      operationId: getBMSiteById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the BM Site
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSitePlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - Bark Mounds
+      summary: Update a BM Site
+      description: You do not need to send the entire site again, you can send only changed fields
+      operationId: updateBMSiteById
+      security:
+        - canonnAuth: [siteWrite]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putSitePlanet'
+      responses:
+        '200':
+          description: Site update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSitePlanet'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    delete:
+      tags:
+        - Bark Mounds
+      summary: Delete a BM Site
+      description: The response is just an empty JSON, deleting a site requires auth
+      operationId: removeBMSiteById
+      security:
+        - canonnAuth: [siteDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
 
 # Body
 
@@ -365,7 +539,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/postReportPlanet'
+              $ref: '#/components/schemas/putReportPlanet'
       responses:
         '200':
           description: Report update successful
@@ -381,7 +555,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-      
+
     delete:
       tags:
         - Brain Tree Reports
@@ -407,6 +581,166 @@ paths:
 # BT Site
 
 # CMDR
+  /cmdr/count:
+    get:
+      tags:
+        - CMDRs
+      summary: Get a count of all CMDRs
+      description: The API will respond with just a number, which is the total amount of CMDRs on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getCMDRsCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+  /cmdr:
+    get:
+      tags:
+        - CMDRs
+      summary: Get a list of CMDRs
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getCMDRs
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of CMDRs
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getCMDR'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - CMDRs
+      summary: Post a new CMDR
+      description: To be used to add new CMDRs to our list, updated from reports submitted to us
+      operationId: submitCMDR
+      security:
+        - userAuth: [cmdrWrite]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postCMDR'
+      responses:
+        '200':
+          description: CMDR post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getCMDR'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /cmdr/{id}:
+    get:
+      tags:
+        - CMDRs
+      summary: Get a Single CMDR
+      description: Provide the ID to get a single CMDR
+      operationId: getCMDRById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the CMDR
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getCMDR'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - CMDRs
+      summary: Update a CMDR
+      description: Used to update the CMDR name
+      operationId: updateCMDRById
+      security:
+        - userAuth: [cmdrWrite]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putCMDR'
+      responses:
+        '200':
+          description: CMDR update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getCMDR'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    delete:
+      tags:
+        - CMDRs
+      summary: Delete a CMDR
+      description: The response is just an empty JSON, deleting a report requires auth
+      operationId: removeCMDRById
+      security:
+        - canonnAuth: [cmdrDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
 
 # FG Report
   /fgreport/count:
@@ -529,7 +863,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/postReportPlanet'
+              $ref: '#/components/schemas/putReportPlanet'
       responses:
         '200':
           description: Report update successful
@@ -545,7 +879,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-      
+
     delete:
       tags:
         - Fungal Gourd Reports
@@ -691,7 +1025,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/postReportPlanetWithType'
+              $ref: '#/components/schemas/putReportPlanetWithType'
       responses:
         '200':
           description: Report update successful
@@ -707,7 +1041,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-      
+
     delete:
       tags:
         - Fumarole Reports
@@ -855,7 +1189,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/postReportGEN'
+              $ref: '#/components/schemas/putReportGEN'
       responses:
         '200':
           description: Report update successful
@@ -871,7 +1205,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-      
+
     delete:
       tags:
         - Generation Ship Reports
@@ -1031,7 +1365,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/postReportGRObeliskGroup'
+              $ref: '#/components/schemas/putReportGRObeliskGroup'
       responses:
         '200':
           description: Report update successful
@@ -1047,7 +1381,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-      
+
     delete:
       tags:
         - Guardian Ruin Reports
@@ -1191,7 +1525,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/postReportGRObelisk'
+              $ref: '#/components/schemas/putReportGRObelisk'
       responses:
         '200':
           description: Report update successful
@@ -1207,7 +1541,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-      
+
     delete:
       tags:
         - Guardian Ruin Reports
@@ -1351,7 +1685,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/postReportGR'
+              $ref: '#/components/schemas/putReportGR'
       responses:
         '200':
           description: Report update successful
@@ -1367,7 +1701,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-      
+
     delete:
       tags:
         - Guardian Ruin Reports
@@ -1529,7 +1863,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/postReportGSObeliskGroup'
+              $ref: '#/components/schemas/putReportGSObeliskGroup'
       responses:
         '200':
           description: Report update successful
@@ -1545,7 +1879,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-      
+
     delete:
       tags:
         - Guardian Structure Reports
@@ -1689,7 +2023,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/postReportGSObelisk'
+              $ref: '#/components/schemas/putReportGSObelisk'
       responses:
         '200':
           description: Report update successful
@@ -1705,7 +2039,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-      
+
     delete:
       tags:
         - Guardian Structure Reports
@@ -1849,7 +2183,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/postReportGS'
+              $ref: '#/components/schemas/putReportGS'
       responses:
         '200':
           description: Report update successful
@@ -1865,7 +2199,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-      
+
     delete:
       tags:
         - Guardian Structure Reports
@@ -2013,7 +2347,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/postReportPlanetWithType'
+              $ref: '#/components/schemas/putReportPlanetWithType'
       responses:
         '200':
           description: Report update successful
@@ -2029,7 +2363,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-      
+
     delete:
       tags:
         - Geyser Reports
@@ -2183,7 +2517,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/postReportPlanet'
+              $ref: '#/components/schemas/putReportPlanet'
       responses:
         '200':
           description: Report update successful
@@ -2199,7 +2533,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-      
+
     delete:
       tags:
         - Lava Spout Reports
@@ -2343,7 +2677,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/postReportMS'
+              $ref: '#/components/schemas/putReportMS'
       responses:
         '200':
           description: Report update successful
@@ -2359,7 +2693,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-      
+
     delete:
       tags:
         - Megaship Reports
@@ -2513,7 +2847,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/postReportTB'
+              $ref: '#/components/schemas/putReportTB'
       responses:
         '200':
           description: Report update successful
@@ -2529,7 +2863,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-      
+
     delete:
       tags:
         - Thargoid Barnacle Reports
@@ -2677,7 +3011,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/postReportTS'
+              $ref: '#/components/schemas/putReportTS'
       responses:
         '200':
           description: Report update successful
@@ -2693,7 +3027,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-      
+
     delete:
       tags:
         - Thargoid Structure Reports
@@ -2841,7 +3175,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/postReportPlanet'
+              $ref: '#/components/schemas/putReportPlanet'
       responses:
         '200':
           description: Report update successful
@@ -2857,7 +3191,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-      
+
     delete:
       tags:
         - Tube Worm Reports
@@ -3832,6 +4166,8 @@ components:
       properties:
         id:
           type: integer
+        eventName:
+          type: string
         systemName:
           type: string
         bodyName:
@@ -5171,6 +5507,8 @@ components:
       required:
         - jsonData
       properties:
+        eventName:
+          type: string
         systemName:
           type: string
         bodyName:
@@ -6378,6 +6716,8 @@ components:
   ## PUT JournalDumps
     putJournalData:
       properties:
+        eventName:
+          type: string
         systemName:
           type: string
         bodyName:
@@ -6779,8 +7119,9 @@ components:
           type: string
 
 security:
-  - userAuth: [locationWrite, cmdrWrite, uploadWrite, siteWrite]
-  - canonnAuth: [reportDelete, locationDelete, cmdrDelete, uploadDelete, journalDelete, siteDelete]
+  #- userDiscordAuth: [cmdrWrite, uploadWrite]
+  - userAuth: [cmdrWrite, uploadWrite]
+  - canonnAuth: [reportDelete, locationDelete, cmdrDelete, uploadDelete, journalDelete, siteDelete, locationWrite, siteWrite]
 
 ## Tags
 x-tagGroups:
@@ -6833,7 +7174,7 @@ x-tagGroups:
   - name: Testing and Canonn Use
     tags:
       - Journal Data Dumps
-tags: 
+tags:
   - name: Local Auth
     description: Local Authentication for the API
   - name: Discord OAuth2
@@ -6853,9 +7194,9 @@ tags:
   - name: Journal Data Dumps
     description: Testing platform for raw journal dumps, Canonn Only Use
   - name: Bark Mounds
-    description: Code Name - BM 
+    description: Code Name - BM
   - name: Bark Mound Reports
-    description: Public Reporting of BM 
+    description: Public Reporting of BM
   - name: Brain Trees
     description: Code Name - BT
   - name: Brain Tree Reports
