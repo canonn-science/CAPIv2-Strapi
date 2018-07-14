@@ -13,7 +13,7 @@ pip3 install PyMySQL
 pip3 install requests
 """
 
-config_file_path = '../environments/{}/database.json.example'
+config_file_path = '../environments/{}/database.json'
 # config_file_path = '../environments/{}/database.json'
 
 # Initialising the Argument Parser and adding the three arguments required:
