@@ -52,6 +52,14 @@ parser.add_argument(
     default=config_file_path
 )
 
+# Add an argument to force checking for all systems with a missing edsmId rather than according to how long ago they were updated
+parser.add_argument(
+    '--update-missing',
+    help='Update systems with missing EDSM IDs rather than according to their last updated timestamp',
+    dest='update_missing_mode',
+    action='store_true',
+)
+
 # Add an argument to set a custom number of seconds waited between batches of updates
 parser.add_argument(
     '-delay-seconds',
@@ -127,7 +135,7 @@ select_sql = 'SELECT systemName, updated_at FROM systems'
 
 # https://stackoverflow.com/questions/312443/how-do-you-split-a-list-into-evenly-sized-chunks
 def chunks(l, n):
-    """Yield successive n-sized chunks from l."""
+    # Yield successive n-sized chunks from l
     for i in range(0, len(l), n):
         yield l[i:i + n]
 
