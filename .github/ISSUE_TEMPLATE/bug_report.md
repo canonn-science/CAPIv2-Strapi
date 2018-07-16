@@ -7,7 +7,9 @@ about: Create a report to help us improve
 **Which Server are you experencing the issue with:**
 <!-- Check one by placing an X between the [] -->
 [] Live Server - https://api.canonn.tech
+
 [] Beta Server - https://api.canonn.tech:2053
+
 [] Alpha Server - https://api.canonn.tech:2083
 
 **What endpoint(s) are you seeing the error on:**
