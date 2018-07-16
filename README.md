@@ -41,7 +41,7 @@ The Canonn APIv2 is designed to handle all our current science projects. Current
 * Guardian Structures (GS)
   * Guardian Structures Active Obelisks
 * Geysers (GY)
-* Hyperdictions (HD) - **Planned v2.0.8**
+* Hyperdictions (HD)
 * Lava Spouts (LS)
 * Megaships (MS)
 * Thargoid Barnacles (TB)
@@ -52,7 +52,7 @@ The Canonn APIv2 is designed to handle all our current science projects. Current
 Also we are tracking the following:
 
 * Systems
-  * X/Y/Z and Locked status pulled from EDSM - **Planned v2.1.0**
+  * X/Y/Z and Locked status pulled from EDSM - **WIP**
 * Bodies
   * Atmosphere composition (From EDSM) - **Planned v2.1.0**
   * Material composition (From EDSM) - **Planned v2.1.0**
@@ -65,7 +65,7 @@ The current version of the CAPIv2 is `v2.0.7` and is still in active development
 
 # API Documentation
 
-A static copy of our docs is located in the `/public` folder, you can view the progress of this documentation on our Docs repo here: https://github.com/canonn-science/CAPIv2-Docs
+A static copy of our docs is located in the `/public` folder, you can view the progress of this documentation on our Docs repo here: https://github.com/canonn-science/CAPIv2-Swagger
 
 # Prerequisites
 
@@ -112,7 +112,7 @@ sudo npm install pm2 -g
 
 ## Install Strapi Alpha Latest
 
-Run the following to install Strapi Alpha (Current version is Alpha.12.5):
+Run the following to install Strapi Alpha (Current version is Alpha.12.7.1):
 
 `
 sudo npm i strapi@alpha -g
