@@ -1,0 +1,54 @@
+{
+  "connection": "default",
+  "collectionName": "nhsstopcommandersbykills",
+  "info": {
+    "name": "nhssTopCommandersByKill",
+    "description": "Top ten commanders sorted by kills"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "CommanderName": {
+      "type": "string"
+    },
+    "scout_kills": {
+      "type": "integer"
+    },
+    "cyclops_kills": {
+      "type": "integer"
+    },
+    "basilisk_kills": {
+      "type": "integer"
+    },
+    "medusa_kills": {
+      "type": "integer"
+    },
+    "unknown_kills": {
+      "type": "integer"
+    },
+    "scout_rewards": {
+      "type": "integer"
+    },
+    "cyclops_rewards": {
+      "type": "integer"
+    },
+    "basilisk_rewards": {
+      "type": "integer"
+    },
+    "medusa_rewards": {
+      "type": "integer"
+    },
+    "unknown_rewards": {
+      "type": "integer"
+    },
+    "total_rewards": {
+      "type": "integer"
+    },
+    "total_kills": {
+      "type": "integer"
+    }
+  }
+}

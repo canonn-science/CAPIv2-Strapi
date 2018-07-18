@@ -1,0 +1,39 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "factionKillBondReport",
+    "description": "Records rewards for faction kills"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "edtimestamp": {
+      "type": "date"
+    },
+    "reward": {
+      "type": "integer"
+    },
+    "rewardingfaction": {
+      "type": "string"
+    },
+    "victimfaction": {
+      "type": "string"
+    },
+    "raw_event": {
+      "type": "json"
+    },
+    "Commander": {
+      "type": "string"
+    },
+    "isbeta": {
+      "type": "boolean"
+    },
+    "systemName": {
+      "type": "string"
+    }
+  }
+}
