@@ -267,6 +267,14 @@ enum ENUM_GYREPORT_REPORTSTATUS {
   issue
 }
 
+enum ENUM_HDREPORT_REPORTSTATUS {
+  pending
+  updated
+  accepted
+  declined
+  issue
+}
+
 enum ENUM_LOCATION_LOCATIONTYPE {
   BM
   BT
@@ -328,6 +336,14 @@ enum ENUM_TSREPORT_STATUS {
 }
 
 enum ENUM_TWREPORT_REPORTSTATUS {
+  pending
+  updated
+  accepted
+  declined
+  issue
+}
+
+enum ENUM_USSREPORT_REPORTSTATUS {
   pending
   updated
   accepted
@@ -735,6 +751,23 @@ type Gytype {
   type: String!
 }
 
+"""Journal events and user reports for the Unknown Signal Sources"""
+type Hdreport {
+  id: ID!
+  createdAt: String!
+  updatedAt: String!
+  fromSystemName: String
+  toSystemName: String
+  cmdrName: String
+  cmdrComment: String
+  screenshot: UploadFile
+  reportStatus: ENUM_HDREPORT_REPORTSTATUS!
+  reportComment: String
+  added: Boolean
+  site: Hdsite
+  hdRawJson: String
+}
+
 """Thargoid Hyperdiction sites"""
 type Hdsite {
   id: ID!
@@ -829,7 +862,7 @@ type Lssite {
   discoveredBy: Cmdr
 }
 
-union Morph = Bmreport | Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysubtype | Bodytype | Btreport | Btsite | Cmdr | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategory | Grcodexdata | Grobelisk | Grobeliskgroup | Grobeliskgroupreport | Grobeliskreport | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsobeliskgroupreport | Gsobeliskreport | Gsreport | Gssite | Gstype | Gyreport | Gysite | Gytype | Hdsite | Journaldata | Location | Lsreport | Lssite | Msreport | Mssite | Mstype | Ring | Ringtype | System | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union Morph = Bmreport | Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysubtype | Bodytype | Btreport | Btsite | Cmdr | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategory | Grcodexdata | Grobelisk | Grobeliskgroup | Grobeliskgroupreport | Grobeliskreport | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsobeliskgroupreport | Gsobeliskreport | Gsreport | Gssite | Gstype | Gyreport | Gysite | Gytype | Hdreport | Hdsite | Journaldata | Location | Lsreport | Lssite | Msreport | Mssite | Mstype | Ring | Ringtype | System | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Ussreport | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 """Reporting for Megaships"""
 type Msreport {
@@ -965,6 +998,8 @@ type Query {
   gysites(sort: String, limit: Int, start: Int, where: JSON): [Gysite]
   gytype(id: ID!): Gytype
   gytypes(sort: String, limit: Int, start: Int, where: JSON): [Gytype]
+  hdreport(id: ID!): Hdreport
+  hdreports(sort: String, limit: Int, start: Int, where: JSON): [Hdreport]
   hdsite(id: ID!): Hdsite
   hdsites(sort: String, limit: Int, start: Int, where: JSON): [Hdsite]
   journaldatum(id: ID!): Journaldata
@@ -1003,6 +1038,8 @@ type Query {
   twreports(sort: String, limit: Int, start: Int, where: JSON): [Twreport]
   twsite(id: ID!): Twsite
   twsites(sort: String, limit: Int, start: Int, where: JSON): [Twsite]
+  ussreport(id: ID!): Ussreport
+  ussreports(sort: String, limit: Int, start: Int, where: JSON): [Ussreport]
   usssite(id: ID!): Usssite
   usssites(sort: String, limit: Int, start: Int, where: JSON): [Usssite]
   usstype(id: ID!): Usstype
@@ -1212,6 +1249,23 @@ type UsersPermissionsUser {
   email: String!
   provider: String
   role: UsersPermissionsRole
+}
+
+"""Automated journal reports for Unknown Signal Sources"""
+type Ussreport {
+  id: ID!
+  createdAt: String!
+  updatedAt: String!
+  systemName: String
+  type: String
+  cmdrName: String
+  cmdrComment: String
+  screenshot: UploadFile
+  reportStatus: ENUM_USSREPORT_REPORTSTATUS!
+  reportComment: String
+  added: Boolean
+  site: Usssite
+  ussRawJson: String
 }
 
 """Unknown Signal Source sites"""

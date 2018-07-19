@@ -1,0 +1,55 @@
+{
+  "connection": "default",
+  "collectionName": "hdreports",
+  "info": {
+    "name": "hdreport",
+    "description": "Journal events and user reports for the Unknown Signal Sources"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "fromSystemName": {
+      "type": "string"
+    },
+    "toSystemName": {
+      "type": "string"
+    },
+    "cmdrName": {
+      "type": "string"
+    },
+    "cmdrComment": {
+      "type": "text"
+    },
+    "screenshot": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "reportStatus": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "pending",
+        "updated",
+        "accepted",
+        "declined",
+        "issue"
+      ]
+    },
+    "reportComment": {
+      "type": "text"
+    },
+    "added": {
+      "type": "boolean"
+    },
+    "site": {
+      "model": "hdsite"
+    },
+    "hdRawJson": {
+      "type": "json"
+    }
+  }
+}
