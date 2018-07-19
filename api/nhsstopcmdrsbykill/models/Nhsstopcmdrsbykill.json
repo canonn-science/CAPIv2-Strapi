@@ -1,9 +1,9 @@
 {
   "connection": "default",
-  "collectionName": "nhsstopcommandersbykills",
+  "collectionName": "nhsstopcmdrsbykills",
   "info": {
-    "name": "nhssTopCommandersByKill",
-    "description": "Top ten commanders sorted by kills"
+    "name": "nhsstopcmdrsbykill",
+    "description": "Top ten CMDRs sorted by kills for Non-Human Signal Sources"
   },
   "options": {
     "increments": true,
@@ -11,43 +11,43 @@
     "comment": ""
   },
   "attributes": {
-    "CommanderName": {
+    "cmdrName": {
       "type": "string"
     },
-    "scout_kills": {
+    "scoutKills": {
       "type": "integer"
     },
-    "cyclops_kills": {
+    "cyclopsKills": {
       "type": "integer"
     },
-    "basilisk_kills": {
+    "basiliskKills": {
       "type": "integer"
     },
-    "medusa_kills": {
+    "medusaKills": {
       "type": "integer"
     },
-    "unknown_kills": {
+    "unknownKills": {
       "type": "integer"
     },
-    "scout_rewards": {
+    "scoutRewards": {
       "type": "integer"
     },
-    "cyclops_rewards": {
+    "cyclopsRewards": {
       "type": "integer"
     },
-    "basilisk_rewards": {
+    "basiliskRewards": {
       "type": "integer"
     },
-    "medusa_rewards": {
+    "medusaRewards": {
       "type": "integer"
     },
-    "unknown_rewards": {
+    "unknownRewards": {
       "type": "integer"
     },
-    "total_rewards": {
+    "totalRewards": {
       "type": "integer"
     },
-    "total_kills": {
+    "totalKills": {
       "type": "integer"
     }
   }

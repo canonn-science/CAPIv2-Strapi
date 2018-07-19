@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Nhsstopcommandersbykill.js service
+ * Nhsstopcmdrsbykill.js service
  *
  * @description: A set of functions similar to controller's actions to avoid code duplication.
  */
@@ -15,20 +15,20 @@ const utils = require('strapi-bookshelf/lib/utils/');
 module.exports = {
 
   /**
-   * Promise to fetch all nhsstopcommandersbykills.
+   * Promise to fetch all nhsstopcmdrsbykills.
    *
    * @return {Promise}
    */
 
   fetchAll: (params) => {
     // Convert `params` object to filters compatible with Bookshelf.
-    const filters = strapi.utils.models.convertParams('nhsstopcommandersbykill', params);
+    const filters = strapi.utils.models.convertParams('nhsstopcmdrsbykill', params);
     // Select field to populate.
-    const populate = Nhsstopcommandersbykill.associations
+    const populate = Nhsstopcmdrsbykill.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias);
 
-    return Nhsstopcommandersbykill.query(function(qb) {
+    return Nhsstopcmdrsbykill.query(function(qb) {
       _.forEach(filters.where, (where, key) => {
         if (_.isArray(where.value)) {
           for (const value in where.value) {
@@ -51,33 +51,33 @@ module.exports = {
   },
 
   /**
-   * Promise to fetch a/an nhsstopcommandersbykill.
+   * Promise to fetch a/an nhsstopcmdrsbykill.
    *
    * @return {Promise}
    */
 
   fetch: (params) => {
     // Select field to populate.
-    const populate = Nhsstopcommandersbykill.associations
+    const populate = Nhsstopcmdrsbykill.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias);
 
-    return Nhsstopcommandersbykill.forge(_.pick(params, 'id')).fetch({
+    return Nhsstopcmdrsbykill.forge(_.pick(params, 'id')).fetch({
       withRelated: populate
     });
   },
 
   /**
-   * Promise to count a/an nhsstopcommandersbykill.
+   * Promise to count a/an nhsstopcmdrsbykill.
    *
    * @return {Promise}
    */
 
   count: (params) => {
     // Convert `params` object to filters compatible with Bookshelf.
-    const filters = strapi.utils.models.convertParams('nhsstopcommandersbykill', params);
+    const filters = strapi.utils.models.convertParams('nhsstopcmdrsbykill', params);
 
-    return Nhsstopcommandersbykill.query(function(qb) {
+    return Nhsstopcmdrsbykill.query(function(qb) {
       _.forEach(filters.where, (where, key) => {
         if (_.isArray(where.value)) {
           for (const value in where.value) {
@@ -91,50 +91,50 @@ module.exports = {
   },
 
   /**
-   * Promise to add a/an nhsstopcommandersbykill.
+   * Promise to add a/an nhsstopcmdrsbykill.
    *
    * @return {Promise}
    */
 
   add: async (values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Nhsstopcommandersbykill.associations.map(ast => ast.alias));
-    const data = _.omit(values, Nhsstopcommandersbykill.associations.map(ast => ast.alias));
+    const relations = _.pick(values, Nhsstopcmdrsbykill.associations.map(ast => ast.alias));
+    const data = _.omit(values, Nhsstopcmdrsbykill.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = await Nhsstopcommandersbykill.forge(data).save();
+    const entry = await Nhsstopcmdrsbykill.forge(data).save();
 
     // Create relational data and return the entry.
-    return Nhsstopcommandersbykill.updateRelations({ id: entry.id , values: relations });
+    return Nhsstopcmdrsbykill.updateRelations({ id: entry.id , values: relations });
   },
 
   /**
-   * Promise to edit a/an nhsstopcommandersbykill.
+   * Promise to edit a/an nhsstopcmdrsbykill.
    *
    * @return {Promise}
    */
 
   edit: async (params, values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Nhsstopcommandersbykill.associations.map(ast => ast.alias));
-    const data = _.omit(values, Nhsstopcommandersbykill.associations.map(ast => ast.alias));
+    const relations = _.pick(values, Nhsstopcmdrsbykill.associations.map(ast => ast.alias));
+    const data = _.omit(values, Nhsstopcmdrsbykill.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = Nhsstopcommandersbykill.forge(params).save(data, { path: true });
+    const entry = Nhsstopcmdrsbykill.forge(params).save(data, { path: true });
 
     // Create relational data and return the entry.
-    return Nhsstopcommandersbykill.updateRelations(Object.assign(params, { values: relations }));
+    return Nhsstopcmdrsbykill.updateRelations(Object.assign(params, { values: relations }));
   },
 
   /**
-   * Promise to remove a/an nhsstopcommandersbykill.
+   * Promise to remove a/an nhsstopcmdrsbykill.
    *
    * @return {Promise}
    */
 
   remove: async (params) => {
     params.values = {};
-    Nhsstopcommandersbykill.associations.map(association => {
+    Nhsstopcmdrsbykill.associations.map(association => {
       switch (association.nature) {
         case 'oneWay':
         case 'oneToOne':
@@ -151,45 +151,45 @@ module.exports = {
       }
     });
 
-    await Nhsstopcommandersbykill.updateRelations(params);
+    await Nhsstopcmdrsbykill.updateRelations(params);
 
-    return Nhsstopcommandersbykill.forge(params).destroy();
+    return Nhsstopcmdrsbykill.forge(params).destroy();
   },
 
   /**
-   * Promise to search a/an nhsstopcommandersbykill.
+   * Promise to search a/an nhsstopcmdrsbykill.
    *
    * @return {Promise}
    */
 
   search: async (params) => {
     // Convert `params` object to filters compatible with Bookshelf.
-    const filters = strapi.utils.models.convertParams('nhsstopcommandersbykill', params);
+    const filters = strapi.utils.models.convertParams('nhsstopcmdrsbykill', params);
     // Select field to populate.
-    const populate = Nhsstopcommandersbykill.associations
+    const populate = Nhsstopcmdrsbykill.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias);
 
-    const associations = Nhsstopcommandersbykill.associations.map(x => x.alias);
-    const searchText = Object.keys(Nhsstopcommandersbykill._attributes)
-      .filter(attribute => attribute !== Nhsstopcommandersbykill.primaryKey && !associations.includes(attribute))
-      .filter(attribute => ['string', 'text'].includes(Nhsstopcommandersbykill._attributes[attribute].type));
+    const associations = Nhsstopcmdrsbykill.associations.map(x => x.alias);
+    const searchText = Object.keys(Nhsstopcmdrsbykill._attributes)
+      .filter(attribute => attribute !== Nhsstopcmdrsbykill.primaryKey && !associations.includes(attribute))
+      .filter(attribute => ['string', 'text'].includes(Nhsstopcmdrsbykill._attributes[attribute].type));
 
-    const searchNoText = Object.keys(Nhsstopcommandersbykill._attributes)
-      .filter(attribute => attribute !== Nhsstopcommandersbykill.primaryKey && !associations.includes(attribute))
-      .filter(attribute => !['string', 'text', 'boolean', 'integer', 'decimal', 'float'].includes(Nhsstopcommandersbykill._attributes[attribute].type));
+    const searchNoText = Object.keys(Nhsstopcmdrsbykill._attributes)
+      .filter(attribute => attribute !== Nhsstopcmdrsbykill.primaryKey && !associations.includes(attribute))
+      .filter(attribute => !['string', 'text', 'boolean', 'integer', 'decimal', 'float'].includes(Nhsstopcmdrsbykill._attributes[attribute].type));
 
-    const searchInt = Object.keys(Nhsstopcommandersbykill._attributes)
-      .filter(attribute => attribute !== Nhsstopcommandersbykill.primaryKey && !associations.includes(attribute))
-      .filter(attribute => ['integer', 'decimal', 'float'].includes(Nhsstopcommandersbykill._attributes[attribute].type));
+    const searchInt = Object.keys(Nhsstopcmdrsbykill._attributes)
+      .filter(attribute => attribute !== Nhsstopcmdrsbykill.primaryKey && !associations.includes(attribute))
+      .filter(attribute => ['integer', 'decimal', 'float'].includes(Nhsstopcmdrsbykill._attributes[attribute].type));
 
-    const searchBool = Object.keys(Nhsstopcommandersbykill._attributes)
-      .filter(attribute => attribute !== Nhsstopcommandersbykill.primaryKey && !associations.includes(attribute))
-      .filter(attribute => ['boolean'].includes(Nhsstopcommandersbykill._attributes[attribute].type));
+    const searchBool = Object.keys(Nhsstopcmdrsbykill._attributes)
+      .filter(attribute => attribute !== Nhsstopcmdrsbykill.primaryKey && !associations.includes(attribute))
+      .filter(attribute => ['boolean'].includes(Nhsstopcmdrsbykill._attributes[attribute].type));
 
     const query = (params._q || '').replace(/[^a-zA-Z0-9.-\s]+/g, '');
 
-    return Nhsstopcommandersbykill.query(qb => {
+    return Nhsstopcmdrsbykill.query(qb => {
       // Search in columns which are not text value.
       searchNoText.forEach(attribute => {
         qb.orWhereRaw(`LOWER(${attribute}) LIKE '%${_.toLower(query)}%'`);
@@ -208,7 +208,7 @@ module.exports = {
       }
 
       // Search in columns with text using index.
-      switch (Nhsstopcommandersbykill.client) {
+      switch (Nhsstopcmdrsbykill.client) {
         case 'pg': {
           const searchQuery = searchText.map(attribute =>
             _.toLower(attribute) === attribute

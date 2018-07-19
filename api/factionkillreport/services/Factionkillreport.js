@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Factionkillbondreport.js service
+ * Factionkillreport.js service
  *
  * @description: A set of functions similar to controller's actions to avoid code duplication.
  */
@@ -15,20 +15,20 @@ const utils = require('strapi-bookshelf/lib/utils/');
 module.exports = {
 
   /**
-   * Promise to fetch all factionkillbondreports.
+   * Promise to fetch all factionkillreports.
    *
    * @return {Promise}
    */
 
   fetchAll: (params) => {
     // Convert `params` object to filters compatible with Bookshelf.
-    const filters = strapi.utils.models.convertParams('factionkillbondreport', params);
+    const filters = strapi.utils.models.convertParams('factionkillreport', params);
     // Select field to populate.
-    const populate = Factionkillbondreport.associations
+    const populate = Factionkillreport.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias);
 
-    return Factionkillbondreport.query(function(qb) {
+    return Factionkillreport.query(function(qb) {
       _.forEach(filters.where, (where, key) => {
         if (_.isArray(where.value)) {
           for (const value in where.value) {
@@ -51,33 +51,33 @@ module.exports = {
   },
 
   /**
-   * Promise to fetch a/an factionkillbondreport.
+   * Promise to fetch a/an factionkillreport.
    *
    * @return {Promise}
    */
 
   fetch: (params) => {
     // Select field to populate.
-    const populate = Factionkillbondreport.associations
+    const populate = Factionkillreport.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias);
 
-    return Factionkillbondreport.forge(_.pick(params, 'id')).fetch({
+    return Factionkillreport.forge(_.pick(params, 'id')).fetch({
       withRelated: populate
     });
   },
 
   /**
-   * Promise to count a/an factionkillbondreport.
+   * Promise to count a/an factionkillreport.
    *
    * @return {Promise}
    */
 
   count: (params) => {
     // Convert `params` object to filters compatible with Bookshelf.
-    const filters = strapi.utils.models.convertParams('factionkillbondreport', params);
+    const filters = strapi.utils.models.convertParams('factionkillreport', params);
 
-    return Factionkillbondreport.query(function(qb) {
+    return Factionkillreport.query(function(qb) {
       _.forEach(filters.where, (where, key) => {
         if (_.isArray(where.value)) {
           for (const value in where.value) {
@@ -91,50 +91,50 @@ module.exports = {
   },
 
   /**
-   * Promise to add a/an factionkillbondreport.
+   * Promise to add a/an factionkillreport.
    *
    * @return {Promise}
    */
 
   add: async (values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Factionkillbondreport.associations.map(ast => ast.alias));
-    const data = _.omit(values, Factionkillbondreport.associations.map(ast => ast.alias));
+    const relations = _.pick(values, Factionkillreport.associations.map(ast => ast.alias));
+    const data = _.omit(values, Factionkillreport.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = await Factionkillbondreport.forge(data).save();
+    const entry = await Factionkillreport.forge(data).save();
 
     // Create relational data and return the entry.
-    return Factionkillbondreport.updateRelations({ id: entry.id , values: relations });
+    return Factionkillreport.updateRelations({ id: entry.id , values: relations });
   },
 
   /**
-   * Promise to edit a/an factionkillbondreport.
+   * Promise to edit a/an factionkillreport.
    *
    * @return {Promise}
    */
 
   edit: async (params, values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Factionkillbondreport.associations.map(ast => ast.alias));
-    const data = _.omit(values, Factionkillbondreport.associations.map(ast => ast.alias));
+    const relations = _.pick(values, Factionkillreport.associations.map(ast => ast.alias));
+    const data = _.omit(values, Factionkillreport.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = Factionkillbondreport.forge(params).save(data, { path: true });
+    const entry = Factionkillreport.forge(params).save(data, { path: true });
 
     // Create relational data and return the entry.
-    return Factionkillbondreport.updateRelations(Object.assign(params, { values: relations }));
+    return Factionkillreport.updateRelations(Object.assign(params, { values: relations }));
   },
 
   /**
-   * Promise to remove a/an factionkillbondreport.
+   * Promise to remove a/an factionkillreport.
    *
    * @return {Promise}
    */
 
   remove: async (params) => {
     params.values = {};
-    Factionkillbondreport.associations.map(association => {
+    Factionkillreport.associations.map(association => {
       switch (association.nature) {
         case 'oneWay':
         case 'oneToOne':
@@ -151,45 +151,45 @@ module.exports = {
       }
     });
 
-    await Factionkillbondreport.updateRelations(params);
+    await Factionkillreport.updateRelations(params);
 
-    return Factionkillbondreport.forge(params).destroy();
+    return Factionkillreport.forge(params).destroy();
   },
 
   /**
-   * Promise to search a/an factionkillbondreport.
+   * Promise to search a/an factionkillreport.
    *
    * @return {Promise}
    */
 
   search: async (params) => {
     // Convert `params` object to filters compatible with Bookshelf.
-    const filters = strapi.utils.models.convertParams('factionkillbondreport', params);
+    const filters = strapi.utils.models.convertParams('factionkillreport', params);
     // Select field to populate.
-    const populate = Factionkillbondreport.associations
+    const populate = Factionkillreport.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias);
 
-    const associations = Factionkillbondreport.associations.map(x => x.alias);
-    const searchText = Object.keys(Factionkillbondreport._attributes)
-      .filter(attribute => attribute !== Factionkillbondreport.primaryKey && !associations.includes(attribute))
-      .filter(attribute => ['string', 'text'].includes(Factionkillbondreport._attributes[attribute].type));
+    const associations = Factionkillreport.associations.map(x => x.alias);
+    const searchText = Object.keys(Factionkillreport._attributes)
+      .filter(attribute => attribute !== Factionkillreport.primaryKey && !associations.includes(attribute))
+      .filter(attribute => ['string', 'text'].includes(Factionkillreport._attributes[attribute].type));
 
-    const searchNoText = Object.keys(Factionkillbondreport._attributes)
-      .filter(attribute => attribute !== Factionkillbondreport.primaryKey && !associations.includes(attribute))
-      .filter(attribute => !['string', 'text', 'boolean', 'integer', 'decimal', 'float'].includes(Factionkillbondreport._attributes[attribute].type));
+    const searchNoText = Object.keys(Factionkillreport._attributes)
+      .filter(attribute => attribute !== Factionkillreport.primaryKey && !associations.includes(attribute))
+      .filter(attribute => !['string', 'text', 'boolean', 'integer', 'decimal', 'float'].includes(Factionkillreport._attributes[attribute].type));
 
-    const searchInt = Object.keys(Factionkillbondreport._attributes)
-      .filter(attribute => attribute !== Factionkillbondreport.primaryKey && !associations.includes(attribute))
-      .filter(attribute => ['integer', 'decimal', 'float'].includes(Factionkillbondreport._attributes[attribute].type));
+    const searchInt = Object.keys(Factionkillreport._attributes)
+      .filter(attribute => attribute !== Factionkillreport.primaryKey && !associations.includes(attribute))
+      .filter(attribute => ['integer', 'decimal', 'float'].includes(Factionkillreport._attributes[attribute].type));
 
-    const searchBool = Object.keys(Factionkillbondreport._attributes)
-      .filter(attribute => attribute !== Factionkillbondreport.primaryKey && !associations.includes(attribute))
-      .filter(attribute => ['boolean'].includes(Factionkillbondreport._attributes[attribute].type));
+    const searchBool = Object.keys(Factionkillreport._attributes)
+      .filter(attribute => attribute !== Factionkillreport.primaryKey && !associations.includes(attribute))
+      .filter(attribute => ['boolean'].includes(Factionkillreport._attributes[attribute].type));
 
     const query = (params._q || '').replace(/[^a-zA-Z0-9.-\s]+/g, '');
 
-    return Factionkillbondreport.query(qb => {
+    return Factionkillreport.query(qb => {
       // Search in columns which are not text value.
       searchNoText.forEach(attribute => {
         qb.orWhereRaw(`LOWER(${attribute}) LIKE '%${_.toLower(query)}%'`);
@@ -208,7 +208,7 @@ module.exports = {
       }
 
       // Search in columns with text using index.
-      switch (Factionkillbondreport.client) {
+      switch (Factionkillreport.client) {
         case 'pg': {
           const searchQuery = searchText.map(attribute =>
             _.toLower(attribute) === attribute

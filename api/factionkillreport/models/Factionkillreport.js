@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Lifecycle callbacks for the `Nhsstopcommandersbykill` model.
+ * Lifecycle callbacks for the `Factionkillreport` model.
  */
 
 module.exports = {
