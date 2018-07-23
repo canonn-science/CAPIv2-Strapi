@@ -1,9 +1,9 @@
 {
   "connection": "default",
-  "collectionName": "lsreports",
+  "collectionName": "ussreports",
   "info": {
-    "name": "lsreport",
-    "description": "Reporting for Lava Spouts"
+    "name": "ussreport",
+    "description": "Automated journal reports for Unknown Signal Sources"
   },
   "options": {
     "increments": true,
@@ -12,28 +12,13 @@
   },
   "attributes": {
     "systemName": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
-    "bodyName": {
-      "type": "string",
-      "required": true
-    },
-    "latitude": {
-      "type": "float",
-      "required": true
-    },
-    "longitude": {
-      "type": "float",
-      "required": true
-    },
-    "count": {
-      "min": 1,
-      "type": "integer"
+    "type": {
+      "type": "string"
     },
     "cmdrName": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "cmdrComment": {
       "type": "text"
@@ -42,7 +27,7 @@
       "type": "boolean"
     },
     "screenshot": {
-      "collection": "file",
+      "model": "file",
       "via": "related",
       "plugin": "upload"
     },
@@ -61,14 +46,14 @@
     "reportComment": {
       "type": "text"
     },
-    "voteCount": {
-      "type": "integer"
-    },
     "added": {
       "type": "boolean"
     },
     "site": {
-      "model": "lssite"
+      "model": "usssite"
+    },
+    "ussRawJson": {
+      "type": "json"
     }
   }
 }

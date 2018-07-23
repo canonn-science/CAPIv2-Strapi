@@ -1,9 +1,9 @@
 {
   "connection": "default",
-  "collectionName": "grreports",
+  "collectionName": "hdreports",
   "info": {
-    "name": "grreport",
-    "description": "Reporting for Guardian Ruins"
+    "name": "hdreport",
+    "description": "Journal events and user reports for the Unknown Signal Sources"
   },
   "options": {
     "increments": true,
@@ -11,29 +11,12 @@
     "comment": ""
   },
   "attributes": {
-    "systemName": {
+    "fromSystemName": {
       "type": "string",
       "required": true
     },
-    "bodyName": {
+    "toSystemName": {
       "type": "string",
-      "required": true
-    },
-    "latitude": {
-      "type": "float",
-      "required": true
-    },
-    "longitude": {
-      "type": "float",
-      "required": true
-    },
-    "type": {
-      "enum": [
-        "Alpha",
-        "Beta",
-        "Gamma"
-      ],
-      "type": "enumeration",
       "required": true
     },
     "cmdrName": {
@@ -43,13 +26,13 @@
     "cmdrComment": {
       "type": "text"
     },
-    "isBeta": {
-      "type": "boolean"
-    },
     "screenshot": {
-      "collection": "file",
+      "model": "file",
       "via": "related",
       "plugin": "upload"
+    },
+    "isBeta": {
+      "type": "boolean"
     },
     "reportStatus": {
       "default": "pending",
@@ -66,22 +49,14 @@
     "reportComment": {
       "type": "text"
     },
-    "voteCount": {
-      "type": "integer"
-    },
     "added": {
       "type": "boolean"
     },
     "site": {
-      "model": "grsite"
+      "model": "hdsite"
     },
-    "grobeliskgroupreport": {
-      "collection": "grobeliskgroupreport",
-      "via": "grreport"
-    },
-    "grobeliskreport": {
-      "collection": "grobeliskreport",
-      "via": "grreport"
+    "hdRawJson": {
+      "type": "json"
     }
   }
 }
