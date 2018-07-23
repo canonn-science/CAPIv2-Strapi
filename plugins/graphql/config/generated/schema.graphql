@@ -345,14 +345,14 @@ enum ENUM_TWREPORT_REPORTSTATUS {
   issue
 }
 
-<<<<<<< HEAD
 enum ENUM_USSREPORT_REPORTSTATUS {
   pending
   updated
   accepted
   declined
   issue
-=======
+}
+
 """Records rewards for faction kills"""
 type Factionkillreport {
   id: ID!
@@ -364,7 +364,6 @@ type Factionkillreport {
   victimFaction: String
   rawEvent: String
   isbeta: Boolean
->>>>>>> factionKills
 }
 
 """Reporting for Fungal Gourds"""
@@ -886,11 +885,7 @@ type Lssite {
   discoveredBy: Cmdr
 }
 
-<<<<<<< HEAD
-union Morph = Bmreport | Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysubtype | Bodytype | Btreport | Btsite | Cmdr | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategory | Grcodexdata | Grobelisk | Grobeliskgroup | Grobeliskgroupreport | Grobeliskreport | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsobeliskgroupreport | Gsobeliskreport | Gsreport | Gssite | Gstype | Gyreport | Gysite | Gytype | Hdreport | Hdsite | Journaldata | Location | Lsreport | Lssite | Msreport | Mssite | Mstype | Ring | Ringtype | System | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Ussreport | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
-=======
-union Morph = Bmreport | Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysubtype | Bodytype | Btreport | Btsite | Cmdr | Factionkillreport | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategory | Grcodexdata | Grobelisk | Grobeliskgroup | Grobeliskgroupreport | Grobeliskreport | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsobeliskgroupreport | Gsobeliskreport | Gsreport | Gssite | Gstype | Gyreport | Gysite | Gytype | Hdsite | Journaldata | Location | Lsreport | Lssite | Msreport | Mssite | Mstype | Nhsstopcmdrsbykill | Ring | Ringtype | System | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
->>>>>>> factionKills
+union Morph = Bmreport | Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysubtype | Bodytype | Btreport | Btsite | Cmdr | Factionkillreport | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategory | Grcodexdata | Grobelisk | Grobeliskgroup | Grobeliskgroupreport | Grobeliskreport | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsobeliskgroupreport | Gsobeliskreport | Gsreport | Gssite | Gstype | Gyreport | Gysite | Gytype | Hdreport | Hdsite | Journaldata | Location | Lsreport | Lssite | Msreport | Mssite | Mstype | Nhsstopcmdrsbykill | Ring | Ringtype | System | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Ussreport | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 """Reporting for Megaships"""
 type Msreport {
