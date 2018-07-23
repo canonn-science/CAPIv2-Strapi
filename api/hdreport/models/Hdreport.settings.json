@@ -12,13 +12,16 @@
   },
   "attributes": {
     "fromSystemName": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "toSystemName": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "cmdrName": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "cmdrComment": {
       "type": "text"
@@ -28,15 +31,19 @@
       "via": "related",
       "plugin": "upload"
     },
+    "isBeta": {
+      "type": "boolean"
+    },
     "reportStatus": {
+      "default": "pending",
       "type": "enumeration",
       "required": true,
       "enum": [
         "pending",
-        "updated",
-        "accepted",
-        "declined",
-        "issue"
+        " updated",
+        " accepted",
+        " declined",
+        " issue"
       ]
     },
     "reportComment": {
