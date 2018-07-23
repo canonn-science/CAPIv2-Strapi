@@ -345,12 +345,26 @@ enum ENUM_TWREPORT_REPORTSTATUS {
   issue
 }
 
+<<<<<<< HEAD
 enum ENUM_USSREPORT_REPORTSTATUS {
   pending
   updated
   accepted
   declined
   issue
+=======
+"""Records rewards for faction kills"""
+type Factionkillreport {
+  id: ID!
+  systemName: String
+  edTimestamp: String
+  cmdrName: String
+  reward: Int
+  rewardingFaction: String
+  victimFaction: String
+  rawEvent: String
+  isbeta: Boolean
+>>>>>>> factionKills
 }
 
 """Reporting for Fungal Gourds"""
@@ -872,7 +886,11 @@ type Lssite {
   discoveredBy: Cmdr
 }
 
+<<<<<<< HEAD
 union Morph = Bmreport | Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysubtype | Bodytype | Btreport | Btsite | Cmdr | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategory | Grcodexdata | Grobelisk | Grobeliskgroup | Grobeliskgroupreport | Grobeliskreport | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsobeliskgroupreport | Gsobeliskreport | Gsreport | Gssite | Gstype | Gyreport | Gysite | Gytype | Hdreport | Hdsite | Journaldata | Location | Lsreport | Lssite | Msreport | Mssite | Mstype | Ring | Ringtype | System | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Ussreport | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+=======
+union Morph = Bmreport | Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysubtype | Bodytype | Btreport | Btsite | Cmdr | Factionkillreport | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategory | Grcodexdata | Grobelisk | Grobeliskgroup | Grobeliskgroupreport | Grobeliskreport | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsobeliskgroupreport | Gsobeliskreport | Gsreport | Gssite | Gstype | Gyreport | Gysite | Gytype | Hdsite | Journaldata | Location | Lsreport | Lssite | Msreport | Mssite | Mstype | Nhsstopcmdrsbykill | Ring | Ringtype | System | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+>>>>>>> factionKills
 
 """Reporting for Megaships"""
 type Msreport {
@@ -920,6 +938,26 @@ type Mstype {
   type: String!
 }
 
+"""Top ten CMDRs sorted by kills for Non-Human Signal Sources"""
+type Nhsstopcmdrsbykill {
+  id: ID!
+  createdAt: String!
+  updatedAt: String!
+  cmdrName: String
+  scoutKills: Int
+  cyclopsKills: Int
+  basiliskKills: Int
+  medusaKills: Int
+  unknownKills: Int
+  scoutRewards: Int
+  cyclopsRewards: Int
+  basiliskRewards: Int
+  medusaRewards: Int
+  unknownRewards: Int
+  totalRewards: Int
+  totalKills: Int
+}
+
 type Query {
   bmreport(id: ID!): Bmreport
   bmreports(sort: String, limit: Int, start: Int, where: JSON): [Bmreport]
@@ -941,6 +979,8 @@ type Query {
   btsites(sort: String, limit: Int, start: Int, where: JSON): [Btsite]
   cmdr(id: ID!): Cmdr
   cmdrs(sort: String, limit: Int, start: Int, where: JSON): [Cmdr]
+  factionkillreport(id: ID!): Factionkillreport
+  factionkillreports(sort: String, limit: Int, start: Int, where: JSON): [Factionkillreport]
   fgreport(id: ID!): Fgreport
   fgreports(sort: String, limit: Int, start: Int, where: JSON): [Fgreport]
   fgsite(id: ID!): Fgsite
@@ -1027,6 +1067,8 @@ type Query {
   mssites(sort: String, limit: Int, start: Int, where: JSON): [Mssite]
   mstype(id: ID!): Mstype
   mstypes(sort: String, limit: Int, start: Int, where: JSON): [Mstype]
+  nhsstopcmdrsbykill(id: ID!): Nhsstopcmdrsbykill
+  nhsstopcmdrsbykills(sort: String, limit: Int, start: Int, where: JSON): [Nhsstopcmdrsbykill]
   ring(id: ID!): Ring
   rings(sort: String, limit: Int, start: Int, where: JSON): [Ring]
   ringtype(id: ID!): Ringtype
