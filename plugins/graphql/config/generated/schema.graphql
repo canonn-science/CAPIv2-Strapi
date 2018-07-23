@@ -10,6 +10,7 @@ type Bmreport {
   count: Int
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_BMREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -156,6 +157,7 @@ type Btreport {
   count: Int
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_BTREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -363,6 +365,7 @@ type Fgreport {
   count: Int
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_FGREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -399,6 +402,7 @@ type Fmreport {
   count: Int
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_FMREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -441,6 +445,7 @@ type Genreport {
   distance: Float
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_GENREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -551,6 +556,7 @@ type Grreport {
   type: ENUM_GRREPORT_TYPE!
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_GRREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -674,6 +680,7 @@ type Gsreport {
   hasDatabank: Boolean
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_GSREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -722,6 +729,7 @@ type Gyreport {
   count: Int
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_GYREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -756,11 +764,12 @@ type Hdreport {
   id: ID!
   createdAt: String!
   updatedAt: String!
-  fromSystemName: String
-  toSystemName: String
-  cmdrName: String
+  fromSystemName: String!
+  toSystemName: String!
+  cmdrName: String!
   cmdrComment: String
   screenshot: UploadFile
+  isBeta: Boolean
   reportStatus: ENUM_HDREPORT_REPORTSTATUS!
   reportComment: String
   added: Boolean
@@ -839,6 +848,7 @@ type Lsreport {
   count: Int
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_LSREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -879,6 +889,7 @@ type Msreport {
   dockable: Boolean
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_MSREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -1104,6 +1115,7 @@ type Tbreport {
   count: Int
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_TBREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -1146,6 +1158,7 @@ type Tsreport {
   status: ENUM_TSREPORT_STATUS!
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_TSREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -1187,6 +1200,7 @@ type Twreport {
   count: Int
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_TWREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -1260,6 +1274,7 @@ type Ussreport {
   type: String
   cmdrName: String
   cmdrComment: String
+  isBeta: Boolean
   screenshot: UploadFile
   reportStatus: ENUM_USSREPORT_REPORTSTATUS!
   reportComment: String
