@@ -1,5 +1,7 @@
 dist: xenial
 language: node_js
+node_js:
+  - '10'
 services:
   - mysql
 addons:
@@ -12,8 +14,6 @@ addons:
       - software-properties-common
       - build-essential
       - pm2
-node_js:
-  - '10'
 
 install:
   - npm install
