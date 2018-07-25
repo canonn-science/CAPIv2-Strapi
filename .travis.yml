@@ -10,3 +10,10 @@ addons:
       - build-essential
 node_js:
   - "10"
+
+install:
+  - npm install
+
+script:
+  - pm2 start strapi --no-pmx --name="capiv2" -- start
+  - pm2 stop capiv2
