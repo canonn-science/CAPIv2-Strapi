@@ -10,6 +10,7 @@ type Bmreport {
   count: Int
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_BMREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -156,6 +157,7 @@ type Btreport {
   count: Int
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_BTREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -267,6 +269,14 @@ enum ENUM_GYREPORT_REPORTSTATUS {
   issue
 }
 
+enum ENUM_HDREPORT_REPORTSTATUS {
+  pending
+  updated
+  accepted
+  declined
+  issue
+}
+
 enum ENUM_LOCATION_LOCATIONTYPE {
   BM
   BT
@@ -335,6 +345,27 @@ enum ENUM_TWREPORT_REPORTSTATUS {
   issue
 }
 
+enum ENUM_USSREPORT_REPORTSTATUS {
+  pending
+  updated
+  accepted
+  declined
+  issue
+}
+
+"""Records rewards for faction kills"""
+type Factionkillreport {
+  id: ID!
+  systemName: String
+  edTimestamp: String
+  cmdrName: String
+  reward: Int
+  rewardingFaction: String
+  victimFaction: String
+  rawEvent: String
+  isbeta: Boolean
+}
+
 """Reporting for Fungal Gourds"""
 type Fgreport {
   id: ID!
@@ -347,6 +378,7 @@ type Fgreport {
   count: Int
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_FGREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -383,6 +415,7 @@ type Fmreport {
   count: Int
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_FMREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -425,6 +458,7 @@ type Genreport {
   distance: Float
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_GENREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -535,6 +569,7 @@ type Grreport {
   type: ENUM_GRREPORT_TYPE!
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_GRREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -658,6 +693,7 @@ type Gsreport {
   hasDatabank: Boolean
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_GSREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -706,6 +742,7 @@ type Gyreport {
   count: Int
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_GYREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -733,6 +770,24 @@ type Gysite {
 type Gytype {
   id: ID!
   type: String!
+}
+
+"""Journal events and user reports for the Unknown Signal Sources"""
+type Hdreport {
+  id: ID!
+  createdAt: String!
+  updatedAt: String!
+  fromSystemName: String!
+  toSystemName: String!
+  cmdrName: String!
+  cmdrComment: String
+  screenshot: UploadFile
+  isBeta: Boolean
+  reportStatus: ENUM_HDREPORT_REPORTSTATUS!
+  reportComment: String
+  added: Boolean
+  site: Hdsite
+  hdRawJson: String
 }
 
 """Thargoid Hyperdiction sites"""
@@ -806,6 +861,7 @@ type Lsreport {
   count: Int
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_LSREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -829,7 +885,7 @@ type Lssite {
   discoveredBy: Cmdr
 }
 
-union Morph = Bmreport | Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysubtype | Bodytype | Btreport | Btsite | Cmdr | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategory | Grcodexdata | Grobelisk | Grobeliskgroup | Grobeliskgroupreport | Grobeliskreport | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsobeliskgroupreport | Gsobeliskreport | Gsreport | Gssite | Gstype | Gyreport | Gysite | Gytype | Hdsite | Journaldata | Location | Lsreport | Lssite | Msreport | Mssite | Mstype | Ring | Ringtype | System | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union Morph = Bmreport | Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysubtype | Bodytype | Btreport | Btsite | Cmdr | Factionkillreport | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategory | Grcodexdata | Grobelisk | Grobeliskgroup | Grobeliskgroupreport | Grobeliskreport | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsobeliskgroupreport | Gsobeliskreport | Gsreport | Gssite | Gstype | Gyreport | Gysite | Gytype | Hdreport | Hdsite | Journaldata | Location | Lsreport | Lssite | Msreport | Mssite | Mstype | Nhsstopcmdrsbykill | Ring | Ringtype | System | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Ussreport | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 """Reporting for Megaships"""
 type Msreport {
@@ -846,6 +902,7 @@ type Msreport {
   dockable: Boolean
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_MSREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -876,6 +933,26 @@ type Mstype {
   type: String!
 }
 
+"""Top ten CMDRs sorted by kills for Non-Human Signal Sources"""
+type Nhsstopcmdrsbykill {
+  id: ID!
+  createdAt: String!
+  updatedAt: String!
+  cmdrName: String
+  scoutKills: Int
+  cyclopsKills: Int
+  basiliskKills: Int
+  medusaKills: Int
+  unknownKills: Int
+  scoutRewards: Int
+  cyclopsRewards: Int
+  basiliskRewards: Int
+  medusaRewards: Int
+  unknownRewards: Int
+  totalRewards: Int
+  totalKills: Int
+}
+
 type Query {
   bmreport(id: ID!): Bmreport
   bmreports(sort: String, limit: Int, start: Int, where: JSON): [Bmreport]
@@ -897,6 +974,8 @@ type Query {
   btsites(sort: String, limit: Int, start: Int, where: JSON): [Btsite]
   cmdr(id: ID!): Cmdr
   cmdrs(sort: String, limit: Int, start: Int, where: JSON): [Cmdr]
+  factionkillreport(id: ID!): Factionkillreport
+  factionkillreports(sort: String, limit: Int, start: Int, where: JSON): [Factionkillreport]
   fgreport(id: ID!): Fgreport
   fgreports(sort: String, limit: Int, start: Int, where: JSON): [Fgreport]
   fgsite(id: ID!): Fgsite
@@ -965,6 +1044,8 @@ type Query {
   gysites(sort: String, limit: Int, start: Int, where: JSON): [Gysite]
   gytype(id: ID!): Gytype
   gytypes(sort: String, limit: Int, start: Int, where: JSON): [Gytype]
+  hdreport(id: ID!): Hdreport
+  hdreports(sort: String, limit: Int, start: Int, where: JSON): [Hdreport]
   hdsite(id: ID!): Hdsite
   hdsites(sort: String, limit: Int, start: Int, where: JSON): [Hdsite]
   journaldatum(id: ID!): Journaldata
@@ -981,6 +1062,8 @@ type Query {
   mssites(sort: String, limit: Int, start: Int, where: JSON): [Mssite]
   mstype(id: ID!): Mstype
   mstypes(sort: String, limit: Int, start: Int, where: JSON): [Mstype]
+  nhsstopcmdrsbykill(id: ID!): Nhsstopcmdrsbykill
+  nhsstopcmdrsbykills(sort: String, limit: Int, start: Int, where: JSON): [Nhsstopcmdrsbykill]
   ring(id: ID!): Ring
   rings(sort: String, limit: Int, start: Int, where: JSON): [Ring]
   ringtype(id: ID!): Ringtype
@@ -1003,6 +1086,8 @@ type Query {
   twreports(sort: String, limit: Int, start: Int, where: JSON): [Twreport]
   twsite(id: ID!): Twsite
   twsites(sort: String, limit: Int, start: Int, where: JSON): [Twsite]
+  ussreport(id: ID!): Ussreport
+  ussreports(sort: String, limit: Int, start: Int, where: JSON): [Ussreport]
   usssite(id: ID!): Usssite
   usssites(sort: String, limit: Int, start: Int, where: JSON): [Usssite]
   usstype(id: ID!): Usstype
@@ -1067,6 +1152,7 @@ type Tbreport {
   count: Int
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_TBREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -1109,6 +1195,7 @@ type Tsreport {
   status: ENUM_TSREPORT_STATUS!
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_TSREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -1150,6 +1237,7 @@ type Twreport {
   count: Int
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_TWREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -1212,6 +1300,24 @@ type UsersPermissionsUser {
   email: String!
   provider: String
   role: UsersPermissionsRole
+}
+
+"""Automated journal reports for Unknown Signal Sources"""
+type Ussreport {
+  id: ID!
+  createdAt: String!
+  updatedAt: String!
+  systemName: String
+  type: String
+  cmdrName: String
+  cmdrComment: String
+  isBeta: Boolean
+  screenshot: UploadFile
+  reportStatus: ENUM_USSREPORT_REPORTSTATUS!
+  reportComment: String
+  added: Boolean
+  site: Usssite
+  ussRawJson: String
 }
 
 """Unknown Signal Source sites"""

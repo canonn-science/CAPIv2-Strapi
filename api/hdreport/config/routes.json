@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/hdreport",
+      "handler": "Hdreport.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/hdreport/count",
+      "handler": "Hdreport.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/hdreport/:id",
+      "handler": "Hdreport.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/hdreport",
+      "handler": "Hdreport.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/hdreport/:id",
+      "handler": "Hdreport.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/hdreport/:id",
+      "handler": "Hdreport.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/hdreport/:id/relationships/:relation",
+      "handler": "Hdreport.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/hdreport/:id/relationships/:relation",
+      "handler": "Hdreport.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/hdreport/:id/relationships/:relation",
+      "handler": "Hdreport.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
