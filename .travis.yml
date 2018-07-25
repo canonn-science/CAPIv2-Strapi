@@ -23,6 +23,8 @@ install:
   - sed -i s/exampleuser/travis/g config/environments/development/database.json
   - sed -i s/examplepassword//g config/environments/development/database.json
   - cat config/environments/development/database.json
+  - mysql -u root --password="" -e 'CREATE DATABASE canonntest'
+  - mysql -u root --password="" canonntest < seed_files/SQL/development-v2_0_7-20180714.sql
 
 script:
   - NODE_ENV=development pm2 start strapi --no-pmx --name="capiv2" -- start
