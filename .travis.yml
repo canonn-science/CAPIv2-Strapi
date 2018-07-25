@@ -15,12 +15,6 @@ addons:
 node_js:
   - '10'
 
-before_install:
-  - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv D1EA2D4C
-  - echo "deb http://apt.pm2.io/ubuntu stable main" | sudo tee /etc/apt/sources.list.d/pm2.list
-  - sudo apt-get update
-  - sudo apt-get install pm2
-
 install:
   - npm install
 
