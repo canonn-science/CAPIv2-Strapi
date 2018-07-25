@@ -18,7 +18,13 @@ addons:
 
 install:
   - npm install
+  - cp config/environments/development/database.json.example config/environments/development/database.json
+  - sed -i s/exampledatabase/canonntest/g config/environments/development/database.json
+  - sed -i s/exampleuser/travis/g config/environments/development/database.json
+  - sed -i s/examplepassword//g config/environments/development/database.json
+  - cat config/environments/development/database.json
 
 script:
-  - pm2 start strapi --no-pmx --name="capiv2" -- start
+  - NODE_ENV=development pm2 start strapi --no-pmx --name="capiv2" -- start
+  - pm2 logs capiv2
   - pm2 stop capiv2
