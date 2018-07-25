@@ -4,5 +4,9 @@ services:
   - mysql
 addons:
   mariadb: '10.0'
+  apt:
+    packages:
+      - software-properties-common
+      - build-essential
 node_js:
   - "10"
