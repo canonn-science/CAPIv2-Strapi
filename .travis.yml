@@ -1,3 +1,4 @@
+sudo: required
 dist: bionic
 language: node_js
 services:
@@ -11,6 +12,10 @@ addons:
       - pm2
 node_js:
   - "10"
+  
+before_install:
+  - sudo npm install -g npm@latest
+  - sudo npm install pm2 -g
 
 install:
   - npm install
