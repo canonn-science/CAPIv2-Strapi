@@ -1,11 +1,8 @@
 dist: bionic
 language: node_js
+services:
+  - mysql
+addons:
+  mariadb: '10.0'
 node_js:
   - "10"
-  
-install:
-  - cd /srv/CAPI/CAPIv2
-  - npm install
-
-script:
-  - npm test
