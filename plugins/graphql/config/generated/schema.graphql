@@ -1,8 +1,8 @@
 """Reporting for Bark Mounds"""
 type Bmreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   systemName: String!
   bodyName: String!
   latitude: Float!
@@ -22,8 +22,8 @@ type Bmreport {
 """Bark Mound sites"""
 type Bmsite {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   location: Location
   siteID: Int!
   latitude: Float!
@@ -37,8 +37,8 @@ type Bmsite {
 """Bodies stored in the Canonn database"""
 type Body {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   system: System
   bodyName: String!
   edsmID: Float
@@ -79,8 +79,8 @@ type Body {
 """Atmosphere makup of a body"""
 type Bodyatmosphere {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   body: Body
   argon: Float
   ammonia: Float
@@ -100,8 +100,8 @@ type Bodyatmosphere {
 """Material makeup of a body"""
 type Bodymaterial {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   body: Body
   antimony: Float
   arsenic: Float
@@ -148,8 +148,8 @@ type Bodytype {
 """Reporting for Brain Trees"""
 type Btreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   systemName: String!
   bodyName: String!
   latitude: Float!
@@ -169,8 +169,8 @@ type Btreport {
 """Brain Tree sites"""
 type Btsite {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   location: Location
   siteID: Int!
   latitude: Float!
@@ -184,10 +184,15 @@ type Btsite {
 """CMDRs who have discovered sites"""
 type Cmdr {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   cmdrName: String!
 }
+
+"""
+The `DateTime` scalar represents a date and time following the ISO 8601 standard
+"""
+scalar DateTime
 
 enum ENUM_BMREPORT_REPORTSTATUS {
   pending
@@ -357,20 +362,20 @@ enum ENUM_USSREPORT_REPORTSTATUS {
 type Factionkillreport {
   id: ID!
   systemName: String
-  edTimestamp: String
+  edTimestamp: DateTime
   cmdrName: String
   reward: Int
   rewardingFaction: String
   victimFaction: String
-  rawEvent: String
+  rawEvent: JSON
   isbeta: Boolean
 }
 
 """Reporting for Fungal Gourds"""
 type Fgreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   systemName: String!
   bodyName: String!
   latitude: Float!
@@ -390,8 +395,8 @@ type Fgreport {
 """Fungal Gourd sites"""
 type Fgsite {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   location: Location
   siteID: Int!
   latitude: Float!
@@ -405,8 +410,8 @@ type Fgsite {
 """Reporting for Fumaroles"""
 type Fmreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   systemName: String!
   bodyName: String!
   latitude: Float!
@@ -427,8 +432,8 @@ type Fmreport {
 """Fumarole sites"""
 type Fmsite {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   location: Location
   siteID: Int!
   latitude: Float!
@@ -449,8 +454,8 @@ type Fmtype {
 """Reporting for Generation Ships"""
 type Genreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   systemName: String!
   orbitBody: String
   shipName: String!
@@ -470,8 +475,8 @@ type Genreport {
 """Generation Ship sites"""
 type Gensite {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   location: Location
   siteID: Int!
   shipName: String!
@@ -483,8 +488,8 @@ type Gensite {
 """Active groups of Obelisks at a Guardian Ruins site"""
 type Gractivegroup {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   grSite: Grsite
   activeGroup: Grobeliskgroup
 }
@@ -492,8 +497,8 @@ type Gractivegroup {
 """Active Obeliskss at a Guardian Ruin site"""
 type Gractiveobelisk {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   grSite: Grsite
   activeObelisk: Grobelisk
 }
@@ -513,8 +518,8 @@ type Grcodexcategory {
 """Data entires received at a Guardian Ruin site"""
 type Grcodexdata {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   grCodexCategory: Grcodexcategory
   grPrimaryArtifact: Grartifact
   grSecondaryArtifact: Grartifact
@@ -525,8 +530,8 @@ type Grcodexdata {
 """Obelisks at a Guardian Ruin site"""
 type Grobelisk {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   grType: Grtype
   grObeliskGroup: Grobeliskgroup
   obeliskNumber: Int!
@@ -538,8 +543,8 @@ type Grobelisk {
 """Groups of Obelisks at a Guardian Ruin site"""
 type Grobeliskgroup {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   grType: Grtype
   groupName: String!
   amount: Int!
@@ -560,8 +565,8 @@ type Grobeliskreport {
 """Reporting for Guardian Ruins"""
 type Grreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   systemName: String!
   bodyName: String!
   latitude: Float!
@@ -583,8 +588,8 @@ type Grreport {
 """Guardian Ruin site"""
 type Grsite {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   location: Location
   siteID: Int!
   latitude: Float!
@@ -606,8 +611,8 @@ type Grtype {
 """Active groups of Obelisks at a Guardian Structure site"""
 type Gsactivegroup {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   grSite: Gssite
   activeGroup: Gsobeliskgroup
 }
@@ -615,8 +620,8 @@ type Gsactivegroup {
 """Active Obeliskss at a Guardian Structure site"""
 type Gsactiveobelisk {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   gsSite: Gssite
   gsObelisk: Gsobelisk
 }
@@ -636,8 +641,8 @@ type Gscodexcategory {
 """Data entires received at a Guardian Structure site"""
 type Gscodexdata {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   gsCodexCategory: Gscodexcategory
   gsPrimaryArtifact: Gsartifact
   gsSecondaryArtifact: Gsartifact
@@ -648,8 +653,8 @@ type Gscodexdata {
 """Obelisks at a Guardian Structure site"""
 type Gsobelisk {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   gsType: Gstype
   gsObeliskGroup: Gsobeliskgroup
   obeliskNumber: Int!
@@ -661,8 +666,8 @@ type Gsobelisk {
 """Groups of Obelisks at a Guardian Structure site"""
 type Gsobeliskgroup {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   gsType: Gstype
   groupName: String!
   amount: Int!
@@ -683,8 +688,8 @@ type Gsobeliskreport {
 """Reporting for Guardian Structures"""
 type Gsreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   systemName: String!
   bodyName: String!
   latitude: Float!
@@ -707,8 +712,8 @@ type Gsreport {
 """Guardian Structure sites"""
 type Gssite {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   location: Location
   siteID: Int!
   latitude: Float!
@@ -732,8 +737,8 @@ type Gstype {
 """Reporting for Geysers"""
 type Gyreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   systemName: String!
   bodyName: String!
   latitude: Float!
@@ -754,8 +759,8 @@ type Gyreport {
 """Geyser sites"""
 type Gysite {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   location: Location
   siteID: Int!
   latitude: Float!
@@ -775,8 +780,8 @@ type Gytype {
 """Journal events and user reports for the Unknown Signal Sources"""
 type Hdreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   fromSystemName: String!
   toSystemName: String!
   cmdrName: String!
@@ -787,14 +792,14 @@ type Hdreport {
   reportComment: String
   added: Boolean
   site: Hdsite
-  hdRawJson: String
+  hdRawJson: JSON
 }
 
 """Thargoid Hyperdiction sites"""
 type Hdsite {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   location: Location
   toSystem: System
   thargoidCount: Int
@@ -805,8 +810,8 @@ type Hdsite {
 """Raw journal dumps"""
 type Journaldata {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   eventName: String
   systemName: String
   bodyName: String
@@ -815,7 +820,7 @@ type Journaldata {
   latitude: Float
   longitude: Float
   isBeta: Boolean
-  jsonData: String!
+  jsonData: JSON!
 }
 
 """
@@ -826,8 +831,8 @@ scalar JSON
 """Locations for sites within a System, Body, or Ring"""
 type Location {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   system: System
   body: Body
   ring: Ring
@@ -852,8 +857,8 @@ type Location {
 """Reporting for Lava Spouts"""
 type Lsreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   systemName: String!
   bodyName: String!
   latitude: Float!
@@ -873,8 +878,8 @@ type Lsreport {
 """Lava Spout sites"""
 type Lssite {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   location: Location
   siteID: Int!
   latitude: Float!
@@ -890,8 +895,8 @@ union Morph = Bmreport | Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysub
 """Reporting for Megaships"""
 type Msreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   systemName: String!
   orbitBody: String
   shipName: String!
@@ -914,8 +919,8 @@ type Msreport {
 """Mega-Ship sites"""
 type Mssite {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   location: Location
   siteID: Int!
   shipName: String!
@@ -936,8 +941,8 @@ type Mstype {
 """Top ten CMDRs sorted by kills for Non-Human Signal Sources"""
 type Nhsstopcmdrsbykill {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   cmdrName: String
   scoutKills: Int
   cyclopsKills: Int
@@ -1106,8 +1111,8 @@ type Query {
 """Rings stored in the Canonn database"""
 type Ring {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   body: Body
   ringName: String!
   ringtype: Ringtype
@@ -1126,8 +1131,8 @@ type Ringtype {
 """Systems stored in the Canonn database"""
 type System {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   systemName: String!
   edsmID: Float
   edsmID64: Float
@@ -1142,8 +1147,8 @@ type System {
 """Reporting for Thargoid Barnacles"""
 type Tbreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   systemName: String!
   bodyName: String!
   latitude: Float!
@@ -1164,8 +1169,8 @@ type Tbreport {
 """Thargoid Barnacle sites"""
 type Tbsite {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   location: Location
   siteID: Int!
   latitude: Float!
@@ -1186,8 +1191,8 @@ type Tbtype {
 """Reporting for Thargoid Structures"""
 type Tsreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   systemName: String!
   bodyName: String!
   latitude: Float!
@@ -1207,8 +1212,8 @@ type Tsreport {
 """Thargoid Structure sites"""
 type Tssite {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   location: Location
   siteID: Int!
   latitude: Float!
@@ -1228,8 +1233,8 @@ type Tsstatus {
 """Reporting for Tube Worms"""
 type Twreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   systemName: String!
   bodyName: String!
   latitude: Float!
@@ -1249,8 +1254,8 @@ type Twreport {
 """Tube Worm sites"""
 type Twsite {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   location: Location
   siteID: Int!
   latitude: Float!
@@ -1263,8 +1268,8 @@ type Twsite {
 
 type UploadFile {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   name: String!
   hash: String!
   ext: String
@@ -1305,8 +1310,8 @@ type UsersPermissionsUser {
 """Automated journal reports for Unknown Signal Sources"""
 type Ussreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   systemName: String
   type: String
   cmdrName: String
@@ -1317,14 +1322,14 @@ type Ussreport {
   reportComment: String
   added: Boolean
   site: Usssite
-  ussRawJson: String
+  ussRawJson: JSON
 }
 
 """Unknown Signal Source sites"""
 type Usssite {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   location: Location
   type: Usstype
   threatLevel: Int

@@ -239,7 +239,7 @@ The example config is also down below, you will just need to modify the Database
   "defaultConnection": "default",
   "connections": {
     "default": {
-      "connector": "strapi-bookshelf",
+      "connector": "strapi-hook-bookshelf",
       "settings": {
         "client": "mysql",
         "host": "127.0.0.1",
