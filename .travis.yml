@@ -28,5 +28,6 @@ install:
 
 script:
   - NODE_ENV=development pm2 start strapi --no-pmx --name="capiv2" -- start
-  - pm2 logs capiv2
+  - sleep 5
   - pm2 stop capiv2
+  - cat ~/.pm2/capiv2-*.log
