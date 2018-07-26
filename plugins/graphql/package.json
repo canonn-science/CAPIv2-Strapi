@@ -1,8 +1,8 @@
 {
   "_from": "strapi-plugin-graphql@alpha",
-  "_id": "strapi-plugin-graphql@3.0.0-alpha.12.7.1",
+  "_id": "strapi-plugin-graphql@3.0.0-alpha.13",
   "_inBundle": false,
-  "_integrity": "sha512-kv9Nfh5grqV4c1mNZ/LAoYYhvwnjFMnCIClSD58/yNAeLP4OwQyZ5KyTi1ZaR24d0lATyqcaWrkeiePAvtAXTQ==",
+  "_integrity": "sha512-0R/uU1ozdTjkapquZTZ6TQZ6/02haZ5mJHBD2sPyJw9K8Be4xPSn7GBYI0sZOkcwAQVxNzQme9VwHA5ZetuSkw==",
   "_location": "/strapi-plugin-graphql",
   "_phantomChildren": {},
   "_requested": {
@@ -18,10 +18,10 @@
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "https://registry.npmjs.org/strapi-plugin-graphql/-/strapi-plugin-graphql-3.0.0-alpha.12.7.1.tgz",
-  "_shasum": "ef5de0c7042a8253dbc5f463f265341e90fa3e58",
+  "_resolved": "https://registry.npmjs.org/strapi-plugin-graphql/-/strapi-plugin-graphql-3.0.0-alpha.13.tgz",
+  "_shasum": "7990ba46c4984090e8b1baf84883947a4b1e6225",
   "_spec": "strapi-plugin-graphql@alpha",
-  "_where": "/mnt/nixstorage/Github/CAPIv2-Strapi",
+  "_where": "/nixstorage/Github/capi/CAPIv2-Strapi",
   "author": {
     "name": "A Strapi developer"
   },
@@ -33,9 +33,10 @@
     "graphql-depth-limit": "^1.1.0",
     "graphql-playground-middleware-koa": "^1.6.1",
     "graphql-tools": "^2.23.1",
-    "graphql-type-json": "^0.2.0",
+    "graphql-type-datetime": "^0.2.2",
+    "graphql-type-json": "^0.2.1",
     "pluralize": "^7.0.0",
-    "strapi-utils": "3.0.0-alpha.12.7.1"
+    "strapi-utils": "3.0.0-alpha.13"
   },
   "deprecated": false,
   "description": "This is the description of the plugin.",
@@ -68,5 +69,5 @@
     "icon": "plug",
     "description": "Description of graphql plugin."
   },
-  "version": "3.0.0-alpha.12.7.1"
+  "version": "3.0.0-alpha.13"
 }
