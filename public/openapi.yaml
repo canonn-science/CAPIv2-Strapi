@@ -10,7 +10,7 @@ openapi: "3.0.0"
 
 ## Information
 info:
-  version: 2.0.7
+  version: 2.0.8
   title: Canonn APIv2
   x-logo:
     url: "./canonn-logo.png"
@@ -1678,6 +1678,165 @@ paths:
       summary: Delete a CMDR
       description: The response is just an empty JSON, deleting a report requires auth
       operationId: removeCMDRById
+      security:
+        - canonnAuth: [cmdrDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+# Faction Kill Report
+  /factionkillreport/count:
+    get:
+      tags:
+        - CMDRs
+      summary: Get a count of all Faction Kill Reports
+      description: The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getFactionKillReportsCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /factionkillreport:
+    get:
+      tags:
+        - CMDRs
+      summary: Get a list of Faction Kill Reports
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getFGReports
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of Faction Kill Reports
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getCMDRFactionKillReport'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - CMDRs
+      summary: Post a new Faction Kill Report
+      description: To be used to submit new Reports to Canonn, note that the reportStatus should always be pending
+      operationId: submitFGReport
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postCMDRFactionKillReport'
+      responses:
+        '200':
+          description: Report post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getCMDRFactionKillReport'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /factionkillreport/{id}:
+    get:
+      tags:
+        - CMDRs
+      summary: Get a Single Faction Kill Report
+      description: Provide the ID to get a single report
+      operationId: getFGReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the Faction Kill Report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getCMDRFactionKillReport'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - CMDRs
+      summary: Update a Faction Kill Report
+      description: You do not need to send the entire report again, you can send only changed fields
+      operationId: updateFGReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putCMDRFactionKillReport'
+      responses:
+        '200':
+          description: Report update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getCMDRFactionKillReport'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    delete:
+      tags:
+        - CMDRs
+      summary: Delete a Faction Kill Report
+      description: The response is just an empty JSON, deleting a report requires auth
+      operationId: removeFGReportById
       security:
         - canonnAuth: [cmdrDelete]
       parameters:
@@ -7148,6 +7307,165 @@ paths:
         '500':
           $ref: '#/components/responses/error500'
 
+# HD Report
+  /hdreport/count:
+    get:
+      tags:
+        - Hyperdiction Reports
+      summary: Get a count of all HD Reports
+      description: The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getHDReportsCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /hdreport:
+    get:
+      tags:
+        - Hyperdiction Reports
+      summary: Get a list of HD Reports
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getHDReports
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of HD Reports
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportHD'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - Hyperdiction Reports
+      summary: Post a new HD Report
+      description: To be used to add a new report to the Canonn database
+      operationId: submitHDReport
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportHD'
+      responses:
+        '200':
+          description: Report post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportHD'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /hdreport/{id}:
+    get:
+      tags:
+        - Hyperdiction Reports
+      summary: Get a Single HD Report
+      description: Provide the ID to get a single report
+      operationId: getHDReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the HD Report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportHD'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - Hyperdiction Reports
+      summary: Update a HD Report
+      description: You do not need to send the entire report again, you can send only changed fields
+      operationId: updateHDReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putReportHD'
+      responses:
+        '200':
+          description: Report update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportHD'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    delete:
+      tags:
+        - Hyperdiction Reports
+      summary: Delete a HD Report
+      description: The response is just an empty JSON, deleting a report requires auth
+      operationId: removeHDReportById
+      security:
+        - canonnAuth: [reportDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
 # HD Site
   /hdsite/count:
     get:
@@ -8259,6 +8577,167 @@ paths:
       operationId: removeMSSiteTypeById
       security:
         - canonnAuth: [siteDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+# NHSS Top CMDR Kill
+  /nhsstopcmdrsbykill/count:
+    get:
+      tags:
+        - CMDRs
+      summary: Get a count of all NHSS Top CMDR Kill Stats
+      description: The API will respond with just a number, which is the total amount of kill stats on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getNHSSTopCMDRsByKillCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /nhsstopcmdrsbykill:
+    get:
+      tags:
+        - CMDRs
+      summary: Get a list of NHSS Top CMDR Kill Stats
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getNHSSTopCMDRsByKills
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of NHSS Top CMDR Kill Stats
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNHSSTopCMDRsByKill'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - CMDRs
+      summary: Post a new NHSS Top CMDR Kill Stat
+      description: Kill Stats by CMDR for Non-Human Signal Sources
+      operationId: submitNHSSTopCMDRsByKill
+      security:
+        - canonnAuth: [cmdrWrite]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postNHSSTopCMDRsByKill'
+      responses:
+        '200':
+          description: Stat post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNHSSTopCMDRsByKill'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /nhsstopcmdrsbykill/{id}:
+    get:
+      tags:
+        - CMDRs
+      summary: Get a Single NHSS Top CMDR Kill Stat
+      description: Provide the ID to get a single stat
+      operationId: getNHSSTopCMDRsByKillById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the NHSS Top CMDR Kill Stat
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNHSSTopCMDRsByKill'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - CMDRs
+      summary: Update a NHSS Top CMDR Kill Stat
+      description: You do not need to send the entire stat again, you can send only changed fields
+      operationId: updateNHSSTopCMDRsByKillById
+      security:
+        - canonnAuth: [cmdrWrite]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putNHSSTopCMDRsByKill'
+      responses:
+        '200':
+          description: Site update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNHSSTopCMDRsByKill'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    delete:
+      tags:
+        - CMDRs
+      summary: Delete a NHSS Top CMDR Kill Stat
+      description: The response is just an empty JSON, deleting a site requires auth
+      operationId: removeNHSSTopCMDRsByKillById
+      security:
+        - canonnAuth: [cmdrDelete]
       parameters:
         - $ref: '#/components/parameters/byId'
       responses:
@@ -10038,6 +10517,165 @@ paths:
         '500':
           $ref: '#/components/responses/error500'
 
+# USS Report
+  /ussreport/count:
+    get:
+      tags:
+        - Unknown Signal Source Reports
+      summary: Get a count of all USS Reports
+      description: The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getUSSReportsCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /ussreport:
+    get:
+      tags:
+        - Unknown Signal Source Reports
+      summary: Get a list of USS Reports
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getUSSReports
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of USS Reports
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportUSS'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - Unknown Signal Source Reports
+      summary: Post a new USS Report
+      description: To be used to submit new Reports to Canonn, note that the reportStatus should always be pending
+      operationId: submitUSSReport
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportUSS'
+      responses:
+        '200':
+          description: Report post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportUSS'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /ussreport/{id}:
+    get:
+      tags:
+        - Unknown Signal Source Reports
+      summary: Get a Single USS Report
+      description: Provide the ID to get a single report
+      operationId: getUSSReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the USS Report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportUSS'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - Unknown Signal Source Reports
+      summary: Update a USS Report
+      description: You do not need to send the entire report again, you can send only changed fields
+      operationId: updateUSSReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putReportUSS'
+      responses:
+        '200':
+          description: Report update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportUSS'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    delete:
+      tags:
+        - Unknown Signal Source Reports
+      summary: Delete a USS Report
+      description: The response is just an empty JSON, deleting a report requires auth
+      operationId: removeUSSReportById
+      security:
+        - canonnAuth: [reportDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
 # USS Site
   /usssite/count:
     get:
@@ -10524,6 +11162,8 @@ components:
           type: string
         cmdrComment:
           type: string
+        isBeta:
+          type: boolean
         reportStatus:
           type: string
         reportComment:
@@ -10563,6 +11203,8 @@ components:
           type: string
         cmdrComment:
           type: string
+        isBeta:
+          type: boolean
         reportStatus:
           type: string
         reportComment:
@@ -10599,6 +11241,8 @@ components:
           type: string
         cmdrComment:
           type: string
+        isBeta:
+          type: boolean
         reportStatus:
           type: string
         reportComment:
@@ -10608,7 +11252,7 @@ components:
         added:
           type: boolean
         site:
-          type: integer
+          $ref: '#/components/schemas/getSiteGEN'
         created_at:
           type: string
           format: date-time
@@ -10636,6 +11280,8 @@ components:
           type: string
         cmdrComment:
           type: string
+        isBeta:
+          type: boolean
         reportStatus:
           type: string
         reportComment:
@@ -10645,7 +11291,7 @@ components:
         added:
           type: boolean
         site:
-          type: integer
+          $ref: '#/components/schemas/getSiteGR'
         created_at:
           type: string
           format: date-time
@@ -10705,6 +11351,8 @@ components:
           type: string
         cmdrComment:
           type: string
+        isBeta:
+          type: boolean
         reportStatus:
           type: string
         reportComment:
@@ -10714,7 +11362,7 @@ components:
         added:
           type: boolean
         site:
-          type: integer
+          $ref: '#/components/schemas/getSiteGS'
         created_at:
           type: string
           format: date-time
@@ -10774,6 +11422,8 @@ components:
           type: string
         cmdrComment:
           type: string
+        isBeta:
+          type: boolean
         reportStatus:
           type: string
         reportComment:
@@ -10784,6 +11434,38 @@ components:
           type: boolean
         site:
           $ref: '#/components/schemas/getSiteGY'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getReportHD:
+      properties:
+        id:
+          type: integer
+        fromSystemName:
+          type: string
+        toSystemName:
+          type: string
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        isBeta:
+          type: boolean
+        reportStatus:
+          type: string
+        reportComment:
+          type: string
+        added:
+          type: boolean
+        site:
+          $ref: '#/components/schemas/getSiteHD'
+        # Note this should have a ref to the breakdown of the json if possible
+        hdRawJson:
+          type: string
         created_at:
           type: string
           format: date-time
@@ -10815,6 +11497,8 @@ components:
           type: string
         cmdrComment:
           type: string
+        isBeta:
+          type: boolean
         reportStatus:
           type: string
         reportComment:
@@ -10824,7 +11508,7 @@ components:
         added:
           type: boolean
         site:
-          type: integer
+          $ref: '#/components/schemas/getSiteMS'
         created_at:
           type: string
           format: date-time
@@ -10854,6 +11538,8 @@ components:
           type: string
         cmdrComment:
           type: string
+        isBeta:
+          type: boolean
         reportStatus:
           type: string
         reportComment:
@@ -10863,7 +11549,7 @@ components:
         added:
           type: boolean
         site:
-          type: integer
+          $ref: '#/components/schemas/getSiteTB'
         created_at:
           type: string
           format: date-time
@@ -10891,6 +11577,8 @@ components:
           type: string
         cmdrComment:
           type: string
+        isBeta:
+          type: boolean
         reportStatus:
           type: string
         reportComment:
@@ -10900,7 +11588,39 @@ components:
         added:
           type: boolean
         site:
+          $ref: '#/components/schemas/getSiteTS'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getReportUSS:
+      properties:
+        id:
           type: integer
+        systemName:
+          type: string
+        type:
+          type: string
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        isBeta:
+          type: boolean
+        reportStatus:
+          type: string
+        reportComment:
+          type: string
+        added:
+          type: boolean
+        site:
+          $ref: '#/components/schemas/getSiteUSS'
+        # Note this should have a ref to the breakdown of the json if possible
+        ussRawJson:
+          type: string
         created_at:
           type: string
           format: date-time
@@ -11295,6 +12015,67 @@ components:
           type: integer
         cmdrName:
           type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getCMDRFactionKillReport:
+      properties:
+        id:
+          type: integer
+        systemName:
+          type: string
+        edTimestamp:
+          type: string
+          format: date-time
+        cmdrName:
+          type: string
+        reward:
+          type: integer
+        rewardingFaction:
+          type: string
+        victimFaction:
+          type: string
+        # Note this needs to have a seperate schema with the breakdown of the event
+        rawEvent:
+          type: string
+        isbeta:
+          type: boolean
+
+    getNHSSTopCMDRsByKill:
+      properties:
+        id:
+          type: integer
+        # Note this should instead be a oneWay relation to the CMDR Model
+        cmdrName:
+          type: string
+        scoutKills:
+          type: integer
+        cyclopsKills:
+          type: integer
+        basiliskKills:
+          type: integer
+        medusaKills:
+          type: integer
+        unknownKills:
+          type: integer
+        scoutRewards:
+          type: integer
+        cyclopsRewards:
+          type: integer
+        basiliskRewards:
+          type: integer
+        medusaRewards:
+          type: integer
+        unknownRewards:
+          type: integer
+        totalRewards:
+          type: integer
+        totalKills:
+          type: integer
         created_at:
           type: string
           format: date-time
@@ -11925,6 +12706,8 @@ components:
           type: string
         cmdrComment:
           type: string
+        isBeta:
+          type: boolean
         reportStatus:
           type: string
           enum:
@@ -11971,6 +12754,8 @@ components:
           type: string
         cmdrComment:
           type: string
+        isBeta:
+          type: boolean
         reportStatus:
           type: string
           enum:
@@ -12011,6 +12796,8 @@ components:
           type: string
         cmdrComment:
           type: string
+        isBeta:
+          type: boolean
         reportStatus:
           type: string
           enum:
@@ -12059,6 +12846,8 @@ components:
           type: string
         cmdrComment:
           type: string
+        isBeta:
+          type: boolean
         reportStatus:
           type: string
           enum:
@@ -12134,6 +12923,8 @@ components:
           type: string
         cmdrComment:
           type: string
+        isBeta:
+          type: boolean
         reportStatus:
           type: string
           enum:
@@ -12172,6 +12963,42 @@ components:
         gsobelisk:
           type: integer
 
+    postReportHD:
+      required:
+        - fromSystemName
+        - toSystemName
+        - cmdrName
+        - reportStatus
+        - hdRawJson
+      properties:
+        fromSystemName:
+          type: string
+        toSystemName:
+          type: string
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        isBeta:
+          type: boolean
+        reportStatus:
+          type: string
+          enum:
+            - pending
+            - updated
+            - accepted
+            - declined
+            - issue
+          default: pending
+        reportComment:
+          type: string
+        added:
+          type: boolean
+        site:
+          type: integer
+        hdRawJson:
+          type: string
+
     postReportMS:
       required:
         - systemName
@@ -12203,6 +13030,8 @@ components:
           type: string
         cmdrComment:
           type: string
+        isBeta:
+          type: boolean
         reportStatus:
           type: string
           enum:
@@ -12252,6 +13081,8 @@ components:
           type: string
         cmdrComment:
           type: string
+        isBeta:
+          type: boolean
         reportStatus:
           type: string
           enum:
@@ -12299,6 +13130,8 @@ components:
           type: string
         cmdrComment:
           type: string
+        isBeta:
+          type: boolean
         reportStatus:
           type: string
           enum:
@@ -12316,6 +13149,41 @@ components:
           type: boolean
         site:
           type: integer
+
+    postReportUSS:
+      required:
+        - systemName
+        - cmdrName
+        - reportStatus
+        - ussRawJson
+      properties:
+        systemName:
+          type: string
+        type:
+          type: string
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        isBeta:
+          type: boolean
+        reportStatus:
+          type: string
+          enum:
+            - pending
+            - updated
+            - accepted
+            - declined
+            - issue
+          default: pending
+        reportComment:
+          type: string
+        added:
+          type: boolean
+        site:
+          type: integer
+        ussRawJson:
+          type: string
 
   ## POST Locations
     postLocationSystem:
@@ -12642,6 +13510,61 @@ components:
       properties:
         cmdrName:
           type: string
+
+    postCMDRFactionKillReport:
+      required:
+        - systemName
+        - cmdrName
+      properties:
+        systemName:
+          type: string
+        edTimestamp:
+          type: string
+          format: date-time
+        cmdrName:
+          type: string
+        reward:
+          type: integer
+        rewardingFaction:
+          type: string
+        victimFaction:
+          type: string
+        # Note this needs to have a seperate schema with the breakdown of the event
+        rawEvent:
+          type: string
+        isbeta:
+          type: boolean
+
+    postNHSSTopCMDRsByKill:
+      required:
+        - cmdrName
+      properties:
+        cmdrName:
+          type: string
+        scoutKills:
+          type: integer
+        cyclopsKills:
+          type: integer
+        basiliskKills:
+          type: integer
+        medusaKills:
+          type: integer
+        unknownKills:
+          type: integer
+        scoutRewards:
+          type: integer
+        cyclopsRewards:
+          type: integer
+        basiliskRewards:
+          type: integer
+        medusaRewards:
+          type: integer
+        unknownRewards:
+          type: integer
+        totalRewards:
+          type: integer
+        totalKills:
+          type: integer
 
   ## POST Uploads
 
@@ -13225,6 +14148,8 @@ components:
           type: string
         cmdrComment:
           type: string
+        isBeta:
+          type: boolean
         reportStatus:
           type: string
           enum:
@@ -13263,6 +14188,8 @@ components:
           type: string
         cmdrComment:
           type: string
+        isBeta:
+          type: boolean
         reportStatus:
           type: string
           enum:
@@ -13298,6 +14225,8 @@ components:
           type: string
         cmdrComment:
           type: string
+        isBeta:
+          type: boolean
         reportStatus:
           type: string
           enum:
@@ -13338,6 +14267,8 @@ components:
           type: string
         cmdrComment:
           type: string
+        isBeta:
+          type: boolean
         reportStatus:
           type: string
           enum:
@@ -13398,6 +14329,8 @@ components:
           type: string
         cmdrComment:
           type: string
+        isBeta:
+          type: boolean
         reportStatus:
           type: string
           enum:
@@ -13430,6 +14363,36 @@ components:
         gsobelisk:
           type: integer
 
+    putReportHD:
+      properties:
+        fromSystemName:
+          type: string
+        toSystemName:
+          type: string
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        isBeta:
+          type: boolean
+        reportStatus:
+          type: string
+          enum:
+            - pending
+            - updated
+            - accepted
+            - declined
+            - issue
+          default: pending
+        reportComment:
+          type: string
+        added:
+          type: boolean
+        site:
+          type: integer
+        hdRawJson:
+          type: string
+
     putReportMS:
       properties:
         systemName:
@@ -13452,6 +14415,8 @@ components:
           type: string
         cmdrComment:
           type: string
+        isBeta:
+          type: boolean
         reportStatus:
           type: string
           enum:
@@ -13493,6 +14458,8 @@ components:
           type: string
         cmdrComment:
           type: string
+        isBeta:
+          type: boolean
         reportStatus:
           type: string
           enum:
@@ -13532,6 +14499,8 @@ components:
           type: string
         cmdrComment:
           type: string
+        isBeta:
+          type: boolean
         reportStatus:
           type: string
           enum:
@@ -13549,6 +14518,36 @@ components:
           type: boolean
         site:
           type: integer
+
+    putReportUSS:
+      properties:
+        systemName:
+          type: string
+        type:
+          type: string
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        isBeta:
+          type: boolean
+        reportStatus:
+          type: string
+          enum:
+            - pending
+            - updated
+            - accepted
+            - declined
+            - issue
+          default: pending
+        reportComment:
+          type: string
+        added:
+          type: boolean
+        site:
+          type: integer
+        ussRawJson:
+          type: string
 
   ## PUT Locations
     putLocationSystem:
@@ -13853,6 +14852,55 @@ components:
       properties:
         cmdrName:
           type: string
+
+    putCMDRFactionKillReport:
+      properties:
+        systemName:
+          type: string
+        edTimestamp:
+          type: string
+          format: date-time
+        cmdrName:
+          type: string
+        reward:
+          type: integer
+        rewardingFaction:
+          type: string
+        victimFaction:
+          type: string
+        rawEvent:
+          type: string
+        isbeta:
+          type: boolean
+
+    putNHSSTopCMDRsByKill:
+      properties:
+        cmdrName:
+          type: string
+        scoutKills:
+          type: integer
+        cyclopsKills:
+          type: integer
+        basiliskKills:
+          type: integer
+        medusaKills:
+          type: integer
+        unknownKills:
+          type: integer
+        scoutRewards:
+          type: integer
+        cyclopsRewards:
+          type: integer
+        basiliskRewards:
+          type: integer
+        medusaRewards:
+          type: integer
+        unknownRewards:
+          type: integer
+        totalRewards:
+          type: integer
+        totalKills:
+          type: integer
 
   ## PUT Uploads
 
@@ -14338,7 +15386,7 @@ tags:
 
   ## CMDRs
   - name: CMDRs
-    description: List of commanders credited with finding sites
+    description: List of commanders credited with finding sites and their kills
 
   ## Uploads
   - name: Uploads
