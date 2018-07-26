@@ -3,7 +3,7 @@
 [![Strapi Version](https://img.shields.io/badge/strapi-v3.0.0--alpha.13.0.1-blue.svg)](https://github.com/strapi/strapi) 
 [![CAPIv2 Version](https://img.shields.io/badge/capiv2-v2.0.8-orange.svg)](https://api.canonn.tech:2083) 
 [![Build Status](https://travis-ci.org/canonn-science/CAPIv2-Strapi.svg?branch=development)](https://travis-ci.org/canonn-science/CAPIv2-Strapi)
-[![Discord](https://img.shields.io/discord/164411426939600896.svg?logo=discord)](https://discord.gg/fhDWZBH)
+[![Discord](https://img.shields.io/discord/164411426939600896.svg?logo=discord&label=EDCD%20Discord)](https://discord.gg/fhDWZBH)
 
 
 # Table of Contents
