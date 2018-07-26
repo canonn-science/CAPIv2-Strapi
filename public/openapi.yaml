@@ -20,10 +20,12 @@ info:
     # Documentation
     We have two different documentation types
 
-    * [Redocs](https://api.canonn.tech)
-    * [Swagger-UI](https://api.canonn.tech/swaggerui)
+    * [Redocs](./)
+    * [Swagger-UI](./swaggerui)
 
-    You can view our Swagger/OpenAPI on [CAPIv2-Swagger Github](https://github.com/canonn-science/CAPIv2-Swagger) and our API development [CAPIv2-Strapi Github](https://github.com/canonn-science/CAPIv2-Strapi)
+    You can view our Swagger/OpenAPI on [CAPIv2-Swagger Github](https://github.com/canonn-science/CAPIv2-Swagger) and our API development [CAPIv2-Strapi Github](https://github.com/canonn-science/CAPIv2-Strapi).
+
+    We also automatically build our current Development branch before deploying to the Alpha server, you can see our [Travis-CI](https://travis-ci.org/canonn-science/CAPIv2-Strapi) build status.
 
     # Servers
 
@@ -32,10 +34,10 @@ info:
     Data between the Live and Beta servers are replicated as needed, eventually we plan to dynamically replicate the data every night at midnight Phoenix, Arizona USA time (MST-Arizona GMT-7)
 
     Server Name  | Server Type | Server URL | Server version
-    ----------------|-------------|-------------|---------
+    ---------|---------|---------|---------
     Live | Production | https://api.canonn.tech | v2.0.7
     Beta | Production | https://api.canonn.tech:2053 | v2.0.7
-    Alpha | Production | https://api.canonn.tech:2083 | v2.0.7
+    Alpha | Production | https://api.canonn.tech:2083 | v2.0.8
 
     Thank you for your support, and thank you to all the CMDRs who supply us with our data!
 
