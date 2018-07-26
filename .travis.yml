@@ -6,7 +6,7 @@ node_js:
 services:
   - mysql
 addons:
-  mariadb: '10.0'
+  mariadb: '10.2'
   apt:
     sources:
       - sourceline: 'deb http://apt.pm2.io/ubuntu stable main'
@@ -23,7 +23,7 @@ install:
   - sed -i s/examplepassword//g config/environments/development/database.json
   - cat config/environments/development/database.json
   - mysql -u root --password="" -e 'CREATE DATABASE canonntest'
-  - mysql -u root --password="" canonntest < seed_files/SQL/development-v2_0_7-20180714.sql
+  - mysql -u root --password="" canonntest < seed_files/SQL/development-v2_0_8-20180726.sql
   - npm install
 
 script:
