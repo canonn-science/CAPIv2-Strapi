@@ -1,5 +1,7 @@
 # Canonn API v2 - (CAPIv2)
 
+[![Build Status](https://travis-ci.org/canonn-science/CAPIv2-Strapi.svg?branch=development)](https://travis-ci.org/canonn-science/CAPIv2-Strapi) 
+
 # Table of Contents
 
 <!-- TOC -->
