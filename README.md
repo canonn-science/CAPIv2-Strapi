@@ -1,6 +1,6 @@
 # Canonn API v2 - (CAPIv2)
 
-[![Build Status](https://travis-ci.org/canonn-science/CAPIv2-Strapi.svg?branch=development)](https://travis-ci.org/canonn-science/CAPIv2-Strapi) 
+[![Strapi Version] (https://img.shields.io/badge/strapi-v3.0.0--alpha.13.0.1-blue.svg)](https://github.com/strapi/strapi) [![CAPIv2 Version] (https://img.shields.io/badge/capiv2-v2.0.8-orange.svg)](https://api.canonn.tech:2083) [![Build Status](https://travis-ci.org/canonn-science/CAPIv2-Strapi.svg?branch=development)](https://travis-ci.org/canonn-science/CAPIv2-Strapi)
 
 # Table of Contents
 
@@ -77,7 +77,7 @@ You will need the following:
 - Node v10 or above
 - NPM v6 or above
 - Node Pm2 (For running API as a service)
-- Strapi Alpha v13
+- Strapi Alpha v13.0.1
 - MariaDB 10.2 or above
 
 ## Installing Git, Node v10, and NPM v6
@@ -104,7 +104,7 @@ sudo npm install pm2 -g
 
 ## Install Strapi Alpha Latest
 
-Run the following to install Strapi Alpha (Current version is Alpha.13):
+Run the following to install Strapi Alpha (Current version is v13.0.1):
 
 `
 sudo npm i strapi@alpha -g
