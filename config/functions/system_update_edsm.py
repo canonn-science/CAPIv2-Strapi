@@ -164,9 +164,10 @@ try:
                     names_to_update.append(systemName)
         print('Updating {} rows'.format(len(names_to_update)))
         if len(names_to_update) > 0:
-            # add the params manually since they're duplicates
-            url = edsm_api_systems_url + '?showId=1&showCoordinates=1&showPermit=1&'
-            for chunk in list(chunks(names_to_update, args.batch_size)):
+            for chunk_index, chunk in enumerate(list(chunks(names_to_update, args.batch_size))):
+                # add the params manually since they're duplicates
+                url = edsm_api_systems_url + '?showId=1&showCoordinates=1&showPermit=1&'
+                print('Processing Chunk #{}, {} to {}'.format(chunk_index + 1, chunk[0], chunk[-1]))
                 for index, name in enumerate(chunk):
                     if not index == 0:
                         url += '&'
@@ -188,7 +189,7 @@ try:
                     )
                 time.sleep(args.delay_seconds)
         else:
-          print('No systems to update')
+            print('No systems to update')
     connection.commit()
 finally:
     print('Closing connection to MySQL DB')
