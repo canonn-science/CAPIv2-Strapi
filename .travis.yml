@@ -1,0 +1,35 @@
+sudo: required
+dist: xenial
+language: node_js
+node_js:
+  - '10'
+services:
+  - mysql
+addons:
+  mariadb: '10.2'
+  apt:
+    sources:
+      - sourceline: 'deb http://apt.pm2.io/ubuntu stable main'
+        key_url: 'http://apt.pm2.io/ubuntu/apt.pm2.io.gpg.key'
+    packages:
+      - software-properties-common
+      - build-essential
+      - pm2
+
+install:
+  - cp config/environments/development/database.json.example config/environments/development/database.json
+  - sed -i s/exampledatabase/canonntest/g config/environments/development/database.json
+  - sed -i s/exampleuser/travis/g config/environments/development/database.json
+  - sed -i s/examplepassword//g config/environments/development/database.json
+  - cat config/environments/development/database.json
+  - mysql -u root --password="" -e 'CREATE DATABASE canonntest'
+  - mysql -u root --password="" canonntest < seed_files/SQL/development-v2_0_8-20180726.sql
+  - npm install
+
+script:
+  - NODE_ENV=development pm2 start strapi --no-pmx --name="capiv2" -- start
+  - sleep 10
+  - curl http://localhost:1337/grartifact
+  - pm2 stop capiv2
+  - cat /home/travis/.pm2/logs/capiv2-error-0.log
+  - cat /home/travis/.pm2/logs/capiv2-out-0.log
