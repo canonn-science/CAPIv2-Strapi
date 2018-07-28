@@ -30,6 +30,11 @@ script:
   - NODE_ENV=development pm2 start strapi --no-pmx --name="capiv2" -- start
   - sleep 10
   - curl http://localhost:1337/grartifact
-  - pm2 stop capiv2
   - cat /home/travis/.pm2/logs/capiv2-error-0.log
   - cat /home/travis/.pm2/logs/capiv2-out-0.log
+
+after_success:
+  - pm2 stop capiv2
+
+after_failure:
+  - pm2 stop capiv2
