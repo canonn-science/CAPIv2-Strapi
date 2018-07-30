@@ -571,650 +571,6 @@ paths:
         '500':
           $ref: '#/components/responses/error500'
 
-# Body Atmosphere
-  /bodyatmosphere/count:
-    get:
-      tags:
-        - Bodies
-      summary: Get a count of all Body Atmosphere Compositions
-      description: The API will respond with just a number, which is the total amount of body atmosphere compositions on this endpoint. This can be used to filter, limit, or page other get requests.
-      operationId: getBodyAtmospheresCount
-      security: []
-      responses:
-        '200':
-          description: Total count of all entries in plain text
-          content:
-            text/plain:
-              schema:
-                type: integer
-                example: 42
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-  /bodyatmosphere:
-    get:
-      tags:
-        - Bodies
-      summary: Get a list of Body Atmosphere Compositions
-      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
-      operationId: getBodyAtmospheres
-      security: []
-      parameters:
-        - $ref: '#/components/parameters/start'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/search'
-      responses:
-        '200':
-          description: A list of Body Atmosphere Compositions
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getLocationBodyAtmosphere'
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-    post:
-      tags:
-        - Bodies
-      summary: Post a new Body Atmosphere Composition
-      description: To be used to add a new body atmosphere composition to the Canonn database
-      operationId: submitBody
-      security:
-        - canonnAuth: [locationWrite]
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/postLocationBodyAtmosphere'
-      responses:
-        '200':
-          description: Body Atmosphere Composition post successful
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getLocationBodyAtmosphere'
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-  /bodyatmosphere/{id}:
-    get:
-      tags:
-        - Bodies
-      summary: Get a Single Body Atmosphere Composition
-      description: Provide the ID to get a single body
-      operationId: getBodyAtmosphereById
-      security: []
-      parameters:
-        - $ref: '#/components/parameters/byId'
-      responses:
-        '200':
-          description: Found the Body Atmosphere Composition
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getLocationBodyAtmosphere'
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-
-    put:
-      tags:
-        - Bodies
-      summary: Update a Body Atmosphere Composition
-      description: You do not need to send the entire atmosphere composition again, you can send only changed fields
-      operationId: updateBodyAtmosphereById
-      security:
-        - canonnAuth: [locationWrite]
-      parameters:
-        - $ref: '#/components/parameters/byId'
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/putLocationBodyAtmosphere'
-      responses:
-        '200':
-          description: Body Atmosphere Composition update successful
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getLocationBodyAtmosphere'
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-
-    delete:
-      tags:
-        - Bodies
-      summary: Delete a Body Atmosphere Composition
-      description: The response is just an empty JSON, deleting a site requires auth
-      operationId: removeBodyAtmosphereById
-      security:
-        - canonnAuth: [locationDelete]
-      parameters:
-        - $ref: '#/components/parameters/byId'
-      responses:
-        '200':
-          description: Delete Successful
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-
-# Body Material
-  /bodymaterial/count:
-    get:
-      tags:
-        - Bodies
-      summary: Get a count of all Body Material Compositions
-      description: The API will respond with just a number, which is the total amount of body material compositions on this endpoint. This can be used to filter, limit, or page other get requests.
-      operationId: getBodyMaterialsCount
-      security: []
-      responses:
-        '200':
-          description: Total count of all entries in plain text
-          content:
-            text/plain:
-              schema:
-                type: integer
-                example: 42
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-  /bodymaterial:
-    get:
-      tags:
-        - Bodies
-      summary: Get a list of Body Material Compositions
-      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
-      operationId: getBodyMaterials
-      security: []
-      parameters:
-        - $ref: '#/components/parameters/start'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/search'
-      responses:
-        '200':
-          description: A list of Body Material Compositions
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getLocationBodyMaterial'
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-    post:
-      tags:
-        - Bodies
-      summary: Post a new Body Material Composition
-      description: To be used to add a new body material composition to the Canonn database
-      operationId: submitBody
-      security:
-        - canonnAuth: [locationWrite]
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/postLocationBodyMaterial'
-      responses:
-        '200':
-          description: Body Material Composition post successful
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getLocationBodyMaterial'
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-  /bodymaterial/{id}:
-    get:
-      tags:
-        - Bodies
-      summary: Get a Single Body Material Composition
-      description: Provide the ID to get a single body
-      operationId: getBodyMaterialById
-      security: []
-      parameters:
-        - $ref: '#/components/parameters/byId'
-      responses:
-        '200':
-          description: Found the Body Material Composition
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getLocationBodyMaterial'
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-
-    put:
-      tags:
-        - Bodies
-      summary: Update a Body Material Composition
-      description: You do not need to send the entire material composition again, you can send only changed fields
-      operationId: updateBodyMaterialById
-      security:
-        - canonnAuth: [locationWrite]
-      parameters:
-        - $ref: '#/components/parameters/byId'
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/putLocationBodyMaterial'
-      responses:
-        '200':
-          description: Body Material Composition update successful
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getLocationBodyMaterial'
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-
-    delete:
-      tags:
-        - Bodies
-      summary: Delete a Body Material Composition
-      description: The response is just an empty JSON, deleting a site requires auth
-      operationId: removeBodyMaterialById
-      security:
-        - canonnAuth: [locationDelete]
-      parameters:
-        - $ref: '#/components/parameters/byId'
-      responses:
-        '200':
-          description: Delete Successful
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-
-# Body Subtype
-  /bodysubtype/count:
-    get:
-      tags:
-        - Bodies
-      summary: Get a count of all Body Subtypes
-      description: The API will respond with just a number, which is the total amount of body subtypes on this endpoint. This can be used to filter, limit, or page other get requests.
-      operationId: getBodySubtypesCount
-      security: []
-      responses:
-        '200':
-          description: Total count of all entries in plain text
-          content:
-            text/plain:
-              schema:
-                type: integer
-                example: 42
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-  /bodysubtype:
-    get:
-      tags:
-        - Bodies
-      summary: Get a list of Body Subtypes
-      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
-      operationId: getBodySubtypes
-      security: []
-      parameters:
-        - $ref: '#/components/parameters/start'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/search'
-      responses:
-        '200':
-          description: A list of Body Subtypes
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getLocationBodySubtype'
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-    post:
-      tags:
-        - Bodies
-      summary: Post a new Body Subtype
-      description: To be used to add a new body subtype to the Canonn database
-      operationId: submitBody
-      security:
-        - canonnAuth: [locationWrite]
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/postLocationBodySubtype'
-      responses:
-        '200':
-          description: Body Subtype post successful
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getLocationBodySubtype'
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-  /bodysubtype/{id}:
-    get:
-      tags:
-        - Bodies
-      summary: Get a Single Body Subtype
-      description: Provide the ID to get a single body
-      operationId: getBodySubtypeById
-      security: []
-      parameters:
-        - $ref: '#/components/parameters/byId'
-      responses:
-        '200':
-          description: Found the Body Subtype
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getLocationBodySubtype'
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-
-    put:
-      tags:
-        - Bodies
-      summary: Update a Body Subtype
-      description: Body Subtype should match subtypes used by EDSM
-      operationId: updateBodySubtypeById
-      security:
-        - canonnAuth: [locationWrite]
-      parameters:
-        - $ref: '#/components/parameters/byId'
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/putLocationBodySubtype'
-      responses:
-        '200':
-          description: Body Subtype update successful
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getLocationBodySubtype'
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-
-    delete:
-      tags:
-        - Bodies
-      summary: Delete a Body Subtype
-      description: The response is just an empty JSON, deleting a site requires auth
-      operationId: removeBodySubtypeById
-      security:
-        - canonnAuth: [locationDelete]
-      parameters:
-        - $ref: '#/components/parameters/byId'
-      responses:
-        '200':
-          description: Delete Successful
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-
-# Body Type
-  /bodytype/count:
-    get:
-      tags:
-        - Bodies
-      summary: Get a count of all Body Types
-      description: The API will respond with just a number, which is the total amount of body types on this endpoint. This can be used to filter, limit, or page other get requests.
-      operationId: getBodyTypesCount
-      security: []
-      responses:
-        '200':
-          description: Total count of all entries in plain text
-          content:
-            text/plain:
-              schema:
-                type: integer
-                example: 42
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-  /bodytype:
-    get:
-      tags:
-        - Bodies
-      summary: Get a list of Body Types
-      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
-      operationId: getBodyTypes
-      security: []
-      parameters:
-        - $ref: '#/components/parameters/start'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/search'
-      responses:
-        '200':
-          description: A list of Body Types
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getLocationBodyType'
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-    post:
-      tags:
-        - Bodies
-      summary: Post a new Body Type
-      description: To be used to add a new body type to the Canonn database
-      operationId: submitBody
-      security:
-        - canonnAuth: [locationWrite]
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/postLocationBodyType'
-      responses:
-        '200':
-          description: Body Type post successful
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getLocationBodyType'
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-  /bodytype/{id}:
-    get:
-      tags:
-        - Bodies
-      summary: Get a Single Body Type
-      description: Provide the ID to get a single body
-      operationId: getBodyTypeById
-      security: []
-      parameters:
-        - $ref: '#/components/parameters/byId'
-      responses:
-        '200':
-          description: Found the Body Type
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getLocationBodyType'
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-
-    put:
-      tags:
-        - Bodies
-      summary: Update a Body Type
-      description: Body Type should match types used by EDSM
-      operationId: updateBodyTypeById
-      security:
-        - canonnAuth: [locationWrite]
-      parameters:
-        - $ref: '#/components/parameters/byId'
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/putLocationBodyType'
-      responses:
-        '200':
-          description: Body Type update successful
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getLocationBodyType'
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-
-    delete:
-      tags:
-        - Bodies
-      summary: Delete a Body Type
-      description: The response is just an empty JSON, deleting a site requires auth
-      operationId: removeBodyTypeById
-      security:
-        - canonnAuth: [locationDelete]
-      parameters:
-        - $ref: '#/components/parameters/byId'
-      responses:
-        '200':
-          description: Delete Successful
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-
 # BT Report
   /btreport/count:
     get:
@@ -11679,10 +11035,10 @@ components:
         edsmID64:
           type: number
           format: double
-        bodyType:
-          $ref: '#/components/schemas/getLocationBodyType'
-        bodySubtype:
-          $ref: '#/components/schemas/getLocationBodySubtype'
+        edsmType:
+          type: string
+        edsmSubtype:
+          type: string
         edsmOffset:
           type: integer
         edsmDistanceToArrival:
@@ -11723,10 +11079,6 @@ components:
           type: string
         edsmAtmosphereType:
           type: string
-        bodyAtmosphere:
-          $ref: '#/components/schemas/getLocationBodyAtmosphere'
-        bodyMaterial:
-          $ref: '#/components/schemas/getLocationBodyMaterial'
         edsmTerraformingState:
           type: string
         edsmOrbitalPeriod:
@@ -11752,6 +11104,10 @@ components:
         edsmAxialTilt:
           type: number
           format: float
+        edsmAtmosphere:
+          $ref: '#/components/schemas/getLocationBodyAtmosphere'
+        edsmMaterial:
+          $ref: '#/components/schemas/getLocationBodyMaterial'
         rings:
           $ref: '#/components/schemas/getLocationRing'
         bodyLocations:
@@ -11763,26 +11119,8 @@ components:
           type: string
           format: date-time
 
-    getLocationBodyType:
-      properties:
-        id:
-          type: integer
-        type:
-          type: string
-
-    getLocationBodySubtype:
-      properties:
-        id:
-          type: integer
-        subtype:
-          type: string
-
     getLocationBodyAtmosphere:
       properties:
-        id:
-          type: integer
-        body:
-          type: integer
         argon:
           type: number
           format: float
@@ -11822,19 +11160,9 @@ components:
         water:
           type: number
           format: float
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
 
     getLocationBodyMaterial:
       properties:
-        id:
-          type: integer
-        body:
-          type: integer
         antimony:
           type: number
           format: float
@@ -11919,12 +11247,6 @@ components:
         zirconium:
           type: number
           format: float
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
 
     getLocationRing:
       properties:
@@ -13226,10 +12548,10 @@ components:
         edsmID64:
           type: number
           format: double
-        bodyType:
-          type: integer
-        bodySubtype:
-          type: integer
+        edsmType:
+          type: string
+        edsmSubtype:
+          type: string
         edsmOffset:
           type: integer
         edsmDistanceToArrival:
@@ -13295,27 +12617,13 @@ components:
         edsmAxialTilt:
           type: number
           format: float
-
-    postLocationBodyType:
-      required:
-        - type
-      properties:
-        type:
-          type: string
-
-    postLocationBodySubtype:
-      required:
-        - subtype
-      properties:
-        subtype:
-          type: string
+        edsmAtmosphere:
+          $ref: '#/components/schemas/postLocationBodyAtmosphere'
+        edsmMaterial:
+          $ref: '#/components/schemas/postLocationBodyMaterial'
 
     postLocationBodyAtmosphere:
-      required:
-        - body
       properties:
-        body:
-          type: integer
         argon:
           type: number
           format: float
@@ -13357,11 +12665,7 @@ components:
           format: float
 
     postLocationBodyMaterial:
-      required:
-        - body
       properties:
-        body:
-          type: integer
         antimony:
           type: number
           format: float
@@ -14586,10 +13890,10 @@ components:
         edsmID64:
           type: number
           format: double
-        bodyType:
-          type: integer
-        bodySubtype:
-          type: integer
+        edsmType:
+          type: string
+        edsmSubtype:
+          type: string
         edsmOffset:
           type: integer
         edsmDistanceToArrival:
@@ -14655,21 +13959,13 @@ components:
         edsmAxialTilt:
           type: number
           format: float
-
-    putLocationBodyType:
-      properties:
-        type:
-          type: string
-
-    putLocationBodySubtype:
-      properties:
-        subtype:
-          type: string
+        edsmAtmosphere:
+          $ref: '#/components/schemas/putLocationBodyAtmosphere'
+        edsmMaterial:
+          $ref: '#/components/schemas/putLocationBodyMaterial'
 
     putLocationBodyAtmosphere:
       properties:
-        body:
-          type: integer
         argon:
           type: number
           format: float
@@ -14712,8 +14008,6 @@ components:
 
     putLocationBodyMaterial:
       properties:
-        body:
-          type: integer
         antimony:
           type: number
           format: float
