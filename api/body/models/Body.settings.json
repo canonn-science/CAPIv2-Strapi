@@ -25,10 +25,10 @@
     "edsmID64": {
       "type": "float"
     },
-    "bodyType": {
+    "edsmType": {
       "type": "string"
     },
-    "bodySubtype": {
+    "edsmSubtype": {
       "type": "string"
     },
     "edsmOffset": {
@@ -79,12 +79,6 @@
     "edsmAtmosphereType": {
       "type": "string"
     },
-    "bodyAtmosphere": {
-      "type": "json"
-    },
-    "bodyMaterial": {
-      "type": "json"
-    },
     "edsmTerraformingState": {
       "type": "string"
     },
@@ -111,6 +105,12 @@
     },
     "edsmAxialTilt": {
       "type": "float"
+    },
+    "edsmAtmosphere": {
+      "type": "json"
+    },
+    "edsmMaterial": {
+      "type": "json"
     },
     "rings": {
       "collection": "ring",

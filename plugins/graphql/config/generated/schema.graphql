@@ -43,8 +43,8 @@ type Body {
   bodyName: String!
   edsmID: Float
   edsmID64: Float
-  bodyType: String
-  bodySubtype: String
+  edsmType: String
+  edsmSubtype: String
   edsmOffset: Int
   edsmDistanceToArrival: Float
   edsmIsMainStar: Boolean
@@ -61,8 +61,6 @@ type Body {
   edsmSurfaceTemperature: Float
   edsmVolcanismType: String
   edsmAtmosphereType: String
-  bodyAtmosphere: JSON
-  bodyMaterial: JSON
   edsmTerraformingState: String
   edsmOrbitalPeriod: Float
   edsmSemiMajorAxis: Float
@@ -72,6 +70,8 @@ type Body {
   edsmRotationalPeriod: Float
   edsmRotationalPeriodTidallyLocked: Boolean
   edsmAxialTilt: Float
+  edsmAtmosphere: JSON
+  edsmMaterial: JSON
   rings(sort: String, limit: Int, start: Int, where: JSON): [Ring]
   bodyLocations(sort: String, limit: Int, start: Int, where: JSON): [Location]
 }
