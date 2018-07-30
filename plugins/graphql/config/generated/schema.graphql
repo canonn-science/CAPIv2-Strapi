@@ -43,8 +43,8 @@ type Body {
   bodyName: String!
   edsmID: Float
   edsmID64: Float
-  bodyType: Bodytype
-  bodySubtype: Bodysubtype
+  bodyType: String
+  bodySubtype: String
   edsmOffset: Int
   edsmDistanceToArrival: Float
   edsmIsMainStar: Boolean
@@ -61,8 +61,8 @@ type Body {
   edsmSurfaceTemperature: Float
   edsmVolcanismType: String
   edsmAtmosphereType: String
-  bodyAtmosphere: Bodyatmosphere
-  bodyMaterial: Bodymaterial
+  bodyAtmosphere: JSON
+  bodyMaterial: JSON
   edsmTerraformingState: String
   edsmOrbitalPeriod: Float
   edsmSemiMajorAxis: Float
@@ -74,75 +74,6 @@ type Body {
   edsmAxialTilt: Float
   rings(sort: String, limit: Int, start: Int, where: JSON): [Ring]
   bodyLocations(sort: String, limit: Int, start: Int, where: JSON): [Location]
-}
-
-"""Atmosphere makup of a body"""
-type Bodyatmosphere {
-  id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  body: Body
-  argon: Float
-  ammonia: Float
-  carbonDioxide: Float
-  hydrogen: Float
-  helium: Float
-  iron: Float
-  neon: Float
-  methane: Float
-  nitrogen: Float
-  oxygen: Float
-  silicates: Float
-  sulphurDioxide: Float
-  water: Float
-}
-
-"""Material makeup of a body"""
-type Bodymaterial {
-  id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  body: Body
-  antimony: Float
-  arsenic: Float
-  boron: Float
-  cadmium: Float
-  carbon: Float
-  chromium: Float
-  germanium: Float
-  iron: Float
-  lead: Float
-  manganese: Float
-  mercury: Float
-  molybdenum: Float
-  nickel: Float
-  niobium: Float
-  phosphorus: Float
-  polonium: Float
-  rhenium: Float
-  ruthenium: Float
-  selenium: Float
-  sulphur: Float
-  technetium: Float
-  tellurium: Float
-  tin: Float
-  tungsten: Float
-  vanadium: Float
-  yttrium: Float
-  zinc: Float
-  zirconium: Float
-}
-
-"""Subtype of a body"""
-type Bodysubtype {
-  id: ID!
-  subtype: String!
-}
-
-"""Type of a body"""
-type Bodytype {
-  id: ID!
-  type: String!
 }
 
 """Reporting for Brain Trees"""
@@ -890,7 +821,7 @@ type Lssite {
   discoveredBy: Cmdr
 }
 
-union Morph = Bmreport | Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysubtype | Bodytype | Btreport | Btsite | Cmdr | Factionkillreport | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategory | Grcodexdata | Grobelisk | Grobeliskgroup | Grobeliskgroupreport | Grobeliskreport | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsobeliskgroupreport | Gsobeliskreport | Gsreport | Gssite | Gstype | Gyreport | Gysite | Gytype | Hdreport | Hdsite | Journaldata | Location | Lsreport | Lssite | Msreport | Mssite | Mstype | Nhsstopcmdrsbykill | Ring | Ringtype | System | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Ussreport | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union Morph = Bmreport | Bmsite | Body | Btreport | Btsite | Cmdr | Factionkillreport | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategory | Grcodexdata | Grobelisk | Grobeliskgroup | Grobeliskgroupreport | Grobeliskreport | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsobeliskgroupreport | Gsobeliskreport | Gsreport | Gssite | Gstype | Gyreport | Gysite | Gytype | Hdreport | Hdsite | Journaldata | Location | Lsreport | Lssite | Msreport | Mssite | Mstype | Nhsstopcmdrsbykill | Ring | Ringtype | System | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Ussreport | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 """Reporting for Megaships"""
 type Msreport {
@@ -965,14 +896,6 @@ type Query {
   bmsites(sort: String, limit: Int, start: Int, where: JSON): [Bmsite]
   body(id: ID!): Body
   bodies(sort: String, limit: Int, start: Int, where: JSON): [Body]
-  bodyatmosphere(id: ID!): Bodyatmosphere
-  bodyatmospheres(sort: String, limit: Int, start: Int, where: JSON): [Bodyatmosphere]
-  bodymaterial(id: ID!): Bodymaterial
-  bodymaterials(sort: String, limit: Int, start: Int, where: JSON): [Bodymaterial]
-  bodysubtype(id: ID!): Bodysubtype
-  bodysubtypes(sort: String, limit: Int, start: Int, where: JSON): [Bodysubtype]
-  bodytype(id: ID!): Bodytype
-  bodytypes(sort: String, limit: Int, start: Int, where: JSON): [Bodytype]
   btreport(id: ID!): Btreport
   btreports(sort: String, limit: Int, start: Int, where: JSON): [Btreport]
   btsite(id: ID!): Btsite
