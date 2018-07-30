@@ -133,7 +133,7 @@ CREATE TABLE `bodies` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `bodies_UN_edsmID` (`edsmID`),
   FULLTEXT KEY `SEARCH_BODIES` (`bodyName`,`edsmLuminosity`,`edsmVolcanismType`,`edsmAtmosphereType`,`edsmTerraformingState`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1411,7 +1411,7 @@ CREATE TABLE `journaldata` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_JOURNALDATA` (`eventName`,`systemName`,`bodyName`,`stationName`,`cmdrName`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1420,7 +1420,6 @@ CREATE TABLE `journaldata` (
 
 LOCK TABLES `journaldata` WRITE;
 /*!40000 ALTER TABLE `journaldata` DISABLE KEYS */;
-INSERT INTO `journaldata` VALUES (1,'test','test','Test','test','test',1234.1234,1234.1234,1,'\"undefined\"','2018-07-30 09:31:25','2018-07-30 09:33:00');
 /*!40000 ALTER TABLE `journaldata` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2285,4 +2284,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-07-30 15:42:58
+-- Dump completed on 2018-07-30 15:44:41
