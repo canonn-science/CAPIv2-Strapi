@@ -25,6 +25,9 @@
     "edsmID64": {
       "type": "float"
     },
+    "edsmBodyID": {
+      "type": "integer"
+    },
     "edsmType": {
       "type": "string"
     },
@@ -73,6 +76,9 @@
     "edsmSurfaceTemperature": {
       "type": "float"
     },
+    "edsmSurfacePressure": {
+      "type": "float"
+    },
     "edsmVolcanismType": {
       "type": "string"
     },
@@ -105,6 +111,9 @@
     },
     "edsmAxialTilt": {
       "type": "float"
+    },
+    "edsmSolidComposition": {
+      "type": "json"
     },
     "edsmAtmosphere": {
       "type": "json"
