@@ -10499,6 +10499,149 @@ components:
         type:
           type: string
 
+  ## Global GET, POST, PUT Schemas
+
+    bodySolidComposition:
+      properties:
+        ice:
+          type: number
+          format: float
+        metal:
+          type: number
+          format: float
+        rock:
+          type: number
+          format: float
+
+    bodyAtmosphere:
+      properties:
+        argon:
+          type: number
+          format: float
+        ammonia:
+          type: number
+          format: float
+        carbonDioxide:
+          type: number
+          format: float
+        hydrogen:
+          type: number
+          format: float
+        helium:
+          type: number
+          format: float
+        iron:
+          type: number
+          format: float
+        neon:
+          type: number
+          format: float
+        methane:
+          type: number
+          format: float
+        nitrogen:
+          type: number
+          format: float
+        oxygen:
+          type: number
+          format: float
+        silicates:
+          type: number
+          format: float
+        sulphurDioxide:
+          type: number
+          format: float
+        water:
+          type: number
+          format: float
+
+    bodyMaterial:
+      properties:
+        antimony:
+          type: number
+          format: float
+        arsenic:
+          type: number
+          format: float
+        boron:
+          type: number
+          format: float
+        cadmium:
+          type: number
+          format: float
+        carbon:
+          type: number
+          format: float
+        chromium:
+          type: number
+          format: float
+        germanium:
+          type: number
+          format: float
+        iron:
+          type: number
+          format: float
+        lead:
+          type: number
+          format: float
+        manganese:
+          type: number
+          format: float
+        mercury:
+          type: number
+          format: float
+        molybdenum:
+          type: number
+          format: float
+        nickel:
+          type: number
+          format: float
+        niobium:
+          type: number
+          format: float
+        phosphorus:
+          type: number
+          format: float
+        polonium:
+          type: number
+          format: float
+        rhenium:
+          type: number
+          format: float
+        ruthenium:
+          type: number
+          format: float
+        selenium:
+          type: number
+          format: float
+        sulphur:
+          type: number
+          format: float
+        technetium:
+          type: number
+          format: float
+        tellurium:
+          type: number
+          format: float
+        tin:
+          type: number
+          format: float
+        tungsten:
+          type: number
+          format: float
+        vanadium:
+          type: number
+          format: float
+        yttrium:
+          type: number
+          format: float
+        zinc:
+          type: number
+          format: float
+        zirconium:
+          type: number
+          format: float
+
   ## GET Reports
     getReportPlanet:
       properties:
@@ -11035,6 +11178,8 @@ components:
         edsmID64:
           type: number
           format: double
+        edsmBodyID:
+          type: integer
         edsmType:
           type: string
         edsmSubtype:
@@ -11075,6 +11220,9 @@ components:
         edsmSurfaceTemperature:
           type: number
           format: float
+        edsmSurfacePressure:
+          type: number
+          format: float
         edsmVolcanismType:
           type: string
         edsmAtmosphereType:
@@ -11104,10 +11252,12 @@ components:
         edsmAxialTilt:
           type: number
           format: float
+        edsmSolidComposition:
+          $ref: '#/components/schemas/bodySolidComposition'
         edsmAtmosphere:
-          $ref: '#/components/schemas/getLocationBodyAtmosphere'
+          $ref: '#/components/schemas/bodyAtmosphere'
         edsmMaterial:
-          $ref: '#/components/schemas/getLocationBodyMaterial'
+          $ref: '#/components/schemas/bodyMaterial'
         rings:
           $ref: '#/components/schemas/getLocationRing'
         bodyLocations:
@@ -11118,135 +11268,6 @@ components:
         updated_at:
           type: string
           format: date-time
-
-    getLocationBodyAtmosphere:
-      properties:
-        argon:
-          type: number
-          format: float
-        ammonia:
-          type: number
-          format: float
-        carbonDioxide:
-          type: number
-          format: float
-        hydrogen:
-          type: number
-          format: float
-        helium:
-          type: number
-          format: float
-        iron:
-          type: number
-          format: float
-        neon:
-          type: number
-          format: float
-        methane:
-          type: number
-          format: float
-        nitrogen:
-          type: number
-          format: float
-        oxygen:
-          type: number
-          format: float
-        silicates:
-          type: number
-          format: float
-        sulphurDioxide:
-          type: number
-          format: float
-        water:
-          type: number
-          format: float
-
-    getLocationBodyMaterial:
-      properties:
-        antimony:
-          type: number
-          format: float
-        arsenic:
-          type: number
-          format: float
-        boron:
-          type: number
-          format: float
-        cadmium:
-          type: number
-          format: float
-        carbon:
-          type: number
-          format: float
-        chromium:
-          type: number
-          format: float
-        germanium:
-          type: number
-          format: float
-        iron:
-          type: number
-          format: float
-        lead:
-          type: number
-          format: float
-        manganese:
-          type: number
-          format: float
-        mercury:
-          type: number
-          format: float
-        molybdenum:
-          type: number
-          format: float
-        nickel:
-          type: number
-          format: float
-        niobium:
-          type: number
-          format: float
-        phosphorus:
-          type: number
-          format: float
-        polonium:
-          type: number
-          format: float
-        rhenium:
-          type: number
-          format: float
-        ruthenium:
-          type: number
-          format: float
-        selenium:
-          type: number
-          format: float
-        sulphur:
-          type: number
-          format: float
-        technetium:
-          type: number
-          format: float
-        tellurium:
-          type: number
-          format: float
-        tin:
-          type: number
-          format: float
-        tungsten:
-          type: number
-          format: float
-        vanadium:
-          type: number
-          format: float
-        yttrium:
-          type: number
-          format: float
-        zinc:
-          type: number
-          format: float
-        zirconium:
-          type: number
-          format: float
 
     getLocationRing:
       properties:
@@ -12548,6 +12569,8 @@ components:
         edsmID64:
           type: number
           format: double
+        edsmBodyID:
+          type: integer
         edsmType:
           type: string
         edsmSubtype:
@@ -12588,6 +12611,9 @@ components:
         edsmSurfaceTemperature:
           type: number
           format: float
+        edsmSurfacePressure:
+          type: number
+          format: float
         edsmVolcanismType:
           type: string
         edsmAtmosphereType:
@@ -12617,139 +12643,12 @@ components:
         edsmAxialTilt:
           type: number
           format: float
+        edsmSolidComposition:
+          $ref: '#/components/schemas/bodySolidComposition'
         edsmAtmosphere:
-          $ref: '#/components/schemas/postLocationBodyAtmosphere'
+          $ref: '#/components/schemas/bodyAtmosphere'
         edsmMaterial:
-          $ref: '#/components/schemas/postLocationBodyMaterial'
-
-    postLocationBodyAtmosphere:
-      properties:
-        argon:
-          type: number
-          format: float
-        ammonia:
-          type: number
-          format: float
-        carbonDioxide:
-          type: number
-          format: float
-        hydrogen:
-          type: number
-          format: float
-        helium:
-          type: number
-          format: float
-        iron:
-          type: number
-          format: float
-        neon:
-          type: number
-          format: float
-        methane:
-          type: number
-          format: float
-        nitrogen:
-          type: number
-          format: float
-        oxygen:
-          type: number
-          format: float
-        silicates:
-          type: number
-          format: float
-        sulphurDioxide:
-          type: number
-          format: float
-        water:
-          type: number
-          format: float
-
-    postLocationBodyMaterial:
-      properties:
-        antimony:
-          type: number
-          format: float
-        arsenic:
-          type: number
-          format: float
-        boron:
-          type: number
-          format: float
-        cadmium:
-          type: number
-          format: float
-        carbon:
-          type: number
-          format: float
-        chromium:
-          type: number
-          format: float
-        germanium:
-          type: number
-          format: float
-        iron:
-          type: number
-          format: float
-        lead:
-          type: number
-          format: float
-        manganese:
-          type: number
-          format: float
-        mercury:
-          type: number
-          format: float
-        molybdenum:
-          type: number
-          format: float
-        nickel:
-          type: number
-          format: float
-        niobium:
-          type: number
-          format: float
-        phosphorus:
-          type: number
-          format: float
-        polonium:
-          type: number
-          format: float
-        rhenium:
-          type: number
-          format: float
-        ruthenium:
-          type: number
-          format: float
-        selenium:
-          type: number
-          format: float
-        sulphur:
-          type: number
-          format: float
-        technetium:
-          type: number
-          format: float
-        tellurium:
-          type: number
-          format: float
-        tin:
-          type: number
-          format: float
-        tungsten:
-          type: number
-          format: float
-        vanadium:
-          type: number
-          format: float
-        yttrium:
-          type: number
-          format: float
-        zinc:
-          type: number
-          format: float
-        zirconium:
-          type: number
-          format: float
+          $ref: '#/components/schemas/bodyMaterial'
 
     postLocationRing:
       required:
@@ -13890,6 +13789,8 @@ components:
         edsmID64:
           type: number
           format: double
+        edsmBodyID:
+          type: integer
         edsmType:
           type: string
         edsmSubtype:
@@ -13930,6 +13831,9 @@ components:
         edsmSurfaceTemperature:
           type: number
           format: float
+        edsmSurfacePressure:
+          type: number
+          format: float
         edsmVolcanismType:
           type: string
         edsmAtmosphereType:
@@ -13959,139 +13863,12 @@ components:
         edsmAxialTilt:
           type: number
           format: float
+        edsmSolidComposition:
+          $ref: '#/components/schemas/bodySolidComposition'
         edsmAtmosphere:
-          $ref: '#/components/schemas/putLocationBodyAtmosphere'
+          $ref: '#/components/schemas/bodyAtmosphere'
         edsmMaterial:
-          $ref: '#/components/schemas/putLocationBodyMaterial'
-
-    putLocationBodyAtmosphere:
-      properties:
-        argon:
-          type: number
-          format: float
-        ammonia:
-          type: number
-          format: float
-        carbonDioxide:
-          type: number
-          format: float
-        hydrogen:
-          type: number
-          format: float
-        helium:
-          type: number
-          format: float
-        iron:
-          type: number
-          format: float
-        neon:
-          type: number
-          format: float
-        methane:
-          type: number
-          format: float
-        nitrogen:
-          type: number
-          format: float
-        oxygen:
-          type: number
-          format: float
-        silicates:
-          type: number
-          format: float
-        sulphurDioxide:
-          type: number
-          format: float
-        water:
-          type: number
-          format: float
-
-    putLocationBodyMaterial:
-      properties:
-        antimony:
-          type: number
-          format: float
-        arsenic:
-          type: number
-          format: float
-        boron:
-          type: number
-          format: float
-        cadmium:
-          type: number
-          format: float
-        carbon:
-          type: number
-          format: float
-        chromium:
-          type: number
-          format: float
-        germanium:
-          type: number
-          format: float
-        iron:
-          type: number
-          format: float
-        lead:
-          type: number
-          format: float
-        manganese:
-          type: number
-          format: float
-        mercury:
-          type: number
-          format: float
-        molybdenum:
-          type: number
-          format: float
-        nickel:
-          type: number
-          format: float
-        niobium:
-          type: number
-          format: float
-        phosphorus:
-          type: number
-          format: float
-        polonium:
-          type: number
-          format: float
-        rhenium:
-          type: number
-          format: float
-        ruthenium:
-          type: number
-          format: float
-        selenium:
-          type: number
-          format: float
-        sulphur:
-          type: number
-          format: float
-        technetium:
-          type: number
-          format: float
-        tellurium:
-          type: number
-          format: float
-        tin:
-          type: number
-          format: float
-        tungsten:
-          type: number
-          format: float
-        vanadium:
-          type: number
-          format: float
-        yttrium:
-          type: number
-          format: float
-        zinc:
-          type: number
-          format: float
-        zirconium:
-          type: number
-          format: float
+          $ref: '#/components/schemas/bodyMaterial'
 
     putLocationRing:
       properties:
