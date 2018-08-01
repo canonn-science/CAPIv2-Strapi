@@ -25,11 +25,14 @@
     "edsmID64": {
       "type": "float"
     },
-    "bodyType": {
-      "model": "bodytype"
+    "edsmBodyID": {
+      "type": "integer"
     },
-    "bodySubtype": {
-      "model": "bodysubtype"
+    "edsmType": {
+      "type": "string"
+    },
+    "edsmSubtype": {
+      "type": "string"
     },
     "edsmOffset": {
       "type": "integer"
@@ -73,19 +76,14 @@
     "edsmSurfaceTemperature": {
       "type": "float"
     },
+    "edsmSurfacePressure": {
+      "type": "float"
+    },
     "edsmVolcanismType": {
       "type": "string"
     },
     "edsmAtmosphereType": {
       "type": "string"
-    },
-    "bodyAtmosphere": {
-      "model": "bodyatmosphere",
-      "via": "body"
-    },
-    "bodyMaterial": {
-      "model": "bodymaterial",
-      "via": "body"
     },
     "edsmTerraformingState": {
       "type": "string"
@@ -113,6 +111,15 @@
     },
     "edsmAxialTilt": {
       "type": "float"
+    },
+    "edsmSolidComposition": {
+      "type": "json"
+    },
+    "edsmAtmosphere": {
+      "type": "json"
+    },
+    "edsmMaterial": {
+      "type": "json"
     },
     "rings": {
       "collection": "ring",
