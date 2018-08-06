@@ -258,7 +258,7 @@ enum ENUM_TBREPORT_CYCLE {
   ABC
 }
 
-enum ENUM_TBREPORT_DEFENSES {
+enum ENUM_TBREPORT_DEFENSE {
   None
   Capship
   Drones
@@ -1113,7 +1113,7 @@ type Tbreport {
   longitude: Float!
   type: ENUM_TBREPORT_TYPE!
   cycle: ENUM_TBREPORT_CYCLE!
-  defenses: ENUM_TBREPORT_DEFENSES
+  defense: ENUM_TBREPORT_DEFENSE
   count: Int
   cmdrName: String!
   cmdrComment: String

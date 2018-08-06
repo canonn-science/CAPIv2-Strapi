@@ -11355,6 +11355,10 @@ components:
           format: float
         type:
           type: string
+        cycle:
+          type: string
+        defense:
+          type: string
         count:
           type: integer
         cmdrName:
@@ -12263,6 +12267,10 @@ components:
           format: float
         type:
           $ref: '#/components/schemas/getSiteTBType'
+        cycle:
+          $ref: '#/components/schemas/getSiteTBCycle'
+        defense:
+          $ref: '#/components/schemas/getSiteTBDefense'
         verified:
           type: boolean
         visible:
@@ -12281,6 +12289,20 @@ components:
         id:
           type: integer
         type:
+          type: string
+
+    getSiteTBCycle:
+      properties:
+        id:
+          type: integer
+        cycle:
+          type: string
+
+    getSiteTBDefense:
+      properties:
+        id:
+          type: integer
+        defenseType:
           type: string
 
     getSiteTS:
@@ -12724,6 +12746,7 @@ components:
         - latitude
         - longitude
         - type
+        - cycle
         - cmdrName
         - reportStatus
       properties:
@@ -12742,6 +12765,22 @@ components:
           enum:
             - Barnacle
             - Megabarnacle
+        cycle:
+          type: string
+          enum:
+            - Unknown
+            - A
+            - B
+            - C
+            - ABC
+        defense:
+          type: string
+          enum:
+            - None
+            - Capship
+            - Drones
+            - Thargbots
+            - Turrets
         count:
           type: integer
         cmdrName:
@@ -13565,6 +13604,7 @@ components:
         - latitude
         - longitude
         - type
+        - cycle
         - verified
         - discoveredBy
       properties:
@@ -13580,6 +13620,10 @@ components:
           format: float
         type:
           type: integer
+        cycle:
+          type: integer
+        defense:
+          type: integer
         verified:
           type: boolean
         visible:
@@ -13592,6 +13636,20 @@ components:
         - type
       properties:
         type:
+          type: string
+
+    postSiteTBCycle:
+      required:
+        - cycle
+      properties:
+        cycle:
+          type: string
+
+    postSiteTBDefense:
+      required:
+        - defenseType
+      properties:
+        defenseType:
           type: string
 
     postSiteTS:
@@ -13979,6 +14037,22 @@ components:
           enum:
             - Barnacle
             - Megabarnacle
+        cycle:
+          type: string
+          enum:
+            - Unknown
+            - A
+            - B
+            - C
+            - ABC
+        defense:
+          type: string
+          enum:
+            - None
+            - Capship
+            - Drones
+            - Thargbots
+            - Turrets
         count:
           type: integer
         cmdrName:
@@ -14648,6 +14722,10 @@ components:
           format: float
         type:
           type: integer
+        cycle:
+          type: integer
+        defense:
+          type: integer
         verified:
           type: boolean
         visible:
@@ -14658,6 +14736,16 @@ components:
     putSiteTBType:
       properties:
         type:
+          type: string
+
+    putSiteTBCycle:
+      properties:
+        cycle:
+          type: string
+
+    putSiteTBDefense:
+      properties:
+        defenseType:
           type: string
 
     putSiteTS:
