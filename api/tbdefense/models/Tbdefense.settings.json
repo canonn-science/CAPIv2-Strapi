@@ -1,0 +1,20 @@
+{
+  "connection": "default",
+  "collectionName": "tbdefenses",
+  "info": {
+    "name": "tbdefense",
+    "description": "Thargoid Barnacle Defenses"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": false,
+    "comment": ""
+  },
+  "attributes": {
+    "defenseType": {
+      "unique": true,
+      "type": "string",
+      "required": true
+    }
+  }
+}

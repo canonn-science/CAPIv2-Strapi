@@ -23,7 +23,7 @@ install:
   - sed -i s/examplepassword//g config/environments/development/database.json
   - cat config/environments/development/database.json
   - mysql -u root --password="" -e 'CREATE DATABASE canonntest'
-  - mysql -u root --password="" canonntest < seed_files/SQL/development-v2_0_8-20180801.sql
+  - mysql -u root --password="" canonntest < seed_files/SQL/development-v2_0_9-20180806.sql
   - npm install
 
 script:

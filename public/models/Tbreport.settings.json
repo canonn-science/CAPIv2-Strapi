@@ -35,6 +35,27 @@
       "type": "enumeration",
       "required": true
     },
+    "cycle": {
+      "enum": [
+        "Unknown",
+        "A",
+        "B",
+        "C",
+        "ABC"
+      ],
+      "type": "enumeration",
+      "required": true
+    },
+    "defense": {
+      "enum": [
+        "None",
+        "Capship",
+        "Drones",
+        "Thargbots",
+        "Turrets"
+      ],
+      "type": "enumeration"
+    },
     "count": {
       "min": 1,
       "type": "integer"
@@ -60,10 +81,10 @@
       "required": true,
       "enum": [
         "pending",
-        " updated",
-        " accepted",
-        " declined",
-        " issue"
+        "updated",
+        "accepted",
+        "declined",
+        "issue"
       ]
     },
     "reportComment": {
