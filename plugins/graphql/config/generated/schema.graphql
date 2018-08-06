@@ -250,6 +250,22 @@ enum ENUM_MSREPORT_REPORTSTATUS {
   issue
 }
 
+enum ENUM_TBREPORT_CYCLE {
+  Unknown
+  A
+  B
+  C
+  ABC
+}
+
+enum ENUM_TBREPORT_DEFENSES {
+  None
+  Capship
+  Drones
+  Thargbots
+  Turrets
+}
+
 enum ENUM_TBREPORT_REPORTSTATUS {
   pending
   updated
@@ -824,7 +840,7 @@ type Lssite {
   discoveredBy: Cmdr
 }
 
-union Morph = Bmreport | Bmsite | Body | Btreport | Btsite | Cmdr | Factionkillreport | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategory | Grcodexdata | Grobelisk | Grobeliskgroup | Grobeliskgroupreport | Grobeliskreport | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsobeliskgroupreport | Gsobeliskreport | Gsreport | Gssite | Gstype | Gyreport | Gysite | Gytype | Hdreport | Hdsite | Journaldata | Location | Lsreport | Lssite | Msreport | Mssite | Mstype | Nhsstopcmdrsbykill | Ring | Ringtype | System | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Ussreport | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union Morph = Bmreport | Bmsite | Body | Btreport | Btsite | Cmdr | Factionkillreport | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategory | Grcodexdata | Grobelisk | Grobeliskgroup | Grobeliskgroupreport | Grobeliskreport | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsobeliskgroupreport | Gsobeliskreport | Gsreport | Gssite | Gstype | Gyreport | Gysite | Gytype | Hdreport | Hdsite | Journaldata | Location | Lsreport | Lssite | Msreport | Mssite | Mstype | Nhsstopcmdrsbykill | Ring | Ringtype | System | Tbcycle | Tbdefense | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Ussreport | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 """Reporting for Megaships"""
 type Msreport {
@@ -1001,6 +1017,10 @@ type Query {
   ringtypes(sort: String, limit: Int, start: Int, where: JSON): [Ringtype]
   system(id: ID!): System
   systems(sort: String, limit: Int, start: Int, where: JSON): [System]
+  tbcycle(id: ID!): Tbcycle
+  tbcycles(sort: String, limit: Int, start: Int, where: JSON): [Tbcycle]
+  tbdefense(id: ID!): Tbdefense
+  tbdefenses(sort: String, limit: Int, start: Int, where: JSON): [Tbdefense]
   tbreport(id: ID!): Tbreport
   tbreports(sort: String, limit: Int, start: Int, where: JSON): [Tbreport]
   tbsite(id: ID!): Tbsite
@@ -1070,6 +1090,18 @@ type System {
   systemLocations(sort: String, limit: Int, start: Int, where: JSON): [Location]
 }
 
+"""Thargoid Barnacle Cycles"""
+type Tbcycle {
+  id: ID!
+  cycle: String!
+}
+
+"""Thargoid Barnacle Defenses"""
+type Tbdefense {
+  id: ID!
+  defenseType: String!
+}
+
 """Reporting for Thargoid Barnacles"""
 type Tbreport {
   id: ID!
@@ -1080,6 +1112,8 @@ type Tbreport {
   latitude: Float!
   longitude: Float!
   type: ENUM_TBREPORT_TYPE!
+  cycle: ENUM_TBREPORT_CYCLE!
+  defenses: ENUM_TBREPORT_DEFENSES
   count: Int
   cmdrName: String!
   cmdrComment: String
@@ -1101,8 +1135,11 @@ type Tbsite {
   siteID: Int!
   latitude: Float!
   longitude: Float!
-  count: Int
   type: Tbtype
+  cycle: Tbcycle
+  defense: Tbdefense
+  count: Int
+  comment: String
   verified: Boolean
   visible: Boolean
   discoveredBy: Cmdr

@@ -29,12 +29,21 @@
       "type": "float",
       "required": true
     },
+    "type": {
+      "model": "tbtype"
+    },
+    "cycle": {
+      "model": "tbcycle"
+    },
+    "defense": {
+      "model": "tbdefense"
+    },
     "count": {
       "min": 1,
       "type": "integer"
     },
-    "type": {
-      "model": "tbtype"
+    "comment": {
+      "type": "text"
     },
     "verified": {
       "type": "boolean"

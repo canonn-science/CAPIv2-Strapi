@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/tbdefense",
+      "handler": "Tbdefense.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tbdefense/count",
+      "handler": "Tbdefense.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tbdefense/:id",
+      "handler": "Tbdefense.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tbdefense",
+      "handler": "Tbdefense.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tbdefense/:id",
+      "handler": "Tbdefense.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tbdefense/:id",
+      "handler": "Tbdefense.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tbdefense/:id/relationships/:relation",
+      "handler": "Tbdefense.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tbdefense/:id/relationships/:relation",
+      "handler": "Tbdefense.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tbdefense/:id/relationships/:relation",
+      "handler": "Tbdefense.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/tbcycle",
+      "handler": "Tbcycle.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tbcycle/count",
+      "handler": "Tbcycle.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tbcycle/:id",
+      "handler": "Tbcycle.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tbcycle",
+      "handler": "Tbcycle.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tbcycle/:id",
+      "handler": "Tbcycle.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tbcycle/:id",
+      "handler": "Tbcycle.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tbcycle/:id/relationships/:relation",
+      "handler": "Tbcycle.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tbcycle/:id/relationships/:relation",
+      "handler": "Tbcycle.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tbcycle/:id/relationships/:relation",
+      "handler": "Tbcycle.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
