@@ -24,12 +24,14 @@ install:
   - cat config/environments/development/database.json
   - mysql -u root --password="" -e 'CREATE DATABASE canonntest'
   - mysql -u root --password="" canonntest < seed_files/SQL/development-v2_0_9-20180806.sql
+  - npm install -g newman
   - npm install
 
 script:
   - NODE_ENV=development pm2 start strapi --no-pmx --name="capiv2" -- start
   - sleep 10
   - curl http://localhost:1337/grartifact
+  - newman run https://api.getpostman.com/collections/5037027-5b43c426-6b1e-4120-99e3-5556fc489b14?apikey=6de9506ee9b744a4832c7041af6ae914
   - cat /home/travis/.pm2/logs/capiv2-error-0.log
   - cat /home/travis/.pm2/logs/capiv2-out-0.log
 
