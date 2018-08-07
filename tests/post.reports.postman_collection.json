@@ -24,11 +24,6 @@
 									"});",
 									"",
 									"",
-									"pm.test(\"Response time is less than 200ms\", function () {",
-									"    pm.expect(pm.response.responseTime).to.be.below(200);",
-									"});",
-									"",
-									"",
 									"var jsonData = JSON.parse(responseBody);",
 									"pm.environment.set(\"jwt\", jsonData.jwt);"
 								]
