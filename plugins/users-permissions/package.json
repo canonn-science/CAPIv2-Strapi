@@ -1,8 +1,8 @@
 {
   "_from": "strapi-plugin-users-permissions@alpha",
-  "_id": "strapi-plugin-users-permissions@3.0.0-alpha.13",
+  "_id": "strapi-plugin-users-permissions@3.0.0-alpha.13.1",
   "_inBundle": false,
-  "_integrity": "sha512-oRCCkS+lYDCiD6S6tElP6O9gHPlpKsddS5ybkL7vKIqPyzoiVHqfNFE/bxO7+/UVAu+pwfqBuLy6e4/k1TLSFA==",
+  "_integrity": "sha512-pVf21eUomj0SeC/eNrivCdfxwvAZthkxG/5vYTxgLgFI4fO/BMCTCHGjwIP3YZntOJ9L0vgeW+0rzLXxzHdKvw==",
   "_location": "/strapi-plugin-users-permissions",
   "_phantomChildren": {},
   "_requested": {
@@ -18,10 +18,10 @@
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "https://registry.npmjs.org/strapi-plugin-users-permissions/-/strapi-plugin-users-permissions-3.0.0-alpha.13.tgz",
-  "_shasum": "14684283ee56359edeb7dd9b68bda921f5324ee5",
+  "_resolved": "https://registry.npmjs.org/strapi-plugin-users-permissions/-/strapi-plugin-users-permissions-3.0.0-alpha.13.1.tgz",
+  "_shasum": "8afc25660ddb58a1be6f74b02af83b3c649ede42",
   "_spec": "strapi-plugin-users-permissions@alpha",
-  "_where": "/nixstorage/Github/capi/CAPIv2-208",
+  "_where": "/mnt/nixstorage/Github/Canonn/CAPIv2-209",
   "author": {
     "name": "Strapi team",
     "email": "hi@strapi.io",
@@ -36,6 +36,7 @@
     "grant-koa": "^3.8.1",
     "jsonwebtoken": "^8.1.0",
     "koa": "^2.1.0",
+    "koa2-ratelimit": "^0.6.1",
     "purest": "^2.0.1",
     "request": "^2.83.0",
     "uuid": "^3.1.0"
@@ -43,7 +44,7 @@
   "deprecated": false,
   "description": "Protect your API with a full-authentication process based on JWT",
   "devDependencies": {
-    "strapi-helper-plugin": "3.0.0-alpha.13"
+    "strapi-helper-plugin": "3.0.0-alpha.13.1"
   },
   "engines": {
     "node": ">= 9.0.0",
@@ -82,5 +83,5 @@
     "icon": "users",
     "description": "users-permissions.plugin.description"
   },
-  "version": "3.0.0-alpha.13"
+  "version": "3.0.0-alpha.13.1"
 }
