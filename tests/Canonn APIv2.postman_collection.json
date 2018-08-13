@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "ad503ec6-4e67-41b8-9a12-613610d6a74f",
+		"_postman_id": "2c90145d-62e9-4c74-a4d5-898e95bb6eb1",
 		"name": "Canonn APIv2",
 		"description": "An API for all the Science related information Canonn has in its datastores stored on the Gnosis, built using [Strapi](https://strapi.io) a Nodejs API framework. \n\nWe have two different documentation types, our [Redocs](https://api.canonn.tech) or use the [Swagger-UI](https://api.canonn.tech/swaggerui)\n\nWe also have 3 API servers; Live (Production), Beta (Staging), Alpha (Development). You should use the Beta server for testing your application prior to using the Live server. The Alpha server is used by Canonn to test our changes prior to releasing a new version.\n\nData between the Live and Beta servers are replicated as needed, eventually we plan to dynamically replicate the data every night at midnight Phoenix, Arizona USA time (MST-Arizona GMT-7)\n\nHere are the following URLs for each server\n\n* Live - https://api.canonn.tech\n* Beta - https://api.canonn.tech:2053\n* Alpha - https://api.canonn.tech:2083\n\nThank you for your support, and thank you to all the CMDRs who supply us with our data!\n",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -8,7 +8,6 @@
 	"item": [
 		{
 			"name": "auth",
-			"description": "Folder for auth",
 			"item": [
 				{
 					"name": "Login to the Canonn APIv2 Server",
@@ -60,12 +59,43 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Folder for auth"
 		},
 		{
 			"name": "bmreport",
-			"description": "Folder for bmreport",
 			"item": [
+				{
+					"name": "Post a new BM Report",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/bmreport",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bmreport"
+							]
+						},
+						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
+					},
+					"response": []
+				},
 				{
 					"name": "Get a count of all BM Reports",
 					"request": {
@@ -140,37 +170,6 @@
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
-					},
-					"response": []
-				},
-				{
-					"name": "Post a new BM Report",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/bmreport",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"bmreport"
-							]
-						},
-						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
 					},
 					"response": []
 				},
@@ -288,12 +287,43 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Folder for bmreport"
 		},
 		{
 			"name": "btreport",
-			"description": "Folder for btreport",
 			"item": [
+				{
+					"name": "Post a new BT Report",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/btreport",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"btreport"
+							]
+						},
+						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
+					},
+					"response": []
+				},
 				{
 					"name": "Get a count of all BT Reports",
 					"request": {
@@ -368,37 +398,6 @@
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
-					},
-					"response": []
-				},
-				{
-					"name": "Post a new BT Report",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/btreport",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"btreport"
-							]
-						},
-						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
 					},
 					"response": []
 				},
@@ -516,12 +515,43 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Folder for btreport"
 		},
 		{
 			"name": "fgreport",
-			"description": "Folder for fgreport",
 			"item": [
+				{
+					"name": "Post a new FG Report",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/fgreport",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fgreport"
+							]
+						},
+						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
+					},
+					"response": []
+				},
 				{
 					"name": "Get a count of all FG Reports",
 					"event": [
@@ -624,37 +654,6 @@
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
-					},
-					"response": []
-				},
-				{
-					"name": "Post a new FG Report",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/fgreport",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"fgreport"
-							]
-						},
-						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
 					},
 					"response": []
 				},
@@ -772,12 +771,43 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Folder for fgreport"
 		},
 		{
 			"name": "fmreport",
-			"description": "Folder for fmreport",
 			"item": [
+				{
+					"name": "Post a new FM Report",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/fmreport",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fmreport"
+							]
+						},
+						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
+					},
+					"response": []
+				},
 				{
 					"name": "Get a count of all FM Reports",
 					"request": {
@@ -852,37 +882,6 @@
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
-					},
-					"response": []
-				},
-				{
-					"name": "Post a new FM Report",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/fmreport",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"fmreport"
-							]
-						},
-						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
 					},
 					"response": []
 				},
@@ -1000,12 +999,43 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Folder for fmreport"
 		},
 		{
 			"name": "genreport",
-			"description": "Folder for genreport",
 			"item": [
+				{
+					"name": "Post a new GEN Report",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/genreport",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"genreport"
+							]
+						},
+						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
+					},
+					"response": []
+				},
 				{
 					"name": "Get a count of all GEN Reports",
 					"request": {
@@ -1080,37 +1110,6 @@
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
-					},
-					"response": []
-				},
-				{
-					"name": "Post a new GEN Report",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/genreport",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"genreport"
-							]
-						},
-						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
 					},
 					"response": []
 				},
@@ -1228,12 +1227,43 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Folder for genreport"
 		},
 		{
 			"name": "grobeliskgroupreport",
-			"description": "Folder for grobeliskgroupreport",
 			"item": [
+				{
+					"name": "Post a new GR Obelisk Group Report",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/grobeliskgroupreport",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"grobeliskgroupreport"
+							]
+						},
+						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
+					},
+					"response": []
+				},
 				{
 					"name": "Get a count of all GR Obelisk Group Reports",
 					"request": {
@@ -1308,37 +1338,6 @@
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
-					},
-					"response": []
-				},
-				{
-					"name": "Post a new GR Obelisk Group Report",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/grobeliskgroupreport",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"grobeliskgroupreport"
-							]
-						},
-						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
 					},
 					"response": []
 				},
@@ -1456,12 +1455,43 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Folder for grobeliskgroupreport"
 		},
 		{
 			"name": "grobeliskreport",
-			"description": "Folder for grobeliskreport",
 			"item": [
+				{
+					"name": "Post a new GR Obelisk Report",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/grobeliskreport",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"grobeliskreport"
+							]
+						},
+						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
+					},
+					"response": []
+				},
 				{
 					"name": "Get a count of all GR Obelisk Reports",
 					"request": {
@@ -1536,37 +1566,6 @@
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
-					},
-					"response": []
-				},
-				{
-					"name": "Post a new GR Obelisk Report",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/grobeliskreport",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"grobeliskreport"
-							]
-						},
-						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
 					},
 					"response": []
 				},
@@ -1684,12 +1683,43 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Folder for grobeliskreport"
 		},
 		{
 			"name": "grreport",
-			"description": "Folder for grreport",
 			"item": [
+				{
+					"name": "Post a new GR Report",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/grreport",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"grreport"
+							]
+						},
+						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
+					},
+					"response": []
+				},
 				{
 					"name": "Get a count of all GR Reports",
 					"request": {
@@ -1764,37 +1794,6 @@
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
-					},
-					"response": []
-				},
-				{
-					"name": "Post a new GR Report",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/grreport",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"grreport"
-							]
-						},
-						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
 					},
 					"response": []
 				},
@@ -1912,12 +1911,43 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Folder for grreport"
 		},
 		{
 			"name": "gsobeliskgroupreport",
-			"description": "Folder for gsobeliskgroupreport",
 			"item": [
+				{
+					"name": "Post a new GS Obelisk Group Report",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/gsobeliskgroupreport",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gsobeliskgroupreport"
+							]
+						},
+						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
+					},
+					"response": []
+				},
 				{
 					"name": "Get a count of all GS Obelisk Group Reports",
 					"request": {
@@ -1992,37 +2022,6 @@
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
-					},
-					"response": []
-				},
-				{
-					"name": "Post a new GS Obelisk Group Report",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/gsobeliskgroupreport",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"gsobeliskgroupreport"
-							]
-						},
-						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
 					},
 					"response": []
 				},
@@ -2140,12 +2139,43 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Folder for gsobeliskgroupreport"
 		},
 		{
 			"name": "gsobeliskreport",
-			"description": "Folder for gsobeliskreport",
 			"item": [
+				{
+					"name": "Post a new GS Obelisk Report",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/gsobeliskreport",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gsobeliskreport"
+							]
+						},
+						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
+					},
+					"response": []
+				},
 				{
 					"name": "Get a count of all GS Obelisk Reports",
 					"request": {
@@ -2220,37 +2250,6 @@
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
-					},
-					"response": []
-				},
-				{
-					"name": "Post a new GS Obelisk Report",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/gsobeliskreport",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"gsobeliskreport"
-							]
-						},
-						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
 					},
 					"response": []
 				},
@@ -2368,12 +2367,43 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Folder for gsobeliskreport"
 		},
 		{
 			"name": "gsreport",
-			"description": "Folder for gsreport",
 			"item": [
+				{
+					"name": "Post a new GS Report",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/gsreport",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gsreport"
+							]
+						},
+						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
+					},
+					"response": []
+				},
 				{
 					"name": "Get a count of all GS Reports",
 					"request": {
@@ -2448,37 +2478,6 @@
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
-					},
-					"response": []
-				},
-				{
-					"name": "Post a new GS Report",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/gsreport",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"gsreport"
-							]
-						},
-						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
 					},
 					"response": []
 				},
@@ -2596,12 +2595,43 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Folder for gsreport"
 		},
 		{
 			"name": "gyreport",
-			"description": "Folder for gyreport",
 			"item": [
+				{
+					"name": "Post a new GY Report",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/gyreport",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gyreport"
+							]
+						},
+						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
+					},
+					"response": []
+				},
 				{
 					"name": "Get a count of all GY Reports",
 					"event": [
@@ -2690,37 +2720,6 @@
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
-					},
-					"response": []
-				},
-				{
-					"name": "Post a new GY Report",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/gyreport",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"gyreport"
-							]
-						},
-						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
 					},
 					"response": []
 				},
@@ -2838,12 +2837,43 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Folder for gyreport"
 		},
 		{
 			"name": "lsreport",
-			"description": "Folder for lsreport",
 			"item": [
+				{
+					"name": "Post a new LS Report",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/lsreport",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"lsreport"
+							]
+						},
+						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
+					},
+					"response": []
+				},
 				{
 					"name": "Get a count of all LS Reports",
 					"request": {
@@ -2918,37 +2948,6 @@
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
-					},
-					"response": []
-				},
-				{
-					"name": "Post a new LS Report",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/lsreport",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"lsreport"
-							]
-						},
-						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
 					},
 					"response": []
 				},
@@ -3066,12 +3065,43 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Folder for lsreport"
 		},
 		{
 			"name": "msreport",
-			"description": "Folder for msreport",
 			"item": [
+				{
+					"name": "Post a new MS Report",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/msreport",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"msreport"
+							]
+						},
+						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
+					},
+					"response": []
+				},
 				{
 					"name": "Get a count of all MS Reports",
 					"request": {
@@ -3146,37 +3176,6 @@
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
-					},
-					"response": []
-				},
-				{
-					"name": "Post a new MS Report",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/msreport",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"msreport"
-							]
-						},
-						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
 					},
 					"response": []
 				},
@@ -3294,12 +3293,43 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Folder for msreport"
 		},
 		{
 			"name": "tbreport",
-			"description": "Folder for tbreport",
 			"item": [
+				{
+					"name": "Post a new TB Report",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/tbreport",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tbreport"
+							]
+						},
+						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
+					},
+					"response": []
+				},
 				{
 					"name": "Get a count of all TB Reports",
 					"request": {
@@ -3374,37 +3404,6 @@
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
-					},
-					"response": []
-				},
-				{
-					"name": "Post a new TB Report",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/tbreport",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"tbreport"
-							]
-						},
-						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
 					},
 					"response": []
 				},
@@ -3522,12 +3521,43 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Folder for tbreport"
 		},
 		{
 			"name": "tsreport",
-			"description": "Folder for tsreport",
 			"item": [
+				{
+					"name": "Post a new TS Report",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/tsreport",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tsreport"
+							]
+						},
+						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
+					},
+					"response": []
+				},
 				{
 					"name": "Get a count of all TS Reports",
 					"request": {
@@ -3602,37 +3632,6 @@
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
-					},
-					"response": []
-				},
-				{
-					"name": "Post a new TS Report",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/tsreport",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"tsreport"
-							]
-						},
-						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
 					},
 					"response": []
 				},
@@ -3750,12 +3749,43 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Folder for tsreport"
 		},
 		{
 			"name": "twreport",
-			"description": "Folder for twreport",
 			"item": [
+				{
+					"name": "Post a new TW Report",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/twreport",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"twreport"
+							]
+						},
+						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
+					},
+					"response": []
+				},
 				{
 					"name": "Get a count of all TW Reports",
 					"request": {
@@ -3830,37 +3860,6 @@
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
-					},
-					"response": []
-				},
-				{
-					"name": "Post a new TW Report",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/twreport",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"twreport"
-							]
-						},
-						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
 					},
 					"response": []
 				},
@@ -3978,7 +3977,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Folder for twreport"
 		}
 	],
 	"event": [
