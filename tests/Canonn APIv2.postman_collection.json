@@ -604,12 +604,10 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "1a1db9af-dd1a-4e6c-93ff-a0838a02a741",
+								"id": "a35719ec-61b5-4a23-86dc-90256b2a3466",
 								"type": "text/javascript",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
+									""
 								]
 							}
 						}
@@ -3998,7 +3996,9 @@
 				"id": "6a6feec7-3306-4e8f-8168-b58979ff68e4",
 				"type": "text/javascript",
 				"exec": [
-					""
+					"pm.test(\"Status code is 200\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});"
 				]
 			}
 		}
