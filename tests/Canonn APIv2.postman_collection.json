@@ -15,14 +15,9 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "a5f11b1b-4e72-49ff-bc97-b6e33109849c",
+								"id": "2ee2b4eb-b1cf-4f63-b43f-30ab2c4fe3f6",
 								"type": "text/javascript",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"",
-									"",
 									"var jsonData = JSON.parse(responseBody);",
 									"pm.environment.set(\"jwt\", jsonData.jwt);"
 								]
@@ -67,6 +62,19 @@
 			"item": [
 				{
 					"name": "Post a new BM Report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cdb46c39-655f-4a30-9695-17d7498c5716",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"id\", jsonData.id);"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -295,6 +303,19 @@
 			"item": [
 				{
 					"name": "Post a new BT Report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "81dba4e2-e250-4ce7-af55-6c8e5882e8ef",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"id\", jsonData.id);"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -523,6 +544,19 @@
 			"item": [
 				{
 					"name": "Post a new FG Report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "91b266a8-b871-4cf6-953b-edf308472e9d",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"id\", jsonData.id);"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -558,12 +592,10 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "acd262da-589a-4a32-a256-a8552b037c6d",
+								"id": "625dc4dc-7e85-47c1-abf0-858dd9edc3d1",
 								"type": "text/javascript",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
+									""
 								]
 							}
 						}
@@ -777,6 +809,19 @@
 			"item": [
 				{
 					"name": "Post a new FM Report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5d64bb3a-a6d5-4a48-a0a1-833dc785e44e",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"id\", jsonData.id);"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1005,6 +1050,19 @@
 			"item": [
 				{
 					"name": "Post a new GEN Report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ad88f874-5afe-4c3b-859f-1936b574a973",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"id\", jsonData.id);"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1233,6 +1291,19 @@
 			"item": [
 				{
 					"name": "Post a new GR Obelisk Group Report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "202e3148-8541-4641-b8e0-83d18314c177",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"id\", jsonData.id);"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1461,6 +1532,19 @@
 			"item": [
 				{
 					"name": "Post a new GR Obelisk Report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "13edd304-9171-4456-aec7-c3ce8e17bb95",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"id\", jsonData.id);"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1689,6 +1773,19 @@
 			"item": [
 				{
 					"name": "Post a new GR Report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "618fded6-9c4d-4d9a-b580-319c86e35d4e",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"id\", jsonData.id);"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1917,6 +2014,19 @@
 			"item": [
 				{
 					"name": "Post a new GS Obelisk Group Report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "75faf47a-ef32-40e0-876c-8d8fd7026db2",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"id\", jsonData.id);"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -2145,6 +2255,19 @@
 			"item": [
 				{
 					"name": "Post a new GS Obelisk Report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0c19a9cd-39e1-4ac7-846b-3db1f907e7b2",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"id\", jsonData.id);"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -2373,6 +2496,19 @@
 			"item": [
 				{
 					"name": "Post a new GS Report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8d4ca807-8a77-4e91-82f9-a6dfd0755c60",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"id\", jsonData.id);"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -2601,6 +2737,19 @@
 			"item": [
 				{
 					"name": "Post a new GY Report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "081c76c1-7c68-426f-a0dd-2a8285c1511a",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"id\", jsonData.id);"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -2843,6 +2992,19 @@
 			"item": [
 				{
 					"name": "Post a new LS Report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1a3d43c5-8f39-43b3-a3b0-7a386ff01d79",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"id\", jsonData.id);"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -3071,6 +3233,19 @@
 			"item": [
 				{
 					"name": "Post a new MS Report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "132b5564-5381-41da-92c5-ea51a457baca",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"id\", jsonData.id);"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -3299,6 +3474,19 @@
 			"item": [
 				{
 					"name": "Post a new TB Report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f37b6ee9-be13-408c-9042-03018e796bce",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"id\", jsonData.id);"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -3527,6 +3715,19 @@
 			"item": [
 				{
 					"name": "Post a new TS Report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a26e4821-3e14-4a81-ba7a-2d8a80d14233",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"id\", jsonData.id);"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -3755,6 +3956,19 @@
 			"item": [
 				{
 					"name": "Post a new TW Report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e3947e77-e345-4fda-a6e5-5a568559c6c1",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"id\", jsonData.id);"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
