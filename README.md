@@ -1,7 +1,7 @@
 # Canonn API v2 - (CAPIv2)
 
-[![Strapi Version](https://img.shields.io/badge/strapi-v3.0.0--alpha.13.0.1-blue.svg)](https://github.com/strapi/strapi) 
-[![CAPIv2 Version](https://img.shields.io/badge/capiv2-v2.0.8-orange.svg)](https://api.canonn.tech:2083) 
+[![Strapi Version](https://img.shields.io/badge/strapi-v3.0.0--alpha.13.1-blue.svg)](https://github.com/strapi/strapi) 
+[![CAPIv2 Version](https://img.shields.io/badge/capiv2-v2.0.9-orange.svg)](https://api.canonn.tech:2083) 
 [![Build Status](https://travis-ci.org/canonn-science/CAPIv2-Strapi.svg?branch=development)](https://travis-ci.org/canonn-science/CAPIv2-Strapi)
 [![EDCD Discord](https://img.shields.io/discord/164411426939600896.svg?logo=discord&label=EDCD%20Discord)](https://discord.gg/fhDWZBH)
 [![Canonn Discord](https://img.shields.io/discord/146714487695605760.svg?logo=discord&label=Canonn%20Discord)](https://discord.gg/HzzmG2f)
@@ -44,13 +44,17 @@ The Canonn APIv2 is designed to handle all our current science projects. Current
 * Generation Ships (GEN)
 * Guardian Ruins (GR)
   * Guardian Ruins Active Obelisks
+  * Guardian Ruins Active Groups
 * Guardian Structures (GS)
   * Guardian Structures Active Obelisks
+  * Guardian Structures Active Groups
 * Geysers (GY)
 * Hyperdictions (HD)
 * Lava Spouts (LS)
 * Megaships (MS)
 * Thargoid Barnacles (TB)
+  * Thargoid Barnacles Cycles
+  * Thargoid Barnacles Defenses
 * Thargoid Structures (TS)
 * Tubeworms (TW)
 * Unknown Signal Sources (USS)
@@ -68,11 +72,15 @@ Also we are tracking the following:
 
 ## Current Version
 
-The current version of the CAPIv2 is `v2.0.8` and is still in active development and testing. If you would like to contribute please PM DMehaffy on discord `DMehaffy#1337`
+The current version of the CAPIv2 is `v2.0.9` and is still in active development and testing. If you would like to contribute please PM DMehaffy on discord `DMehaffy#1337`
 
 # API Documentation
 
 A static copy of our docs is located in the `/public` folder, you can view the progress of this documentation on our Docs repo here: https://github.com/canonn-science/CAPIv2-Swagger
+
+We currently have two different views of our swagger docs, either via Redocs or the Swagger-UI.
+[Redocs for Development](https://api.canonn.tech:2083/)
+[Swagger-UI for Development](https://api.canonn.tech:2083/swaggerui/)
 
 # Prerequisites
 
@@ -82,7 +90,7 @@ You will need the following:
 - Node v10 or above
 - NPM v6 or above
 - Node Pm2 (For running API as a service)
-- Strapi Alpha v13.0.1
+- Strapi Alpha v13.1
 - MariaDB 10.2 or above
 
 ## Installing Git, Node v10, and NPM v6
