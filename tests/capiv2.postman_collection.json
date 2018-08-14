@@ -1,13 +1,14 @@
 {
 	"info": {
-		"_postman_id": "2c90145d-62e9-4c74-a4d5-898e95bb6eb1",
-		"name": "Canonn APIv2",
+		"_postman_id": "5154ddfe-1480-4470-9d4f-451c0317b08b",
+		"name": "Canonn APIv2 Postman Test Collection",
 		"description": "An API for all the Science related information Canonn has in its datastores stored on the Gnosis, built using [Strapi](https://strapi.io) a Nodejs API framework. \n\nWe have two different documentation types, our [Redocs](https://api.canonn.tech) or use the [Swagger-UI](https://api.canonn.tech/swaggerui)\n\nWe also have 3 API servers; Live (Production), Beta (Staging), Alpha (Development). You should use the Beta server for testing your application prior to using the Live server. The Alpha server is used by Canonn to test our changes prior to releasing a new version.\n\nData between the Live and Beta servers are replicated as needed, eventually we plan to dynamically replicate the data every night at midnight Phoenix, Arizona USA time (MST-Arizona GMT-7)\n\nHere are the following URLs for each server\n\n* Live - https://api.canonn.tech\n* Beta - https://api.canonn.tech:2053\n* Alpha - https://api.canonn.tech:2083\n\nThank you for your support, and thank you to all the CMDRs who supply us with our data!\n",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "auth",
+			"description": "Folder for auth",
 			"item": [
 				{
 					"name": "Login to the Canonn APIv2 Server",
@@ -57,11 +58,11 @@
 					},
 					"response": []
 				}
-			],
-			"description": "Folder for auth"
+			]
 		},
 		{
 			"name": "bmreport",
+			"description": "Folder for bmreport",
 			"item": [
 				{
 					"name": "Post a new BM Report",
@@ -69,11 +70,23 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "cdb46c39-655f-4a30-9695-17d7498c5716",
+								"id": "7a25a6c5-a9b6-42e4-9f2f-b8df64b9c221",
 								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
-									"pm.environment.set(\"id\", jsonData.id);"
+									"pm.environment.set(\"bmID\", jsonData.id);",
+									"",
+									"pm.test(\"BM created values match\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.systemName).to.eql(\"ROSETTE SECTOR EL-Y D15\");",
+									"    pm.expect(jsonData.bodyName).to.eql(\"2 B\");",
+									"    pm.expect(jsonData.latitude).to.eql(-3.3269);",
+									"    pm.expect(jsonData.longitude).to.eql(139.8931);",
+									"    pm.expect(jsonData.count).to.eql(1);",
+									"    pm.expect(jsonData.cmdrName).to.eql(\"Galactic Fork\");",
+									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Bark Mound Report\");",
+									"    pm.expect(jsonData.reportStatus).to.eql(\"pending\");",
+									"});"
 								]
 							}
 						}
@@ -92,7 +105,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n  \"systemName\": \"ROSETTE SECTOR EL-Y D15\",\n  \"bodyName\": \"2 B\",\n  \"latitude\": -3.3269,\n  \"longitude\": 139.8931,\n  \"count\": 1,\n  \"cmdrName\": \"Galactic Fork\",\n  \"cmdrComment\": \"TEST - Bark Mound Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/bmreport",
@@ -109,6 +122,18 @@
 				},
 				{
 					"name": "Get a count of all BM Reports",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "629f0cc8-d3ef-4609-a825-385443e7b2e3",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
@@ -158,29 +183,65 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/bmreport?_start={{_start}}&_limit={{_limit}}&_q={{_q}}",
+							"raw": "{{url}}/bmreport",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"bmreport"
-							],
-							"query": [
-								{
-									"key": "_start",
-									"value": "{{_start}}"
-								},
-								{
-									"key": "_limit",
-									"value": "{{_limit}}"
-								},
-								{
-									"key": "_q",
-									"value": "{{_q}}"
-								}
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
+					},
+					"response": []
+				},
+				{
+					"name": "Update a BM Report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b0975f36-1998-4d34-a0ac-614a8b09c2cf",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"BM updated values match\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.isBeta).to.eql(true);",
+									"    pm.expect(jsonData.reportStatus).to.eql(\"declined\");",
+									"    pm.expect(jsonData.reportComment).to.eql(\"TEST - Update entry\");",
+									"    pm.expect(jsonData.voteCount).to.eql(1);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
+						},
+						"url": {
+							"raw": "{{url}}/bmreport/{{bmID}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bmreport",
+								"{{bmID}}"
+							]
+						},
+						"description": "You do not need to send the entire report again, you can send only changed fields"
 					},
 					"response": []
 				},
@@ -203,60 +264,16 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/bmreport/:id",
+							"raw": "{{url}}/bmreport/{{bmID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"bmreport",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "{{id}}"
-								}
+								"{{bmID}}"
 							]
 						},
 						"description": "Provide the ID to get a single report"
-					},
-					"response": []
-				},
-				{
-					"name": "Update a BM Report",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/bmreport/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"bmreport",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "{{id}}"
-								}
-							]
-						},
-						"description": "You do not need to send the entire report again, you can send only changed fields"
 					},
 					"response": []
 				},
@@ -289,30 +306,24 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/bmreport/:id",
+							"raw": "{{url}}/bmreport/{{bmID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"bmreport",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "{{id}}"
-								}
+								"{{bmID}}"
 							]
 						},
 						"description": "The response is just an empty JSON, deleting a report requires auth"
 					},
 					"response": []
 				}
-			],
-			"description": "Folder for bmreport"
+			]
 		},
 		{
 			"name": "btreport",
+			"description": "Folder for btreport",
 			"item": [
 				{
 					"name": "Post a new BT Report",
@@ -320,11 +331,23 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "81dba4e2-e250-4ce7-af55-6c8e5882e8ef",
+								"id": "c378ed6a-e559-45a0-81c5-2726089bcde6",
 								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
-									"pm.environment.set(\"id\", jsonData.id);"
+									"pm.environment.set(\"btID\", jsonData.id);",
+									"",
+									"pm.test(\"BT created values match\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.systemName).to.eql(\"164 G. CANIS MAJORIS\");",
+									"    pm.expect(jsonData.bodyName).to.eql(\"5 C A\");",
+									"    pm.expect(jsonData.latitude).to.eql(-4.8631);",
+									"    pm.expect(jsonData.longitude).to.eql(3.0394);",
+									"    pm.expect(jsonData.count).to.eql(2);",
+									"    pm.expect(jsonData.cmdrName).to.eql(\"Panpiper\");",
+									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Brain Tree Report\");",
+									"    pm.expect(jsonData.reportStatus).to.eql(\"pending\");",
+									"});"
 								]
 							}
 						}
@@ -343,7 +366,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n  \"systemName\": \"164 G. CANIS MAJORIS\",\n  \"bodyName\": \"5 C A\",\n  \"latitude\": -4.8631,\n  \"longitude\": 3.0394,\n  \"count\": 2,\n  \"cmdrName\": \"Panpiper\",\n  \"cmdrComment\": \"TEST - Brain Tree Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/btreport",
@@ -409,29 +432,65 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/btreport?_start={{_start}}&_limit={{_limit}}&_q={{_q}}",
+							"raw": "{{url}}/btreport",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"btreport"
-							],
-							"query": [
-								{
-									"key": "_start",
-									"value": "{{_start}}"
-								},
-								{
-									"key": "_limit",
-									"value": "{{_limit}}"
-								},
-								{
-									"key": "_q",
-									"value": "{{_q}}"
-								}
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
+					},
+					"response": []
+				},
+				{
+					"name": "Update a BT Report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f9de374f-9151-4d8e-b684-940cbf989544",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"BT updated values match\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.isBeta).to.eql(true);",
+									"    pm.expect(jsonData.reportStatus).to.eql(\"declined\");",
+									"    pm.expect(jsonData.reportComment).to.eql(\"TEST - Update entry\");",
+									"    pm.expect(jsonData.voteCount).to.eql(1);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
+						},
+						"url": {
+							"raw": "{{url}}/btreport/{{btID}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"btreport",
+								"{{btID}}"
+							]
+						},
+						"description": "You do not need to send the entire report again, you can send only changed fields"
 					},
 					"response": []
 				},
@@ -454,60 +513,16 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/btreport/:id",
+							"raw": "{{url}}/btreport/{{btID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"btreport",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "{{id}}"
-								}
+								"{{btID}}"
 							]
 						},
 						"description": "Provide the ID to get a single report"
-					},
-					"response": []
-				},
-				{
-					"name": "Update a BT Report",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/btreport/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"btreport",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "{{id}}"
-								}
-							]
-						},
-						"description": "You do not need to send the entire report again, you can send only changed fields"
 					},
 					"response": []
 				},
@@ -540,30 +555,24 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/btreport/:id",
+							"raw": "{{url}}/btreport/{{btID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"btreport",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "{{id}}"
-								}
+								"{{btID}}"
 							]
 						},
 						"description": "The response is just an empty JSON, deleting a report requires auth"
 					},
 					"response": []
 				}
-			],
-			"description": "Folder for btreport"
+			]
 		},
 		{
 			"name": "fgreport",
+			"description": "Folder for fgreport",
 			"item": [
 				{
 					"name": "Post a new FG Report",
@@ -571,11 +580,23 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "91b266a8-b871-4cf6-953b-edf308472e9d",
+								"id": "ecbff825-7c06-4fca-a92e-cede755b3ae9",
 								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
-									"pm.environment.set(\"id\", jsonData.id);"
+									"pm.environment.set(\"fgID\", jsonData.id);",
+									"",
+									"pm.test(\"FG created values match\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.systemName).to.eql(\"HIP 37610\");",
+									"    pm.expect(jsonData.bodyName).to.eql(\"A 6 C A\");",
+									"    pm.expect(jsonData.latitude).to.eql(-1.4054);",
+									"    pm.expect(jsonData.longitude).to.eql(140.8423);",
+									"    pm.expect(jsonData.count).to.eql(3);",
+									"    pm.expect(jsonData.cmdrName).to.eql(\"Clobbertime\");",
+									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Fungal Gourd Report\");",
+									"    pm.expect(jsonData.reportStatus).to.eql(\"pending\");",
+									"});"
 								]
 							}
 						}
@@ -594,7 +615,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n  \"systemName\": \"HIP 37610\",\n  \"bodyName\": \"A 6 C A\",\n  \"latitude\": -1.4054,\n  \"longitude\": 140.8423,\n  \"count\": 3,\n  \"cmdrName\": \"Clobbertime\",\n  \"cmdrComment\": \"TEST - Fungal Gourd Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/fgreport",
@@ -711,44 +732,6 @@
 					"response": []
 				},
 				{
-					"name": "Get a Single FG Report",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/fgreport/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"fgreport",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "{{id}}"
-								}
-							]
-						},
-						"description": "Provide the ID to get a single report"
-					},
-					"response": []
-				},
-				{
 					"name": "Update a FG Report",
 					"request": {
 						"method": "PUT",
@@ -783,6 +766,44 @@
 							]
 						},
 						"description": "You do not need to send the entire report again, you can send only changed fields"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Single FG Report",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/fgreport/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fgreport",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								}
+							]
+						},
+						"description": "Provide the ID to get a single report"
 					},
 					"response": []
 				},
@@ -834,11 +855,11 @@
 					},
 					"response": []
 				}
-			],
-			"description": "Folder for fgreport"
+			]
 		},
 		{
 			"name": "fmreport",
+			"description": "Folder for fmreport",
 			"item": [
 				{
 					"name": "Post a new FM Report",
@@ -846,11 +867,24 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5d64bb3a-a6d5-4a48-a0a1-833dc785e44e",
+								"id": "5429337f-d90b-49b0-a7b2-ec3d7cccefb8",
 								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
-									"pm.environment.set(\"id\", jsonData.id);"
+									"pm.environment.set(\"fmID\", jsonData.id);",
+									"",
+									"pm.test(\"FG created values match\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.systemName).to.eql(\"PROOE PHIO GP-W C3-5\");",
+									"    pm.expect(jsonData.bodyName).to.eql(\"B 3 A\");",
+									"    pm.expect(jsonData.latitude).to.eql(-26.1589);",
+									"    pm.expect(jsonData.longitude).to.eql(-90.6344);",
+									"    pm.expect(jsonData.count).to.eql(4);",
+									"    pm.expect(jsonData.type).to.eql(\"Iron Magma\");",
+									"    pm.expect(jsonData.cmdrName).to.eql(\"Rory Clague\");",
+									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Fumaroles Report\");",
+									"    pm.expect(jsonData.reportStatus).to.eql(\"pending\");",
+									"});"
 								]
 							}
 						}
@@ -869,7 +903,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n  \"systemName\": \"PROOE PHIO GP-W C3-5\",\n  \"bodyName\": \"B 3 A\",\n  \"latitude\": -26.1589,\n  \"longitude\": -90.6344,\n  \"count\": 4,\n  \"type\": \"Iron Magma\",\n  \"cmdrName\": \"Rory Clague\",\n  \"cmdrComment\": \"TEST - Fumaroles Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/fmreport",
@@ -962,44 +996,6 @@
 					"response": []
 				},
 				{
-					"name": "Get a Single FM Report",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/fmreport/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"fmreport",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "{{id}}"
-								}
-							]
-						},
-						"description": "Provide the ID to get a single report"
-					},
-					"response": []
-				},
-				{
 					"name": "Update a FM Report",
 					"request": {
 						"method": "PUT",
@@ -1034,6 +1030,44 @@
 							]
 						},
 						"description": "You do not need to send the entire report again, you can send only changed fields"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Single FM Report",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/fmreport/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fmreport",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								}
+							]
+						},
+						"description": "Provide the ID to get a single report"
 					},
 					"response": []
 				},
@@ -1085,11 +1119,11 @@
 					},
 					"response": []
 				}
-			],
-			"description": "Folder for fmreport"
+			]
 		},
 		{
 			"name": "genreport",
+			"description": "Folder for genreport",
 			"item": [
 				{
 					"name": "Post a new GEN Report",
@@ -1097,11 +1131,23 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ad88f874-5afe-4c3b-859f-1936b574a973",
+								"id": "53fda9fa-555f-457a-955f-6f03cfb72661",
 								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
-									"pm.environment.set(\"id\", jsonData.id);"
+									"pm.environment.set(\"genID\", jsonData.id);",
+									"",
+									"pm.test(\"GEN created values match\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.systemName).to.eql(\"Lalande 2966\");",
+									"    pm.expect(jsonData.orbitBody).to.eql(\"4\");",
+									"    pm.expect(jsonData.shipName).to.eql(\"Generation Ship Hyperion\");",
+									"    pm.expect(jsonData.directionSystem).to.eql(\"Yemaki\");",
+									"    pm.expect(jsonData.distance).to.eql(7340);",
+									"    pm.expect(jsonData.cmdrName).to.eql(\"Unknown\");",
+									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Generation Ship Report\");",
+									"    pm.expect(jsonData.reportStatus).to.eql(\"pending\");",
+									"});"
 								]
 							}
 						}
@@ -1120,7 +1166,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n  \"systemName\": \"Lalande 2966\",\n  \"orbitBody\": \"4\",\n  \"shipName\": \"Generation Ship Hyperion\",\n  \"directionSystem\": \"Yemaki\",\n  \"distance\": 7340,\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Generation Ship Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/genreport",
@@ -1213,44 +1259,6 @@
 					"response": []
 				},
 				{
-					"name": "Get a Single GEN Report",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/genreport/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"genreport",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "{{id}}"
-								}
-							]
-						},
-						"description": "Provide the ID to get a single report"
-					},
-					"response": []
-				},
-				{
 					"name": "Update a GEN Report",
 					"request": {
 						"method": "PUT",
@@ -1285,6 +1293,44 @@
 							]
 						},
 						"description": "You do not need to send the entire report again, you can send only changed fields"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Single GEN Report",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/genreport/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"genreport",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								}
+							]
+						},
+						"description": "Provide the ID to get a single report"
 					},
 					"response": []
 				},
@@ -1336,11 +1382,262 @@
 					},
 					"response": []
 				}
-			],
-			"description": "Folder for genreport"
+			]
+		},
+		{
+			"name": "grreport",
+			"description": "Folder for grreport",
+			"item": [
+				{
+					"name": "Post a new GR Report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "618fded6-9c4d-4d9a-b580-319c86e35d4e",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"id\", jsonData.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/grreport",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"grreport"
+							]
+						},
+						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a count of all GR Reports",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/grreport/count",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"grreport",
+								"count"
+							]
+						},
+						"description": "The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests."
+					},
+					"response": []
+				},
+				{
+					"name": "Get a list of GR Reports",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/grreport?_start={{_start}}&_limit={{_limit}}&_q={{_q}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"grreport"
+							],
+							"query": [
+								{
+									"key": "_start",
+									"value": "{{_start}}"
+								},
+								{
+									"key": "_limit",
+									"value": "{{_limit}}"
+								},
+								{
+									"key": "_q",
+									"value": "{{_q}}"
+								}
+							]
+						},
+						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
+					},
+					"response": []
+				},
+				{
+					"name": "Update a GR Report",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/grreport/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"grreport",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								}
+							]
+						},
+						"description": "You do not need to send the entire report again, you can send only changed fields"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Single GR Report",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/grreport/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"grreport",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								}
+							]
+						},
+						"description": "Provide the ID to get a single report"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a GR Report",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/grreport/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"grreport",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								}
+							]
+						},
+						"description": "The response is just an empty JSON, deleting a report requires auth"
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "grobeliskgroupreport",
+			"description": "Folder for grobeliskgroupreport",
 			"item": [
 				{
 					"name": "Post a new GR Obelisk Group Report",
@@ -1587,11 +1884,11 @@
 					},
 					"response": []
 				}
-			],
-			"description": "Folder for grobeliskgroupreport"
+			]
 		},
 		{
 			"name": "grobeliskreport",
+			"description": "Folder for grobeliskreport",
 			"item": [
 				{
 					"name": "Post a new GR Obelisk Report",
@@ -1838,764 +2135,11 @@
 					},
 					"response": []
 				}
-			],
-			"description": "Folder for grobeliskreport"
-		},
-		{
-			"name": "grreport",
-			"item": [
-				{
-					"name": "Post a new GR Report",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "618fded6-9c4d-4d9a-b580-319c86e35d4e",
-								"type": "text/javascript",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"pm.environment.set(\"id\", jsonData.id);"
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/grreport",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"grreport"
-							]
-						},
-						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
-					},
-					"response": []
-				},
-				{
-					"name": "Get a count of all GR Reports",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/grreport/count",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"grreport",
-								"count"
-							]
-						},
-						"description": "The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests."
-					},
-					"response": []
-				},
-				{
-					"name": "Get a list of GR Reports",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/grreport?_start={{_start}}&_limit={{_limit}}&_q={{_q}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"grreport"
-							],
-							"query": [
-								{
-									"key": "_start",
-									"value": "{{_start}}"
-								},
-								{
-									"key": "_limit",
-									"value": "{{_limit}}"
-								},
-								{
-									"key": "_q",
-									"value": "{{_q}}"
-								}
-							]
-						},
-						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
-					},
-					"response": []
-				},
-				{
-					"name": "Get a Single GR Report",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/grreport/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"grreport",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "{{id}}"
-								}
-							]
-						},
-						"description": "Provide the ID to get a single report"
-					},
-					"response": []
-				},
-				{
-					"name": "Update a GR Report",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/grreport/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"grreport",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "{{id}}"
-								}
-							]
-						},
-						"description": "You do not need to send the entire report again, you can send only changed fields"
-					},
-					"response": []
-				},
-				{
-					"name": "Delete a GR Report",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{jwt}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/grreport/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"grreport",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "{{id}}"
-								}
-							]
-						},
-						"description": "The response is just an empty JSON, deleting a report requires auth"
-					},
-					"response": []
-				}
-			],
-			"description": "Folder for grreport"
-		},
-		{
-			"name": "gsobeliskgroupreport",
-			"item": [
-				{
-					"name": "Post a new GS Obelisk Group Report",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "75faf47a-ef32-40e0-876c-8d8fd7026db2",
-								"type": "text/javascript",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"pm.environment.set(\"id\", jsonData.id);"
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/gsobeliskgroupreport",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"gsobeliskgroupreport"
-							]
-						},
-						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
-					},
-					"response": []
-				},
-				{
-					"name": "Get a count of all GS Obelisk Group Reports",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/gsobeliskgroupreport/count",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"gsobeliskgroupreport",
-								"count"
-							]
-						},
-						"description": "The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests."
-					},
-					"response": []
-				},
-				{
-					"name": "Get a list of GS Obelisk Group Reports",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/gsobeliskgroupreport?_start={{_start}}&_limit={{_limit}}&_q={{_q}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"gsobeliskgroupreport"
-							],
-							"query": [
-								{
-									"key": "_start",
-									"value": "{{_start}}"
-								},
-								{
-									"key": "_limit",
-									"value": "{{_limit}}"
-								},
-								{
-									"key": "_q",
-									"value": "{{_q}}"
-								}
-							]
-						},
-						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
-					},
-					"response": []
-				},
-				{
-					"name": "Get a Single GS Obelisk Group Report",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/gsobeliskgroupreport/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"gsobeliskgroupreport",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "{{id}}"
-								}
-							]
-						},
-						"description": "Provide the ID to get a single report"
-					},
-					"response": []
-				},
-				{
-					"name": "Update a GS Obelisk Group Report",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/gsobeliskgroupreport/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"gsobeliskgroupreport",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "{{id}}"
-								}
-							]
-						},
-						"description": "You do not need to send the entire report again, you can send only changed fields"
-					},
-					"response": []
-				},
-				{
-					"name": "Delete a GS Obelisk Group Report",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{jwt}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/gsobeliskgroupreport/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"gsobeliskgroupreport",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "{{id}}"
-								}
-							]
-						},
-						"description": "The response is just an empty JSON, deleting a report requires auth"
-					},
-					"response": []
-				}
-			],
-			"description": "Folder for gsobeliskgroupreport"
-		},
-		{
-			"name": "gsobeliskreport",
-			"item": [
-				{
-					"name": "Post a new GS Obelisk Report",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "0c19a9cd-39e1-4ac7-846b-3db1f907e7b2",
-								"type": "text/javascript",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"pm.environment.set(\"id\", jsonData.id);"
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/gsobeliskreport",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"gsobeliskreport"
-							]
-						},
-						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
-					},
-					"response": []
-				},
-				{
-					"name": "Get a count of all GS Obelisk Reports",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/gsobeliskreport/count",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"gsobeliskreport",
-								"count"
-							]
-						},
-						"description": "The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests."
-					},
-					"response": []
-				},
-				{
-					"name": "Get a list of GS Obelisk Reports",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/gsobeliskreport?_start={{_start}}&_limit={{_limit}}&_q={{_q}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"gsobeliskreport"
-							],
-							"query": [
-								{
-									"key": "_start",
-									"value": "{{_start}}"
-								},
-								{
-									"key": "_limit",
-									"value": "{{_limit}}"
-								},
-								{
-									"key": "_q",
-									"value": "{{_q}}"
-								}
-							]
-						},
-						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
-					},
-					"response": []
-				},
-				{
-					"name": "Get a Single GS Obelisk Report",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/gsobeliskreport/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"gsobeliskreport",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "{{id}}"
-								}
-							]
-						},
-						"description": "Provide the ID to get a single report"
-					},
-					"response": []
-				},
-				{
-					"name": "Update a GS Obelisk Report",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/gsobeliskreport/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"gsobeliskreport",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "{{id}}"
-								}
-							]
-						},
-						"description": "You do not need to send the entire report again, you can send only changed fields"
-					},
-					"response": []
-				},
-				{
-					"name": "Delete a GS Obelisk Report",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{jwt}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/gsobeliskreport/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"gsobeliskreport",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "{{id}}"
-								}
-							]
-						},
-						"description": "The response is just an empty JSON, deleting a report requires auth"
-					},
-					"response": []
-				}
-			],
-			"description": "Folder for gsobeliskreport"
+			]
 		},
 		{
 			"name": "gsreport",
+			"description": "Folder for gsreport",
 			"item": [
 				{
 					"name": "Post a new GS Report",
@@ -2842,19 +2386,19 @@
 					},
 					"response": []
 				}
-			],
-			"description": "Folder for gsreport"
+			]
 		},
 		{
-			"name": "gyreport",
+			"name": "gsobeliskgroupreport",
+			"description": "Folder for gsobeliskgroupreport",
 			"item": [
 				{
-					"name": "Post a new GY Report",
+					"name": "Post a new GS Obelisk Group Report",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "081c76c1-7c68-426f-a0dd-2a8285c1511a",
+								"id": "75faf47a-ef32-40e0-876c-8d8fd7026db2",
 								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
@@ -2878,6 +2422,521 @@
 						"body": {
 							"mode": "raw",
 							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/gsobeliskgroupreport",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gsobeliskgroupreport"
+							]
+						},
+						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a count of all GS Obelisk Group Reports",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/gsobeliskgroupreport/count",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gsobeliskgroupreport",
+								"count"
+							]
+						},
+						"description": "The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests."
+					},
+					"response": []
+				},
+				{
+					"name": "Get a list of GS Obelisk Group Reports",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/gsobeliskgroupreport?_start={{_start}}&_limit={{_limit}}&_q={{_q}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gsobeliskgroupreport"
+							],
+							"query": [
+								{
+									"key": "_start",
+									"value": "{{_start}}"
+								},
+								{
+									"key": "_limit",
+									"value": "{{_limit}}"
+								},
+								{
+									"key": "_q",
+									"value": "{{_q}}"
+								}
+							]
+						},
+						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Single GS Obelisk Group Report",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/gsobeliskgroupreport/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gsobeliskgroupreport",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								}
+							]
+						},
+						"description": "Provide the ID to get a single report"
+					},
+					"response": []
+				},
+				{
+					"name": "Update a GS Obelisk Group Report",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/gsobeliskgroupreport/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gsobeliskgroupreport",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								}
+							]
+						},
+						"description": "You do not need to send the entire report again, you can send only changed fields"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a GS Obelisk Group Report",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/gsobeliskgroupreport/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gsobeliskgroupreport",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								}
+							]
+						},
+						"description": "The response is just an empty JSON, deleting a report requires auth"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "gsobeliskreport",
+			"description": "Folder for gsobeliskreport",
+			"item": [
+				{
+					"name": "Post a new GS Obelisk Report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0c19a9cd-39e1-4ac7-846b-3db1f907e7b2",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"id\", jsonData.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/gsobeliskreport",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gsobeliskreport"
+							]
+						},
+						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a count of all GS Obelisk Reports",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/gsobeliskreport/count",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gsobeliskreport",
+								"count"
+							]
+						},
+						"description": "The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests."
+					},
+					"response": []
+				},
+				{
+					"name": "Get a list of GS Obelisk Reports",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/gsobeliskreport?_start={{_start}}&_limit={{_limit}}&_q={{_q}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gsobeliskreport"
+							],
+							"query": [
+								{
+									"key": "_start",
+									"value": "{{_start}}"
+								},
+								{
+									"key": "_limit",
+									"value": "{{_limit}}"
+								},
+								{
+									"key": "_q",
+									"value": "{{_q}}"
+								}
+							]
+						},
+						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Single GS Obelisk Report",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/gsobeliskreport/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gsobeliskreport",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								}
+							]
+						},
+						"description": "Provide the ID to get a single report"
+					},
+					"response": []
+				},
+				{
+					"name": "Update a GS Obelisk Report",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/gsobeliskreport/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gsobeliskreport",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								}
+							]
+						},
+						"description": "You do not need to send the entire report again, you can send only changed fields"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a GS Obelisk Report",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/gsobeliskreport/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gsobeliskreport",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								}
+							]
+						},
+						"description": "The response is just an empty JSON, deleting a report requires auth"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "gyreport",
+			"description": "Folder for gyreport",
+			"item": [
+				{
+					"name": "Post a new GY Report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b9317d0e-cd59-43c5-a9de-001feeb256f1",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"gyID\", jsonData.id);",
+									"",
+									"pm.test(\"GY created values match\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.systemName).to.eql(\"XOTHUIA AF-P D6-102\");",
+									"    pm.expect(jsonData.bodyName).to.eql(\"3 D A\");",
+									"    pm.expect(jsonData.latitude).to.eql(38.8111);",
+									"    pm.expect(jsonData.longitude).to.eql(-130.3432);",
+									"    pm.expect(jsonData.count).to.eql(5);",
+									"    pm.expect(jsonData.type).to.eql(\"Silicate Vapour\");",
+									"    pm.expect(jsonData.cmdrName).to.eql(\"Baton\");",
+									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Geyser Report\");",
+									"    pm.expect(jsonData.reportStatus).to.eql(\"pending\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"systemName\": \"XOTHUIA AF-P D6-102\",\n  \"bodyName\": \"3 D A\",\n  \"latitude\": 38.8111,\n  \"longitude\": -130.3432,\n  \"count\": 5,\n  \"type\": \"Silicate Vapour\",\n  \"cmdrName\": \"Baton\",\n  \"cmdrComment\": \"TEST - Geyser Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/gyreport",
@@ -2984,44 +3043,6 @@
 					"response": []
 				},
 				{
-					"name": "Get a Single GY Report",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/gyreport/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"gyreport",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "{{id}}"
-								}
-							]
-						},
-						"description": "Provide the ID to get a single report"
-					},
-					"response": []
-				},
-				{
 					"name": "Update a GY Report",
 					"request": {
 						"method": "PUT",
@@ -3056,6 +3077,44 @@
 							]
 						},
 						"description": "You do not need to send the entire report again, you can send only changed fields"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Single GY Report",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/gyreport/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gyreport",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								}
+							]
+						},
+						"description": "Provide the ID to get a single report"
 					},
 					"response": []
 				},
@@ -3107,11 +3166,11 @@
 					},
 					"response": []
 				}
-			],
-			"description": "Folder for gyreport"
+			]
 		},
 		{
 			"name": "lsreport",
+			"description": "Folder for lsreport",
 			"item": [
 				{
 					"name": "Post a new LS Report",
@@ -3119,11 +3178,23 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "1a3d43c5-8f39-43b3-a3b0-7a386ff01d79",
+								"id": "51f9ded6-ad08-4716-8b16-707f0974e4b9",
 								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
-									"pm.environment.set(\"id\", jsonData.id);"
+									"pm.environment.set(\"lsID\", jsonData.id);",
+									"",
+									"pm.test(\"LS created values match\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.systemName).to.eql(\"DROETH OD-T D3-1\");",
+									"    pm.expect(jsonData.bodyName).to.eql(\"7 E A\");",
+									"    pm.expect(jsonData.latitude).to.eql(75.9209);",
+									"    pm.expect(jsonData.longitude).to.eql(-50.3884);",
+									"    pm.expect(jsonData.count).to.eql(6);",
+									"    pm.expect(jsonData.cmdrName).to.eql(\"Steyla\");",
+									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Lava Spout Report\");",
+									"    pm.expect(jsonData.reportStatus).to.eql(\"pending\");",
+									"});"
 								]
 							}
 						}
@@ -3142,7 +3213,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n  \"systemName\": \"DROETH OD-T D3-1\",\n  \"bodyName\": \"7 E A\",\n  \"latitude\": 75.9209,\n  \"longitude\": -50.3884,\n  \"count\": 6,\n  \"cmdrName\": \"Steyla\",\n  \"cmdrComment\": \"TEST - Lava Spout Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/lsreport",
@@ -3235,44 +3306,6 @@
 					"response": []
 				},
 				{
-					"name": "Get a Single LS Report",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/lsreport/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"lsreport",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "{{id}}"
-								}
-							]
-						},
-						"description": "Provide the ID to get a single report"
-					},
-					"response": []
-				},
-				{
 					"name": "Update a LS Report",
 					"request": {
 						"method": "PUT",
@@ -3307,6 +3340,44 @@
 							]
 						},
 						"description": "You do not need to send the entire report again, you can send only changed fields"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Single LS Report",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/lsreport/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"lsreport",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								}
+							]
+						},
+						"description": "Provide the ID to get a single report"
 					},
 					"response": []
 				},
@@ -3358,11 +3429,11 @@
 					},
 					"response": []
 				}
-			],
-			"description": "Folder for lsreport"
+			]
 		},
 		{
 			"name": "msreport",
+			"description": "Folder for msreport",
 			"item": [
 				{
 					"name": "Post a new MS Report",
@@ -3370,11 +3441,26 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "132b5564-5381-41da-92c5-ea51a457baca",
+								"id": "37b3df62-a609-462a-a649-55e884538057",
 								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
-									"pm.environment.set(\"id\", jsonData.id);"
+									"pm.environment.set(\"msID\", jsonData.id);",
+									"",
+									"pm.test(\"MS created values match\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.systemName).to.eql(\"HIP 17692\");",
+									"    pm.expect(jsonData.orbitBody).to.eql(\"A 3\");",
+									"    pm.expect(jsonData.shipName).to.eql(\"JJF-048\");",
+									"    pm.expect(jsonData.shipTag).to.eql(\"jjf048\");",
+									"    pm.expect(jsonData.type).to.eql(\"Alcatraz Class Prison Ship\");",
+									"    pm.expect(jsonData.flightOps).to.eql(false);",
+									"    pm.expect(jsonData.flightSchedule).to.eql(false);",
+									"    pm.expect(jsonData.dockable).to.eql(false);",
+									"    pm.expect(jsonData.cmdrName).to.eql(\"Unknown\");",
+									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Megaship Report\");",
+									"    pm.expect(jsonData.reportStatus).to.eql(\"pending\");",
+									"});"
 								]
 							}
 						}
@@ -3393,7 +3479,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n  \"systemName\": \"HIP 17692\",\n  \"orbitBody\": \"A 3\",\n  \"shipName\": \"JJF-048\",\n  \"shipTag\": \"jjf048\",\n  \"type\": \"Alcatraz Class Prison Ship\",\n  \"flightOps\": false,\n  \"flightSchedule\": false,\n  \"dockable\": false,\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Megaship Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/msreport",
@@ -3486,44 +3572,6 @@
 					"response": []
 				},
 				{
-					"name": "Get a Single MS Report",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/msreport/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"msreport",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "{{id}}"
-								}
-							]
-						},
-						"description": "Provide the ID to get a single report"
-					},
-					"response": []
-				},
-				{
 					"name": "Update a MS Report",
 					"request": {
 						"method": "PUT",
@@ -3558,6 +3606,44 @@
 							]
 						},
 						"description": "You do not need to send the entire report again, you can send only changed fields"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Single MS Report",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/msreport/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"msreport",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								}
+							]
+						},
+						"description": "Provide the ID to get a single report"
 					},
 					"response": []
 				},
@@ -3609,11 +3695,11 @@
 					},
 					"response": []
 				}
-			],
-			"description": "Folder for msreport"
+			]
 		},
 		{
 			"name": "tbreport",
+			"description": "Folder for tbreport",
 			"item": [
 				{
 					"name": "Post a new TB Report",
@@ -3621,11 +3707,25 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f37b6ee9-be13-408c-9042-03018e796bce",
+								"id": "94d5e216-0320-4b56-8a87-572d8a4bb324",
 								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
-									"pm.environment.set(\"id\", jsonData.id);"
+									"pm.environment.set(\"tbID\", jsonData.id);",
+									"",
+									"pm.test(\"FG created values match\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.systemName).to.eql(\"PLEIONE\");",
+									"    pm.expect(jsonData.bodyName).to.eql(\"11 A\");",
+									"    pm.expect(jsonData.latitude).to.eql(2.3189);",
+									"    pm.expect(jsonData.longitude).to.eql(177.2434);",
+									"    pm.expect(jsonData.cycle).to.eql(\"B\");",
+									"    pm.expect(jsonData.defense).to.eql(\"Unknown\");",
+									"    pm.expect(jsonData.count).to.eql(7);",
+									"    pm.expect(jsonData.cmdrName).to.eql(\"Unknown\");",
+									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Thargoid Barnacle Report\");",
+									"    pm.expect(jsonData.reportStatus).to.eql(\"pending\");",
+									"});"
 								]
 							}
 						}
@@ -3644,7 +3744,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n  \"systemName\": \"PLEIONE\",\n  \"bodyName\": \"11 A\",\n  \"latitude\": 2.3189,\n  \"longitude\": 177.2434,\n  \"type\": \"Barnacle\",\n  \"cycle\": \"B\",\n  \"defense\": \"Unknown\",\n  \"count\": 7,\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Thargoid Barnacle Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/tbreport",
@@ -3737,44 +3837,6 @@
 					"response": []
 				},
 				{
-					"name": "Get a Single TB Report",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/tbreport/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"tbreport",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "{{id}}"
-								}
-							]
-						},
-						"description": "Provide the ID to get a single report"
-					},
-					"response": []
-				},
-				{
 					"name": "Update a TB Report",
 					"request": {
 						"method": "PUT",
@@ -3809,6 +3871,44 @@
 							]
 						},
 						"description": "You do not need to send the entire report again, you can send only changed fields"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Single TB Report",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/tbreport/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tbreport",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								}
+							]
+						},
+						"description": "Provide the ID to get a single report"
 					},
 					"response": []
 				},
@@ -3860,11 +3960,11 @@
 					},
 					"response": []
 				}
-			],
-			"description": "Folder for tbreport"
+			]
 		},
 		{
 			"name": "tsreport",
+			"description": "Folder for tsreport",
 			"item": [
 				{
 					"name": "Post a new TS Report",
@@ -3872,11 +3972,23 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "a26e4821-3e14-4a81-ba7a-2d8a80d14233",
+								"id": "64ee272c-f3db-4081-9ad2-195966251be4",
 								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
-									"pm.environment.set(\"id\", jsonData.id);"
+									"pm.environment.set(\"tsID\", jsonData.id);",
+									"",
+									"pm.test(\"FG created values match\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.systemName).to.eql(\"HIP 19026\");",
+									"    pm.expect(jsonData.bodyName).to.eql(\"B 1 C\");",
+									"    pm.expect(jsonData.latitude).to.eql(-17.9575);",
+									"    pm.expect(jsonData.longitude).to.eql(-152.6994);",
+									"    pm.expect(jsonData.status).to.eql(\"Inactive\");",
+									"    pm.expect(jsonData.cmdrName).to.eql(\"Unknown\");",
+									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Thargoid Structure Report\");",
+									"    pm.expect(jsonData.reportStatus).to.eql(\"pending\");",
+									"});"
 								]
 							}
 						}
@@ -3895,7 +4007,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n  \"systemName\": \"HIP 19026\",\n  \"bodyName\": \"B 1 C\",\n  \"latitude\": -17.9575,\n  \"longitude\": -152.6994,\n  \"status\": \"Inactive\",\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Thargoid Structure Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/tsreport",
@@ -3988,44 +4100,6 @@
 					"response": []
 				},
 				{
-					"name": "Get a Single TS Report",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/tsreport/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"tsreport",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "{{id}}"
-								}
-							]
-						},
-						"description": "Provide the ID to get a single report"
-					},
-					"response": []
-				},
-				{
 					"name": "Update a TS Report",
 					"request": {
 						"method": "PUT",
@@ -4060,6 +4134,44 @@
 							]
 						},
 						"description": "You do not need to send the entire report again, you can send only changed fields"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Single TS Report",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/tsreport/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tsreport",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								}
+							]
+						},
+						"description": "Provide the ID to get a single report"
 					},
 					"response": []
 				},
@@ -4111,11 +4223,11 @@
 					},
 					"response": []
 				}
-			],
-			"description": "Folder for tsreport"
+			]
 		},
 		{
 			"name": "twreport",
+			"description": "Folder for twreport",
 			"item": [
 				{
 					"name": "Post a new TW Report",
@@ -4123,11 +4235,23 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "e3947e77-e345-4fda-a6e5-5a568559c6c1",
+								"id": "725574b2-f764-40c3-8f9c-aa0f0cdbf172",
 								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
-									"pm.environment.set(\"id\", jsonData.id);"
+									"pm.environment.set(\"twID\", jsonData.id);",
+									"",
+									"pm.test(\"FG created values match\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.systemName).to.eql(\"Test System\");",
+									"    pm.expect(jsonData.bodyName).to.eql(\"Test Body\");",
+									"    pm.expect(jsonData.latitude).to.eql(123.1234);",
+									"    pm.expect(jsonData.longitude).to.eql(-123.4321);",
+									"    pm.expect(jsonData.count).to.eql(10);",
+									"    pm.expect(jsonData.cmdrName).to.eql(\"Test CMDR\");",
+									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Tube Worm Report\");",
+									"    pm.expect(jsonData.reportStatus).to.eql(\"pending\");",
+									"});"
 								]
 							}
 						}
@@ -4146,7 +4270,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n  \"systemName\": \"Test System\",\n  \"bodyName\": \"Test Body\",\n  \"latitude\": 123.1234,\n  \"longitude\": -123.4321,\n  \"count\": 10,\n  \"cmdrName\": \"Test CMDR\",\n  \"cmdrComment\": \"TEST - Tube Worm Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/twreport",
@@ -4239,44 +4363,6 @@
 					"response": []
 				},
 				{
-					"name": "Get a Single TW Report",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/twreport/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"twreport",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "{{id}}"
-								}
-							]
-						},
-						"description": "Provide the ID to get a single report"
-					},
-					"response": []
-				},
-				{
 					"name": "Update a TW Report",
 					"request": {
 						"method": "PUT",
@@ -4311,6 +4397,44 @@
 							]
 						},
 						"description": "You do not need to send the entire report again, you can send only changed fields"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Single TW Report",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/twreport/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"twreport",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								}
+							]
+						},
+						"description": "Provide the ID to get a single report"
 					},
 					"response": []
 				},
@@ -4362,8 +4486,7 @@
 					},
 					"response": []
 				}
-			],
-			"description": "Folder for twreport"
+			]
 		}
 	],
 	"event": [
