@@ -33,7 +33,7 @@ script:
   - NODE_ENV=development pm2 start strapi --no-pmx --name="capiv2" -- start
   - sleep 10
   - curl http://localhost:1337/grartifact
-  - newman run 'tests/Canonn APIv2.postman_collection.json' -e tests/postman_environment.json
+  - newman run 'tests/capiv2.postman_collection.json' -e tests/capiv2.postman_environment.json
   - cat /home/travis/.pm2/logs/capiv2-error-0.log
   - cat /home/travis/.pm2/logs/capiv2-out-0.log
 
