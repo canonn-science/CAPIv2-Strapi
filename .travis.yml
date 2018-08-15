@@ -35,7 +35,8 @@ script:
   - curl http://localhost:1337/grartifact
   - newman run 'tests/capiv2.postman_collection.json' -e tests/capiv2.postman_environment.json
   - cat /home/travis/.pm2/logs/capiv2-error-0.log
-  - cat /home/travis/.pm2/logs/capiv2-out-0.log
+# Cutting main log to cut down on TravisCI build log size
+#  - cat /home/travis/.pm2/logs/capiv2-out-0.log
 
 after_success:
   - pm2 stop capiv2
