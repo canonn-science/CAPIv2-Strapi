@@ -1,0 +1,156 @@
+{
+  "$id": "http://localhost:1337/bmreport",
+  "type": "object",
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "id": {
+      "$id": "/properties/id",
+      "type": "integer",
+      "title": "The Id Schema ",
+      "default": 0,
+      "examples": [
+        8
+      ]
+    },
+    "systemName": {
+      "$id": "/properties/systemName",
+      "type": "string",
+      "title": "The Systemname Schema ",
+      "default": "",
+      "examples": [
+        "ROSETTE SECTOR EL-Y D15"
+      ]
+    },
+    "bodyName": {
+      "$id": "/properties/bodyName",
+      "type": "string",
+      "title": "The Bodyname Schema ",
+      "default": "",
+      "examples": [
+        "2 B"
+      ]
+    },
+    "latitude": {
+      "$id": "/properties/latitude",
+      "type": "number",
+      "title": "The Latitude Schema ",
+      "default": 0,
+      "examples": [
+        -3.326900005340576
+      ]
+    },
+    "longitude": {
+      "$id": "/properties/longitude",
+      "type": "number",
+      "title": "The Longitude Schema ",
+      "default": 0,
+      "examples": [
+        139.89309692382812
+      ]
+    },
+    "count": {
+      "$id": "/properties/count",
+      "type": "integer",
+      "title": "The Count Schema ",
+      "default": 0,
+      "examples": [
+        1
+      ]
+    },
+    "cmdrName": {
+      "$id": "/properties/cmdrName",
+      "type": "string",
+      "title": "The Cmdrname Schema ",
+      "default": "",
+      "examples": [
+        "139.8931"
+      ]
+    },
+    "cmdrComment": {
+      "$id": "/properties/cmdrComment",
+      "type": "string",
+      "title": "The Cmdrcomment Schema ",
+      "default": "",
+      "examples": [
+        "Nothing special here"
+      ]
+    },
+    "isBeta": {
+      "$id": "/properties/isBeta",
+      "type": "boolean",
+      "title": "The Isbeta Schema ",
+      "default": false,
+      "examples": [
+        false
+      ]
+    },
+    "reportStatus": {
+      "$id": "/properties/reportStatus",
+      "type": "string",
+      "title": "The Reportstatus Schema ",
+      "default": "",
+      "examples": [
+        "pending"
+      ]
+    },
+    "reportComment": {
+      "$id": "/properties/reportComment",
+      "type": "null",
+      "title": "The Reportcomment Schema ",
+      "default": null,
+      "examples": [
+        null
+      ]
+    },
+    "voteCount": {
+      "$id": "/properties/voteCount",
+      "type": "null",
+      "title": "The Votecount Schema ",
+      "default": null,
+      "examples": [
+        null
+      ]
+    },
+    "added": {
+      "$id": "/properties/added",
+      "type": "boolean",
+      "title": "The Added Schema ",
+      "default": false,
+      "examples": [
+        false
+      ]
+    },
+    "site": {
+      "$id": "/properties/site",
+      "type": "null",
+      "title": "The Site Schema ",
+      "default": null,
+      "examples": [
+        null
+      ]
+    },
+    "created_at": {
+      "$id": "/properties/created_at",
+      "type": "string",
+      "title": "The Created_at Schema ",
+      "default": "",
+      "examples": [
+        "2018-08-07T11:03:50.000Z"
+      ]
+    },
+    "updated_at": {
+      "$id": "/properties/updated_at",
+      "type": "string",
+      "title": "The Updated_at Schema ",
+      "default": "",
+      "examples": [
+        "2018-08-07T11:03:50.000Z"
+      ]
+    },
+    "screenshot": {
+      "$id": "/properties/screenshot",
+      "type": "array"
+    }
+  }
+}
