@@ -11,9 +11,11 @@
     "comment": ""
   },
   "attributes": {
-    "location": {
-      "model": "location",
-      "via": "tbSite"
+    "system": {
+      "model": "system"
+    },
+    "body": {
+      "model": "body"
     },
     "siteID": {
       "unique": true,
