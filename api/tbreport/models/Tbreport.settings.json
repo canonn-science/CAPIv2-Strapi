@@ -21,11 +21,15 @@
     },
     "latitude": {
       "type": "float",
-      "required": true
+      "required": true,
+      "min": -90,
+      "max": 90
     },
     "longitude": {
       "type": "float",
-      "required": true
+      "required": true,
+      "min": -180,
+      "max": 180
     },
     "type": {
       "enum": [
@@ -46,15 +50,8 @@
       "type": "enumeration",
       "required": true
     },
-    "defense": {
-      "enum": [
-        "None",
-        "Capship",
-        "Drones",
-        "Thargbots",
-        "Turrets"
-      ],
-      "type": "enumeration"
+    "defence": {
+      "type": "json"
     },
     "count": {
       "min": 1,

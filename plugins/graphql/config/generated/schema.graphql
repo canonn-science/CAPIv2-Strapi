@@ -241,14 +241,6 @@ enum ENUM_TBREPORT_CYCLE {
   ABC
 }
 
-enum ENUM_TBREPORT_DEFENSE {
-  None
-  Capship
-  Drones
-  Thargbots
-  Turrets
-}
-
 enum ENUM_TBREPORT_REPORTSTATUS {
   pending
   updated
@@ -1074,7 +1066,7 @@ type Tbreport {
   longitude: Float!
   type: ENUM_TBREPORT_TYPE!
   cycle: ENUM_TBREPORT_CYCLE!
-  defense: ENUM_TBREPORT_DEFENSE
+  defence: JSON
   count: Int
   cmdrName: String!
   cmdrComment: String
