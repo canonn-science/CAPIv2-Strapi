@@ -1,8 +1,8 @@
 {
   "_from": "strapi-plugin-content-manager@alpha",
-  "_id": "strapi-plugin-content-manager@3.0.0-alpha.12.7.1",
+  "_id": "strapi-plugin-content-manager@3.0.0-alpha.13.1",
   "_inBundle": false,
-  "_integrity": "sha512-bgrIhrjt8DAn7H47AmKj69iLV1vIFneLjfJ5/7ljA1/+3KfbaLXozGWqdQyOHPpBjOfBIhWovyaQv8gC83UeUw==",
+  "_integrity": "sha512-AmTNl6yxofq7/h1nHLHFFVDKVhzjOT8r+JvXD1B05ukIVdB6Ej5PEis9DOtQbxr4dPs2thCI4sMZuICV1UsFLw==",
   "_location": "/strapi-plugin-content-manager",
   "_phantomChildren": {},
   "_requested": {
@@ -18,10 +18,10 @@
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "https://registry.npmjs.org/strapi-plugin-content-manager/-/strapi-plugin-content-manager-3.0.0-alpha.12.7.1.tgz",
-  "_shasum": "7a60beae345d195c89b4d5dd9369eb5ade59ba5e",
+  "_resolved": "https://registry.npmjs.org/strapi-plugin-content-manager/-/strapi-plugin-content-manager-3.0.0-alpha.13.1.tgz",
+  "_shasum": "0dae16d9f9777c33a13d2d7b38cece1b78e24400",
   "_spec": "strapi-plugin-content-manager@alpha",
-  "_where": "/mnt/nixstorage/Github/CAPIv2-207Update",
+  "_where": "/mnt/nixstorage/Github/Canonn/CAPIv2-209",
   "author": {
     "name": "Strapi team",
     "email": "hi@strapi.io",
@@ -34,8 +34,14 @@
   "deprecated": false,
   "description": "A powerful UI to easily manage your data.",
   "devDependencies": {
-    "react-select": "^1.0.0-rc.5",
-    "strapi-helper-plugin": "3.0.0-alpha.12.7.1"
+    "codemirror": "^5.39.0",
+    "draft-js": "^0.10.5",
+    "react-dnd": "^5.0.0",
+    "react-dnd-html5-backend": "^5.0.1",
+    "react-select": "^1.2.1",
+    "react-sortable-hoc": "^0.8.3",
+    "showdown": "^1.8.6",
+    "strapi-helper-plugin": "3.0.0-alpha.13.1"
   },
   "engines": {
     "node": ">= 9.0.0",
@@ -74,5 +80,5 @@
     "icon": "plug",
     "description": "content-manager.plugin.description"
   },
-  "version": "3.0.0-alpha.12.7.1"
+  "version": "3.0.0-alpha.13.1"
 }

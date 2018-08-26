@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/ussreport",
+      "handler": "Ussreport.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/ussreport/count",
+      "handler": "Ussreport.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/ussreport/:id",
+      "handler": "Ussreport.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/ussreport",
+      "handler": "Ussreport.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/ussreport/:id",
+      "handler": "Ussreport.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/ussreport/:id",
+      "handler": "Ussreport.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/ussreport/:id/relationships/:relation",
+      "handler": "Ussreport.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/ussreport/:id/relationships/:relation",
+      "handler": "Ussreport.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/ussreport/:id/relationships/:relation",
+      "handler": "Ussreport.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

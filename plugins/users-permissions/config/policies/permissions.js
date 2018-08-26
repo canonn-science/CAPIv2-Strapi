@@ -43,11 +43,10 @@ module.exports = async (ctx, next) => {
       return ctx.request.graphql = strapi.errors.forbidden();
     }
 
-    ctx.forbidden();
+    return ctx.forbidden();
   }
-
   // Execute the policies.
-  if (permission.policy) {
+  else if (permission.policy) {
     return await strapi.plugins['users-permissions'].config.policies[permission.policy](ctx, next);
   }
 

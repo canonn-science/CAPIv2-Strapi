@@ -1,8 +1,8 @@
 """Reporting for Bark Mounds"""
 type Bmreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   systemName: String!
   bodyName: String!
   latitude: Float!
@@ -10,6 +10,7 @@ type Bmreport {
   count: Int
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_BMREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -21,9 +22,10 @@ type Bmreport {
 """Bark Mound sites"""
 type Bmsite {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
-  location: Location
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  system: System
+  body: Body
   siteID: Int!
   latitude: Float!
   longitude: Float!
@@ -36,14 +38,15 @@ type Bmsite {
 """Bodies stored in the Canonn database"""
 type Body {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   system: System
   bodyName: String!
   edsmID: Float
   edsmID64: Float
-  bodyType: Bodytype
-  bodySubtype: Bodysubtype
+  edsmBodyID: Int
+  edsmType: String
+  edsmSubtype: String
   edsmOffset: Int
   edsmDistanceToArrival: Float
   edsmIsMainStar: Boolean
@@ -58,10 +61,9 @@ type Body {
   edsmEarthMasses: Float
   edsmRadius: Float
   edsmSurfaceTemperature: Float
+  edsmSurfacePressure: Float
   edsmVolcanismType: String
   edsmAtmosphereType: String
-  bodyAtmosphere: Bodyatmosphere
-  bodyMaterial: Bodymaterial
   edsmTerraformingState: String
   edsmOrbitalPeriod: Float
   edsmSemiMajorAxis: Float
@@ -71,84 +73,17 @@ type Body {
   edsmRotationalPeriod: Float
   edsmRotationalPeriodTidallyLocked: Boolean
   edsmAxialTilt: Float
+  edsmSolidComposition: JSON
+  edsmAtmosphere: JSON
+  edsmMaterial: JSON
   rings(sort: String, limit: Int, start: Int, where: JSON): [Ring]
-  bodyLocations(sort: String, limit: Int, start: Int, where: JSON): [Location]
-}
-
-"""Atmosphere makup of a body"""
-type Bodyatmosphere {
-  id: ID!
-  createdAt: String!
-  updatedAt: String!
-  body: Body
-  argon: Float
-  ammonia: Float
-  carbonDioxide: Float
-  hydrogen: Float
-  helium: Float
-  iron: Float
-  neon: Float
-  methane: Float
-  nitrogen: Float
-  oxygen: Float
-  silicates: Float
-  sulphurDioxide: Float
-  water: Float
-}
-
-"""Material makeup of a body"""
-type Bodymaterial {
-  id: ID!
-  createdAt: String!
-  updatedAt: String!
-  body: Body
-  antimony: Float
-  arsenic: Float
-  boron: Float
-  cadmium: Float
-  carbon: Float
-  chromium: Float
-  germanium: Float
-  iron: Float
-  lead: Float
-  manganese: Float
-  mercury: Float
-  molybdenum: Float
-  nickel: Float
-  niobium: Float
-  phosphorus: Float
-  polonium: Float
-  rhenium: Float
-  ruthenium: Float
-  selenium: Float
-  sulphur: Float
-  technetium: Float
-  tellurium: Float
-  tin: Float
-  tungsten: Float
-  vanadium: Float
-  yttrium: Float
-  zinc: Float
-  zirconium: Float
-}
-
-"""Subtype of a body"""
-type Bodysubtype {
-  id: ID!
-  subtype: String!
-}
-
-"""Type of a body"""
-type Bodytype {
-  id: ID!
-  type: String!
 }
 
 """Reporting for Brain Trees"""
 type Btreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   systemName: String!
   bodyName: String!
   latitude: Float!
@@ -156,6 +91,7 @@ type Btreport {
   count: Int
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_BTREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -167,9 +103,10 @@ type Btreport {
 """Brain Tree sites"""
 type Btsite {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
-  location: Location
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  system: System
+  body: Body
   siteID: Int!
   latitude: Float!
   longitude: Float!
@@ -182,10 +119,15 @@ type Btsite {
 """CMDRs who have discovered sites"""
 type Cmdr {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   cmdrName: String!
 }
+
+"""
+The `DateTime` scalar represents a date and time following the ISO 8601 standard
+"""
+scalar DateTime
 
 enum ENUM_BMREPORT_REPORTSTATUS {
   pending
@@ -267,22 +209,12 @@ enum ENUM_GYREPORT_REPORTSTATUS {
   issue
 }
 
-enum ENUM_LOCATION_LOCATIONTYPE {
-  BM
-  BT
-  FG
-  FM
-  GEN
-  GR
-  GS
-  GY
-  HD
-  LS
-  MS
-  TB
-  TS
-  TW
-  USS
+enum ENUM_HDREPORT_REPORTSTATUS {
+  pending
+  updated
+  accepted
+  declined
+  issue
 }
 
 enum ENUM_LSREPORT_REPORTSTATUS {
@@ -299,6 +231,14 @@ enum ENUM_MSREPORT_REPORTSTATUS {
   accepted
   declined
   issue
+}
+
+enum ENUM_TBREPORT_CYCLE {
+  Unknown
+  A
+  B
+  C
+  ABC
 }
 
 enum ENUM_TBREPORT_REPORTSTATUS {
@@ -335,11 +275,32 @@ enum ENUM_TWREPORT_REPORTSTATUS {
   issue
 }
 
+enum ENUM_USSREPORT_REPORTSTATUS {
+  pending
+  updated
+  accepted
+  declined
+  issue
+}
+
+"""Records rewards for faction kills"""
+type Factionkillreport {
+  id: ID!
+  systemName: String
+  edTimestamp: DateTime
+  cmdrName: String
+  reward: Int
+  rewardingFaction: String
+  victimFaction: String
+  rawEvent: JSON
+  isbeta: Boolean
+}
+
 """Reporting for Fungal Gourds"""
 type Fgreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   systemName: String!
   bodyName: String!
   latitude: Float!
@@ -347,6 +308,7 @@ type Fgreport {
   count: Int
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_FGREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -358,9 +320,10 @@ type Fgreport {
 """Fungal Gourd sites"""
 type Fgsite {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
-  location: Location
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  system: System
+  body: Body
   siteID: Int!
   latitude: Float!
   longitude: Float!
@@ -373,8 +336,8 @@ type Fgsite {
 """Reporting for Fumaroles"""
 type Fmreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   systemName: String!
   bodyName: String!
   latitude: Float!
@@ -383,6 +346,7 @@ type Fmreport {
   count: Int
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_FMREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -394,9 +358,10 @@ type Fmreport {
 """Fumarole sites"""
 type Fmsite {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
-  location: Location
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  system: System
+  body: Body
   siteID: Int!
   latitude: Float!
   longitude: Float!
@@ -416,8 +381,8 @@ type Fmtype {
 """Reporting for Generation Ships"""
 type Genreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   systemName: String!
   orbitBody: String
   shipName: String!
@@ -425,6 +390,7 @@ type Genreport {
   distance: Float
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_GENREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -436,9 +402,10 @@ type Genreport {
 """Generation Ship sites"""
 type Gensite {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
-  location: Location
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  system: System
+  body: Body
   siteID: Int!
   shipName: String!
   directionSystem: System
@@ -449,8 +416,8 @@ type Gensite {
 """Active groups of Obelisks at a Guardian Ruins site"""
 type Gractivegroup {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   grSite: Grsite
   activeGroup: Grobeliskgroup
 }
@@ -458,8 +425,8 @@ type Gractivegroup {
 """Active Obeliskss at a Guardian Ruin site"""
 type Gractiveobelisk {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   grSite: Grsite
   activeObelisk: Grobelisk
 }
@@ -479,8 +446,8 @@ type Grcodexcategory {
 """Data entires received at a Guardian Ruin site"""
 type Grcodexdata {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   grCodexCategory: Grcodexcategory
   grPrimaryArtifact: Grartifact
   grSecondaryArtifact: Grartifact
@@ -491,8 +458,8 @@ type Grcodexdata {
 """Obelisks at a Guardian Ruin site"""
 type Grobelisk {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   grType: Grtype
   grObeliskGroup: Grobeliskgroup
   obeliskNumber: Int!
@@ -504,8 +471,8 @@ type Grobelisk {
 """Groups of Obelisks at a Guardian Ruin site"""
 type Grobeliskgroup {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   grType: Grtype
   groupName: String!
   amount: Int!
@@ -526,8 +493,8 @@ type Grobeliskreport {
 """Reporting for Guardian Ruins"""
 type Grreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   systemName: String!
   bodyName: String!
   latitude: Float!
@@ -535,6 +502,7 @@ type Grreport {
   type: ENUM_GRREPORT_TYPE!
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_GRREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -548,9 +516,10 @@ type Grreport {
 """Guardian Ruin site"""
 type Grsite {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
-  location: Location
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  system: System
+  body: Body
   siteID: Int!
   latitude: Float!
   longitude: Float!
@@ -571,8 +540,8 @@ type Grtype {
 """Active groups of Obelisks at a Guardian Structure site"""
 type Gsactivegroup {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   grSite: Gssite
   activeGroup: Gsobeliskgroup
 }
@@ -580,8 +549,8 @@ type Gsactivegroup {
 """Active Obeliskss at a Guardian Structure site"""
 type Gsactiveobelisk {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   gsSite: Gssite
   gsObelisk: Gsobelisk
 }
@@ -601,8 +570,8 @@ type Gscodexcategory {
 """Data entires received at a Guardian Structure site"""
 type Gscodexdata {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   gsCodexCategory: Gscodexcategory
   gsPrimaryArtifact: Gsartifact
   gsSecondaryArtifact: Gsartifact
@@ -613,8 +582,8 @@ type Gscodexdata {
 """Obelisks at a Guardian Structure site"""
 type Gsobelisk {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   gsType: Gstype
   gsObeliskGroup: Gsobeliskgroup
   obeliskNumber: Int!
@@ -626,8 +595,8 @@ type Gsobelisk {
 """Groups of Obelisks at a Guardian Structure site"""
 type Gsobeliskgroup {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   gsType: Gstype
   groupName: String!
   amount: Int!
@@ -648,8 +617,8 @@ type Gsobeliskreport {
 """Reporting for Guardian Structures"""
 type Gsreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   systemName: String!
   bodyName: String!
   latitude: Float!
@@ -658,6 +627,7 @@ type Gsreport {
   hasDatabank: Boolean
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_GSREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -671,9 +641,10 @@ type Gsreport {
 """Guardian Structure sites"""
 type Gssite {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
-  location: Location
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  system: System
+  body: Body
   siteID: Int!
   latitude: Float!
   longitude: Float!
@@ -696,8 +667,8 @@ type Gstype {
 """Reporting for Geysers"""
 type Gyreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   systemName: String!
   bodyName: String!
   latitude: Float!
@@ -706,6 +677,7 @@ type Gyreport {
   count: Int
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_GYREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -717,9 +689,10 @@ type Gyreport {
 """Geyser sites"""
 type Gysite {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
-  location: Location
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  system: System
+  body: Body
   siteID: Int!
   latitude: Float!
   longitude: Float!
@@ -735,12 +708,30 @@ type Gytype {
   type: String!
 }
 
+"""Journal events and user reports for the Unknown Signal Sources"""
+type Hdreport {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  fromSystemName: String!
+  toSystemName: String!
+  cmdrName: String!
+  cmdrComment: String
+  screenshot: UploadFile
+  isBeta: Boolean
+  reportStatus: ENUM_HDREPORT_REPORTSTATUS!
+  reportComment: String
+  added: Boolean
+  site: Hdsite
+  hdRawJson: JSON
+}
+
 """Thargoid Hyperdiction sites"""
 type Hdsite {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
-  location: Location
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  system: System
   toSystem: System
   thargoidCount: Int
   isHostile: Boolean
@@ -750,8 +741,9 @@ type Hdsite {
 """Raw journal dumps"""
 type Journaldata {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  eventName: String
   systemName: String
   bodyName: String
   stationName: String
@@ -759,7 +751,7 @@ type Journaldata {
   latitude: Float
   longitude: Float
   isBeta: Boolean
-  jsonData: String!
+  jsonData: JSON!
 }
 
 """
@@ -767,37 +759,11 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 """
 scalar JSON
 
-"""Locations for sites within a System, Body, or Ring"""
-type Location {
-  id: ID!
-  createdAt: String!
-  updatedAt: String!
-  system: System
-  body: Body
-  ring: Ring
-  locationType: ENUM_LOCATION_LOCATIONTYPE
-  bmSite: Bmsite
-  btSite: Btsite
-  fgSite: Fgsite
-  fmSite: Fmsite
-  genSite: Gensite
-  grSite: Grsite
-  gsSite: Gssite
-  gySite: Gysite
-  lsSite: Lssite
-  msSite: Mssite
-  tbSite: Tbsite
-  tsSite: Tssite
-  twSite: Twsite
-  ussSite: Usssite
-  hdSite(sort: String, limit: Int, start: Int, where: JSON): [Hdsite]
-}
-
 """Reporting for Lava Spouts"""
 type Lsreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   systemName: String!
   bodyName: String!
   latitude: Float!
@@ -805,6 +771,7 @@ type Lsreport {
   count: Int
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_LSREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -816,9 +783,10 @@ type Lsreport {
 """Lava Spout sites"""
 type Lssite {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
-  location: Location
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  system: System
+  body: Body
   siteID: Int!
   latitude: Float!
   longitude: Float!
@@ -828,13 +796,13 @@ type Lssite {
   discoveredBy: Cmdr
 }
 
-union Morph = Bmreport | Bmsite | Body | Bodyatmosphere | Bodymaterial | Bodysubtype | Bodytype | Btreport | Btsite | Cmdr | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategory | Grcodexdata | Grobelisk | Grobeliskgroup | Grobeliskgroupreport | Grobeliskreport | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsobeliskgroupreport | Gsobeliskreport | Gsreport | Gssite | Gstype | Gyreport | Gysite | Gytype | Hdsite | Journaldata | Location | Lsreport | Lssite | Msreport | Mssite | Mstype | Ring | Ringtype | System | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union Morph = Bmreport | Bmsite | Body | Btreport | Btsite | Cmdr | Factionkillreport | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategory | Grcodexdata | Grobelisk | Grobeliskgroup | Grobeliskgroupreport | Grobeliskreport | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsobeliskgroupreport | Gsobeliskreport | Gsreport | Gssite | Gstype | Gyreport | Gysite | Gytype | Hdreport | Hdsite | Journaldata | Lsreport | Lssite | Msreport | Mssite | Mstype | Nhsstopcmdrsbykill | Ring | Ringtype | System | Tbcycle | Tbdefense | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Ussreport | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 """Reporting for Megaships"""
 type Msreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   systemName: String!
   orbitBody: String
   shipName: String!
@@ -845,6 +813,7 @@ type Msreport {
   dockable: Boolean
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_MSREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -856,9 +825,10 @@ type Msreport {
 """Mega-Ship sites"""
 type Mssite {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
-  location: Location
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  system: System
+  body: Body
   siteID: Int!
   shipName: String!
   shipTag: String!
@@ -875,6 +845,26 @@ type Mstype {
   type: String!
 }
 
+"""Top ten CMDRs sorted by kills for Non-Human Signal Sources"""
+type Nhsstopcmdrsbykill {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  cmdrName: String
+  scoutKills: Int
+  cyclopsKills: Int
+  basiliskKills: Int
+  medusaKills: Int
+  unknownKills: Int
+  scoutRewards: Int
+  cyclopsRewards: Int
+  basiliskRewards: Int
+  medusaRewards: Int
+  unknownRewards: Int
+  totalRewards: Int
+  totalKills: Int
+}
+
 type Query {
   bmreport(id: ID!): Bmreport
   bmreports(sort: String, limit: Int, start: Int, where: JSON): [Bmreport]
@@ -882,20 +872,14 @@ type Query {
   bmsites(sort: String, limit: Int, start: Int, where: JSON): [Bmsite]
   body(id: ID!): Body
   bodies(sort: String, limit: Int, start: Int, where: JSON): [Body]
-  bodyatmosphere(id: ID!): Bodyatmosphere
-  bodyatmospheres(sort: String, limit: Int, start: Int, where: JSON): [Bodyatmosphere]
-  bodymaterial(id: ID!): Bodymaterial
-  bodymaterials(sort: String, limit: Int, start: Int, where: JSON): [Bodymaterial]
-  bodysubtype(id: ID!): Bodysubtype
-  bodysubtypes(sort: String, limit: Int, start: Int, where: JSON): [Bodysubtype]
-  bodytype(id: ID!): Bodytype
-  bodytypes(sort: String, limit: Int, start: Int, where: JSON): [Bodytype]
   btreport(id: ID!): Btreport
   btreports(sort: String, limit: Int, start: Int, where: JSON): [Btreport]
   btsite(id: ID!): Btsite
   btsites(sort: String, limit: Int, start: Int, where: JSON): [Btsite]
   cmdr(id: ID!): Cmdr
   cmdrs(sort: String, limit: Int, start: Int, where: JSON): [Cmdr]
+  factionkillreport(id: ID!): Factionkillreport
+  factionkillreports(sort: String, limit: Int, start: Int, where: JSON): [Factionkillreport]
   fgreport(id: ID!): Fgreport
   fgreports(sort: String, limit: Int, start: Int, where: JSON): [Fgreport]
   fgsite(id: ID!): Fgsite
@@ -964,12 +948,12 @@ type Query {
   gysites(sort: String, limit: Int, start: Int, where: JSON): [Gysite]
   gytype(id: ID!): Gytype
   gytypes(sort: String, limit: Int, start: Int, where: JSON): [Gytype]
+  hdreport(id: ID!): Hdreport
+  hdreports(sort: String, limit: Int, start: Int, where: JSON): [Hdreport]
   hdsite(id: ID!): Hdsite
   hdsites(sort: String, limit: Int, start: Int, where: JSON): [Hdsite]
   journaldatum(id: ID!): Journaldata
   journaldata(sort: String, limit: Int, start: Int, where: JSON): [Journaldata]
-  location(id: ID!): Location
-  locations(sort: String, limit: Int, start: Int, where: JSON): [Location]
   lsreport(id: ID!): Lsreport
   lsreports(sort: String, limit: Int, start: Int, where: JSON): [Lsreport]
   lssite(id: ID!): Lssite
@@ -980,12 +964,18 @@ type Query {
   mssites(sort: String, limit: Int, start: Int, where: JSON): [Mssite]
   mstype(id: ID!): Mstype
   mstypes(sort: String, limit: Int, start: Int, where: JSON): [Mstype]
+  nhsstopcmdrsbykill(id: ID!): Nhsstopcmdrsbykill
+  nhsstopcmdrsbykills(sort: String, limit: Int, start: Int, where: JSON): [Nhsstopcmdrsbykill]
   ring(id: ID!): Ring
   rings(sort: String, limit: Int, start: Int, where: JSON): [Ring]
   ringtype(id: ID!): Ringtype
   ringtypes(sort: String, limit: Int, start: Int, where: JSON): [Ringtype]
   system(id: ID!): System
   systems(sort: String, limit: Int, start: Int, where: JSON): [System]
+  tbcycle(id: ID!): Tbcycle
+  tbcycles(sort: String, limit: Int, start: Int, where: JSON): [Tbcycle]
+  tbdefense(id: ID!): Tbdefense
+  tbdefenses(sort: String, limit: Int, start: Int, where: JSON): [Tbdefense]
   tbreport(id: ID!): Tbreport
   tbreports(sort: String, limit: Int, start: Int, where: JSON): [Tbreport]
   tbsite(id: ID!): Tbsite
@@ -1002,6 +992,8 @@ type Query {
   twreports(sort: String, limit: Int, start: Int, where: JSON): [Twreport]
   twsite(id: ID!): Twsite
   twsites(sort: String, limit: Int, start: Int, where: JSON): [Twsite]
+  ussreport(id: ID!): Ussreport
+  ussreports(sort: String, limit: Int, start: Int, where: JSON): [Ussreport]
   usssite(id: ID!): Usssite
   usssites(sort: String, limit: Int, start: Int, where: JSON): [Usssite]
   usstype(id: ID!): Usstype
@@ -1020,15 +1012,14 @@ type Query {
 """Rings stored in the Canonn database"""
 type Ring {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   body: Body
   ringName: String!
   ringtype: Ringtype
   edsmMass: Float
   edsmInnerRadius: Float
   edsmOuterRadius: Float
-  ringLocations(sort: String, limit: Int, start: Int, where: JSON): [Location]
 }
 
 """Type of a Ring"""
@@ -1040,8 +1031,8 @@ type Ringtype {
 """Systems stored in the Canonn database"""
 type System {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   systemName: String!
   edsmID: Float
   edsmID64: Float
@@ -1050,22 +1041,36 @@ type System {
   edsmCoordZ: Float
   edsmCoordLocked: Boolean
   bodies(sort: String, limit: Int, start: Int, where: JSON): [Body]
-  systemLocations(sort: String, limit: Int, start: Int, where: JSON): [Location]
+}
+
+"""Thargoid Barnacle Cycles"""
+type Tbcycle {
+  id: ID!
+  cycle: String!
+}
+
+"""Thargoid Barnacle Defenses"""
+type Tbdefense {
+  id: ID!
+  defenseType: String!
 }
 
 """Reporting for Thargoid Barnacles"""
 type Tbreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   systemName: String!
   bodyName: String!
   latitude: Float!
   longitude: Float!
   type: ENUM_TBREPORT_TYPE!
+  cycle: ENUM_TBREPORT_CYCLE!
+  defense: JSON
   count: Int
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_TBREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -1077,14 +1082,18 @@ type Tbreport {
 """Thargoid Barnacle sites"""
 type Tbsite {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
-  location: Location
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  system: System
+  body: Body
   siteID: Int!
   latitude: Float!
   longitude: Float!
-  count: Int
   type: Tbtype
+  cycle: Tbcycle
+  defense: Tbdefense
+  count: Int
+  comment: String
   verified: Boolean
   visible: Boolean
   discoveredBy: Cmdr
@@ -1099,8 +1108,8 @@ type Tbtype {
 """Reporting for Thargoid Structures"""
 type Tsreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   systemName: String!
   bodyName: String!
   latitude: Float!
@@ -1108,6 +1117,7 @@ type Tsreport {
   status: ENUM_TSREPORT_STATUS!
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_TSREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -1119,9 +1129,10 @@ type Tsreport {
 """Thargoid Structure sites"""
 type Tssite {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
-  location: Location
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  system: System
+  body: Body
   siteID: Int!
   latitude: Float!
   longitude: Float!
@@ -1140,8 +1151,8 @@ type Tsstatus {
 """Reporting for Tube Worms"""
 type Twreport {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   systemName: String!
   bodyName: String!
   latitude: Float!
@@ -1149,6 +1160,7 @@ type Twreport {
   count: Int
   cmdrName: String!
   cmdrComment: String
+  isBeta: Boolean
   reportStatus: ENUM_TWREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -1160,9 +1172,10 @@ type Twreport {
 """Tube Worm sites"""
 type Twsite {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
-  location: Location
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  system: System
+  body: Body
   siteID: Int!
   latitude: Float!
   longitude: Float!
@@ -1174,8 +1187,8 @@ type Twsite {
 
 type UploadFile {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   name: String!
   hash: String!
   ext: String
@@ -1213,12 +1226,30 @@ type UsersPermissionsUser {
   role: UsersPermissionsRole
 }
 
+"""Automated journal reports for Unknown Signal Sources"""
+type Ussreport {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  systemName: String
+  type: String
+  cmdrName: String
+  cmdrComment: String
+  isBeta: Boolean
+  screenshot: UploadFile
+  reportStatus: ENUM_USSREPORT_REPORTSTATUS!
+  reportComment: String
+  added: Boolean
+  site: Usssite
+  ussRawJson: JSON
+}
+
 """Unknown Signal Source sites"""
 type Usssite {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
-  location: Location
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  system: System
   type: Usstype
   threatLevel: Int
   discoveredBy: Cmdr
