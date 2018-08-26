@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/factionkillreport",
+      "handler": "Factionkillreport.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/factionkillreport/count",
+      "handler": "Factionkillreport.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/factionkillreport/:id",
+      "handler": "Factionkillreport.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/factionkillreport",
+      "handler": "Factionkillreport.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/factionkillreport/:id",
+      "handler": "Factionkillreport.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/factionkillreport/:id",
+      "handler": "Factionkillreport.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/factionkillreport/:id/relationships/:relation",
+      "handler": "Factionkillreport.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/factionkillreport/:id/relationships/:relation",
+      "handler": "Factionkillreport.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/factionkillreport/:id/relationships/:relation",
+      "handler": "Factionkillreport.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

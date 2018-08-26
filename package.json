@@ -1,7 +1,7 @@
 {
   "name": "capiv2",
   "private": true,
-  "version": "2.0.7",
+  "version": "2.0.10",
   "description": "Canonn APIv2",
   "main": "./server.js",
   "scripts": {
@@ -20,11 +20,11 @@
   },
   "dependencies": {
     "lodash": "4.x.x",
-    "strapi": "3.0.0-alpha.12.7.1",
-    "strapi-bookshelf": "3.0.0-alpha.12.7.1",
-    "strapi-knex": "3.0.0-alpha.12.7.1",
+    "strapi": "3.0.0-alpha.13.1",
+    "strapi-hook-bookshelf": "3.0.0-alpha.13.1",
+    "strapi-hook-knex": "3.0.0-alpha.13.1",
     "knex": "latest",
-    "mysql": "2.15.0"
+    "mysql": "2.16.0"
   },
   "author": {
     "name": "Canonn R&D",
@@ -39,6 +39,7 @@
     }
   ],
   "strapi": {
+    "packageManager": "npm",
     "uuid": "487b0283-ba92-4503-96ef-8f62b4293b36"
   },
   "engines": {

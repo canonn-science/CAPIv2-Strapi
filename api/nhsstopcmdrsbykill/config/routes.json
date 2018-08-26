@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/nhsstopcmdrsbykill",
+      "handler": "Nhsstopcmdrsbykill.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/nhsstopcmdrsbykill/count",
+      "handler": "Nhsstopcmdrsbykill.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/nhsstopcmdrsbykill/:id",
+      "handler": "Nhsstopcmdrsbykill.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/nhsstopcmdrsbykill",
+      "handler": "Nhsstopcmdrsbykill.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/nhsstopcmdrsbykill/:id",
+      "handler": "Nhsstopcmdrsbykill.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/nhsstopcmdrsbykill/:id",
+      "handler": "Nhsstopcmdrsbykill.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/nhsstopcmdrsbykill/:id/relationships/:relation",
+      "handler": "Nhsstopcmdrsbykill.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/nhsstopcmdrsbykill/:id/relationships/:relation",
+      "handler": "Nhsstopcmdrsbykill.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/nhsstopcmdrsbykill/:id/relationships/:relation",
+      "handler": "Nhsstopcmdrsbykill.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

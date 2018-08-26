@@ -21,11 +21,15 @@
     },
     "latitude": {
       "type": "float",
-      "required": true
+      "required": true,
+      "min": -90,
+      "max": 90
     },
     "longitude": {
       "type": "float",
-      "required": true
+      "required": true,
+      "min": -180,
+      "max": 180
     },
     "type": {
       "enum": [
@@ -34,6 +38,20 @@
       ],
       "type": "enumeration",
       "required": true
+    },
+    "cycle": {
+      "enum": [
+        "Unknown",
+        "A",
+        "B",
+        "C",
+        "ABC"
+      ],
+      "type": "enumeration",
+      "required": true
+    },
+    "defense": {
+      "type": "json"
     },
     "count": {
       "min": 1,
@@ -46,21 +64,25 @@
     "cmdrComment": {
       "type": "text"
     },
+    "isBeta": {
+      "type": "boolean"
+    },
     "screenshot": {
       "collection": "file",
       "via": "related",
       "plugin": "upload"
     },
     "reportStatus": {
+      "default": "pending",
+      "type": "enumeration",
+      "required": true,
       "enum": [
         "pending",
         "updated",
         "accepted",
         "declined",
         "issue"
-      ],
-      "type": "enumeration",
-      "required": true
+      ]
     },
     "reportComment": {
       "type": "text"

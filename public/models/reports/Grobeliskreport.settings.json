@@ -1,0 +1,23 @@
+{
+  "connection": "default",
+  "collectionName": "grobeliskreports",
+  "info": {
+    "name": "grobeliskreport",
+    "description": "",
+    "endpoint": "/grobeliskreport"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": false,
+    "comment": ""
+  },
+  "attributes": {
+    "grreport": {
+      "model": "grreport",
+      "via": "grobeliskreport"
+    },
+    "grobelisk": {
+      "model": "grobelisk"
+    }
+  }
+}

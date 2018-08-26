@@ -1,5 +1,12 @@
 # Canonn API v2 - (CAPIv2)
 
+[![Strapi Version](https://img.shields.io/badge/strapi-v3.0.0--alpha.13.1-blue.svg)](https://github.com/strapi/strapi) 
+[![CAPIv2 Version](https://img.shields.io/badge/capiv2-v2.0.10-orange.svg)](https://api.canonn.tech:2083) 
+[![Build Status](https://travis-ci.org/canonn-science/CAPIv2-Strapi.svg?branch=development)](https://travis-ci.org/canonn-science/CAPIv2-Strapi)
+[![EDCD Discord](https://img.shields.io/discord/164411426939600896.svg?logo=discord&label=EDCD%20Discord)](https://discord.gg/fhDWZBH)
+[![Canonn Discord](https://img.shields.io/discord/146714487695605760.svg?logo=discord&label=Canonn%20Discord)](https://discord.gg/HzzmG2f)
+
+
 # Table of Contents
 
 <!-- TOC -->
@@ -11,8 +18,7 @@
 - [API Documentation](#api-documentation)
 - [Prerequisites](#prerequisites)
     - [Installing Git, Node v10, and NPM v6](#installing-git-node-v10-and-npm-v6)
-    - [Update NPM to the latest version](#update-npm-to-the-latest-version)
-    - [Install Pm2 to run as a service](#install-pm2-to-run-as-a-service)
+    - [Install PM2 to run as a service](#install-pm2-to-run-as-a-service)
     - [Install Strapi Alpha Latest](#install-strapi-alpha-latest)
     - [Setup MariaDB](#setup-mariadb)
 - [Create Database & User for Strapi](#create-database--user-for-strapi)
@@ -35,37 +41,66 @@ The Canonn APIv2 is designed to handle all our current science projects. Current
 * Brain Trees (BT)
 * Fungal Gourds (FG)
 * Fumaroles (FM)
+  * FM Types
 * Generation Ships (GEN)
 * Guardian Ruins (GR)
-  * Guardian Ruins Active Obelisks
+  * GR Active Obelisks
+  * GR Active Groups
+  * GR Artifacts
+  * GR Codex Categories
+  * GR Codex Data
+  * GR Obelisks
+  * GR Obelisk Groups
+  * GR Types
 * Guardian Structures (GS)
-  * Guardian Structures Active Obelisks
+  * GS Active Obelisks
+  * GS Active Groups
+  * GS Artifacts
+  * GS Codex Categories
+  * GS Codex Data
+  * GS Obelisks
+  * GS Obelisk Groups
+  * GS Types
 * Geysers (GY)
-* Hyperdictions (HD) - **Planned v2.0.8**
+  * GY Types
+* Hyperdictions (HD)
 * Lava Spouts (LS)
 * Megaships (MS)
+  * MS Types
 * Thargoid Barnacles (TB)
+  * TB Cycles
+  * TB Defenses (Currently WIP)
+  * TB Types
 * Thargoid Structures (TS)
-* Tubeworms (TW)
+  * TS Status
+* Tubeworms (TW) **Note subject to change**
 * Unknown Signal Sources (USS)
+  * USS Types
 
 Also we are tracking the following:
 
 * Systems
-  * X/Y/Z and Locked status pulled from EDSM - **Planned v2.1.0**
+  * X/Y/Z and Locked status pulled from EDSM - **WIP**
 * Bodies
   * Atmosphere composition (From EDSM) - **Planned v2.1.0**
   * Material composition (From EDSM) - **Planned v2.1.0**
   * All other body metrics (From EDSM) - **Planned v2.1.0**
 * Rings (Currently don't have any use, but in case future data is needed)
+* Non-Human Signal Source Kills
 
 ## Current Version
 
-The current version of the CAPIv2 is `v2.0.7` and is still in active development and testing. If you would like to contribute please PM DMehaffy on discord `DMehaffy#1337`
+The current version of the CAPIv2 is `v2.0.10` and is still in active development and testing. If you would like to contribute please PM DMehaffy on discord `DMehaffy#1337`
 
 # API Documentation
 
-A static copy of our docs is located in the `/public` folder, you can view the progress of this documentation on our Docs repo here: https://github.com/canonn-science/CAPIv2-Docs
+A static copy of our docs is located in the `/public` folder, you can view the progress of this documentation on our Docs repo here: https://github.com/canonn-science/CAPIv2-Swagger
+
+We currently have two different views of our swagger docs, either via Redocs or the Swagger-UI.
+
+[Redocs for Development](https://api.canonn.tech:2083/)
+
+[Swagger-UI for Development](https://api.canonn.tech:2083/swaggerui/)
 
 # Prerequisites
 
@@ -75,7 +110,7 @@ You will need the following:
 - Node v10 or above
 - NPM v6 or above
 - Node Pm2 (For running API as a service)
-- Strapi Alpha v12.5
+- Strapi Alpha v13.1
 - MariaDB 10.2 or above
 
 ## Installing Git, Node v10, and NPM v6
@@ -92,19 +127,9 @@ Then install Git, Node, and NPM:
 sudo apt-get install -y nodejs git build-essential
 `
 
-## Update NPM to the latest version
+## Install PM2 to run as a service
 
-**Not required with recent NodeJS v10**
-
-Run the following to update NPM from v5 to v6:
-
-`
-sudo npm install -g npm@latest
-`
-
-## Install Pm2 to run as a service
-
-Run the following to install Pm2 globally on your system:
+Run the following to install PM2 globally on your system:
 
 `
 sudo npm install pm2 -g
@@ -112,7 +137,7 @@ sudo npm install pm2 -g
 
 ## Install Strapi Alpha Latest
 
-Run the following to install Strapi Alpha (Current version is Alpha.12.5):
+Run the following to install Strapi Alpha (Current version is v13.0.1):
 
 `
 sudo npm i strapi@alpha -g
@@ -142,7 +167,7 @@ Update your apt cache and install the server and client:
 
 ```
 sudo apt update
-sudo apt install -y mariadb-server mariadb-client
+sudo apt install -y mariadb-server-10.2 mariadb-client-10.2
 ```
 
 **Note that as of MariaDB 10.2 it no longer asks for the root password**
@@ -198,6 +223,12 @@ sudo mkdir /srv/CAPI && sudo chown YourUserName:YourUserGroup /srv/CAPI
 cd /srv/CAPI && git clone https://github.com/canonn-science/CAPIv2-Strapi.git CAPIv2
 `
 
+**NOTE** Currently you will need to make the uploads directory for screenshots, to do so please run:
+
+`
+mkdir /srv/CAPI/CAPIv2/public/uploads
+`
+
 ## Enter the directory and install
 
 `
@@ -239,7 +270,7 @@ The example config is also down below, you will just need to modify the Database
   "defaultConnection": "default",
   "connections": {
     "default": {
-      "connector": "strapi-bookshelf",
+      "connector": "strapi-hook-bookshelf",
       "settings": {
         "client": "mysql",
         "host": "127.0.0.1",
