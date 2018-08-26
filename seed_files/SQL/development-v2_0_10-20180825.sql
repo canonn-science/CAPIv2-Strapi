@@ -62,7 +62,8 @@ DROP TABLE IF EXISTS `bmsites`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `bmsites` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `location` int(11) DEFAULT NULL,
+  `system` int(11) DEFAULT NULL,
+  `body` int(11) DEFAULT NULL,
   `siteID` int(11) DEFAULT NULL,
   `latitude` double DEFAULT NULL,
   `longitude` double DEFAULT NULL,
@@ -72,8 +73,6 @@ CREATE TABLE `bmsites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `system` int(11) DEFAULT NULL,
-  `body` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `bmsites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -197,7 +196,8 @@ DROP TABLE IF EXISTS `btsites`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `btsites` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `location` int(11) DEFAULT NULL,
+  `system` int(11) DEFAULT NULL,
+  `body` int(11) DEFAULT NULL,
   `siteID` int(11) DEFAULT NULL,
   `latitude` double DEFAULT NULL,
   `longitude` double DEFAULT NULL,
@@ -207,8 +207,6 @@ CREATE TABLE `btsites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `system` int(11) DEFAULT NULL,
-  `body` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `btsites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -357,7 +355,8 @@ DROP TABLE IF EXISTS `fgsites`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `fgsites` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `location` int(11) DEFAULT NULL,
+  `system` int(11) DEFAULT NULL,
+  `body` int(11) DEFAULT NULL,
   `siteID` int(11) DEFAULT NULL,
   `latitude` double DEFAULT NULL,
   `longitude` double DEFAULT NULL,
@@ -367,8 +366,6 @@ CREATE TABLE `fgsites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `system` int(11) DEFAULT NULL,
-  `body` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `fgsites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -431,7 +428,8 @@ DROP TABLE IF EXISTS `fmsites`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `fmsites` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `location` int(11) DEFAULT NULL,
+  `system` int(11) DEFAULT NULL,
+  `body` int(11) DEFAULT NULL,
   `siteID` int(11) DEFAULT NULL,
   `latitude` double DEFAULT NULL,
   `longitude` double DEFAULT NULL,
@@ -442,8 +440,6 @@ CREATE TABLE `fmsites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `system` int(11) DEFAULT NULL,
-  `body` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `fmsites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -531,7 +527,8 @@ DROP TABLE IF EXISTS `gensites`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `gensites` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `location` int(11) DEFAULT NULL,
+  `system` int(11) DEFAULT NULL,
+  `body` int(11) DEFAULT NULL,
   `siteID` int(11) DEFAULT NULL,
   `shipName` varchar(255) DEFAULT NULL,
   `directionSystem` int(11) DEFAULT NULL,
@@ -539,8 +536,6 @@ CREATE TABLE `gensites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `system` int(11) DEFAULT NULL,
-  `body` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `gensites_UN_siteID` (`siteID`),
   UNIQUE KEY `gensites_UN_shipName` (`shipName`),
@@ -847,7 +842,8 @@ DROP TABLE IF EXISTS `grsites`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `grsites` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `location` int(11) DEFAULT NULL,
+  `system` int(11) DEFAULT NULL,
+  `body` int(11) DEFAULT NULL,
   `siteID` int(11) DEFAULT NULL,
   `latitude` double DEFAULT NULL,
   `longitude` double DEFAULT NULL,
@@ -857,8 +853,6 @@ CREATE TABLE `grsites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `system` int(11) DEFAULT NULL,
-  `body` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `grsites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1190,7 +1184,8 @@ DROP TABLE IF EXISTS `gssites`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `gssites` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `location` int(11) DEFAULT NULL,
+  `system` int(11) DEFAULT NULL,
+  `body` int(11) DEFAULT NULL,
   `siteID` int(11) DEFAULT NULL,
   `latitude` double DEFAULT NULL,
   `longitude` double DEFAULT NULL,
@@ -1201,8 +1196,6 @@ CREATE TABLE `gssites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `system` int(11) DEFAULT NULL,
-  `body` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `gssites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1292,7 +1285,8 @@ DROP TABLE IF EXISTS `gysites`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `gysites` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `location` int(11) DEFAULT NULL,
+  `system` int(11) DEFAULT NULL,
+  `body` int(11) DEFAULT NULL,
   `siteID` int(11) DEFAULT NULL,
   `latitude` double DEFAULT NULL,
   `longitude` double DEFAULT NULL,
@@ -1302,8 +1296,6 @@ CREATE TABLE `gysites` (
   `visible` tinyint(1) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `system` int(11) DEFAULT NULL,
-  `body` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `gysites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1388,14 +1380,13 @@ DROP TABLE IF EXISTS `hdsites`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `hdsites` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `location` int(11) DEFAULT NULL,
+  `system` int(11) DEFAULT NULL,
   `toSystem` int(11) DEFAULT NULL,
   `thargoidCount` int(11) DEFAULT NULL,
   `isHostile` tinyint(1) DEFAULT NULL,
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `system` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1490,7 +1481,8 @@ DROP TABLE IF EXISTS `lssites`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `lssites` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `location` int(11) DEFAULT NULL,
+  `system` int(11) DEFAULT NULL,
+  `body` int(11) DEFAULT NULL,
   `siteID` int(11) DEFAULT NULL,
   `latitude` double DEFAULT NULL,
   `longitude` double DEFAULT NULL,
@@ -1500,8 +1492,6 @@ CREATE TABLE `lssites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `system` int(11) DEFAULT NULL,
-  `body` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `lssites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1566,7 +1556,8 @@ DROP TABLE IF EXISTS `mssites`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `mssites` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `location` int(11) DEFAULT NULL,
+  `system` int(11) DEFAULT NULL,
+  `body` int(11) DEFAULT NULL,
   `siteID` int(11) DEFAULT NULL,
   `shipName` varchar(255) DEFAULT NULL,
   `shipTag` varchar(255) DEFAULT NULL,
@@ -1577,8 +1568,6 @@ CREATE TABLE `mssites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `system` int(11) DEFAULT NULL,
-  `body` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `mssites_UN_siteID` (`siteID`),
   UNIQUE KEY `mssites_UN_shipName` (`shipName`),
@@ -1852,7 +1841,8 @@ DROP TABLE IF EXISTS `tbsites`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbsites` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `location` int(11) DEFAULT NULL,
+  `system` int(11) DEFAULT NULL,
+  `body` int(11) DEFAULT NULL,
   `siteID` int(11) DEFAULT NULL,
   `latitude` double DEFAULT NULL,
   `longitude` double DEFAULT NULL,
@@ -1866,8 +1856,6 @@ CREATE TABLE `tbsites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `system` int(11) DEFAULT NULL,
-  `body` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `tbsites_UN_siteID` (`siteID`),
   FULLTEXT KEY `SEARCH_TBSITES` (`comment`)
@@ -1956,7 +1944,8 @@ DROP TABLE IF EXISTS `tssites`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tssites` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `location` int(11) DEFAULT NULL,
+  `system` int(11) DEFAULT NULL,
+  `body` int(11) DEFAULT NULL,
   `siteID` int(11) DEFAULT NULL,
   `latitude` double DEFAULT NULL,
   `longitude` double DEFAULT NULL,
@@ -1966,8 +1955,6 @@ CREATE TABLE `tssites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `system` int(11) DEFAULT NULL,
-  `body` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `tssites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -2055,7 +2042,8 @@ DROP TABLE IF EXISTS `twsites`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `twsites` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `location` int(11) DEFAULT NULL,
+  `system` int(11) DEFAULT NULL,
+  `body` int(11) DEFAULT NULL,
   `siteID` int(11) DEFAULT NULL,
   `latitude` double DEFAULT NULL,
   `longitude` double DEFAULT NULL,
@@ -2065,8 +2053,6 @@ CREATE TABLE `twsites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `system` int(11) DEFAULT NULL,
-  `body` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `twsites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -2271,13 +2257,12 @@ DROP TABLE IF EXISTS `usssites`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usssites` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `location` int(11) DEFAULT NULL,
+  `system` int(11) DEFAULT NULL,
   `type` int(11) DEFAULT NULL,
   `threatLevel` int(11) DEFAULT NULL,
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `system` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -2331,4 +2316,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-20  2:46:03
+-- Dump completed on 2018-08-25 18:47:09
