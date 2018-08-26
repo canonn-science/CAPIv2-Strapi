@@ -3,7 +3,8 @@
   "collectionName": "msreports",
   "info": {
     "name": "msreport",
-    "description": "Reporting for Megaships"
+    "description": "Reporting for Megaships",
+    "endpoint": "/msreport"
   },
   "options": {
     "increments": true,
@@ -12,47 +13,65 @@
   },
   "attributes": {
     "systemName": {
+      "x-data-description": "System Name",
       "type": "string",
       "required": true
     },
     "orbitBody": {
+      "x-data-description": "Orbit Body Name",
       "type": "string"
     },
     "shipName": {
+      "x-data-description": "Ship Name",
       "type": "string",
       "required": true
     },
     "shipTag": {
+      "x-data-render": false,
+      "x-data-usersend": false,
       "type": "string"
     },
     "type": {
+      "x-data-description": "Ship Type",
       "type": "string"
     },
     "flightOps": {
+      "x-data-description": "Has Flight Ops",
       "type": "boolean"
     },
     "flightSchedule": {
+      "x-data-description": "Has Flight Schedule",
       "type": "boolean"
     },
     "dockable": {
+      "x-data-description": "Is Dockable",
       "type": "boolean"
     },
     "cmdrName": {
+      "x-data-description": "Commander Name",
+      "default": "Dr. Arcanonn",
       "type": "string",
       "required": true
     },
     "cmdrComment": {
+      "x-data-description": "Comments",
       "type": "text"
     },
     "isBeta": {
+      "x-data-render": false,
+      "default": false,
       "type": "boolean"
     },
     "screenshot": {
+      "x-data-description": "Screenshot",
+      "x-data-type": "image",
+      "x-data-render": false,
       "collection": "file",
       "via": "related",
       "plugin": "upload"
     },
     "reportStatus": {
+      "x-data-render": false,
       "default": "pending",
       "type": "enumeration",
       "required": true,
@@ -65,15 +84,23 @@
       ]
     },
     "reportComment": {
+      "x-data-render": false,
+      "x-data-usersend": false,
       "type": "text"
     },
     "voteCount": {
+      "x-data-render": false,
+      "x-data-usersend": false,
       "type": "integer"
     },
     "added": {
+      "x-data-render": false,
+      "x-data-usersend": false,
       "type": "boolean"
     },
     "site": {
+      "x-data-render": false,
+      "x-data-usersend": false,
       "model": "mssite"
     }
   }

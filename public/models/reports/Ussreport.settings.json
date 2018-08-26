@@ -3,7 +3,8 @@
   "collectionName": "ussreports",
   "info": {
     "name": "ussreport",
-    "description": "Automated journal reports for Unknown Signal Sources"
+    "description": "Automated journal reports for Unknown Signal Sources",
+    "endpoint": "/ussreport"
   },
   "options": {
     "increments": true,
@@ -12,26 +13,37 @@
   },
   "attributes": {
     "systemName": {
+      "x-data-description": "System Name",
       "type": "string"
     },
     "type": {
+      "x-data-description": "Type",
       "type": "string"
     },
     "cmdrName": {
+      "x-data-description": "Commander Name",
+      "default": "Dr. Arcanonn",
       "type": "string"
     },
     "cmdrComment": {
+      "x-data-description": "Comments",
       "type": "text"
     },
     "isBeta": {
+      "x-data-render": false,
+      "default": false,
       "type": "boolean"
     },
     "screenshot": {
+      "x-data-description": "Screenshot",
+      "x-data-type": "image",
+      "x-data-render": false,
       "model": "file",
       "via": "related",
       "plugin": "upload"
     },
     "reportStatus": {
+      "x-data-render": false,
       "default": "pending",
       "type": "enumeration",
       "required": true,
@@ -44,15 +56,23 @@
       ]
     },
     "reportComment": {
+      "x-data-render": false,
+      "x-data-usersend": false,
       "type": "text"
     },
     "added": {
+      "x-data-render": false,
+      "x-data-usersend": false,
       "type": "boolean"
     },
     "site": {
+      "x-data-render": false,
+      "x-data-usersend": false,
       "model": "usssite"
     },
     "ussRawJson": {
+      "x-data-render": false,
+      "x-data-usersend": false,
       "type": "json"
     }
   }

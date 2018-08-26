@@ -3,7 +3,8 @@
   "collectionName": "grreports",
   "info": {
     "name": "grreport",
-    "description": "Reporting for Guardian Ruins"
+    "description": "Reporting for Guardian Ruins",
+    "endpoint": "/grreport"
   },
   "options": {
     "increments": true,
@@ -12,26 +13,33 @@
   },
   "attributes": {
     "systemName": {
+      "x-data-description": "System Name",
       "type": "string",
       "required": true
     },
     "bodyName": {
+      "x-data-description": "Body Name",
       "type": "string",
       "required": true
     },
     "latitude": {
+      "x-data-description": "Latitude",
+      "x-data-group": "coords",
       "type": "float",
       "required": true,
       "min": -90,
       "max": 90
     },
     "longitude": {
+      "x-data-description": "Longitude",
+      "x-data-group": "coords",
       "type": "float",
       "required": true,
       "min": -180,
       "max": 180
     },
     "type": {
+      "x-data-description": "Type",
       "enum": [
         "Alpha",
         "Beta",
@@ -41,21 +49,30 @@
       "required": true
     },
     "cmdrName": {
+      "x-data-description": "Commander Name",
+      "default": "Dr. Arcanonn",
       "type": "string",
       "required": true
     },
     "cmdrComment": {
+      "x-data-description": "Comments",
       "type": "text"
     },
     "isBeta": {
+      "x-data-render": false,
+      "default": false,
       "type": "boolean"
     },
     "screenshot": {
+      "x-data-description": "Screenshot",
+      "x-data-type": "image",
+      "x-data-render": false,
       "collection": "file",
       "via": "related",
       "plugin": "upload"
     },
     "reportStatus": {
+      "x-data-render": false,
       "default": "pending",
       "type": "enumeration",
       "required": true,
@@ -68,22 +85,34 @@
       ]
     },
     "reportComment": {
+      "x-data-render": false,
+      "x-data-usersend": false,
       "type": "text"
     },
     "voteCount": {
+      "x-data-render": false,
+      "x-data-usersend": false,
       "type": "integer"
     },
     "added": {
+      "x-data-render": false,
+      "x-data-usersend": false,
       "type": "boolean"
     },
     "site": {
+      "x-data-render": false,
+      "x-data-usersend": false,
       "model": "grsite"
     },
     "grobeliskgroupreport": {
+      "x-data-render": false,
+      "x-data-usersend": false,
       "collection": "grobeliskgroupreport",
       "via": "grreport"
     },
     "grobeliskreport": {
+      "x-data-render": false,
+      "x-data-usersend": false,
       "collection": "grobeliskreport",
       "via": "grreport"
     }
