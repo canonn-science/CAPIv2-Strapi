@@ -1,9 +1,9 @@
 {
   "connection": "default",
-  "collectionName": "fgreports",
+  "collectionName": "tsreports",
   "info": {
-    "name": "fgreport",
-    "description": "Reporting for Fungal Gourds"
+    "name": "tsreport",
+    "description": "Reporting for Thargoid Structures"
   },
   "options": {
     "increments": true,
@@ -21,15 +21,23 @@
     },
     "latitude": {
       "type": "float",
-      "required": true
+      "required": true,
+      "min": -90,
+      "max": 90
     },
     "longitude": {
       "type": "float",
-      "required": true
+      "required": true,
+      "min": -180,
+      "max": 180
     },
-    "count": {
-      "min": 1,
-      "type": "integer"
+    "status": {
+      "enum": [
+        "Active",
+        "Inactive"
+      ],
+      "type": "enumeration",
+      "required": true
     },
     "cmdrName": {
       "type": "string",
@@ -68,7 +76,7 @@
       "type": "boolean"
     },
     "site": {
-      "model": "fgsite"
+      "model": "tssite"
     }
   }
 }

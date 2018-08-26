@@ -1,9 +1,9 @@
 {
   "connection": "default",
-  "collectionName": "gsreports",
+  "collectionName": "twreports",
   "info": {
-    "name": "gsreport",
-    "description": "Reporting for Guardian Structures"
+    "name": "twreport",
+    "description": "Reporting for Tube Worms"
   },
   "options": {
     "increments": true,
@@ -21,27 +21,19 @@
     },
     "latitude": {
       "type": "float",
-      "required": true
+      "required": true,
+      "min": -90,
+      "max": 90
     },
     "longitude": {
       "type": "float",
-      "required": true
+      "required": true,
+      "min": -180,
+      "max": 180
     },
-    "type": {
-      "enum": [
-        "Lacrosse",
-        "Crossroads",
-        "Fistbump",
-        "Hammerbot",
-        "Bear",
-        "Bowl",
-        "Turtle"
-      ],
-      "type": "enumeration",
-      "required": true
-    },
-    "hasDatabank": {
-      "type": "boolean"
+    "count": {
+      "min": 1,
+      "type": "integer"
     },
     "cmdrName": {
       "type": "string",
@@ -80,15 +72,7 @@
       "type": "boolean"
     },
     "site": {
-      "model": "gssite"
-    },
-    "gsobeliskgroupreport": {
-      "collection": "gsobeliskgroupreport",
-      "via": "gsreport"
-    },
-    "gsobeliskreport": {
-      "collection": "gsobeliskreport",
-      "via": "gsreport"
+      "model": "twsite"
     }
   }
 }

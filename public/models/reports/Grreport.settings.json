@@ -1,9 +1,9 @@
 {
   "connection": "default",
-  "collectionName": "lsreports",
+  "collectionName": "grreports",
   "info": {
-    "name": "lsreport",
-    "description": "Reporting for Lava Spouts"
+    "name": "grreport",
+    "description": "Reporting for Guardian Ruins"
   },
   "options": {
     "increments": true,
@@ -21,15 +21,24 @@
     },
     "latitude": {
       "type": "float",
-      "required": true
+      "required": true,
+      "min": -90,
+      "max": 90
     },
     "longitude": {
       "type": "float",
-      "required": true
+      "required": true,
+      "min": -180,
+      "max": 180
     },
-    "count": {
-      "min": 1,
-      "type": "integer"
+    "type": {
+      "enum": [
+        "Alpha",
+        "Beta",
+        "Gamma"
+      ],
+      "type": "enumeration",
+      "required": true
     },
     "cmdrName": {
       "type": "string",
@@ -68,7 +77,15 @@
       "type": "boolean"
     },
     "site": {
-      "model": "lssite"
+      "model": "grsite"
+    },
+    "grobeliskgroupreport": {
+      "collection": "grobeliskgroupreport",
+      "via": "grreport"
+    },
+    "grobeliskreport": {
+      "collection": "grobeliskreport",
+      "via": "grreport"
     }
   }
 }

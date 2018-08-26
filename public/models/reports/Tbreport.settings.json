@@ -1,9 +1,9 @@
 {
   "connection": "default",
-  "collectionName": "tsreports",
+  "collectionName": "tbreports",
   "info": {
-    "name": "tsreport",
-    "description": "Reporting for Thargoid Structures"
+    "name": "tbreport",
+    "description": "Reporting for Thargoid Barnacles"
   },
   "options": {
     "increments": true,
@@ -21,19 +21,41 @@
     },
     "latitude": {
       "type": "float",
-      "required": true
+      "required": true,
+      "min": -90,
+      "max": 90
     },
     "longitude": {
       "type": "float",
-      "required": true
+      "required": true,
+      "min": -180,
+      "max": 180
     },
-    "status": {
+    "type": {
       "enum": [
-        "Active",
-        "Inactive"
+        "Barnacle",
+        "Megabarnacle"
       ],
       "type": "enumeration",
       "required": true
+    },
+    "cycle": {
+      "enum": [
+        "Unknown",
+        "A",
+        "B",
+        "C",
+        "ABC"
+      ],
+      "type": "enumeration",
+      "required": true
+    },
+    "defense": {
+      "type": "json"
+    },
+    "count": {
+      "min": 1,
+      "type": "integer"
     },
     "cmdrName": {
       "type": "string",
@@ -56,10 +78,10 @@
       "required": true,
       "enum": [
         "pending",
-        " updated",
-        " accepted",
-        " declined",
-        " issue"
+        "updated",
+        "accepted",
+        "declined",
+        "issue"
       ]
     },
     "reportComment": {
@@ -72,7 +94,7 @@
       "type": "boolean"
     },
     "site": {
-      "model": "tssite"
+      "model": "tbsite"
     }
   }
 }

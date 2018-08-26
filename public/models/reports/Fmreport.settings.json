@@ -1,9 +1,9 @@
 {
   "connection": "default",
-  "collectionName": "tbreports",
+  "collectionName": "fmreports",
   "info": {
-    "name": "tbreport",
-    "description": "Reporting for Thargoid Barnacles"
+    "name": "fmreport",
+    "description": "Reporting for Fumaroles"
   },
   "options": {
     "increments": true,
@@ -21,40 +21,18 @@
     },
     "latitude": {
       "type": "float",
-      "required": true
+      "required": true,
+      "min": -90,
+      "max": 90
     },
     "longitude": {
       "type": "float",
-      "required": true
+      "required": true,
+      "min": -180,
+      "max": 180
     },
     "type": {
-      "enum": [
-        "Barnacle",
-        "Megabarnacle"
-      ],
-      "type": "enumeration",
-      "required": true
-    },
-    "cycle": {
-      "enum": [
-        "Unknown",
-        "A",
-        "B",
-        "C",
-        "ABC"
-      ],
-      "type": "enumeration",
-      "required": true
-    },
-    "defense": {
-      "enum": [
-        "None",
-        "Capship",
-        "Drones",
-        "Thargbots",
-        "Turrets"
-      ],
-      "type": "enumeration"
+      "type": "string"
     },
     "count": {
       "min": 1,
@@ -81,10 +59,10 @@
       "required": true,
       "enum": [
         "pending",
-        "updated",
-        "accepted",
-        "declined",
-        "issue"
+        " updated",
+        " accepted",
+        " declined",
+        " issue"
       ]
     },
     "reportComment": {
@@ -97,7 +75,7 @@
       "type": "boolean"
     },
     "site": {
-      "model": "tbsite"
+      "model": "fmsite"
     }
   }
 }

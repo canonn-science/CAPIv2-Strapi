@@ -1,9 +1,9 @@
 {
   "connection": "default",
-  "collectionName": "fmreports",
+  "collectionName": "gsreports",
   "info": {
-    "name": "fmreport",
-    "description": "Reporting for Fumaroles"
+    "name": "gsreport",
+    "description": "Reporting for Guardian Structures"
   },
   "options": {
     "increments": true,
@@ -21,18 +21,31 @@
     },
     "latitude": {
       "type": "float",
-      "required": true
+      "required": true,
+      "min": -90,
+      "max": 90
     },
     "longitude": {
       "type": "float",
-      "required": true
+      "required": true,
+      "min": -180,
+      "max": 180
     },
     "type": {
-      "type": "string"
+      "enum": [
+        "Lacrosse",
+        "Crossroads",
+        "Fistbump",
+        "Hammerbot",
+        "Bear",
+        "Bowl",
+        "Turtle"
+      ],
+      "type": "enumeration",
+      "required": true
     },
-    "count": {
-      "min": 1,
-      "type": "integer"
+    "hasDatabank": {
+      "type": "boolean"
     },
     "cmdrName": {
       "type": "string",
@@ -71,7 +84,15 @@
       "type": "boolean"
     },
     "site": {
-      "model": "fmsite"
+      "model": "gssite"
+    },
+    "gsobeliskgroupreport": {
+      "collection": "gsobeliskgroupreport",
+      "via": "gsreport"
+    },
+    "gsobeliskreport": {
+      "collection": "gsobeliskreport",
+      "via": "gsreport"
     }
   }
 }

@@ -1,7 +1,7 @@
 # Canonn API v2 - (CAPIv2)
 
 [![Strapi Version](https://img.shields.io/badge/strapi-v3.0.0--alpha.13.1-blue.svg)](https://github.com/strapi/strapi) 
-[![CAPIv2 Version](https://img.shields.io/badge/capiv2-v2.0.9-orange.svg)](https://api.canonn.tech:2083) 
+[![CAPIv2 Version](https://img.shields.io/badge/capiv2-v2.0.10-orange.svg)](https://api.canonn.tech:2083) 
 [![Build Status](https://travis-ci.org/canonn-science/CAPIv2-Strapi.svg?branch=development)](https://travis-ci.org/canonn-science/CAPIv2-Strapi)
 [![EDCD Discord](https://img.shields.io/discord/164411426939600896.svg?logo=discord&label=EDCD%20Discord)](https://discord.gg/fhDWZBH)
 [![Canonn Discord](https://img.shields.io/discord/146714487695605760.svg?logo=discord&label=Canonn%20Discord)](https://discord.gg/HzzmG2f)
@@ -41,23 +41,41 @@ The Canonn APIv2 is designed to handle all our current science projects. Current
 * Brain Trees (BT)
 * Fungal Gourds (FG)
 * Fumaroles (FM)
+  * FM Types
 * Generation Ships (GEN)
 * Guardian Ruins (GR)
-  * Guardian Ruins Active Obelisks
-  * Guardian Ruins Active Groups
+  * GR Active Obelisks
+  * GR Active Groups
+  * GR Artifacts
+  * GR Codex Categories
+  * GR Codex Data
+  * GR Obelisks
+  * GR Obelisk Groups
+  * GR Types
 * Guardian Structures (GS)
-  * Guardian Structures Active Obelisks
-  * Guardian Structures Active Groups
+  * GS Active Obelisks
+  * GS Active Groups
+  * GS Artifacts
+  * GS Codex Categories
+  * GS Codex Data
+  * GS Obelisks
+  * GS Obelisk Groups
+  * GS Types
 * Geysers (GY)
+  * GY Types
 * Hyperdictions (HD)
 * Lava Spouts (LS)
 * Megaships (MS)
+  * MS Types
 * Thargoid Barnacles (TB)
-  * Thargoid Barnacles Cycles
-  * Thargoid Barnacles Defenses
+  * TB Cycles
+  * TB Defenses (Currently WIP)
+  * TB Types
 * Thargoid Structures (TS)
-* Tubeworms (TW)
+  * TS Status
+* Tubeworms (TW) **Note subject to change**
 * Unknown Signal Sources (USS)
+  * USS Types
 
 Also we are tracking the following:
 
@@ -72,14 +90,16 @@ Also we are tracking the following:
 
 ## Current Version
 
-The current version of the CAPIv2 is `v2.0.9` and is still in active development and testing. If you would like to contribute please PM DMehaffy on discord `DMehaffy#1337`
+The current version of the CAPIv2 is `v2.0.10` and is still in active development and testing. If you would like to contribute please PM DMehaffy on discord `DMehaffy#1337`
 
 # API Documentation
 
 A static copy of our docs is located in the `/public` folder, you can view the progress of this documentation on our Docs repo here: https://github.com/canonn-science/CAPIv2-Swagger
 
 We currently have two different views of our swagger docs, either via Redocs or the Swagger-UI.
+
 [Redocs for Development](https://api.canonn.tech:2083/)
+
 [Swagger-UI for Development](https://api.canonn.tech:2083/swaggerui/)
 
 # Prerequisites
@@ -147,7 +167,7 @@ Update your apt cache and install the server and client:
 
 ```
 sudo apt update
-sudo apt install -y mariadb-server mariadb-client
+sudo apt install -y mariadb-server-10.2 mariadb-client-10.2
 ```
 
 **Note that as of MariaDB 10.2 it no longer asks for the root password**
@@ -201,6 +221,12 @@ sudo mkdir /srv/CAPI && sudo chown YourUserName:YourUserGroup /srv/CAPI
 
 `
 cd /srv/CAPI && git clone https://github.com/canonn-science/CAPIv2-Strapi.git CAPIv2
+`
+
+**NOTE** Currently you will need to make the uploads directory for screenshots, to do so please run:
+
+`
+mkdir /srv/CAPI/CAPIv2/public/uploads
 `
 
 ## Enter the directory and install
