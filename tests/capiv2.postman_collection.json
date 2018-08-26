@@ -3710,20 +3710,19 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "94d5e216-0320-4b56-8a87-572d8a4bb324",
+								"id": "35f3bcbc-9237-41f1-8365-75dc26912c30",
 								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"pm.environment.set(\"tbID\", jsonData.id);",
 									"",
-									"pm.test(\"FG created values match\", function () {",
+									"pm.test(\"TB created values match\", function () {",
 									"    var jsonData = pm.response.json();",
 									"    pm.expect(jsonData.systemName).to.eql(\"PLEIONE\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"11 A\");",
 									"    pm.expect(jsonData.latitude).to.eql(2.3189);",
 									"    pm.expect(jsonData.longitude).to.eql(177.2434);",
 									"    pm.expect(jsonData.cycle).to.eql(\"B\");",
-									"    pm.expect(jsonData.defense).to.eql(\"Unknown\");",
 									"    pm.expect(jsonData.count).to.eql(7);",
 									"    pm.expect(jsonData.cmdrName).to.eql(\"Unknown\");",
 									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Thargoid Barnacle Report\");",
@@ -3747,7 +3746,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"systemName\": \"PLEIONE\",\n  \"bodyName\": \"11 A\",\n  \"latitude\": 2.3189,\n  \"longitude\": 177.2434,\n  \"type\": \"Barnacle\",\n  \"cycle\": \"B\",\n  \"defense\": \"Unknown\",\n  \"count\": 7,\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Thargoid Barnacle Report\",\n  \"reportStatus\": \"pending\"\n}"
+							"raw": "{\n  \"systemName\": \"PLEIONE\",\n  \"bodyName\": \"11 A\",\n  \"latitude\": 2.3189,\n  \"longitude\": 177.2434,\n  \"type\": \"Barnacle\",\n  \"cycle\": \"B\",\n  \"defense\": { \n  \t\"defense\": \"Unknown\"\n  },\n  \"count\": 7,\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Thargoid Barnacle Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/tbreport",
@@ -3875,7 +3874,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "0d64585f-e99f-44b1-abd0-2380e743dc84",
+								"id": "334880de-dfe2-4813-9fb9-993121254b4d",
 								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"TB updated values match\", function () {",
@@ -3885,7 +3884,6 @@
 									"    pm.expect(jsonData.latitude).to.eql(2.3189);",
 									"    pm.expect(jsonData.longitude).to.eql(177.2434);",
 									"    pm.expect(jsonData.cycle).to.eql(\"B\");",
-									"    pm.expect(jsonData.defense).to.eql(\"Unknown\");",
 									"    pm.expect(jsonData.count).to.eql(7);",
 									"    pm.expect(jsonData.cmdrName).to.eql(\"Unknown\");",
 									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Thargoid Barnacle Report\");",

@@ -1,0 +1,23 @@
+{
+  "connection": "default",
+  "collectionName": "gsobeliskgroupreports",
+  "info": {
+    "name": "gsobeliskgroupreport",
+    "description": "",
+    "endpoint": "/gsobeliskgroupreport"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": false,
+    "comment": ""
+  },
+  "attributes": {
+    "gsreport": {
+      "model": "gsreport",
+      "via": "gsobeliskgroupreport"
+    },
+    "gsobeliskgroup": {
+      "model": "gsobeliskgroup"
+    }
+  }
+}

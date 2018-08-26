@@ -10,7 +10,7 @@ openapi: "3.0.0"
 
 ## Information
 info:
-  version: 2.0.9
+  version: 2.0.10
   title: Canonn APIv2
   x-logo:
     url: "./canonn-logo.png"
@@ -35,9 +35,9 @@ info:
 
     Server Name  | Server Type | Server URL | Server version
     ---------|---------|---------|---------
-    Live | Production | https://api.canonn.tech | v2.0.7
-    Beta | Production | https://api.canonn.tech:2053 | v2.0.7
-    Alpha | Production | https://api.canonn.tech:2083 | v2.0.8
+    Live | Production | https://api.canonn.tech | v2.0.10
+    Beta | Production | https://api.canonn.tech:2053 | v2.0.10
+    Alpha | Production | https://api.canonn.tech:2083 | v2.0.10
 
     Thank you for your support, and thank you to all the CMDRs who supply us with our data!
 
@@ -57,6 +57,8 @@ servers:
     description: Live Production Server, should be used if your application has been tested and deployed
   - url: https://api.canonn.tech:2083
     description: Alpha Development Server, used by Canonn to test development prior to updating Staging and Production. Data here is likely to be wrong or inaccurate.
+  - url: http://localhost:1337
+    description: If you are running a local server for testing.
 
 ## Paths
 paths:
@@ -6987,167 +6989,6 @@ paths:
 
 # Journal Data
 
-# Location
-  /location/count:
-    get:
-      tags:
-        - Locations
-      summary: Get a count of all Locations
-      description: The API will respond with just a number, which is the total amount of locations on this endpoint. This can be used to filter, limit, or page other get requests.
-      operationId: getLocationsCount
-      security: []
-      responses:
-        '200':
-          description: Total count of all entries in plain text
-          content:
-            text/plain:
-              schema:
-                type: integer
-                example: 42
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-  /location:
-    get:
-      tags:
-        - Locations
-      summary: Get a list of Locations
-      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
-      operationId: getLocations
-      security: []
-      parameters:
-        - $ref: '#/components/parameters/start'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/search'
-      responses:
-        '200':
-          description: A list of Locations
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getLocation'
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-    post:
-      tags:
-        - Locations
-      summary: Post a new Location
-      description: To be used to add a new location to the Canonn database
-      operationId: submitLocation
-      security:
-        - canonnAuth: [locationWrite]
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/postLocation'
-      responses:
-        '200':
-          description: Location post successful
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getLocation'
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-  /location/{id}:
-    get:
-      tags:
-        - Locations
-      summary: Get a Single Location
-      description: Provide the ID to get a single location
-      operationId: getLocationById
-      security: []
-      parameters:
-        - $ref: '#/components/parameters/byId'
-      responses:
-        '200':
-          description: Found the Location
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getLocation'
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-
-    put:
-      tags:
-        - Locations
-      summary: Update a Location
-      description: You do not need to send the entire site again, you can send only changed fields
-      operationId: updateLocationById
-      security:
-        - canonnAuth: [locationWrite]
-      parameters:
-        - $ref: '#/components/parameters/byId'
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/putLocation'
-      responses:
-        '200':
-          description: Location update successful
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getLocation'
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-
-    delete:
-      tags:
-        - Locations
-      summary: Delete a Location
-      description: The response is just an empty JSON, deleting a site requires auth
-      operationId: removeLocationById
-      security:
-        - canonnAuth: [locationDelete]
-      parameters:
-        - $ref: '#/components/parameters/byId'
-      responses:
-        '200':
-          description: Delete Successful
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-
 # LS Report
   /lsreport/count:
     get:
@@ -11481,8 +11322,6 @@ components:
           type: boolean
         bodies:
           $ref: '#/components/schemas/getLocationBody'
-        systemLocations:
-          $ref: '#/components/schemas/getLocation'
         created_at:
           type: string
           format: date-time
@@ -11586,8 +11425,6 @@ components:
           $ref: '#/components/schemas/bodyMaterial'
         rings:
           $ref: '#/components/schemas/getLocationRing'
-        bodyLocations:
-          $ref: '#/components/schemas/getLocation'
         created_at:
           type: string
           format: date-time
@@ -11614,8 +11451,6 @@ components:
         edsmOuterRadius:
           type: number
           format: float
-        ringLocations:
-          $ref: '#/components/schemas/getLocation'
         created_at:
           type: string
           format: date-time
@@ -11629,55 +11464,6 @@ components:
           type: integer
         type:
           type: string
-
-    getLocation:
-      properties:
-        id:
-          type: integer
-        system:
-          type: integer
-        body:
-          type: integer
-        ring:
-          type: integer
-        locationType:
-          type: string
-        bmSite:
-          $ref: '#/components/schemas/getSitePlanet'
-        btSite:
-          $ref: '#/components/schemas/getSitePlanet'
-        fgSite:
-          $ref: '#/components/schemas/getSitePlanet'
-        fmSite:
-          $ref: '#/components/schemas/getSiteFM'
-        genSite:
-          $ref: '#/components/schemas/getSiteGEN'
-        grSite:
-          $ref: '#/components/schemas/getSiteGR'
-        gsSite:
-          $ref: '#/components/schemas/getSiteGR'
-        gySite:
-          $ref: '#/components/schemas/getSiteGY'
-        hdSite:
-          $ref: '#/components/schemas/getSiteHD'
-        lsSite:
-          $ref: '#/components/schemas/getSitePlanet'
-        msSite:
-          $ref: '#/components/schemas/getSiteMS'
-        tbSite:
-          $ref: '#/components/schemas/getSiteTB'
-        tsSite:
-          $ref: '#/components/schemas/getSiteTS'
-        twSite:
-          $ref: '#/components/schemas/getSitePlanet'
-        ussSite:
-          $ref: '#/components/schemas/getSiteUSS'
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
 
   ## GET CMDRs
     getCMDR:
@@ -11791,8 +11577,12 @@ components:
   ## GET Sites
     getSitePlanet:
       properties:
-        location:
-          $ref: '#/components/schemas/getLocation'
+        id:
+          type: integer
+        system:
+          $ref: '#/components/schemas/getLocationSystem'
+        body:
+          $ref: '#/components/schemas/getLocationBody'
         siteID:
           type: integer
         latitude:
@@ -11814,8 +11604,10 @@ components:
       properties:
         id:
           type: integer
-        location:
-          $ref: '#/components/schemas/getLocation'
+        system:
+          $ref: '#/components/schemas/getLocationSystem'
+        body:
+          $ref: '#/components/schemas/getLocationBody'
         siteID:
           type: integer
         latitude:
@@ -11852,8 +11644,10 @@ components:
       properties:
         id:
           type: integer
-        location:
-          $ref: '#/components/schemas/getLocation'
+        system:
+          $ref: '#/components/schemas/getLocationSystem'
+        body:
+          $ref: '#/components/schemas/getLocationBody'
         siteID:
           type: integer
         shipName:
@@ -11876,8 +11670,10 @@ components:
       properties:
         id:
           type: integer
-        location:
-          $ref: '#/components/schemas/getLocation'
+        system:
+          $ref: '#/components/schemas/getLocationSystem'
+        body:
+          $ref: '#/components/schemas/getLocationBody'
         siteID:
           type: integer
         latitude:
@@ -12015,8 +11811,10 @@ components:
       properties:
         id:
           type: integer
-        location:
-          $ref: '#/components/schemas/getLocation'
+        system:
+          $ref: '#/components/schemas/getLocationSystem'
+        body:
+          $ref: '#/components/schemas/getLocationBody'
         siteID:
           type: integer
         latitude:
@@ -12160,8 +11958,10 @@ components:
       properties:
         id:
           type: integer
-        location:
-          $ref: '#/components/schemas/getLocation'
+        system:
+          $ref: '#/components/schemas/getLocationSystem'
+        body:
+          $ref: '#/components/schemas/getLocationBody'
         siteID:
           type: integer
         latitude:
@@ -12198,8 +11998,8 @@ components:
       properties:
         id:
           type: integer
-        location:
-          $ref: '#/components/schemas/getLocation'
+        system:
+          $ref: '#/components/schemas/getLocationSystem'
         toSystem:
           $ref: '#/components/schemas/getLocationSystem'
         thargoidCount:
@@ -12219,8 +12019,10 @@ components:
       properties:
         id:
           type: integer
-        location:
-          $ref: '#/components/schemas/getLocation'
+        system:
+          $ref: '#/components/schemas/getLocationSystem'
+        body:
+          $ref: '#/components/schemas/getLocationBody'
         siteID:
           type: integer
         shipName:
@@ -12255,8 +12057,10 @@ components:
       properties:
         id:
           type: integer
-        location:
-          $ref: '#/components/schemas/getLocation'
+        system:
+          $ref: '#/components/schemas/getLocationSystem'
+        body:
+          $ref: '#/components/schemas/getLocationBody'
         siteID:
           type: integer
         latitude:
@@ -12309,8 +12113,10 @@ components:
       properties:
         id:
           type: integer
-        location:
-          $ref: '#/components/schemas/getLocation'
+        system:
+          $ref: '#/components/schemas/getLocationSystem'
+        body:
+          $ref: '#/components/schemas/getLocationBody'
         siteID:
           type: integer
         latitude:
@@ -12345,8 +12151,8 @@ components:
       properties:
         id:
           type: integer
-        location:
-          $ref: '#/components/schemas/getLocation'
+        system:
+          $ref: '#/components/schemas/getLocationSystem'
         type:
           $ref: '#/components/schemas/getSiteUSSType'
         threatLevel:
@@ -13039,36 +12845,6 @@ components:
         type:
           type: string
 
-    postLocation:
-      required:
-        - system
-        - locationType
-      properties:
-        system:
-          type: integer
-        body:
-          type: integer
-        ring:
-          type: integer
-        locationType:
-          type: string
-          enum:
-            - BM
-            - BT
-            - FG
-            - FM
-            - GEN
-            - GR
-            - GS
-            - GY
-            - HD
-            - LS
-            - MS
-            - TB
-            - TS
-            - TW
-            - USS
-
   ## POST CMDRs
     postCMDR:
       required:
@@ -13163,14 +12939,17 @@ components:
   ## POST Sites
     postSitePlanet:
       required:
-        - locationType
+        - system
+        - body
         - siteID
         - latitude
         - longitude
         - verified
         - discoveredBy
       properties:
-        location:
+        system:
+          type: integer
+        body:
           type: integer
         siteID:
           type: integer
@@ -13191,7 +12970,8 @@ components:
 
     postSiteFM:
       required:
-        - location
+        - system
+        - body
         - siteID
         - latitude
         - longitude
@@ -13199,7 +12979,9 @@ components:
         - verified
         - discoveredBy
       properties:
-        location:
+        system:
+          type: integer
+        body:
           type: integer
         siteID:
           type: integer
@@ -13229,12 +13011,14 @@ components:
 
     postSiteGEN:
       required:
-        - location
+        - system
         - siteID
         - shipName
         - discoveredBy
       properties:
-        location:
+        system:
+          type: integer
+        body:
           type: integer
         siteID:
           type: integer
@@ -13250,7 +13034,8 @@ components:
 
     postSiteGR:
       required:
-        - location
+        - system
+        - body
         - siteID
         - latitude
         - longitude
@@ -13258,7 +13043,9 @@ components:
         - verified
         - discoveredBy
       properties:
-        location:
+        system:
+          type: integer
+        body:
           type: integer
         siteID:
           type: integer
@@ -13374,7 +13161,8 @@ components:
 
     postSiteGS:
       required:
-        - location
+        - system
+        - body
         - siteID
         - latitude
         - longitude
@@ -13383,7 +13171,9 @@ components:
         - verified
         - discoveredBy
       properties:
-        location:
+        system:
+          type: integer
+        body:
           type: integer
         siteID:
           type: integer
@@ -13504,7 +13294,8 @@ components:
 
     postSiteGY:
       required:
-        - location
+        - system
+        - body
         - siteID
         - latitude
         - longitude
@@ -13512,7 +13303,9 @@ components:
         - verified
         - discoveredBy
       properties:
-        location:
+        system:
+          type: integer
+        body:
           type: integer
         siteID:
           type: integer
@@ -13542,13 +13335,13 @@ components:
 
     postSiteHD:
       required:
-        - location
+        - system
         - toSystem
         - thargoidCount
         - isHostile
         - discoveredBy
       properties:
-        location:
+        system:
           type: integer
         toSystem:
           type: integer
@@ -13561,7 +13354,7 @@ components:
 
     postSiteMS:
       required:
-        - location
+        - system
         - siteID
         - shipName
         - shipTag
@@ -13571,7 +13364,9 @@ components:
         - dockable
         - discoveredBy
       properties:
-        location:
+        system:
+          type: integer
+        body:
           type: integer
         siteID:
           type: integer
@@ -13599,7 +13394,8 @@ components:
 
     postSiteTB:
       required:
-        - location
+        - system
+        - body
         - siteID
         - latitude
         - longitude
@@ -13608,7 +13404,9 @@ components:
         - verified
         - discoveredBy
       properties:
-        location:
+        system:
+          type: integer
+        body:
           type: integer
         siteID:
           type: integer
@@ -13654,7 +13452,8 @@ components:
 
     postSiteTS:
       required:
-        - location
+        - system
+        - body
         - siteID
         - latitude
         - longitude
@@ -13662,7 +13461,9 @@ components:
         - verified
         - discoveredBy
       properties:
-        location:
+        system:
+          type: integer
+        body:
           type: integer
         siteID:
           type: integer
@@ -13690,12 +13491,12 @@ components:
 
     postSiteUSS:
       required:
-        - location
+        - system
         - type
         - threatLevel
         - discoveredBy
       properties:
-        location:
+        system:
           type: integer
         type:
           type: integer
@@ -14289,33 +14090,6 @@ components:
         type:
           type: string
 
-    putLocation:
-      properties:
-        system:
-          type: integer
-        body:
-          type: integer
-        ring:
-          type: integer
-        locationType:
-          type: string
-          enum:
-            - BM
-            - BT
-            - FG
-            - FM
-            - GEN
-            - GR
-            - GS
-            - GY
-            - HD
-            - LS
-            - MS
-            - TB
-            - TS
-            - TW
-            - USS
-
   ## PUT CMDRs
     putCMDR:
       properties:
@@ -14400,7 +14174,9 @@ components:
   ## PUT Sites
     putSitePlanet:
       properties:
-        location:
+        system:
+          type: integer
+        body:
           type: integer
         siteID:
           type: integer
@@ -14421,7 +14197,9 @@ components:
 
     putSiteFM:
       properties:
-        location:
+        system:
+          type: integer
+        body:
           type: integer
         siteID:
           type: integer
@@ -14449,7 +14227,9 @@ components:
 
     putSiteGEN:
       properties:
-        location:
+        system:
+          type: integer
+        body:
           type: integer
         siteID:
           type: integer
@@ -14465,7 +14245,9 @@ components:
 
     putSiteGR:
       properties:
-        location:
+        system:
+          type: integer
+        body:
           type: integer
         siteID:
           type: integer
@@ -14552,7 +14334,9 @@ components:
 
     putSiteGS:
       properties:
-        location:
+        system:
+          type: integer
+        body:
           type: integer
         siteID:
           type: integer
@@ -14643,7 +14427,9 @@ components:
 
     putSiteGY:
       properties:
-        location:
+        system:
+          type: integer
+        body:
           type: integer
         siteID:
           type: integer
@@ -14671,7 +14457,7 @@ components:
 
     putSiteHD:
       properties:
-        location:
+        system:
           type: integer
         toSystem:
           type: integer
@@ -14684,7 +14470,9 @@ components:
 
     putSiteMS:
       properties:
-        location:
+        system:
+          type: integer
+        body:
           type: integer
         siteID:
           type: integer
@@ -14710,7 +14498,9 @@ components:
 
     putSiteTB:
       properties:
-        location:
+        system:
+          type: integer
+        body:
           type: integer
         siteID:
           type: integer
@@ -14750,7 +14540,9 @@ components:
 
     putSiteTS:
       properties:
-        location:
+        system:
+          type: integer
+        body:
           type: integer
         siteID:
           type: integer
@@ -14776,7 +14568,7 @@ components:
 
     putSiteUSS:
       properties:
-        location:
+        system:
           type: integer
         type:
           type: integer
@@ -14864,8 +14656,6 @@ tags:
     description: Bodies stored in our API to use as references for sites
   - name: Rings
     description: Rings stored in our API to use as references for sites
-  - name: Locations
-    description: Combines System, Bodies, and Rings into one endpoint used by sites as a reference
 
   ## CMDRs
   - name: CMDRs

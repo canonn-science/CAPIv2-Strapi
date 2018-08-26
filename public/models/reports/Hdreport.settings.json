@@ -1,0 +1,82 @@
+{
+  "connection": "default",
+  "collectionName": "hdreports",
+  "info": {
+    "name": "hdreport",
+    "description": "Journal events and user reports for the Unknown Signal Sources",
+    "endpoint": "/hdreport"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "fromSystemName": {
+      "x-data-description": "From System Name",
+      "type": "string",
+      "required": true
+    },
+    "toSystemName": {
+      "x-data-description": "To System Name",
+      "type": "string",
+      "required": true
+    },
+    "cmdrName": {
+      "x-data-description": "Commander Name",
+      "default": "Dr. Arcanonn",
+      "type": "string",
+      "required": true
+    },
+    "cmdrComment": {
+      "x-data-description": "Comments",
+      "type": "text"
+    },
+    "screenshot": {
+      "x-data-description": "Screenshot",
+      "x-data-type": "image",
+      "x-data-render": false,
+      "model": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "isBeta": {
+      "x-data-render": false,
+      "default": false,
+      "type": "boolean"
+    },
+    "reportStatus": {
+      "x-data-render": false,
+      "default": "pending",
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "pending",
+        " updated",
+        " accepted",
+        " declined",
+        " issue"
+      ]
+    },
+    "reportComment": {
+      "x-data-render": false,
+      "x-data-usersend": false,
+      "type": "text"
+    },
+    "added": {
+      "x-data-render": false,
+      "x-data-usersend": false,
+      "type": "boolean"
+    },
+    "site": {
+      "x-data-render": false,
+      "x-data-usersend": false,
+      "model": "hdsite"
+    },
+    "hdRawJson": {
+      "x-data-render": false,
+      "x-data-usersend": false,
+      "type": "json"
+    }
+  }
+}
