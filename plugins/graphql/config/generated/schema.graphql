@@ -1191,6 +1191,7 @@ type UploadFile {
   updatedAt: DateTime!
   name: String!
   hash: String!
+  sha256: String
   ext: String
   mime: String!
   size: String!
@@ -1214,15 +1215,17 @@ type UsersPermissionsRole {
   name: String!
   description: String
   type: String
-  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
   permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission]
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
 }
 
 type UsersPermissionsUser {
   id: ID!
   username: String!
   email: String!
-  provider: String
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
   role: UsersPermissionsRole
 }
 
