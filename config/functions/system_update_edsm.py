@@ -140,8 +140,8 @@ edsm_api_systems_url = 'https://www.edsm.net/api-v1/systems'
 current_date = datetime.now()
 names_to_update = []
 
-updated_at_select_sql = 'SELECT systemName, updated_at FROM systems and rownum <= '+str(args.batch_size * args.batch_limit)
-null_edsm_id_select_sql = 'SELECT systemName FROM systems WHERE edsmID is NULL and rownum <= '+str(args.batch_size * args.batch_limit)
+updated_at_select_sql = 'SELECT systemName, updated_at FROM systems limit '+str(args.batch_size * args.batch_limit)
+null_edsm_id_select_sql = 'SELECT systemName FROM systems WHERE edsmID is NULL limit '+str(args.batch_size * args.batch_limit)
 insert_sql = 'UPDATE `systems` SET edsmCoordX=%s, edsmCoordY=%s, edsmCoordZ=%s, edsmID=%s, edsmID64=%s, edsmCoordLocked=%s WHERE systemName LIKE \'{}\''
 
 
