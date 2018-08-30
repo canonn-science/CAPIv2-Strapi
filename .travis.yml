@@ -26,7 +26,7 @@ install:
   - mysql -u root --password="" -e "GRANT ALL PRIVILEGES ON * . * TO 'canonnuser'@'localhost'"
   - mysql -u root --password="" canonntest < seed_files/SQL/development-v2_0_10-20180828.sql
   - apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8F193E60D1EA2D4C
-  - apt install pm2 -qy
+  - apt install pm2 -y
   - npm install -g newman
   - npm install
 
