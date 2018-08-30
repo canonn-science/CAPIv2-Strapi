@@ -79,6 +79,15 @@ parser.add_argument(
     default=25
 )
 
+# Add an argument to set a maximum batch amount before stopping
+parser.add_argument(
+    '-batch-limit',
+    help='Customise the number of batches to run before stopping to prevent large updates',
+    dest='batch_limit',
+    type=int,
+    default=10
+)
+
 args = parser.parse_args()
 
 
