@@ -1,3 +1,5 @@
+var PythonShell = require('python-shell');
+
 'use strict';
 
 /**
@@ -11,7 +13,7 @@ module.exports = {
 
   // After saving a value.
   // Fired after an `insert` or `update` query.
-  // afterSave: async (model, response, options) => {},
+  // afterSave: async (model, response, options) => {}
 
   // Before fetching a value.
   // Fired before a `fetch` operation.
@@ -27,7 +29,20 @@ module.exports = {
 
   // After creating a value.
   // Fired after an `insert` query.
-  // afterCreate: async (model, attrs, options) => {},
+  afterCreate: async (model, attrs, options) => {
+    var options = {
+      mode: 'text',
+      pythonOptions: ['-u'],
+      scriptPath: 'config/functions/',
+      args: ['--development', '--update-missing', '-delay-seconds', '1', '-batch-size', '5', '-batch-limit', '5']
+    };
+
+    PythonShell.run('system_update_edsm.py', options, function (err, results) {
+      if (err) throw err;
+      // results is an array consisting of messages collected during execution
+      //console.log('results: %j', results);
+    });
+  }
 
   // Before updating a value.
   // Fired before an `update` query.

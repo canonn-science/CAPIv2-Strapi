@@ -13,8 +13,8 @@ Running anywhere needs the following:
 pip3 install PyMySQL
 pip3 install requests
 """
-
-config_file_path = '../environments/{}/database.json'
+cwd = os.getcwd()
+config_file_path = cwd + '/config/environments/{}/database.json'
 # config_file_path = '../environments/{}/database.json'
 
 # Initialising the Argument Parser and adding the three arguments required:
