@@ -4,6 +4,7 @@ import requests
 import os
 import pymysql.cursors
 import time
+from urllib import quote_plus
 
 from datetime import datetime
 
@@ -171,7 +172,7 @@ try:
                 for index, name in enumerate(chunk):
                     if not index == 0:
                         url += '&'
-                    url += 'systemName[]={}'.format(name)
+                    url += 'systemName[]={}'.format(quote_plus(name))
                 response = requests.get(url)
                 all_systems_data = response.json()
                 for system_data in all_systems_data:
