@@ -4,6 +4,7 @@ import requests
 import os
 import pymysql.cursors
 import time
+import urllib
 
 from datetime import datetime
 
@@ -12,8 +13,8 @@ Running anywhere needs the following:
 pip3 install PyMySQL
 pip3 install requests
 """
-
-config_file_path = '../environments/{}/database.json'
+cwd = os.getcwd()
+config_file_path = cwd + '/config/environments/{}/database.json'
 # config_file_path = '../environments/{}/database.json'
 
 # Initialising the Argument Parser and adding the three arguments required:
@@ -78,6 +79,15 @@ parser.add_argument(
     default=25
 )
 
+# Add an argument to set a maximum batch amount before stopping
+parser.add_argument(
+    '-batch-limit',
+    help='Customise the number of batches to run before stopping to prevent large updates',
+    dest='batch_limit',
+    type=int,
+    default=10
+)
+
 args = parser.parse_args()
 
 
@@ -130,8 +140,8 @@ edsm_api_systems_url = 'https://www.edsm.net/api-v1/systems'
 current_date = datetime.now()
 names_to_update = []
 
-updated_at_select_sql = 'SELECT systemName, updated_at FROM systems'
-null_edsm_id_select_sql = 'SELECT systemName FROM systems WHERE edsmID is NULL'
+updated_at_select_sql = 'SELECT systemName, updated_at FROM systems limit '+str(args.batch_size * args.batch_limit)
+null_edsm_id_select_sql = 'SELECT systemName FROM systems WHERE edsmID is NULL limit '+str(args.batch_size * args.batch_limit)
 insert_sql = 'UPDATE `systems` SET edsmCoordX=%s, edsmCoordY=%s, edsmCoordZ=%s, edsmID=%s, edsmID64=%s, edsmCoordLocked=%s WHERE systemName LIKE \'{}\''
 
 
@@ -171,7 +181,7 @@ try:
                 for index, name in enumerate(chunk):
                     if not index == 0:
                         url += '&'
-                    url += 'systemName[]={}'.format(name)
+                    url += 'systemName[]={}'.format(urllib.parse.quote_plus(name))
                 response = requests.get(url)
                 all_systems_data = response.json()
                 for system_data in all_systems_data:
