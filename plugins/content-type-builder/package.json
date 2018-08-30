@@ -1,8 +1,8 @@
 {
   "_from": "strapi-plugin-content-type-builder@alpha",
-  "_id": "strapi-plugin-content-type-builder@3.0.0-alpha.13.1",
+  "_id": "strapi-plugin-content-type-builder@3.0.0-alpha.14",
   "_inBundle": false,
-  "_integrity": "sha512-2vdRYULmxTTG92xJn02xiBkwKy8EUxtMtHXmNeN9zFAzTp0PdOtdR51/+kAlB/wLnqkBk2Y9NqSWHQ4ozloICw==",
+  "_integrity": "sha512-UKIAS21RLxOH8Y9P3xbSkNFYH3e30A1p4NrGoUmXllv1GF5JG4A2CExTTmSx4sKkzGFbLyS/S6OuSYUZLATxvQ==",
   "_location": "/strapi-plugin-content-type-builder",
   "_phantomChildren": {},
   "_requested": {
@@ -18,10 +18,10 @@
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "https://registry.npmjs.org/strapi-plugin-content-type-builder/-/strapi-plugin-content-type-builder-3.0.0-alpha.13.1.tgz",
-  "_shasum": "dbf54deb3c20b2f6785ad6d7e3a5ebddf304b075",
+  "_resolved": "https://registry.npmjs.org/strapi-plugin-content-type-builder/-/strapi-plugin-content-type-builder-3.0.0-alpha.14.tgz",
+  "_shasum": "47f010bd1476fd4121ff8366a301b4d11ebd1cfd",
   "_spec": "strapi-plugin-content-type-builder@alpha",
-  "_where": "/mnt/nixstorage/Github/Canonn/CAPIv2-209",
+  "_where": "/nixstorage/Github/capi/CAPIv2-Strapi",
   "author": {
     "name": "Strapi team",
     "email": "hi@strapi.io",
@@ -32,14 +32,15 @@
   },
   "bundleDependencies": false,
   "dependencies": {
+    "immutable": "^3.8.2",
     "pluralize": "^7.0.0",
-    "strapi-generate": "3.0.0-alpha.13.1",
-    "strapi-generate-api": "3.0.0-alpha.13.1"
+    "strapi-generate": "3.0.0-alpha.14",
+    "strapi-generate-api": "3.0.0-alpha.14"
   },
   "deprecated": false,
   "description": "Strapi plugin to create content type (API).",
   "devDependencies": {
-    "strapi-helper-plugin": "3.0.0-alpha.13.1"
+    "strapi-helper-plugin": "3.0.0-alpha.14"
   },
   "engines": {
     "node": ">= 9.0.0",
@@ -78,5 +79,5 @@
     "icon": "paint-brush",
     "description": "content-type-builder.plugin.description"
   },
-  "version": "3.0.0-alpha.13.1"
+  "version": "3.0.0-alpha.14"
 }
