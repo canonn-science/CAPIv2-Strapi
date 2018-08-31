@@ -32,6 +32,7 @@ module.exports = {
   afterCreate: async (model, attrs, options) => {
     var options = {
       mode: 'text',
+      pythonPath: '/usr/bin/python3',
       pythonOptions: ['-u'],
       scriptPath: 'config/functions/',
       args: ['--development', '--update-missing', '-delay-seconds', '1', '-batch-size', '5', '-batch-limit', '5']
