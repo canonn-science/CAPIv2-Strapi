@@ -142,7 +142,7 @@ names_to_update = []
 
 updated_at_select_sql = 'SELECT systemName, updated_at FROM systems limit '+str(args.batch_size * args.batch_limit)
 null_edsm_id_select_sql = 'SELECT systemName FROM systems WHERE edsmID is NULL limit '+str(args.batch_size * args.batch_limit)
-insert_sql = 'UPDATE `systems` SET edsmCoordX=%s, edsmCoordY=%s, edsmCoordZ=%s, edsmID=%s, edsmID64=%s, edsmCoordLocked=%s WHERE systemName LIKE \'{}\''
+insert_sql = 'UPDATE `systems` SET edsmCoordX=%s, edsmCoordY=%s, edsmCoordZ=%s, edsmID=%s, edsmID64=%s, edsmCoordLocked=%s WHERE systemName LIKE %s'
 
 
 # Reference:
@@ -187,14 +187,15 @@ try:
                 for system_data in all_systems_data:
                     print('Updating: {}'.format(system_data['name']))
                     cursor.execute(
-                        insert_sql.format(system_data['name']),
+                        insert_sql,
                         (
                             system_data['coords']['x'],
                             system_data['coords']['y'],
                             system_data['coords']['z'],
                             system_data['id'],
                             system_data['id64'],
-                            1 if system_data['coordsLocked'] else 0
+                            1 if system_data['coordsLocked'] else 0,
+                            system_data['name']
                         )
                     )
                 time.sleep(args.delay_seconds)
