@@ -1,3 +1,5 @@
+const _ = require('lodash');
+
 module.exports = async (ctx, next) => {
   let role;
 
@@ -23,6 +25,20 @@ module.exports = async (ctx, next) => {
     if (role.type === 'root') {
       return await next();
     }
+
+    const store = await strapi.store({
+      environment: '',
+      type: 'plugin',
+      name: 'users-permissions'
+    });
+
+    if (_.get(await store.get({key: 'advanced'}), 'email_confirmation') && ctx.state.user.confirmed !== true) {
+      return ctx.unauthorized('Your account email is not confirmed.');
+    }
+    
+    if (ctx.state.user.blocked === true) {
+      return ctx.unauthorized(`Your account has been blocked by the administrator.`);
+    }
   }
   // Retrieve `public` role.
   if (!role) {
@@ -45,8 +61,9 @@ module.exports = async (ctx, next) => {
 
     return ctx.forbidden();
   }
+
   // Execute the policies.
-  else if (permission.policy) {
+  if (permission.policy) {
     return await strapi.plugins['users-permissions'].config.policies[permission.policy](ctx, next);
   }
 
