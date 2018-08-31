@@ -80,7 +80,7 @@ The Canonn APIv2 is designed to handle all our current science projects. Current
 Also we are tracking the following:
 
 * Systems
-  * X/Y/Z and Locked status pulled from EDSM - **WIP**
+  * X/Y/Z and Locked status pulled from EDSM
 * Bodies
   * Atmosphere composition (From EDSM) - **Planned v2.1.0**
   * Material composition (From EDSM) - **Planned v2.1.0**

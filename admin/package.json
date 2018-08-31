@@ -1,26 +1,26 @@
 {
-  "_from": "strapi-admin@3.0.0-alpha.13.1",
-  "_id": "strapi-admin@3.0.0-alpha.13.1",
+  "_from": "strapi-admin@3.0.0-alpha.14",
+  "_id": "strapi-admin@3.0.0-alpha.14",
   "_inBundle": false,
-  "_integrity": "sha512-33N1ruadivj+1HdSqDYrcTc4oXVLOT5u13xQR9eQoSh8SDFan0FGYaCxjet8zJ2jtQ6sAnr/jqB+Of9RFDdnSQ==",
+  "_integrity": "sha512-8asyfI/Ekn7zlS8LwsnJOawOoRH2q4K2G9DpN9Ar/wwZ1gcNqoW0jl4oIvXGHWHgPT0cFKuzdC6eTM8VGRaSKg==",
   "_location": "/strapi/strapi-admin",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "strapi-admin@3.0.0-alpha.13.1",
+    "raw": "strapi-admin@3.0.0-alpha.14",
     "name": "strapi-admin",
     "escapedName": "strapi-admin",
-    "rawSpec": "3.0.0-alpha.13.1",
+    "rawSpec": "3.0.0-alpha.14",
     "saveSpec": null,
-    "fetchSpec": "3.0.0-alpha.13.1"
+    "fetchSpec": "3.0.0-alpha.14"
   },
   "_requiredBy": [
     "/strapi/strapi-generate-admin"
   ],
-  "_resolved": "https://registry.npmjs.org/strapi-admin/-/strapi-admin-3.0.0-alpha.13.1.tgz",
-  "_shasum": "ab4a7a0b790f0d4e88c9695cfff68665d8d781b2",
-  "_spec": "strapi-admin@3.0.0-alpha.13.1",
+  "_resolved": "https://registry.npmjs.org/strapi-admin/-/strapi-admin-3.0.0-alpha.14.tgz",
+  "_shasum": "24cf9dc7c4aed09822bf20d404f41edc4f85303d",
+  "_spec": "strapi-admin@3.0.0-alpha.14",
   "_where": "/usr/lib/node_modules/strapi/node_modules/strapi-generate-admin",
   "author": {
     "name": "Strapi"
@@ -38,8 +38,8 @@
   "description": "Strapi Admin",
   "devDependencies": {
     "sanitize.css": "^4.1.0",
-    "strapi-helper-plugin": "3.0.0-alpha.13.1",
-    "strapi-utils": "3.0.0-alpha.13.1"
+    "strapi-helper-plugin": "3.0.0-alpha.14",
+    "strapi-utils": "3.0.0-alpha.14"
   },
   "engines": {
     "node": ">= 9.0.0",
@@ -75,5 +75,5 @@
     "start": "node ./node_modules/strapi-helper-plugin/node_modules/.bin/cross-env NODE_ENV=development PORT=4000 IS_ADMIN=true node ./node_modules/strapi-helper-plugin/lib/server",
     "test": "echo \"Error: no test specified\""
   },
-  "version": "3.0.0-alpha.13.1"
+  "version": "3.0.0-alpha.14"
 }

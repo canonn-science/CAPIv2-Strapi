@@ -25,14 +25,13 @@ install:
   - mysql -u root --password="" -e "CREATE DATABASE canonntest"
   - mysql -u root --password="" -e "CREATE USER 'canonnuser'@'localhost' IDENTIFIED BY 'canonnpassword'"
   - mysql -u root --password="" -e "GRANT ALL PRIVILEGES ON * . * TO 'canonnuser'@'localhost'"
-  - mysql -u root --password="" canonntest < seed_files/SQL/development-v2_0_10-20180825.sql
+  - mysql -u root --password="" canonntest < seed_files/SQL/development-v2_0_10-20180828.sql
   - npm install -g newman
   - npm install
 
 script:
   - NODE_ENV=development pm2 start strapi --no-pmx --name="capiv2" -- start
   - sleep 10
-  - curl http://localhost:1337/grartifact
   - newman run 'tests/capiv2.postman_collection.json' -e tests/capiv2.postman_environment.json
   - cat /home/travis/.pm2/logs/capiv2-error-0.log
 # Cutting main log to cut down on TravisCI build log size
