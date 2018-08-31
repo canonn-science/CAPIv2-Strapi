@@ -25,6 +25,7 @@
 - [Clone the CAPIv2-Strapi project and Setup](#clone-the-capiv2-strapi-project-and-setup)
     - [Clone the API](#clone-the-api)
     - [Enter the directory and install](#enter-the-directory-and-install)
+    - [Setup python3 for scripts](#setup-python3-for-scripts)
     - [Create the Dev database.json](#create-the-dev-databasejson)
     - [Start CAPIv2 for the first time](#start-capiv2-for-the-first-time)
     - [Create the Admin User](#create-the-admin-user)
@@ -105,13 +106,18 @@ We currently have two different views of our swagger docs, either via Redocs or 
 # Prerequisites
 
 You will need the following:
-- Ubuntu 16.04 or 18.04
+- Ubuntu 18.04 LTS
+  - **Ubuntu 16.04 is no longer supported**
 - Git
 - Node v10 or above
 - NPM v6 or above
 - Node Pm2 (For running API as a service)
 - Strapi Alpha v13.1
 - MariaDB 10.2 or above
+- **Python v3.x**
+  - pip3
+  - pymysql module
+  - requests module
 
 ## Installing Git, Node v10, and NPM v6
 
@@ -254,6 +260,16 @@ You can use the following command inside the API directory:
 
 ```
 npm install sendmail graphql graphql-tools graphql-type-json stream-to-array jsonwebtoken request purest bcryptjs apollo-server-koa graphql-playground-middleware-koa
+```
+
+## Setup python3 for scripts
+
+CAPIv2 uses a few python scripts to update data from EDSM to our database. The database information is pulled from the database.json file you will configure in the next step.
+
+You do need to install a few pre-reqs though for these scripts, please run the following in the project root directory:
+
+```
+sudo apt install python3-pip -y && pip3 install pymysql requests
 ```
 
 ## Create the Dev database.json
