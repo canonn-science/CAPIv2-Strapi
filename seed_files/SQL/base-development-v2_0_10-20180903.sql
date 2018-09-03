@@ -1224,7 +1224,7 @@ CREATE TABLE `gstypes` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `gstypes_UN_type` (`type`),
   FULLTEXT KEY `SEARCH_GSTYPES` (`type`,`journalName`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1233,7 +1233,7 @@ CREATE TABLE `gstypes` (
 
 LOCK TABLES `gstypes` WRITE;
 /*!40000 ALTER TABLE `gstypes` DISABLE KEYS */;
-INSERT INTO `gstypes` VALUES (1,'Lacrosse','ancient_tiny_001'),(2,'Crossroads','ancient_tiny_002'),(3,'Fistbump','ancient_tiny_003'),(4,'Hammerbot','ancient_small_001'),(5,'Bear','ancient_small_002'),(6,'Bowl','ancient_small_003'),(7,'Turtle','ancient_small_005');
+INSERT INTO `gstypes` VALUES (1,'Lacrosse','ancient_tiny_001'),(2,'Crossroads','ancient_tiny_002'),(3,'Fistbump','ancient_tiny_003'),(4,'Hammerbot','ancient_small_001'),(5,'Bear','ancient_small_002'),(6,'Bowl','ancient_small_003'),(7,'Turtle','ancient_small_005'),(8,'Robolobster','ancient_medium_001'),(9,'Squid','ancient_medium_002'),(10,'Stickyhand','ancient_medium_003');
 /*!40000 ALTER TABLE `gstypes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2319,4 +2319,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-28  6:34:13
+-- Dump completed on 2018-09-03 11:38:54
