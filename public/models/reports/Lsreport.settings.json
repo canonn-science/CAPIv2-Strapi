@@ -81,22 +81,22 @@
     },
     "reportComment": {
       "x-data-render": false,
-      "x-data-usersend": false,
+      "x-data-exclude": true,
       "type": "text"
     },
     "voteCount": {
       "x-data-render": false,
-      "x-data-usersend": false,
+      "x-data-exclude": true,
       "type": "integer"
     },
     "added": {
       "x-data-render": false,
-      "x-data-usersend": false,
+      "x-data-exclude": true,
       "type": "boolean"
     },
     "site": {
       "x-data-render": false,
-      "x-data-usersend": false,
+      "x-data-exclude": true,
       "model": "lssite"
     }
   }
