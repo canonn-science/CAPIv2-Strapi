@@ -1,0 +1,35 @@
+{
+  "connection": "default",
+  "collectionName": "gbmessages",
+  "info": {
+    "name": "gbmessage",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "gbsite": {
+      "model": "gbsite",
+      "via": "gbmessage"
+    },
+    "messageSystem": {
+      "model": "system"
+    },
+    "messageBody": {
+      "model": "body"
+    },
+    "latitude": {
+      "default": "",
+      "type": "float",
+      "required": true
+    },
+    "longitude": {
+      "default": "",
+      "type": "float",
+      "required": true
+    }
+  }
+}

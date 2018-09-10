@@ -44,6 +44,8 @@ The Canonn APIv2 is designed to handle all our current science projects. Current
 * Fumaroles (FM)
   * FM Types
 * Generation Ships (GEN)
+* Guardian Beacons (GB) - WIP
+  * GB Messages
 * Guardian Ruins (GR)
   * GR Active Obelisks
   * GR Active Groups

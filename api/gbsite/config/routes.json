@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/gbsite",
+      "handler": "Gbsite.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gbsite/count",
+      "handler": "Gbsite.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gbsite/:id",
+      "handler": "Gbsite.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/gbsite",
+      "handler": "Gbsite.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/gbsite/:id",
+      "handler": "Gbsite.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/gbsite/:id",
+      "handler": "Gbsite.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/gbsite/:id/relationships/:relation",
+      "handler": "Gbsite.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/gbsite/:id/relationships/:relation",
+      "handler": "Gbsite.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/gbsite/:id/relationships/:relation",
+      "handler": "Gbsite.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

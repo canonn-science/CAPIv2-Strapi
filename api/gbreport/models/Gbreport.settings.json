@@ -1,0 +1,92 @@
+{
+  "connection": "default",
+  "collectionName": "gbreports",
+  "info": {
+    "name": "gbreport",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "systemName": {
+      "default": "",
+      "type": "string",
+      "required": true
+    },
+    "bodyName": {
+      "default": "",
+      "type": "string"
+    },
+    "messageSystem": {
+      "default": "",
+      "type": "string",
+      "required": true
+    },
+    "messageBody": {
+      "default": "",
+      "type": "string",
+      "required": true
+    },
+    "messageLatitude": {
+      "default": "",
+      "max": 90,
+      "min": -90,
+      "type": "float",
+      "required": true
+    },
+    "messageLongitude": {
+      "default": "",
+      "max": 180,
+      "min": -180,
+      "type": "float",
+      "required": true
+    },
+    "cmdrName": {
+      "type": "string",
+      "required": true
+    },
+    "cmdrComment": {
+      "type": "text"
+    },
+    "isBeta": {
+      "default": false,
+      "type": "boolean"
+    },
+    "screenshot": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "reportStatus": {
+      "default": "pending",
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "pending",
+        "updated",
+        "accepted",
+        "declined",
+        "issue"
+      ]
+    },
+    "reportComment": {
+      "default": "",
+      "type": "text"
+    },
+    "voteCount": {
+      "default": "",
+      "min": 1,
+      "type": "integer"
+    },
+    "added": {
+      "default": false,
+      "type": "boolean"
+    },
+    "site": {
+      "model": "gbsite"
+    }
+  }
+}
