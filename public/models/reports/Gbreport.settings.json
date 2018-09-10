@@ -1,0 +1,109 @@
+{
+  "connection": "default",
+  "collectionName": "gbreports",
+  "info": {
+    "name": "gbreport",
+    "description": "Reporting for Guardian Beacons",
+    "endpoint": "/gbreport"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "systemName": {
+      "x-data-description": "System Name",
+      "type": "string",
+      "required": true
+    },
+    "bodyName": {
+      "x-data-description": "Body Name",
+      "type": "string"
+    },
+    "messageSystem": {
+      "x-data-description": "Message System Name",
+      "type": "string",
+      "required": true
+    },
+    "messageBody": {
+      "x-data-description": "Message Body Name",
+      "type": "string",
+      "required": true
+    },
+    "messageLatitude": {
+      "x-data-description": "Message Latitude",
+      "x-data-group": "coords",
+      "max": 90,
+      "min": -90,
+      "type": "float",
+      "required": true
+    },
+    "messageLongitude": {
+      "x-data-description": "Message Longitude",
+      "x-data-group": "coords",
+      "max": 180,
+      "min": -180,
+      "type": "float",
+      "required": true
+    },
+    "cmdrName": {
+      "x-data-description": "Commander Name",
+      "default": "Dr. Arcanonn",
+      "type": "string",
+      "required": true
+    },
+    "cmdrComment": {
+      "x-data-description": "Comments",
+      "type": "text"
+    },
+    "isBeta": {
+      "x-data-render": false,
+      "default": false,
+      "type": "boolean"
+    },
+    "screenshot": {
+      "x-data-description": "Screenshot",
+      "x-data-type": "image",
+      "x-data-render": false,
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "reportStatus": {
+      "x-data-render": false,
+      "default": "pending",
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "pending",
+        "updated",
+        "accepted",
+        "declined",
+        "issue"
+      ]
+    },
+    "reportComment": {
+      "x-data-render": false,
+      "x-data-exclude": true,
+      "type": "text"
+    },
+    "voteCount": {
+      "x-data-render": false,
+      "x-data-exclude": true,
+      "min": 1,
+      "type": "integer"
+    },
+    "added": {
+      "x-data-render": false,
+      "x-data-exclude": true,
+      "default": false,
+      "type": "boolean"
+    },
+    "site": {
+      "x-data-render": false,
+      "x-data-exclude": true,
+      "model": "gbsite"
+    }
+  }
+}
