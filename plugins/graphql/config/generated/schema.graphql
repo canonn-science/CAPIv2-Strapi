@@ -386,6 +386,7 @@ type Fmtype {
   type: String!
 }
 
+"""Message from a Guardian Beacon site"""
 type Gbmessage {
   id: ID!
   createdAt: DateTime!
@@ -397,6 +398,7 @@ type Gbmessage {
   longitude: Float!
 }
 
+"""Reporting for Guardian Beacons"""
 type Gbreport {
   id: ID!
   createdAt: DateTime!
@@ -418,6 +420,7 @@ type Gbreport {
   screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
+"""Guardian Beacon site"""
 type Gbsite {
   id: ID!
   createdAt: DateTime!
