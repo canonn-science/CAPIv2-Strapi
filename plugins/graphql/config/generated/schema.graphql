@@ -1101,7 +1101,6 @@ type System {
   edsmCoordZ: Float
   edsmCoordLocked: Boolean
   bodies(sort: String, limit: Int, start: Int, where: JSON): [Body]
-  undefined(sort: String, limit: Int, start: Int, where: JSON): [Gbsite]
 }
 
 """Thargoid Barnacle Cycles"""
