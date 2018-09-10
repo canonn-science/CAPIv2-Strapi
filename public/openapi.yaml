@@ -12181,7 +12181,7 @@ components:
         discoveredBy:
           $ref: '#/components/schemas/getCMDR'
         gbmessage:
-          $ref: '#/components/schemas/getSiteGSMessage'
+          $ref: '#/components/schemas/getSiteGBMessage'
         created_at:
           type: string
           format: date-time
@@ -12194,7 +12194,7 @@ components:
         id:
           type: integer
         gbsite:
-          $ref: '#/components/schemas/getSiteGb'
+          $ref: '#/components/schemas/getSiteGB'
         messageSystem:
           $ref: '#/components/schemas/getLocationSystem'
         messageBody:
