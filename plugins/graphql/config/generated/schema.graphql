@@ -161,6 +161,14 @@ enum ENUM_FMREPORT_REPORTSTATUS {
   issue
 }
 
+enum ENUM_GBREPORT_REPORTSTATUS {
+  pending
+  updated
+  accepted
+  declined
+  issue
+}
+
 enum ENUM_GENREPORT_REPORTSTATUS {
   pending
   updated
@@ -376,6 +384,55 @@ type Fmsite {
 type Fmtype {
   id: ID!
   type: String!
+}
+
+"""Message from a Guardian Beacon site"""
+type Gbmessage {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  gbsite: Gbsite
+  messageSystem: System
+  messageBody: Body
+  latitude: Float!
+  longitude: Float!
+}
+
+"""Reporting for Guardian Beacons"""
+type Gbreport {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  systemName: String!
+  bodyName: String
+  messageSystem: String!
+  messageBody: String!
+  messageLatitude: Float!
+  messageLongitude: Float!
+  cmdrName: String!
+  cmdrComment: String
+  isBeta: Boolean
+  reportStatus: ENUM_GBREPORT_REPORTSTATUS!
+  reportComment: String
+  voteCount: Int
+  added: Boolean
+  site: Gbsite
+  screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+}
+
+"""Guardian Beacon site"""
+type Gbsite {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  system: System
+  body: Body
+  siteID: Int!
+  gssite: Gssite
+  discoveredBy: Cmdr
+  verified: Boolean
+  visible: Boolean
+  gbmessage: Gbmessage
 }
 
 """Reporting for Generation Ships"""
@@ -796,7 +853,7 @@ type Lssite {
   discoveredBy: Cmdr
 }
 
-union Morph = Bmreport | Bmsite | Body | Btreport | Btsite | Cmdr | Factionkillreport | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategory | Grcodexdata | Grobelisk | Grobeliskgroup | Grobeliskgroupreport | Grobeliskreport | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsobeliskgroupreport | Gsobeliskreport | Gsreport | Gssite | Gstype | Gyreport | Gysite | Gytype | Hdreport | Hdsite | Journaldata | Lsreport | Lssite | Msreport | Mssite | Mstype | Nhsstopcmdrsbykill | Ring | Ringtype | System | Tbcycle | Tbdefense | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Ussreport | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union Morph = Bmreport | Bmsite | Body | Btreport | Btsite | Cmdr | Factionkillreport | Fgreport | Fgsite | Fmreport | Fmsite | Fmtype | Gbmessage | Gbreport | Gbsite | Genreport | Gensite | Gractivegroup | Gractiveobelisk | Grartifact | Grcodexcategory | Grcodexdata | Grobelisk | Grobeliskgroup | Grobeliskgroupreport | Grobeliskreport | Grreport | Grsite | Grtype | Gsactivegroup | Gsactiveobelisk | Gsartifact | Gscodexcategory | Gscodexdata | Gsobelisk | Gsobeliskgroup | Gsobeliskgroupreport | Gsobeliskreport | Gsreport | Gssite | Gstype | Gyreport | Gysite | Gytype | Hdreport | Hdsite | Journaldata | Lsreport | Lssite | Msreport | Mssite | Mstype | Nhsstopcmdrsbykill | Ring | Ringtype | System | Tbcycle | Tbdefense | Tbreport | Tbsite | Tbtype | Tsreport | Tssite | Tsstatus | Twreport | Twsite | Ussreport | Usssite | Usstype | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 """Reporting for Megaships"""
 type Msreport {
@@ -890,6 +947,12 @@ type Query {
   fmsites(sort: String, limit: Int, start: Int, where: JSON): [Fmsite]
   fmtype(id: ID!): Fmtype
   fmtypes(sort: String, limit: Int, start: Int, where: JSON): [Fmtype]
+  gbmessage(id: ID!): Gbmessage
+  gbmessages(sort: String, limit: Int, start: Int, where: JSON): [Gbmessage]
+  gbreport(id: ID!): Gbreport
+  gbreports(sort: String, limit: Int, start: Int, where: JSON): [Gbreport]
+  gbsite(id: ID!): Gbsite
+  gbsites(sort: String, limit: Int, start: Int, where: JSON): [Gbsite]
   genreport(id: ID!): Genreport
   genreports(sort: String, limit: Int, start: Int, where: JSON): [Genreport]
   gensite(id: ID!): Gensite

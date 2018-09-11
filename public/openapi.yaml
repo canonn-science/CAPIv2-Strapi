@@ -2014,6 +2014,487 @@ paths:
         '500':
           $ref: '#/components/responses/error500'
 
+# GB Message
+  /gbmessage/count:
+    get:
+      tags:
+        - Guardian Beacons
+      summary: Get a count of all GB Messages
+      description: The API will respond with just a number, which is the total amount of messages on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getGBMessagesCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /gbmessage:
+    get:
+      tags:
+        - Guardian Beacons
+      summary: Get a list of GB Messages
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getGBMessages
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of GB Messages
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSiteGBMessage'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - Guardian Beacons
+      summary: Post a new GB Message
+      description: To be used to add a new message to the Canonn database, these are messages verified by Canonn
+      operationId: submitGBMessage
+      security:
+        - canonnAuth: [siteWrite]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postSiteGBMessage'
+      responses:
+        '200':
+          description: Message post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSiteGBMessage'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /gbmessage/{id}:
+    get:
+      tags:
+        - Guardian Beacons
+      summary: Get a Single GB Message
+      description: Provide the ID to get a single message
+      operationId: getGBMessageById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the GB Message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSiteGBMessage'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - Guardian Beacons
+      summary: Update a GB Message
+      description: You do not need to send the entire message again, you can send only changed fields
+      operationId: updateGBMessageById
+      security:
+        - canonnAuth: [siteWrite]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putSiteGBMessage'
+      responses:
+        '200':
+          description: Message update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSiteGBMessage'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    delete:
+      tags:
+        - Guardian Beacons
+      summary: Delete a GB Message
+      description: The response is just an empty JSON, deleting a message requires auth
+      operationId: removeGBMessageById
+      security:
+        - canonnAuth: [siteDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+# GB Report
+  /gbreport/count:
+    get:
+      tags:
+        - Guardian Beacon Reports
+      summary: Get a count of all GB Reports
+      description: The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getGBReportsCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /gbreport:
+    get:
+      tags:
+        - Guardian Beacon Reports
+      summary: Get a list of GB Reports
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getGBReports
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of GB Reports
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGB'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - Guardian Beacon Reports
+      summary: Post a new GB Report
+      description: To be used to submit new Reports to Canonn, note that the reportStatus should always be pending
+      operationId: submitGBReport
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postReportGB'
+      responses:
+        '200':
+          description: Report post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGB'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /gbreport/{id}:
+    get:
+      tags:
+        - Guardian Beacon Reports
+      summary: Get a Single GB Report
+      description: Provide the ID to get a single report
+      operationId: getGBReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the GB Report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGB'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - Guardian Beacon Reports
+      summary: Update a GB Report
+      description: You do not need to send the entire report again, you can send only changed fields
+      operationId: updateGBReportById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putReportGB'
+      responses:
+        '200':
+          description: Report update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getReportGB'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    delete:
+      tags:
+        - Guardian Beacon Reports
+      summary: Delete a GB Report
+      description: The response is just an empty JSON, deleting a report requires auth
+      operationId: removeGBReportById
+      security:
+        - canonnAuth: [reportDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+# GB Site
+  /gbsite/count:
+    get:
+      tags:
+        - Guardian Beacons
+      summary: Get a count of all GB Sites
+      description: The API will respond with just a number, which is the total amount of sites on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getGBSitesCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /gbsite:
+    get:
+      tags:
+        - Guardian Beacons
+      summary: Get a list of GB Sites
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getGBSites
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of GB Sites
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSiteGB'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - Guardian Beacons
+      summary: Post a new GB Site
+      description: To be used to add a new site to the Canonn database, these are sites verified by Canonn
+      operationId: submitGBSite
+      security:
+        - canonnAuth: [siteWrite]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postSiteGB'
+      responses:
+        '200':
+          description: Site post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSiteGB'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /gbsite/{id}:
+    get:
+      tags:
+        - Guardian Beacons
+      summary: Get a Single GB Site
+      description: Provide the ID to get a single site
+      operationId: getGBSiteById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the GB Site
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSiteGB'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - Guardian Beacons
+      summary: Update a GB Site
+      description: You do not need to send the entire site again, you can send only changed fields
+      operationId: updateGBSiteById
+      security:
+        - canonnAuth: [siteWrite]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putSiteGB'
+      responses:
+        '200':
+          description: Site update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSiteGB'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    delete:
+      tags:
+        - Guardian Beacons
+      summary: Delete a GB Site
+      description: The response is just an empty JSON, deleting a site requires auth
+      operationId: removeGBSiteById
+      security:
+        - canonnAuth: [siteDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
 # GEN Report
   /genreport/count:
     get:
@@ -10886,6 +11367,47 @@ components:
           type: string
           format: date-time
 
+    getReportGB:
+      properties:
+        id:
+          type: integer
+        systemName:
+          type: string
+        bodyName:
+          type: string
+        messageSystem:
+          type: string
+        messageBody:
+          type: string
+        messageLatitude:
+          type: number
+          format: float
+        messageLongitude:
+          type: number
+          format: float
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        isBeta:
+          type: boolean
+        reportStatus:
+          type: string
+        reportComment:
+          type: string
+        voteCount:
+          type: integer
+        added:
+          type: boolean
+        site:
+          $ref: '#/components/schemas/getSiteGB'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
     getReportGEN:
       properties:
         id:
@@ -11640,6 +12162,56 @@ components:
         type:
           type: string
 
+    getSiteGB:
+      properties:
+        id:
+          type: integer
+        system:
+          $ref: '#/components/schemas/getLocationSystem'
+        body:
+          $ref: '#/components/schemas/getLocationBody'
+        siteID:
+          type: integer
+        gssite:
+          $ref: '#/components/schemas/getSiteGS'
+        verified:
+          type: boolean
+        visible:
+          type: boolean
+        discoveredBy:
+          $ref: '#/components/schemas/getCMDR'
+        gbmessage:
+          $ref: '#/components/schemas/getSiteGBMessage'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getSiteGBMessage:
+      properties:
+        id:
+          type: integer
+        gbsite:
+          $ref: '#/components/schemas/getSiteGB'
+        messageSystem:
+          $ref: '#/components/schemas/getLocationSystem'
+        messageBody:
+          $ref: '#/components/schemas/getLocationBody'
+        Latitude:
+          type: number
+          format: float
+        Longitude:
+          type: number
+          format: float
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
     getSiteGEN:
       properties:
         id:
@@ -12245,6 +12817,55 @@ components:
           type: integer
         type:
           type: string
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        isBeta:
+          type: boolean
+        reportStatus:
+          type: string
+          enum:
+            - pending
+            - updated
+            - accepted
+            - declined
+            - issue
+          default: pending
+        reportComment:
+          type: string
+        voteCount:
+          type: integer
+        added:
+          type: boolean
+        site:
+          type: integer
+
+    postReportGB:
+      required:
+        - systemName
+        - bodyName
+        - messageSystem
+        - messageBody
+        - messageLatitude
+        - messageLongitude
+        - cmdrName
+        - reportStatus
+      properties:
+        systemName:
+          type: string
+        bodyName:
+          type: string
+        messageSystem:
+          type: string
+        messageBody:
+          type: string
+        messageLatitude:
+          type: number
+          format: float
+        messageLongitude:
+          type: number
+          format: float
         cmdrName:
           type: string
         cmdrComment:
@@ -13009,6 +13630,52 @@ components:
         type:
           type: string
 
+    postSiteGB:
+      required:
+        - system
+        - body
+        - siteID
+        - verified
+        - discoveredBy
+      properties:
+        system:
+          type: integer
+        body:
+          type: integer
+        siteID:
+          type: integer
+        gssite:
+          type: integer
+        discoveredBy:
+          type: integer
+        verified:
+          type: boolean
+        visible:
+          type: boolean
+        gbmessage:
+          type: integer
+
+    postSiteGBMessage:
+      required:
+        - gbsite
+        - messageSystem
+        - messageBody
+        - latitude
+        - longitude
+      properties:
+        gbsite:
+          type: integer
+        messageSystem:
+          type: integer
+        messageBody:
+          type: integer
+        Latitude:
+          type: number
+          format: float
+        Longitude:
+          type: number
+          format: float
+
     postSiteGEN:
       required:
         - system
@@ -13570,6 +14237,46 @@ components:
           type: integer
         type:
           type: string
+        cmdrName:
+          type: string
+        cmdrComment:
+          type: string
+        isBeta:
+          type: boolean
+        reportStatus:
+          type: string
+          enum:
+            - pending
+            - updated
+            - accepted
+            - declined
+            - issue
+          default: pending
+        reportComment:
+          type: string
+        voteCount:
+          type: integer
+        added:
+          type: boolean
+        site:
+          type: integer
+
+    putReportGB:
+      properties:
+        systemName:
+          type: string
+        bodyName:
+          type: string
+        messageSystem:
+          type: string
+        messageBody:
+          type: string
+        messageLatitude:
+          type: number
+          format: float
+        messageLongitude:
+          type: number
+          format: float
         cmdrName:
           type: string
         cmdrComment:
@@ -14225,6 +14932,40 @@ components:
         type:
           type: string
 
+    putSiteGB:
+      properties:
+        system:
+          type: integer
+        body:
+          type: integer
+        siteID:
+          type: integer
+        gssite:
+          type: integer
+        discoveredBy:
+          type: integer
+        verified:
+          type: boolean
+        visible:
+          type: boolean
+        gbmessage:
+          type: integer
+
+    putSiteGBMessage:
+      properties:
+        gbsite:
+          type: integer
+        messageSystem:
+          type: integer
+        messageBody:
+          type: integer
+        Latitude:
+          type: number
+          format: float
+        Longitude:
+          type: number
+          format: float
+
     putSiteGEN:
       properties:
         system:
@@ -14605,6 +15346,7 @@ x-tagGroups:
       - Fungal Gourd Reports
       - Fumarole Reports
       - Generation Ship Reports
+      - Guardian Beacon Reports
       - Guardian Ruin Reports
       - Guardian Structure Reports
       - Geyser Reports
@@ -14628,6 +15370,7 @@ x-tagGroups:
       - Fungal Gourds
       - Fumaroles
       - Generation Ships
+      - Guardian Beacons
       - Guardian Ruins
       - Guardian Structures
       - Geysers
@@ -14698,6 +15441,12 @@ tags:
     description: Code Name - GEN
   - name: Generation Ship Reports
     description: Public Reporting of GEN
+
+  ## Guardian Beacons
+  - name: Guardian Beacons
+    description: Code Name - GB
+  - name: Guardian Beacon Reports
+    description: Public Reporting of GB
 
   ## Guardian Ruins
   - name: Guardian Ruins

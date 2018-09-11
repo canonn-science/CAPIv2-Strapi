@@ -52,10 +52,10 @@
       "required": true,
       "enum": [
         "pending",
-        " updated",
-        " accepted",
-        " declined",
-        " issue"
+        "updated",
+        "accepted",
+        "declined",
+        "issue"
       ]
     },
     "reportComment": {
@@ -66,6 +66,7 @@
     "added": {
       "x-data-render": false,
       "x-data-exclude": true,
+      "default": false,
       "type": "boolean"
     },
     "site": {

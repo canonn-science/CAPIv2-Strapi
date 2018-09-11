@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/gbmessage",
+      "handler": "Gbmessage.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gbmessage/count",
+      "handler": "Gbmessage.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gbmessage/:id",
+      "handler": "Gbmessage.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/gbmessage",
+      "handler": "Gbmessage.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/gbmessage/:id",
+      "handler": "Gbmessage.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/gbmessage/:id",
+      "handler": "Gbmessage.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/gbmessage/:id/relationships/:relation",
+      "handler": "Gbmessage.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/gbmessage/:id/relationships/:relation",
+      "handler": "Gbmessage.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/gbmessage/:id/relationships/:relation",
+      "handler": "Gbmessage.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

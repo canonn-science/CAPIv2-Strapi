@@ -1,0 +1,46 @@
+{
+  "connection": "default",
+  "collectionName": "gbsites",
+  "info": {
+    "name": "gbsite",
+    "description": "Guardian Beacon site"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "system": {
+      "model": "system"
+    },
+    "body": {
+      "model": "body"
+    },
+    "siteID": {
+      "default": "",
+      "unique": true,
+      "min": 1,
+      "type": "integer",
+      "required": true
+    },
+    "gssite": {
+      "model": "gssite"
+    },
+    "discoveredBy": {
+      "model": "cmdr"
+    },
+    "verified": {
+      "default": false,
+      "type": "boolean"
+    },
+    "visible": {
+      "default": true,
+      "type": "boolean"
+    },
+    "gbmessage": {
+      "model": "gbmessage",
+      "via": "gbsite"
+    }
+  }
+}
