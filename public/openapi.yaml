@@ -12703,6 +12703,12 @@ components:
           type: boolean
         visible:
           type: boolean
+        msg1Site:
+          $ref: '#/components/schemas/getSiteTS'
+        msg2Site:
+          $ref: '#/components/schemas/getSiteTS'
+        msg3Site:
+          $ref: '#/components/schemas/getSiteTS'
         discoveredBy:
           $ref: '#/components/schemas/getCMDR'
         created_at:
@@ -14146,6 +14152,12 @@ components:
           type: boolean
         visible:
           type: boolean
+        msg1Site:
+          type: integer
+        msg2Site:
+          type: integer
+        msg3Site:
+          type: integer
         discoveredBy:
           type: integer
 
@@ -15299,6 +15311,12 @@ components:
           type: boolean
         visible:
           type: boolean
+        msg1Site:
+          type: integer
+        msg2Site:
+          type: integer
+        msg3Site:
+          type: integer
         discoveredBy:
           type: integer
 

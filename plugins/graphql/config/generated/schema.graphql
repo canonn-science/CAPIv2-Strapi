@@ -77,6 +77,7 @@ type Body {
   edsmAtmosphere: JSON
   edsmMaterial: JSON
   rings(sort: String, limit: Int, start: Int, where: JSON): [Ring]
+  undefined(sort: String, limit: Int, start: Int, where: JSON): [Tssite]
 }
 
 """Reporting for Brain Trees"""
@@ -429,9 +430,9 @@ type Gbsite {
   body: Body
   siteID: Int!
   gssite: Gssite
-  discoveredBy: Cmdr
   verified: Boolean
   visible: Boolean
+  discoveredBy: Cmdr
   gbmessage: Gbmessage
 }
 
@@ -1105,6 +1106,7 @@ type System {
   edsmCoordZ: Float
   edsmCoordLocked: Boolean
   bodies(sort: String, limit: Int, start: Int, where: JSON): [Body]
+  undefined(sort: String, limit: Int, start: Int, where: JSON): [Tssite]
 }
 
 """Thargoid Barnacle Cycles"""
@@ -1203,6 +1205,9 @@ type Tssite {
   status: Tsstatus
   verified: Boolean
   visible: Boolean
+  msg1Site: Tssite
+  msg2Site: Tssite
+  msg3Site: Tssite
   discoveredBy: Cmdr
 }
 
