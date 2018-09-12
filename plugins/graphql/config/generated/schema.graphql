@@ -599,7 +599,7 @@ type Gsactivegroup {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
-  grSite: Gssite
+  gsSite: Gssite
   activeGroup: Gsobeliskgroup
 }
 
@@ -609,7 +609,7 @@ type Gsactiveobelisk {
   createdAt: DateTime!
   updatedAt: DateTime!
   gsSite: Gssite
-  gsObelisk: Gsobelisk
+  activeObelisk: Gsobelisk
 }
 
 """Artifacts used at a Guardian Structures site"""
@@ -757,6 +757,7 @@ type Gysite {
   type: Gytype
   verified: Boolean
   visible: Boolean
+  discoveredBy: Cmdr
 }
 
 """Type of a Geyser"""
