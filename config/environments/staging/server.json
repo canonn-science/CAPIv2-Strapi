@@ -1,8 +1,14 @@
 {
-  "host": "api.canonn.tech",
+  "host": "localhost",
   "port": 1338,
+  "proxy": {
+    "enabled": true,
+    "host": "api.canonn.tech",
+    "port": 2053,
+    "ssl": true
+  },
   "autoReload": {
-    "enabled": true
+    "enabled": false
   },
   "cron": {
     "enabled": true
