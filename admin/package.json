@@ -1,26 +1,26 @@
 {
-  "_from": "strapi-admin@3.0.0-alpha.14.1",
-  "_id": "strapi-admin@3.0.0-alpha.14.1",
+  "_from": "strapi-admin@3.0.0-alpha.14.1.1",
+  "_id": "strapi-admin@3.0.0-alpha.14.1.1",
   "_inBundle": false,
-  "_integrity": "sha512-yjoaQYvUjpupcqPYqxY4tcKmfDYv0FAw4z9wbHMnvI5FNgdB8uvAy6qzByQhHR7E582v1a+BaAfHz9xK71Cniw==",
+  "_integrity": "sha512-c4Ly4+0FCOARa9tuXKdSMc8A764YIx85+VmuaOUAkCKNa/wbginSjv056Li19WwyBPkOMsW1PT53sHUX77vCoQ==",
   "_location": "/strapi/strapi-admin",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "strapi-admin@3.0.0-alpha.14.1",
+    "raw": "strapi-admin@3.0.0-alpha.14.1.1",
     "name": "strapi-admin",
     "escapedName": "strapi-admin",
-    "rawSpec": "3.0.0-alpha.14.1",
+    "rawSpec": "3.0.0-alpha.14.1.1",
     "saveSpec": null,
-    "fetchSpec": "3.0.0-alpha.14.1"
+    "fetchSpec": "3.0.0-alpha.14.1.1"
   },
   "_requiredBy": [
     "/strapi/strapi-generate-admin"
   ],
-  "_resolved": "https://registry.npmjs.org/strapi-admin/-/strapi-admin-3.0.0-alpha.14.1.tgz",
-  "_shasum": "e3f3a3edac42b316b72b9a2a3005b8f0563be506",
-  "_spec": "strapi-admin@3.0.0-alpha.14.1",
+  "_resolved": "https://registry.npmjs.org/strapi-admin/-/strapi-admin-3.0.0-alpha.14.1.1.tgz",
+  "_shasum": "cac37deb5227f428e7effae44364ad5110f9169c",
+  "_spec": "strapi-admin@3.0.0-alpha.14.1.1",
   "_where": "/usr/lib/node_modules/strapi/node_modules/strapi-generate-admin",
   "author": {
     "name": "Strapi"
@@ -38,8 +38,8 @@
   "description": "Strapi Admin",
   "devDependencies": {
     "sanitize.css": "^4.1.0",
-    "strapi-helper-plugin": "3.0.0-alpha.14.1",
-    "strapi-utils": "3.0.0-alpha.14.1"
+    "strapi-helper-plugin": "3.0.0-alpha.14.1.1",
+    "strapi-utils": "3.0.0-alpha.14.1.1"
   },
   "engines": {
     "node": ">= 9.0.0",
@@ -75,5 +75,5 @@
     "start": "node ./node_modules/strapi-helper-plugin/node_modules/.bin/cross-env NODE_ENV=development PORT=4000 IS_ADMIN=true node ./node_modules/strapi-helper-plugin/lib/server",
     "test": "echo \"Error: no test specified\""
   },
-  "version": "3.0.0-alpha.14.1"
+  "version": "3.0.0-alpha.14.1.1"
 }
