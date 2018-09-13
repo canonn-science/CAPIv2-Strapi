@@ -1,0 +1,104 @@
+'use strict';
+
+/**
+ * Gbreport.js controller
+ *
+ * @description: A set of functions called "actions" for managing `Gbreport`.
+ */
+
+module.exports = {
+
+  /**
+   * Retrieve gbreport records.
+   *
+   * @return {Object|Array}
+   */
+
+  find: async (ctx) => {
+    if (ctx.query._q) {
+      return strapi.services.gbreport.search(ctx.query);
+    } else {
+      return strapi.services.gbreport.fetchAll(ctx.query);
+    }
+  },
+
+  /**
+   * Retrieve a gbreport record.
+   *
+   * @return {Object}
+   */
+
+  findOne: async (ctx) => {
+    return strapi.services.gbreport.fetch(ctx.params);
+  },
+
+  /**
+   * Count gbreport records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx) => {
+    return strapi.services.gbreport.count(ctx.query);
+  },
+
+  /**
+   * Create a/an gbreport record.
+   *
+   * @return {Object}
+   */
+
+  create: async (ctx) => {
+    return strapi.services.gbreport.add(ctx.request.body);
+  },
+
+  /**
+   * Update a/an gbreport record.
+   *
+   * @return {Object}
+   */
+
+  update: async (ctx, next) => {
+    return strapi.services.gbreport.edit(ctx.params, ctx.request.body) ;
+  },
+
+  /**
+   * Destroy a/an gbreport record.
+   *
+   * @return {Object}
+   */
+
+  destroy: async (ctx, next) => {
+    return strapi.services.gbreport.remove(ctx.params);
+  },
+
+  /**
+   * Add relation to a/an gbreport record.
+   *
+   * @return {Object}
+   */
+
+  createRelation: async (ctx, next) => {
+    return strapi.services.gbreport.addRelation(ctx.params, ctx.request.body);
+  },
+
+  /**
+   * Update relation to a/an gbreport record.
+   *
+   * @return {Object}
+   */
+
+  updateRelation: async (ctx, next) => {
+    return strapi.services.gbreport.editRelation(ctx.params, ctx.request.body);
+  },
+
+  /**
+   * Destroy relation to a/an gbreport record.
+   *
+   * @return {Object}
+   */
+
+  destroyRelation: async (ctx, next) => {
+    return strapi.services.gbreport.removeRelation(ctx.params, ctx.request.body);
+  }
+};

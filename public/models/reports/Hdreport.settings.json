@@ -52,30 +52,31 @@
       "required": true,
       "enum": [
         "pending",
-        " updated",
-        " accepted",
-        " declined",
-        " issue"
+        "updated",
+        "accepted",
+        "declined",
+        "issue"
       ]
     },
     "reportComment": {
       "x-data-render": false,
-      "x-data-usersend": false,
+      "x-data-exclude": true,
       "type": "text"
     },
     "added": {
       "x-data-render": false,
-      "x-data-usersend": false,
+      "x-data-exclude": true,
+      "default": false,
       "type": "boolean"
     },
     "site": {
       "x-data-render": false,
-      "x-data-usersend": false,
+      "x-data-exclude": true,
       "model": "hdsite"
     },
     "hdRawJson": {
       "x-data-render": false,
-      "x-data-usersend": false,
+      "x-data-exclude": true,
       "type": "json"
     }
   }
