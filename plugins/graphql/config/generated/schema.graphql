@@ -77,7 +77,6 @@ type Body {
   edsmAtmosphere: JSON
   edsmMaterial: JSON
   rings(sort: String, limit: Int, start: Int, where: JSON): [Ring]
-  undefined(sort: String, limit: Int, start: Int, where: JSON): [Tssite]
 }
 
 """Reporting for Brain Trees"""
@@ -1106,7 +1105,6 @@ type System {
   edsmCoordZ: Float
   edsmCoordLocked: Boolean
   bodies(sort: String, limit: Int, start: Int, where: JSON): [Body]
-  undefined(sort: String, limit: Int, start: Int, where: JSON): [Tssite]
 }
 
 """Thargoid Barnacle Cycles"""

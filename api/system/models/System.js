@@ -13,7 +13,7 @@ module.exports = {
 
   // After saving a value.
   // Fired after an `insert` or `update` query.
-  // afterSave: async (model, response, options) => {}
+  // afterSave: async (model, response, options) => {},
 
   // Before fetching a value.
   // Fired before a `fetch` operation.

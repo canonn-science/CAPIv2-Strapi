@@ -1,7 +1,7 @@
 # Canonn API v2 - (CAPIv2)
 
-[![Strapi Version](https://img.shields.io/badge/strapi-v3.0.0--alpha.13.1-blue.svg)](https://github.com/strapi/strapi) 
-[![CAPIv2 Version](https://img.shields.io/badge/capiv2-v2.0.10-orange.svg)](https://api.canonn.tech:2083) 
+[![Strapi Version](https://img.shields.io/badge/strapi-v3.0.0--alpha.14.1-blue.svg)](https://github.com/strapi/strapi) 
+[![CAPIv2 Version](https://img.shields.io/badge/capiv2-v2.0.11-orange.svg)](https://api.canonn.tech:2083) 
 [![Build Status](https://travis-ci.org/canonn-science/CAPIv2-Strapi.svg?branch=development)](https://travis-ci.org/canonn-science/CAPIv2-Strapi)
 [![EDCD Discord](https://img.shields.io/discord/164411426939600896.svg?logo=discord&label=EDCD%20Discord)](https://discord.gg/fhDWZBH)
 [![Canonn Discord](https://img.shields.io/discord/146714487695605760.svg?logo=discord&label=Canonn%20Discord)](https://discord.gg/HzzmG2f)
@@ -93,7 +93,7 @@ Also we are tracking the following:
 
 ## Current Version
 
-The current version of the CAPIv2 is `v2.0.10` and is still in active development and testing. If you would like to contribute please PM DMehaffy on discord `DMehaffy#1337`
+The current version of the CAPIv2 is `v2.0.11` and is still in active development and testing. If you would like to contribute please PM DMehaffy on discord `DMehaffy#1337`
 
 # API Documentation
 
