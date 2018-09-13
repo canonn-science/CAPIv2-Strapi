@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "6541b2ca-0602-4947-82d2-71169a0327ca",
+		"_postman_id": "e4e1522a-0cef-4d19-9cfc-2e14827071ea",
 		"name": "Canonn APIv2 Postman Test Collection",
 		"description": "An API for all the Science related information Canonn has in its datastores stored on the Gnosis, built using [Strapi](https://strapi.io) a Nodejs API framework. \n\nWe have two different documentation types, our [Redocs](https://api.canonn.tech) or use the [Swagger-UI](https://api.canonn.tech/swaggerui)\n\nWe also have 3 API servers; Live (Production), Beta (Staging), Alpha (Development). You should use the Beta server for testing your application prior to using the Live server. The Alpha server is used by Canonn to test our changes prior to releasing a new version.\n\nData between the Live and Beta servers are replicated as needed, eventually we plan to dynamically replicate the data every night at midnight Phoenix, Arizona USA time (MST-Arizona GMT-7)\n\nHere are the following URLs for each server\n\n* Live - https://api.canonn.tech\n* Beta - https://api.canonn.tech:2053\n* Alpha - https://api.canonn.tech:2083\n\nThank you for your support, and thank you to all the CMDRs who supply us with our data!\n",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -1158,6 +1158,263 @@
 							"path": [
 								"fmreport",
 								"{{fmID}}"
+							]
+						},
+						"description": "The response is just an empty JSON, deleting a report requires auth"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "gbreport",
+			"description": "Folder for grreport",
+			"item": [
+				{
+					"name": "Post a new GB Report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6a84dd20-f198-47ff-97ab-1f9e7f1fbf79",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"gbID\", jsonData.id);",
+									"",
+									"pm.test(\"GB created values match\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.systemName).to.eql(\"SYNUEFE IL-N C23-15\");",
+									"    pm.expect(jsonData.bodyName).to.eql(\"2 A\");",
+									"    pm.expect(jsonData.messageSystem).to.eql(\"SYNUEFE IL-N C23-19\");",
+									"    pm.expect(jsonData.messageBody).to.eql(\"B 2\");",
+									"    pm.expect(jsonData.messageLatitude).to.eql(44.31);",
+									"    pm.expect(jsonData.messageLongitude).to.eql(12.18);",
+									"    pm.expect(jsonData.cmdrName).to.eql(\"joulupunikki\");",
+									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Guardian Beacon Report\");",
+									"    pm.expect(jsonData.reportStatus).to.eql(\"pending\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"systemName\": \"SYNUEFE IL-N C23-15\",\n  \"bodyName\": \"2 A\",\n  \"messageSystem\": \"SYNUEFE IL-N C23-19\",\n  \"messageBody\": \"B 2\",\n  \"messageLatitude\": 44.31,\n  \"messageLongitude\": 12.18,\n  \"cmdrName\": \"joulupunikki\",\n  \"cmdrComment\": \"TEST - Guardian Beacon Report\",\n  \"reportStatus\": \"pending\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/gbreport",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gbreport"
+							]
+						},
+						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a count of all GB Reports",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/gbreport/count",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gbreport",
+								"count"
+							]
+						},
+						"description": "The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests."
+					},
+					"response": []
+				},
+				{
+					"name": "Get a list of GB Reports",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/gbreport",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gbreport"
+							]
+						},
+						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
+					},
+					"response": []
+				},
+				{
+					"name": "Update a GB Report",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
+						},
+						"url": {
+							"raw": "{{url}}/gbreport/{{gbID}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gbreport",
+								"{{gbID}}"
+							]
+						},
+						"description": "You do not need to send the entire report again, you can send only changed fields"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Single GB Report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "99312f3e-fbff-499c-8c55-a2d010661be6",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"GB updated values match\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.systemName).to.eql(\"SYNUEFE IL-N C23-15\");",
+									"    pm.expect(jsonData.bodyName).to.eql(\"2 A\");",
+									"    pm.expect(jsonData.messageSystem).to.eql(\"SYNUEFE IL-N C23-19\");",
+									"    pm.expect(jsonData.messageBody).to.eql(\"B 2\");",
+									"    pm.expect(jsonData.messageLatitude).to.eql(44.31);",
+									"    pm.expect(jsonData.messageLongitude).to.eql(12.18);",
+									"    pm.expect(jsonData.cmdrName).to.eql(\"joulupunikki\");",
+									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Guardian Beacon Report\");",
+									"    pm.expect(jsonData.reportStatus).to.eql(\"declined\");",
+									"    pm.expect(jsonData.reportComment).to.eql(\"TEST - Update entry\");",
+									"    pm.expect(jsonData.voteCount).to.eql(1);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/gbreport/{{gbID}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gbreport",
+								"{{gbID}}"
+							]
+						},
+						"description": "Provide the ID to get a single report"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a GB Report",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/gbreport/{{gbID}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gbreport",
+								"{{gbID}}"
 							]
 						},
 						"description": "The response is just an empty JSON, deleting a report requires auth"
@@ -3979,13 +4236,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "64ee272c-f3db-4081-9ad2-195966251be4",
+								"id": "dce5e6ef-17c7-4162-aaee-1f786670515c",
 								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"pm.environment.set(\"tsID\", jsonData.id);",
 									"",
-									"pm.test(\"FG created values match\", function () {",
+									"pm.test(\"TS created values match\", function () {",
 									"    var jsonData = pm.response.json();",
 									"    pm.expect(jsonData.systemName).to.eql(\"HIP 19026\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"B 1 C\");",
@@ -4246,13 +4503,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "725574b2-f764-40c3-8f9c-aa0f0cdbf172",
+								"id": "0f1616cf-9202-421a-9815-8984000ff4f3",
 								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"pm.environment.set(\"twID\", jsonData.id);",
 									"",
-									"pm.test(\"FG created values match\", function () {",
+									"pm.test(\"TW created values match\", function () {",
 									"    var jsonData = pm.response.json();",
 									"    pm.expect(jsonData.systemName).to.eql(\"Test System\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"Test Body\");",

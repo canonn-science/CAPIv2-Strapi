@@ -36,6 +36,7 @@
       "type": "text"
     },
     "isBeta": {
+      "default": false,
       "type": "boolean"
     },
     "screenshot": {
@@ -49,10 +50,10 @@
       "required": true,
       "enum": [
         "pending",
-        " updated",
-        " accepted",
-        " declined",
-        " issue"
+        "updated",
+        "accepted",
+        "declined",
+        "issue"
       ]
     },
     "reportComment": {
@@ -62,6 +63,7 @@
       "type": "integer"
     },
     "added": {
+      "default": false,
       "type": "boolean"
     },
     "site": {
