@@ -3,7 +3,13 @@ type Bmreport {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
+  userType: ENUM_BMREPORT_USERTYPE!
+  reportType: ENUM_BMREPORT_REPORTTYPE!
   systemName: String!
+  systemAddress: Float
+  coordX: Float
+  coordY: Float
+  coordZ: Float
   bodyName: String!
   latitude: Float!
   longitude: Float!
@@ -76,6 +82,7 @@ type Body {
   edsmSolidComposition: JSON
   edsmAtmosphere: JSON
   edsmMaterial: JSON
+  missingSkipCount: Int
   rings(sort: String, limit: Int, start: Int, where: JSON): [Ring]
 }
 
@@ -84,7 +91,13 @@ type Btreport {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
+  userType: ENUM_BTREPORT_USERTYPE!
+  reportType: ENUM_BTREPORT_REPORTTYPE!
   systemName: String!
+  systemAddress: Float
+  coordX: Float
+  coordY: Float
+  coordZ: Float
   bodyName: String!
   latitude: Float!
   longitude: Float!
@@ -137,12 +150,34 @@ enum ENUM_BMREPORT_REPORTSTATUS {
   issue
 }
 
+enum ENUM_BMREPORT_REPORTTYPE {
+  new
+  update
+  error
+}
+
+enum ENUM_BMREPORT_USERTYPE {
+  console
+  pc
+}
+
 enum ENUM_BTREPORT_REPORTSTATUS {
   pending
   updated
   accepted
   declined
   issue
+}
+
+enum ENUM_BTREPORT_REPORTTYPE {
+  new
+  update
+  error
+}
+
+enum ENUM_BTREPORT_USERTYPE {
+  console
+  pc
 }
 
 enum ENUM_FGREPORT_REPORTSTATUS {
@@ -153,12 +188,34 @@ enum ENUM_FGREPORT_REPORTSTATUS {
   issue
 }
 
+enum ENUM_FGREPORT_REPORTTYPE {
+  new
+  update
+  error
+}
+
+enum ENUM_FGREPORT_USERTYPE {
+  console
+  pc
+}
+
 enum ENUM_FMREPORT_REPORTSTATUS {
   pending
   updated
   accepted
   declined
   issue
+}
+
+enum ENUM_FMREPORT_REPORTTYPE {
+  new
+  update
+  error
+}
+
+enum ENUM_FMREPORT_USERTYPE {
+  console
+  pc
 }
 
 enum ENUM_GBREPORT_REPORTSTATUS {
@@ -169,12 +226,34 @@ enum ENUM_GBREPORT_REPORTSTATUS {
   issue
 }
 
+enum ENUM_GBREPORT_REPORTTYPE {
+  new
+  update
+  error
+}
+
+enum ENUM_GBREPORT_USERTYPE {
+  console
+  pc
+}
+
 enum ENUM_GENREPORT_REPORTSTATUS {
   pending
   updated
   accepted
   declined
   issue
+}
+
+enum ENUM_GENREPORT_REPORTTYPE {
+  new
+  update
+  error
+}
+
+enum ENUM_GENREPORT_USERTYPE {
+  console
+  pc
 }
 
 enum ENUM_GRREPORT_REPORTSTATUS {
@@ -185,10 +264,21 @@ enum ENUM_GRREPORT_REPORTSTATUS {
   issue
 }
 
+enum ENUM_GRREPORT_REPORTTYPE {
+  new
+  update
+  error
+}
+
 enum ENUM_GRREPORT_TYPE {
   Alpha
   Beta
   Gamma
+}
+
+enum ENUM_GRREPORT_USERTYPE {
+  console
+  pc
 }
 
 enum ENUM_GSREPORT_REPORTSTATUS {
@@ -197,6 +287,12 @@ enum ENUM_GSREPORT_REPORTSTATUS {
   accepted
   declined
   issue
+}
+
+enum ENUM_GSREPORT_REPORTTYPE {
+  new
+  update
+  error
 }
 
 enum ENUM_GSREPORT_TYPE {
@@ -209,12 +305,28 @@ enum ENUM_GSREPORT_TYPE {
   Turtle
 }
 
+enum ENUM_GSREPORT_USERTYPE {
+  console
+  pc
+}
+
 enum ENUM_GYREPORT_REPORTSTATUS {
   pending
   updated
   accepted
   declined
   issue
+}
+
+enum ENUM_GYREPORT_REPORTTYPE {
+  new
+  update
+  error
+}
+
+enum ENUM_GYREPORT_USERTYPE {
+  console
+  pc
 }
 
 enum ENUM_HDREPORT_REPORTSTATUS {
@@ -233,12 +345,34 @@ enum ENUM_LSREPORT_REPORTSTATUS {
   issue
 }
 
+enum ENUM_LSREPORT_REPORTTYPE {
+  new
+  update
+  error
+}
+
+enum ENUM_LSREPORT_USERTYPE {
+  console
+  pc
+}
+
 enum ENUM_MSREPORT_REPORTSTATUS {
   pending
   updated
   accepted
   declined
   issue
+}
+
+enum ENUM_MSREPORT_REPORTTYPE {
+  new
+  update
+  error
+}
+
+enum ENUM_MSREPORT_USERTYPE {
+  console
+  pc
 }
 
 enum ENUM_TBREPORT_CYCLE {
@@ -257,9 +391,20 @@ enum ENUM_TBREPORT_REPORTSTATUS {
   issue
 }
 
+enum ENUM_TBREPORT_REPORTTYPE {
+  new
+  update
+  error
+}
+
 enum ENUM_TBREPORT_TYPE {
   Barnacle
   Megabarnacle
+}
+
+enum ENUM_TBREPORT_USERTYPE {
+  console
+  pc
 }
 
 enum ENUM_TSREPORT_REPORTSTATUS {
@@ -270,9 +415,20 @@ enum ENUM_TSREPORT_REPORTSTATUS {
   issue
 }
 
+enum ENUM_TSREPORT_REPORTTYPE {
+  new
+  update
+  error
+}
+
 enum ENUM_TSREPORT_STATUS {
   Active
   Inactive
+}
+
+enum ENUM_TSREPORT_USERTYPE {
+  console
+  pc
 }
 
 enum ENUM_TWREPORT_REPORTSTATUS {
@@ -281,6 +437,17 @@ enum ENUM_TWREPORT_REPORTSTATUS {
   accepted
   declined
   issue
+}
+
+enum ENUM_TWREPORT_REPORTTYPE {
+  new
+  update
+  error
+}
+
+enum ENUM_TWREPORT_USERTYPE {
+  console
+  pc
 }
 
 enum ENUM_USSREPORT_REPORTSTATUS {
@@ -309,7 +476,13 @@ type Fgreport {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
+  userType: ENUM_FGREPORT_USERTYPE!
+  reportType: ENUM_FGREPORT_REPORTTYPE!
   systemName: String!
+  systemAddress: Float
+  coordX: Float
+  coordY: Float
+  coordZ: Float
   bodyName: String!
   latitude: Float!
   longitude: Float!
@@ -346,7 +519,13 @@ type Fmreport {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
+  userType: ENUM_FMREPORT_USERTYPE!
+  reportType: ENUM_FMREPORT_REPORTTYPE!
   systemName: String!
+  systemAddress: Float
+  coordX: Float
+  coordY: Float
+  coordZ: Float
   bodyName: String!
   latitude: Float!
   longitude: Float!
@@ -403,7 +582,13 @@ type Gbreport {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
+  userType: ENUM_GBREPORT_USERTYPE!
+  reportType: ENUM_GBREPORT_REPORTTYPE!
   systemName: String!
+  systemAddress: Float
+  coordX: Float
+  coordY: Float
+  coordZ: Float
   bodyName: String
   messageSystem: String!
   messageBody: String!
@@ -440,7 +625,13 @@ type Genreport {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
+  userType: ENUM_GENREPORT_USERTYPE!
+  reportType: ENUM_GENREPORT_REPORTTYPE!
   systemName: String!
+  systemAddress: Float
+  coordX: Float
+  coordY: Float
+  coordZ: Float
   orbitBody: String
   shipName: String!
   directionSystem: String
@@ -552,7 +743,13 @@ type Grreport {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
+  userType: ENUM_GRREPORT_USERTYPE!
+  reportType: ENUM_GRREPORT_REPORTTYPE!
   systemName: String!
+  systemAddress: Float
+  coordX: Float
+  coordY: Float
+  coordZ: Float
   bodyName: String!
   latitude: Float!
   longitude: Float!
@@ -676,7 +873,13 @@ type Gsreport {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
+  userType: ENUM_GSREPORT_USERTYPE!
+  reportType: ENUM_GSREPORT_REPORTTYPE!
   systemName: String!
+  systemAddress: Float
+  coordX: Float
+  coordY: Float
+  coordZ: Float
   bodyName: String!
   latitude: Float!
   longitude: Float!
@@ -726,7 +929,13 @@ type Gyreport {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
+  userType: ENUM_GYREPORT_USERTYPE!
+  reportType: ENUM_GYREPORT_REPORTTYPE!
   systemName: String!
+  systemAddress: Float
+  coordX: Float
+  coordY: Float
+  coordZ: Float
   bodyName: String!
   latitude: Float!
   longitude: Float!
@@ -822,7 +1031,13 @@ type Lsreport {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
+  userType: ENUM_LSREPORT_USERTYPE!
+  reportType: ENUM_LSREPORT_REPORTTYPE!
   systemName: String!
+  systemAddress: Float
+  coordX: Float
+  coordY: Float
+  coordZ: Float
   bodyName: String!
   latitude: Float!
   longitude: Float!
@@ -861,7 +1076,13 @@ type Msreport {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
+  userType: ENUM_MSREPORT_USERTYPE!
+  reportType: ENUM_MSREPORT_REPORTTYPE!
   systemName: String!
+  systemAddress: Float
+  coordX: Float
+  coordY: Float
+  coordZ: Float
   orbitBody: String
   shipName: String!
   shipTag: String
@@ -1104,6 +1325,7 @@ type System {
   edsmCoordY: Float
   edsmCoordZ: Float
   edsmCoordLocked: Boolean
+  missingSkipCount: Int
   bodies(sort: String, limit: Int, start: Int, where: JSON): [Body]
 }
 
@@ -1124,7 +1346,13 @@ type Tbreport {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
+  userType: ENUM_TBREPORT_USERTYPE!
+  reportType: ENUM_TBREPORT_REPORTTYPE!
   systemName: String!
+  systemAddress: Float
+  coordX: Float
+  coordY: Float
+  coordZ: Float
   bodyName: String!
   latitude: Float!
   longitude: Float!
@@ -1174,7 +1402,13 @@ type Tsreport {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
+  userType: ENUM_TSREPORT_USERTYPE!
+  reportType: ENUM_TSREPORT_REPORTTYPE!
   systemName: String!
+  systemAddress: Float
+  coordX: Float
+  coordY: Float
+  coordZ: Float
   bodyName: String!
   latitude: Float!
   longitude: Float!
@@ -1220,7 +1454,13 @@ type Twreport {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
+  userType: ENUM_TWREPORT_USERTYPE!
+  reportType: ENUM_TWREPORT_REPORTTYPE!
   systemName: String!
+  systemAddress: Float
+  coordX: Float
+  coordY: Float
+  coordZ: Float
   bodyName: String!
   latitude: Float!
   longitude: Float!

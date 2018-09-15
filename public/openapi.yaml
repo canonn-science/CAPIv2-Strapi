@@ -36,8 +36,8 @@ info:
     Server Name  | Server Type | Server URL | Server version
     ---------|---------|---------|---------
     Live | Production | https://api.canonn.tech | v2.0.11
-    Beta | Production | https://api.canonn.tech:2053 | v2.0.11
-    Alpha | Production | https://api.canonn.tech:2083 | v2.0.11
+    Beta | Staging | https://api.canonn.tech:2053 | v2.0.11
+    Alpha | Development | https://api.canonn.tech:2083 | v2.0.11
 
     Thank you for your support, and thank you to all the CMDRs who supply us with our data!
 
@@ -11291,8 +11291,23 @@ components:
       properties:
         id:
           type: integer
+        userType:
+          type: string
+        reportType:
+          type: string
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -11330,8 +11345,23 @@ components:
       properties:
         id:
           type: integer
+        userType:
+          type: string
+        reportType:
+          type: string
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -11371,8 +11401,23 @@ components:
       properties:
         id:
           type: integer
+        userType:
+          type: string
+        reportType:
+          type: string
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         messageSystem:
@@ -11412,8 +11457,23 @@ components:
       properties:
         id:
           type: integer
+        userType:
+          type: string
+        reportType:
+          type: string
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         orbitBody:
           type: string
         shipName:
@@ -11450,8 +11510,23 @@ components:
       properties:
         id:
           type: integer
+        userType:
+          type: string
+        reportType:
+          type: string
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -11519,8 +11594,23 @@ components:
       properties:
         id:
           type: integer
+        userType:
+          type: string
+        reportType:
+          type: string
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -11590,8 +11680,23 @@ components:
       properties:
         id:
           type: integer
+        userType:
+          type: string
+        reportType:
+          type: string
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -11663,8 +11768,23 @@ components:
       properties:
         id:
           type: integer
+        userType:
+          type: string
+        reportType:
+          type: string
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         orbitBody:
           type: string
         shipName:
@@ -11706,8 +11826,23 @@ components:
       properties:
         id:
           type: integer
+        userType:
+          type: string
+        reportType:
+          type: string
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -11751,8 +11886,23 @@ components:
       properties:
         id:
           type: integer
+        userType:
+          type: string
+        reportType:
+          type: string
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -11842,6 +11992,8 @@ components:
           format: double
         edsmCoordLocked:
           type: boolean
+        missingSkipCount:
+          type: integer
         bodies:
           $ref: '#/components/schemas/getLocationBody'
         created_at:
@@ -11945,6 +12097,8 @@ components:
           $ref: '#/components/schemas/bodyAtmosphere'
         edsmMaterial:
           $ref: '#/components/schemas/bodyMaterial'
+        missingSkipCount:
+          type: integer
         rings:
           $ref: '#/components/schemas/getLocationRing'
         created_at:
@@ -12756,6 +12910,8 @@ components:
   ## POST Reports
     postReportPlanet:
       required:
+        - userType
+        - reportType
         - systemName
         - bodyName
         - latitude
@@ -12763,8 +12919,30 @@ components:
         - cmdrName
         - reportStatus
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -12801,6 +12979,8 @@ components:
 
     postReportPlanetWithType:
       required:
+        - userType
+        - reportType
         - systemName
         - bodyName
         - latitude
@@ -12809,8 +12989,30 @@ components:
         - cmdrName
         - reportStatus
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -12849,6 +13051,8 @@ components:
 
     postReportGB:
       required:
+        - userType
+        - reportType
         - systemName
         - bodyName
         - messageSystem
@@ -12858,8 +13062,30 @@ components:
         - cmdrName
         - reportStatus
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         messageSystem:
@@ -12898,13 +13124,37 @@ components:
 
     postReportGEN:
       required:
+        - userType
+        - reportType
         - systemName
         - shipName
         - cmdrName
         - reportStatus
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         orbitBody:
           type: string
         shipName:
@@ -12940,6 +13190,8 @@ components:
 
     postReportGR:
       required:
+        - userType
+        - reportType
         - systemName
         - bodyName
         - latitude
@@ -12948,8 +13200,30 @@ components:
         - cmdrName
         - reportStatus
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -13010,6 +13284,8 @@ components:
 
     postReportGS:
       required:
+        - userType
+        - reportType
         - systemName
         - bodyName
         - latitude
@@ -13019,8 +13295,30 @@ components:
         - cmdrName
         - reportStatus
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -13123,6 +13421,8 @@ components:
 
     postReportMS:
       required:
+        - userType
+        - reportType
         - systemName
         - shipName
         - type
@@ -13132,8 +13432,30 @@ components:
         - cmdrName
         - reportStatus
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         orbitBody:
           type: string
         shipName:
@@ -13174,6 +13496,8 @@ components:
 
     postReportTB:
       required:
+        - userType
+        - reportType
         - systemName
         - bodyName
         - latitude
@@ -13183,8 +13507,30 @@ components:
         - cmdrName
         - reportStatus
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -13242,6 +13588,8 @@ components:
 
     postReportTS:
       required:
+        - userType
+        - reportType
         - systemName
         - bodyName
         - latitude
@@ -13250,8 +13598,30 @@ components:
         - cmdrName
         - reportStatus
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -13348,6 +13718,8 @@ components:
           format: double
         edsmCoordLocked:
           type: boolean
+        missingSkipCount:
+          type: integer
 
     postLocationBody:
       required:
@@ -13443,6 +13815,8 @@ components:
           $ref: '#/components/schemas/bodyAtmosphere'
         edsmMaterial:
           $ref: '#/components/schemas/bodyMaterial'
+        missingSkipCount:
+          type: integer
 
     postLocationRing:
       required:
@@ -14197,8 +14571,30 @@ components:
   ## PUT Reports
     putReportPlanet:
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -14235,8 +14631,30 @@ components:
 
     putReportPlanetWithType:
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -14275,8 +14693,30 @@ components:
 
     putReportGB:
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         messageSystem:
@@ -14315,8 +14755,30 @@ components:
 
     putReportGEN:
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         orbitBody:
           type: string
         shipName:
@@ -14352,8 +14814,30 @@ components:
 
     putReportGR:
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -14408,8 +14892,30 @@ components:
 
     putReportGS:
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -14500,8 +15006,30 @@ components:
 
     putReportMS:
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         orbitBody:
           type: string
         shipName:
@@ -14542,8 +15070,30 @@ components:
 
     putReportTB:
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -14601,8 +15151,30 @@ components:
 
     putReportTS:
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -14692,6 +15264,8 @@ components:
           format: double
         edsmCoordLocked:
           type: boolean
+        missingSkipCount:
+          type: integer
 
     putLocationBody:
       properties:
@@ -14785,6 +15359,8 @@ components:
           $ref: '#/components/schemas/bodyAtmosphere'
         edsmMaterial:
           $ref: '#/components/schemas/bodyMaterial'
+        missingSkipCount:
+          type: integer
 
     putLocationRing:
       properties:
