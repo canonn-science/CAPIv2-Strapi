@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/tbreport",
+      "path": "/tbreports",
       "handler": "Tbreport.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/tbreport/count",
+      "path": "/tbreports/count",
       "handler": "Tbreport.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/tbreport/:id",
+      "path": "/tbreports/:id",
       "handler": "Tbreport.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/tbreport",
+      "path": "/tbreports",
       "handler": "Tbreport.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/tbreport/:id",
+      "path": "/tbreports/:id",
       "handler": "Tbreport.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/tbreport/:id",
+      "path": "/tbreports/:id",
       "handler": "Tbreport.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/tbreport/:id/relationships/:relation",
+      "path": "/tbreports/:id/relationships/:relation",
       "handler": "Tbreport.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/tbreport/:id/relationships/:relation",
+      "path": "/tbreports/:id/relationships/:relation",
       "handler": "Tbreport.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/tbreport/:id/relationships/:relation",
+      "path": "/tbreports/:id/relationships/:relation",
       "handler": "Tbreport.destroyRelation",
       "config": {
         "policies": []

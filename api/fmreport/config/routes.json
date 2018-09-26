@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/fmreport",
+      "path": "/fmreports",
       "handler": "Fmreport.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/fmreport/count",
+      "path": "/fmreports/count",
       "handler": "Fmreport.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/fmreport/:id",
+      "path": "/fmreports/:id",
       "handler": "Fmreport.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/fmreport",
+      "path": "/fmreports",
       "handler": "Fmreport.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/fmreport/:id",
+      "path": "/fmreports/:id",
       "handler": "Fmreport.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/fmreport/:id",
+      "path": "/fmreports/:id",
       "handler": "Fmreport.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/fmreport/:id/relationships/:relation",
+      "path": "/fmreports/:id/relationships/:relation",
       "handler": "Fmreport.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/fmreport/:id/relationships/:relation",
+      "path": "/fmreports/:id/relationships/:relation",
       "handler": "Fmreport.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/fmreport/:id/relationships/:relation",
+      "path": "/fmreports/:id/relationships/:relation",
       "handler": "Fmreport.destroyRelation",
       "config": {
         "policies": []

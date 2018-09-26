@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/tbdefense",
+      "path": "/tbdefenses",
       "handler": "Tbdefense.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/tbdefense/count",
+      "path": "/tbdefenses/count",
       "handler": "Tbdefense.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/tbdefense/:id",
+      "path": "/tbdefenses/:id",
       "handler": "Tbdefense.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/tbdefense",
+      "path": "/tbdefenses",
       "handler": "Tbdefense.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/tbdefense/:id",
+      "path": "/tbdefenses/:id",
       "handler": "Tbdefense.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/tbdefense/:id",
+      "path": "/tbdefenses/:id",
       "handler": "Tbdefense.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/tbdefense/:id/relationships/:relation",
+      "path": "/tbdefenses/:id/relationships/:relation",
       "handler": "Tbdefense.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/tbdefense/:id/relationships/:relation",
+      "path": "/tbdefenses/:id/relationships/:relation",
       "handler": "Tbdefense.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/tbdefense/:id/relationships/:relation",
+      "path": "/tbdefenses/:id/relationships/:relation",
       "handler": "Tbdefense.destroyRelation",
       "config": {
         "policies": []

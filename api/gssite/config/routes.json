@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/gssite",
+      "path": "/gssites",
       "handler": "Gssite.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/gssite/count",
+      "path": "/gssites/count",
       "handler": "Gssite.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/gssite/:id",
+      "path": "/gssites/:id",
       "handler": "Gssite.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/gssite",
+      "path": "/gssites",
       "handler": "Gssite.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/gssite/:id",
+      "path": "/gssites/:id",
       "handler": "Gssite.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/gssite/:id",
+      "path": "/gssites/:id",
       "handler": "Gssite.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/gssite/:id/relationships/:relation",
+      "path": "/gssites/:id/relationships/:relation",
       "handler": "Gssite.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/gssite/:id/relationships/:relation",
+      "path": "/gssites/:id/relationships/:relation",
       "handler": "Gssite.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/gssite/:id/relationships/:relation",
+      "path": "/gssites/:id/relationships/:relation",
       "handler": "Gssite.destroyRelation",
       "config": {
         "policies": []

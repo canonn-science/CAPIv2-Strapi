@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/bmsite",
+      "path": "/bmsites",
       "handler": "Bmsite.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/bmsite/count",
+      "path": "/bmsites/count",
       "handler": "Bmsite.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/bmsite/:id",
+      "path": "/bmsites/:id",
       "handler": "Bmsite.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/bmsite",
+      "path": "/bmsites",
       "handler": "Bmsite.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/bmsite/:id",
+      "path": "/bmsites/:id",
       "handler": "Bmsite.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/bmsite/:id",
+      "path": "/bmsites/:id",
       "handler": "Bmsite.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/bmsite/:id/relationships/:relation",
+      "path": "/bmsites/:id/relationships/:relation",
       "handler": "Bmsite.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/bmsite/:id/relationships/:relation",
+      "path": "/bmsites/:id/relationships/:relation",
       "handler": "Bmsite.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/bmsite/:id/relationships/:relation",
+      "path": "/bmsites/:id/relationships/:relation",
       "handler": "Bmsite.destroyRelation",
       "config": {
         "policies": []

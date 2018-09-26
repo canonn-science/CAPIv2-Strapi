@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/gensite",
+      "path": "/gensites",
       "handler": "Gensite.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/gensite/count",
+      "path": "/gensites/count",
       "handler": "Gensite.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/gensite/:id",
+      "path": "/gensites/:id",
       "handler": "Gensite.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/gensite",
+      "path": "/gensites",
       "handler": "Gensite.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/gensite/:id",
+      "path": "/gensites/:id",
       "handler": "Gensite.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/gensite/:id",
+      "path": "/gensites/:id",
       "handler": "Gensite.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/gensite/:id/relationships/:relation",
+      "path": "/gensites/:id/relationships/:relation",
       "handler": "Gensite.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/gensite/:id/relationships/:relation",
+      "path": "/gensites/:id/relationships/:relation",
       "handler": "Gensite.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/gensite/:id/relationships/:relation",
+      "path": "/gensites/:id/relationships/:relation",
       "handler": "Gensite.destroyRelation",
       "config": {
         "policies": []

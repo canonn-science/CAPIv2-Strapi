@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/gytype",
+      "path": "/gytypes",
       "handler": "Gytype.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/gytype/count",
+      "path": "/gytypes/count",
       "handler": "Gytype.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/gytype/:id",
+      "path": "/gytypes/:id",
       "handler": "Gytype.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/gytype",
+      "path": "/gytypes",
       "handler": "Gytype.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/gytype/:id",
+      "path": "/gytypes/:id",
       "handler": "Gytype.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/gytype/:id",
+      "path": "/gytypes/:id",
       "handler": "Gytype.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/gytype/:id/relationships/:relation",
+      "path": "/gytypes/:id/relationships/:relation",
       "handler": "Gytype.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/gytype/:id/relationships/:relation",
+      "path": "/gytypes/:id/relationships/:relation",
       "handler": "Gytype.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/gytype/:id/relationships/:relation",
+      "path": "/gytypes/:id/relationships/:relation",
       "handler": "Gytype.destroyRelation",
       "config": {
         "policies": []

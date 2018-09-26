@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/lssite",
+      "path": "/lssites",
       "handler": "Lssite.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/lssite/count",
+      "path": "/lssites/count",
       "handler": "Lssite.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/lssite/:id",
+      "path": "/lssites/:id",
       "handler": "Lssite.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/lssite",
+      "path": "/lssites",
       "handler": "Lssite.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/lssite/:id",
+      "path": "/lssites/:id",
       "handler": "Lssite.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/lssite/:id",
+      "path": "/lssites/:id",
       "handler": "Lssite.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/lssite/:id/relationships/:relation",
+      "path": "/lssites/:id/relationships/:relation",
       "handler": "Lssite.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/lssite/:id/relationships/:relation",
+      "path": "/lssites/:id/relationships/:relation",
       "handler": "Lssite.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/lssite/:id/relationships/:relation",
+      "path": "/lssites/:id/relationships/:relation",
       "handler": "Lssite.destroyRelation",
       "config": {
         "policies": []

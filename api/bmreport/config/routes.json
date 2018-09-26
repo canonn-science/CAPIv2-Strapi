@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/bmreport",
+      "path": "/bmreports",
       "handler": "Bmreport.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/bmreport/count",
+      "path": "/bmreports/count",
       "handler": "Bmreport.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/bmreport/:id",
+      "path": "/bmreports/:id",
       "handler": "Bmreport.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/bmreport",
+      "path": "/bmreports",
       "handler": "Bmreport.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/bmreport/:id",
+      "path": "/bmreports/:id",
       "handler": "Bmreport.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/bmreport/:id",
+      "path": "/bmreports/:id",
       "handler": "Bmreport.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/bmreport/:id/relationships/:relation",
+      "path": "/bmreports/:id/relationships/:relation",
       "handler": "Bmreport.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/bmreport/:id/relationships/:relation",
+      "path": "/bmreports/:id/relationships/:relation",
       "handler": "Bmreport.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/bmreport/:id/relationships/:relation",
+      "path": "/bmreports/:id/relationships/:relation",
       "handler": "Bmreport.destroyRelation",
       "config": {
         "policies": []
