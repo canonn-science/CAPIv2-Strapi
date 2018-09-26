@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "1f1b845b-795f-4fc0-a786-80fb53aeea19",
+		"_postman_id": "82f4f2f0-287f-457d-8564-4de85b90f027",
 		"name": "Canonn APIv2 Postman Test Collection",
 		"description": "An API for all the Science related information Canonn has in its datastores stored on the Gnosis, built using [Strapi](https://strapi.io) a Nodejs API framework. \n\nWe have two different documentation types, our [Redocs](https://api.canonn.tech) or use the [Swagger-UI](https://api.canonn.tech/swaggerui)\n\nWe also have 3 API servers; Live (Production), Beta (Staging), Alpha (Development). You should use the Beta server for testing your application prior to using the Live server. The Alpha server is used by Canonn to test our changes prior to releasing a new version.\n\nData between the Live and Beta servers are replicated as needed, eventually we plan to dynamically replicate the data every night at midnight Phoenix, Arizona USA time (MST-Arizona GMT-7)\n\nHere are the following URLs for each server\n\n* Live - https://api.canonn.tech\n* Beta - https://api.canonn.tech:2053\n* Alpha - https://api.canonn.tech:2083\n\nThank you for your support, and thank you to all the CMDRs who supply us with our data!\n",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -8,6 +8,7 @@
 	"item": [
 		{
 			"name": "auth",
+			"description": "Folder for auth",
 			"item": [
 				{
 					"name": "Login to the Canonn APIv2 Server",
@@ -57,11 +58,11 @@
 					},
 					"response": []
 				}
-			],
-			"description": "Folder for auth"
+			]
 		},
 		{
 			"name": "bmreport",
+			"description": "Folder for bmreport",
 			"item": [
 				{
 					"name": "Post a new BM Report",
@@ -109,12 +110,12 @@
 							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"ROSETTE SECTOR EL-Y D15\",\n  \"bodyName\": \"2 B\",\n  \"latitude\": -3.3269,\n  \"longitude\": 139.8931,\n  \"count\": 1,\n  \"cmdrName\": \"Galactic Fork\",\n  \"cmdrComment\": \"TEST - Bark Mound Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/bmreport",
+							"raw": "{{url}}/bmreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"bmreport"
+								"bmreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -152,12 +153,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/bmreport/count",
+							"raw": "{{url}}/bmreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"bmreport",
+								"bmreports",
 								"count"
 							]
 						},
@@ -184,12 +185,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/bmreport",
+							"raw": "{{url}}/bmreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"bmreport"
+								"bmreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -227,12 +228,12 @@
 							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
 						},
 						"url": {
-							"raw": "{{url}}/bmreport/{{bmID}}",
+							"raw": "{{url}}/bmreports/{{bmID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"bmreport",
+								"bmreports",
 								"{{bmID}}"
 							]
 						},
@@ -285,12 +286,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/bmreport/{{bmID}}",
+							"raw": "{{url}}/bmreports/{{bmID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"bmreport",
+								"bmreports",
 								"{{bmID}}"
 							]
 						},
@@ -327,12 +328,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/bmreport/{{bmID}}",
+							"raw": "{{url}}/bmreports/{{bmID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"bmreport",
+								"bmreports",
 								"{{bmID}}"
 							]
 						},
@@ -340,11 +341,11 @@
 					},
 					"response": []
 				}
-			],
-			"description": "Folder for bmreport"
+			]
 		},
 		{
 			"name": "btreport",
+			"description": "Folder for btreport",
 			"item": [
 				{
 					"name": "Post a new BT Report",
@@ -392,12 +393,12 @@
 							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"164 G. CANIS MAJORIS\",\n  \"bodyName\": \"5 C A\",\n  \"latitude\": -4.8631,\n  \"longitude\": 3.0394,\n  \"count\": 2,\n  \"cmdrName\": \"Panpiper\",\n  \"cmdrComment\": \"TEST - Brain Tree Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/btreport",
+							"raw": "{{url}}/btreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"btreport"
+								"btreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -423,12 +424,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/btreport/count",
+							"raw": "{{url}}/btreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"btreport",
+								"btreports",
 								"count"
 							]
 						},
@@ -455,12 +456,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/btreport",
+							"raw": "{{url}}/btreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"btreport"
+								"btreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -498,12 +499,12 @@
 							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
 						},
 						"url": {
-							"raw": "{{url}}/btreport/{{btID}}",
+							"raw": "{{url}}/btreports/{{btID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"btreport",
+								"btreports",
 								"{{btID}}"
 							]
 						},
@@ -556,12 +557,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/btreport/{{btID}}",
+							"raw": "{{url}}/btreports/{{btID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"btreport",
+								"btreports",
 								"{{btID}}"
 							]
 						},
@@ -598,12 +599,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/btreport/{{btID}}",
+							"raw": "{{url}}/btreports/{{btID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"btreport",
+								"btreports",
 								"{{btID}}"
 							]
 						},
@@ -611,11 +612,11 @@
 					},
 					"response": []
 				}
-			],
-			"description": "Folder for btreport"
+			]
 		},
 		{
 			"name": "fgreport",
+			"description": "Folder for fgreport",
 			"item": [
 				{
 					"name": "Post a new FG Report",
@@ -663,12 +664,12 @@
 							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"HIP 37610\",\n  \"bodyName\": \"A 6 C A\",\n  \"latitude\": -1.4054,\n  \"longitude\": 140.8423,\n  \"count\": 3,\n  \"cmdrName\": \"Clobbertime\",\n  \"cmdrComment\": \"TEST - Fungal Gourd Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/fgreport",
+							"raw": "{{url}}/fgreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"fgreport"
+								"fgreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -706,12 +707,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/fgreport/count",
+							"raw": "{{url}}/fgreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"fgreport",
+								"fgreports",
 								"count"
 							]
 						},
@@ -750,12 +751,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/fgreport",
+							"raw": "{{url}}/fgreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"fgreport"
+								"fgreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -793,12 +794,12 @@
 							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
 						},
 						"url": {
-							"raw": "{{url}}/fgreport/{{fgID}}",
+							"raw": "{{url}}/fgreports/{{fgID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"fgreport",
+								"fgreports",
 								"{{fgID}}"
 							]
 						},
@@ -851,12 +852,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/fgreport/{{fgID}}",
+							"raw": "{{url}}/fgreports/{{fgID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"fgreport",
+								"fgreports",
 								"{{fgID}}"
 							]
 						},
@@ -893,12 +894,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/fgreport/{{fgID}}",
+							"raw": "{{url}}/fgreports/{{fgID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"fgreport",
+								"fgreports",
 								"{{fgID}}"
 							]
 						},
@@ -906,11 +907,11 @@
 					},
 					"response": []
 				}
-			],
-			"description": "Folder for fgreport"
+			]
 		},
 		{
 			"name": "fmreport",
+			"description": "Folder for fmreport",
 			"item": [
 				{
 					"name": "Post a new FM Report",
@@ -959,12 +960,12 @@
 							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"PROOE PHIO GP-W C3-5\",\n  \"bodyName\": \"B 3 A\",\n  \"latitude\": -26.1589,\n  \"longitude\": -90.6344,\n  \"count\": 4,\n  \"type\": \"Iron Magma\",\n  \"cmdrName\": \"Rory Clague\",\n  \"cmdrComment\": \"TEST - Fumaroles Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/fmreport",
+							"raw": "{{url}}/fmreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"fmreport"
+								"fmreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -990,12 +991,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/fmreport/count",
+							"raw": "{{url}}/fmreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"fmreport",
+								"fmreports",
 								"count"
 							]
 						},
@@ -1022,12 +1023,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/fmreport",
+							"raw": "{{url}}/fmreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"fmreport"
+								"fmreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -1065,12 +1066,12 @@
 							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
 						},
 						"url": {
-							"raw": "{{url}}/fmreport/{{fmID}}",
+							"raw": "{{url}}/fmreports/{{fmID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"fmreport",
+								"fmreports",
 								"{{fmID}}"
 							]
 						},
@@ -1124,12 +1125,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/fmreport/{{fmID}}",
+							"raw": "{{url}}/fmreports/{{fmID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"fmreport",
+								"fmreports",
 								"{{fmID}}"
 							]
 						},
@@ -1166,12 +1167,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/fmreport/{{fmID}}",
+							"raw": "{{url}}/fmreports/{{fmID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"fmreport",
+								"fmreports",
 								"{{fmID}}"
 							]
 						},
@@ -1179,11 +1180,11 @@
 					},
 					"response": []
 				}
-			],
-			"description": "Folder for fmreport"
+			]
 		},
 		{
 			"name": "gbreport",
+			"description": "Folder for grreport",
 			"item": [
 				{
 					"name": "Post a new GB Report",
@@ -1232,12 +1233,12 @@
 							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"SYNUEFE IL-N C23-15\",\n  \"bodyName\": \"2 A\",\n  \"messageSystem\": \"SYNUEFE IL-N C23-19\",\n  \"messageBody\": \"B 2\",\n  \"messageLatitude\": 44.31,\n  \"messageLongitude\": 12.18,\n  \"cmdrName\": \"joulupunikki\",\n  \"cmdrComment\": \"TEST - Guardian Beacon Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/gbreport",
+							"raw": "{{url}}/gbreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gbreport"
+								"gbreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -1263,12 +1264,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gbreport/count",
+							"raw": "{{url}}/gbreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gbreport",
+								"gbreports",
 								"count"
 							]
 						},
@@ -1295,12 +1296,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gbreport",
+							"raw": "{{url}}/gbreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gbreport"
+								"gbreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -1326,12 +1327,12 @@
 							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
 						},
 						"url": {
-							"raw": "{{url}}/gbreport/{{gbID}}",
+							"raw": "{{url}}/gbreports/{{gbID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gbreport",
+								"gbreports",
 								"{{gbID}}"
 							]
 						},
@@ -1385,12 +1386,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gbreport/{{gbID}}",
+							"raw": "{{url}}/gbreports/{{gbID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gbreport",
+								"gbreports",
 								"{{gbID}}"
 							]
 						},
@@ -1427,12 +1428,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gbreport/{{gbID}}",
+							"raw": "{{url}}/gbreports/{{gbID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gbreport",
+								"gbreports",
 								"{{gbID}}"
 							]
 						},
@@ -1440,11 +1441,11 @@
 					},
 					"response": []
 				}
-			],
-			"description": "Folder for grreport"
+			]
 		},
 		{
 			"name": "genreport",
+			"description": "Folder for genreport",
 			"item": [
 				{
 					"name": "Post a new GEN Report",
@@ -1492,12 +1493,12 @@
 							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"Lalande 2966\",\n  \"orbitBody\": \"4\",\n  \"shipName\": \"Generation Ship Hyperion\",\n  \"directionSystem\": \"Yemaki\",\n  \"distance\": 7340,\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Generation Ship Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/genreport",
+							"raw": "{{url}}/genreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"genreport"
+								"genreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -1523,12 +1524,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/genreport/count",
+							"raw": "{{url}}/genreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"genreport",
+								"genreports",
 								"count"
 							]
 						},
@@ -1555,12 +1556,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/genreport",
+							"raw": "{{url}}/genreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"genreport"
+								"genreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -1598,12 +1599,12 @@
 							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
 						},
 						"url": {
-							"raw": "{{url}}/genreport/{{genID}}",
+							"raw": "{{url}}/genreports/{{genID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"genreport",
+								"genreports",
 								"{{genID}}"
 							]
 						},
@@ -1656,12 +1657,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/genreport/{{genID}}",
+							"raw": "{{url}}/genreports/{{genID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"genreport",
+								"genreports",
 								"{{genID}}"
 							]
 						},
@@ -1698,12 +1699,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/genreport/{{genID}}",
+							"raw": "{{url}}/genreports/{{genID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"genreport",
+								"genreports",
 								"{{genID}}"
 							]
 						},
@@ -1711,11 +1712,11 @@
 					},
 					"response": []
 				}
-			],
-			"description": "Folder for genreport"
+			]
 		},
 		{
 			"name": "grreport",
+			"description": "Folder for grreport",
 			"item": [
 				{
 					"name": "Post a new GR Report",
@@ -1763,12 +1764,12 @@
 							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"SYNUEFE XR-H D11-102\",\n  \"bodyName\": \"1 B\",\n  \"latitude\": -31.7347,\n  \"longitude\": -128.9212,\n  \"type\": \"Beta\",\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Guardian Ruin Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/grreport",
+							"raw": "{{url}}/grreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grreport"
+								"grreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -1794,12 +1795,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/grreport/count",
+							"raw": "{{url}}/grreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grreport",
+								"grreports",
 								"count"
 							]
 						},
@@ -1826,12 +1827,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/grreport",
+							"raw": "{{url}}/grreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grreport"
+								"grreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -1875,12 +1876,12 @@
 							"raw": "{\n  \"grreport\": {{grID}},\n  \"grobeliskgroup\": 18\n}"
 						},
 						"url": {
-							"raw": "{{url}}/grobeliskgroupreport",
+							"raw": "{{url}}/grobeliskgroupreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grobeliskgroupreport"
+								"grobeliskgroupreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -1906,12 +1907,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/grobeliskgroupreport/count",
+							"raw": "{{url}}/grobeliskgroupreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grobeliskgroupreport",
+								"grobeliskgroupreports",
 								"count"
 							]
 						},
@@ -1938,12 +1939,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/grobeliskgroupreport",
+							"raw": "{{url}}/grobeliskgroupreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grobeliskgroupreport"
+								"grobeliskgroupreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -1987,12 +1988,12 @@
 							"raw": "{\n  \"grreport\": {{grID}},\n  \"grobelisk\": 271\n}"
 						},
 						"url": {
-							"raw": "{{url}}/grobeliskreport",
+							"raw": "{{url}}/grobeliskreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grobeliskreport"
+								"grobeliskreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -2018,12 +2019,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/grobeliskreport/count",
+							"raw": "{{url}}/grobeliskreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grobeliskreport",
+								"grobeliskreports",
 								"count"
 							]
 						},
@@ -2050,12 +2051,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/grobeliskreport",
+							"raw": "{{url}}/grobeliskreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grobeliskreport"
+								"grobeliskreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -2081,12 +2082,12 @@
 							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
 						},
 						"url": {
-							"raw": "{{url}}/grreport/{{grID}}",
+							"raw": "{{url}}/grreports/{{grID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grreport",
+								"grreports",
 								"{{grID}}"
 							]
 						},
@@ -2139,12 +2140,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/grreport/{{grID}}",
+							"raw": "{{url}}/grreports/{{grID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grreport",
+								"grreports",
 								"{{grID}}"
 							]
 						},
@@ -2171,12 +2172,12 @@
 							"raw": "{\n  \"grobeliskgroup\": 19\n}"
 						},
 						"url": {
-							"raw": "{{url}}/grobeliskgroupreport/{{grOGID}}",
+							"raw": "{{url}}/grobeliskgroupreports/{{grOGID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grobeliskgroupreport",
+								"grobeliskgroupreports",
 								"{{grOGID}}"
 							]
 						},
@@ -2218,12 +2219,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/grobeliskgroupreport/{{grOGID}}",
+							"raw": "{{url}}/grobeliskgroupreports/{{grOGID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grobeliskgroupreport",
+								"grobeliskgroupreports",
 								"{{grOGID}}"
 							]
 						},
@@ -2250,12 +2251,12 @@
 							"raw": "{\n  \"grobelisk\": 281\n}"
 						},
 						"url": {
-							"raw": "{{url}}/grobeliskreport/{{grOID}}",
+							"raw": "{{url}}/grobeliskreports/{{grOID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grobeliskreport",
+								"grobeliskreports",
 								"{{grOID}}"
 							]
 						},
@@ -2297,12 +2298,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/grobeliskreport/{{grOID}}",
+							"raw": "{{url}}/grobeliskreports/{{grOID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grobeliskreport",
+								"grobeliskreports",
 								"{{grOID}}"
 							]
 						},
@@ -2339,12 +2340,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/grobeliskreport/{{grOID}}",
+							"raw": "{{url}}/grobeliskreports/{{grOID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grobeliskreport",
+								"grobeliskreports",
 								"{{grOID}}"
 							]
 						},
@@ -2381,12 +2382,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/grobeliskgroupreport/{{grOGID}}",
+							"raw": "{{url}}/grobeliskgroupreports/{{grOGID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grobeliskgroupreport",
+								"grobeliskgroupreports",
 								"{{grOGID}}"
 							]
 						},
@@ -2423,12 +2424,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/grreport/{{grID}}",
+							"raw": "{{url}}/grreports/{{grID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grreport",
+								"grreports",
 								"{{grID}}"
 							]
 						},
@@ -2436,11 +2437,11 @@
 					},
 					"response": []
 				}
-			],
-			"description": "Folder for grreport"
+			]
 		},
 		{
 			"name": "gsreport",
+			"description": "Folder for gsreport",
 			"item": [
 				{
 					"name": "Post a new GS Report",
@@ -2489,12 +2490,12 @@
 							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"SYNUEFE LY-I B42-2\",\n  \"bodyName\": \"C 2\",\n  \"latitude\": 52.6791,\n  \"longitude\": 115.2503,\n  \"type\": \"Fistbump\",\n  \"hasDatabank\": false,\n  \"cmdrName\": \"Doom666\",\n  \"cmdrComment\": \"TEST - Guardian Structure Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/gsreport",
+							"raw": "{{url}}/gsreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsreport"
+								"gsreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -2520,12 +2521,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gsreport/count",
+							"raw": "{{url}}/gsreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsreport",
+								"gsreports",
 								"count"
 							]
 						},
@@ -2552,12 +2553,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gsreport",
+							"raw": "{{url}}/gsreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsreport"
+								"gsreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -2601,12 +2602,12 @@
 							"raw": "{\n  \"gsreport\": {{gsID}},\n  \"gsobeliskgroup\": 9\n}"
 						},
 						"url": {
-							"raw": "{{url}}/gsobeliskgroupreport",
+							"raw": "{{url}}/gsobeliskgroupreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsobeliskgroupreport"
+								"gsobeliskgroupreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -2632,12 +2633,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gsobeliskgroupreport/count",
+							"raw": "{{url}}/gsobeliskgroupreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsobeliskgroupreport",
+								"gsobeliskgroupreports",
 								"count"
 							]
 						},
@@ -2664,12 +2665,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gsobeliskgroupreport",
+							"raw": "{{url}}/gsobeliskgroupreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsobeliskgroupreport"
+								"gsobeliskgroupreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -2713,12 +2714,12 @@
 							"raw": "{\n  \"gsreport\": {{gsID}},\n  \"gsobelisk\": 79\n}"
 						},
 						"url": {
-							"raw": "{{url}}/gsobeliskreport",
+							"raw": "{{url}}/gsobeliskreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsobeliskreport"
+								"gsobeliskreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -2744,12 +2745,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gsobeliskreport/count",
+							"raw": "{{url}}/gsobeliskreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsobeliskreport",
+								"gsobeliskreports",
 								"count"
 							]
 						},
@@ -2776,12 +2777,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gsobeliskreport",
+							"raw": "{{url}}/gsobeliskreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsobeliskreport"
+								"gsobeliskreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -2807,12 +2808,12 @@
 							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
 						},
 						"url": {
-							"raw": "{{url}}/gsreport/{{gsID}}",
+							"raw": "{{url}}/gsreports/{{gsID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsreport",
+								"gsreports",
 								"{{gsID}}"
 							]
 						},
@@ -2866,12 +2867,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gsreport/{{gsID}}",
+							"raw": "{{url}}/gsreports/{{gsID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsreport",
+								"gsreports",
 								"{{gsID}}"
 							]
 						},
@@ -2898,12 +2899,12 @@
 							"raw": "{\n  \"gsobeliskgroup\": 10\n}"
 						},
 						"url": {
-							"raw": "{{url}}/gsobeliskgroupreport/{{gsOGID}}",
+							"raw": "{{url}}/gsobeliskgroupreports/{{gsOGID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsobeliskgroupreport",
+								"gsobeliskgroupreports",
 								"{{gsOGID}}"
 							]
 						},
@@ -2945,12 +2946,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gsobeliskgroupreport/{{gsOGID}}",
+							"raw": "{{url}}/gsobeliskgroupreports/{{gsOGID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsobeliskgroupreport",
+								"gsobeliskgroupreports",
 								"{{gsOGID}}"
 							]
 						},
@@ -2977,12 +2978,12 @@
 							"raw": "{\n  \"gsobelisk\": 80\n}"
 						},
 						"url": {
-							"raw": "{{url}}/gsobeliskreport/{{gsOID}}",
+							"raw": "{{url}}/gsobeliskreports/{{gsOID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsobeliskreport",
+								"gsobeliskreports",
 								"{{gsOID}}"
 							]
 						},
@@ -2996,10 +2997,10 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "49b75d97-1f95-45b8-8b1f-07c9fde902dc",
+								"id": "983a287a-107e-4601-b630-5b2b74b56826",
 								"type": "text/javascript",
 								"exec": [
-									"pm.test(\"GR Obelisk Group updated values match\", function () {",
+									"pm.test(\"GS Obelisk Group updated values match\", function () {",
 									"    var jsonData = pm.response.json();",
 									"    pm.expect(jsonData.gsobelisk.id).to.eql(80);",
 									"});"
@@ -3024,12 +3025,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gsobeliskreport/{{gsOID}}",
+							"raw": "{{url}}/gsobeliskreports/{{gsOID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsobeliskreport",
+								"gsobeliskreports",
 								"{{gsOID}}"
 							]
 						},
@@ -3066,12 +3067,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gsobeliskreport/{{gsOID}}",
+							"raw": "{{url}}/gsobeliskreports/{{gsOID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsobeliskreport",
+								"gsobeliskreports",
 								"{{gsOID}}"
 							]
 						},
@@ -3108,12 +3109,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gsobeliskgroupreport/{{gsOGID}}",
+							"raw": "{{url}}/gsobeliskgroupreports/{{gsOGID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsobeliskgroupreport",
+								"gsobeliskgroupreports",
 								"{{gsOGID}}"
 							]
 						},
@@ -3150,12 +3151,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gsreport/{{gsID}}",
+							"raw": "{{url}}/gsreports/{{gsID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsreport",
+								"gsreports",
 								"{{gsID}}"
 							]
 						},
@@ -3163,11 +3164,11 @@
 					},
 					"response": []
 				}
-			],
-			"description": "Folder for gsreport"
+			]
 		},
 		{
 			"name": "gyreport",
+			"description": "Folder for gyreport",
 			"item": [
 				{
 					"name": "Post a new GY Report",
@@ -3216,12 +3217,12 @@
 							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"XOTHUIA AF-P D6-102\",\n  \"bodyName\": \"3 D A\",\n  \"latitude\": 38.8111,\n  \"longitude\": -130.3432,\n  \"count\": 5,\n  \"type\": \"Silicate Vapour\",\n  \"cmdrName\": \"Baton\",\n  \"cmdrComment\": \"TEST - Geyser Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/gyreport",
+							"raw": "{{url}}/gyreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gyreport"
+								"gyreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -3261,12 +3262,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gyreport/count",
+							"raw": "{{url}}/gyreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gyreport",
+								"gyreports",
 								"count"
 							]
 						},
@@ -3293,12 +3294,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gyreport",
+							"raw": "{{url}}/gyreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gyreport"
+								"gyreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -3336,12 +3337,12 @@
 							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
 						},
 						"url": {
-							"raw": "{{url}}/gyreport/{{gyID}}",
+							"raw": "{{url}}/gyreports/{{gyID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gyreport",
+								"gyreports",
 								"{{gyID}}"
 							]
 						},
@@ -3395,12 +3396,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gyreport/{{gyID}}",
+							"raw": "{{url}}/gyreports/{{gyID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gyreport",
+								"gyreports",
 								"{{gyID}}"
 							]
 						},
@@ -3437,12 +3438,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gyreport/{{gyID}}",
+							"raw": "{{url}}/gyreports/{{gyID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gyreport",
+								"gyreports",
 								"{{gyID}}"
 							]
 						},
@@ -3450,11 +3451,11 @@
 					},
 					"response": []
 				}
-			],
-			"description": "Folder for gyreport"
+			]
 		},
 		{
 			"name": "lsreport",
+			"description": "Folder for lsreport",
 			"item": [
 				{
 					"name": "Post a new LS Report",
@@ -3502,12 +3503,12 @@
 							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"DROETH OD-T D3-1\",\n  \"bodyName\": \"7 E A\",\n  \"latitude\": 75.9209,\n  \"longitude\": -50.3884,\n  \"count\": 6,\n  \"cmdrName\": \"Steyla\",\n  \"cmdrComment\": \"TEST - Lava Spout Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/lsreport",
+							"raw": "{{url}}/lsreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"lsreport"
+								"lsreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -3533,12 +3534,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/lsreport/count",
+							"raw": "{{url}}/lsreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"lsreport",
+								"lsreports",
 								"count"
 							]
 						},
@@ -3565,12 +3566,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/lsreport",
+							"raw": "{{url}}/lsreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"lsreport"
+								"lsreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -3608,12 +3609,12 @@
 							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
 						},
 						"url": {
-							"raw": "{{url}}/lsreport/{{lsID}}",
+							"raw": "{{url}}/lsreports/{{lsID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"lsreport",
+								"lsreports",
 								"{{lsID}}"
 							]
 						},
@@ -3666,12 +3667,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/lsreport/{{lsID}}",
+							"raw": "{{url}}/lsreports/{{lsID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"lsreport",
+								"lsreports",
 								"{{lsID}}"
 							]
 						},
@@ -3708,12 +3709,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/lsreport/{{lsID}}",
+							"raw": "{{url}}/lsreports/{{lsID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"lsreport",
+								"lsreports",
 								"{{lsID}}"
 							]
 						},
@@ -3721,11 +3722,11 @@
 					},
 					"response": []
 				}
-			],
-			"description": "Folder for lsreport"
+			]
 		},
 		{
 			"name": "msreport",
+			"description": "Folder for msreport",
 			"item": [
 				{
 					"name": "Post a new MS Report",
@@ -3776,12 +3777,12 @@
 							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"HIP 17692\",\n  \"orbitBody\": \"A 3\",\n  \"shipName\": \"JJF-048\",\n  \"shipTag\": \"jjf048\",\n  \"type\": \"Alcatraz Class Prison Ship\",\n  \"flightOps\": false,\n  \"flightSchedule\": false,\n  \"dockable\": false,\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Megaship Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/msreport",
+							"raw": "{{url}}/msreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"msreport"
+								"msreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -3807,12 +3808,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/msreport/count",
+							"raw": "{{url}}/msreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"msreport",
+								"msreports",
 								"count"
 							]
 						},
@@ -3839,12 +3840,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/msreport",
+							"raw": "{{url}}/msreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"msreport"
+								"msreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -3882,12 +3883,12 @@
 							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
 						},
 						"url": {
-							"raw": "{{url}}/msreport/{{msID}}",
+							"raw": "{{url}}/msreports/{{msID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"msreport",
+								"msreports",
 								"{{msID}}"
 							]
 						},
@@ -3943,12 +3944,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/msreport/{{msID}}",
+							"raw": "{{url}}/msreports/{{msID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"msreport",
+								"msreports",
 								"{{msID}}"
 							]
 						},
@@ -3985,12 +3986,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/msreport/{{msID}}",
+							"raw": "{{url}}/msreports/{{msID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"msreport",
+								"msreports",
 								"{{msID}}"
 							]
 						},
@@ -3998,11 +3999,11 @@
 					},
 					"response": []
 				}
-			],
-			"description": "Folder for msreport"
+			]
 		},
 		{
 			"name": "tbreport",
+			"description": "Folder for tbreport",
 			"item": [
 				{
 					"name": "Post a new TB Report",
@@ -4051,12 +4052,12 @@
 							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"PLEIONE\",\n  \"bodyName\": \"11 A\",\n  \"latitude\": 2.3189,\n  \"longitude\": 177.2434,\n  \"type\": \"Barnacle\",\n  \"cycle\": \"B\",\n  \"defense\": { \n  \t\"defense\": \"Unknown\"\n  },\n  \"count\": 7,\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Thargoid Barnacle Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/tbreport",
+							"raw": "{{url}}/tbreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"tbreport"
+								"tbreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -4082,12 +4083,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/tbreport/count",
+							"raw": "{{url}}/tbreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"tbreport",
+								"tbreports",
 								"count"
 							]
 						},
@@ -4114,12 +4115,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/tbreport",
+							"raw": "{{url}}/tbreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"tbreport"
+								"tbreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -4157,12 +4158,12 @@
 							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
 						},
 						"url": {
-							"raw": "{{url}}/tbreport/{{tbID}}",
+							"raw": "{{url}}/tbreports/{{tbID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"tbreport",
+								"tbreports",
 								"{{tbID}}"
 							]
 						},
@@ -4216,12 +4217,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/tbreport/{{tbID}}",
+							"raw": "{{url}}/tbreports/{{tbID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"tbreport",
+								"tbreports",
 								"{{tbID}}"
 							]
 						},
@@ -4258,12 +4259,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/tbreport/{{tbID}}",
+							"raw": "{{url}}/tbreports/{{tbID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"tbreport",
+								"tbreports",
 								"{{tbID}}"
 							]
 						},
@@ -4271,11 +4272,11 @@
 					},
 					"response": []
 				}
-			],
-			"description": "Folder for tbreport"
+			]
 		},
 		{
 			"name": "tsreport",
+			"description": "Folder for tsreport",
 			"item": [
 				{
 					"name": "Post a new TS Report",
@@ -4323,12 +4324,12 @@
 							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"HIP 19026\",\n  \"bodyName\": \"B 1 C\",\n  \"latitude\": -17.9575,\n  \"longitude\": -152.6994,\n  \"status\": \"Inactive\",\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Thargoid Structure Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/tsreport",
+							"raw": "{{url}}/tsreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"tsreport"
+								"tsreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -4354,12 +4355,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/tsreport/count",
+							"raw": "{{url}}/tsreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"tsreport",
+								"tsreports",
 								"count"
 							]
 						},
@@ -4386,12 +4387,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/tsreport",
+							"raw": "{{url}}/tsreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"tsreport"
+								"tsreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -4429,12 +4430,12 @@
 							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
 						},
 						"url": {
-							"raw": "{{url}}/tsreport/{{tsID}}",
+							"raw": "{{url}}/tsreports/{{tsID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"tsreport",
+								"tsreports",
 								"{{tsID}}"
 							]
 						},
@@ -4487,12 +4488,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/tsreport/{{tsID}}",
+							"raw": "{{url}}/tsreports/{{tsID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"tsreport",
+								"tsreports",
 								"{{tsID}}"
 							]
 						},
@@ -4529,12 +4530,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/tsreport/{{tsID}}",
+							"raw": "{{url}}/tsreports/{{tsID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"tsreport",
+								"tsreports",
 								"{{tsID}}"
 							]
 						},
@@ -4542,11 +4543,11 @@
 					},
 					"response": []
 				}
-			],
-			"description": "Folder for tsreport"
+			]
 		},
 		{
 			"name": "twreport",
+			"description": "Folder for twreport",
 			"item": [
 				{
 					"name": "Post a new TW Report",
@@ -4594,12 +4595,12 @@
 							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"Test System\",\n  \"bodyName\": \"Test Body\",\n  \"latitude\": 123.1234,\n  \"longitude\": -123.4321,\n  \"count\": 10,\n  \"cmdrName\": \"Test CMDR\",\n  \"cmdrComment\": \"TEST - Tube Worm Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/twreport",
+							"raw": "{{url}}/twreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"twreport"
+								"twreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -4625,12 +4626,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/twreport/count",
+							"raw": "{{url}}/twreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"twreport",
+								"twreports",
 								"count"
 							]
 						},
@@ -4657,12 +4658,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/twreport",
+							"raw": "{{url}}/twreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"twreport"
+								"twreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -4700,12 +4701,12 @@
 							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
 						},
 						"url": {
-							"raw": "{{url}}/twreport/{{twID}}",
+							"raw": "{{url}}/twreports/{{twID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"twreport",
+								"twreports",
 								"{{twID}}"
 							]
 						},
@@ -4758,12 +4759,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/twreport/{{twID}}",
+							"raw": "{{url}}/twreports/{{twID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"twreport",
+								"twreports",
 								"{{twID}}"
 							]
 						},
@@ -4800,12 +4801,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/twreport/{{twID}}",
+							"raw": "{{url}}/twreports/{{twID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"twreport",
+								"twreports",
 								"{{twID}}"
 							]
 						},
@@ -4813,8 +4814,7 @@
 					},
 					"response": []
 				}
-			],
-			"description": "Folder for twreport"
+			]
 		}
 	],
 	"event": [

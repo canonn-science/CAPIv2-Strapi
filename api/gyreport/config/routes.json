@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/gyreport",
+      "path": "/gyreports",
       "handler": "Gyreport.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/gyreport/count",
+      "path": "/gyreports/count",
       "handler": "Gyreport.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/gyreport/:id",
+      "path": "/gyreports/:id",
       "handler": "Gyreport.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/gyreport",
+      "path": "/gyreports",
       "handler": "Gyreport.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/gyreport/:id",
+      "path": "/gyreports/:id",
       "handler": "Gyreport.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/gyreport/:id",
+      "path": "/gyreports/:id",
       "handler": "Gyreport.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/gyreport/:id/relationships/:relation",
+      "path": "/gyreports/:id/relationships/:relation",
       "handler": "Gyreport.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/gyreport/:id/relationships/:relation",
+      "path": "/gyreports/:id/relationships/:relation",
       "handler": "Gyreport.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/gyreport/:id/relationships/:relation",
+      "path": "/gyreports/:id/relationships/:relation",
       "handler": "Gyreport.destroyRelation",
       "config": {
         "policies": []

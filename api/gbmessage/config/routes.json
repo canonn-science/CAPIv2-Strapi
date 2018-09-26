@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/gbmessage",
+      "path": "/gbmessages",
       "handler": "Gbmessage.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/gbmessage/count",
+      "path": "/gbmessages/count",
       "handler": "Gbmessage.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/gbmessage/:id",
+      "path": "/gbmessages/:id",
       "handler": "Gbmessage.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/gbmessage",
+      "path": "/gbmessages",
       "handler": "Gbmessage.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/gbmessage/:id",
+      "path": "/gbmessages/:id",
       "handler": "Gbmessage.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/gbmessage/:id",
+      "path": "/gbmessages/:id",
       "handler": "Gbmessage.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/gbmessage/:id/relationships/:relation",
+      "path": "/gbmessages/:id/relationships/:relation",
       "handler": "Gbmessage.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/gbmessage/:id/relationships/:relation",
+      "path": "/gbmessages/:id/relationships/:relation",
       "handler": "Gbmessage.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/gbmessage/:id/relationships/:relation",
+      "path": "/gbmessages/:id/relationships/:relation",
       "handler": "Gbmessage.destroyRelation",
       "config": {
         "policies": []

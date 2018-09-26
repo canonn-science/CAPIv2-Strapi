@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/grreport",
+      "path": "/grreports",
       "handler": "Grreport.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/grreport/count",
+      "path": "/grreports/count",
       "handler": "Grreport.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/grreport/:id",
+      "path": "/grreports/:id",
       "handler": "Grreport.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/grreport",
+      "path": "/grreports",
       "handler": "Grreport.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/grreport/:id",
+      "path": "/grreports/:id",
       "handler": "Grreport.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/grreport/:id",
+      "path": "/grreports/:id",
       "handler": "Grreport.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/grreport/:id/relationships/:relation",
+      "path": "/grreports/:id/relationships/:relation",
       "handler": "Grreport.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/grreport/:id/relationships/:relation",
+      "path": "/grreports/:id/relationships/:relation",
       "handler": "Grreport.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/grreport/:id/relationships/:relation",
+      "path": "/grreports/:id/relationships/:relation",
       "handler": "Grreport.destroyRelation",
       "config": {
         "policies": []

@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/grartifact",
+      "path": "/grartifacts",
       "handler": "Grartifact.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/grartifact/count",
+      "path": "/grartifacts/count",
       "handler": "Grartifact.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/grartifact/:id",
+      "path": "/grartifacts/:id",
       "handler": "Grartifact.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/grartifact",
+      "path": "/grartifacts",
       "handler": "Grartifact.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/grartifact/:id",
+      "path": "/grartifacts/:id",
       "handler": "Grartifact.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/grartifact/:id",
+      "path": "/grartifacts/:id",
       "handler": "Grartifact.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/grartifact/:id/relationships/:relation",
+      "path": "/grartifacts/:id/relationships/:relation",
       "handler": "Grartifact.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/grartifact/:id/relationships/:relation",
+      "path": "/grartifacts/:id/relationships/:relation",
       "handler": "Grartifact.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/grartifact/:id/relationships/:relation",
+      "path": "/grartifacts/:id/relationships/:relation",
       "handler": "Grartifact.destroyRelation",
       "config": {
         "policies": []

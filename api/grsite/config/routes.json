@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/grsite",
+      "path": "/grsites",
       "handler": "Grsite.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/grsite/count",
+      "path": "/grsites/count",
       "handler": "Grsite.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/grsite/:id",
+      "path": "/grsites/:id",
       "handler": "Grsite.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/grsite",
+      "path": "/grsites",
       "handler": "Grsite.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/grsite/:id",
+      "path": "/grsites/:id",
       "handler": "Grsite.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/grsite/:id",
+      "path": "/grsites/:id",
       "handler": "Grsite.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/grsite/:id/relationships/:relation",
+      "path": "/grsites/:id/relationships/:relation",
       "handler": "Grsite.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/grsite/:id/relationships/:relation",
+      "path": "/grsites/:id/relationships/:relation",
       "handler": "Grsite.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/grsite/:id/relationships/:relation",
+      "path": "/grsites/:id/relationships/:relation",
       "handler": "Grsite.destroyRelation",
       "config": {
         "policies": []

@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/fgsite",
+      "path": "/fgsites",
       "handler": "Fgsite.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/fgsite/count",
+      "path": "/fgsites/count",
       "handler": "Fgsite.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/fgsite/:id",
+      "path": "/fgsites/:id",
       "handler": "Fgsite.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/fgsite",
+      "path": "/fgsites",
       "handler": "Fgsite.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/fgsite/:id",
+      "path": "/fgsites/:id",
       "handler": "Fgsite.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/fgsite/:id",
+      "path": "/fgsites/:id",
       "handler": "Fgsite.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/fgsite/:id/relationships/:relation",
+      "path": "/fgsites/:id/relationships/:relation",
       "handler": "Fgsite.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/fgsite/:id/relationships/:relation",
+      "path": "/fgsites/:id/relationships/:relation",
       "handler": "Fgsite.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/fgsite/:id/relationships/:relation",
+      "path": "/fgsites/:id/relationships/:relation",
       "handler": "Fgsite.destroyRelation",
       "config": {
         "policies": []

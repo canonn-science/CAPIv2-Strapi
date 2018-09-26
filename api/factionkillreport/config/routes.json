@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/factionkillreport",
+      "path": "/factionkillreports",
       "handler": "Factionkillreport.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/factionkillreport/count",
+      "path": "/factionkillreports/count",
       "handler": "Factionkillreport.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/factionkillreport/:id",
+      "path": "/factionkillreports/:id",
       "handler": "Factionkillreport.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/factionkillreport",
+      "path": "/factionkillreports",
       "handler": "Factionkillreport.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/factionkillreport/:id",
+      "path": "/factionkillreports/:id",
       "handler": "Factionkillreport.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/factionkillreport/:id",
+      "path": "/factionkillreports/:id",
       "handler": "Factionkillreport.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/factionkillreport/:id/relationships/:relation",
+      "path": "/factionkillreports/:id/relationships/:relation",
       "handler": "Factionkillreport.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/factionkillreport/:id/relationships/:relation",
+      "path": "/factionkillreports/:id/relationships/:relation",
       "handler": "Factionkillreport.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/factionkillreport/:id/relationships/:relation",
+      "path": "/factionkillreports/:id/relationships/:relation",
       "handler": "Factionkillreport.destroyRelation",
       "config": {
         "policies": []

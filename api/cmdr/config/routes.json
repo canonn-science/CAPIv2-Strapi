@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/cmdr",
+      "path": "/cmdrs",
       "handler": "Cmdr.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/cmdr/count",
+      "path": "/cmdrs/count",
       "handler": "Cmdr.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/cmdr/:id",
+      "path": "/cmdrs/:id",
       "handler": "Cmdr.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/cmdr",
+      "path": "/cmdrs",
       "handler": "Cmdr.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/cmdr/:id",
+      "path": "/cmdrs/:id",
       "handler": "Cmdr.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/cmdr/:id",
+      "path": "/cmdrs/:id",
       "handler": "Cmdr.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/cmdr/:id/relationships/:relation",
+      "path": "/cmdrs/:id/relationships/:relation",
       "handler": "Cmdr.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/cmdr/:id/relationships/:relation",
+      "path": "/cmdrs/:id/relationships/:relation",
       "handler": "Cmdr.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/cmdr/:id/relationships/:relation",
+      "path": "/cmdrs/:id/relationships/:relation",
       "handler": "Cmdr.destroyRelation",
       "config": {
         "policies": []

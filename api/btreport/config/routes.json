@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/btreport",
+      "path": "/btreports",
       "handler": "Btreport.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/btreport/count",
+      "path": "/btreports/count",
       "handler": "Btreport.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/btreport/:id",
+      "path": "/btreports/:id",
       "handler": "Btreport.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/btreport",
+      "path": "/btreports",
       "handler": "Btreport.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/btreport/:id",
+      "path": "/btreports/:id",
       "handler": "Btreport.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/btreport/:id",
+      "path": "/btreports/:id",
       "handler": "Btreport.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/btreport/:id/relationships/:relation",
+      "path": "/btreports/:id/relationships/:relation",
       "handler": "Btreport.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/btreport/:id/relationships/:relation",
+      "path": "/btreports/:id/relationships/:relation",
       "handler": "Btreport.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/btreport/:id/relationships/:relation",
+      "path": "/btreports/:id/relationships/:relation",
       "handler": "Btreport.destroyRelation",
       "config": {
         "policies": []

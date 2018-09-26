@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/gysite",
+      "path": "/gysites",
       "handler": "Gysite.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/gysite/count",
+      "path": "/gysites/count",
       "handler": "Gysite.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/gysite/:id",
+      "path": "/gysites/:id",
       "handler": "Gysite.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/gysite",
+      "path": "/gysites",
       "handler": "Gysite.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/gysite/:id",
+      "path": "/gysites/:id",
       "handler": "Gysite.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/gysite/:id",
+      "path": "/gysites/:id",
       "handler": "Gysite.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/gysite/:id/relationships/:relation",
+      "path": "/gysites/:id/relationships/:relation",
       "handler": "Gysite.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/gysite/:id/relationships/:relation",
+      "path": "/gysites/:id/relationships/:relation",
       "handler": "Gysite.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/gysite/:id/relationships/:relation",
+      "path": "/gysites/:id/relationships/:relation",
       "handler": "Gysite.destroyRelation",
       "config": {
         "policies": []

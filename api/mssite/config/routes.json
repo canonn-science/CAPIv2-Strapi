@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/mssite",
+      "path": "/mssites",
       "handler": "Mssite.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/mssite/count",
+      "path": "/mssites/count",
       "handler": "Mssite.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/mssite/:id",
+      "path": "/mssites/:id",
       "handler": "Mssite.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/mssite",
+      "path": "/mssites",
       "handler": "Mssite.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/mssite/:id",
+      "path": "/mssites/:id",
       "handler": "Mssite.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/mssite/:id",
+      "path": "/mssites/:id",
       "handler": "Mssite.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/mssite/:id/relationships/:relation",
+      "path": "/mssites/:id/relationships/:relation",
       "handler": "Mssite.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/mssite/:id/relationships/:relation",
+      "path": "/mssites/:id/relationships/:relation",
       "handler": "Mssite.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/mssite/:id/relationships/:relation",
+      "path": "/mssites/:id/relationships/:relation",
       "handler": "Mssite.destroyRelation",
       "config": {
         "policies": []

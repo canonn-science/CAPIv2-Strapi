@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/tsreport",
+      "path": "/tsreports",
       "handler": "Tsreport.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/tsreport/count",
+      "path": "/tsreports/count",
       "handler": "Tsreport.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/tsreport/:id",
+      "path": "/tsreports/:id",
       "handler": "Tsreport.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/tsreport",
+      "path": "/tsreports",
       "handler": "Tsreport.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/tsreport/:id",
+      "path": "/tsreports/:id",
       "handler": "Tsreport.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/tsreport/:id",
+      "path": "/tsreports/:id",
       "handler": "Tsreport.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/tsreport/:id/relationships/:relation",
+      "path": "/tsreports/:id/relationships/:relation",
       "handler": "Tsreport.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/tsreport/:id/relationships/:relation",
+      "path": "/tsreports/:id/relationships/:relation",
       "handler": "Tsreport.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/tsreport/:id/relationships/:relation",
+      "path": "/tsreports/:id/relationships/:relation",
       "handler": "Tsreport.destroyRelation",
       "config": {
         "policies": []

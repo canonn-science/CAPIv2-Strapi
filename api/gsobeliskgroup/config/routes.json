@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/gsobeliskgroup",
+      "path": "/gsobeliskgroups",
       "handler": "Gsobeliskgroup.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/gsobeliskgroup/count",
+      "path": "/gsobeliskgroups/count",
       "handler": "Gsobeliskgroup.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/gsobeliskgroup/:id",
+      "path": "/gsobeliskgroups/:id",
       "handler": "Gsobeliskgroup.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/gsobeliskgroup",
+      "path": "/gsobeliskgroups",
       "handler": "Gsobeliskgroup.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/gsobeliskgroup/:id",
+      "path": "/gsobeliskgroups/:id",
       "handler": "Gsobeliskgroup.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/gsobeliskgroup/:id",
+      "path": "/gsobeliskgroups/:id",
       "handler": "Gsobeliskgroup.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/gsobeliskgroup/:id/relationships/:relation",
+      "path": "/gsobeliskgroups/:id/relationships/:relation",
       "handler": "Gsobeliskgroup.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/gsobeliskgroup/:id/relationships/:relation",
+      "path": "/gsobeliskgroups/:id/relationships/:relation",
       "handler": "Gsobeliskgroup.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/gsobeliskgroup/:id/relationships/:relation",
+      "path": "/gsobeliskgroups/:id/relationships/:relation",
       "handler": "Gsobeliskgroup.destroyRelation",
       "config": {
         "policies": []
