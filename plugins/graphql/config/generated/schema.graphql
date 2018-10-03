@@ -2369,6 +2369,7 @@ type Gscodexdata {
   gsSecondaryArtifact: Gsartifact
   codexNumber: Int!
   text: String!
+  audio: UploadFile
 }
 
 input GscodexdataInput {
@@ -2377,6 +2378,7 @@ input GscodexdataInput {
   gsSecondaryArtifact: ID
   codexNumber: Int!
   text: String!
+  audio: ID
 }
 
 """Obelisks at a Guardian Structure site"""
