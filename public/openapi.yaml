@@ -9076,167 +9076,6 @@ paths:
         '500':
           $ref: '#/components/responses/error500'
 
-# TB Defense
-  /tbdefenses/count:
-    get:
-      tags:
-        - Thargoid Barnacles
-      summary: Get a count of all TB Site Defenses
-      description: The API will respond with just a number, which is the total amount of sites on this endpoint. This can be used to filter, limit, or page other get requests.
-      operationId: getTBSiteDefensesCount
-      security: []
-      responses:
-        '200':
-          description: Total count of all entries in plain text
-          content:
-            text/plain:
-              schema:
-                type: integer
-                example: 42
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-  /tbdefenses:
-    get:
-      tags:
-        - Thargoid Barnacles
-      summary: Get a list of TB Site Defenses
-      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
-      operationId: getTBSiteDefenses
-      security: []
-      parameters:
-        - $ref: '#/components/parameters/start'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/search'
-      responses:
-        '200':
-          description: A list of TB Site Defenses
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSiteTBDefense'
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-    post:
-      tags:
-        - Thargoid Barnacles
-      summary: Post a new TB Site Defense
-      description: To be used to add a new site defense to the Canonn database
-      operationId: submitTBSiteDefense
-      security:
-        - canonnAuth: [siteWrite]
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/postSiteTBDefense'
-      responses:
-        '200':
-          description: Site Defense post successful
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSiteTBDefense'
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-  /tbdefenses/{id}:
-    get:
-      tags:
-        - Thargoid Barnacles
-      summary: Get a Single TB Site Defense
-      description: Provide the ID to get a single site
-      operationId: getTBSiteDefenseById
-      security: []
-      parameters:
-        - $ref: '#/components/parameters/byId'
-      responses:
-        '200':
-          description: Found the TB Site Defense
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSiteTBDefense'
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-
-    put:
-      tags:
-        - Thargoid Barnacles
-      summary: Update a TB Site Defense
-      description: Used to update the defense name
-      operationId: updateTBSiteDefenseById
-      security:
-        - canonnAuth: [siteWrite]
-      parameters:
-        - $ref: '#/components/parameters/byId'
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/putSiteTBDefense'
-      responses:
-        '200':
-          description: Site update successful
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSiteTBDefense'
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-
-    delete:
-      tags:
-        - Thargoid Barnacles
-      summary: Delete a TB Site Defense
-      description: The response is just an empty JSON, deleting a site defense requires auth
-      operationId: removeTBSiteDefenseById
-      security:
-        - canonnAuth: [siteDelete]
-      parameters:
-        - $ref: '#/components/parameters/byId'
-      responses:
-        '200':
-          description: Delete Successful
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-
 # TB Report
   /tbreports/count:
     get:
@@ -11855,8 +11694,6 @@ components:
           type: string
         cycle:
           type: string
-        defense:
-          type: string
         count:
           type: integer
         cmdrName:
@@ -12799,8 +12636,6 @@ components:
           $ref: '#/components/schemas/getSiteTBType'
         cycle:
           $ref: '#/components/schemas/getSiteTBCycle'
-        defense:
-          $ref: '#/components/schemas/getSiteTBDefense'
         verified:
           type: boolean
         visible:
@@ -12826,13 +12661,6 @@ components:
         id:
           type: integer
         cycle:
-          type: string
-
-    getSiteTBDefense:
-      properties:
-        id:
-          type: integer
-        defenseType:
           type: string
 
     getSiteTS:
@@ -13552,14 +13380,6 @@ components:
             - B
             - C
             - ABC
-        defense:
-          type: string
-          enum:
-            - None
-            - Capship
-            - Drones
-            - Thargbots
-            - Turrets
         count:
           type: integer
         cmdrName:
@@ -14467,8 +14287,6 @@ components:
           type: integer
         cycle:
           type: integer
-        defense:
-          type: integer
         verified:
           type: boolean
         visible:
@@ -14488,13 +14306,6 @@ components:
         - cycle
       properties:
         cycle:
-          type: string
-
-    postSiteTBDefense:
-      required:
-        - defenseType
-      properties:
-        defenseType:
           type: string
 
     postSiteTS:
@@ -15115,14 +14926,6 @@ components:
             - B
             - C
             - ABC
-        defense:
-          type: string
-          enum:
-            - None
-            - Capship
-            - Drones
-            - Thargbots
-            - Turrets
         count:
           type: integer
         cmdrName:
@@ -15843,8 +15646,6 @@ components:
           type: integer
         cycle:
           type: integer
-        defense:
-          type: integer
         verified:
           type: boolean
         visible:
@@ -15860,11 +15661,6 @@ components:
     putSiteTBCycle:
       properties:
         cycle:
-          type: string
-
-    putSiteTBDefense:
-      properties:
-        defenseType:
           type: string
 
     putSiteTS:
