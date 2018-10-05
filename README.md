@@ -72,7 +72,6 @@ The Canonn APIv2 is designed to handle all our current science projects. Current
   * MS Types
 * Thargoid Barnacles (TB)
   * TB Cycles
-  * TB Defenses (Currently WIP)
   * TB Types
 * Thargoid Structures (TS)
   * TS Status
