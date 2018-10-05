@@ -1935,32 +1935,6 @@ INSERT INTO `tbcycles` VALUES (2,'A'),(5,'ABC'),(3,'B'),(4,'C'),(1,'Unknown');
 UNLOCK TABLES;
 
 --
--- Table structure for table `tbdefenses`
---
-
-DROP TABLE IF EXISTS `tbdefenses`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tbdefenses` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `defenseType` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `tbdefenses_UN` (`defenseType`),
-  FULLTEXT KEY `SEARCH_TBDEFENSES` (`defenseType`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbdefenses`
---
-
-LOCK TABLES `tbdefenses` WRITE;
-/*!40000 ALTER TABLE `tbdefenses` DISABLE KEYS */;
-INSERT INTO `tbdefenses` VALUES (2,'Capship'),(3,'Drones'),(1,'None'),(4,'Thargbots'),(5,'Turrets');
-/*!40000 ALTER TABLE `tbdefenses` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbreports`
 --
 
@@ -1981,7 +1955,6 @@ CREATE TABLE `tbreports` (
   `longitude` double NOT NULL,
   `type` varchar(255) DEFAULT NULL,
   `cycle` varchar(255) NOT NULL,
-  `defense` longtext DEFAULT NULL,
   `count` int(11) DEFAULT NULL,
   `cmdrName` varchar(255) DEFAULT NULL,
   `cmdrComment` text DEFAULT NULL,
@@ -2023,7 +1996,6 @@ CREATE TABLE `tbsites` (
   `longitude` double DEFAULT NULL,
   `type` int(11) DEFAULT NULL,
   `cycle` int(11) DEFAULT NULL,
-  `defense` int(11) DEFAULT NULL,
   `count` int(11) DEFAULT NULL,
   `comment` text DEFAULT NULL,
   `verified` tinyint(1) DEFAULT NULL,
