@@ -4332,6 +4332,7 @@ type Ussreport {
   updatedAt: DateTime!
   systemName: String
   type: String
+  threatLevel: Int
   cmdrName: String
   cmdrComment: String
   isBeta: Boolean
@@ -4346,6 +4347,7 @@ type Ussreport {
 input UssreportInput {
   systemName: String
   type: String
+  threatLevel: Int
   cmdrName: String
   cmdrComment: String
   isBeta: Boolean
