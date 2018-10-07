@@ -1633,8 +1633,14 @@ enum ENUM_TBREPORT_REPORTTYPE {
 }
 
 enum ENUM_TBREPORT_TYPE {
-  Barnacle
-  Megabarnacle
+  Mega
+  Alpha
+  Beta
+  Gamma
+  Delta
+  Epsilon
+  Zeta
+  Unknown
 }
 
 enum ENUM_TBREPORT_USERTYPE {
@@ -3458,10 +3464,12 @@ input TbsiteInput {
 type Tbtype {
   id: ID!
   type: String!
+  metaAlloyCount: Int
 }
 
 input TbtypeInput {
   type: String!
+  metaAlloyCount: Int
 }
 
 """Reporting for Thargoid Structures"""
@@ -4330,6 +4338,7 @@ type Ussreport {
   updatedAt: DateTime!
   systemName: String
   type: String
+  threatLevel: Int
   cmdrName: String
   cmdrComment: String
   isBeta: Boolean
@@ -4344,6 +4353,7 @@ type Ussreport {
 input UssreportInput {
   systemName: String
   type: String
+  threatLevel: Int
   cmdrName: String
   cmdrComment: String
   isBeta: Boolean
