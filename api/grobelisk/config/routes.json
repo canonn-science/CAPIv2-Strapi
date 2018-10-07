@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/grobelisk",
+      "path": "/grobelisks",
       "handler": "Grobelisk.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/grobelisk/count",
+      "path": "/grobelisks/count",
       "handler": "Grobelisk.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/grobelisk/:id",
+      "path": "/grobelisks/:id",
       "handler": "Grobelisk.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/grobelisk",
+      "path": "/grobelisks",
       "handler": "Grobelisk.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/grobelisk/:id",
+      "path": "/grobelisks/:id",
       "handler": "Grobelisk.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/grobelisk/:id",
+      "path": "/grobelisks/:id",
       "handler": "Grobelisk.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/grobelisk/:id/relationships/:relation",
+      "path": "/grobelisks/:id/relationships/:relation",
       "handler": "Grobelisk.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/grobelisk/:id/relationships/:relation",
+      "path": "/grobelisks/:id/relationships/:relation",
       "handler": "Grobelisk.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/grobelisk/:id/relationships/:relation",
+      "path": "/grobelisks/:id/relationships/:relation",
       "handler": "Grobelisk.destroyRelation",
       "config": {
         "policies": []

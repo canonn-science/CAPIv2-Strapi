@@ -4,7 +4,7 @@
   "info": {
     "name": "grreport",
     "description": "Reporting for Guardian Ruins",
-    "endpoint": "/grreport"
+    "endpoint": "/grreports"
   },
   "options": {
     "increments": true,
@@ -12,10 +12,51 @@
     "comment": ""
   },
   "attributes": {
+    "userType": {
+      "x-data-description": "CMDR System Type",
+      "default": "console",
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "console",
+        "pc"
+      ]
+    },
+    "reportType": {
+      "x-data-description": "Report Type",
+      "default": "new",
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "new",
+        "update",
+        "error"
+      ]
+    },
     "systemName": {
       "x-data-description": "System Name",
       "type": "string",
       "required": true
+    },
+    "systemAddress": {
+      "x-data-render": false,
+      "x-data-exclude": true,
+      "type": "float"
+    },
+    "coordX": {
+      "x-data-render": false,
+      "x-data-exclude": true,
+      "type": "float"
+    },
+    "coordY": {
+      "x-data-render": false,
+      "x-data-exclude": true,
+      "type": "float"
+    },
+    "coordZ": {
+      "x-data-render": false,
+      "x-data-exclude": true,
+      "type": "float"
     },
     "bodyName": {
       "x-data-description": "Body Name",

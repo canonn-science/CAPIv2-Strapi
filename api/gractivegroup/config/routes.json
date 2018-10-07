@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/gractivegroup",
+      "path": "/gractivegroups",
       "handler": "Gractivegroup.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/gractivegroup/count",
+      "path": "/gractivegroups/count",
       "handler": "Gractivegroup.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/gractivegroup/:id",
+      "path": "/gractivegroups/:id",
       "handler": "Gractivegroup.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/gractivegroup",
+      "path": "/gractivegroups",
       "handler": "Gractivegroup.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/gractivegroup/:id",
+      "path": "/gractivegroups/:id",
       "handler": "Gractivegroup.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/gractivegroup/:id",
+      "path": "/gractivegroups/:id",
       "handler": "Gractivegroup.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/gractivegroup/:id/relationships/:relation",
+      "path": "/gractivegroups/:id/relationships/:relation",
       "handler": "Gractivegroup.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/gractivegroup/:id/relationships/:relation",
+      "path": "/gractivegroups/:id/relationships/:relation",
       "handler": "Gractivegroup.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/gractivegroup/:id/relationships/:relation",
+      "path": "/gractivegroups/:id/relationships/:relation",
       "handler": "Gractivegroup.destroyRelation",
       "config": {
         "policies": []

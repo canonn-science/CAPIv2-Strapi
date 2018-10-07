@@ -11,9 +11,40 @@
     "comment": ""
   },
   "attributes": {
+    "userType": {
+      "default": "console",
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "console",
+        "pc"
+      ]
+    },
+    "reportType": {
+      "default": "new",
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "new",
+        "update",
+        "error"
+      ]
+    },
     "systemName": {
       "type": "string",
       "required": true
+    },
+    "systemAddress": {
+      "type": "float"
+    },
+    "coordX": {
+      "type": "float"
+    },
+    "coordY": {
+      "type": "float"
+    },
+    "coordZ": {
+      "type": "float"
     },
     "bodyName": {
       "type": "string",
@@ -33,8 +64,14 @@
     },
     "type": {
       "enum": [
-        "Barnacle",
-        "Megabarnacle"
+        "Mega",
+        "Alpha",
+        "Beta",
+        "Gamma",
+        "Delta",
+        "Epsilon",
+        "Zeta",
+        "Unknown"
       ],
       "type": "enumeration",
       "required": true
@@ -49,9 +86,6 @@
       ],
       "type": "enumeration",
       "required": true
-    },
-    "defense": {
-      "type": "json"
     },
     "count": {
       "min": 1,

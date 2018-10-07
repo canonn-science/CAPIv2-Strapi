@@ -121,6 +121,10 @@
     "edsmMaterial": {
       "type": "json"
     },
+    "missingSkipCount": {
+      "default": 0,
+      "type": "integer"
+    },
     "rings": {
       "collection": "ring",
       "via": "body",

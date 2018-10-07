@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/grobeliskgroup",
+      "path": "/grobeliskgroups",
       "handler": "Grobeliskgroup.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/grobeliskgroup/count",
+      "path": "/grobeliskgroups/count",
       "handler": "Grobeliskgroup.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/grobeliskgroup/:id",
+      "path": "/grobeliskgroups/:id",
       "handler": "Grobeliskgroup.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/grobeliskgroup",
+      "path": "/grobeliskgroups",
       "handler": "Grobeliskgroup.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/grobeliskgroup/:id",
+      "path": "/grobeliskgroups/:id",
       "handler": "Grobeliskgroup.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/grobeliskgroup/:id",
+      "path": "/grobeliskgroups/:id",
       "handler": "Grobeliskgroup.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/grobeliskgroup/:id/relationships/:relation",
+      "path": "/grobeliskgroups/:id/relationships/:relation",
       "handler": "Grobeliskgroup.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/grobeliskgroup/:id/relationships/:relation",
+      "path": "/grobeliskgroups/:id/relationships/:relation",
       "handler": "Grobeliskgroup.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/grobeliskgroup/:id/relationships/:relation",
+      "path": "/grobeliskgroups/:id/relationships/:relation",
       "handler": "Grobeliskgroup.destroyRelation",
       "config": {
         "policies": []

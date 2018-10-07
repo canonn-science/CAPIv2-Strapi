@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/gsobeliskreport",
+      "path": "/gsobeliskreports",
       "handler": "Gsobeliskreport.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/gsobeliskreport/count",
+      "path": "/gsobeliskreports/count",
       "handler": "Gsobeliskreport.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/gsobeliskreport/:id",
+      "path": "/gsobeliskreports/:id",
       "handler": "Gsobeliskreport.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/gsobeliskreport",
+      "path": "/gsobeliskreports",
       "handler": "Gsobeliskreport.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/gsobeliskreport/:id",
+      "path": "/gsobeliskreports/:id",
       "handler": "Gsobeliskreport.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/gsobeliskreport/:id",
+      "path": "/gsobeliskreports/:id",
       "handler": "Gsobeliskreport.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/gsobeliskreport/:id/relationships/:relation",
+      "path": "/gsobeliskreports/:id/relationships/:relation",
       "handler": "Gsobeliskreport.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/gsobeliskreport/:id/relationships/:relation",
+      "path": "/gsobeliskreports/:id/relationships/:relation",
       "handler": "Gsobeliskreport.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/gsobeliskreport/:id/relationships/:relation",
+      "path": "/gsobeliskreports/:id/relationships/:relation",
       "handler": "Gsobeliskreport.destroyRelation",
       "config": {
         "policies": []

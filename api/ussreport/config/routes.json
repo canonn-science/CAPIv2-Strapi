@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/ussreport",
+      "path": "/ussreports",
       "handler": "Ussreport.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/ussreport/count",
+      "path": "/ussreports/count",
       "handler": "Ussreport.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/ussreport/:id",
+      "path": "/ussreports/:id",
       "handler": "Ussreport.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/ussreport",
+      "path": "/ussreports",
       "handler": "Ussreport.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/ussreport/:id",
+      "path": "/ussreports/:id",
       "handler": "Ussreport.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/ussreport/:id",
+      "path": "/ussreports/:id",
       "handler": "Ussreport.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/ussreport/:id/relationships/:relation",
+      "path": "/ussreports/:id/relationships/:relation",
       "handler": "Ussreport.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/ussreport/:id/relationships/:relation",
+      "path": "/ussreports/:id/relationships/:relation",
       "handler": "Ussreport.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/ussreport/:id/relationships/:relation",
+      "path": "/ussreports/:id/relationships/:relation",
       "handler": "Ussreport.destroyRelation",
       "config": {
         "policies": []

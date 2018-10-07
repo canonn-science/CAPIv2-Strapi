@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/msreport",
+      "path": "/msreports",
       "handler": "Msreport.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/msreport/count",
+      "path": "/msreports/count",
       "handler": "Msreport.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/msreport/:id",
+      "path": "/msreports/:id",
       "handler": "Msreport.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/msreport",
+      "path": "/msreports",
       "handler": "Msreport.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/msreport/:id",
+      "path": "/msreports/:id",
       "handler": "Msreport.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/msreport/:id",
+      "path": "/msreports/:id",
       "handler": "Msreport.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/msreport/:id/relationships/:relation",
+      "path": "/msreports/:id/relationships/:relation",
       "handler": "Msreport.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/msreport/:id/relationships/:relation",
+      "path": "/msreports/:id/relationships/:relation",
       "handler": "Msreport.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/msreport/:id/relationships/:relation",
+      "path": "/msreports/:id/relationships/:relation",
       "handler": "Msreport.destroyRelation",
       "config": {
         "policies": []

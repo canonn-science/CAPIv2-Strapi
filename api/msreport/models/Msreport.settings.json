@@ -11,9 +11,40 @@
     "comment": ""
   },
   "attributes": {
+    "userType": {
+      "default": "console",
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "console",
+        "pc"
+      ]
+    },
+    "reportType": {
+      "default": "new",
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "new",
+        "update",
+        "error"
+      ]
+    },
     "systemName": {
       "type": "string",
       "required": true
+    },
+    "systemAddress": {
+      "type": "float"
+    },
+    "coordX": {
+      "type": "float"
+    },
+    "coordY": {
+      "type": "float"
+    },
+    "coordZ": {
+      "type": "float"
     },
     "orbitBody": {
       "type": "string"

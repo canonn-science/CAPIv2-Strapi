@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/gsactivegroup",
+      "path": "/gsactivegroups",
       "handler": "Gsactivegroup.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/gsactivegroup/count",
+      "path": "/gsactivegroups/count",
       "handler": "Gsactivegroup.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/gsactivegroup/:id",
+      "path": "/gsactivegroups/:id",
       "handler": "Gsactivegroup.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/gsactivegroup",
+      "path": "/gsactivegroups",
       "handler": "Gsactivegroup.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/gsactivegroup/:id",
+      "path": "/gsactivegroups/:id",
       "handler": "Gsactivegroup.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/gsactivegroup/:id",
+      "path": "/gsactivegroups/:id",
       "handler": "Gsactivegroup.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/gsactivegroup/:id/relationships/:relation",
+      "path": "/gsactivegroups/:id/relationships/:relation",
       "handler": "Gsactivegroup.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/gsactivegroup/:id/relationships/:relation",
+      "path": "/gsactivegroups/:id/relationships/:relation",
       "handler": "Gsactivegroup.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/gsactivegroup/:id/relationships/:relation",
+      "path": "/gsactivegroups/:id/relationships/:relation",
       "handler": "Gsactivegroup.destroyRelation",
       "config": {
         "policies": []
