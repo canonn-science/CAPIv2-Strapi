@@ -3458,10 +3458,12 @@ input TbsiteInput {
 type Tbtype {
   id: ID!
   type: String!
+  metaAlloyCount: Int
 }
 
 input TbtypeInput {
   type: String!
+  metaAlloyCount: Int
 }
 
 """Reporting for Thargoid Structures"""
