@@ -120,7 +120,7 @@ module.exports = {
     const data = _.omit(values, Mssite.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = Mssite.forge(params).save(data, { path: true });
+    const entry = Mssite.forge(params).save(data);
 
     // Create relational data and return the entry.
     return Mssite.updateRelations(Object.assign(params, { values: relations }));

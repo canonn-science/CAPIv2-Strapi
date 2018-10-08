@@ -120,7 +120,7 @@ module.exports = {
     const data = _.omit(values, Factionkillreport.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = Factionkillreport.forge(params).save(data, { path: true });
+    const entry = Factionkillreport.forge(params).save(data);
 
     // Create relational data and return the entry.
     return Factionkillreport.updateRelations(Object.assign(params, { values: relations }));

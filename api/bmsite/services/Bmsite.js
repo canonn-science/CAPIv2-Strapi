@@ -120,7 +120,7 @@ module.exports = {
     const data = _.omit(values, Bmsite.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = Bmsite.forge(params).save(data, { path: true });
+    const entry = Bmsite.forge(params).save(data);
 
     // Create relational data and return the entry.
     return Bmsite.updateRelations(Object.assign(params, { values: relations }));

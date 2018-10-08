@@ -120,7 +120,7 @@ module.exports = {
     const data = _.omit(values, Grobeliskgroupreport.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = Grobeliskgroupreport.forge(params).save(data, { path: true });
+    const entry = Grobeliskgroupreport.forge(params).save(data);
 
     // Create relational data and return the entry.
     return Grobeliskgroupreport.updateRelations(Object.assign(params, { values: relations }));
