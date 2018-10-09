@@ -120,7 +120,7 @@ module.exports = {
     const data = _.omit(values, Gsobeliskreport.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = Gsobeliskreport.forge(params).save(data, { path: true });
+    const entry = Gsobeliskreport.forge(params).save(data);
 
     // Create relational data and return the entry.
     return Gsobeliskreport.updateRelations(Object.assign(params, { values: relations }));

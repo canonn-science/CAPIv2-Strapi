@@ -120,7 +120,7 @@ module.exports = {
     const data = _.omit(values, Tssite.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = Tssite.forge(params).save(data, { path: true });
+    const entry = Tssite.forge(params).save(data);
 
     // Create relational data and return the entry.
     return Tssite.updateRelations(Object.assign(params, { values: relations }));

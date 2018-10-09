@@ -120,7 +120,7 @@ module.exports = {
     const data = _.omit(values, Gractiveobelisk.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = Gractiveobelisk.forge(params).save(data, { path: true });
+    const entry = Gractiveobelisk.forge(params).save(data);
 
     // Create relational data and return the entry.
     return Gractiveobelisk.updateRelations(Object.assign(params, { values: relations }));
