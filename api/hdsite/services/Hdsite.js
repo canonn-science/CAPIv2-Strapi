@@ -120,7 +120,7 @@ module.exports = {
     const data = _.omit(values, Hdsite.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = Hdsite.forge(params).save(data, { path: true });
+    const entry = Hdsite.forge(params).save(data);
 
     // Create relational data and return the entry.
     return Hdsite.updateRelations(Object.assign(params, { values: relations }));

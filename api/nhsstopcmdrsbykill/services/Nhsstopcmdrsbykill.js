@@ -120,7 +120,7 @@ module.exports = {
     const data = _.omit(values, Nhsstopcmdrsbykill.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = Nhsstopcmdrsbykill.forge(params).save(data, { path: true });
+    const entry = Nhsstopcmdrsbykill.forge(params).save(data);
 
     // Create relational data and return the entry.
     return Nhsstopcmdrsbykill.updateRelations(Object.assign(params, { values: relations }));

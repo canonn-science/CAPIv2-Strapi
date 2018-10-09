@@ -120,7 +120,7 @@ module.exports = {
     const data = _.omit(values, Gsreport.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = Gsreport.forge(params).save(data, { path: true });
+    const entry = Gsreport.forge(params).save(data);
 
     // Create relational data and return the entry.
     return Gsreport.updateRelations(Object.assign(params, { values: relations }));
