@@ -1,6 +1,8 @@
 'use strict';
 
 const _ = require('lodash');
+const path = require('path');
+const fs = require('fs');
 
 /**
  * A set of functions called "actions" for `ContentManager`
@@ -93,6 +95,32 @@ module.exports = {
     await pluginStore.set({ key: 'schema', value: schema });
 
     return ctx.body = { ok: true };
+  },
+
+  writeSchema: async ctx => {
+    strapi.reload.isWatching = false;
+    const pluginStore = strapi.store({
+      environment: '',
+      type: 'plugin',
+      name: 'content-manager'
+    });
+    const schema = await pluginStore.get({ key: 'schema' });
+    const layoutPath = path.join(
+      strapi.config.appPath,
+      'plugins',
+      'content-manager',
+      'config',
+      'coreStoreSchema.json'
+    );
+    try {
+      fs.writeFileSync(layoutPath, JSON.stringify(schema, null, 2), 'utf8');
+      strapi.reload.isWatching = true;
+      ctx.body = { ok: true };
+    } catch(err) {
+      console.log(err);
+      strapi.reload.isWatching = true;
+      ctx.badRequest(null, 'something went wrong');
+    }
   },
 
   delete: async ctx => {

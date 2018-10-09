@@ -120,7 +120,7 @@ module.exports = {
     const data = _.omit(values, Gractivegroup.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = Gractivegroup.forge(params).save(data, { path: true });
+    const entry = Gractivegroup.forge(params).save(data);
 
     // Create relational data and return the entry.
     return Gractivegroup.updateRelations(Object.assign(params, { values: relations }));

@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/hdsite",
+      "path": "/hdsites",
       "handler": "Hdsite.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/hdsite/count",
+      "path": "/hdsites/count",
       "handler": "Hdsite.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/hdsite/:id",
+      "path": "/hdsites/:id",
       "handler": "Hdsite.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/hdsite",
+      "path": "/hdsites",
       "handler": "Hdsite.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/hdsite/:id",
+      "path": "/hdsites/:id",
       "handler": "Hdsite.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/hdsite/:id",
+      "path": "/hdsites/:id",
       "handler": "Hdsite.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/hdsite/:id/relationships/:relation",
+      "path": "/hdsites/:id/relationships/:relation",
       "handler": "Hdsite.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/hdsite/:id/relationships/:relation",
+      "path": "/hdsites/:id/relationships/:relation",
       "handler": "Hdsite.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/hdsite/:id/relationships/:relation",
+      "path": "/hdsites/:id/relationships/:relation",
       "handler": "Hdsite.destroyRelation",
       "config": {
         "policies": []

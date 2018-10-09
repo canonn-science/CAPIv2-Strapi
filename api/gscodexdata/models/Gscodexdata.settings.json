@@ -29,6 +29,12 @@
       "unique": true,
       "type": "text",
       "required": true
+    },
+    "audio": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
     }
   }
 }

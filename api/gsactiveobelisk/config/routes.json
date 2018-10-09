@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/gsactiveobelisk",
+      "path": "/gsactiveobelisks",
       "handler": "Gsactiveobelisk.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/gsactiveobelisk/count",
+      "path": "/gsactiveobelisks/count",
       "handler": "Gsactiveobelisk.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/gsactiveobelisk/:id",
+      "path": "/gsactiveobelisks/:id",
       "handler": "Gsactiveobelisk.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/gsactiveobelisk",
+      "path": "/gsactiveobelisks",
       "handler": "Gsactiveobelisk.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/gsactiveobelisk/:id",
+      "path": "/gsactiveobelisks/:id",
       "handler": "Gsactiveobelisk.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/gsactiveobelisk/:id",
+      "path": "/gsactiveobelisks/:id",
       "handler": "Gsactiveobelisk.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/gsactiveobelisk/:id/relationships/:relation",
+      "path": "/gsactiveobelisks/:id/relationships/:relation",
       "handler": "Gsactiveobelisk.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/gsactiveobelisk/:id/relationships/:relation",
+      "path": "/gsactiveobelisks/:id/relationships/:relation",
       "handler": "Gsactiveobelisk.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/gsactiveobelisk/:id/relationships/:relation",
+      "path": "/gsactiveobelisks/:id/relationships/:relation",
       "handler": "Gsactiveobelisk.destroyRelation",
       "config": {
         "policies": []

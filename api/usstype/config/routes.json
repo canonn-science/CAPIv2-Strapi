@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/usstype",
+      "path": "/usstypes",
       "handler": "Usstype.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/usstype/count",
+      "path": "/usstypes/count",
       "handler": "Usstype.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/usstype/:id",
+      "path": "/usstypes/:id",
       "handler": "Usstype.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/usstype",
+      "path": "/usstypes",
       "handler": "Usstype.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/usstype/:id",
+      "path": "/usstypes/:id",
       "handler": "Usstype.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/usstype/:id",
+      "path": "/usstypes/:id",
       "handler": "Usstype.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/usstype/:id/relationships/:relation",
+      "path": "/usstypes/:id/relationships/:relation",
       "handler": "Usstype.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/usstype/:id/relationships/:relation",
+      "path": "/usstypes/:id/relationships/:relation",
       "handler": "Usstype.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/usstype/:id/relationships/:relation",
+      "path": "/usstypes/:id/relationships/:relation",
       "handler": "Usstype.destroyRelation",
       "config": {
         "policies": []

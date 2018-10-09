@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/system",
+      "path": "/systems",
       "handler": "System.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/system/count",
+      "path": "/systems/count",
       "handler": "System.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/system/:id",
+      "path": "/systems/:id",
       "handler": "System.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/system",
+      "path": "/systems",
       "handler": "System.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/system/:id",
+      "path": "/systems/:id",
       "handler": "System.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/system/:id",
+      "path": "/systems/:id",
       "handler": "System.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/system/:id/relationships/:relation",
+      "path": "/systems/:id/relationships/:relation",
       "handler": "System.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/system/:id/relationships/:relation",
+      "path": "/systems/:id/relationships/:relation",
       "handler": "System.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/system/:id/relationships/:relation",
+      "path": "/systems/:id/relationships/:relation",
       "handler": "System.destroyRelation",
       "config": {
         "policies": []

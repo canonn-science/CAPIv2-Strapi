@@ -10,7 +10,7 @@ openapi: "3.0.0"
 
 ## Information
 info:
-  version: 2.0.11
+  version: 2.0.13
   title: Canonn APIv2
   x-logo:
     url: "./canonn-logo.png"
@@ -35,9 +35,9 @@ info:
 
     Server Name  | Server Type | Server URL | Server version
     ---------|---------|---------|---------
-    Live | Production | https://api.canonn.tech | v2.0.11
-    Beta | Production | https://api.canonn.tech:2053 | v2.0.11
-    Alpha | Production | https://api.canonn.tech:2083 | v2.0.11
+    Live | Production | https://api.canonn.tech | v2.0.13
+    Beta | Staging | https://api.canonn.tech:2053 | v2.0.13
+    Alpha | Development | https://api.canonn.tech:2083 | v2.0.13
 
     Thank you for your support, and thank you to all the CMDRs who supply us with our data!
 
@@ -93,7 +93,7 @@ paths:
                 $ref: '#/components/schemas/authError'
 
 # BM Report
-  /bmreport/count:
+  /bmreports/count:
     get:
       tags:
         - Bark Mound Reports
@@ -117,7 +117,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /bmreport:
+  /bmreports:
     get:
       tags:
         - Bark Mound Reports
@@ -172,7 +172,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /bmreport/{id}:
+  /bmreports/{id}:
     get:
       tags:
         - Bark Mound Reports
@@ -252,7 +252,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # BM Site
-  /bmsite/count:
+  /bmsites/count:
     get:
       tags:
         - Bark Mounds
@@ -276,7 +276,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /bmsite:
+  /bmsites:
     get:
       tags:
         - Bark Mounds
@@ -332,7 +332,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /bmsite/{id}:
+  /bmsites/{id}:
     get:
       tags:
         - Bark Mounds
@@ -413,7 +413,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # Body
-  /body/count:
+  /bodies/count:
     get:
       tags:
         - Bodies
@@ -437,7 +437,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /body:
+  /bodies:
     get:
       tags:
         - Bodies
@@ -493,7 +493,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /body/{id}:
+  /bodies/{id}:
     get:
       tags:
         - Bodies
@@ -574,7 +574,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # BT Report
-  /btreport/count:
+  /btreports/count:
     get:
       tags:
         - Brain Tree Reports
@@ -598,7 +598,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /btreport:
+  /btreports:
     get:
       tags:
         - Brain Tree Reports
@@ -653,7 +653,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /btreport/{id}:
+  /btreports/{id}:
     get:
       tags:
         - Brain Tree Reports
@@ -733,7 +733,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # BT Site
-  /btsite/count:
+  /btsites/count:
     get:
       tags:
         - Brain Trees
@@ -757,7 +757,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /btsite:
+  /btsites:
     get:
       tags:
         - Brain Trees
@@ -813,7 +813,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /btsite/{id}:
+  /btsites/{id}:
     get:
       tags:
         - Brain Trees
@@ -894,7 +894,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # CMDR
-  /cmdr/count:
+  /cmdrs/count:
     get:
       tags:
         - CMDRs
@@ -918,7 +918,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /cmdr:
+  /cmdrs:
     get:
       tags:
         - CMDRs
@@ -974,7 +974,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /cmdr/{id}:
+  /cmdrs/{id}:
     get:
       tags:
         - CMDRs
@@ -1055,7 +1055,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # Faction Kill Report
-  /factionkillreport/count:
+  /factionkillreports/count:
     get:
       tags:
         - CMDRs
@@ -1079,7 +1079,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /factionkillreport:
+  /factionkillreports:
     get:
       tags:
         - CMDRs
@@ -1134,7 +1134,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /factionkillreport/{id}:
+  /factionkillreports/{id}:
     get:
       tags:
         - CMDRs
@@ -1214,7 +1214,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # FG Report
-  /fgreport/count:
+  /fgreports/count:
     get:
       tags:
         - Fungal Gourd Reports
@@ -1238,7 +1238,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /fgreport:
+  /fgreports:
     get:
       tags:
         - Fungal Gourd Reports
@@ -1293,7 +1293,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /fgreport/{id}:
+  /fgreports/{id}:
     get:
       tags:
         - Fungal Gourd Reports
@@ -1373,7 +1373,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # FG Site
-  /fgsite/count:
+  /fgsites/count:
     get:
       tags:
         - Fungal Gourds
@@ -1397,7 +1397,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /fgsite:
+  /fgsites:
     get:
       tags:
         - Fungal Gourds
@@ -1453,7 +1453,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /fgsite/{id}:
+  /fgsites/{id}:
     get:
       tags:
         - Fungal Gourds
@@ -1534,7 +1534,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # FM Report
-  /fmreport/count:
+  /fmreports/count:
     get:
       tags:
         - Fumarole Reports
@@ -1558,7 +1558,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /fmreport:
+  /fmreports:
     get:
       tags:
         - Fumarole Reports
@@ -1613,7 +1613,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /fmreport/{id}:
+  /fmreports/{id}:
     get:
       tags:
         - Fumarole Reports
@@ -1693,7 +1693,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # FM Site
-  /fmsite/count:
+  /fmsites/count:
     get:
       tags:
         - Fumaroles
@@ -1717,7 +1717,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /fmsite:
+  /fmsites:
     get:
       tags:
         - Fumaroles
@@ -1773,7 +1773,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /fmsite/{id}:
+  /fmsites/{id}:
     get:
       tags:
         - Fumaroles
@@ -1854,7 +1854,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # FM Type
-  /fmtype/count:
+  /fmtypes/count:
     get:
       tags:
         - Fumaroles
@@ -1878,7 +1878,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /fmtype:
+  /fmtypes:
     get:
       tags:
         - Fumaroles
@@ -1934,7 +1934,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /fmtype/{id}:
+  /fmtypes/{id}:
     get:
       tags:
         - Fumaroles
@@ -2015,7 +2015,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # GB Message
-  /gbmessage/count:
+  /gbmessages/count:
     get:
       tags:
         - Guardian Beacons
@@ -2039,7 +2039,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gbmessage:
+  /gbmessages:
     get:
       tags:
         - Guardian Beacons
@@ -2095,7 +2095,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gbmessage/{id}:
+  /gbmessages/{id}:
     get:
       tags:
         - Guardian Beacons
@@ -2176,7 +2176,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # GB Report
-  /gbreport/count:
+  /gbreports/count:
     get:
       tags:
         - Guardian Beacon Reports
@@ -2200,7 +2200,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gbreport:
+  /gbreports:
     get:
       tags:
         - Guardian Beacon Reports
@@ -2255,7 +2255,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gbreport/{id}:
+  /gbreports/{id}:
     get:
       tags:
         - Guardian Beacon Reports
@@ -2335,7 +2335,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # GB Site
-  /gbsite/count:
+  /gbsites/count:
     get:
       tags:
         - Guardian Beacons
@@ -2359,7 +2359,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gbsite:
+  /gbsites:
     get:
       tags:
         - Guardian Beacons
@@ -2415,7 +2415,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gbsite/{id}:
+  /gbsites/{id}:
     get:
       tags:
         - Guardian Beacons
@@ -2496,7 +2496,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # GEN Report
-  /genreport/count:
+  /genreports/count:
     get:
       tags:
         - Generation Ship Reports
@@ -2520,7 +2520,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /genreport:
+  /genreports:
     get:
       tags:
         - Generation Ship Reports
@@ -2575,7 +2575,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /genreport/{id}:
+  /genreports/{id}:
     get:
       tags:
         - Generation Ship Reports
@@ -2655,7 +2655,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # GEN Site
-  /gensite/count:
+  /gensites/count:
     get:
       tags:
         - Generation Ships
@@ -2679,7 +2679,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gensite:
+  /gensites:
     get:
       tags:
         - Generation Ships
@@ -2735,7 +2735,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gensite/{id}:
+  /gensites/{id}:
     get:
       tags:
         - Generation Ships
@@ -2816,7 +2816,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # GR Active Group
-  /gractivegroup/count:
+  /gractivegroups/count:
     get:
       tags:
         - Guardian Ruins
@@ -2840,7 +2840,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gractivegroup:
+  /gractivegroups:
     get:
       tags:
         - Guardian Ruins
@@ -2896,7 +2896,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gractivegroup/{id}:
+  /gractivegroups/{id}:
     get:
       tags:
         - Guardian Ruins
@@ -2977,7 +2977,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # GR Active Obelisk
-  /gractiveobelisk/count:
+  /gractiveobelisks/count:
     get:
       tags:
         - Guardian Ruins
@@ -3001,7 +3001,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gractiveobelisk:
+  /gractiveobelisks:
     get:
       tags:
         - Guardian Ruins
@@ -3057,7 +3057,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gractiveobelisk/{id}:
+  /gractiveobelisks/{id}:
     get:
       tags:
         - Guardian Ruins
@@ -3138,7 +3138,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # GR Artifact
-  /grartifact/count:
+  /grartifacts/count:
     get:
       tags:
         - Guardian Ruins
@@ -3162,7 +3162,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /grartifact:
+  /grartifacts:
     get:
       tags:
         - Guardian Ruins
@@ -3218,7 +3218,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /grartifact/{id}:
+  /grartifacts/{id}:
     get:
       tags:
         - Guardian Ruins
@@ -3299,7 +3299,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # GR Codex Category
-  /grcodexcategory/count:
+  /grcodexcategories/count:
     get:
       tags:
         - Guardian Ruins
@@ -3323,7 +3323,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /grcodexcategory:
+  /grcodexcategories:
     get:
       tags:
         - Guardian Ruins
@@ -3379,7 +3379,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /grcodexcategory/{id}:
+  /grcodexcategories/{id}:
     get:
       tags:
         - Guardian Ruins
@@ -3621,7 +3621,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # GR Obelisk
-  /grobelisk/count:
+  /grobelisks/count:
     get:
       tags:
         - Guardian Ruins
@@ -3645,7 +3645,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /grobelisk:
+  /grobelisks:
     get:
       tags:
         - Guardian Ruins
@@ -3701,7 +3701,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /grobelisk/{id}:
+  /grobelisks/{id}:
     get:
       tags:
         - Guardian Ruins
@@ -3782,7 +3782,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # GR Obelisk Group
-  /grobeliskgroup/count:
+  /grobeliskgroups/count:
     get:
       tags:
         - Guardian Ruins
@@ -3806,7 +3806,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /grobeliskgroup:
+  /grobeliskgroups:
     get:
       tags:
         - Guardian Ruins
@@ -3862,7 +3862,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /grobeliskgroup/{id}:
+  /grobeliskgroups/{id}:
     get:
       tags:
         - Guardian Ruins
@@ -3943,7 +3943,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # GR Obelisk Group Report
-  /grobeliskgroupreport/count:
+  /grobeliskgroupreports/count:
     get:
       tags:
         - Guardian Ruin Reports
@@ -3967,7 +3967,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /grobeliskgroupreport:
+  /grobeliskgroupreports:
     get:
       tags:
         - Guardian Ruin Reports
@@ -4022,7 +4022,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /grobeliskgroupreport/{id}:
+  /grobeliskgroupreports/{id}:
     get:
       tags:
         - Guardian Ruin Reports
@@ -4102,7 +4102,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # GR Obelisk Report
-  /grobeliskreport/count:
+  /grobeliskreports/count:
     get:
       tags:
         - Guardian Ruin Reports
@@ -4126,7 +4126,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /grobeliskreport:
+  /grobeliskreports:
     get:
       tags:
         - Guardian Ruin Reports
@@ -4181,7 +4181,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /grobeliskreport/{id}:
+  /grobeliskreports/{id}:
     get:
       tags:
         - Guardian Ruin Reports
@@ -4261,7 +4261,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # GR Report
-  /grreport/count:
+  /grreports/count:
     get:
       tags:
         - Guardian Ruin Reports
@@ -4285,7 +4285,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /grreport:
+  /grreports:
     get:
       tags:
         - Guardian Ruin Reports
@@ -4340,7 +4340,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /grreport/{id}:
+  /grreports/{id}:
     get:
       tags:
         - Guardian Ruin Reports
@@ -4420,7 +4420,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # GR Site
-  /grsite/count:
+  /grsites/count:
     get:
       tags:
         - Guardian Ruins
@@ -4444,7 +4444,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /grsite:
+  /grsites:
     get:
       tags:
         - Guardian Ruins
@@ -4500,7 +4500,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /grsite/{id}:
+  /grsites/{id}:
     get:
       tags:
         - Guardian Ruins
@@ -4581,7 +4581,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # GR Type
-  /grtype/count:
+  /grtypes/count:
     get:
       tags:
         - Guardian Ruins
@@ -4605,7 +4605,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /grtype:
+  /grtypes:
     get:
       tags:
         - Guardian Ruins
@@ -4661,7 +4661,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /grtype/{id}:
+  /grtypes/{id}:
     get:
       tags:
         - Guardian Ruins
@@ -4742,7 +4742,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # GS Active Group
-  /gsactivegroup/count:
+  /gsactivegroups/count:
     get:
       tags:
         - Guardian Structures
@@ -4766,7 +4766,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gsactivegroup:
+  /gsactivegroups:
     get:
       tags:
         - Guardian Structures
@@ -4822,7 +4822,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gsactivegroup/{id}:
+  /gsactivegroups/{id}:
     get:
       tags:
         - Guardian Structures
@@ -4903,7 +4903,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # GS Active Obelisk
-  /gsactiveobelisk/count:
+  /gsactiveobelisks/count:
     get:
       tags:
         - Guardian Structures
@@ -4927,7 +4927,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gsactiveobelisk:
+  /gsactiveobelisks:
     get:
       tags:
         - Guardian Structures
@@ -4983,7 +4983,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gsactiveobelisk/{id}:
+  /gsactiveobelisks/{id}:
     get:
       tags:
         - Guardian Structures
@@ -5064,7 +5064,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # GS Artifact
-  /gsartifact/count:
+  /gsartifacts/count:
     get:
       tags:
         - Guardian Structures
@@ -5088,7 +5088,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gsartifact:
+  /gsartifacts:
     get:
       tags:
         - Guardian Structures
@@ -5144,7 +5144,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gsartifact/{id}:
+  /gsartifacts/{id}:
     get:
       tags:
         - Guardian Structures
@@ -5225,7 +5225,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # GS Codex Category
-  /gscodexcategory/count:
+  /gscodexcategories/count:
     get:
       tags:
         - Guardian Structures
@@ -5249,7 +5249,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gscodexcategory:
+  /gscodexcategories:
     get:
       tags:
         - Guardian Structures
@@ -5305,7 +5305,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gscodexcategory/{id}:
+  /gscodexcategories/{id}:
     get:
       tags:
         - Guardian Structures
@@ -5547,7 +5547,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # GS Obelisk
-  /gsobelisk/count:
+  /gsobelisks/count:
     get:
       tags:
         - Guardian Structures
@@ -5571,7 +5571,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gsobelisk:
+  /gsobelisks:
     get:
       tags:
         - Guardian Structures
@@ -5627,7 +5627,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gsobelisk/{id}:
+  /gsobelisks/{id}:
     get:
       tags:
         - Guardian Structures
@@ -5708,7 +5708,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # GS Obelisk Group
-  /gsobeliskgroup/count:
+  /gsobeliskgroups/count:
     get:
       tags:
         - Guardian Structures
@@ -5732,7 +5732,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gsobeliskgroup:
+  /gsobeliskgroups:
     get:
       tags:
         - Guardian Structures
@@ -5788,7 +5788,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gsobeliskgroup/{id}:
+  /gsobeliskgroups/{id}:
     get:
       tags:
         - Guardian Structures
@@ -5869,7 +5869,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # GS Obelisk Group Report
-  /gsobeliskgroupreport/count:
+  /gsobeliskgroupreports/count:
     get:
       tags:
         - Guardian Structure Reports
@@ -5893,7 +5893,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gsobeliskgroupreport:
+  /gsobeliskgroupreports:
     get:
       tags:
         - Guardian Structure Reports
@@ -5948,7 +5948,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gsobeliskgroupreport/{id}:
+  /gsobeliskgroupreports/{id}:
     get:
       tags:
         - Guardian Structure Reports
@@ -6028,7 +6028,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # GS Obelisk Report
-  /gsobeliskreport/count:
+  /gsobeliskreports/count:
     get:
       tags:
         - Guardian Structure Reports
@@ -6052,7 +6052,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gsobeliskreport:
+  /gsobeliskreports:
     get:
       tags:
         - Guardian Structure Reports
@@ -6107,7 +6107,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gsobeliskreport/{id}:
+  /gsobeliskreports/{id}:
     get:
       tags:
         - Guardian Structure Reports
@@ -6187,7 +6187,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # GS Report
-  /gsreport/count:
+  /gsreports/count:
     get:
       tags:
         - Guardian Structure Reports
@@ -6211,7 +6211,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gsreport:
+  /gsreports:
     get:
       tags:
         - Guardian Structure Reports
@@ -6266,7 +6266,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gsreport/{id}:
+  /gsreports/{id}:
     get:
       tags:
         - Guardian Structure Reports
@@ -6346,7 +6346,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # GS Site
-  /gssite/count:
+  /gssites/count:
     get:
       tags:
         - Guardian Structures
@@ -6370,7 +6370,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gssite:
+  /gssites:
     get:
       tags:
         - Guardian Structures
@@ -6426,7 +6426,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gssite/{id}:
+  /gssites/{id}:
     get:
       tags:
         - Guardian Structures
@@ -6507,7 +6507,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # GS Type
-  /gstype/count:
+  /gstypes/count:
     get:
       tags:
         - Guardian Structures
@@ -6531,7 +6531,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gstype:
+  /gstypes:
     get:
       tags:
         - Guardian Structures
@@ -6587,7 +6587,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gstype/{id}:
+  /gstypes/{id}:
     get:
       tags:
         - Guardian Structures
@@ -6668,7 +6668,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # GY Report
-  /gyreport/count:
+  /gyreports/count:
     get:
       tags:
         - Geyser Reports
@@ -6692,7 +6692,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gyreport:
+  /gyreports:
     get:
       tags:
         - Geyser Reports
@@ -6747,7 +6747,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gyreport/{id}:
+  /gyreports/{id}:
     get:
       tags:
         - Geyser Reports
@@ -6827,7 +6827,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # GY Site
-  /gysite/count:
+  /gysites/count:
     get:
       tags:
         - Geysers
@@ -6851,7 +6851,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gysite:
+  /gysites:
     get:
       tags:
         - Geysers
@@ -6907,7 +6907,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gysite/{id}:
+  /gysites/{id}:
     get:
       tags:
         - Geysers
@@ -6988,7 +6988,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # GY Type
-  /gytype/count:
+  /gytypes/count:
     get:
       tags:
         - Geysers
@@ -7012,7 +7012,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gytype:
+  /gytypes:
     get:
       tags:
         - Geysers
@@ -7068,7 +7068,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /gytype/{id}:
+  /gytypes/{id}:
     get:
       tags:
         - Geysers
@@ -7149,7 +7149,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # HD Report
-  /hdreport/count:
+  /hdreports/count:
     get:
       tags:
         - Hyperdiction Reports
@@ -7173,7 +7173,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /hdreport:
+  /hdreports:
     get:
       tags:
         - Hyperdiction Reports
@@ -7228,7 +7228,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /hdreport/{id}:
+  /hdreports/{id}:
     get:
       tags:
         - Hyperdiction Reports
@@ -7308,7 +7308,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # HD Site
-  /hdsite/count:
+  /hdsites/count:
     get:
       tags:
         - Hyperdictions
@@ -7332,7 +7332,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /hdsite:
+  /hdsites:
     get:
       tags:
         - Hyperdictions
@@ -7388,7 +7388,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /hdsite/{id}:
+  /hdsites/{id}:
     get:
       tags:
         - Hyperdictions
@@ -7471,7 +7471,7 @@ paths:
 # Journal Data
 
 # LS Report
-  /lsreport/count:
+  /lsreports/count:
     get:
       tags:
         - Lava Spout Reports
@@ -7495,7 +7495,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /lsreport:
+  /lsreports:
     get:
       tags:
         - Lava Spout Reports
@@ -7550,7 +7550,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /lsreport/{id}:
+  /lsreports/{id}:
     get:
       tags:
         - Lava Spout Reports
@@ -7630,7 +7630,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # LS Site
-  /lssite/count:
+  /lssites/count:
     get:
       tags:
         - Lava Spouts
@@ -7654,7 +7654,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /lssite:
+  /lssites:
     get:
       tags:
         - Lava Spouts
@@ -7710,7 +7710,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /lssite/{id}:
+  /lssites/{id}:
     get:
       tags:
         - Lava Spouts
@@ -7791,7 +7791,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # MS Report
-  /msreport/count:
+  /msreports/count:
     get:
       tags:
         - Megaship Reports
@@ -7815,7 +7815,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /msreport:
+  /msreports:
     get:
       tags:
         - Megaship Reports
@@ -7870,7 +7870,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /msreport/{id}:
+  /msreports/{id}:
     get:
       tags:
         - Megaship Reports
@@ -7950,7 +7950,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # MS Site
-  /mssite/count:
+  /mssites/count:
     get:
       tags:
         - Megaships
@@ -7974,7 +7974,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /mssite:
+  /mssites:
     get:
       tags:
         - Megaships
@@ -8030,7 +8030,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /mssite/{id}:
+  /mssites/{id}:
     get:
       tags:
         - Megaships
@@ -8111,7 +8111,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # MS Type
-  /mstype/count:
+  /mstypes/count:
     get:
       tags:
         - Megaships
@@ -8135,7 +8135,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /mstype:
+  /mstypes:
     get:
       tags:
         - Megaships
@@ -8191,7 +8191,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /mstype/{id}:
+  /mstypes/{id}:
     get:
       tags:
         - Megaships
@@ -8272,7 +8272,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # NHSS Top CMDR Kill
-  /nhsstopcmdrsbykill/count:
+  /nhsstopcmdrsbykills/count:
     get:
       tags:
         - CMDRs
@@ -8296,7 +8296,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /nhsstopcmdrsbykill:
+  /nhsstopcmdrsbykills:
     get:
       tags:
         - CMDRs
@@ -8352,7 +8352,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /nhsstopcmdrsbykill/{id}:
+  /nhsstopcmdrsbykills/{id}:
     get:
       tags:
         - CMDRs
@@ -8433,7 +8433,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # Ring
-  /ring/count:
+  /rings/count:
     get:
       tags:
         - Rings
@@ -8457,7 +8457,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /ring:
+  /rings:
     get:
       tags:
         - Rings
@@ -8513,7 +8513,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /ring/{id}:
+  /rings/{id}:
     get:
       tags:
         - Rings
@@ -8594,7 +8594,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # Ring Type
-  /ringtype/count:
+  /ringtypes/count:
     get:
       tags:
         - Rings
@@ -8618,7 +8618,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /ringtype:
+  /ringtypes:
     get:
       tags:
         - Rings
@@ -8674,7 +8674,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /ringtype/{id}:
+  /ringtypes/{id}:
     get:
       tags:
         - Rings
@@ -8755,7 +8755,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # System
-  /system/count:
+  /systems/count:
     get:
       tags:
         - Systems
@@ -8779,7 +8779,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /system:
+  /systems:
     get:
       tags:
         - Systems
@@ -8835,7 +8835,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /system/{id}:
+  /systems/{id}:
     get:
       tags:
         - Systems
@@ -8916,7 +8916,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # TB Cycle
-  /tbcycle/count:
+  /tbcycles/count:
     get:
       tags:
         - Thargoid Barnacles
@@ -8940,7 +8940,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /tbcycle:
+  /tbcycles:
     get:
       tags:
         - Thargoid Barnacles
@@ -8996,7 +8996,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /tbcycle/{id}:
+  /tbcycles/{id}:
     get:
       tags:
         - Thargoid Barnacles
@@ -9076,169 +9076,8 @@ paths:
         '500':
           $ref: '#/components/responses/error500'
 
-# TB Defense
-  /tbdefense/count:
-    get:
-      tags:
-        - Thargoid Barnacles
-      summary: Get a count of all TB Site Defenses
-      description: The API will respond with just a number, which is the total amount of sites on this endpoint. This can be used to filter, limit, or page other get requests.
-      operationId: getTBSiteDefensesCount
-      security: []
-      responses:
-        '200':
-          description: Total count of all entries in plain text
-          content:
-            text/plain:
-              schema:
-                type: integer
-                example: 42
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-  /tbdefense:
-    get:
-      tags:
-        - Thargoid Barnacles
-      summary: Get a list of TB Site Defenses
-      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
-      operationId: getTBSiteDefenses
-      security: []
-      parameters:
-        - $ref: '#/components/parameters/start'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/search'
-      responses:
-        '200':
-          description: A list of TB Site Defenses
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSiteTBDefense'
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-    post:
-      tags:
-        - Thargoid Barnacles
-      summary: Post a new TB Site Defense
-      description: To be used to add a new site defense to the Canonn database
-      operationId: submitTBSiteDefense
-      security:
-        - canonnAuth: [siteWrite]
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/postSiteTBDefense'
-      responses:
-        '200':
-          description: Site Defense post successful
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSiteTBDefense'
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-  /tbdefense/{id}:
-    get:
-      tags:
-        - Thargoid Barnacles
-      summary: Get a Single TB Site Defense
-      description: Provide the ID to get a single site
-      operationId: getTBSiteDefenseById
-      security: []
-      parameters:
-        - $ref: '#/components/parameters/byId'
-      responses:
-        '200':
-          description: Found the TB Site Defense
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSiteTBDefense'
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-
-    put:
-      tags:
-        - Thargoid Barnacles
-      summary: Update a TB Site Defense
-      description: Used to update the defense name
-      operationId: updateTBSiteDefenseById
-      security:
-        - canonnAuth: [siteWrite]
-      parameters:
-        - $ref: '#/components/parameters/byId'
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/putSiteTBDefense'
-      responses:
-        '200':
-          description: Site update successful
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSiteTBDefense'
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-
-    delete:
-      tags:
-        - Thargoid Barnacles
-      summary: Delete a TB Site Defense
-      description: The response is just an empty JSON, deleting a site defense requires auth
-      operationId: removeTBSiteDefenseById
-      security:
-        - canonnAuth: [siteDelete]
-      parameters:
-        - $ref: '#/components/parameters/byId'
-      responses:
-        '200':
-          description: Delete Successful
-        '400':
-          $ref: '#/components/responses/error400'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '500':
-          $ref: '#/components/responses/error500'
-
 # TB Report
-  /tbreport/count:
+  /tbreports/count:
     get:
       tags:
         - Thargoid Barnacle Reports
@@ -9262,7 +9101,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /tbreport:
+  /tbreports:
     get:
       tags:
         - Thargoid Barnacle Reports
@@ -9317,7 +9156,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /tbreport/{id}:
+  /tbreports/{id}:
     get:
       tags:
         - Thargoid Barnacle Reports
@@ -9397,7 +9236,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # TB Site
-  /tbsite/count:
+  /tbsites/count:
     get:
       tags:
         - Thargoid Barnacles
@@ -9421,7 +9260,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /tbsite:
+  /tbsites:
     get:
       tags:
         - Thargoid Barnacles
@@ -9477,7 +9316,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /tbsite/{id}:
+  /tbsites/{id}:
     get:
       tags:
         - Thargoid Barnacles
@@ -9558,7 +9397,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # TB Type
-  /tbtype/count:
+  /tbtypes/count:
     get:
       tags:
         - Thargoid Barnacles
@@ -9582,7 +9421,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /tbtype:
+  /tbtypes:
     get:
       tags:
         - Thargoid Barnacles
@@ -9638,7 +9477,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /tbtype/{id}:
+  /tbtypes/{id}:
     get:
       tags:
         - Thargoid Barnacles
@@ -9719,7 +9558,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # TS Report
-  /tsreport/count:
+  /tsreports/count:
     get:
       tags:
         - Thargoid Structure Reports
@@ -9743,7 +9582,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /tsreport:
+  /tsreports:
     get:
       tags:
         - Thargoid Structure Reports
@@ -9798,7 +9637,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /tsreport/{id}:
+  /tsreports/{id}:
     get:
       tags:
         - Thargoid Structure Reports
@@ -9878,7 +9717,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # TS Site
-  /tssite/count:
+  /tssites/count:
     get:
       tags:
         - Thargoid Structures
@@ -9902,7 +9741,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /tssite:
+  /tssites:
     get:
       tags:
         - Thargoid Structures
@@ -9958,7 +9797,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /tssite/{id}:
+  /tssites/{id}:
     get:
       tags:
         - Thargoid Structures
@@ -10039,7 +9878,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # TS Status
-  /tsstatus/count:
+  /tsstatuses/count:
     get:
       tags:
         - Thargoid Structure
@@ -10063,7 +9902,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /tsstatus:
+  /tsstatuses:
     get:
       tags:
         - Thargoid Structure
@@ -10119,7 +9958,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /tsstatus/{id}:
+  /tsstatuses/{id}:
     get:
       tags:
         - Thargoid Structure
@@ -10200,7 +10039,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # TW Report
-  /twreport/count:
+  /twreports/count:
     get:
       tags:
         - Tube Worm Reports
@@ -10224,7 +10063,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /twreport:
+  /twreports:
     get:
       tags:
         - Tube Worm Reports
@@ -10279,7 +10118,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /twreport/{id}:
+  /twreports/{id}:
     get:
       tags:
         - Tube Worm Reports
@@ -10359,7 +10198,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # TW Site
-  /twsite/count:
+  /twsites/count:
     get:
       tags:
         - Tube Worms
@@ -10383,7 +10222,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /twsite:
+  /twsites:
     get:
       tags:
         - Tube Worms
@@ -10439,7 +10278,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /twsite/{id}:
+  /twsites/{id}:
     get:
       tags:
         - Tube Worms
@@ -10520,7 +10359,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # USS Report
-  /ussreport/count:
+  /ussreports/count:
     get:
       tags:
         - Unknown Signal Source Reports
@@ -10544,7 +10383,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /ussreport:
+  /ussreports:
     get:
       tags:
         - Unknown Signal Source Reports
@@ -10599,7 +10438,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /ussreport/{id}:
+  /ussreports/{id}:
     get:
       tags:
         - Unknown Signal Source Reports
@@ -10679,7 +10518,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # USS Site
-  /usssite/count:
+  /usssites/count:
     get:
       tags:
         - Unknown Signal Sources
@@ -10703,7 +10542,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /usssite:
+  /usssites:
     get:
       tags:
         - Unknown Signal Sources
@@ -10759,7 +10598,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /usssite/{id}:
+  /usssites/{id}:
     get:
       tags:
         - Unknown Signal Sources
@@ -10840,7 +10679,7 @@ paths:
           $ref: '#/components/responses/error500'
 
 # USS Type
-  /usstype/count:
+  /usstypes/count:
     get:
       tags:
         - Unknown Signal Sources
@@ -10864,7 +10703,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /usstype:
+  /usstypes:
     get:
       tags:
         - Unknown Signal Sources
@@ -10920,7 +10759,7 @@ paths:
           $ref: '#/components/responses/error404'
         '500':
           $ref: '#/components/responses/error500'
-  /usstype/{id}:
+  /usstypes/{id}:
     get:
       tags:
         - Unknown Signal Sources
@@ -11291,8 +11130,23 @@ components:
       properties:
         id:
           type: integer
+        userType:
+          type: string
+        reportType:
+          type: string
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -11330,8 +11184,23 @@ components:
       properties:
         id:
           type: integer
+        userType:
+          type: string
+        reportType:
+          type: string
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -11371,8 +11240,23 @@ components:
       properties:
         id:
           type: integer
+        userType:
+          type: string
+        reportType:
+          type: string
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         messageSystem:
@@ -11412,8 +11296,23 @@ components:
       properties:
         id:
           type: integer
+        userType:
+          type: string
+        reportType:
+          type: string
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         orbitBody:
           type: string
         shipName:
@@ -11450,8 +11349,23 @@ components:
       properties:
         id:
           type: integer
+        userType:
+          type: string
+        reportType:
+          type: string
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -11519,8 +11433,23 @@ components:
       properties:
         id:
           type: integer
+        userType:
+          type: string
+        reportType:
+          type: string
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -11590,8 +11519,23 @@ components:
       properties:
         id:
           type: integer
+        userType:
+          type: string
+        reportType:
+          type: string
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -11663,8 +11607,23 @@ components:
       properties:
         id:
           type: integer
+        userType:
+          type: string
+        reportType:
+          type: string
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         orbitBody:
           type: string
         shipName:
@@ -11706,8 +11665,23 @@ components:
       properties:
         id:
           type: integer
+        userType:
+          type: string
+        reportType:
+          type: string
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -11719,8 +11693,6 @@ components:
         type:
           type: string
         cycle:
-          type: string
-        defense:
           type: string
         count:
           type: integer
@@ -11751,8 +11723,23 @@ components:
       properties:
         id:
           type: integer
+        userType:
+          type: string
+        reportType:
+          type: string
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -11794,6 +11781,8 @@ components:
           type: string
         type:
           type: string
+        threatLevel:
+          type: integer
         cmdrName:
           type: string
         cmdrComment:
@@ -11842,6 +11831,8 @@ components:
           format: double
         edsmCoordLocked:
           type: boolean
+        missingSkipCount:
+          type: integer
         bodies:
           $ref: '#/components/schemas/getLocationBody'
         created_at:
@@ -11945,6 +11936,8 @@ components:
           $ref: '#/components/schemas/bodyAtmosphere'
         edsmMaterial:
           $ref: '#/components/schemas/bodyMaterial'
+        missingSkipCount:
+          type: integer
         rings:
           $ref: '#/components/schemas/getLocationRing'
         created_at:
@@ -12645,8 +12638,6 @@ components:
           $ref: '#/components/schemas/getSiteTBType'
         cycle:
           $ref: '#/components/schemas/getSiteTBCycle'
-        defense:
-          $ref: '#/components/schemas/getSiteTBDefense'
         verified:
           type: boolean
         visible:
@@ -12672,13 +12663,6 @@ components:
         id:
           type: integer
         cycle:
-          type: string
-
-    getSiteTBDefense:
-      properties:
-        id:
-          type: integer
-        defenseType:
           type: string
 
     getSiteTS:
@@ -12756,6 +12740,8 @@ components:
   ## POST Reports
     postReportPlanet:
       required:
+        - userType
+        - reportType
         - systemName
         - bodyName
         - latitude
@@ -12763,8 +12749,30 @@ components:
         - cmdrName
         - reportStatus
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -12801,6 +12809,8 @@ components:
 
     postReportPlanetWithType:
       required:
+        - userType
+        - reportType
         - systemName
         - bodyName
         - latitude
@@ -12809,8 +12819,30 @@ components:
         - cmdrName
         - reportStatus
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -12849,6 +12881,8 @@ components:
 
     postReportGB:
       required:
+        - userType
+        - reportType
         - systemName
         - bodyName
         - messageSystem
@@ -12858,8 +12892,30 @@ components:
         - cmdrName
         - reportStatus
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         messageSystem:
@@ -12898,13 +12954,37 @@ components:
 
     postReportGEN:
       required:
+        - userType
+        - reportType
         - systemName
         - shipName
         - cmdrName
         - reportStatus
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         orbitBody:
           type: string
         shipName:
@@ -12940,6 +13020,8 @@ components:
 
     postReportGR:
       required:
+        - userType
+        - reportType
         - systemName
         - bodyName
         - latitude
@@ -12948,8 +13030,30 @@ components:
         - cmdrName
         - reportStatus
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -13010,6 +13114,8 @@ components:
 
     postReportGS:
       required:
+        - userType
+        - reportType
         - systemName
         - bodyName
         - latitude
@@ -13019,8 +13125,30 @@ components:
         - cmdrName
         - reportStatus
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -13123,6 +13251,8 @@ components:
 
     postReportMS:
       required:
+        - userType
+        - reportType
         - systemName
         - shipName
         - type
@@ -13132,8 +13262,30 @@ components:
         - cmdrName
         - reportStatus
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         orbitBody:
           type: string
         shipName:
@@ -13174,6 +13326,8 @@ components:
 
     postReportTB:
       required:
+        - userType
+        - reportType
         - systemName
         - bodyName
         - latitude
@@ -13183,8 +13337,30 @@ components:
         - cmdrName
         - reportStatus
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -13196,8 +13372,14 @@ components:
         type:
           type: string
           enum:
-            - Barnacle
-            - Megabarnacle
+            - Mega
+            - Alpha
+            - Beta
+            - Gamma
+            - Delta
+            - Epsilon
+            - Zeta
+            - Unknown
         cycle:
           type: string
           enum:
@@ -13206,14 +13388,6 @@ components:
             - B
             - C
             - ABC
-        defense:
-          type: string
-          enum:
-            - None
-            - Capship
-            - Drones
-            - Thargbots
-            - Turrets
         count:
           type: integer
         cmdrName:
@@ -13242,6 +13416,8 @@ components:
 
     postReportTS:
       required:
+        - userType
+        - reportType
         - systemName
         - bodyName
         - latitude
@@ -13250,8 +13426,30 @@ components:
         - cmdrName
         - reportStatus
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -13300,6 +13498,8 @@ components:
           type: string
         type:
           type: string
+        threatLevel:
+          type: integer
         cmdrName:
           type: string
         cmdrComment:
@@ -13348,6 +13548,8 @@ components:
           format: double
         edsmCoordLocked:
           type: boolean
+        missingSkipCount:
+          type: integer
 
     postLocationBody:
       required:
@@ -13443,6 +13645,8 @@ components:
           $ref: '#/components/schemas/bodyAtmosphere'
         edsmMaterial:
           $ref: '#/components/schemas/bodyMaterial'
+        missingSkipCount:
+          type: integer
 
     postLocationRing:
       required:
@@ -14093,8 +14297,6 @@ components:
           type: integer
         cycle:
           type: integer
-        defense:
-          type: integer
         verified:
           type: boolean
         visible:
@@ -14114,13 +14316,6 @@ components:
         - cycle
       properties:
         cycle:
-          type: string
-
-    postSiteTBDefense:
-      required:
-        - defenseType
-      properties:
-        defenseType:
           type: string
 
     postSiteTS:
@@ -14197,8 +14392,30 @@ components:
   ## PUT Reports
     putReportPlanet:
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -14235,8 +14452,30 @@ components:
 
     putReportPlanetWithType:
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -14275,8 +14514,30 @@ components:
 
     putReportGB:
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         messageSystem:
@@ -14315,8 +14576,30 @@ components:
 
     putReportGEN:
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         orbitBody:
           type: string
         shipName:
@@ -14352,8 +14635,30 @@ components:
 
     putReportGR:
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -14408,8 +14713,30 @@ components:
 
     putReportGS:
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -14500,8 +14827,30 @@ components:
 
     putReportMS:
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         orbitBody:
           type: string
         shipName:
@@ -14542,8 +14891,30 @@ components:
 
     putReportTB:
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -14555,8 +14926,14 @@ components:
         type:
           type: string
           enum:
-            - Barnacle
-            - Megabarnacle
+            - Mega
+            - Alpha
+            - Beta
+            - Gamma
+            - Delta
+            - Epsilon
+            - Zeta
+            - Unknown
         cycle:
           type: string
           enum:
@@ -14565,14 +14942,6 @@ components:
             - B
             - C
             - ABC
-        defense:
-          type: string
-          enum:
-            - None
-            - Capship
-            - Drones
-            - Thargbots
-            - Turrets
         count:
           type: integer
         cmdrName:
@@ -14601,8 +14970,30 @@ components:
 
     putReportTS:
       properties:
+        userType:
+          type: string
+          enum:
+            - console
+            - pc
+        reportType:
+          type: string
+          enum:
+            - new
+            - update
+            - error
         systemName:
           type: string
+        systemAddress:
+          type: integer
+        coordX:
+          type: number
+          format: float
+        coordY:
+          type: number
+          format: float
+        coordZ:
+          type: number
+          format: float
         bodyName:
           type: string
         latitude:
@@ -14646,6 +15037,8 @@ components:
           type: string
         type:
           type: string
+        threatLevel:
+          type: integer
         cmdrName:
           type: string
         cmdrComment:
@@ -14692,6 +15085,8 @@ components:
           format: double
         edsmCoordLocked:
           type: boolean
+        missingSkipCount:
+          type: integer
 
     putLocationBody:
       properties:
@@ -14785,6 +15180,8 @@ components:
           $ref: '#/components/schemas/bodyAtmosphere'
         edsmMaterial:
           $ref: '#/components/schemas/bodyMaterial'
+        missingSkipCount:
+          type: integer
 
     putLocationRing:
       properties:
@@ -15267,8 +15664,6 @@ components:
           type: integer
         cycle:
           type: integer
-        defense:
-          type: integer
         verified:
           type: boolean
         visible:
@@ -15284,11 +15679,6 @@ components:
     putSiteTBCycle:
       properties:
         cycle:
-          type: string
-
-    putSiteTBDefense:
-      properties:
-        defenseType:
           type: string
 
     putSiteTS:

@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/tbtype",
+      "path": "/tbtypes",
       "handler": "Tbtype.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/tbtype/count",
+      "path": "/tbtypes/count",
       "handler": "Tbtype.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/tbtype/:id",
+      "path": "/tbtypes/:id",
       "handler": "Tbtype.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/tbtype",
+      "path": "/tbtypes",
       "handler": "Tbtype.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/tbtype/:id",
+      "path": "/tbtypes/:id",
       "handler": "Tbtype.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/tbtype/:id",
+      "path": "/tbtypes/:id",
       "handler": "Tbtype.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/tbtype/:id/relationships/:relation",
+      "path": "/tbtypes/:id/relationships/:relation",
       "handler": "Tbtype.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/tbtype/:id/relationships/:relation",
+      "path": "/tbtypes/:id/relationships/:relation",
       "handler": "Tbtype.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/tbtype/:id/relationships/:relation",
+      "path": "/tbtypes/:id/relationships/:relation",
       "handler": "Tbtype.destroyRelation",
       "config": {
         "policies": []

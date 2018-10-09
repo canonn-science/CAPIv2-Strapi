@@ -120,7 +120,7 @@ module.exports = {
     const data = _.omit(values, Btreport.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = Btreport.forge(params).save(data, { path: true });
+    const entry = Btreport.forge(params).save(data);
 
     // Create relational data and return the entry.
     return Btreport.updateRelations(Object.assign(params, { values: relations }));

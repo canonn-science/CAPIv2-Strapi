@@ -120,7 +120,7 @@ module.exports = {
     const data = _.omit(values, Tbsite.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = Tbsite.forge(params).save(data, { path: true });
+    const entry = Tbsite.forge(params).save(data);
 
     // Create relational data and return the entry.
     return Tbsite.updateRelations(Object.assign(params, { values: relations }));

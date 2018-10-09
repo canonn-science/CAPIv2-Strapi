@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/fgreport",
+      "path": "/fgreports",
       "handler": "Fgreport.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/fgreport/count",
+      "path": "/fgreports/count",
       "handler": "Fgreport.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/fgreport/:id",
+      "path": "/fgreports/:id",
       "handler": "Fgreport.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/fgreport",
+      "path": "/fgreports",
       "handler": "Fgreport.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/fgreport/:id",
+      "path": "/fgreports/:id",
       "handler": "Fgreport.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/fgreport/:id",
+      "path": "/fgreports/:id",
       "handler": "Fgreport.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/fgreport/:id/relationships/:relation",
+      "path": "/fgreports/:id/relationships/:relation",
       "handler": "Fgreport.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/fgreport/:id/relationships/:relation",
+      "path": "/fgreports/:id/relationships/:relation",
       "handler": "Fgreport.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/fgreport/:id/relationships/:relation",
+      "path": "/fgreports/:id/relationships/:relation",
       "handler": "Fgreport.destroyRelation",
       "config": {
         "policies": []

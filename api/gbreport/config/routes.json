@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/gbreport",
+      "path": "/gbreports",
       "handler": "Gbreport.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/gbreport/count",
+      "path": "/gbreports/count",
       "handler": "Gbreport.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/gbreport/:id",
+      "path": "/gbreports/:id",
       "handler": "Gbreport.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/gbreport",
+      "path": "/gbreports",
       "handler": "Gbreport.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/gbreport/:id",
+      "path": "/gbreports/:id",
       "handler": "Gbreport.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/gbreport/:id",
+      "path": "/gbreports/:id",
       "handler": "Gbreport.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/gbreport/:id/relationships/:relation",
+      "path": "/gbreports/:id/relationships/:relation",
       "handler": "Gbreport.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/gbreport/:id/relationships/:relation",
+      "path": "/gbreports/:id/relationships/:relation",
       "handler": "Gbreport.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/gbreport/:id/relationships/:relation",
+      "path": "/gbreports/:id/relationships/:relation",
       "handler": "Gbreport.destroyRelation",
       "config": {
         "policies": []

@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/mstype",
+      "path": "/mstypes",
       "handler": "Mstype.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/mstype/count",
+      "path": "/mstypes/count",
       "handler": "Mstype.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/mstype/:id",
+      "path": "/mstypes/:id",
       "handler": "Mstype.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/mstype",
+      "path": "/mstypes",
       "handler": "Mstype.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/mstype/:id",
+      "path": "/mstypes/:id",
       "handler": "Mstype.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/mstype/:id",
+      "path": "/mstypes/:id",
       "handler": "Mstype.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/mstype/:id/relationships/:relation",
+      "path": "/mstypes/:id/relationships/:relation",
       "handler": "Mstype.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/mstype/:id/relationships/:relation",
+      "path": "/mstypes/:id/relationships/:relation",
       "handler": "Mstype.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/mstype/:id/relationships/:relation",
+      "path": "/mstypes/:id/relationships/:relation",
       "handler": "Mstype.destroyRelation",
       "config": {
         "policies": []

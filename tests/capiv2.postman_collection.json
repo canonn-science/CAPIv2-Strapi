@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e4e1522a-0cef-4d19-9cfc-2e14827071ea",
+		"_postman_id": "82f4f2f0-287f-457d-8564-4de85b90f027",
 		"name": "Canonn APIv2 Postman Test Collection",
 		"description": "An API for all the Science related information Canonn has in its datastores stored on the Gnosis, built using [Strapi](https://strapi.io) a Nodejs API framework. \n\nWe have two different documentation types, our [Redocs](https://api.canonn.tech) or use the [Swagger-UI](https://api.canonn.tech/swaggerui)\n\nWe also have 3 API servers; Live (Production), Beta (Staging), Alpha (Development). You should use the Beta server for testing your application prior to using the Live server. The Alpha server is used by Canonn to test our changes prior to releasing a new version.\n\nData between the Live and Beta servers are replicated as needed, eventually we plan to dynamically replicate the data every night at midnight Phoenix, Arizona USA time (MST-Arizona GMT-7)\n\nHere are the following URLs for each server\n\n* Live - https://api.canonn.tech\n* Beta - https://api.canonn.tech:2053\n* Alpha - https://api.canonn.tech:2083\n\nThank you for your support, and thank you to all the CMDRs who supply us with our data!\n",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -70,7 +70,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "7a25a6c5-a9b6-42e4-9f2f-b8df64b9c221",
+								"id": "9bc6c97b-019f-42ec-ad70-ebc9b4322b5d",
 								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
@@ -78,6 +78,8 @@
 									"",
 									"pm.test(\"BM created values match\", function () {",
 									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"ROSETTE SECTOR EL-Y D15\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"2 B\");",
 									"    pm.expect(jsonData.latitude).to.eql(-3.3269);",
@@ -105,15 +107,15 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"systemName\": \"ROSETTE SECTOR EL-Y D15\",\n  \"bodyName\": \"2 B\",\n  \"latitude\": -3.3269,\n  \"longitude\": 139.8931,\n  \"count\": 1,\n  \"cmdrName\": \"Galactic Fork\",\n  \"cmdrComment\": \"TEST - Bark Mound Report\",\n  \"reportStatus\": \"pending\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"ROSETTE SECTOR EL-Y D15\",\n  \"bodyName\": \"2 B\",\n  \"latitude\": -3.3269,\n  \"longitude\": 139.8931,\n  \"count\": 1,\n  \"cmdrName\": \"Galactic Fork\",\n  \"cmdrComment\": \"TEST - Bark Mound Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/bmreport",
+							"raw": "{{url}}/bmreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"bmreport"
+								"bmreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -151,12 +153,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/bmreport/count",
+							"raw": "{{url}}/bmreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"bmreport",
+								"bmreports",
 								"count"
 							]
 						},
@@ -183,12 +185,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/bmreport",
+							"raw": "{{url}}/bmreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"bmreport"
+								"bmreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -226,12 +228,12 @@
 							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
 						},
 						"url": {
-							"raw": "{{url}}/bmreport/{{bmID}}",
+							"raw": "{{url}}/bmreports/{{bmID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"bmreport",
+								"bmreports",
 								"{{bmID}}"
 							]
 						},
@@ -245,11 +247,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "2607635e-c774-42a2-b7bf-7c784504f34d",
+								"id": "10f73f4d-f8aa-403a-a675-8eb0857a5212",
 								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"BM updated values match\", function () {",
 									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"ROSETTE SECTOR EL-Y D15\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"2 B\");",
 									"    pm.expect(jsonData.latitude).to.eql(-3.3269);",
@@ -282,12 +286,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/bmreport/{{bmID}}",
+							"raw": "{{url}}/bmreports/{{bmID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"bmreport",
+								"bmreports",
 								"{{bmID}}"
 							]
 						},
@@ -324,12 +328,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/bmreport/{{bmID}}",
+							"raw": "{{url}}/bmreports/{{bmID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"bmreport",
+								"bmreports",
 								"{{bmID}}"
 							]
 						},
@@ -349,7 +353,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "c378ed6a-e559-45a0-81c5-2726089bcde6",
+								"id": "50ec68a9-052f-4b20-b4a0-3e760735163f",
 								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
@@ -357,6 +361,8 @@
 									"",
 									"pm.test(\"BT created values match\", function () {",
 									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"164 G. CANIS MAJORIS\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"5 C A\");",
 									"    pm.expect(jsonData.latitude).to.eql(-4.8631);",
@@ -384,15 +390,15 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"systemName\": \"164 G. CANIS MAJORIS\",\n  \"bodyName\": \"5 C A\",\n  \"latitude\": -4.8631,\n  \"longitude\": 3.0394,\n  \"count\": 2,\n  \"cmdrName\": \"Panpiper\",\n  \"cmdrComment\": \"TEST - Brain Tree Report\",\n  \"reportStatus\": \"pending\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"164 G. CANIS MAJORIS\",\n  \"bodyName\": \"5 C A\",\n  \"latitude\": -4.8631,\n  \"longitude\": 3.0394,\n  \"count\": 2,\n  \"cmdrName\": \"Panpiper\",\n  \"cmdrComment\": \"TEST - Brain Tree Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/btreport",
+							"raw": "{{url}}/btreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"btreport"
+								"btreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -418,12 +424,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/btreport/count",
+							"raw": "{{url}}/btreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"btreport",
+								"btreports",
 								"count"
 							]
 						},
@@ -450,12 +456,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/btreport",
+							"raw": "{{url}}/btreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"btreport"
+								"btreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -493,12 +499,12 @@
 							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
 						},
 						"url": {
-							"raw": "{{url}}/btreport/{{btID}}",
+							"raw": "{{url}}/btreports/{{btID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"btreport",
+								"btreports",
 								"{{btID}}"
 							]
 						},
@@ -512,11 +518,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "4ebc9004-fe9c-42e9-b649-970814ad1b93",
+								"id": "da0b5e11-96fb-4b4f-a370-08cf5555f8b0",
 								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"BT updated values match\", function () {",
 									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"164 G. CANIS MAJORIS\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"5 C A\");",
 									"    pm.expect(jsonData.latitude).to.eql(-4.8631);",
@@ -549,12 +557,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/btreport/{{btID}}",
+							"raw": "{{url}}/btreports/{{btID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"btreport",
+								"btreports",
 								"{{btID}}"
 							]
 						},
@@ -591,12 +599,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/btreport/{{btID}}",
+							"raw": "{{url}}/btreports/{{btID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"btreport",
+								"btreports",
 								"{{btID}}"
 							]
 						},
@@ -616,7 +624,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ecbff825-7c06-4fca-a92e-cede755b3ae9",
+								"id": "4dfc1f9b-29b0-4130-8d6d-1fb2d38d409f",
 								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
@@ -624,6 +632,8 @@
 									"",
 									"pm.test(\"FG created values match\", function () {",
 									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"HIP 37610\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"A 6 C A\");",
 									"    pm.expect(jsonData.latitude).to.eql(-1.4054);",
@@ -651,15 +661,15 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"systemName\": \"HIP 37610\",\n  \"bodyName\": \"A 6 C A\",\n  \"latitude\": -1.4054,\n  \"longitude\": 140.8423,\n  \"count\": 3,\n  \"cmdrName\": \"Clobbertime\",\n  \"cmdrComment\": \"TEST - Fungal Gourd Report\",\n  \"reportStatus\": \"pending\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"HIP 37610\",\n  \"bodyName\": \"A 6 C A\",\n  \"latitude\": -1.4054,\n  \"longitude\": 140.8423,\n  \"count\": 3,\n  \"cmdrName\": \"Clobbertime\",\n  \"cmdrComment\": \"TEST - Fungal Gourd Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/fgreport",
+							"raw": "{{url}}/fgreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"fgreport"
+								"fgreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -697,12 +707,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/fgreport/count",
+							"raw": "{{url}}/fgreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"fgreport",
+								"fgreports",
 								"count"
 							]
 						},
@@ -741,12 +751,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/fgreport",
+							"raw": "{{url}}/fgreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"fgreport"
+								"fgreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -784,12 +794,12 @@
 							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
 						},
 						"url": {
-							"raw": "{{url}}/fgreport/{{fgID}}",
+							"raw": "{{url}}/fgreports/{{fgID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"fgreport",
+								"fgreports",
 								"{{fgID}}"
 							]
 						},
@@ -803,11 +813,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "7a299d40-3987-4fba-8880-292347ae3519",
+								"id": "52462177-ed5e-4a99-b8ad-895c4c5ec6df",
 								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"FG updated values match\", function () {",
 									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"HIP 37610\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"A 6 C A\");",
 									"    pm.expect(jsonData.latitude).to.eql(-1.4054);",
@@ -840,12 +852,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/fgreport/{{fgID}}",
+							"raw": "{{url}}/fgreports/{{fgID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"fgreport",
+								"fgreports",
 								"{{fgID}}"
 							]
 						},
@@ -882,12 +894,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/fgreport/{{fgID}}",
+							"raw": "{{url}}/fgreports/{{fgID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"fgreport",
+								"fgreports",
 								"{{fgID}}"
 							]
 						},
@@ -907,7 +919,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5429337f-d90b-49b0-a7b2-ec3d7cccefb8",
+								"id": "1f05215d-5675-4781-a989-c4ebd59df15a",
 								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
@@ -915,6 +927,8 @@
 									"",
 									"pm.test(\"FG created values match\", function () {",
 									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"PROOE PHIO GP-W C3-5\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"B 3 A\");",
 									"    pm.expect(jsonData.latitude).to.eql(-26.1589);",
@@ -943,15 +957,15 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"systemName\": \"PROOE PHIO GP-W C3-5\",\n  \"bodyName\": \"B 3 A\",\n  \"latitude\": -26.1589,\n  \"longitude\": -90.6344,\n  \"count\": 4,\n  \"type\": \"Iron Magma\",\n  \"cmdrName\": \"Rory Clague\",\n  \"cmdrComment\": \"TEST - Fumaroles Report\",\n  \"reportStatus\": \"pending\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"PROOE PHIO GP-W C3-5\",\n  \"bodyName\": \"B 3 A\",\n  \"latitude\": -26.1589,\n  \"longitude\": -90.6344,\n  \"count\": 4,\n  \"type\": \"Iron Magma\",\n  \"cmdrName\": \"Rory Clague\",\n  \"cmdrComment\": \"TEST - Fumaroles Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/fmreport",
+							"raw": "{{url}}/fmreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"fmreport"
+								"fmreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -977,12 +991,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/fmreport/count",
+							"raw": "{{url}}/fmreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"fmreport",
+								"fmreports",
 								"count"
 							]
 						},
@@ -1009,12 +1023,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/fmreport",
+							"raw": "{{url}}/fmreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"fmreport"
+								"fmreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -1052,12 +1066,12 @@
 							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
 						},
 						"url": {
-							"raw": "{{url}}/fmreport/{{fmID}}",
+							"raw": "{{url}}/fmreports/{{fmID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"fmreport",
+								"fmreports",
 								"{{fmID}}"
 							]
 						},
@@ -1071,11 +1085,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "d4b94b98-b3b3-4b52-a53b-d9e76a7fd3af",
+								"id": "479341ab-b189-4a2e-9c72-5661642b2d58",
 								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"FM updated values match\", function () {",
 									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"PROOE PHIO GP-W C3-5\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"B 3 A\");",
 									"    pm.expect(jsonData.latitude).to.eql(-26.1589);",
@@ -1109,12 +1125,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/fmreport/{{fmID}}",
+							"raw": "{{url}}/fmreports/{{fmID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"fmreport",
+								"fmreports",
 								"{{fmID}}"
 							]
 						},
@@ -1151,12 +1167,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/fmreport/{{fmID}}",
+							"raw": "{{url}}/fmreports/{{fmID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"fmreport",
+								"fmreports",
 								"{{fmID}}"
 							]
 						},
@@ -1176,7 +1192,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "6a84dd20-f198-47ff-97ab-1f9e7f1fbf79",
+								"id": "c080ad96-5b3f-4ad2-bd5a-08aa4e039bb1",
 								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
@@ -1184,6 +1200,8 @@
 									"",
 									"pm.test(\"GB created values match\", function () {",
 									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"SYNUEFE IL-N C23-15\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"2 A\");",
 									"    pm.expect(jsonData.messageSystem).to.eql(\"SYNUEFE IL-N C23-19\");",
@@ -1212,15 +1230,15 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"systemName\": \"SYNUEFE IL-N C23-15\",\n  \"bodyName\": \"2 A\",\n  \"messageSystem\": \"SYNUEFE IL-N C23-19\",\n  \"messageBody\": \"B 2\",\n  \"messageLatitude\": 44.31,\n  \"messageLongitude\": 12.18,\n  \"cmdrName\": \"joulupunikki\",\n  \"cmdrComment\": \"TEST - Guardian Beacon Report\",\n  \"reportStatus\": \"pending\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"SYNUEFE IL-N C23-15\",\n  \"bodyName\": \"2 A\",\n  \"messageSystem\": \"SYNUEFE IL-N C23-19\",\n  \"messageBody\": \"B 2\",\n  \"messageLatitude\": 44.31,\n  \"messageLongitude\": 12.18,\n  \"cmdrName\": \"joulupunikki\",\n  \"cmdrComment\": \"TEST - Guardian Beacon Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/gbreport",
+							"raw": "{{url}}/gbreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gbreport"
+								"gbreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -1246,12 +1264,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gbreport/count",
+							"raw": "{{url}}/gbreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gbreport",
+								"gbreports",
 								"count"
 							]
 						},
@@ -1278,12 +1296,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gbreport",
+							"raw": "{{url}}/gbreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gbreport"
+								"gbreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -1309,12 +1327,12 @@
 							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
 						},
 						"url": {
-							"raw": "{{url}}/gbreport/{{gbID}}",
+							"raw": "{{url}}/gbreports/{{gbID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gbreport",
+								"gbreports",
 								"{{gbID}}"
 							]
 						},
@@ -1328,11 +1346,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "99312f3e-fbff-499c-8c55-a2d010661be6",
+								"id": "21616453-3158-459f-a968-babe7b48e486",
 								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"GB updated values match\", function () {",
 									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"SYNUEFE IL-N C23-15\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"2 A\");",
 									"    pm.expect(jsonData.messageSystem).to.eql(\"SYNUEFE IL-N C23-19\");",
@@ -1366,12 +1386,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gbreport/{{gbID}}",
+							"raw": "{{url}}/gbreports/{{gbID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gbreport",
+								"gbreports",
 								"{{gbID}}"
 							]
 						},
@@ -1408,12 +1428,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gbreport/{{gbID}}",
+							"raw": "{{url}}/gbreports/{{gbID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gbreport",
+								"gbreports",
 								"{{gbID}}"
 							]
 						},
@@ -1433,7 +1453,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "53fda9fa-555f-457a-955f-6f03cfb72661",
+								"id": "f2a33a70-7de4-4bf9-ab06-25e113861689",
 								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
@@ -1441,6 +1461,8 @@
 									"",
 									"pm.test(\"GEN created values match\", function () {",
 									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"Lalande 2966\");",
 									"    pm.expect(jsonData.orbitBody).to.eql(\"4\");",
 									"    pm.expect(jsonData.shipName).to.eql(\"Generation Ship Hyperion\");",
@@ -1468,15 +1490,15 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"systemName\": \"Lalande 2966\",\n  \"orbitBody\": \"4\",\n  \"shipName\": \"Generation Ship Hyperion\",\n  \"directionSystem\": \"Yemaki\",\n  \"distance\": 7340,\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Generation Ship Report\",\n  \"reportStatus\": \"pending\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"Lalande 2966\",\n  \"orbitBody\": \"4\",\n  \"shipName\": \"Generation Ship Hyperion\",\n  \"directionSystem\": \"Yemaki\",\n  \"distance\": 7340,\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Generation Ship Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/genreport",
+							"raw": "{{url}}/genreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"genreport"
+								"genreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -1502,12 +1524,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/genreport/count",
+							"raw": "{{url}}/genreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"genreport",
+								"genreports",
 								"count"
 							]
 						},
@@ -1534,12 +1556,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/genreport",
+							"raw": "{{url}}/genreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"genreport"
+								"genreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -1577,12 +1599,12 @@
 							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
 						},
 						"url": {
-							"raw": "{{url}}/genreport/{{genID}}",
+							"raw": "{{url}}/genreports/{{genID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"genreport",
+								"genreports",
 								"{{genID}}"
 							]
 						},
@@ -1596,11 +1618,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "67b35a91-5cb4-4da0-800e-765163da9727",
+								"id": "cff47d24-a7bb-49e8-9b9f-6b40762e4b9b",
 								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"GEN updated values match\", function () {",
 									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"Lalande 2966\");",
 									"    pm.expect(jsonData.orbitBody).to.eql(\"4\");",
 									"    pm.expect(jsonData.shipName).to.eql(\"Generation Ship Hyperion\");",
@@ -1633,12 +1657,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/genreport/{{genID}}",
+							"raw": "{{url}}/genreports/{{genID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"genreport",
+								"genreports",
 								"{{genID}}"
 							]
 						},
@@ -1675,12 +1699,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/genreport/{{genID}}",
+							"raw": "{{url}}/genreports/{{genID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"genreport",
+								"genreports",
 								"{{genID}}"
 							]
 						},
@@ -1700,7 +1724,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "17ba91d4-7fbf-4f8f-820f-f24301d4617e",
+								"id": "acde5806-3b95-4f9f-afbd-49aad8de9501",
 								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
@@ -1708,6 +1732,8 @@
 									"",
 									"pm.test(\"GR created values match\", function () {",
 									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"SYNUEFE XR-H D11-102\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"1 B\");",
 									"    pm.expect(jsonData.latitude).to.eql(-31.7347);",
@@ -1735,15 +1761,15 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"systemName\": \"SYNUEFE XR-H D11-102\",\n  \"bodyName\": \"1 B\",\n  \"latitude\": -31.7347,\n  \"longitude\": -128.9212,\n  \"type\": \"Beta\",\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Guardian Ruin Report\",\n  \"reportStatus\": \"pending\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"SYNUEFE XR-H D11-102\",\n  \"bodyName\": \"1 B\",\n  \"latitude\": -31.7347,\n  \"longitude\": -128.9212,\n  \"type\": \"Beta\",\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Guardian Ruin Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/grreport",
+							"raw": "{{url}}/grreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grreport"
+								"grreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -1769,12 +1795,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/grreport/count",
+							"raw": "{{url}}/grreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grreport",
+								"grreports",
 								"count"
 							]
 						},
@@ -1801,12 +1827,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/grreport",
+							"raw": "{{url}}/grreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grreport"
+								"grreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -1850,12 +1876,12 @@
 							"raw": "{\n  \"grreport\": {{grID}},\n  \"grobeliskgroup\": 18\n}"
 						},
 						"url": {
-							"raw": "{{url}}/grobeliskgroupreport",
+							"raw": "{{url}}/grobeliskgroupreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grobeliskgroupreport"
+								"grobeliskgroupreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -1881,12 +1907,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/grobeliskgroupreport/count",
+							"raw": "{{url}}/grobeliskgroupreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grobeliskgroupreport",
+								"grobeliskgroupreports",
 								"count"
 							]
 						},
@@ -1913,12 +1939,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/grobeliskgroupreport",
+							"raw": "{{url}}/grobeliskgroupreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grobeliskgroupreport"
+								"grobeliskgroupreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -1962,12 +1988,12 @@
 							"raw": "{\n  \"grreport\": {{grID}},\n  \"grobelisk\": 271\n}"
 						},
 						"url": {
-							"raw": "{{url}}/grobeliskreport",
+							"raw": "{{url}}/grobeliskreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grobeliskreport"
+								"grobeliskreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -1993,12 +2019,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/grobeliskreport/count",
+							"raw": "{{url}}/grobeliskreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grobeliskreport",
+								"grobeliskreports",
 								"count"
 							]
 						},
@@ -2025,12 +2051,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/grobeliskreport",
+							"raw": "{{url}}/grobeliskreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grobeliskreport"
+								"grobeliskreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -2056,12 +2082,12 @@
 							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
 						},
 						"url": {
-							"raw": "{{url}}/grreport/{{grID}}",
+							"raw": "{{url}}/grreports/{{grID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grreport",
+								"grreports",
 								"{{grID}}"
 							]
 						},
@@ -2075,11 +2101,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "3ba7c8f5-06d1-4a6d-9c85-1137cd991e26",
+								"id": "a229a200-338b-4473-bda1-3c1236e32993",
 								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"GR updated values match\", function () {",
 									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"SYNUEFE XR-H D11-102\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"1 B\");",
 									"    pm.expect(jsonData.latitude).to.eql(-31.7347);",
@@ -2112,12 +2140,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/grreport/{{grID}}",
+							"raw": "{{url}}/grreports/{{grID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grreport",
+								"grreports",
 								"{{grID}}"
 							]
 						},
@@ -2144,12 +2172,12 @@
 							"raw": "{\n  \"grobeliskgroup\": 19\n}"
 						},
 						"url": {
-							"raw": "{{url}}/grobeliskgroupreport/{{grOGID}}",
+							"raw": "{{url}}/grobeliskgroupreports/{{grOGID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grobeliskgroupreport",
+								"grobeliskgroupreports",
 								"{{grOGID}}"
 							]
 						},
@@ -2191,12 +2219,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/grobeliskgroupreport/{{grOGID}}",
+							"raw": "{{url}}/grobeliskgroupreports/{{grOGID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grobeliskgroupreport",
+								"grobeliskgroupreports",
 								"{{grOGID}}"
 							]
 						},
@@ -2223,12 +2251,12 @@
 							"raw": "{\n  \"grobelisk\": 281\n}"
 						},
 						"url": {
-							"raw": "{{url}}/grobeliskreport/{{grOID}}",
+							"raw": "{{url}}/grobeliskreports/{{grOID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grobeliskreport",
+								"grobeliskreports",
 								"{{grOID}}"
 							]
 						},
@@ -2270,12 +2298,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/grobeliskreport/{{grOID}}",
+							"raw": "{{url}}/grobeliskreports/{{grOID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grobeliskreport",
+								"grobeliskreports",
 								"{{grOID}}"
 							]
 						},
@@ -2312,12 +2340,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/grobeliskreport/{{grOID}}",
+							"raw": "{{url}}/grobeliskreports/{{grOID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grobeliskreport",
+								"grobeliskreports",
 								"{{grOID}}"
 							]
 						},
@@ -2354,12 +2382,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/grobeliskgroupreport/{{grOGID}}",
+							"raw": "{{url}}/grobeliskgroupreports/{{grOGID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grobeliskgroupreport",
+								"grobeliskgroupreports",
 								"{{grOGID}}"
 							]
 						},
@@ -2396,12 +2424,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/grreport/{{grID}}",
+							"raw": "{{url}}/grreports/{{grID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"grreport",
+								"grreports",
 								"{{grID}}"
 							]
 						},
@@ -2421,7 +2449,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "39a2e8be-3860-47b0-ac71-1d66b0e3b390",
+								"id": "0fb64aa9-5c6e-43b8-bbed-b6552f15e789",
 								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
@@ -2429,6 +2457,8 @@
 									"",
 									"pm.test(\"GS created values match\", function () {",
 									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"SYNUEFE LY-I B42-2\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"C 2\");",
 									"    pm.expect(jsonData.latitude).to.eql(52.6791);",
@@ -2457,15 +2487,15 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"systemName\": \"SYNUEFE LY-I B42-2\",\n  \"bodyName\": \"C 2\",\n  \"latitude\": 52.6791,\n  \"longitude\": 115.2503,\n  \"type\": \"Fistbump\",\n  \"hasDatabank\": false,\n  \"cmdrName\": \"Doom666\",\n  \"cmdrComment\": \"TEST - Guardian Structure Report\",\n  \"reportStatus\": \"pending\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"SYNUEFE LY-I B42-2\",\n  \"bodyName\": \"C 2\",\n  \"latitude\": 52.6791,\n  \"longitude\": 115.2503,\n  \"type\": \"Fistbump\",\n  \"hasDatabank\": false,\n  \"cmdrName\": \"Doom666\",\n  \"cmdrComment\": \"TEST - Guardian Structure Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/gsreport",
+							"raw": "{{url}}/gsreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsreport"
+								"gsreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -2491,12 +2521,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gsreport/count",
+							"raw": "{{url}}/gsreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsreport",
+								"gsreports",
 								"count"
 							]
 						},
@@ -2523,12 +2553,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gsreport",
+							"raw": "{{url}}/gsreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsreport"
+								"gsreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -2572,12 +2602,12 @@
 							"raw": "{\n  \"gsreport\": {{gsID}},\n  \"gsobeliskgroup\": 9\n}"
 						},
 						"url": {
-							"raw": "{{url}}/gsobeliskgroupreport",
+							"raw": "{{url}}/gsobeliskgroupreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsobeliskgroupreport"
+								"gsobeliskgroupreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -2603,12 +2633,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gsobeliskgroupreport/count",
+							"raw": "{{url}}/gsobeliskgroupreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsobeliskgroupreport",
+								"gsobeliskgroupreports",
 								"count"
 							]
 						},
@@ -2635,12 +2665,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gsobeliskgroupreport",
+							"raw": "{{url}}/gsobeliskgroupreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsobeliskgroupreport"
+								"gsobeliskgroupreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -2684,12 +2714,12 @@
 							"raw": "{\n  \"gsreport\": {{gsID}},\n  \"gsobelisk\": 79\n}"
 						},
 						"url": {
-							"raw": "{{url}}/gsobeliskreport",
+							"raw": "{{url}}/gsobeliskreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsobeliskreport"
+								"gsobeliskreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -2715,12 +2745,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gsobeliskreport/count",
+							"raw": "{{url}}/gsobeliskreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsobeliskreport",
+								"gsobeliskreports",
 								"count"
 							]
 						},
@@ -2747,12 +2777,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gsobeliskreport",
+							"raw": "{{url}}/gsobeliskreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsobeliskreport"
+								"gsobeliskreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -2778,12 +2808,12 @@
 							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
 						},
 						"url": {
-							"raw": "{{url}}/gsreport/{{gsID}}",
+							"raw": "{{url}}/gsreports/{{gsID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsreport",
+								"gsreports",
 								"{{gsID}}"
 							]
 						},
@@ -2797,11 +2827,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "958b5282-e0cd-4eef-a4ba-ec91171237cf",
+								"id": "fe9df4ea-4bbf-4b77-b310-2882c0785627",
 								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"GS updated values match\", function () {",
 									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"SYNUEFE LY-I B42-2\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"C 2\");",
 									"    pm.expect(jsonData.latitude).to.eql(52.6791);",
@@ -2835,12 +2867,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gsreport/{{gsID}}",
+							"raw": "{{url}}/gsreports/{{gsID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsreport",
+								"gsreports",
 								"{{gsID}}"
 							]
 						},
@@ -2867,12 +2899,12 @@
 							"raw": "{\n  \"gsobeliskgroup\": 10\n}"
 						},
 						"url": {
-							"raw": "{{url}}/gsobeliskgroupreport/{{gsOGID}}",
+							"raw": "{{url}}/gsobeliskgroupreports/{{gsOGID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsobeliskgroupreport",
+								"gsobeliskgroupreports",
 								"{{gsOGID}}"
 							]
 						},
@@ -2914,12 +2946,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gsobeliskgroupreport/{{gsOGID}}",
+							"raw": "{{url}}/gsobeliskgroupreports/{{gsOGID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsobeliskgroupreport",
+								"gsobeliskgroupreports",
 								"{{gsOGID}}"
 							]
 						},
@@ -2946,12 +2978,12 @@
 							"raw": "{\n  \"gsobelisk\": 80\n}"
 						},
 						"url": {
-							"raw": "{{url}}/gsobeliskreport/{{gsOID}}",
+							"raw": "{{url}}/gsobeliskreports/{{gsOID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsobeliskreport",
+								"gsobeliskreports",
 								"{{gsOID}}"
 							]
 						},
@@ -2965,10 +2997,10 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "49b75d97-1f95-45b8-8b1f-07c9fde902dc",
+								"id": "983a287a-107e-4601-b630-5b2b74b56826",
 								"type": "text/javascript",
 								"exec": [
-									"pm.test(\"GR Obelisk Group updated values match\", function () {",
+									"pm.test(\"GS Obelisk Group updated values match\", function () {",
 									"    var jsonData = pm.response.json();",
 									"    pm.expect(jsonData.gsobelisk.id).to.eql(80);",
 									"});"
@@ -2993,12 +3025,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gsobeliskreport/{{gsOID}}",
+							"raw": "{{url}}/gsobeliskreports/{{gsOID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsobeliskreport",
+								"gsobeliskreports",
 								"{{gsOID}}"
 							]
 						},
@@ -3035,12 +3067,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gsobeliskreport/{{gsOID}}",
+							"raw": "{{url}}/gsobeliskreports/{{gsOID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsobeliskreport",
+								"gsobeliskreports",
 								"{{gsOID}}"
 							]
 						},
@@ -3077,12 +3109,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gsobeliskgroupreport/{{gsOGID}}",
+							"raw": "{{url}}/gsobeliskgroupreports/{{gsOGID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsobeliskgroupreport",
+								"gsobeliskgroupreports",
 								"{{gsOGID}}"
 							]
 						},
@@ -3119,12 +3151,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gsreport/{{gsID}}",
+							"raw": "{{url}}/gsreports/{{gsID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gsreport",
+								"gsreports",
 								"{{gsID}}"
 							]
 						},
@@ -3144,7 +3176,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "b9317d0e-cd59-43c5-a9de-001feeb256f1",
+								"id": "df93b1d9-04bc-4834-937f-300b52876579",
 								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
@@ -3152,6 +3184,8 @@
 									"",
 									"pm.test(\"GY created values match\", function () {",
 									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"XOTHUIA AF-P D6-102\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"3 D A\");",
 									"    pm.expect(jsonData.latitude).to.eql(38.8111);",
@@ -3180,15 +3214,15 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"systemName\": \"XOTHUIA AF-P D6-102\",\n  \"bodyName\": \"3 D A\",\n  \"latitude\": 38.8111,\n  \"longitude\": -130.3432,\n  \"count\": 5,\n  \"type\": \"Silicate Vapour\",\n  \"cmdrName\": \"Baton\",\n  \"cmdrComment\": \"TEST - Geyser Report\",\n  \"reportStatus\": \"pending\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"XOTHUIA AF-P D6-102\",\n  \"bodyName\": \"3 D A\",\n  \"latitude\": 38.8111,\n  \"longitude\": -130.3432,\n  \"count\": 5,\n  \"type\": \"Silicate Vapour\",\n  \"cmdrName\": \"Baton\",\n  \"cmdrComment\": \"TEST - Geyser Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/gyreport",
+							"raw": "{{url}}/gyreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gyreport"
+								"gyreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -3228,12 +3262,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gyreport/count",
+							"raw": "{{url}}/gyreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gyreport",
+								"gyreports",
 								"count"
 							]
 						},
@@ -3260,12 +3294,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gyreport",
+							"raw": "{{url}}/gyreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gyreport"
+								"gyreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -3303,12 +3337,12 @@
 							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
 						},
 						"url": {
-							"raw": "{{url}}/gyreport/{{gyID}}",
+							"raw": "{{url}}/gyreports/{{gyID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gyreport",
+								"gyreports",
 								"{{gyID}}"
 							]
 						},
@@ -3322,11 +3356,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "d0b79589-bd0e-4034-bc26-2e75cdeaa7a2",
+								"id": "b20350c0-4077-4dcc-85d7-4db660c7922a",
 								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"GY updated values match\", function () {",
 									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"XOTHUIA AF-P D6-102\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"3 D A\");",
 									"    pm.expect(jsonData.latitude).to.eql(38.8111);",
@@ -3360,12 +3396,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gyreport/{{gyID}}",
+							"raw": "{{url}}/gyreports/{{gyID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gyreport",
+								"gyreports",
 								"{{gyID}}"
 							]
 						},
@@ -3402,12 +3438,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/gyreport/{{gyID}}",
+							"raw": "{{url}}/gyreports/{{gyID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gyreport",
+								"gyreports",
 								"{{gyID}}"
 							]
 						},
@@ -3427,7 +3463,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "51f9ded6-ad08-4716-8b16-707f0974e4b9",
+								"id": "48c03803-0857-4006-aa59-343b9c97eb94",
 								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
@@ -3435,6 +3471,8 @@
 									"",
 									"pm.test(\"LS created values match\", function () {",
 									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"DROETH OD-T D3-1\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"7 E A\");",
 									"    pm.expect(jsonData.latitude).to.eql(75.9209);",
@@ -3462,15 +3500,15 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"systemName\": \"DROETH OD-T D3-1\",\n  \"bodyName\": \"7 E A\",\n  \"latitude\": 75.9209,\n  \"longitude\": -50.3884,\n  \"count\": 6,\n  \"cmdrName\": \"Steyla\",\n  \"cmdrComment\": \"TEST - Lava Spout Report\",\n  \"reportStatus\": \"pending\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"DROETH OD-T D3-1\",\n  \"bodyName\": \"7 E A\",\n  \"latitude\": 75.9209,\n  \"longitude\": -50.3884,\n  \"count\": 6,\n  \"cmdrName\": \"Steyla\",\n  \"cmdrComment\": \"TEST - Lava Spout Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/lsreport",
+							"raw": "{{url}}/lsreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"lsreport"
+								"lsreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -3496,12 +3534,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/lsreport/count",
+							"raw": "{{url}}/lsreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"lsreport",
+								"lsreports",
 								"count"
 							]
 						},
@@ -3528,12 +3566,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/lsreport",
+							"raw": "{{url}}/lsreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"lsreport"
+								"lsreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -3571,12 +3609,12 @@
 							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
 						},
 						"url": {
-							"raw": "{{url}}/lsreport/{{lsID}}",
+							"raw": "{{url}}/lsreports/{{lsID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"lsreport",
+								"lsreports",
 								"{{lsID}}"
 							]
 						},
@@ -3590,11 +3628,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "c518b3c2-8f4f-48db-a110-a193d3e2da8f",
+								"id": "016dc592-59fe-4911-b9d6-2e0ee0e8e80d",
 								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"LS updated values match\", function () {",
 									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"DROETH OD-T D3-1\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"7 E A\");",
 									"    pm.expect(jsonData.latitude).to.eql(75.9209);",
@@ -3627,12 +3667,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/lsreport/{{lsID}}",
+							"raw": "{{url}}/lsreports/{{lsID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"lsreport",
+								"lsreports",
 								"{{lsID}}"
 							]
 						},
@@ -3669,12 +3709,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/lsreport/{{lsID}}",
+							"raw": "{{url}}/lsreports/{{lsID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"lsreport",
+								"lsreports",
 								"{{lsID}}"
 							]
 						},
@@ -3694,7 +3734,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "37b3df62-a609-462a-a649-55e884538057",
+								"id": "5985b03a-5b98-48cc-9a41-8c381b70afb4",
 								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
@@ -3702,6 +3742,8 @@
 									"",
 									"pm.test(\"MS created values match\", function () {",
 									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"HIP 17692\");",
 									"    pm.expect(jsonData.orbitBody).to.eql(\"A 3\");",
 									"    pm.expect(jsonData.shipName).to.eql(\"JJF-048\");",
@@ -3732,15 +3774,15 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"systemName\": \"HIP 17692\",\n  \"orbitBody\": \"A 3\",\n  \"shipName\": \"JJF-048\",\n  \"shipTag\": \"jjf048\",\n  \"type\": \"Alcatraz Class Prison Ship\",\n  \"flightOps\": false,\n  \"flightSchedule\": false,\n  \"dockable\": false,\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Megaship Report\",\n  \"reportStatus\": \"pending\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"HIP 17692\",\n  \"orbitBody\": \"A 3\",\n  \"shipName\": \"JJF-048\",\n  \"shipTag\": \"jjf048\",\n  \"type\": \"Alcatraz Class Prison Ship\",\n  \"flightOps\": false,\n  \"flightSchedule\": false,\n  \"dockable\": false,\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Megaship Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/msreport",
+							"raw": "{{url}}/msreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"msreport"
+								"msreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -3766,12 +3808,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/msreport/count",
+							"raw": "{{url}}/msreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"msreport",
+								"msreports",
 								"count"
 							]
 						},
@@ -3798,12 +3840,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/msreport",
+							"raw": "{{url}}/msreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"msreport"
+								"msreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -3841,12 +3883,12 @@
 							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
 						},
 						"url": {
-							"raw": "{{url}}/msreport/{{msID}}",
+							"raw": "{{url}}/msreports/{{msID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"msreport",
+								"msreports",
 								"{{msID}}"
 							]
 						},
@@ -3860,11 +3902,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "00200a27-3785-4d59-ba53-b3ef44db0234",
+								"id": "7056543f-dc11-4c2c-b4da-64f8fbe0d033",
 								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"MS updated values match\", function () {",
 									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"HIP 17692\");",
 									"    pm.expect(jsonData.orbitBody).to.eql(\"A 3\");",
 									"    pm.expect(jsonData.shipName).to.eql(\"JJF-048\");",
@@ -3900,12 +3944,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/msreport/{{msID}}",
+							"raw": "{{url}}/msreports/{{msID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"msreport",
+								"msreports",
 								"{{msID}}"
 							]
 						},
@@ -3942,12 +3986,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/msreport/{{msID}}",
+							"raw": "{{url}}/msreports/{{msID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"msreport",
+								"msreports",
 								"{{msID}}"
 							]
 						},
@@ -3967,7 +4011,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "35f3bcbc-9237-41f1-8365-75dc26912c30",
+								"id": "526afeb4-a7ec-463c-9d20-aae0955245db",
 								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
@@ -3975,6 +4019,8 @@
 									"",
 									"pm.test(\"TB created values match\", function () {",
 									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"PLEIONE\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"11 A\");",
 									"    pm.expect(jsonData.latitude).to.eql(2.3189);",
@@ -4003,15 +4049,15 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"systemName\": \"PLEIONE\",\n  \"bodyName\": \"11 A\",\n  \"latitude\": 2.3189,\n  \"longitude\": 177.2434,\n  \"type\": \"Barnacle\",\n  \"cycle\": \"B\",\n  \"defense\": { \n  \t\"defense\": \"Unknown\"\n  },\n  \"count\": 7,\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Thargoid Barnacle Report\",\n  \"reportStatus\": \"pending\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"PLEIONE\",\n  \"bodyName\": \"11 A\",\n  \"latitude\": 2.3189,\n  \"longitude\": 177.2434,\n  \"type\": \"Barnacle\",\n  \"cycle\": \"B\",\n  \"count\": 7,\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Thargoid Barnacle Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/tbreport",
+							"raw": "{{url}}/tbreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"tbreport"
+								"tbreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -4037,12 +4083,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/tbreport/count",
+							"raw": "{{url}}/tbreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"tbreport",
+								"tbreports",
 								"count"
 							]
 						},
@@ -4069,12 +4115,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/tbreport",
+							"raw": "{{url}}/tbreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"tbreport"
+								"tbreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -4112,12 +4158,12 @@
 							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
 						},
 						"url": {
-							"raw": "{{url}}/tbreport/{{tbID}}",
+							"raw": "{{url}}/tbreports/{{tbID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"tbreport",
+								"tbreports",
 								"{{tbID}}"
 							]
 						},
@@ -4131,11 +4177,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "334880de-dfe2-4813-9fb9-993121254b4d",
+								"id": "e76f134a-a726-41af-84db-b47acc491c39",
 								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"TB updated values match\", function () {",
 									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"PLEIONE\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"11 A\");",
 									"    pm.expect(jsonData.latitude).to.eql(2.3189);",
@@ -4169,12 +4217,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/tbreport/{{tbID}}",
+							"raw": "{{url}}/tbreports/{{tbID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"tbreport",
+								"tbreports",
 								"{{tbID}}"
 							]
 						},
@@ -4211,12 +4259,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/tbreport/{{tbID}}",
+							"raw": "{{url}}/tbreports/{{tbID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"tbreport",
+								"tbreports",
 								"{{tbID}}"
 							]
 						},
@@ -4236,7 +4284,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "dce5e6ef-17c7-4162-aaee-1f786670515c",
+								"id": "2068d924-8c35-4832-9638-9a53548669b0",
 								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
@@ -4244,6 +4292,8 @@
 									"",
 									"pm.test(\"TS created values match\", function () {",
 									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"HIP 19026\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"B 1 C\");",
 									"    pm.expect(jsonData.latitude).to.eql(-17.9575);",
@@ -4271,15 +4321,15 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"systemName\": \"HIP 19026\",\n  \"bodyName\": \"B 1 C\",\n  \"latitude\": -17.9575,\n  \"longitude\": -152.6994,\n  \"status\": \"Inactive\",\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Thargoid Structure Report\",\n  \"reportStatus\": \"pending\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"HIP 19026\",\n  \"bodyName\": \"B 1 C\",\n  \"latitude\": -17.9575,\n  \"longitude\": -152.6994,\n  \"status\": \"Inactive\",\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Thargoid Structure Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/tsreport",
+							"raw": "{{url}}/tsreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"tsreport"
+								"tsreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -4305,12 +4355,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/tsreport/count",
+							"raw": "{{url}}/tsreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"tsreport",
+								"tsreports",
 								"count"
 							]
 						},
@@ -4337,12 +4387,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/tsreport",
+							"raw": "{{url}}/tsreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"tsreport"
+								"tsreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -4380,12 +4430,12 @@
 							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
 						},
 						"url": {
-							"raw": "{{url}}/tsreport/{{tsID}}",
+							"raw": "{{url}}/tsreports/{{tsID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"tsreport",
+								"tsreports",
 								"{{tsID}}"
 							]
 						},
@@ -4399,11 +4449,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "6f27a0c1-88c4-4c67-b7b7-9d09678244f0",
+								"id": "88b0f98e-8f84-4bf8-9d31-2cf6469e801f",
 								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"TS updated values match\", function () {",
 									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"HIP 19026\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"B 1 C\");",
 									"    pm.expect(jsonData.latitude).to.eql(-17.9575);",
@@ -4436,12 +4488,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/tsreport/{{tsID}}",
+							"raw": "{{url}}/tsreports/{{tsID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"tsreport",
+								"tsreports",
 								"{{tsID}}"
 							]
 						},
@@ -4478,12 +4530,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/tsreport/{{tsID}}",
+							"raw": "{{url}}/tsreports/{{tsID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"tsreport",
+								"tsreports",
 								"{{tsID}}"
 							]
 						},
@@ -4503,7 +4555,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "0f1616cf-9202-421a-9815-8984000ff4f3",
+								"id": "0f272dea-d76e-466a-aa76-ba7d389c58f2",
 								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
@@ -4511,6 +4563,8 @@
 									"",
 									"pm.test(\"TW created values match\", function () {",
 									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"Test System\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"Test Body\");",
 									"    pm.expect(jsonData.latitude).to.eql(123.1234);",
@@ -4538,15 +4592,15 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"systemName\": \"Test System\",\n  \"bodyName\": \"Test Body\",\n  \"latitude\": 123.1234,\n  \"longitude\": -123.4321,\n  \"count\": 10,\n  \"cmdrName\": \"Test CMDR\",\n  \"cmdrComment\": \"TEST - Tube Worm Report\",\n  \"reportStatus\": \"pending\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"Test System\",\n  \"bodyName\": \"Test Body\",\n  \"latitude\": 123.1234,\n  \"longitude\": -123.4321,\n  \"count\": 10,\n  \"cmdrName\": \"Test CMDR\",\n  \"cmdrComment\": \"TEST - Tube Worm Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/twreport",
+							"raw": "{{url}}/twreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"twreport"
+								"twreports"
 							]
 						},
 						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
@@ -4572,12 +4626,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/twreport/count",
+							"raw": "{{url}}/twreports/count",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"twreport",
+								"twreports",
 								"count"
 							]
 						},
@@ -4604,12 +4658,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/twreport",
+							"raw": "{{url}}/twreports",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"twreport"
+								"twreports"
 							]
 						},
 						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
@@ -4647,12 +4701,12 @@
 							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
 						},
 						"url": {
-							"raw": "{{url}}/twreport/{{twID}}",
+							"raw": "{{url}}/twreports/{{twID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"twreport",
+								"twreports",
 								"{{twID}}"
 							]
 						},
@@ -4666,11 +4720,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "d0963103-8a37-454f-94a5-c06fc2e30451",
+								"id": "6e5307a1-28f2-4c8f-afde-f92fd6c66bb9",
 								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"TW updated values match\", function () {",
 									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"Test System\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"Test Body\");",
 									"    pm.expect(jsonData.latitude).to.eql(123.1234);",
@@ -4703,12 +4759,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/twreport/{{twID}}",
+							"raw": "{{url}}/twreports/{{twID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"twreport",
+								"twreports",
 								"{{twID}}"
 							]
 						},
@@ -4745,12 +4801,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/twreport/{{twID}}",
+							"raw": "{{url}}/twreports/{{twID}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"twreport",
+								"twreports",
 								"{{twID}}"
 							]
 						},

@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/twreport",
+      "path": "/twreports",
       "handler": "Twreport.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/twreport/count",
+      "path": "/twreports/count",
       "handler": "Twreport.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/twreport/:id",
+      "path": "/twreports/:id",
       "handler": "Twreport.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/twreport",
+      "path": "/twreports",
       "handler": "Twreport.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/twreport/:id",
+      "path": "/twreports/:id",
       "handler": "Twreport.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/twreport/:id",
+      "path": "/twreports/:id",
       "handler": "Twreport.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/twreport/:id/relationships/:relation",
+      "path": "/twreports/:id/relationships/:relation",
       "handler": "Twreport.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/twreport/:id/relationships/:relation",
+      "path": "/twreports/:id/relationships/:relation",
       "handler": "Twreport.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/twreport/:id/relationships/:relation",
+      "path": "/twreports/:id/relationships/:relation",
       "handler": "Twreport.destroyRelation",
       "config": {
         "policies": []

@@ -2,7 +2,7 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/grtype",
+      "path": "/grtypes",
       "handler": "Grtype.find",
       "config": {
         "policies": []
@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/grtype/count",
+      "path": "/grtypes/count",
       "handler": "Grtype.count",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/grtype/:id",
+      "path": "/grtypes/:id",
       "handler": "Grtype.findOne",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/grtype",
+      "path": "/grtypes",
       "handler": "Grtype.create",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/grtype/:id",
+      "path": "/grtypes/:id",
       "handler": "Grtype.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/grtype/:id",
+      "path": "/grtypes/:id",
       "handler": "Grtype.destroy",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/grtype/:id/relationships/:relation",
+      "path": "/grtypes/:id/relationships/:relation",
       "handler": "Grtype.createRelation",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/grtype/:id/relationships/:relation",
+      "path": "/grtypes/:id/relationships/:relation",
       "handler": "Grtype.updateRelation",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/grtype/:id/relationships/:relation",
+      "path": "/grtypes/:id/relationships/:relation",
       "handler": "Grtype.destroyRelation",
       "config": {
         "policies": []
