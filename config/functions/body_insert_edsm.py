@@ -154,6 +154,10 @@ names_to_update = []
 
 no_bodies_select_sql = 'SELECT * FROM systems s where not exists (select 1 from bodies b where b.system = s.id) limit '+str(args.batch_size * args.batch_limit)
 
+insert_ring = '''
+    insert into rings (body, ringName, ringtype, edsmMass, edsmInnerRadius, edsmOuterRadius)
+    values (%s, %s, %s, %s, %s, %s)
+'''
 
 insert_sql = '''insert into bodies (
     system,
@@ -190,9 +194,12 @@ insert_sql = '''insert into bodies (
     edsmRotationalPeriodTidallyLocked,
     edsmAxialTilt,
     edsmSolidComposition,
-    edsmAtmosphere
-    ) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
-''';
+    edsmAtmosphere,
+    edsmMaterial
+    ) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+'''
+
+    
 
 # Reference:
 # https://stackoverflow.com/questions/312443/how-do-you-split-a-list-into-evenly-sized-chunks
@@ -202,13 +209,8 @@ def chunks(l, n):
         yield l[i:i + n]
 
 def bodyname(system,body):
-    print(system)
-    print(body)
     if system in body:
-        print("found")
         l=len(system)-len(body)
-        print(l)
-        print(body[l:].strip())
         return body[l:].strip()
     else:
         return body
@@ -237,9 +239,7 @@ try:
                     print(url) 
                     all_body_data = response.json()
                     for body_data in all_body_data["bodies"]:
-                        print(name)
-                        print(id)
-                        print(json.dumps(body_data, sort_keys=True, indent=4))
+                        #print(json.dumps(body_data, sort_keys=True, indent=4))
                         try:
                             cursor.execute(
                                 insert_sql,
@@ -279,10 +279,20 @@ try:
                                     body_data.get("rotationalPeriodTidallyLocked"),
                                     body_data.get("axialTilt"),
                                     json.dumps(body_data.get("solidComposition"), sort_keys=True, indent=4),
-                                    body_data.get("atmosphere")
-                                    #body_data.get("material")
+                                    json.dumps(body_data.get("atmosphere"), sort_keys=True, indent=4),
+                                    json.dumps(body_data.get("material"), sort_keys=True, indent=4)
                                 )
                             )
+                            body_id=connection.insert_id()
+                            # 
+                            # We arent bothering with rings for now.
+                            # 
+                            # ring type is a foreign key to the ringTYpe model so would need to be loked up before storing
+                            # 
+                            #if body_data.get("rings"):
+                            #    for ring in body_data.get("rings"):
+                            #        cursor.execute(insert_ring,(body_id,ring.get("name"),ring.get("type"),ring.get("mass"),ring.get("innerRadius"),ring.get("outerRadius")))
+                            #        print(json.dumps(ring))
                         except connection.ProgrammingError as err:
                             connection.commit()
                             print("Something went wrong: {}".format(err))
