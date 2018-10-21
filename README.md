@@ -209,7 +209,7 @@ Then create the database and user:
 ```
 create database capiv2;
 create user 'capiv2system'@'localhost' identified by 'YourPasswordHere';
-grant all priviledges on capiv2.* to 'capiv2system'@'localhost';
+grant all privileges on capiv2.* to 'capiv2system'@'localhost';
 ```
 
 After this you should have the following database `capiv2` with the user `capiv2system` and a password for use with Strapi.
