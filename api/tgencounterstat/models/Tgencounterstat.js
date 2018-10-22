@@ -1,3 +1,5 @@
+var PythonShell = require('python-shell');
+
 'use strict';
 
 /**
@@ -28,6 +30,22 @@ module.exports = {
   // After creating a value.
   // Fired after an `insert` query.
   // afterCreate: async (model, attrs, options) => {},
+  afterCreate: async (model, attrs, options) => {
+    var options = {
+      mode: 'text',
+      pythonPath: '/usr/bin/python3',
+      pythonOptions: ['-u'],
+      scriptPath: 'config/functions/',
+      args: ['--' + strapi.config.currentEnvironment.environment, '-system' , model.attributes["hyperdictionSystemName"] ]
+    };
+    PythonShell.run('tgencounterstats_insert.py', options, function (err, results) {
+      if (err) throw err;
+      // results is an array consisting of messages collected during execution
+      for (var i in results) {
+	console.log(results[i]);
+      }
+    });
+  }
 
   // Before updating a value.
   // Fired before an `update` query.
