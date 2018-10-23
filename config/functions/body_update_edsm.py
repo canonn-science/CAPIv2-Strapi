@@ -1,4 +1,16 @@
 # -*- coding: utf-8 -*-
+
+'''
+python3 body_update_edsm.py --development
+
+This will get a list of system id64s 
+it will also stream the bodies dump from EDSM
+
+ech system it recognises fromn the list it will do an update or insert on the body
+
+
+'''
+
 import argparse
 import json
 import requests
