@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import argparse
 import json
 import requests
@@ -145,34 +146,277 @@ connection = pymysql.connect(
     cursorclass=pymysql.cursors.DictCursor
 )
 
-#day_difference_threshold = 0
-edsm_api_bodies_url = 'https://www.edsm.net/api-system-v1/bodies'
-current_date = datetime.now()
-names_to_update = []
 
-updated_at_select_sql = 'SELECT systemName, updated_at FROM systems limit '+str(args.batch_size * args.batch_limit)
-null_edsm_id_select_sql = 'SELECT systemName FROM systems WHERE edsmID is NULL limit '+str(args.batch_size * args.batch_limit)
-insert_sql = 'UPDATE `systems` SET edsmCoordX=%s, edsmCoordY=%s, edsmCoordZ=%s, edsmID=%s, edsmID64=%s, edsmCoordLocked=%s WHERE systemName LIKE %s'
+insert_sql = '''insert into bodies (
+    system,
+    bodyName,
+    edsmID,
+    edsmID64,
+    edsmBodyID,
+    edsmType,
+    edsmSubtype,
+    edsmOffset,
+    edsmDistanceToArrival,
+    edsmIsMainStar,
+    edsmIsScoopable,
+    edsmIsLandable,
+    edsmAge,
+    edsmLuminosity,
+    edsmAbsoluteMagnitude,
+    edsmSolarMasses,
+    edsmSolarRadius,
+    edsmGravity,
+    edsmEarthMasses,
+    edsmRadius,
+    edsmSurfaceTemperature,
+    edsmSurfacePressure,
+    edsmVolcanismType,
+    edsmAtmosphereType,
+    edsmTerraformingState,
+    edsmOrbitalPeriod,
+    edsmSemiMajorAxis,
+    edsmOrbitalEccentricity,
+    edsmOrbitalInclination,
+    edsmArgOfPeriapsis,
+    edsmRotationalPeriod,
+    edsmRotationalPeriodTidallyLocked,
+    edsmAxialTilt,
+    edsmSolidComposition,
+    edsmAtmosphere,
+    edsmMaterial
+    ) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+'''
+
+update_sql = '''
+update bodies
+set 
+    bodyName = %s,
+    edsmID = %s,
+    edsmID64 = %s,
+    edsmBodyID = %s,
+    edsmType = %s,
+    edsmSubtype = %s,
+    edsmOffset = %s,
+    edsmDistanceToArrival = %s,
+    edsmIsMainStar = %s,
+    edsmIsScoopable = %s,
+    edsmIsLandable = %s,
+    edsmAge = %s,
+    edsmLuminosity = %s,
+    edsmAbsoluteMagnitude = %s,
+    edsmSolarMasses = %s,
+    edsmSolarRadius = %s,
+    edsmGravity = %s,
+    edsmEarthMasses = %s,
+    edsmRadius = %s,
+    edsmSurfaceTemperature = %s,
+    edsmSurfacePressure = %s,
+    edsmVolcanismType = %s,
+    edsmAtmosphereType = %s,
+    edsmTerraformingState = %s,
+    edsmOrbitalPeriod = %s,
+    edsmSemiMajorAxis = %s,
+    edsmOrbitalEccentricity = %s,
+    edsmOrbitalInclination = %s,
+    edsmArgOfPeriapsis = %s,
+    edsmRotationalPeriod = %s,
+    edsmRotationalPeriodTidallyLocked = %s,
+    edsmAxialTilt = %s,
+    edsmSolidComposition = %s,
+    edsmAtmosphere = %s,
+    edsmMaterial = %s
+    where edsmID64 = %s and system=%s
+'''
+
+def insert_body(cursor,body_data,system_id):
+    print("insert_body")
+    try:
+        cursor.execute(
+            insert_sql,
+            (
+                system_id,
+                bodyname(body_data.get("systemName"),body_data.get("name")),
+                body_data.get("id"),
+                body_data.get("id64"),
+                body_data.get("bodyId"),
+                body_data.get("type"),
+                body_data.get("subType"),
+                body_data.get("offset"),
+                body_data.get("distanceToArrival"),
+                body_data.get("isMainStar"),
+                body_data.get("isScoopable"),
+                body_data.get("isLandable"),
+                body_data.get("age"),
+                #body_data.get("spectralClass"),
+                body_data.get("luminosity"),
+                body_data.get("absoluteMagnitude"),
+                body_data.get("solarMasses"),
+                body_data.get("solarRadius"),
+                body_data.get("gravity"),
+                body_data.get("earthMasses"),
+                body_data.get("radius"),
+                body_data.get("surfaceTemperature"),
+                body_data.get("surfacePressure"),
+                body_data.get("volcanismType"),
+                body_data.get("atmosphereType"),
+                body_data.get("terraformingState"),
+                body_data.get("orbitalPeriod"),
+                body_data.get("semiMajorAxis"),
+                body_data.get("orbitalEccentricity"),
+                body_data.get("orbitalInclination"),
+                body_data.get("argOfPeriapsis"),
+                body_data.get("rotationalPeriod"),
+                body_data.get("rotationalPeriodTidallyLocked"),
+                body_data.get("axialTilt"),
+                json.dumps(body_data.get("solidComposition"), sort_keys=True, indent=4),
+                json.dumps(body_data.get("atmosphere"), sort_keys=True, indent=4),
+                json.dumps(body_data.get("material"), sort_keys=True, indent=4),
+            )
+        )
+        connection.commit()
+        #
+        # We arent bothering with rings for now.
+        #
+        # ring type is a foreign key to the ringTYpe model so would need to be loked up before storing
+        #
+        #if body_data.get("rings"):
+        #    for ring in body_data.get("rings"):
+        #        cursor.execute(insert_ring,(body_id,ring.get("name"),ring.get("type"),ring.get("mass"),ring.get("innerRadius"),ring.get("outerRadius")))
+        #        print(json.dumps(ring))
+    except connection.ProgrammingError as err:
+        connection.commit()
+        print("Something went wrong: {}".format(err))
+        quit()
 
 
-# Reference:
-# https://stackoverflow.com/questions/312443/how-do-you-split-a-list-into-evenly-sized-chunks
-def chunks(l, n):
-    # Yield successive n-sized chunks from l
-    for i in range(0, len(l), n):
-        yield l[i:i + n]
+def update_body(cursor,body_data,system_id):
+    print("update_body")
+    try:
+        cursor.execute(
+            update_sql,
+            (
+                bodyname(body_data.get("systemName"),body_data.get("name")),
+                body_data.get("id"),
+                body_data.get("id64"),
+                body_data.get("bodyId"),
+                body_data.get("type"),
+                body_data.get("subType"),
+                body_data.get("offset"),
+                body_data.get("distanceToArrival"),
+                body_data.get("isMainStar"),
+                body_data.get("isScoopable"),
+                body_data.get("isLandable"),
+                body_data.get("age"),
+                #body_data.get("spectralClass"),
+                body_data.get("luminosity"),
+                body_data.get("absoluteMagnitude"),
+                body_data.get("solarMasses"),
+                body_data.get("solarRadius"),
+                body_data.get("gravity"),
+                body_data.get("earthMasses"),
+                body_data.get("radius"),
+                body_data.get("surfaceTemperature"),
+                body_data.get("surfacePressure"),
+                body_data.get("volcanismType"),
+                body_data.get("atmosphereType"),
+                body_data.get("terraformingState"),
+                body_data.get("orbitalPeriod"),
+                body_data.get("semiMajorAxis"),
+                body_data.get("orbitalEccentricity"),
+                body_data.get("orbitalInclination"),
+                body_data.get("argOfPeriapsis"),
+                body_data.get("rotationalPeriod"),
+                body_data.get("rotationalPeriodTidallyLocked"),
+                body_data.get("axialTilt"),
+                json.dumps(body_data.get("solidComposition"), sort_keys=True, indent=4),
+                json.dumps(body_data.get("atmosphere"), sort_keys=True, indent=4),
+                json.dumps(body_data.get("material"), sort_keys=True, indent=4),
+                body_data.get("id64"),
+                system_id
+            )
+        )
+        #
+        # We arent bothering with rings for now.
+        #
+        # ring type is a foreign key to the ringTYpe model so would need to be loked up before storing
+        #
+        #if body_data.get("rings"):
+        #    for ring in body_data.get("rings"):
+        #        cursor.execute(insert_ring,(body_id,ring.get("name"),ring.get("type"),ring.get("mass"),ring.get("innerRadius"),ring.get("outerRadius")))
+        #        print(json.dumps(ring))
+    except connection.ProgrammingError as err:
+        connection.commit()
+        print("Something went wrong: {}".format(err))
+        quit()
+
+def bodyname(system,body):
+    if system in body:
+        l=len(system)-len(body)
+        return body[l:].strip()
+    else:
+        return body
 
 
-print('Running in update missing mode' if args.update_missing_mode else 'Running in last updated mode')
+
+def refresh_body(cursor,body):
+    sql_select='select s.id,b.edsmID64 from systems s left join bodies b on s.id = b.system and b.edsmID64 = {} where s.edsmId64 = {}'
+    print(sql_select.format(body.get("id64"),body.get("systemId64")))
+    cursor.execute(sql_select.format('%s','%s'),(body.get("id64"),body.get("systemId64")))
+    result = cursor.fetchone()
+    if result:
+        system_id=result.get("id")
+        if result.get("edsmID64"):
+            update_body(cursor,body,system_id)
+        else:
+            insert_body(cursor,body,system_id)
+    else:
+        print ("This result is not possible, the system must exist")
+        print(body)
+
+# we are going to populate an array with edsmId64
+# this wont take a lot of memory unless we have millions of systems so no limit
+get_systems_sql = 'select edsmID64 from systems where edsmID64 is not null';
+
+systemids=[]
+
 try:
     print('Opening connection to MySQL DB')
     with connection.cursor() as cursor:
-        if args.update_missing_mode:
-            cursor.execute(null_edsm_id_select_sql)
-            result = cursor.fetchall()
-            for row in result:
-                systemName = row['systemName']
-                names_to_update.append(systemName)
+        
+        cursor.execute(get_systems_sql)
+        result = cursor.fetchall()
+        for row in result:
+            systemids.append(int(row['edsmID64']))
+    
+        #we now have a set of system ids
+        # we can download the edsm bodies update and look for our bodies
+
+        url="https://www.edsm.net/dump/bodies7days.json"
+        r=requests.get(url,stream=True)
+        #print(r.headers)
+
+        for txt in r.iter_lines():
+            
+            line=txt.decode('utf-8')
+            if line not in ('[',']'):
+                try:
+                    if line[-1:] == ",":
+                        d=json.loads(line[:-1])
+                    else:
+                        d=json.loads(line)
+                    
+                    if d["systemId64"] in systemids:
+                        refresh_body(cursor,d) 
+                except:
+                    print("ERROR")
+                    print(line)
+                    raise
+
+finally:
+    print('Closing connection to MySQL DB')
+    connection.close()
+
+'''
         else:
             cursor.execute(updated_at_select_sql)
             result = cursor.fetchall()
@@ -215,3 +459,5 @@ try:
 finally:
     print('Closing connection to MySQL DB')
     connection.close()
+
+'''
