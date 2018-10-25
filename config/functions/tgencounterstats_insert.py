@@ -5,6 +5,7 @@ import os
 import pymysql.cursors
 import time
 import urllib
+import math
 
 """
 Running anywhere needs the following:
@@ -15,7 +16,8 @@ cwd = os.getcwd()
 config_file_path = cwd + '/config/environments/{}/database.json'
 #config_file_path = '../environments/{}/database.json'
 
-
+SOL=(0,0,0)
+MEROPE=(-78.59375,-149.625,-340.53125)
 
 # Initialising the Argument Parser and adding the three arguments required:
 # 1. Development
@@ -120,6 +122,21 @@ def update_misscount(cursor,key,table):
         print("Something went wrong: {}".format(err))
         quit()
 
+def getDistance(p,g):
+    # gets the distance between two systems
+    return math.sqrt(sum(tuple([math.pow(p[i]-g[i],2) for i in range(3)])))
+
+def update_hdsystems(cursor,systemId,coords):
+    if systemId and coords:
+        d_sol=getDistance(SOL,coords) 
+        d_merope=getDistance(MEROPE,coords) 
+        sql="insert IGNORE into hdsites (id,solDistance,meropeDistance) values ({},{},{})"
+        try:
+            cursor.execute(sql.format('%s','%s','%s'),(systemId,d_sol,d_merope))
+        except connection.ProgrammingError as err:
+            print("Something went wrong: {}".format(err))
+            print(sql.format(systemId,d_sol,d_merope))
+            quit()
 
 print('Opening connection to MySQL DB')
 with connection.cursor() as cursor:
@@ -151,7 +168,7 @@ with connection.cursor() as cursor:
         systems_data = response.json()
         if systems_data:
             system_data=systems_data[0]
-
+            system_coords=(system_data['coords']['x'],system_data['coords']['y'],system_data['coords']['z'])
             print(json.dumps(system_data))
             try:
               cursor.execute(
@@ -173,7 +190,12 @@ with connection.cursor() as cursor:
         else:
             print("no system data from edsm")
             update_misscount(cursor,systemId,'systems')
-        
+            system_coords=None
+    else:
+        system_coords=(result["edsmCoordX"],result["edsmCoordY"],result["edsmCoordZ"])
+
+    # Unless there was no EDSM data we should have coordinates and a system id
+    update_hdsystems(cursor,systemId,system_coords)
 
     connection.commit()
 print ("Write to aggregation models")
