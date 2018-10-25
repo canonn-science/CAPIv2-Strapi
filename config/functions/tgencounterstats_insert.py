@@ -130,7 +130,7 @@ def update_hdsystems(cursor,systemId,coords):
     if systemId and coords:
         d_sol=getDistance(SOL,coords) 
         d_merope=getDistance(MEROPE,coords) 
-        sql="insert IGNORE into hdsites (id,solDistance,meropeDistance) values ({},{},{})"
+        sql="insert IGNORE into hdsites (system,solDistance,meropeDistance) values ({},{},{})"
         try:
             cursor.execute(sql.format('%s','%s','%s'),(systemId,d_sol,d_merope))
         except connection.ProgrammingError as err:
