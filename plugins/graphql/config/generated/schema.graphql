@@ -114,9 +114,9 @@ type Body {
   edsmRotationalPeriod: Float
   edsmRotationalPeriodTidallyLocked: Boolean
   edsmAxialTilt: Float
-  edsmSolidComposition: String
-  edsmAtmosphere: String
-  edsmMaterial: String
+  edsmSolidComposition: JSON
+  edsmAtmosphere: JSON
+  edsmMaterial: JSON
   missingSkipCount: Int
   rings(sort: String, limit: Int, start: Int, where: JSON): [Ring]
 }
@@ -155,9 +155,9 @@ input BodyInput {
   edsmRotationalPeriod: Float
   edsmRotationalPeriodTidallyLocked: Boolean
   edsmAxialTilt: Float
-  edsmSolidComposition: String
-  edsmAtmosphere: String
-  edsmMaterial: String
+  edsmSolidComposition: JSON
+  edsmAtmosphere: JSON
+  edsmMaterial: JSON
   missingSkipCount: Int
   rings: [ID]
 }
@@ -1708,7 +1708,7 @@ type Factionkillreport {
   reward: Int
   rewardingFaction: String
   victimFaction: String
-  rawEvent: String
+  rawEvent: JSON
   isbeta: Boolean
 }
 
@@ -1719,7 +1719,7 @@ input FactionkillreportInput {
   reward: Int
   rewardingFaction: String
   victimFaction: String
-  rawEvent: String
+  rawEvent: JSON
   isbeta: Boolean
 }
 
@@ -2640,7 +2640,7 @@ type Hdreport {
   reportComment: String
   added: Boolean
   site: Hdsite
-  hdRawJson: String
+  hdRawJson: JSON
 }
 
 input HdreportInput {
@@ -2654,7 +2654,7 @@ input HdreportInput {
   reportComment: String
   added: Boolean
   site: ID
-  hdRawJson: String
+  hdRawJson: JSON
 }
 
 """Thargoid Hyperdiction sites"""
@@ -2694,7 +2694,7 @@ type Journaldata {
   latitude: Float
   longitude: Float
   isBeta: Boolean
-  jsonData: String!
+  jsonData: JSON!
 }
 
 input JournaldataInput {
@@ -2706,7 +2706,7 @@ input JournaldataInput {
   latitude: Float
   longitude: Float
   isBeta: Boolean
-  jsonData: String!
+  jsonData: JSON!
 }
 
 """
@@ -4298,6 +4298,7 @@ type UploadFile {
 input UserInput {
   username: String!
   email: String!
+  provider: String
   confirmed: Boolean
   blocked: Boolean
   role: ID
@@ -4326,6 +4327,7 @@ type UsersPermissionsUser {
   id: ID!
   username: String!
   email: String!
+  provider: String
   confirmed: Boolean
   blocked: Boolean
   role: UsersPermissionsRole
@@ -4347,7 +4349,7 @@ type Ussreport {
   reportComment: String
   added: Boolean
   site: Usssite
-  ussRawJson: String
+  ussRawJson: JSON
 }
 
 input UssreportInput {
@@ -4362,7 +4364,7 @@ input UssreportInput {
   reportComment: String
   added: Boolean
   site: ID
-  ussRawJson: String
+  ussRawJson: JSON
 }
 
 """Unknown Signal Source sites"""

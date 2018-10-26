@@ -196,7 +196,6 @@ module.exports = {
         }
 
         if (!_.isFunction(acc[type][resolver])) {
-
           acc[type][resolver] = acc[type][resolver].resolver;
         }
 
