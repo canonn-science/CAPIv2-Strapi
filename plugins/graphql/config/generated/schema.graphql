@@ -2679,18 +2679,14 @@ type Hdsite {
   createdAt: DateTime!
   updatedAt: DateTime!
   system: System
-  toSystem: System
-  thargoidCount: Int
-  isHostile: Boolean
-  discoveredBy: Cmdr
+  solDistance: Float
+  meropeDistance: Float
 }
 
 input HdsiteInput {
   system: ID
-  toSystem: ID
-  thargoidCount: Int
-  isHostile: Boolean
-  discoveredBy: ID
+  solDistance: Float
+  meropeDistance: Float
 }
 
 input InputID {
@@ -3498,23 +3494,23 @@ type Tgencounterstat {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
-  CmdrName: String
-  WakesScanned: Int
-  ThargoidSites: Int
-  Hyperdictions: Int
-  HyperdictionSystemName: String
-  HyperdictionTimestamp: DateTime
-  ThargoidScans: Int
+  hyperdictionSystemName: String
+  hyperdictionTimestamp: DateTime
+  cmdrName: String
+  wakesScanned: Int
+  thargoidScans: Int
+  thargoidSites: Int
+  hyperdictions: Int
 }
 
 input TgencounterstatInput {
-  CmdrName: String
-  WakesScanned: Int
-  ThargoidSites: Int
-  Hyperdictions: Int
-  HyperdictionSystemName: String
-  HyperdictionTimestamp: DateTime
-  ThargoidScans: Int
+  hyperdictionSystemName: String
+  hyperdictionTimestamp: DateTime
+  cmdrName: String
+  wakesScanned: Int
+  thargoidScans: Int
+  thargoidSites: Int
+  hyperdictions: Int
 }
 
 """Reporting for Thargoid Structures"""
