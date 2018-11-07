@@ -56,6 +56,7 @@ type Bmsite {
   system: System
   body: Body
   siteID: Int!
+  extoolID: Int
   latitude: Float!
   longitude: Float!
   count: Int
@@ -68,6 +69,7 @@ input BmsiteInput {
   system: ID
   body: ID
   siteID: Int!
+  extoolID: Int
   latitude: Float!
   longitude: Float!
   count: Int
@@ -220,6 +222,7 @@ type Btsite {
   system: System
   body: Body
   siteID: Int!
+  extoolID: Int
   latitude: Float!
   longitude: Float!
   count: Int
@@ -232,6 +235,7 @@ input BtsiteInput {
   system: ID
   body: ID
   siteID: Int!
+  extoolID: Int
   latitude: Float!
   longitude: Float!
   count: Int
@@ -1797,6 +1801,7 @@ type Fgsite {
   system: System
   body: Body
   siteID: Int!
+  extoolID: Int
   latitude: Float!
   longitude: Float!
   count: Int
@@ -1809,6 +1814,7 @@ input FgsiteInput {
   system: ID
   body: ID
   siteID: Int!
+  extoolID: Int
   latitude: Float!
   longitude: Float!
   count: Int
@@ -1889,6 +1895,7 @@ type Fmsite {
   system: System
   body: Body
   siteID: Int!
+  extoolID: Int
   latitude: Float!
   longitude: Float!
   count: Int
@@ -1902,6 +1909,7 @@ input FmsiteInput {
   system: ID
   body: ID
   siteID: Int!
+  extoolID: Int
   latitude: Float!
   longitude: Float!
   count: Int
@@ -2283,6 +2291,7 @@ type Grsite {
   system: System
   body: Body
   siteID: Int!
+  extoolID: Int
   latitude: Float!
   longitude: Float!
   type: Grtype
@@ -2297,6 +2306,7 @@ input GrsiteInput {
   system: ID
   body: ID
   siteID: Int!
+  extoolID: Int
   latitude: Float!
   longitude: Float!
   type: ID
@@ -2511,6 +2521,7 @@ type Gssite {
   system: System
   body: Body
   siteID: Int!
+  extoolID: Int
   latitude: Float!
   longitude: Float!
   type: Gstype
@@ -2526,6 +2537,7 @@ input GssiteInput {
   system: ID
   body: ID
   siteID: Int!
+  extoolID: Int
   latitude: Float!
   longitude: Float!
   type: ID
@@ -2609,6 +2621,7 @@ type Gysite {
   system: System
   body: Body
   siteID: Int!
+  extoolID: Int
   latitude: Float!
   longitude: Float!
   count: Int
@@ -2622,6 +2635,7 @@ input GysiteInput {
   system: ID
   body: ID
   siteID: Int!
+  extoolID: Int
   latitude: Float!
   longitude: Float!
   count: Int
@@ -2784,6 +2798,7 @@ type Lssite {
   system: System
   body: Body
   siteID: Int!
+  extoolID: Int
   latitude: Float!
   longitude: Float!
   count: Int
@@ -2796,6 +2811,7 @@ input LssiteInput {
   system: ID
   body: ID
   siteID: Int!
+  extoolID: Int
   latitude: Float!
   longitude: Float!
   count: Int
@@ -3451,6 +3467,7 @@ type Tbsite {
   system: System
   body: Body
   siteID: Int!
+  extoolID: Int
   latitude: Float!
   longitude: Float!
   type: Tbtype
@@ -3466,6 +3483,7 @@ input TbsiteInput {
   system: ID
   body: ID
   siteID: Int!
+  extoolID: Int
   latitude: Float!
   longitude: Float!
   type: ID
@@ -3571,6 +3589,7 @@ type Tssite {
   system: System
   body: Body
   siteID: Int!
+  extoolID: Int
   latitude: Float!
   longitude: Float!
   status: Tsstatus
@@ -3586,6 +3605,7 @@ input TssiteInput {
   system: ID
   body: ID
   siteID: Int!
+  extoolID: Int
   latitude: Float!
   longitude: Float!
   status: ID
@@ -3665,6 +3685,7 @@ type Twsite {
   system: System
   body: Body
   siteID: Int!
+  extoolID: Int
   latitude: Float!
   longitude: Float!
   count: Int
@@ -3677,6 +3698,7 @@ input TwsiteInput {
   system: ID
   body: ID
   siteID: Int!
+  extoolID: Int
   latitude: Float!
   longitude: Float!
   count: Int
