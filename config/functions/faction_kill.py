@@ -14,6 +14,7 @@ pip3 install requests
 """
 
 config_file_path = '../environments/{}/database.json'
+#config_file_path = '../environments/{}/database.json'
 # config_file_path = '../environments/{}/database.json'
 
 # Initialising the Argument Parser and adding the three arguments required:
@@ -118,23 +119,23 @@ connection = pymysql.connect(
 )
 
 insert_sql = """ 
-insert into nhsstopcommandersbykills (
-	CommanderName,
-	scout_kills,
-	cyclops_kills,
-	basilisk_kills,
-	medusa_kills,
-	unknown_kills,
-        total_kills,
-	scout_rewards,
-	cyclops_rewards,
-	basilisk_rewards,
-	medusa_rewards,
-	unknown_rewards,
-	total_rewards
+insert into nhsstopcmdrsbykills (
+	cmdrName,
+	scoutkills,
+	cyclopskills,
+	basiliskkills,
+	medusakills,
+	unknownkills,
+        totalkills,
+	scoutrewards,
+	cyclopsrewards,
+	basiliskrewards,
+	medusarewards,
+	unknownrewards,
+	totalrewards
 ) 
 select 
-    commander,
+    cmdrName,
     sum(case when reward = 10000 then 1 else 0 end) as scout_kills,
     sum(case when reward = 2000000 then 1 else 0 end) as cyclops_kills,
     sum(case when reward = 6000000 then 1 else 0 end) as basilsk_kills,
@@ -147,9 +148,9 @@ select
     sum(case when reward = 10000000 then reward else 0 end) as medusa_reward,
     sum(case when reward not in (10000,2000000,6000000,10000000) then reward else 0 end) as unknown_reward,
     count(*) as total_reward
-from factionkillbondreport 
+from factionkillreports 
 where victimFaction = %s
-group by commander order by count(*) desc
+group by cmdrName order by count(*) desc
 limit 10
 """
 
@@ -157,10 +158,11 @@ c = connection.cursor()
 #connection.start_transaction();
         # Create a new record
 try:
-    c.execute('delete from nhsstopcommandersbykills');
+    c.execute('delete from nhsstopcmdrsbykills');
     c.execute(insert_sql,('$faction_Thargoid;'))
     connection.commit()
-except:
+except connection.ProgrammingError as err:
+    print("Something went wrong: {}".format(err))
     connection.rollback() 
 
 connection.close()
