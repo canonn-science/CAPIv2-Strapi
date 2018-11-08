@@ -160,7 +160,7 @@ try:
         for row in result:
             columns.append(row["column_name"])
             colstr=colstr+","+row["column_name"]
-            placestr=placestr+",'%s'"
+            placestr=placestr+",%s"
 
         print(colstr[1:])
         placestr=placestr[1:]
