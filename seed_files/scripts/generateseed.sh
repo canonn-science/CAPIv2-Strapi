@@ -18,8 +18,8 @@ sleep 1
 ###
 #python3 loadseed.pl --development -seedfile ../CSV/core_store.csv
 
-python3 loadseed.pl --development -seedfile ../CSV/upload_file_morph.csv
-python3 loadseed.pl --development -seedfile ../CSV/upload_file.csv
+#python3 loadseed.pl --development -seedfile ../CSV/upload_file_morph.csv
+#python3 loadseed.pl --development -seedfile ../CSV/upload_file.csv
 
 ###
 # Error on the 3 user files is python is ignoring the `users-` part of the table name so it is trying to load into '-permissions_permission'
@@ -39,7 +39,7 @@ sleep 1
 ###
 #python3 loadseed.pl --development -seedfile ../CSV/exampleData/bmsites.csv
 #python3 loadseed.pl --development -seedfile ../CSV/exampleData/bodies.csv
-#python3 loadseed.pl --development -seedfile ../CSV/exampleData/btsites.csv
+python3 loadseed.pl --development -seedfile ../CSV/exampleData/btsites.csv
 #python3 loadseed.pl --development -seedfile ../CSV/exampleData/cmdrs.csv
 #python3 loadseed.pl --development -seedfile ../CSV/exampleData/fgsites.csv
 #python3 loadseed.pl --development -seedfile ../CSV/exampleData/fmsites.csv
@@ -54,7 +54,7 @@ sleep 1
 #python3 loadseed.pl --development -seedfile ../CSV/exampleData/grgroups.csv
 #python3 loadseed.pl --development -seedfile ../CSV/exampleData/grobelisks.csv
 #python3 loadseed.pl --development -seedfile ../CSV/exampleData/grsites.csv
-python3 loadseed.pl --development -seedfile ../CSV/exampleData/grtypes.csv
+#python3 loadseed.pl --development -seedfile ../CSV/exampleData/grtypes.csv
 #python3 loadseed.pl --development -seedfile ../CSV/exampleData/gsactivegroups.csv
 #python3 loadseed.pl --development -seedfile ../CSV/exampleData/gsactiveobelisks.csv
 #python3 loadseed.pl --development -seedfile ../CSV/exampleData/gsartifacts.csv
