@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
 
 '''
-python3 body_update_edsm.py --development
+python3 loadseed.pl --development -seedfile ../path/to/seed/csv/file
 
-This will get a list of system id64s 
-it will also stream the bodies dump from EDSM
+Script used to load example data from CSV format into the development database
 
-ech system it recognises fromn the list it will do an update or insert on the body
+'''
 
-
+'''
+Running anywhere needs the following:
+pip3 install PyMySQL
+pip3 install requests
 '''
 
 import argparse
@@ -22,11 +24,7 @@ import csv
 
 from datetime import datetime
 
-"""
-Running anywhere needs the following:
-pip3 install PyMySQL
-pip3 install requests
-"""
+
 cwd = os.getcwd()
 config_file_path = '../../config/environments/{}/database.json'
 
@@ -34,7 +32,7 @@ config_file_path = '../../config/environments/{}/database.json'
 # 1. Development
 # 2. Staging
 # 3. Production
-parser = argparse.ArgumentParser(description='Update script to retrieve missing stellar system information from EDSM')
+parser = argparse.ArgumentParser(description='Script used to load example data from CSV format into the development database')
 
 parser.add_argument(
     '--development',
@@ -67,7 +65,7 @@ parser.add_argument(
 )
 
 
-# Add an argument to set a maximum batch amount before stopping
+# Path to seed CSV File
 parser.add_argument(
     '-seedfile',
     help='path to the seed file',
@@ -131,15 +129,15 @@ connection = pymysql.connect(
     cursorclass=pymysql.cursors.DictCursor
 )
 
-table_name=os.path.basename(args.seed_file).split("-")[0]
+table_name=os.path.basename(args.seed_file).split(".")[0]
 seed_path=os.path.abspath(args.seed_file)
 
 print("Loading data for {}".format(table_name))
 
 schema_sql='''
-    select 
-    column_name from information_schema.columns 
-    where lower(table_name) = {} 
+    select
+    column_name from information_schema.columns
+    where lower(table_name) = {}
     order by ordinal_position asc
 '''
 
@@ -156,15 +154,15 @@ placestr=""
 try:
     print('Opening connection to MySQL DB')
     with connection.cursor() as cursor:
-        
+
         cursor.execute(schema_sql.format('%s'),(table_name))
         result = cursor.fetchall()
         for row in result:
             columns.append(row["column_name"])
             colstr=colstr+","+row["column_name"]
-            placestr=placestr+",%s"
-	   
-        print(colstr[1:])    
+            placestr=placestr+",'%s'"
+
+        print(colstr[1:])
         placestr=placestr[1:]
 
         cursor.execute(truncate_sql.format(table_name))

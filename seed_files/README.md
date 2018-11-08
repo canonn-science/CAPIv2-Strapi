@@ -30,6 +30,7 @@ All example files come in CSV format as modified data from our google sheets, th
 ### Celestial
 * [System](https://docs.google.com/spreadsheets/d/e/2PACX-1vSfQCur4X4NebTeT8LMn4tFlwVDuJLRoF5apWg0pzHAJUbjQjdBlIcNe6y2HsShrUpPnSjY4v6fWxVf/pub?gid=0&single=true&output=csv)
 * [Body](https://docs.google.com/spreadsheets/d/e/2PACX-1vQeALF5cIrs55UU_WSSamuzTW140oGRXANjk3A0g5PN84iK_qrrMa6To1bvSGrR5oSjC4vtUGbfazge/pub?gid=0&single=true&output=csv)
+* [RingType](https://docs.google.com/spreadsheets/d/e/2PACX-1vQdHQIFCPWgmj20B5JQQkTqpvRZuHHfpQq--Pn5aHsJDecbb4s7fVx6bM0dMFI09Fkrh3D1CTpXPwFt/pub?gid=0&single=true&output=csv)
 
 ### Bark Mounds
 * [BM](https://docs.google.com/spreadsheets/d/e/2PACX-1vRg0MK3POtXYWmb7WP04g83W8mY6eI5SBDbCuj3T3shi5-D9KyTenBbUSZAB4L1AJ-xqmfqiT2c51cm/pub?gid=0&single=true&output=csv)
@@ -77,6 +78,9 @@ All example files come in CSV format as modified data from our google sheets, th
 ### Lava Spouts
 * [LS](https://docs.google.com/spreadsheets/d/e/2PACX-1vTcivnSa87wDN1v1nI3NoTXczo8a0uC_V9o8QwQ3WExp2DPv5xNnIjp7CcqaCUWDe8eVy4uJps9MFNb/pub?gid=0&single=true&output=csv)
 
+### Megaships
+* [MSType](https://docs.google.com/spreadsheets/d/e/2PACX-1vTxvwdxQwWsh7aum0XwB1tjOfSB80TFpiaGbUh2yVHZ9JXJl9XjL5coqkQ6mknFhnjSo8qSzYVvXRIY/pub?gid=0&single=true&output=csv)
+
 ### Thargoid Barnacles
 * [TB](https://docs.google.com/spreadsheets/d/e/2PACX-1vTUQsBr9nCTNl_PxHOi8O9VAEvgFtlCFH7reGMbam0FIP7SLJtDIz2_wEI8w4yTxevilrctlrk4Mnoz/pub?gid=0&single=true&output=csv)
 * [TBCycle](https://docs.google.com/spreadsheets/d/e/2PACX-1vTwm3_zkk1fzuFO4Rdh-VmC6Fbupdxryggp4LHbtX8QX9FjrSBjBK4MLE-Ping0gq5jHarr5rUoXXuK/pub?gid=0&single=true&output=csv)
@@ -85,3 +89,6 @@ All example files come in CSV format as modified data from our google sheets, th
 ### Thargoid Structures
 * [TS](https://docs.google.com/spreadsheets/d/e/2PACX-1vS7-JB6SchZ76dMbq08lFxH7ijZuZ-b02gY210o2Ge1cpMV1HSXYwo-DFRlYB1gea93bOwaKU8oemS6/pub?gid=0&single=true&output=csv)
 * [TSStatus](https://docs.google.com/spreadsheets/d/e/2PACX-1vRHH7eDa-q5U1jBAMzW-I_N15wOhWe4sg_IfOpywyKGfBQ4T_k-RKw1PGV9KjXbkGOwODreNtG5xVKn/pub?gid=0&single=true&output=csv)
+
+### Unknown Signal Sources
+* [USSType](https://docs.google.com/spreadsheets/d/e/2PACX-1vQvCyaOUjscvIyuVAusN7IY78xcn-4IPAFfBOFQ9j5jTMclIm3S-yTf2WkmMPUv1HgKlu46LYzPQQdY/pub?gid=0&single=true&output=csv)
