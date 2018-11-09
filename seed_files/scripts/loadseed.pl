@@ -21,6 +21,7 @@ import pymysql.cursors
 import time
 import urllib
 import csv
+import subprocess
 
 from datetime import datetime
 
@@ -117,68 +118,24 @@ port = data['connections']['default']['settings']['port']
 database = data['connections']['default']['settings']['database']
 username = data['connections']['default']['settings']['username']
 password = data['connections']['default']['settings']['password']
+path = '../CSV/exampleData/bmsites.csv'
 
-# Initialise connection to MySQL
-connection = pymysql.connect(
-    host=host,
-    port=port,
-    user=username,
-    password=password,
-    db=database,
-    charset='utf8',
-    cursorclass=pymysql.cursors.DictCursor
+# Use mysqlimport to load the seedfile into the database
+
+subprocess.call([
+  "mysqlimport",
+  "--ignore-lines=1",
+  "--fields-terminated-by=,",
+  "--verbose",
+  "--local",
+  "--replace",
+  "--host", host,
+  "--port", port,
+  "--user", username,
+  "--password", password,
+  database,
+  path
+  ],
+  shell=True
 )
-
-table_name=os.path.basename(args.seed_file).split(".")[0]
-seed_path=os.path.abspath(args.seed_file)
-
-print("Loading data for {}".format(table_name))
-
-schema_sql='''
-    select
-    column_name from information_schema.columns
-    where lower(table_name) = {}
-    order by ordinal_position asc
-'''
-
-truncate_sql="truncate table {}";
-
-# filename tablename columnslist
-load_sql='insert into {} ({}) values ({})'
-
-
-columns=[]
-colstr=""
-placestr=""
-
-try:
-    print('Opening connection to MySQL DB')
-    with connection.cursor() as cursor:
-
-        cursor.execute(schema_sql.format('%s'),(table_name))
-        result = cursor.fetchall()
-        for row in result:
-            columns.append(row["column_name"])
-            colstr=colstr+","+row["column_name"]
-            placestr=placestr+",%s"
-
-        print(colstr[1:])
-        placestr=placestr[1:]
-
-        cursor.execute(truncate_sql.format(table_name))
-
-        with open(seed_path) as csvfile:
-            reader = csv.reader(csvfile, delimiter = ',')
-	    #skip first row
-            next(reader,None)
-            for row in reader:
-                print("inserting")
-                cursor.execute(load_sql.format(table_name,colstr[1:],placestr),row)
-
-        connection.commit()
-
-finally:
-    print('Closing connection to MySQL DB')
-    connection.commit()
-    connection.close()
 
