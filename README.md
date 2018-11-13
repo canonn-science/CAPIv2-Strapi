@@ -1,7 +1,7 @@
 # Canonn API v2 - (CAPIv2)
 
-[![Strapi Version](https://img.shields.io/badge/strapi-v3.0.0--alpha.14.4.0-blue.svg)](https://github.com/strapi/strapi) 
-[![CAPIv2 Version](https://img.shields.io/badge/capiv2-v2.0.14-orange.svg)](https://api.canonn.tech:2083) 
+[![Strapi Version](https://img.shields.io/badge/strapi-v3.0.0--alpha.14.5-blue.svg)](https://github.com/strapi/strapi) 
+[![CAPIv2 Version](https://img.shields.io/badge/capiv2-v2.0.15-orange.svg)](https://api.canonn.tech:2083) 
 [![Build Status](https://travis-ci.org/canonn-science/CAPIv2-Strapi.svg?branch=development)](https://travis-ci.org/canonn-science/CAPIv2-Strapi)
 [![EDCD Discord](https://img.shields.io/discord/164411426939600896.svg?logo=discord&label=EDCD%20Discord)](https://discord.gg/fhDWZBH)
 [![Canonn Discord](https://img.shields.io/discord/146714487695605760.svg?logo=discord&label=Canonn%20Discord)](https://discord.gg/HzzmG2f)
@@ -9,30 +9,7 @@
 
 # Table of Contents
 
-<!-- TOC -->
-
-- [Canonn API v2 - (CAPIv2)](#canonn-api-v2---capiv2)
-- [Table of Contents](#table-of-contents)
-- [Intro](#intro)
-    - [Current Version](#current-version)
-- [API Documentation](#api-documentation)
-- [Prerequisites](#prerequisites)
-    - [Installing Git, Node v10, and NPM v6](#installing-git-node-v10-and-npm-v6)
-    - [Install PM2 to run as a service](#install-pm2-to-run-as-a-service)
-    - [Install Strapi Alpha Latest](#install-strapi-alpha-latest)
-    - [Setup MariaDB](#setup-mariadb)
-- [Create Database & User for Strapi](#create-database--user-for-strapi)
-- [Clone the CAPIv2-Strapi project and Setup](#clone-the-capiv2-strapi-project-and-setup)
-    - [Clone the API](#clone-the-api)
-    - [Enter the directory and install](#enter-the-directory-and-install)
-    - [Setup python3 for scripts](#setup-python3-for-scripts)
-    - [Create the Dev database.json](#create-the-dev-databasejson)
-    - [Start CAPIv2 for the first time](#start-capiv2-for-the-first-time)
-    - [Create the Admin User](#create-the-admin-user)
-    - [Running CAPIv2 as a service](#running-capiv2-as-a-service)
-- [Seed files for testing](#seed-files-for-testing)
-
-<!-- /TOC -->
+<!-- TOC -->autoauto- [Canonn API v2 - (CAPIv2)](#canonn-api-v2---capiv2)auto- [Table of Contents](#table-of-contents)auto- [Intro](#intro)auto    - [Current Version](#current-version)auto- [API Documentation](#api-documentation)auto- [Prerequisites](#prerequisites)auto    - [Installing Git, Node v10, and NPM v6](#installing-git-node-v10-and-npm-v6)auto    - [Install PM2 to run as a service](#install-pm2-to-run-as-a-service)auto    - [Install Strapi Alpha Latest](#install-strapi-alpha-latest)auto    - [Setup MariaDB](#setup-mariadb)auto- [Create Database & User for Strapi](#create-database--user-for-strapi)auto- [Clone the CAPIv2-Strapi project and Setup](#clone-the-capiv2-strapi-project-and-setup)auto    - [Clone the API](#clone-the-api)auto    - [Enter the directory and install](#enter-the-directory-and-install)auto    - [Setup python3 for scripts](#setup-python3-for-scripts)auto    - [Create the Dev database.json](#create-the-dev-databasejson)auto    - [Start CAPIv2 for the first time](#start-capiv2-for-the-first-time)auto    - [Create the Admin User](#create-the-admin-user)auto    - [Running CAPIv2 as a service](#running-capiv2-as-a-service)auto- [Seed files for testing](#seed-files-for-testing)autoauto<!-- /TOC -->
 
 # Intro
 
@@ -92,7 +69,7 @@ Also we are tracking the following:
 
 ## Current Version
 
-The current version of the CAPIv2 is `v2.0.14` and is still in active development and testing. If you would like to contribute please PM DMehaffy on discord `DMehaffy#1337`
+The current version of the CAPIv2 is `v2.0.15` and is still in active development and testing. If you would like to contribute please PM DMehaffy on discord `DMehaffy#1337`
 
 # API Documentation
 
