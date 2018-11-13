@@ -80,7 +80,8 @@ CREATE TABLE `bmsites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `bmsites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -142,6 +143,7 @@ CREATE TABLE `bodies` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
+  UNIQUE KEY `bodies_UN_edsmID` (`edsmID`),
   FULLTEXT KEY `SEARCH_BODIES` (`bodyName`,`edsmType`,`edsmSubtype`,`edsmLuminosity`,`edsmVolcanismType`,`edsmAtmosphereType`,`edsmTerraformingState`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -220,7 +222,8 @@ CREATE TABLE `btsites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `btsites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -246,6 +249,7 @@ CREATE TABLE `cmdrs` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
+  UNIQUE KEY `cmdrs_UN_cmdrName` (`cmdrName`),
   FULLTEXT KEY `SEARCH_CMDRS` (`cmdrName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -384,7 +388,8 @@ CREATE TABLE `fgsites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `fgsites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -464,7 +469,8 @@ CREATE TABLE `fmsites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `fmsites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -488,6 +494,7 @@ CREATE TABLE `fmtypes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `fmtypes_UN_type` (`type`),
   FULLTEXT KEY `SEARCH_FMTYPES` (`type`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -498,7 +505,7 @@ CREATE TABLE `fmtypes` (
 
 LOCK TABLES `fmtypes` WRITE;
 /*!40000 ALTER TABLE `fmtypes` DISABLE KEYS */;
-INSERT INTO `fmtypes` VALUES (1,'Water Magma'),(2,'Sulphur Dioxide Magma'),(3,'Ammonia Magma'),(4,'Methane Magma'),(5,'Silicate Magma');
+INSERT INTO `fmtypes` VALUES (3,'Ammonia Magma'),(4,'Methane Magma'),(5,'Silicate Magma'),(2,'Sulphur Dioxide Magma'),(1,'Water Magma');
 /*!40000 ALTER TABLE `fmtypes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -595,7 +602,8 @@ CREATE TABLE `gbsites` (
   `gbmessage` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `gbsites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -671,6 +679,8 @@ CREATE TABLE `gensites` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
+  UNIQUE KEY `gensites_UN_siteID` (`siteID`),
+  UNIQUE KEY `gensites_UN_shipName` (`shipName`),
   FULLTEXT KEY `SEARCH_GENSITES` (`shipName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -747,6 +757,7 @@ CREATE TABLE `grartifacts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `artifactName` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `grartifacts_UN_artifactName` (`artifactName`),
   FULLTEXT KEY `SEARCH_GRARTIFACTS` (`artifactName`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -772,6 +783,7 @@ CREATE TABLE `grcodexcategories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `categoryName` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `grcodexcategories_UN_categoryName` (`categoryName`),
   FULLTEXT KEY `SEARCH_GRCODEXCATEGORIES` (`categoryName`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -990,7 +1002,8 @@ CREATE TABLE `grsites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `grsites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1014,6 +1027,7 @@ CREATE TABLE `grtypes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `grtypes_UN_type` (`type`),
   FULLTEXT KEY `SEARCH_GRTYPES` (`type`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1091,6 +1105,7 @@ CREATE TABLE `gsartifacts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `artifactName` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `gsartifacts_UN_artifactName` (`artifactName`),
   FULLTEXT KEY `SEARCH_GSARTIFACTS` (`artifactName`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1101,7 +1116,7 @@ CREATE TABLE `gsartifacts` (
 
 LOCK TABLES `gsartifacts` WRITE;
 /*!40000 ALTER TABLE `gsartifacts` DISABLE KEYS */;
-INSERT INTO `gsartifacts` VALUES (1,'Casket\r'),(2,'Orb\r'),(3,'Relic\r'),(4,'Tablet\r'),(5,'Totem\r'),(6,'Urn\r'),(7,'Thargoid Sensor\r'),(8,'Thargoid Probe\r'),(9,'Thargoid Link\r'),(10,'Cyclops Tissue\r'),(11,'Basilisk Tissue\r'),(12,'Medusa Tissue');
+INSERT INTO `gsartifacts` VALUES (11,'Basilisk Tissue\r'),(1,'Casket\r'),(10,'Cyclops Tissue\r'),(12,'Medusa Tissue'),(2,'Orb\r'),(3,'Relic\r'),(4,'Tablet\r'),(9,'Thargoid Link\r'),(8,'Thargoid Probe\r'),(7,'Thargoid Sensor\r'),(5,'Totem\r'),(6,'Urn\r');
 /*!40000 ALTER TABLE `gsartifacts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1116,6 +1131,7 @@ CREATE TABLE `gscodexcategories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `categoryName` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `gscodexcategories_UN_categoryName` (`categoryName`),
   FULLTEXT KEY `SEARCH_GSCODEXCATEGORIES` (`categoryName`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1126,7 +1142,7 @@ CREATE TABLE `gscodexcategories` (
 
 LOCK TABLES `gscodexcategories` WRITE;
 /*!40000 ALTER TABLE `gscodexcategories` DISABLE KEYS */;
-INSERT INTO `gscodexcategories` VALUES (1,'Thargoid\r'),(2,'Civil War\r'),(3,'Technology\r'),(4,'Language\r'),(5,'Body Protectorate');
+INSERT INTO `gscodexcategories` VALUES (5,'Body Protectorate'),(2,'Civil War\r'),(4,'Language\r'),(3,'Technology\r'),(1,'Thargoid\r');
 /*!40000 ALTER TABLE `gscodexcategories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1336,7 +1352,8 @@ CREATE TABLE `gssites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `gssites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1361,6 +1378,7 @@ CREATE TABLE `gstypes` (
   `type` varchar(255) DEFAULT NULL,
   `journalName` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `gstypes_UN_type` (`type`),
   FULLTEXT KEY `SEARCH_GSTYPES` (`type`,`journalName`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1442,7 +1460,8 @@ CREATE TABLE `gysites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `gysites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1466,6 +1485,7 @@ CREATE TABLE `gytypes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `gytypes_UN_type` (`type`),
   FULLTEXT KEY `SEARCH_GYTYPES` (`type`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1641,7 +1661,8 @@ CREATE TABLE `lssites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `lssites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1723,6 +1744,8 @@ CREATE TABLE `mssites` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
+  UNIQUE KEY `mssites_UN_siteID` (`siteID`),
+  UNIQUE KEY `mssites_UN_shipName` (`shipName`),
   FULLTEXT KEY `SEARCH_MSSITES` (`shipName`,`shipTag`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1747,6 +1770,7 @@ CREATE TABLE `mstypes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `mstypes_UN_type` (`type`),
   FULLTEXT KEY `SEARCH_MSTYPES` (`type`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1841,6 +1865,7 @@ CREATE TABLE `ringtypes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `ringtypes_UN_type` (`type`),
   FULLTEXT KEY `SEARCH_RINGTYPES` (`type`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1851,7 +1876,7 @@ CREATE TABLE `ringtypes` (
 
 LOCK TABLES `ringtypes` WRITE;
 /*!40000 ALTER TABLE `ringtypes` DISABLE KEYS */;
-INSERT INTO `ringtypes` VALUES (1,'Icy\r'),(2,'Metallic\r'),(3,'Metal Rich\r'),(4,'Rocky');
+INSERT INTO `ringtypes` VALUES (1,'Icy\r'),(3,'Metal Rich\r'),(2,'Metallic\r'),(4,'Rocky');
 /*!40000 ALTER TABLE `ringtypes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1875,6 +1900,8 @@ CREATE TABLE `systems` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
+  UNIQUE KEY `systems_UN_systemName` (`systemName`),
+  UNIQUE KEY `systems_UN_edsmID` (`edsmID`),
   FULLTEXT KEY `SEARCH_SYSTEMS` (`systemName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1899,6 +1926,7 @@ CREATE TABLE `tbcycles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cycle` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `tbcycles_UN` (`cycle`),
   FULLTEXT KEY `SEARCH_TBCYCLES` (`cycle`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1909,7 +1937,7 @@ CREATE TABLE `tbcycles` (
 
 LOCK TABLES `tbcycles` WRITE;
 /*!40000 ALTER TABLE `tbcycles` DISABLE KEYS */;
-INSERT INTO `tbcycles` VALUES (1,'Unknown'),(2,'A\r'),(3,'B\r'),(4,'C\r'),(5,'ABC\r');
+INSERT INTO `tbcycles` VALUES (2,'A\r'),(5,'ABC\r'),(3,'B\r'),(4,'C\r'),(1,'Unknown');
 /*!40000 ALTER TABLE `tbcycles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1984,6 +2012,7 @@ CREATE TABLE `tbsites` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
+  UNIQUE KEY `tbsites_UN_siteID` (`siteID`),
   FULLTEXT KEY `SEARCH_TBSITES` (`comment`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -2009,6 +2038,7 @@ CREATE TABLE `tbtypes` (
   `type` varchar(255) DEFAULT NULL,
   `metaAlloyCount` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `tbtypes_UN_type` (`type`),
   FULLTEXT KEY `SEARCH_TBTYPES` (`type`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -2123,7 +2153,8 @@ CREATE TABLE `tssites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `tssites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2147,6 +2178,7 @@ CREATE TABLE `tsstatuses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `status` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `tsstatuses_UN_status` (`status`),
   FULLTEXT KEY `SEARCH_TSSTATUSES` (`status`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -2226,7 +2258,8 @@ CREATE TABLE `twsites` (
   `discoveredBy` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `twsites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2466,6 +2499,7 @@ CREATE TABLE `usstypes` (
   `type` varchar(255) DEFAULT NULL,
   `journalName` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `usstypes_UN_type` (`type`),
   FULLTEXT KEY `SEARCH_USSTYPES` (`type`,`journalName`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -2493,4 +2527,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-09  3:08:59
+-- Dump completed on 2018-11-13 12:39:31
