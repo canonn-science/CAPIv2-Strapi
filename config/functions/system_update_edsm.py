@@ -14,8 +14,8 @@ pip3 install PyMySQL
 pip3 install requests
 """
 cwd = os.getcwd()
-#config_file_path = cwd + '/config/environments/{}/database.json'
-config_file_path = '../environments/{}/database.json'
+config_file_path = cwd + '/config/environments/{}/database.json'
+#config_file_path = '../environments/{}/database.json'
 
 # Initialising the Argument Parser and adding the three arguments required:
 # 1. Development
