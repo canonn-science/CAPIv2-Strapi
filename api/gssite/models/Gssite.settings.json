@@ -23,6 +23,11 @@
       "type": "integer",
       "required": true
     },
+    "extoolID": {
+      "unique": true,
+      "min": 1,
+      "type": "integer"
+    },
     "latitude": {
       "type": "float",
       "required": true
