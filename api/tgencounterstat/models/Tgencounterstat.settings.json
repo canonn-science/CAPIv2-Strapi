@@ -1,0 +1,43 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "tgencounterstat",
+    "description": "TG_ENCOUNTERS from the Statistics Journal Event"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "hyperdictionSystemName": {
+      "default": "",
+      "type": "string"
+    },
+    "hyperdictionTimestamp": {
+      "default": "",
+      "type": "date"
+    },
+    "cmdrName": {
+      "default": "",
+      "type": "string"
+    },
+    "wakesScanned": {
+      "default": "",
+      "type": "integer"
+    },
+    "thargoidScans": {
+      "default": "",
+      "type": "integer"
+    },
+    "thargoidSites": {
+      "default": "",
+      "type": "integer"
+    },
+    "hyperdictions": {
+      "default": "",
+      "type": "integer"
+    }
+  }
+}

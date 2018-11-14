@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/tgencounterstats",
+      "handler": "Tgencounterstat.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tgencounterstats/count",
+      "handler": "Tgencounterstat.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tgencounterstats/:id",
+      "handler": "Tgencounterstat.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tgencounterstats",
+      "handler": "Tgencounterstat.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tgencounterstats/:id",
+      "handler": "Tgencounterstat.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tgencounterstats/:id",
+      "handler": "Tgencounterstat.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tgencounterstats/:id/relationships/:relation",
+      "handler": "Tgencounterstat.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tgencounterstats/:id/relationships/:relation",
+      "handler": "Tgencounterstat.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tgencounterstats/:id/relationships/:relation",
+      "handler": "Tgencounterstat.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
