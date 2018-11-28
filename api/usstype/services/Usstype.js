@@ -1,4 +1,5 @@
 'use strict';
+/* global Usstype */
 
 /**
  * Usstype.js service
@@ -9,9 +10,6 @@
 // Public dependencies.
 const _ = require('lodash');
 
-// Strapi utilities.
-const utils = require('strapi-hook-bookshelf/lib/utils/');
-
 module.exports = {
 
   /**
@@ -21,6 +19,8 @@ module.exports = {
    */
 
   fetchAll: (params) => {
+    // Get model hook
+    const hook = strapi.hook[Usstype.orm];
     // Convert `params` object to filters compatible with Bookshelf.
     const filters = strapi.utils.models.convertParams('usstype', params);
     // Select field to populate.
@@ -29,22 +29,18 @@ module.exports = {
       .map(ast => ast.alias);
 
     return Usstype.query(function(qb) {
-      _.forEach(filters.where, (where, key) => {
-        if (_.isArray(where.value) && where.symbol !== 'IN') {
-          for (const value in where.value) {
-            qb[value ? 'where' : 'orWhere'](key, where.symbol, where.value[value])
-          }
+      // Generate match stage.
+      hook.load().generateMatchStage(qb)(Usstype, filters);
+
+      if (_.has(filters, 'start')) qb.offset(filters.start);
+      if (_.has(filters, 'limit')) qb.limit(filters.limit);
+      if (!_.isEmpty(filters.sort)) {
+        if (filters.sort.key) {
+          qb.orderBy(filters.sort.key, filters.sort.order);
         } else {
-          qb.where(key, where.symbol, where.value);
+          qb.orderBy(filters.sort);
         }
-      });
-
-      if (filters.sort) {
-        qb.orderBy(filters.sort.key, filters.sort.order);
       }
-
-      qb.offset(filters.start);
-      qb.limit(filters.limit);
     }).fetchAll({
       withRelated: populate
     });
@@ -81,7 +77,7 @@ module.exports = {
       _.forEach(filters.where, (where, key) => {
         if (_.isArray(where.value)) {
           for (const value in where.value) {
-            qb[value ? 'where' : 'orWhere'](key, where.symbol, where.value[value])
+            qb[value ? 'where' : 'orWhere'](key, where.symbol, where.value[value]);
           }
         } else {
           qb.where(key, where.symbol, where.value);
