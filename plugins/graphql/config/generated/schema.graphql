@@ -1832,6 +1832,7 @@ input FileInput {
   size: String!
   url: String!
   provider: String!
+  public_id: String
   related: [ID]
 }
 
@@ -4365,6 +4366,7 @@ type UploadFile {
   size: String!
   url: String!
   provider: String!
+  public_id: String
   related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
 }
 
