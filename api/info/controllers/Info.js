@@ -9,23 +9,31 @@
 module.exports = {
 
   /**
-   * Retrieve app configs.
+   * Retrieve CAPI Info.
    *
    * @return {Object}
    */
 
   info: (ctx) => {
     ctx.send({
-      proxyEnabled: strapi.config.proxy.enabled,
-      proxyHost: strapi.config.proxy.host,
-      proxySSLEnabled: strapi.config.proxy.ssl,
-      proxySSLPort: strapi.config.proxy.port
+      name: strapi.config.info.name,
+      description: strapi.config.info.description,
+      email: strapi.config.info.author.email,
+      strapiVersion: strapi.config.info.strapi,
+      capiVersion: strapi.config.info.version
     });
   },
 
+  /**
+   * Retrieve CAPI Version.
+   *
+   * @return {Object}
+   */
+
   version: (ctx) => {
     ctx.send({
-      version: strapi.config.version
+      strapiVersion: strapi.config.info.strapi,
+      capiVersion: strapi.config.info.version
     });
   }
 };
