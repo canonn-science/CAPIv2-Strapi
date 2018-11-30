@@ -85,40 +85,40 @@ type Body {
   updatedAt: DateTime!
   system: System
   bodyName: String!
+  id64: Float
   edsmID: Float
-  edsmID64: Float
-  edsmBodyID: Int
-  edsmType: String
-  edsmSubtype: String
-  edsmOffset: Int
-  edsmDistanceToArrival: Float
-  edsmIsMainStar: Boolean
-  edsmIsScoopable: Boolean
-  edsmIsLandable: Boolean
-  edsmAge: Int
-  edsmLuminosity: String
-  edsmAbsoluteMagnitude: Float
-  edsmSolarMasses: Float
-  edsmSolarRadius: Float
-  edsmGravity: Float
-  edsmEarthMasses: Float
-  edsmRadius: Float
-  edsmSurfaceTemperature: Float
-  edsmSurfacePressure: Float
-  edsmVolcanismType: String
-  edsmAtmosphereType: String
-  edsmTerraformingState: String
-  edsmOrbitalPeriod: Float
-  edsmSemiMajorAxis: Float
-  edsmOrbitalEccentricity: Float
-  edsmOrbitalInclination: Float
-  edsmArgOfPeriapsis: Float
-  edsmRotationalPeriod: Float
-  edsmRotationalPeriodTidallyLocked: Boolean
-  edsmAxialTilt: Float
-  edsmSolidComposition: JSON
-  edsmAtmosphere: JSON
-  edsmMaterial: JSON
+  bodyID: Int
+  type: String
+  subType: String
+  offset: Int
+  distanceToArrival: Float
+  isMainStar: Boolean
+  isScoopable: Boolean
+  isLandable: Boolean
+  age: Int
+  luminosity: String
+  absoluteMagnitude: Float
+  solarMasses: Float
+  solarRadius: Float
+  gravity: Float
+  earthMasses: Float
+  radius: Float
+  surfaceTemperature: Float
+  surfacePressure: Float
+  volcanismType: String
+  atmosphereType: String
+  terraformingState: String
+  orbitalPeriod: Float
+  semiMajorAxis: Float
+  orbitalEccentricity: Float
+  orbitalInclination: Float
+  argOfPeriapsis: Float
+  rotationalPeriod: Float
+  rotationalPeriodTidallyLocked: Boolean
+  axialTilt: Float
+  solidComposition: JSON
+  atmosphere: JSON
+  material: JSON
   missingSkipCount: Int
   rings(sort: String, limit: Int, start: Int, where: JSON): [Ring]
 }
@@ -126,40 +126,40 @@ type Body {
 input BodyInput {
   system: ID
   bodyName: String!
+  id64: Float
   edsmID: Float
-  edsmID64: Float
-  edsmBodyID: Int
-  edsmType: String
-  edsmSubtype: String
-  edsmOffset: Int
-  edsmDistanceToArrival: Float
-  edsmIsMainStar: Boolean
-  edsmIsScoopable: Boolean
-  edsmIsLandable: Boolean
-  edsmAge: Int
-  edsmLuminosity: String
-  edsmAbsoluteMagnitude: Float
-  edsmSolarMasses: Float
-  edsmSolarRadius: Float
-  edsmGravity: Float
-  edsmEarthMasses: Float
-  edsmRadius: Float
-  edsmSurfaceTemperature: Float
-  edsmSurfacePressure: Float
-  edsmVolcanismType: String
-  edsmAtmosphereType: String
-  edsmTerraformingState: String
-  edsmOrbitalPeriod: Float
-  edsmSemiMajorAxis: Float
-  edsmOrbitalEccentricity: Float
-  edsmOrbitalInclination: Float
-  edsmArgOfPeriapsis: Float
-  edsmRotationalPeriod: Float
-  edsmRotationalPeriodTidallyLocked: Boolean
-  edsmAxialTilt: Float
-  edsmSolidComposition: JSON
-  edsmAtmosphere: JSON
-  edsmMaterial: JSON
+  bodyID: Int
+  type: String
+  subType: String
+  offset: Int
+  distanceToArrival: Float
+  isMainStar: Boolean
+  isScoopable: Boolean
+  isLandable: Boolean
+  age: Int
+  luminosity: String
+  absoluteMagnitude: Float
+  solarMasses: Float
+  solarRadius: Float
+  gravity: Float
+  earthMasses: Float
+  radius: Float
+  surfaceTemperature: Float
+  surfacePressure: Float
+  volcanismType: String
+  atmosphereType: String
+  terraformingState: String
+  orbitalPeriod: Float
+  semiMajorAxis: Float
+  orbitalEccentricity: Float
+  orbitalInclination: Float
+  argOfPeriapsis: Float
+  rotationalPeriod: Float
+  rotationalPeriodTidallyLocked: Boolean
+  axialTilt: Float
+  solidComposition: JSON
+  atmosphere: JSON
+  material: JSON
   missingSkipCount: Int
   rings: [ID]
 }
@@ -3380,18 +3380,18 @@ type Ring {
   body: Body
   ringName: String!
   ringtype: Ringtype
-  edsmMass: Float
-  edsmInnerRadius: Float
-  edsmOuterRadius: Float
+  mass: Float
+  innerRadius: Float
+  outerRadius: Float
 }
 
 input RingInput {
   body: ID
   ringName: String!
   ringtype: ID
-  edsmMass: Float
-  edsmInnerRadius: Float
-  edsmOuterRadius: Float
+  mass: Float
+  innerRadius: Float
+  outerRadius: Float
 }
 
 """Type of a Ring"""
@@ -3418,8 +3418,8 @@ type System {
   createdAt: DateTime!
   updatedAt: DateTime!
   systemName: String!
+  id64: Float
   edsmID: Float
-  edsmID64: Float
   edsmCoordX: Float
   edsmCoordY: Float
   edsmCoordZ: Float
@@ -3430,8 +3430,8 @@ type System {
 
 input SystemInput {
   systemName: String!
+  id64: Float
   edsmID: Float
-  edsmID64: Float
   edsmCoordX: Float
   edsmCoordY: Float
   edsmCoordZ: Float
