@@ -17,108 +17,109 @@
     },
     "bodyName": {
       "type": "string",
-      "required": true
+      "required": true,
+      "unique": true
+    },
+    "id64": {
+      "type": "float"
     },
     "edsmID": {
       "type": "float"
     },
-    "edsmID64": {
-      "type": "float"
-    },
-    "edsmBodyID": {
+    "bodyID": {
       "type": "integer"
     },
-    "edsmType": {
+    "type": {
       "type": "string"
     },
-    "edsmSubtype": {
+    "subType": {
       "type": "string"
     },
-    "edsmOffset": {
+    "offset": {
       "type": "integer"
     },
-    "edsmDistanceToArrival": {
+    "distanceToArrival": {
       "type": "float"
     },
-    "edsmIsMainStar": {
+    "isMainStar": {
       "type": "boolean"
     },
-    "edsmIsScoopable": {
+    "isScoopable": {
       "type": "boolean"
     },
-    "edsmIsLandable": {
+    "isLandable": {
       "type": "boolean"
     },
-    "edsmAge": {
+    "age": {
       "type": "integer"
     },
-    "edsmLuminosity": {
+    "luminosity": {
       "type": "string"
     },
-    "edsmAbsoluteMagnitude": {
+    "absoluteMagnitude": {
       "type": "float"
     },
-    "edsmSolarMasses": {
+    "solarMasses": {
       "type": "float"
     },
-    "edsmSolarRadius": {
+    "solarRadius": {
       "type": "float"
     },
-    "edsmGravity": {
+    "gravity": {
       "type": "float"
     },
-    "edsmEarthMasses": {
+    "earthMasses": {
       "type": "float"
     },
-    "edsmRadius": {
+    "radius": {
       "type": "float"
     },
-    "edsmSurfaceTemperature": {
+    "surfaceTemperature": {
       "type": "float"
     },
-    "edsmSurfacePressure": {
+    "surfacePressure": {
       "type": "float"
     },
-    "edsmVolcanismType": {
+    "volcanismType": {
       "type": "string"
     },
-    "edsmAtmosphereType": {
+    "atmosphereType": {
       "type": "string"
     },
-    "edsmTerraformingState": {
+    "terraformingState": {
       "type": "string"
     },
-    "edsmOrbitalPeriod": {
+    "orbitalPeriod": {
       "type": "float"
     },
-    "edsmSemiMajorAxis": {
+    "semiMajorAxis": {
       "type": "float"
     },
-    "edsmOrbitalEccentricity": {
+    "orbitalEccentricity": {
       "type": "float"
     },
-    "edsmOrbitalInclination": {
+    "orbitalInclination": {
       "type": "float"
     },
-    "edsmArgOfPeriapsis": {
+    "argOfPeriapsis": {
       "type": "float"
     },
-    "edsmRotationalPeriod": {
+    "rotationalPeriod": {
       "type": "float"
     },
-    "edsmRotationalPeriodTidallyLocked": {
+    "rotationalPeriodTidallyLocked": {
       "type": "boolean"
     },
-    "edsmAxialTilt": {
+    "axialTilt": {
       "type": "float"
     },
-    "edsmSolidComposition": {
+    "solidComposition": {
       "type": "json"
     },
-    "edsmAtmosphere": {
+    "atmosphere": {
       "type": "json"
     },
-    "edsmMaterial": {
+    "material": {
       "type": "json"
     },
     "missingSkipCount": {

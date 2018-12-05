@@ -142,7 +142,7 @@ names_to_update = []
 
 updated_at_select_sql = 'SELECT systemName, updated_at FROM systems limit '+str(args.batch_size * args.batch_limit)
 null_edsm_id_select_sql = 'SELECT systemName FROM systems WHERE edsmID is NULL limit '+str(args.batch_size * args.batch_limit)
-insert_sql = 'UPDATE `systems` SET edsmCoordX=%s, edsmCoordY=%s, edsmCoordZ=%s, edsmID=%s, edsmID64=%s, edsmCoordLocked=%s WHERE systemName LIKE %s'
+insert_sql = 'UPDATE `systems` SET edsmCoordX=%s, edsmCoordY=%s, edsmCoordZ=%s, edsmID=%s, id64=%s, edsmCoordLocked=%s WHERE systemName LIKE %s'
 
 
 # Reference:
