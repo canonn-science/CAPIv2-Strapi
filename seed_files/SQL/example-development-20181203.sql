@@ -24,14 +24,12 @@ DROP TABLE IF EXISTS `apiupdates`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `apiupdates` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `UpdateTime` timestamp NOT NULL DEFAULT current_timestamp(),
+  `UpdateTime` timestamp NOT NULL DEFAULT NULL,
   `forced` tinyint(1) DEFAULT NULL,
   `systemsUpdated` longtext DEFAULT NULL,
   `bodiesUpdated` longtext DEFAULT NULL,
   `updateLog` longtext DEFAULT NULL,
   `notes` longtext DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_APIUPDATES` (`notes`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
