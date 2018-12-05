@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/apiupdates",
+      "handler": "Apiupdate.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/apiupdates/count",
+      "handler": "Apiupdate.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/apiupdates/:id",
+      "handler": "Apiupdate.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/apiupdates",
+      "handler": "Apiupdate.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/apiupdates/:id",
+      "handler": "Apiupdate.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/apiupdates/:id",
+      "handler": "Apiupdate.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/apiupdates/:id/relationships/:relation",
+      "handler": "Apiupdate.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/apiupdates/:id/relationships/:relation",
+      "handler": "Apiupdate.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/apiupdates/:id/relationships/:relation",
+      "handler": "Apiupdate.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
