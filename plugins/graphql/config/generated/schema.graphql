@@ -1,8 +1,6 @@
 """Canonn API updater logging and errors"""
 type Apiupdate {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
   UpdateTime: DateTime
   forced: Boolean
   systemsUpdated: JSON
