@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `apiupdates`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `apiupdates` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `UpdateTime` timestamp NOT NULL DEFAULT NULL,
+  `UpdateTime` timestamp NULL DEFAULT NULL,
   `forced` tinyint(1) DEFAULT NULL,
   `systemsUpdated` longtext DEFAULT NULL,
   `bodiesUpdated` longtext DEFAULT NULL,
