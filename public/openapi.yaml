@@ -2656,6 +2656,167 @@ paths:
         '500':
           $ref: '#/components/responses/error500'
 
+# GEN Log
+  /genlogs/count:
+    get:
+      tags:
+        - Generation Ships
+      summary: Get a count of all GEN Logs
+      description: The API will respond with just a number, which is the total amount of logs on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getGENLogsCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /genlogs:
+    get:
+      tags:
+        - Generation Ships
+      summary: Get a list of GEN Logs
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getGENLogs
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of GEN Logs
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSiteGENLog'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - Generation Ships
+      summary: Post a new GEN Log
+      description: To be used to add a new log to the Canonn database, these are logs verified by Canonn
+      operationId: submitGENLog
+      security:
+        - canonnAuth: [siteWrite]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postSiteGENLog'
+      responses:
+        '200':
+          description: Log post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSiteGENLog'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /genlogs/{id}:
+    get:
+      tags:
+        - Generation Ships
+      summary: Get a Single GEN Log
+      description: Provide the ID to get a single log
+      operationId: getGENLogById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the GEN Log
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSiteGENLog'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - Generation Ships
+      summary: Update a GEN Log
+      description: You do not need to send the entire log again, you can send only changed fields
+      operationId: updateGENLogById
+      security:
+        - canonnAuth: [siteWrite]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putSiteGENLog'
+      responses:
+        '200':
+          description: Log update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSiteGENLog'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    delete:
+      tags:
+        - Generation Ships
+      summary: Delete a GEN Log
+      description: The response is just an empty JSON, deleting a message requires auth
+      operationId: removeGENLogById
+      security:
+        - canonnAuth: [siteDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
 # GEN Report
   /genreports/count:
     get:
@@ -12442,6 +12603,27 @@ components:
           format: float
         discoveredBy:
           $ref: '#/components/schemas/getCMDR'
+        genlogs:
+          $ref: '#/components/schemas/getSiteGENLog'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getSiteGENLog:
+      properties:
+        id:
+          type: integer
+        gensite:
+          $ref: '#/components/schemas/getSiteGEN'
+        logNumber:
+          type: integer
+        logTitle:
+          type: string
+        logBody:
+          type: string
         created_at:
           type: string
           format: date-time
@@ -14127,6 +14309,22 @@ components:
         discoveredBy:
           type: integer
 
+    postSiteGENLog:
+      required:
+        - gensite
+        - logNumber
+        - logTitle
+        - logBody
+      properties:
+        gensite:
+          type: integer
+        logNumber:
+          type: integer
+        logTitle:
+          type: string
+        logBody:
+          type: string
+
     postSiteGR:
       required:
         - system
@@ -15610,6 +15808,17 @@ components:
           format: float
         discoveredBy:
           type: integer
+
+    putSiteGENLog:
+      properties:
+        gensite:
+          type: integer
+        logNumber:
+          type: integer
+        logTitle:
+          type: string
+        logBody:
+          type: string
 
     putSiteGR:
       properties:
