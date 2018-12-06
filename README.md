@@ -43,7 +43,8 @@ The Canonn APIv2 is designed to handle all our current science projects. Current
 * Fungal Gourds (FG)
 * Fumaroles (FM)
   * FM Types
-* Generation Ships (GEN) - **WIP**
+* Generation Ships (GEN)
+  * GEN Logs
 * Guardian Beacons (GB)
   * GB Messages
 * Guardian Ruins (GR)
@@ -75,7 +76,7 @@ The Canonn APIv2 is designed to handle all our current science projects. Current
   * TB Types
 * Thargoid Structures (TS)
   * TS Status
-* Tubeworms (TW) **Note subject to change**
+* Tubeworms (TW) - **Note subject to change**
 * Unknown Signal Sources (USS) - **WIP**
   * USS Types
 
