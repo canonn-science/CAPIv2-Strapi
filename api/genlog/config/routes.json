@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/genlogs",
+      "handler": "Genlog.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/genlogs/count",
+      "handler": "Genlog.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/genlogs/:id",
+      "handler": "Genlog.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/genlogs",
+      "handler": "Genlog.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/genlogs/:id",
+      "handler": "Genlog.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/genlogs/:id",
+      "handler": "Genlog.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/genlogs/:id/relationships/:relation",
+      "handler": "Genlog.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/genlogs/:id/relationships/:relation",
+      "handler": "Genlog.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/genlogs/:id/relationships/:relation",
+      "handler": "Genlog.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
