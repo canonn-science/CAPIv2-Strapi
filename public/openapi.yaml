@@ -46,7 +46,7 @@ info:
     email: rd@canonn.technology
     url: https://canonn.science
   license:
-    name: MIT
+    name: GNU-GPLv3
     url: https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE
 
 ## Servers
@@ -91,6 +91,167 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/authError'
+
+# API Updater Metadata
+  /apiupdates/count:
+    get:
+      tags:
+        - Canonn Use
+      summary: Get a count of all Update logs from the CAPIv2-Updater
+      description: The API will respond with just a number, which is the total amount of logs on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getAPIUpdatesCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /apiupdates:
+    get:
+      tags:
+        - Canonn Use
+      summary: Get a list of Update logs
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getAPIUpdates
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of Update logs
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAPIUpdate'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - Canonn Use
+      summary: Post a new Update log
+      description: To be used to submit new Update logs from the CAPIv2-Updater
+      operationId: submitAPIUpdates
+      security:
+        - canonnAuth: [updateLogWrite]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postAPIUpdate'
+      responses:
+        '200':
+          description: Report post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAPIUpdate'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /apiupdates/{id}:
+    get:
+      tags:
+        - Canonn Use
+      summary: Get a Single Update log
+      description: Provide the ID to get a single report
+      operationId: getAPIUpdateById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the Update log
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAPIUpdate'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - Canonn Use
+      summary: Update a Update log
+      description: You do not need to send the entire Update log again, you can send only changed fields
+      operationId: updateAPIUpdateById
+      security:
+        - canonnAuth: [updateLogWrite]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putAPIUpdate'
+      responses:
+        '200':
+          description: Update log update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAPIUpdate'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    delete:
+      tags:
+        - Canonn Use
+      summary: Delete a BM Report
+      description: The response is just an empty JSON, deleting a report requires auth
+      operationId: removeAPIUpdateById
+      security:
+        - canonnAuth: [updateLogDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
 
 # BM Report
   /bmreports/count:
@@ -2479,6 +2640,167 @@ paths:
       summary: Delete a GB Site
       description: The response is just an empty JSON, deleting a site requires auth
       operationId: removeGBSiteById
+      security:
+        - canonnAuth: [siteDelete]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Delete Successful
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+# GEN Log
+  /genlogs/count:
+    get:
+      tags:
+        - Generation Ships
+      summary: Get a count of all GEN Logs
+      description: The API will respond with just a number, which is the total amount of logs on this endpoint. This can be used to filter, limit, or page other get requests.
+      operationId: getGENLogsCount
+      security: []
+      responses:
+        '200':
+          description: Total count of all entries in plain text
+          content:
+            text/plain:
+              schema:
+                type: integer
+                example: 42
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /genlogs:
+    get:
+      tags:
+        - Generation Ships
+      summary: Get a list of GEN Logs
+      description: By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries.
+      operationId: getGENLogs
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: A list of GEN Logs
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSiteGENLog'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+    post:
+      tags:
+        - Generation Ships
+      summary: Post a new GEN Log
+      description: To be used to add a new log to the Canonn database, these are logs verified by Canonn
+      operationId: submitGENLog
+      security:
+        - canonnAuth: [siteWrite]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postSiteGENLog'
+      responses:
+        '200':
+          description: Log post successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSiteGENLog'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+  /genlogs/{id}:
+    get:
+      tags:
+        - Generation Ships
+      summary: Get a Single GEN Log
+      description: Provide the ID to get a single log
+      operationId: getGENLogById
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      responses:
+        '200':
+          description: Found the GEN Log
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSiteGENLog'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    put:
+      tags:
+        - Generation Ships
+      summary: Update a GEN Log
+      description: You do not need to send the entire log again, you can send only changed fields
+      operationId: updateGENLogById
+      security:
+        - canonnAuth: [siteWrite]
+      parameters:
+        - $ref: '#/components/parameters/byId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putSiteGENLog'
+      responses:
+        '200':
+          description: Log update successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSiteGENLog'
+        '400':
+          $ref: '#/components/responses/error400'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '500':
+          $ref: '#/components/responses/error500'
+
+    delete:
+      tags:
+        - Generation Ships
+      summary: Delete a GEN Log
+      description: The response is just an empty JSON, deleting a message requires auth
+      operationId: removeGENLogById
       security:
         - canonnAuth: [siteDelete]
       parameters:
@@ -10982,6 +11304,63 @@ components:
         type:
           type: string
 
+  ## Canonn Use Only
+    getAPIUpdate:
+      properties:
+        id:
+          type: integer
+        updatedTime:
+          type: string
+          format: date-time
+        forced:
+          type: boolean
+        systemsUpdated:
+          type: string
+        bodiesUpdated:
+          type: string
+        updateLog:
+          type: string
+        notes:
+          type: string
+
+    postAPIUpdate:
+      required:
+        - updateTime
+      properties:
+        id:
+          type: integer
+        updatedTime:
+          type: string
+          format: date-time
+        forced:
+          type: boolean
+        systemsUpdated:
+          type: string
+        bodiesUpdated:
+          type: string
+        updateLog:
+          type: string
+        notes:
+          type: string
+
+    putAPIUpdate:
+      properties:
+        id:
+          type: integer
+        updatedTime:
+          type: string
+          format: date-time
+        forced:
+          type: boolean
+        systemsUpdated:
+          type: string
+        bodiesUpdated:
+          type: string
+        updateLog:
+          type: string
+        notes:
+          type: string
+
   ## Global GET, POST, PUT Schemas
 
     bodySolidComposition:
@@ -11814,12 +12193,12 @@ components:
           type: integer
         systemName:
           type: string
+        id64:
+          type: number
+          format: double
         edsmID:
           type: number
           format: float
-        edsmID64:
-          type: number
-          format: double
         edsmCoordX:
           type: number
           format: double
@@ -11850,91 +12229,91 @@ components:
           $ref: '#/components/schemas/getLocationSystem'
         bodyName:
           type: string
+        id64:
+          type: number
+          format: double
         edsmID:
           type: number
           format: float
-        edsmID64:
-          type: number
-          format: double
-        edsmBodyID:
+        bodyID:
           type: integer
-        edsmType:
+        type:
           type: string
-        edsmSubtype:
+        subType:
           type: string
-        edsmOffset:
+        offset:
           type: integer
-        edsmDistanceToArrival:
+        distanceToArrival:
           type: number
           format: float
-        edsmIsMainStar:
+        isMainStar:
           type: boolean
-        edsmIsScoopable:
+        isScoopable:
           type: boolean
-        edsmIsLandable:
+        isLandable:
           type: boolean
-        edsmAge:
+        age:
           type: integer
-        edsmLuminosity:
+        luminosity:
           type: string
-        edsmAbsoluteMagnitude:
+        absoluteMagnitude:
           type: number
           format: float
-        edsmSolarMasses:
+        solarMasses:
           type: number
           format: float
-        edsmSolarRadius:
+        solarRadius:
           type: number
           format: float
-        edsmGravity:
+        gravity:
           type: number
           format: float
-        edsmEarthMasses:
+        earthMasses:
           type: number
           format: float
-        edsmRadius:
+        radius:
           type: number
           format: float
-        edsmSurfaceTemperature:
+        surfaceTemperature:
           type: number
           format: float
-        edsmSurfacePressure:
+        surfacePressure:
           type: number
           format: float
-        edsmVolcanismType:
+        volcanismType:
           type: string
-        edsmAtmosphereType:
+        atmosphereType:
           type: string
-        edsmTerraformingState:
+        terraformingState:
           type: string
-        edsmOrbitalPeriod:
+        orbitalPeriod:
           type: number
           format: float
-        edsmSemiMajorAxis:
+        semiMajorAxis:
           type: number
           format: float
-        edsmOrbitalEccentricity:
+        orbitalEccentricity:
           type: number
           format: float
-        edsmOrbitalInclination:
+        orbitalInclination:
           type: number
           format: float
-        edsmArgOfPeriapsis:
+        argOfPeriapsis:
           type: number
           format: float
-        edsmRotationalPeriod:
+        rotationalPeriod:
           type: number
           format: float
-        edsmRotationalPeriodTidallyLocked:
+        rotationalPeriodTidallyLocked:
           type: boolean
-        edsmAxialTilt:
+        axialTilt:
           type: number
           format: float
-        edsmSolidComposition:
+        solidComposition:
           $ref: '#/components/schemas/bodySolidComposition'
-        edsmAtmosphere:
+        atmosphere:
           $ref: '#/components/schemas/bodyAtmosphere'
-        edsmMaterial:
+        material:
           $ref: '#/components/schemas/bodyMaterial'
         missingSkipCount:
           type: integer
@@ -12224,6 +12603,27 @@ components:
           format: float
         discoveredBy:
           $ref: '#/components/schemas/getCMDR'
+        genlogs:
+          $ref: '#/components/schemas/getSiteGENLog'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    getSiteGENLog:
+      properties:
+        id:
+          type: integer
+        gensite:
+          $ref: '#/components/schemas/getSiteGEN'
+        logNumber:
+          type: integer
+        logTitle:
+          type: string
+        logBody:
+          type: string
         created_at:
           type: string
           format: date-time
@@ -13531,12 +13931,12 @@ components:
       properties:
         systemName:
           type: string
+        id64:
+          type: number
+          format: double
         edsmID:
           type: number
           format: float
-        edsmID64:
-          type: number
-          format: double
         edsmCoordX:
           type: number
           format: double
@@ -13559,91 +13959,91 @@ components:
           type: integer
         bodyName:
           type: string
+        id64:
+          type: number
+          format: double
         edsmID:
           type: number
           format: float
-        edsmID64:
-          type: number
-          format: double
-        edsmBodyID:
+        bodyID:
           type: integer
-        edsmType:
+        type:
           type: string
-        edsmSubtype:
+        subType:
           type: string
-        edsmOffset:
+        offset:
           type: integer
-        edsmDistanceToArrival:
+        distanceToArrival:
           type: number
           format: float
-        edsmIsMainStar:
+        isMainStar:
           type: boolean
-        edsmIsScoopable:
+        isScoopable:
           type: boolean
-        edsmIsLandable:
+        isLandable:
           type: boolean
-        edsmAge:
+        age:
           type: integer
-        edsmLuminosity:
+        luminosity:
           type: string
-        edsmAbsoluteMagnitude:
+        absoluteMagnitude:
           type: number
           format: float
-        edsmSolarMasses:
+        solarMasses:
           type: number
           format: float
-        edsmSolarRadius:
+        solarRadius:
           type: number
           format: float
-        edsmGravity:
+        gravity:
           type: number
           format: float
-        edsmEarthMasses:
+        earthMasses:
           type: number
           format: float
-        edsmRadius:
+        radius:
           type: number
           format: float
-        edsmSurfaceTemperature:
+        surfaceTemperature:
           type: number
           format: float
-        edsmSurfacePressure:
+        surfacePressure:
           type: number
           format: float
-        edsmVolcanismType:
+        volcanismType:
           type: string
-        edsmAtmosphereType:
+        atmosphereType:
           type: string
-        edsmTerraformingState:
+        terraformingState:
           type: string
-        edsmOrbitalPeriod:
+        orbitalPeriod:
           type: number
           format: float
-        edsmSemiMajorAxis:
+        semiMajorAxis:
           type: number
           format: float
-        edsmOrbitalEccentricity:
+        orbitalEccentricity:
           type: number
           format: float
-        edsmOrbitalInclination:
+        orbitalInclination:
           type: number
           format: float
-        edsmArgOfPeriapsis:
+        argOfPeriapsis:
           type: number
           format: float
-        edsmRotationalPeriod:
+        rotationalPeriod:
           type: number
           format: float
-        edsmRotationalPeriodTidallyLocked:
+        rotationalPeriodTidallyLocked:
           type: boolean
-        edsmAxialTilt:
+        axialTilt:
           type: number
           format: float
-        edsmSolidComposition:
+        solidComposition:
           $ref: '#/components/schemas/bodySolidComposition'
-        edsmAtmosphere:
+        atmosphere:
           $ref: '#/components/schemas/bodyAtmosphere'
-        edsmMaterial:
+        material:
           $ref: '#/components/schemas/bodyMaterial'
         missingSkipCount:
           type: integer
@@ -13908,6 +14308,22 @@ components:
           format: float
         discoveredBy:
           type: integer
+
+    postSiteGENLog:
+      required:
+        - gensite
+        - logNumber
+        - logTitle
+        - logBody
+      properties:
+        gensite:
+          type: integer
+        logNumber:
+          type: integer
+        logTitle:
+          type: string
+        logBody:
+          type: string
 
     postSiteGR:
       required:
@@ -15068,12 +15484,12 @@ components:
       properties:
         systemName:
           type: string
+        id64:
+          type: number
+          format: double
         edsmID:
           type: number
           format: float
-        edsmID64:
-          type: number
-          format: double
         edsmCoordX:
           type: number
           format: double
@@ -15094,91 +15510,91 @@ components:
           type: integer
         bodyName:
           type: string
+        id64:
+          type: number
+          format: double
         edsmID:
           type: number
           format: float
-        edsmID64:
-          type: number
-          format: double
-        edsmBodyID:
+        bodyID:
           type: integer
-        edsmType:
+        type:
           type: string
-        edsmSubtype:
+        subType:
           type: string
-        edsmOffset:
+        offset:
           type: integer
-        edsmDistanceToArrival:
+        distanceToArrival:
           type: number
           format: float
-        edsmIsMainStar:
+        isMainStar:
           type: boolean
-        edsmIsScoopable:
+        isScoopable:
           type: boolean
-        edsmIsLandable:
+        isLandable:
           type: boolean
-        edsmAge:
+        age:
           type: integer
-        edsmLuminosity:
+        luminosity:
           type: string
-        edsmAbsoluteMagnitude:
+        absoluteMagnitude:
           type: number
           format: float
-        edsmSolarMasses:
+        solarMasses:
           type: number
           format: float
-        edsmSolarRadius:
+        solarRadius:
           type: number
           format: float
-        edsmGravity:
+        gravity:
           type: number
           format: float
-        edsmEarthMasses:
+        earthMasses:
           type: number
           format: float
-        edsmRadius:
+        radius:
           type: number
           format: float
-        edsmSurfaceTemperature:
+        surfaceTemperature:
           type: number
           format: float
-        edsmSurfacePressure:
+        surfacePressure:
           type: number
           format: float
-        edsmVolcanismType:
+        volcanismType:
           type: string
-        edsmAtmosphereType:
+        atmosphereType:
           type: string
-        edsmTerraformingState:
+        terraformingState:
           type: string
-        edsmOrbitalPeriod:
+        orbitalPeriod:
           type: number
           format: float
-        edsmSemiMajorAxis:
+        semiMajorAxis:
           type: number
           format: float
-        edsmOrbitalEccentricity:
+        orbitalEccentricity:
           type: number
           format: float
-        edsmOrbitalInclination:
+        orbitalInclination:
           type: number
           format: float
-        edsmArgOfPeriapsis:
+        argOfPeriapsis:
           type: number
           format: float
-        edsmRotationalPeriod:
+        rotationalPeriod:
           type: number
           format: float
-        edsmRotationalPeriodTidallyLocked:
+        rotationalPeriodTidallyLocked:
           type: boolean
-        edsmAxialTilt:
+        axialTilt:
           type: number
           format: float
-        edsmSolidComposition:
+        solidComposition:
           $ref: '#/components/schemas/bodySolidComposition'
-        edsmAtmosphere:
+        atmosphere:
           $ref: '#/components/schemas/bodyAtmosphere'
-        edsmMaterial:
+        material:
           $ref: '#/components/schemas/bodyMaterial'
         missingSkipCount:
           type: integer
@@ -15392,6 +15808,17 @@ components:
           format: float
         discoveredBy:
           type: integer
+
+    putSiteGENLog:
+      properties:
+        gensite:
+          type: integer
+        logNumber:
+          type: integer
+        logTitle:
+          type: string
+        logBody:
+          type: string
 
     putSiteGR:
       properties:
@@ -15736,8 +16163,22 @@ components:
 ## Security
 security:
   #- userDiscordAuth: [cmdrWrite, uploadWrite]
-  - userAuth: [cmdrWrite, uploadWrite]
-  - canonnAuth: [reportDelete, locationDelete, cmdrDelete, uploadDelete, journalDelete, siteDelete, locationWrite, siteWrite]
+  - userAuth: [
+      cmdrWrite,
+      uploadWrite
+    ]
+  - canonnAuth: [
+      reportDelete,
+      locationDelete,
+      cmdrDelete,
+      uploadDelete,
+      journalDelete,
+      siteDelete,
+      updateLogDelete,
+      locationWrite,
+      siteWrite,
+      updateLogWrite
+    ]
 
 ## Tags
 x-tagGroups:
@@ -15745,6 +16186,10 @@ x-tagGroups:
     tags:
       - Local Auth
       - Discord OAuth2
+  - name: Canonn Use Only
+    tags:
+      - Canonn Use
+      - Journal Data Dumps
   - name: Reports
     tags:
       - CMDRs
@@ -15789,9 +16234,6 @@ x-tagGroups:
       - Thargoid Structures
       - Tube Worms
       - Unknown Signal Sources
-  - name: Testing and Canonn Use
-    tags:
-      - Journal Data Dumps
 tags:
 
   ## Auth
@@ -15799,6 +16241,12 @@ tags:
     description: Local Authentication for the API
   - name: Discord OAuth2
     description: (Coming Soon) Discord OAuth authentication for the API
+
+  ## Canonn Use Only
+  - name: Canonn Use
+    description: Endpoints used by Canonn for updating or maintaining the API
+  - name: Journal Data Dumps
+    description: Testing platform for raw journal dumps, Canonn Only Use
 
   ## Locations
   - name: Systems
@@ -15815,10 +16263,6 @@ tags:
   ## Uploads
   - name: Uploads
     description: Coming soon for storing reporting Screenshots in the API
-
-  ## Journal Data
-  - name: Journal Data Dumps
-    description: Testing platform for raw journal dumps, Canonn Only Use
 
   ## Bark Mounds
   - name: Bark Mounds
