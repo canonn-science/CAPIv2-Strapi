@@ -12193,12 +12193,12 @@ components:
           type: integer
         systemName:
           type: string
+        id64:
+          type: number
+          format: double
         edsmID:
           type: number
           format: float
-        edsmID64:
-          type: number
-          format: double
         edsmCoordX:
           type: number
           format: double
@@ -12229,91 +12229,91 @@ components:
           $ref: '#/components/schemas/getLocationSystem'
         bodyName:
           type: string
+        id64:
+          type: number
+          format: double
         edsmID:
           type: number
           format: float
-        edsmID64:
-          type: number
-          format: double
-        edsmBodyID:
+        bodyID:
           type: integer
-        edsmType:
+        type:
           type: string
-        edsmSubtype:
+        subType:
           type: string
-        edsmOffset:
+        offset:
           type: integer
-        edsmDistanceToArrival:
+        distanceToArrival:
           type: number
           format: float
-        edsmIsMainStar:
+        isMainStar:
           type: boolean
-        edsmIsScoopable:
+        isScoopable:
           type: boolean
-        edsmIsLandable:
+        isLandable:
           type: boolean
-        edsmAge:
+        age:
           type: integer
-        edsmLuminosity:
+        luminosity:
           type: string
-        edsmAbsoluteMagnitude:
+        absoluteMagnitude:
           type: number
           format: float
-        edsmSolarMasses:
+        solarMasses:
           type: number
           format: float
-        edsmSolarRadius:
+        solarRadius:
           type: number
           format: float
-        edsmGravity:
+        gravity:
           type: number
           format: float
-        edsmEarthMasses:
+        earthMasses:
           type: number
           format: float
-        edsmRadius:
+        radius:
           type: number
           format: float
-        edsmSurfaceTemperature:
+        surfaceTemperature:
           type: number
           format: float
-        edsmSurfacePressure:
+        surfacePressure:
           type: number
           format: float
-        edsmVolcanismType:
+        volcanismType:
           type: string
-        edsmAtmosphereType:
+        atmosphereType:
           type: string
-        edsmTerraformingState:
+        terraformingState:
           type: string
-        edsmOrbitalPeriod:
+        orbitalPeriod:
           type: number
           format: float
-        edsmSemiMajorAxis:
+        semiMajorAxis:
           type: number
           format: float
-        edsmOrbitalEccentricity:
+        orbitalEccentricity:
           type: number
           format: float
-        edsmOrbitalInclination:
+        orbitalInclination:
           type: number
           format: float
-        edsmArgOfPeriapsis:
+        argOfPeriapsis:
           type: number
           format: float
-        edsmRotationalPeriod:
+        rotationalPeriod:
           type: number
           format: float
-        edsmRotationalPeriodTidallyLocked:
+        rotationalPeriodTidallyLocked:
           type: boolean
-        edsmAxialTilt:
+        axialTilt:
           type: number
           format: float
-        edsmSolidComposition:
+        solidComposition:
           $ref: '#/components/schemas/bodySolidComposition'
-        edsmAtmosphere:
+        atmosphere:
           $ref: '#/components/schemas/bodyAtmosphere'
-        edsmMaterial:
+        material:
           $ref: '#/components/schemas/bodyMaterial'
         missingSkipCount:
           type: integer
@@ -13931,12 +13931,12 @@ components:
       properties:
         systemName:
           type: string
+        id64:
+          type: number
+          format: double
         edsmID:
           type: number
           format: float
-        edsmID64:
-          type: number
-          format: double
         edsmCoordX:
           type: number
           format: double
@@ -13959,91 +13959,91 @@ components:
           type: integer
         bodyName:
           type: string
+        id64:
+          type: number
+          format: double
         edsmID:
           type: number
           format: float
-        edsmID64:
-          type: number
-          format: double
-        edsmBodyID:
+        bodyID:
           type: integer
-        edsmType:
+        type:
           type: string
-        edsmSubtype:
+        subType:
           type: string
-        edsmOffset:
+        offset:
           type: integer
-        edsmDistanceToArrival:
+        distanceToArrival:
           type: number
           format: float
-        edsmIsMainStar:
+        isMainStar:
           type: boolean
-        edsmIsScoopable:
+        isScoopable:
           type: boolean
-        edsmIsLandable:
+        isLandable:
           type: boolean
-        edsmAge:
+        age:
           type: integer
-        edsmLuminosity:
+        luminosity:
           type: string
-        edsmAbsoluteMagnitude:
+        absoluteMagnitude:
           type: number
           format: float
-        edsmSolarMasses:
+        solarMasses:
           type: number
           format: float
-        edsmSolarRadius:
+        solarRadius:
           type: number
           format: float
-        edsmGravity:
+        gravity:
           type: number
           format: float
-        edsmEarthMasses:
+        earthMasses:
           type: number
           format: float
-        edsmRadius:
+        radius:
           type: number
           format: float
-        edsmSurfaceTemperature:
+        surfaceTemperature:
           type: number
           format: float
-        edsmSurfacePressure:
+        surfacePressure:
           type: number
           format: float
-        edsmVolcanismType:
+        volcanismType:
           type: string
-        edsmAtmosphereType:
+        atmosphereType:
           type: string
-        edsmTerraformingState:
+        terraformingState:
           type: string
-        edsmOrbitalPeriod:
+        orbitalPeriod:
           type: number
           format: float
-        edsmSemiMajorAxis:
+        semiMajorAxis:
           type: number
           format: float
-        edsmOrbitalEccentricity:
+        orbitalEccentricity:
           type: number
           format: float
-        edsmOrbitalInclination:
+        orbitalInclination:
           type: number
           format: float
-        edsmArgOfPeriapsis:
+        argOfPeriapsis:
           type: number
           format: float
-        edsmRotationalPeriod:
+        rotationalPeriod:
           type: number
           format: float
-        edsmRotationalPeriodTidallyLocked:
+        rotationalPeriodTidallyLocked:
           type: boolean
-        edsmAxialTilt:
+        axialTilt:
           type: number
           format: float
-        edsmSolidComposition:
+        solidComposition:
           $ref: '#/components/schemas/bodySolidComposition'
-        edsmAtmosphere:
+        atmosphere:
           $ref: '#/components/schemas/bodyAtmosphere'
-        edsmMaterial:
+        material:
           $ref: '#/components/schemas/bodyMaterial'
         missingSkipCount:
           type: integer
@@ -15484,12 +15484,12 @@ components:
       properties:
         systemName:
           type: string
+        id64:
+          type: number
+          format: double
         edsmID:
           type: number
           format: float
-        edsmID64:
-          type: number
-          format: double
         edsmCoordX:
           type: number
           format: double
@@ -15510,91 +15510,91 @@ components:
           type: integer
         bodyName:
           type: string
+        id64:
+          type: number
+          format: double
         edsmID:
           type: number
           format: float
-        edsmID64:
-          type: number
-          format: double
-        edsmBodyID:
+        bodyID:
           type: integer
-        edsmType:
+        type:
           type: string
-        edsmSubtype:
+        subType:
           type: string
-        edsmOffset:
+        offset:
           type: integer
-        edsmDistanceToArrival:
+        distanceToArrival:
           type: number
           format: float
-        edsmIsMainStar:
+        isMainStar:
           type: boolean
-        edsmIsScoopable:
+        isScoopable:
           type: boolean
-        edsmIsLandable:
+        isLandable:
           type: boolean
-        edsmAge:
+        age:
           type: integer
-        edsmLuminosity:
+        luminosity:
           type: string
-        edsmAbsoluteMagnitude:
+        absoluteMagnitude:
           type: number
           format: float
-        edsmSolarMasses:
+        solarMasses:
           type: number
           format: float
-        edsmSolarRadius:
+        solarRadius:
           type: number
           format: float
-        edsmGravity:
+        gravity:
           type: number
           format: float
-        edsmEarthMasses:
+        earthMasses:
           type: number
           format: float
-        edsmRadius:
+        radius:
           type: number
           format: float
-        edsmSurfaceTemperature:
+        surfaceTemperature:
           type: number
           format: float
-        edsmSurfacePressure:
+        surfacePressure:
           type: number
           format: float
-        edsmVolcanismType:
+        volcanismType:
           type: string
-        edsmAtmosphereType:
+        atmosphereType:
           type: string
-        edsmTerraformingState:
+        terraformingState:
           type: string
-        edsmOrbitalPeriod:
+        orbitalPeriod:
           type: number
           format: float
-        edsmSemiMajorAxis:
+        semiMajorAxis:
           type: number
           format: float
-        edsmOrbitalEccentricity:
+        orbitalEccentricity:
           type: number
           format: float
-        edsmOrbitalInclination:
+        orbitalInclination:
           type: number
           format: float
-        edsmArgOfPeriapsis:
+        argOfPeriapsis:
           type: number
           format: float
-        edsmRotationalPeriod:
+        rotationalPeriod:
           type: number
           format: float
-        edsmRotationalPeriodTidallyLocked:
+        rotationalPeriodTidallyLocked:
           type: boolean
-        edsmAxialTilt:
+        axialTilt:
           type: number
           format: float
-        edsmSolidComposition:
+        solidComposition:
           $ref: '#/components/schemas/bodySolidComposition'
-        edsmAtmosphere:
+        atmosphere:
           $ref: '#/components/schemas/bodyAtmosphere'
-        edsmMaterial:
+        material:
           $ref: '#/components/schemas/bodyMaterial'
         missingSkipCount:
           type: integer
