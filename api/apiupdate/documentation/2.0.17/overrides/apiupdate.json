@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/apiupdates": {
+      "get": {
+        "description": "Get all CAPIv2-Updater log entries",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ]
+      },
+      "post": {
+        "description": "Create a new CAPIv2-Updater log entry",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ]
+      }
+    },
+    "/apiupdates/count": {
+      "get": {
+        "description": "Get a count of all CAPIv2-Updater log entries",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ]
+      }
+    },
+    "/apiupdates/{id}": {
+      "get": {
+        "description": "Get a CAPIv2-Updater log by id",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ]
+      },
+      "put": {
+        "description": "Update a CAPIv2-Updater log by id",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ]
+      },
+      "delete": {
+        "description": "Delete a CAPIv2-Updater log by id",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ]
+      }
+    },
+    "/apiupdates/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Canonn Use",
+      "description": "Endpoints used by Canonn for updating or maintaining the API"
+    }
+  ]
+}

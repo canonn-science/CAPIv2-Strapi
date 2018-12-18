@@ -14,7 +14,7 @@
       "name": "GNU-GPLv3",
       "url": "https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE"
     },
-    "x-generation-date": "12/18/2018 8:13:14 AM"
+    "x-generation-date": "12/18/2018 12:37:29 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -62,11 +62,252 @@
       ]
     }
   ],
+  "tags": [
+    {
+      "name": "Apiupdate"
+    },
+    {
+      "name": "Bmreport"
+    },
+    {
+      "name": "Bmsite"
+    },
+    {
+      "name": "Body"
+    },
+    {
+      "name": "Btreport"
+    },
+    {
+      "name": "Btsite"
+    },
+    {
+      "name": "Cmdr"
+    },
+    {
+      "name": "Factionkillreport"
+    },
+    {
+      "name": "Fgreport"
+    },
+    {
+      "name": "Fgsite"
+    },
+    {
+      "name": "Fmreport"
+    },
+    {
+      "name": "Fmsite"
+    },
+    {
+      "name": "Fmtype"
+    },
+    {
+      "name": "Gbmessage"
+    },
+    {
+      "name": "Gbreport"
+    },
+    {
+      "name": "Gbsite"
+    },
+    {
+      "name": "Genlog"
+    },
+    {
+      "name": "Genreport"
+    },
+    {
+      "name": "Gensite"
+    },
+    {
+      "name": "Gractivegroup"
+    },
+    {
+      "name": "Gractiveobelisk"
+    },
+    {
+      "name": "Grartifact"
+    },
+    {
+      "name": "Grcodexcategory"
+    },
+    {
+      "name": "Grcodexdata"
+    },
+    {
+      "name": "Grobelisk"
+    },
+    {
+      "name": "Grobeliskgroup"
+    },
+    {
+      "name": "Grobeliskgroupreport"
+    },
+    {
+      "name": "Grobeliskreport"
+    },
+    {
+      "name": "Grreport"
+    },
+    {
+      "name": "Grsite"
+    },
+    {
+      "name": "Grtype"
+    },
+    {
+      "name": "Gsactivegroup"
+    },
+    {
+      "name": "Gsactiveobelisk"
+    },
+    {
+      "name": "Gsartifact"
+    },
+    {
+      "name": "Gscodexcategory"
+    },
+    {
+      "name": "Gscodexdata"
+    },
+    {
+      "name": "Gsobelisk"
+    },
+    {
+      "name": "Gsobeliskgroup"
+    },
+    {
+      "name": "Gsobeliskgroupreport"
+    },
+    {
+      "name": "Gsobeliskreport"
+    },
+    {
+      "name": "Gsreport"
+    },
+    {
+      "name": "Gssite"
+    },
+    {
+      "name": "Gstype"
+    },
+    {
+      "name": "Gyreport"
+    },
+    {
+      "name": "Gysite"
+    },
+    {
+      "name": "Gytype"
+    },
+    {
+      "name": "Hdreport"
+    },
+    {
+      "name": "Hdsite"
+    },
+    {
+      "name": "Info"
+    },
+    {
+      "name": "Journaldata"
+    },
+    {
+      "name": "Lsreport"
+    },
+    {
+      "name": "Lssite"
+    },
+    {
+      "name": "Msreport"
+    },
+    {
+      "name": "Msschedule"
+    },
+    {
+      "name": "Mssite"
+    },
+    {
+      "name": "Mstype"
+    },
+    {
+      "name": "Nhsstopcmdrsbykill"
+    },
+    {
+      "name": "Ring"
+    },
+    {
+      "name": "Ringtype"
+    },
+    {
+      "name": "System"
+    },
+    {
+      "name": "Tbcycle"
+    },
+    {
+      "name": "Tbreport"
+    },
+    {
+      "name": "Tbsite"
+    },
+    {
+      "name": "Tbtype"
+    },
+    {
+      "name": "Tgencounterstat"
+    },
+    {
+      "name": "Tsreport"
+    },
+    {
+      "name": "Tssite"
+    },
+    {
+      "name": "Tsstatus"
+    },
+    {
+      "name": "Twreport"
+    },
+    {
+      "name": "Twsite"
+    },
+    {
+      "name": "Ussreport"
+    },
+    {
+      "name": "Usssite"
+    },
+    {
+      "name": "Usstype"
+    },
+    {
+      "name": "Email"
+    },
+    {
+      "name": "Upload - File"
+    },
+    {
+      "name": "Users-Permissions - Role"
+    },
+    {
+      "name": "Authentication",
+      "description": "All the routes related to the authentication",
+      "externalDocs": {
+        "description": "Find out more in strapi's documentation",
+        "url": "https://strapi.io/documentation/guides/authentication.html"
+      }
+    },
+    {
+      "name": "Users-Permissions - User"
+    }
+  ],
   "paths": {
     "/apiupdates": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Get all CAPIv2-Updater log entries",
         "responses": {
           "200": {
             "description": "response",
@@ -114,7 +355,7 @@
         },
         "summary": "",
         "tags": [
-          "Apiupdate"
+          "Canonn Use"
         ],
         "parameters": [
           {
@@ -231,7 +472,7 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new record",
+        "description": "Create a new CAPIv2-Updater log entry",
         "responses": {
           "200": {
             "description": "response",
@@ -276,7 +517,7 @@
         },
         "summary": "",
         "tags": [
-          "Apiupdate"
+          "Canonn Use"
         ],
         "requestBody": {
           "description": "",
@@ -294,7 +535,7 @@
     "/apiupdates/count": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Get a count of all CAPIv2-Updater log entries",
         "responses": {
           "200": {
             "description": "response",
@@ -343,7 +584,7 @@
         },
         "summary": "",
         "tags": [
-          "Apiupdate"
+          "Canonn Use"
         ],
         "parameters": []
       }
@@ -351,7 +592,7 @@
     "/apiupdates/{id}": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Get a CAPIv2-Updater log by id",
         "responses": {
           "200": {
             "description": "response",
@@ -396,7 +637,7 @@
         },
         "summary": "",
         "tags": [
-          "Apiupdate"
+          "Canonn Use"
         ],
         "parameters": [
           {
@@ -413,7 +654,7 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a record",
+        "description": "Update a CAPIv2-Updater log by id",
         "responses": {
           "200": {
             "description": "response",
@@ -458,7 +699,7 @@
         },
         "summary": "",
         "tags": [
-          "Apiupdate"
+          "Canonn Use"
         ],
         "requestBody": {
           "description": "",
@@ -486,7 +727,7 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a record",
+        "description": "Delete a CAPIv2-Updater log by id",
         "responses": {
           "200": {
             "description": "deletes a single record based on the ID supplied",
@@ -532,7 +773,7 @@
         },
         "summary": "",
         "tags": [
-          "Apiupdate"
+          "Canonn Use"
         ],
         "parameters": [
           {
@@ -600,7 +841,7 @@
         },
         "summary": "",
         "tags": [
-          "Apiupdate"
+          "z.Unused"
         ],
         "requestBody": {
           "description": "",
@@ -669,7 +910,7 @@
         },
         "summary": "",
         "tags": [
-          "Apiupdate"
+          "z.Unused"
         ],
         "requestBody": {
           "description": "",
@@ -757,7 +998,7 @@
         },
         "summary": "",
         "tags": [
-          "Apiupdate"
+          "z.Unused"
         ],
         "parameters": [
           {
@@ -786,7 +1027,7 @@
     "/bmreports": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Get all BM report entries",
         "responses": {
           "200": {
             "description": "response",
@@ -834,7 +1075,7 @@
         },
         "summary": "",
         "tags": [
-          "Bmreport"
+          "Bark Mound Reports"
         ],
         "parameters": [
           {
@@ -951,7 +1192,7 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new record",
+        "description": "Create a new BM report entry",
         "responses": {
           "200": {
             "description": "response",
@@ -996,7 +1237,7 @@
         },
         "summary": "",
         "tags": [
-          "Bmreport"
+          "Bark Mound Reports"
         ],
         "requestBody": {
           "description": "",
@@ -1014,7 +1255,7 @@
     "/bmreports/count": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Get a count of all BM report entries",
         "responses": {
           "200": {
             "description": "response",
@@ -1063,7 +1304,7 @@
         },
         "summary": "",
         "tags": [
-          "Bmreport"
+          "Bark Mound Reports"
         ],
         "parameters": []
       }
@@ -1071,7 +1312,7 @@
     "/bmreports/{id}": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Get a BM report by id",
         "responses": {
           "200": {
             "description": "response",
@@ -1116,7 +1357,7 @@
         },
         "summary": "",
         "tags": [
-          "Bmreport"
+          "Bark Mound Reports"
         ],
         "parameters": [
           {
@@ -1133,7 +1374,7 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a record",
+        "description": "Update a BM report by id",
         "responses": {
           "200": {
             "description": "response",
@@ -1178,7 +1419,7 @@
         },
         "summary": "",
         "tags": [
-          "Bmreport"
+          "Bark Mound Reports"
         ],
         "requestBody": {
           "description": "",
@@ -1206,7 +1447,7 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a record",
+        "description": "Delete a BM report by id",
         "responses": {
           "200": {
             "description": "deletes a single record based on the ID supplied",
@@ -1252,7 +1493,7 @@
         },
         "summary": "",
         "tags": [
-          "Bmreport"
+          "Bark Mound Reports"
         ],
         "parameters": [
           {
@@ -1320,7 +1561,7 @@
         },
         "summary": "",
         "tags": [
-          "Bmreport"
+          "z.Unused"
         ],
         "requestBody": {
           "description": "",
@@ -1389,7 +1630,7 @@
         },
         "summary": "",
         "tags": [
-          "Bmreport"
+          "z.Unused"
         ],
         "requestBody": {
           "description": "",
@@ -1477,7 +1718,7 @@
         },
         "summary": "",
         "tags": [
-          "Bmreport"
+          "z.Unused"
         ],
         "parameters": [
           {
@@ -66782,246 +67023,5 @@
         "bearerFormat": "JWT"
       }
     }
-  },
-  "tags": [
-    {
-      "name": "Apiupdate"
-    },
-    {
-      "name": "Bmreport"
-    },
-    {
-      "name": "Bmsite"
-    },
-    {
-      "name": "Body"
-    },
-    {
-      "name": "Btreport"
-    },
-    {
-      "name": "Btsite"
-    },
-    {
-      "name": "Cmdr"
-    },
-    {
-      "name": "Factionkillreport"
-    },
-    {
-      "name": "Fgreport"
-    },
-    {
-      "name": "Fgsite"
-    },
-    {
-      "name": "Fmreport"
-    },
-    {
-      "name": "Fmsite"
-    },
-    {
-      "name": "Fmtype"
-    },
-    {
-      "name": "Gbmessage"
-    },
-    {
-      "name": "Gbreport"
-    },
-    {
-      "name": "Gbsite"
-    },
-    {
-      "name": "Genlog"
-    },
-    {
-      "name": "Genreport"
-    },
-    {
-      "name": "Gensite"
-    },
-    {
-      "name": "Gractivegroup"
-    },
-    {
-      "name": "Gractiveobelisk"
-    },
-    {
-      "name": "Grartifact"
-    },
-    {
-      "name": "Grcodexcategory"
-    },
-    {
-      "name": "Grcodexdata"
-    },
-    {
-      "name": "Grobelisk"
-    },
-    {
-      "name": "Grobeliskgroup"
-    },
-    {
-      "name": "Grobeliskgroupreport"
-    },
-    {
-      "name": "Grobeliskreport"
-    },
-    {
-      "name": "Grreport"
-    },
-    {
-      "name": "Grsite"
-    },
-    {
-      "name": "Grtype"
-    },
-    {
-      "name": "Gsactivegroup"
-    },
-    {
-      "name": "Gsactiveobelisk"
-    },
-    {
-      "name": "Gsartifact"
-    },
-    {
-      "name": "Gscodexcategory"
-    },
-    {
-      "name": "Gscodexdata"
-    },
-    {
-      "name": "Gsobelisk"
-    },
-    {
-      "name": "Gsobeliskgroup"
-    },
-    {
-      "name": "Gsobeliskgroupreport"
-    },
-    {
-      "name": "Gsobeliskreport"
-    },
-    {
-      "name": "Gsreport"
-    },
-    {
-      "name": "Gssite"
-    },
-    {
-      "name": "Gstype"
-    },
-    {
-      "name": "Gyreport"
-    },
-    {
-      "name": "Gysite"
-    },
-    {
-      "name": "Gytype"
-    },
-    {
-      "name": "Hdreport"
-    },
-    {
-      "name": "Hdsite"
-    },
-    {
-      "name": "Info"
-    },
-    {
-      "name": "Journaldata"
-    },
-    {
-      "name": "Lsreport"
-    },
-    {
-      "name": "Lssite"
-    },
-    {
-      "name": "Msreport"
-    },
-    {
-      "name": "Msschedule"
-    },
-    {
-      "name": "Mssite"
-    },
-    {
-      "name": "Mstype"
-    },
-    {
-      "name": "Nhsstopcmdrsbykill"
-    },
-    {
-      "name": "Ring"
-    },
-    {
-      "name": "Ringtype"
-    },
-    {
-      "name": "System"
-    },
-    {
-      "name": "Tbcycle"
-    },
-    {
-      "name": "Tbreport"
-    },
-    {
-      "name": "Tbsite"
-    },
-    {
-      "name": "Tbtype"
-    },
-    {
-      "name": "Tgencounterstat"
-    },
-    {
-      "name": "Tsreport"
-    },
-    {
-      "name": "Tssite"
-    },
-    {
-      "name": "Tsstatus"
-    },
-    {
-      "name": "Twreport"
-    },
-    {
-      "name": "Twsite"
-    },
-    {
-      "name": "Ussreport"
-    },
-    {
-      "name": "Usssite"
-    },
-    {
-      "name": "Usstype"
-    },
-    {
-      "name": "Email"
-    },
-    {
-      "name": "Upload - File"
-    },
-    {
-      "name": "Users-Permissions - Role"
-    },
-    {
-      "name": "Authentication",
-      "description": "All the routes related to the authentication",
-      "externalDocs": {
-        "description": "Find out more in strapi's documentation",
-        "url": "https://strapi.io/documentation/guides/authentication.html"
-      }
-    },
-    {
-      "name": "Users-Permissions - User"
-    }
-  ]
+  }
 }
