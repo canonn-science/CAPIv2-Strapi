@@ -141,7 +141,6 @@ type Body {
   material: JSON
   missingSkipCount: Int
   rings(sort: String, limit: Int, start: Int, where: JSON): [Ring]
-  undefined(sort: String, limit: Int, start: Int, where: JSON): [Msschedule]
 }
 
 input BodyInput {
@@ -183,7 +182,6 @@ input BodyInput {
   material: JSON
   missingSkipCount: Int
   rings: [ID]
-  undefined: [ID]
 }
 
 """Reporting for Brain Trees"""
@@ -3512,7 +3510,6 @@ type System {
   edsmCoordLocked: Boolean
   missingSkipCount: Int
   bodies(sort: String, limit: Int, start: Int, where: JSON): [Body]
-  undefined(sort: String, limit: Int, start: Int, where: JSON): [Msschedule]
 }
 
 input SystemInput {
@@ -3525,7 +3522,6 @@ input SystemInput {
   edsmCoordLocked: Boolean
   missingSkipCount: Int
   bodies: [ID]
-  undefined: [ID]
 }
 
 """Thargoid Barnacle Cycles"""
@@ -4506,10 +4502,7 @@ type updateUsstypePayload {
   usstype: Usstype
 }
 
-"""
-The `Upload` scalar type represents a file upload promise that resolves an
-object containing `stream`, `filename`, `mimetype` and `encoding`.
-"""
+"""The `Upload` scalar type represents a file upload."""
 scalar Upload
 
 type UploadFile {
