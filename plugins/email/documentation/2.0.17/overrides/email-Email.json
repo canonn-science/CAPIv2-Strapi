@@ -2,6 +2,9 @@
   "paths": {
     "/email/": {
       "post": {
+        "security": [
+          "adminUsage"
+        ],
         "deprecated": false,
         "description": "Send an email using the provider defined through the dashboard",
         "requestBody": {
@@ -43,14 +46,15 @@
         },
         "summary": "",
         "tags": [
-          "Email"
+          "Strapi Usage Only"
         ]
       }
     }
   },
   "tags": [
     {
-      "name": "Email"
+      "name": "Strapi Usage Only",
+      "description": "Models for use by Canonn Admins"
     }
   ]
 }

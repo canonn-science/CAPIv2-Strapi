@@ -14,7 +14,7 @@
       "name": "GNU-GPLv3",
       "url": "https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE"
     },
-    "x-generation-date": "12/19/2018 11:00:38 AM"
+    "x-generation-date": "12/19/2018 11:35:19 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -58,7 +58,8 @@
         "updateLogDelete",
         "locationWrite",
         "siteWrite",
-        "updateLogWrite"
+        "updateLogWrite",
+        "adminUsage"
       ]
     }
   ],
@@ -50629,7 +50630,7 @@
         },
         "summary": "",
         "tags": [
-          "Email"
+          "Strapi Usage Only"
         ],
         "requestBody": {
           "description": "",
@@ -50669,7 +50670,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "adminUsage"
+        ]
       }
     },
     "/upload/": {
@@ -51154,7 +51158,7 @@
         },
         "summary": "",
         "tags": [
-          "Users-Permissions - Role"
+          "Strapi Usage Only"
         ],
         "parameters": []
       }
@@ -51207,7 +51211,7 @@
         },
         "summary": "",
         "tags": [
-          "Users-Permissions - Role"
+          "Strapi Usage Only"
         ],
         "parameters": [
           {
@@ -51274,7 +51278,7 @@
         },
         "summary": "",
         "tags": [
-          "Users-Permissions - Role"
+          "Strapi Usage Only"
         ],
         "parameters": [
           {
@@ -51436,7 +51440,7 @@
         },
         "summary": "",
         "tags": [
-          "Users-Permissions - Role"
+          "Strapi Usage Only"
         ],
         "requestBody": {
           "description": "",
@@ -51499,7 +51503,7 @@
         },
         "summary": "",
         "tags": [
-          "Users-Permissions - Role"
+          "Strapi Usage Only"
         ],
         "parameters": [
           {
@@ -51576,7 +51580,7 @@
         },
         "summary": "",
         "tags": [
-          "Users-Permissions - Role"
+          "Strapi Usage Only"
         ],
         "parameters": [
           {
@@ -51643,7 +51647,7 @@
         },
         "summary": "Retrieve a list of users by searching for their username or email",
         "tags": [
-          "Users-Permissions - User"
+          "Strapi Usage Only"
         ],
         "parameters": [
           {
@@ -52218,7 +52222,7 @@
         },
         "summary": "",
         "tags": [
-          "Users-Permissions - User"
+          "Strapi Usage Only"
         ],
         "parameters": [
           {
@@ -52382,7 +52386,7 @@
         },
         "summary": "",
         "tags": [
-          "Users-Permissions - User"
+          "Strapi Usage Only"
         ],
         "parameters": []
       }
@@ -52435,7 +52439,7 @@
         },
         "summary": "",
         "tags": [
-          "Users-Permissions - User"
+          "Strapi Usage Only"
         ],
         "parameters": [
           {
@@ -52497,7 +52501,7 @@
         },
         "summary": "",
         "tags": [
-          "Users-Permissions - User"
+          "Strapi Usage Only"
         ],
         "parameters": [
           {
@@ -52574,7 +52578,7 @@
         },
         "summary": "",
         "tags": [
-          "Users-Permissions - User"
+          "Strapi Usage Only"
         ],
         "parameters": [
           {
@@ -65467,13 +65471,11 @@
       "description": "Code Name - TW"
     },
     {
-      "name": "Email"
+      "name": "Strapi Usage Only",
+      "description": "Models for use by Canonn Admins"
     },
     {
       "name": "Upload - File"
-    },
-    {
-      "name": "Users-Permissions - Role"
     },
     {
       "name": "Authentication",
@@ -65482,9 +65484,6 @@
         "description": "Find out more in strapi's documentation",
         "url": "https://strapi.io/documentation/guides/authentication.html"
       }
-    },
-    {
-      "name": "Users-Permissions - User"
     }
   ]
 }
