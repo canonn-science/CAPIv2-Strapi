@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/mstypes": {
+      "get": {
+        "description": "Get all MS Type entries",
+        "summary": "",
+        "tags": [
+          "Megaships"
+        ]
+      },
+      "post": {
+        "description": "Create a new MS Type entry",
+        "summary": "",
+        "tags": [
+          "Megaships"
+        ]
+      }
+    },
+    "/mstypes/count": {
+      "get": {
+        "description": "Get a count of all MS Type entries",
+        "summary": "",
+        "tags": [
+          "Megaships"
+        ]
+      }
+    },
+    "/mstypes/{id}": {
+      "get": {
+        "description": "Get a MS Type by id",
+        "summary": "",
+        "tags": [
+          "Megaships"
+        ]
+      },
+      "put": {
+        "description": "Update a MS Type by id",
+        "summary": "",
+        "tags": [
+          "Megaships"
+        ]
+      },
+      "delete": {
+        "description": "Delete a MS Type by id",
+        "summary": "",
+        "tags": [
+          "Megaships"
+        ]
+      }
+    },
+    "/mstypes/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Megaships",
+      "description": "Code Name - MS"
+    }
+  ]
+}

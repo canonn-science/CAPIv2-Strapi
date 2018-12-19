@@ -1,0 +1,42 @@
+{
+  "connection": "default",
+  "collectionName": "killreports",
+  "info": {
+    "name": "killreport",
+    "description": "Records rewards and kills by CMDR"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": false,
+    "comment": ""
+  },
+  "attributes": {
+    "systemName": {
+      "type": "string"
+    },
+    "edTimestamp": {
+      "type": "date"
+    },
+    "cmdrName": {
+      "type": "string"
+    },
+    "reward": {
+      "type": "integer"
+    },
+    "rewardingFaction": {
+      "type": "string"
+    },
+    "victimFaction": {
+      "type": "string"
+    },
+    "rawEvent": {
+      "type": "json"
+    },
+    "isbeta": {
+      "type": "boolean"
+    },
+    "reportAccepted": {
+      "type": "boolean"
+    }
+  }
+}

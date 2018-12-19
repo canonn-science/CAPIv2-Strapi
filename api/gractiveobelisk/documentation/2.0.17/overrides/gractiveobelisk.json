@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/gractiveobelisks": {
+      "get": {
+        "description": "Get all GR Site Active Obelisk entries",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ]
+      },
+      "post": {
+        "description": "Create a new GR Site Active Obelisk entry",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ]
+      }
+    },
+    "/gractiveobelisks/count": {
+      "get": {
+        "description": "Get a count of all GR Site Active Obelisk entries",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ]
+      }
+    },
+    "/gractiveobelisks/{id}": {
+      "get": {
+        "description": "Get a GR Site Active Obelisk by id",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ]
+      },
+      "put": {
+        "description": "Update a GR Site Active Obelisk by id",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ]
+      },
+      "delete": {
+        "description": "Delete a GR Site Active Obelisk by id",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ]
+      }
+    },
+    "/gractiveobelisks/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Guardian Ruins",
+      "description": "Code Name - GR"
+    }
+  ]
+}

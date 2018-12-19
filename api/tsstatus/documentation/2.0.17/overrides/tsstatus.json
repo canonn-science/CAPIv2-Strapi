@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/tsstatuses": {
+      "get": {
+        "description": "Get all TS Status entries",
+        "summary": "",
+        "tags": [
+          "Thargoid Structures"
+        ]
+      },
+      "post": {
+        "description": "Create a new TS Status entry",
+        "summary": "",
+        "tags": [
+          "Thargoid Structures"
+        ]
+      }
+    },
+    "/tsstatuses/count": {
+      "get": {
+        "description": "Get a count of all TS Status entries",
+        "summary": "",
+        "tags": [
+          "Thargoid Structures"
+        ]
+      }
+    },
+    "/tsstatuses/{id}": {
+      "get": {
+        "description": "Get a TS Status by id",
+        "summary": "",
+        "tags": [
+          "Thargoid Structures"
+        ]
+      },
+      "put": {
+        "description": "Update a TS Status by id",
+        "summary": "",
+        "tags": [
+          "Thargoid Structures"
+        ]
+      },
+      "delete": {
+        "description": "Delete a TS Status by id",
+        "summary": "",
+        "tags": [
+          "Thargoid Structures"
+        ]
+      }
+    },
+    "/tsstatuses/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Thargoid Structures",
+      "description": "Code Name - TS"
+    }
+  ]
+}

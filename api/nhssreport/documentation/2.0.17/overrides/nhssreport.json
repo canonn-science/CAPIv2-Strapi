@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/nhssreports": {
+      "get": {
+        "description": "Get all NHSS report entries",
+        "summary": "",
+        "tags": [
+          "Non-Human Signal Source Reports"
+        ]
+      },
+      "post": {
+        "description": "Create a new NHSS report entry",
+        "summary": "",
+        "tags": [
+          "Non-Human Signal Source Reports"
+        ]
+      }
+    },
+    "/nhssreports/count": {
+      "get": {
+        "description": "Get a count of all NHSS report entries",
+        "summary": "",
+        "tags": [
+          "Non-Human Signal Source Reports"
+        ]
+      }
+    },
+    "/nhssreports/{id}": {
+      "get": {
+        "description": "Get a NHSS report by id",
+        "summary": "",
+        "tags": [
+          "Non-Human Signal Source Reports"
+        ]
+      },
+      "put": {
+        "description": "Update a NHSS report by id",
+        "summary": "",
+        "tags": [
+          "Non-Human Signal Source Reports"
+        ]
+      },
+      "delete": {
+        "description": "Delete a NHSS report by id",
+        "summary": "",
+        "tags": [
+          "Non-Human Signal Source Reports"
+        ]
+      }
+    },
+    "/nhssreports/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Non-Human Signal Source Reports",
+      "description": "Public Reporting of NHSS"
+    }
+  ]
+}

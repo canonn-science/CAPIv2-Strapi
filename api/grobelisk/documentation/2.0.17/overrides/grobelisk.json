@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/grobelisks": {
+      "get": {
+        "description": "Get all GR Obelisk entries",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ]
+      },
+      "post": {
+        "description": "Create a new GR Obelisk entry",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ]
+      }
+    },
+    "/grobelisks/count": {
+      "get": {
+        "description": "Get a count of all GR Obelisk entries",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ]
+      }
+    },
+    "/grobelisks/{id}": {
+      "get": {
+        "description": "Get a GR Obelisk by id",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ]
+      },
+      "put": {
+        "description": "Update a GR Obelisk by id",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ]
+      },
+      "delete": {
+        "description": "Delete a GR Obelisk by id",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ]
+      }
+    },
+    "/grobelisks/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Guardian Ruins",
+      "description": "Code Name - GR"
+    }
+  ]
+}

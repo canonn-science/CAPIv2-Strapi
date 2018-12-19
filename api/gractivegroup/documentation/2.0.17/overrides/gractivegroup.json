@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/gractivegroups": {
+      "get": {
+        "description": "Get all GR Site Active Group entries",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ]
+      },
+      "post": {
+        "description": "Create a new GR Site Active Group entry",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ]
+      }
+    },
+    "/gractivegroups/count": {
+      "get": {
+        "description": "Get a count of all GR Site Active Group entries",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ]
+      }
+    },
+    "/gractivegroups/{id}": {
+      "get": {
+        "description": "Get a GR Site Active Group by id",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ]
+      },
+      "put": {
+        "description": "Update a GR Site Active Group by id",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ]
+      },
+      "delete": {
+        "description": "Delete a GR Site Active Group by id",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ]
+      }
+    },
+    "/gractivegroups/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Guardian Ruins",
+      "description": "Code Name - GR"
+    }
+  ]
+}

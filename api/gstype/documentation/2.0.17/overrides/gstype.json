@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/gstypes": {
+      "get": {
+        "description": "Get all GS Type entries",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ]
+      },
+      "post": {
+        "description": "Create a new GS Type entry",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ]
+      }
+    },
+    "/gstypes/count": {
+      "get": {
+        "description": "Get a count of all GS Type entries",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ]
+      }
+    },
+    "/gstypes/{id}": {
+      "get": {
+        "description": "Get a GS Type by id",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ]
+      },
+      "put": {
+        "description": "Update a GS Type by id",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ]
+      },
+      "delete": {
+        "description": "Delete a GS Type by id",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ]
+      }
+    },
+    "/gstypes/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Guardian Structures",
+      "description": "Code Name - GS"
+    }
+  ]
+}

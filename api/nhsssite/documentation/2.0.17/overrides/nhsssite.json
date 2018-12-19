@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/nhsssites": {
+      "get": {
+        "description": "Get all NHSS Site entries",
+        "summary": "",
+        "tags": [
+          "Non-Human Signal Sources"
+        ]
+      },
+      "post": {
+        "description": "Create a new NHSS Site entry",
+        "summary": "",
+        "tags": [
+          "Non-Human Signal Sources"
+        ]
+      }
+    },
+    "/nhsssites/count": {
+      "get": {
+        "description": "Get a count of all NHSS Site entries",
+        "summary": "",
+        "tags": [
+          "Non-Human Signal Sources"
+        ]
+      }
+    },
+    "/nhsssites/{id}": {
+      "get": {
+        "description": "Get a NHSS Site by id",
+        "summary": "",
+        "tags": [
+          "Non-Human Signal Sources"
+        ]
+      },
+      "put": {
+        "description": "Update a NHSS Site by id",
+        "summary": "",
+        "tags": [
+          "Non-Human Signal Sources"
+        ]
+      },
+      "delete": {
+        "description": "Delete a NHSS Site by id",
+        "summary": "",
+        "tags": [
+          "Non-Human Signal Sources"
+        ]
+      }
+    },
+    "/nhsssites/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Non-Human Signal Sources",
+      "description": "Code Name - NHSS"
+    }
+  ]
+}

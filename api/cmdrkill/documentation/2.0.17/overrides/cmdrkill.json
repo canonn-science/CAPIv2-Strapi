@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/cmdrkills": {
+      "get": {
+        "description": "Get all CMDR Kill entries",
+        "summary": "",
+        "tags": [
+          "CMDRs"
+        ]
+      },
+      "post": {
+        "description": "Create a new CMDR Kill entry",
+        "summary": "",
+        "tags": [
+          "CMDRs"
+        ]
+      }
+    },
+    "/cmdrkills/count": {
+      "get": {
+        "description": "Get a count of all CMDR Kill entries",
+        "summary": "",
+        "tags": [
+          "CMDRs"
+        ]
+      }
+    },
+    "/cmdrkills/{id}": {
+      "get": {
+        "description": "Get a CMDR Kill by id",
+        "summary": "",
+        "tags": [
+          "CMDRs"
+        ]
+      },
+      "put": {
+        "description": "Update a CMDR Kill by id",
+        "summary": "",
+        "tags": [
+          "CMDRs"
+        ]
+      },
+      "delete": {
+        "description": "Delete a CMDR Kill by id",
+        "summary": "",
+        "tags": [
+          "CMDRs"
+        ]
+      }
+    },
+    "/cmdrkills/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "CMDRs",
+      "description": "List of commanders credited with finding sites and their kills"
+    }
+  ]
+}

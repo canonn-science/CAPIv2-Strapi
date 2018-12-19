@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/grcodexcategories": {
+      "get": {
+        "description": "Get all GR Codex Category entries",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ]
+      },
+      "post": {
+        "description": "Create a new GR Codex Category entry",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ]
+      }
+    },
+    "/grcodexcategories/count": {
+      "get": {
+        "description": "Get a count of all GR Codex Category entries",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ]
+      }
+    },
+    "/grcodexcategories/{id}": {
+      "get": {
+        "description": "Get a GR Codex Category by id",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ]
+      },
+      "put": {
+        "description": "Update a GR Codex Category by id",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ]
+      },
+      "delete": {
+        "description": "Delete a GR Codex Category by id",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ]
+      }
+    },
+    "/grcodexcategories/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Guardian Ruins",
+      "description": "Code Name - GR"
+    }
+  ]
+}

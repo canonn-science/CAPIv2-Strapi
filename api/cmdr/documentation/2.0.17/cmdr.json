@@ -734,6 +734,55 @@
           },
           "cmdrName": {
             "type": "string"
+          },
+          "cmdrkill": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "cmdr": {
+                "type": "string"
+              },
+              "scoutKills": {
+                "type": "integer"
+              },
+              "cyclopsKills": {
+                "type": "integer"
+              },
+              "basiliskKills": {
+                "type": "integer"
+              },
+              "medusaKills": {
+                "type": "integer"
+              },
+              "unknownKills": {
+                "type": "integer"
+              },
+              "scoutRewards": {
+                "type": "integer"
+              },
+              "cyclopsRewards": {
+                "type": "integer"
+              },
+              "basiliskRewards": {
+                "type": "integer"
+              },
+              "medusaRewards": {
+                "type": "integer"
+              },
+              "unknownRewards": {
+                "type": "integer"
+              },
+              "totalRewards": {
+                "type": "integer"
+              },
+              "totalKills": {
+                "type": "integer"
+              }
+            }
           }
         }
       },
@@ -743,6 +792,9 @@
         ],
         "properties": {
           "cmdrName": {
+            "type": "string"
+          },
+          "cmdrkill": {
             "type": "string"
           }
         }

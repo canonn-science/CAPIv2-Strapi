@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/gscodexdata": {
+      "get": {
+        "description": "Get all GS Codex Data entries",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ]
+      },
+      "post": {
+        "description": "Create a new GS Codex Data entry",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ]
+      }
+    },
+    "/gscodexdata/count": {
+      "get": {
+        "description": "Get a count of all GS Codex Data entries",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ]
+      }
+    },
+    "/gscodexdata/{id}": {
+      "get": {
+        "description": "Get a GS Codex Data by id",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ]
+      },
+      "put": {
+        "description": "Update a GS Codex Data by id",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ]
+      },
+      "delete": {
+        "description": "Delete a GS Codex Data by id",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ]
+      }
+    },
+    "/gscodexdata/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Guardian Structures",
+      "description": "Code Name - GS"
+    }
+  ]
+}
