@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/fmsites": {
+      "get": {
+        "description": "Get all FM Site entries",
+        "summary": "",
+        "tags": [
+          "Fumaroles"
+        ]
+      },
+      "post": {
+        "description": "Create a new FM Site entry",
+        "summary": "",
+        "tags": [
+          "Fumaroles"
+        ]
+      }
+    },
+    "/fmsites/count": {
+      "get": {
+        "description": "Get a count of all FM Site entries",
+        "summary": "",
+        "tags": [
+          "Fumaroles"
+        ]
+      }
+    },
+    "/fmsites/{id}": {
+      "get": {
+        "description": "Get a FM Site by id",
+        "summary": "",
+        "tags": [
+          "Fumaroles"
+        ]
+      },
+      "put": {
+        "description": "Update a FM Site by id",
+        "summary": "",
+        "tags": [
+          "Fumaroles"
+        ]
+      },
+      "delete": {
+        "description": "Delete a FM Site by id",
+        "summary": "",
+        "tags": [
+          "Fumaroles"
+        ]
+      }
+    },
+    "/fmsites/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Fumaroles",
+      "description": "Code Name - FM"
+    }
+  ]
+}

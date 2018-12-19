@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/tsreports": {
+      "get": {
+        "description": "Get all TS report entries",
+        "summary": "",
+        "tags": [
+          "Thargoid Structure Reports"
+        ]
+      },
+      "post": {
+        "description": "Create a new TS report entry",
+        "summary": "",
+        "tags": [
+          "Thargoid Structure Reports"
+        ]
+      }
+    },
+    "/tsreports/count": {
+      "get": {
+        "description": "Get a count of all TS report entries",
+        "summary": "",
+        "tags": [
+          "Thargoid Structure Reports"
+        ]
+      }
+    },
+    "/tsreports/{id}": {
+      "get": {
+        "description": "Get a TS report by id",
+        "summary": "",
+        "tags": [
+          "Thargoid Structure Reports"
+        ]
+      },
+      "put": {
+        "description": "Update a TS report by id",
+        "summary": "",
+        "tags": [
+          "Thargoid Structure Reports"
+        ]
+      },
+      "delete": {
+        "description": "Delete a TS report by id",
+        "summary": "",
+        "tags": [
+          "Thargoid Structure Reports"
+        ]
+      }
+    },
+    "/tsreports/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Thargoid Structure Reports",
+      "description": "Public Reporting of TS"
+    }
+  ]
+}

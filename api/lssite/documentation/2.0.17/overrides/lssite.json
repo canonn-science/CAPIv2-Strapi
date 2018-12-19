@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/lssites": {
+      "get": {
+        "description": "Get all LS Site entries",
+        "summary": "",
+        "tags": [
+          "Lava Spouts"
+        ]
+      },
+      "post": {
+        "description": "Create a new LS Site entry",
+        "summary": "",
+        "tags": [
+          "Lava Spouts"
+        ]
+      }
+    },
+    "/lssites/count": {
+      "get": {
+        "description": "Get a count of all LS Site entries",
+        "summary": "",
+        "tags": [
+          "Lava Spouts"
+        ]
+      }
+    },
+    "/lssites/{id}": {
+      "get": {
+        "description": "Get a LS Site by id",
+        "summary": "",
+        "tags": [
+          "Lava Spouts"
+        ]
+      },
+      "put": {
+        "description": "Update a LS Site by id",
+        "summary": "",
+        "tags": [
+          "Lava Spouts"
+        ]
+      },
+      "delete": {
+        "description": "Delete a LS Site by id",
+        "summary": "",
+        "tags": [
+          "Lava Spouts"
+        ]
+      }
+    },
+    "/lssites/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Lava Spouts",
+      "description": "Code Name - LS"
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/hdreports": {
+      "get": {
+        "description": "Get all HD report entries",
+        "summary": "",
+        "tags": [
+          "Hyperdiction Reports"
+        ]
+      },
+      "post": {
+        "description": "Create a new HD report entry",
+        "summary": "",
+        "tags": [
+          "Hyperdiction Reports"
+        ]
+      }
+    },
+    "/hdreports/count": {
+      "get": {
+        "description": "Get a count of all HD report entries",
+        "summary": "",
+        "tags": [
+          "Hyperdiction Reports"
+        ]
+      }
+    },
+    "/hdreports/{id}": {
+      "get": {
+        "description": "Get a HD report by id",
+        "summary": "",
+        "tags": [
+          "Hyperdiction Reports"
+        ]
+      },
+      "put": {
+        "description": "Update a HD report by id",
+        "summary": "",
+        "tags": [
+          "Hyperdiction Reports"
+        ]
+      },
+      "delete": {
+        "description": "Delete a HD report by id",
+        "summary": "",
+        "tags": [
+          "Hyperdiction Reports"
+        ]
+      }
+    },
+    "/hdreports/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Hyperdiction Reports",
+      "description": "Public Reporting of HD"
+    }
+  ]
+}

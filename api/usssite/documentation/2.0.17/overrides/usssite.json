@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/usssites": {
+      "get": {
+        "description": "Get all USS Site entries",
+        "summary": "",
+        "tags": [
+          "Unknown Signal Sources"
+        ]
+      },
+      "post": {
+        "description": "Create a new USS Site entry",
+        "summary": "",
+        "tags": [
+          "Unknown Signal Sources"
+        ]
+      }
+    },
+    "/usssites/count": {
+      "get": {
+        "description": "Get a count of all USS Site entries",
+        "summary": "",
+        "tags": [
+          "Unknown Signal Sources"
+        ]
+      }
+    },
+    "/usssites/{id}": {
+      "get": {
+        "description": "Get a USS Site by id",
+        "summary": "",
+        "tags": [
+          "Unknown Signal Sources"
+        ]
+      },
+      "put": {
+        "description": "Update a USS Site by id",
+        "summary": "",
+        "tags": [
+          "Unknown Signal Sources"
+        ]
+      },
+      "delete": {
+        "description": "Delete a USS Site by id",
+        "summary": "",
+        "tags": [
+          "Unknown Signal Sources"
+        ]
+      }
+    },
+    "/usssites/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Unknown Signal Sources",
+      "description": "Code Name - USS"
+    }
+  ]
+}

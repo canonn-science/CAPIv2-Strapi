@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/genreports": {
+      "get": {
+        "description": "Get all GEN report entries",
+        "summary": "",
+        "tags": [
+          "Generation Ship Reports"
+        ]
+      },
+      "post": {
+        "description": "Create a new GEN report entry",
+        "summary": "",
+        "tags": [
+          "Generation Ship Reports"
+        ]
+      }
+    },
+    "/genreports/count": {
+      "get": {
+        "description": "Get a count of all GEN report entries",
+        "summary": "",
+        "tags": [
+          "Generation Ship Reports"
+        ]
+      }
+    },
+    "/genreports/{id}": {
+      "get": {
+        "description": "Get a GEN report by id",
+        "summary": "",
+        "tags": [
+          "Generation Ship Reports"
+        ]
+      },
+      "put": {
+        "description": "Update a GEN report by id",
+        "summary": "",
+        "tags": [
+          "Generation Ship Reports"
+        ]
+      },
+      "delete": {
+        "description": "Delete a GEN report by id",
+        "summary": "",
+        "tags": [
+          "Generation Ship Reports"
+        ]
+      }
+    },
+    "/genreports/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Generation Ship Reports",
+      "description": "Public Reporting of GEN"
+    }
+  ]
+}

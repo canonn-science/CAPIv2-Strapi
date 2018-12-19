@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/gssites": {
+      "get": {
+        "description": "Get all GS Site entries",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ]
+      },
+      "post": {
+        "description": "Create a new GS Site entry",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ]
+      }
+    },
+    "/gssites/count": {
+      "get": {
+        "description": "Get a count of all GS Site entries",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ]
+      }
+    },
+    "/gssites/{id}": {
+      "get": {
+        "description": "Get a GS Site by id",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ]
+      },
+      "put": {
+        "description": "Update a GS Site by id",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ]
+      },
+      "delete": {
+        "description": "Delete a GS Site by id",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ]
+      }
+    },
+    "/gssites/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Guardian Structures",
+      "description": "Code Name - GS"
+    }
+  ]
+}

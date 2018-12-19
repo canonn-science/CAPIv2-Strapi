@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/gsreports": {
+      "get": {
+        "description": "Get all GS report entries",
+        "summary": "",
+        "tags": [
+          "Guardian Structure Reports"
+        ]
+      },
+      "post": {
+        "description": "Create a new GS report entry",
+        "summary": "",
+        "tags": [
+          "Guardian Structure Reports"
+        ]
+      }
+    },
+    "/gsreports/count": {
+      "get": {
+        "description": "Get a count of all GS report entries",
+        "summary": "",
+        "tags": [
+          "Guardian Structure Reports"
+        ]
+      }
+    },
+    "/gsreports/{id}": {
+      "get": {
+        "description": "Get a GS report by id",
+        "summary": "",
+        "tags": [
+          "Guardian Structure Reports"
+        ]
+      },
+      "put": {
+        "description": "Update a GS report by id",
+        "summary": "",
+        "tags": [
+          "Guardian Structure Reports"
+        ]
+      },
+      "delete": {
+        "description": "Delete a GS report by id",
+        "summary": "",
+        "tags": [
+          "Guardian Structure Reports"
+        ]
+      }
+    },
+    "/gsreports/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Guardian Structure Reports",
+      "description": "Public Reporting of GS"
+    }
+  ]
+}

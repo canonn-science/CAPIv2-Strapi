@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/gysites": {
+      "get": {
+        "description": "Get all GY Site entries",
+        "summary": "",
+        "tags": [
+          "Geysers"
+        ]
+      },
+      "post": {
+        "description": "Create a new GY Site entry",
+        "summary": "",
+        "tags": [
+          "Geysers"
+        ]
+      }
+    },
+    "/gysites/count": {
+      "get": {
+        "description": "Get a count of all GY Site entries",
+        "summary": "",
+        "tags": [
+          "Geysers"
+        ]
+      }
+    },
+    "/gysites/{id}": {
+      "get": {
+        "description": "Get a GY Site by id",
+        "summary": "",
+        "tags": [
+          "Geysers"
+        ]
+      },
+      "put": {
+        "description": "Update a GY Site by id",
+        "summary": "",
+        "tags": [
+          "Geysers"
+        ]
+      },
+      "delete": {
+        "description": "Delete a GY Site by id",
+        "summary": "",
+        "tags": [
+          "Geysers"
+        ]
+      }
+    },
+    "/gysites/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Geysers",
+      "description": "Code Name - GY"
+    }
+  ]
+}

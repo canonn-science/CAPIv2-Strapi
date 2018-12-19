@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/gbreports": {
+      "get": {
+        "description": "Get all GB report entries",
+        "summary": "",
+        "tags": [
+          "Guardian Beacon Reports"
+        ]
+      },
+      "post": {
+        "description": "Create a new GB report entry",
+        "summary": "",
+        "tags": [
+          "Guardian Beacon Reports"
+        ]
+      }
+    },
+    "/gbreports/count": {
+      "get": {
+        "description": "Get a count of all GB report entries",
+        "summary": "",
+        "tags": [
+          "Guardian Beacon Reports"
+        ]
+      }
+    },
+    "/gbreports/{id}": {
+      "get": {
+        "description": "Get a GB report by id",
+        "summary": "",
+        "tags": [
+          "Guardian Beacon Reports"
+        ]
+      },
+      "put": {
+        "description": "Update a GB report by id",
+        "summary": "",
+        "tags": [
+          "Guardian Beacon Reports"
+        ]
+      },
+      "delete": {
+        "description": "Delete a GB report by id",
+        "summary": "",
+        "tags": [
+          "Guardian Beacon Reports"
+        ]
+      }
+    },
+    "/gbreports/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Guardian Beacon Reports",
+      "description": "Public Reporting of GB"
+    }
+  ]
+}

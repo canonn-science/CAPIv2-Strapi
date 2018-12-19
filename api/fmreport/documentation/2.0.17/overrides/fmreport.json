@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/fmreports": {
+      "get": {
+        "description": "Get all FM report entries",
+        "summary": "",
+        "tags": [
+          "Fumarole Reports"
+        ]
+      },
+      "post": {
+        "description": "Create a new FM report entry",
+        "summary": "",
+        "tags": [
+          "Fumarole Reports"
+        ]
+      }
+    },
+    "/fmreports/count": {
+      "get": {
+        "description": "Get a count of all FM report entries",
+        "summary": "",
+        "tags": [
+          "Fumarole Reports"
+        ]
+      }
+    },
+    "/fmreports/{id}": {
+      "get": {
+        "description": "Get a FM report by id",
+        "summary": "",
+        "tags": [
+          "Fumarole Reports"
+        ]
+      },
+      "put": {
+        "description": "Update a FM report by id",
+        "summary": "",
+        "tags": [
+          "Fumarole Reports"
+        ]
+      },
+      "delete": {
+        "description": "Delete a FM report by id",
+        "summary": "",
+        "tags": [
+          "Fumarole Reports"
+        ]
+      }
+    },
+    "/fmreports/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Fumarole Reports",
+      "description": "Public Reporting of FM"
+    }
+  ]
+}

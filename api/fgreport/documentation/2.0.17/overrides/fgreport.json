@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/fgreports": {
+      "get": {
+        "description": "Get all FG report entries",
+        "summary": "",
+        "tags": [
+          "Fungal Gourd Reports"
+        ]
+      },
+      "post": {
+        "description": "Create a new FG report entry",
+        "summary": "",
+        "tags": [
+          "Fungal Gourd Reports"
+        ]
+      }
+    },
+    "/fgreports/count": {
+      "get": {
+        "description": "Get a count of all FG report entries",
+        "summary": "",
+        "tags": [
+          "Fungal Gourd Reports"
+        ]
+      }
+    },
+    "/fgreports/{id}": {
+      "get": {
+        "description": "Get a FG report by id",
+        "summary": "",
+        "tags": [
+          "Fungal Gourd Reports"
+        ]
+      },
+      "put": {
+        "description": "Update a FG report by id",
+        "summary": "",
+        "tags": [
+          "Fungal Gourd Reports"
+        ]
+      },
+      "delete": {
+        "description": "Delete a FG report by id",
+        "summary": "",
+        "tags": [
+          "Fungal Gourd Reports"
+        ]
+      }
+    },
+    "/fgreports/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Fungal Gourd Reports",
+      "description": "Public Reporting of FG"
+    }
+  ]
+}

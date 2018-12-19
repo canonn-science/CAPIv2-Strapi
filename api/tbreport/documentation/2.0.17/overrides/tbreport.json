@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/tbreports": {
+      "get": {
+        "description": "Get all TB report entries",
+        "summary": "",
+        "tags": [
+          "Thargoid Barnacle Reports"
+        ]
+      },
+      "post": {
+        "description": "Create a new TB report entry",
+        "summary": "",
+        "tags": [
+          "Thargoid Barnacle Reports"
+        ]
+      }
+    },
+    "/tbreports/count": {
+      "get": {
+        "description": "Get a count of all TB report entries",
+        "summary": "",
+        "tags": [
+          "Thargoid Barnacle Reports"
+        ]
+      }
+    },
+    "/tbreports/{id}": {
+      "get": {
+        "description": "Get a TB report by id",
+        "summary": "",
+        "tags": [
+          "Thargoid Barnacle Reports"
+        ]
+      },
+      "put": {
+        "description": "Update a TB report by id",
+        "summary": "",
+        "tags": [
+          "Thargoid Barnacle Reports"
+        ]
+      },
+      "delete": {
+        "description": "Delete a TB report by id",
+        "summary": "",
+        "tags": [
+          "Thargoid Barnacle Reports"
+        ]
+      }
+    },
+    "/tbreports/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Thargoid Barnacle Reports",
+      "description": "Public Reporting of TB"
+    }
+  ]
+}

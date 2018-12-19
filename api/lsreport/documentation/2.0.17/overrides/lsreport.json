@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/lsreports": {
+      "get": {
+        "description": "Get all LS report entries",
+        "summary": "",
+        "tags": [
+          "Lava Spout Reports"
+        ]
+      },
+      "post": {
+        "description": "Create a new LS report entry",
+        "summary": "",
+        "tags": [
+          "Lava Spout Reports"
+        ]
+      }
+    },
+    "/lsreports/count": {
+      "get": {
+        "description": "Get a count of all LS report entries",
+        "summary": "",
+        "tags": [
+          "Lava Spout Reports"
+        ]
+      }
+    },
+    "/lsreports/{id}": {
+      "get": {
+        "description": "Get a LS report by id",
+        "summary": "",
+        "tags": [
+          "Lava Spout Reports"
+        ]
+      },
+      "put": {
+        "description": "Update a LS report by id",
+        "summary": "",
+        "tags": [
+          "Lava Spout Reports"
+        ]
+      },
+      "delete": {
+        "description": "Delete a LS report by id",
+        "summary": "",
+        "tags": [
+          "Lava Spout Reports"
+        ]
+      }
+    },
+    "/lsreports/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Lava Spout Reports",
+      "description": "Public Reporting of LS"
+    }
+  ]
+}

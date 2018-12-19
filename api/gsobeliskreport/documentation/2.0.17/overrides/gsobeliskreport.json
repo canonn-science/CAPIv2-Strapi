@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/gsobeliskreports": {
+      "get": {
+        "description": "Get all GS Obelisk report entries",
+        "summary": "",
+        "tags": [
+          "Guardian Structure Reports"
+        ]
+      },
+      "post": {
+        "description": "Create a new GS Obelisk report entry",
+        "summary": "",
+        "tags": [
+          "Guardian Structure Reports"
+        ]
+      }
+    },
+    "/gsobeliskreports/count": {
+      "get": {
+        "description": "Get a count of all GS Obelisk report entries",
+        "summary": "",
+        "tags": [
+          "Guardian Structure Reports"
+        ]
+      }
+    },
+    "/gsobeliskreports/{id}": {
+      "get": {
+        "description": "Get a GS Obelisk report by id",
+        "summary": "",
+        "tags": [
+          "Guardian Structure Reports"
+        ]
+      },
+      "put": {
+        "description": "Update a GS Obelisk report by id",
+        "summary": "",
+        "tags": [
+          "Guardian Structure Reports"
+        ]
+      },
+      "delete": {
+        "description": "Delete a GS Obelisk report by id",
+        "summary": "",
+        "tags": [
+          "Guardian Structure Reports"
+        ]
+      }
+    },
+    "/gsobeliskreports/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Guardian Structure Reports",
+      "description": "Public Reporting of GS Obelisk"
+    }
+  ]
+}

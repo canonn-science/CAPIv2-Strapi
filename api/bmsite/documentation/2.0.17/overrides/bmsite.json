@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/bmsites": {
+      "get": {
+        "description": "Get all BM Site entries",
+        "summary": "",
+        "tags": [
+          "Bark Mounds"
+        ]
+      },
+      "post": {
+        "description": "Create a new BM Site entry",
+        "summary": "",
+        "tags": [
+          "Bark Mounds"
+        ]
+      }
+    },
+    "/bmsites/count": {
+      "get": {
+        "description": "Get a count of all BM Site entries",
+        "summary": "",
+        "tags": [
+          "Bark Mounds"
+        ]
+      }
+    },
+    "/bmsites/{id}": {
+      "get": {
+        "description": "Get a BM Site by id",
+        "summary": "",
+        "tags": [
+          "Bark Mounds"
+        ]
+      },
+      "put": {
+        "description": "Update a BM Site by id",
+        "summary": "",
+        "tags": [
+          "Bark Mounds"
+        ]
+      },
+      "delete": {
+        "description": "Delete a BM Site by id",
+        "summary": "",
+        "tags": [
+          "Bark Mounds"
+        ]
+      }
+    },
+    "/bmsites/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Bark Mounds",
+      "description": "Code Name - BM"
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/gensites": {
+      "get": {
+        "description": "Get all GEN Site entries",
+        "summary": "",
+        "tags": [
+          "Generation Ships"
+        ]
+      },
+      "post": {
+        "description": "Create a new GEN Site entry",
+        "summary": "",
+        "tags": [
+          "Generation Ships"
+        ]
+      }
+    },
+    "/gensites/count": {
+      "get": {
+        "description": "Get a count of all GEN Site entries",
+        "summary": "",
+        "tags": [
+          "Generation Ships"
+        ]
+      }
+    },
+    "/gensites/{id}": {
+      "get": {
+        "description": "Get a GEN Site by id",
+        "summary": "",
+        "tags": [
+          "Generation Ships"
+        ]
+      },
+      "put": {
+        "description": "Update a GEN Site by id",
+        "summary": "",
+        "tags": [
+          "Generation Ships"
+        ]
+      },
+      "delete": {
+        "description": "Delete a GEN Site by id",
+        "summary": "",
+        "tags": [
+          "Generation Ships"
+        ]
+      }
+    },
+    "/gensites/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Generation Ships",
+      "description": "Code Name - GEN"
+    }
+  ]
+}
