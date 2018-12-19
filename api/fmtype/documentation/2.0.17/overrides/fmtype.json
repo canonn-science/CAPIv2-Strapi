@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/fmtypes": {
+      "get": {
+        "description": "Get all FM Type entries",
+        "summary": "",
+        "tags": [
+          "Fumaroles"
+        ]
+      },
+      "post": {
+        "description": "Create a new FM Type entry",
+        "summary": "",
+        "tags": [
+          "Fumaroles"
+        ]
+      }
+    },
+    "/fmtypes/count": {
+      "get": {
+        "description": "Get a count of all FM Type entries",
+        "summary": "",
+        "tags": [
+          "Fumaroles"
+        ]
+      }
+    },
+    "/fmtypes/{id}": {
+      "get": {
+        "description": "Get a FM Type by id",
+        "summary": "",
+        "tags": [
+          "Fumaroles"
+        ]
+      },
+      "put": {
+        "description": "Update a FM Type by id",
+        "summary": "",
+        "tags": [
+          "Fumaroles"
+        ]
+      },
+      "delete": {
+        "description": "Delete a FM Type by id",
+        "summary": "",
+        "tags": [
+          "Fumaroles"
+        ]
+      }
+    },
+    "/fmtypes/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Fumaroles",
+      "description": "Code Name - FM"
+    }
+  ]
+}

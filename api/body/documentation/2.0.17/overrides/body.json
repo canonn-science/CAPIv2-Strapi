@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/bodies": {
+      "get": {
+        "description": "Get all Body entries",
+        "summary": "",
+        "tags": [
+          "Bodies"
+        ]
+      },
+      "post": {
+        "description": "Create a new Body entry",
+        "summary": "",
+        "tags": [
+          "Bodies"
+        ]
+      }
+    },
+    "/bodies/count": {
+      "get": {
+        "description": "Get a count of all Body entries",
+        "summary": "",
+        "tags": [
+          "Bodies"
+        ]
+      }
+    },
+    "/bodies/{id}": {
+      "get": {
+        "description": "Get a Body by id",
+        "summary": "",
+        "tags": [
+          "Bodies"
+        ]
+      },
+      "put": {
+        "description": "Update a Body by id",
+        "summary": "",
+        "tags": [
+          "Bodies"
+        ]
+      },
+      "delete": {
+        "description": "Delete a Body by id",
+        "summary": "",
+        "tags": [
+          "Bodies"
+        ]
+      }
+    },
+    "/bodies/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Bodies",
+      "description": "Bodies stored in our API to use as references for sites"
+    }
+  ]
+}

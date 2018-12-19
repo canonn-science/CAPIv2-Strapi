@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/systems": {
+      "get": {
+        "description": "Get all System entries",
+        "summary": "",
+        "tags": [
+          "Systems"
+        ]
+      },
+      "post": {
+        "description": "Create a new System entry",
+        "summary": "",
+        "tags": [
+          "Systems"
+        ]
+      }
+    },
+    "/systems/count": {
+      "get": {
+        "description": "Get a count of all System entries",
+        "summary": "",
+        "tags": [
+          "Systems"
+        ]
+      }
+    },
+    "/systems/{id}": {
+      "get": {
+        "description": "Get a System by id",
+        "summary": "",
+        "tags": [
+          "Systems"
+        ]
+      },
+      "put": {
+        "description": "Update a System by id",
+        "summary": "",
+        "tags": [
+          "Systems"
+        ]
+      },
+      "delete": {
+        "description": "Delete a System by id",
+        "summary": "",
+        "tags": [
+          "Systems"
+        ]
+      }
+    },
+    "/systems/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Systems",
+      "description": "Systems stored in our API to use as references for sites"
+    }
+  ]
+}
