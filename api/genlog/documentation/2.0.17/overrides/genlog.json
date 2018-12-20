@@ -6,13 +6,17 @@
         "summary": "",
         "tags": [
           "Generation Ships"
-        ]
+        ],
+        "security": []
       },
       "post": {
         "description": "Create a new GEN Log entry",
         "summary": "",
         "tags": [
           "Generation Ships"
+        ],
+        "security": [
+          "siteWrite"
         ]
       }
     },
@@ -22,7 +26,8 @@
         "summary": "",
         "tags": [
           "Generation Ships"
-        ]
+        ],
+        "security": []
       }
     },
     "/genlogs/{id}": {
@@ -31,13 +36,17 @@
         "summary": "",
         "tags": [
           "Generation Ships"
-        ]
+        ],
+        "security": []
       },
       "put": {
         "description": "Update a GEN Log by id",
         "summary": "",
         "tags": [
           "Generation Ships"
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {

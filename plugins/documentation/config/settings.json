@@ -48,6 +48,7 @@
         "uploadWrite"
       ],
       "canonnAuth": [
+        "adminOnlyDelete",
         "reportDelete",
         "locationDelete",
         "cmdrDelete",
@@ -58,7 +59,8 @@
         "locationWrite",
         "siteWrite",
         "updateLogWrite",
-        "adminUsage"
+        "cmdrUpdate",
+        "cmdrKillWrite"
       ]
     }
   ]

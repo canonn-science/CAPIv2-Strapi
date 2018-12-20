@@ -14,7 +14,7 @@
       "name": "GNU-GPLv3",
       "url": "https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE"
     },
-    "x-generation-date": "12/20/2018 3:28:17 AM"
+    "x-generation-date": "12/20/2018 4:59:44 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -960,7 +960,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -1021,7 +1022,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/bmreports/count": {
@@ -1078,7 +1080,8 @@
         "tags": [
           "Bark Mound Reports"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/bmreports/{id}": {
@@ -1142,7 +1145,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -1215,7 +1219,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "delete": {
         "deprecated": false,
@@ -1278,6 +1283,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "reportDelete"
         ]
       }
     },
@@ -2412,7 +2420,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -2473,7 +2482,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "locationWrite"
+        ]
       }
     },
     "/bodies/count": {
@@ -2530,7 +2542,8 @@
         "tags": [
           "Bodies"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/bodies/{id}": {
@@ -2594,7 +2607,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -2667,6 +2681,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "locationWrite"
         ]
       },
       "delete": {
@@ -2730,6 +2747,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "locationDelete"
         ]
       }
     },
@@ -3132,7 +3152,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -3193,7 +3214,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/btreports/count": {
@@ -3250,7 +3272,8 @@
         "tags": [
           "Brain Tree Reports"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/btreports/{id}": {
@@ -3314,7 +3337,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -3387,7 +3411,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "delete": {
         "deprecated": false,
@@ -3450,6 +3475,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "reportDelete"
         ]
       }
     },
@@ -4584,7 +4612,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -4645,7 +4674,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "cmdrWrite"
+        ]
       }
     },
     "/cmdrs/count": {
@@ -4702,7 +4734,8 @@
         "tags": [
           "CMDRs"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/cmdrs/{id}": {
@@ -4766,7 +4799,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -4839,6 +4873,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "cmdrUpdate"
         ]
       },
       "delete": {
@@ -4902,6 +4939,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "cmdrDelete"
         ]
       }
     },
@@ -5304,7 +5344,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -5365,7 +5406,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "cmdrKillWrite"
+        ]
       }
     },
     "/cmdrkills/count": {
@@ -5422,7 +5466,8 @@
         "tags": [
           "CMDRs"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/cmdrkills/{id}": {
@@ -5486,7 +5531,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -5559,6 +5605,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "cmdrUpdate"
         ]
       },
       "delete": {
@@ -5622,6 +5671,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "cmdrDelete"
         ]
       }
     },
@@ -6024,7 +6076,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -6085,7 +6138,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/fgreports/count": {
@@ -6142,7 +6196,8 @@
         "tags": [
           "Fungal Gourd Reports"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/fgreports/{id}": {
@@ -6206,7 +6261,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -6279,7 +6335,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "delete": {
         "deprecated": false,
@@ -6342,6 +6399,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "reportDelete"
         ]
       }
     },
@@ -7476,7 +7536,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -7537,7 +7598,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/fmreports/count": {
@@ -7594,7 +7656,8 @@
         "tags": [
           "Fumarole Reports"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/fmreports/{id}": {
@@ -7658,7 +7721,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -7731,7 +7795,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "delete": {
         "deprecated": false,
@@ -7794,6 +7859,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "reportDelete"
         ]
       }
     },
@@ -8928,7 +8996,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -8989,7 +9058,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/fmtypes/count": {
@@ -9046,7 +9118,8 @@
         "tags": [
           "Fumaroles"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/fmtypes/{id}": {
@@ -9110,7 +9183,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -9183,6 +9257,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -9648,7 +9725,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -9709,7 +9787,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/gbmessages/count": {
@@ -9766,7 +9847,8 @@
         "tags": [
           "Guardian Beacons"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/gbmessages/{id}": {
@@ -9830,7 +9912,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -9903,6 +9986,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -10368,7 +10454,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -10429,7 +10516,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/gbreports/count": {
@@ -10486,7 +10574,8 @@
         "tags": [
           "Guardian Beacon Reports"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/gbreports/{id}": {
@@ -10550,7 +10639,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -10623,7 +10713,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "delete": {
         "deprecated": false,
@@ -10686,6 +10777,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "reportDelete"
         ]
       }
     },
@@ -11820,7 +11914,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -11881,7 +11976,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/genlogs/count": {
@@ -11938,7 +12036,8 @@
         "tags": [
           "Generation Ships"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/genlogs/{id}": {
@@ -12002,7 +12101,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -12075,6 +12175,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -12540,7 +12643,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -12601,7 +12705,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/genreports/count": {
@@ -12658,7 +12763,8 @@
         "tags": [
           "Generation Ship Reports"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/genreports/{id}": {
@@ -12722,7 +12828,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -12795,7 +12902,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "delete": {
         "deprecated": false,
@@ -12858,6 +12966,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "reportDelete"
         ]
       }
     },
@@ -13992,7 +14103,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -14053,7 +14165,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/gractivegroups/count": {
@@ -14110,7 +14225,8 @@
         "tags": [
           "Guardian Ruins"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/gractivegroups/{id}": {
@@ -14174,7 +14290,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -14247,6 +14364,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -14545,6 +14665,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -14712,7 +14835,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -14773,7 +14897,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/gractiveobelisks/count": {
@@ -14830,7 +14957,8 @@
         "tags": [
           "Guardian Ruins"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/gractiveobelisks/{id}": {
@@ -14894,7 +15022,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -14967,6 +15096,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -15030,6 +15162,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -15432,7 +15567,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -15493,7 +15629,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/grartifacts/count": {
@@ -15550,7 +15689,8 @@
         "tags": [
           "Guardian Ruins"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/grartifacts/{id}": {
@@ -15614,7 +15754,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -15687,6 +15828,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -15750,6 +15894,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -16152,7 +16299,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -16213,7 +16361,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/grcodexcategories/count": {
@@ -16270,7 +16421,8 @@
         "tags": [
           "Guardian Ruins"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/grcodexcategories/{id}": {
@@ -16334,7 +16486,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -16407,6 +16560,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -16470,6 +16626,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -16872,7 +17031,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -16933,7 +17093,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/grcodexdata/count": {
@@ -16990,7 +17153,8 @@
         "tags": [
           "Guardian Ruins"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/grcodexdata/{id}": {
@@ -17054,7 +17218,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -17127,6 +17292,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -17190,6 +17358,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -17592,7 +17763,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -17653,7 +17825,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/grobelisks/count": {
@@ -17710,7 +17885,8 @@
         "tags": [
           "Guardian Ruins"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/grobelisks/{id}": {
@@ -17774,7 +17950,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -17847,6 +18024,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -17910,6 +18090,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -18312,7 +18495,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -18373,7 +18557,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/grobeliskgroups/count": {
@@ -18430,7 +18617,8 @@
         "tags": [
           "Guardian Ruins"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/grobeliskgroups/{id}": {
@@ -18494,7 +18682,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -18567,6 +18756,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -18630,6 +18822,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -19032,7 +19227,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -19093,7 +19289,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/grobeliskgroupreports/count": {
@@ -19150,7 +19347,8 @@
         "tags": [
           "Guardian Ruin Reports"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/grobeliskgroupreports/{id}": {
@@ -19214,7 +19412,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -19287,7 +19486,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "delete": {
         "deprecated": false,
@@ -19350,6 +19550,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -19752,7 +19955,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -19813,7 +20017,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/grobeliskreports/count": {
@@ -19870,7 +20075,8 @@
         "tags": [
           "Guardian Ruin Reports"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/grobeliskreports/{id}": {
@@ -19934,7 +20140,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -20007,7 +20214,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "delete": {
         "deprecated": false,
@@ -20070,6 +20278,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -20472,7 +20683,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -20533,7 +20745,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/grreports/count": {
@@ -20590,7 +20803,8 @@
         "tags": [
           "Guardian Ruin Reports"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/grreports/{id}": {
@@ -20654,7 +20868,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -20727,7 +20942,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "delete": {
         "deprecated": false,
@@ -20790,6 +21006,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -21924,7 +22143,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -21985,7 +22205,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/grtypes/count": {
@@ -22042,7 +22265,8 @@
         "tags": [
           "Guardian Ruins"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/grtypes/{id}": {
@@ -22106,7 +22330,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -22179,6 +22404,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -22242,6 +22470,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -22644,7 +22875,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -22705,7 +22937,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/gsactivegroups/count": {
@@ -22762,7 +22997,8 @@
         "tags": [
           "Guardian Structures"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/gsactivegroups/{id}": {
@@ -22826,7 +23062,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -22899,6 +23136,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -22962,6 +23202,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -23364,7 +23607,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -23425,7 +23669,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/gsactiveobelisks/count": {
@@ -23482,7 +23729,8 @@
         "tags": [
           "Guardian Structures"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/gsactiveobelisks/{id}": {
@@ -23546,7 +23794,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -23619,6 +23868,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -23682,6 +23934,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -24084,7 +24339,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -24145,7 +24401,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/gsartifacts/count": {
@@ -24202,7 +24461,8 @@
         "tags": [
           "Guardian Structures"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/gsartifacts/{id}": {
@@ -24266,7 +24526,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -24339,6 +24600,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -24402,6 +24666,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -24804,7 +25071,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -24865,7 +25133,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/gscodexcategories/count": {
@@ -24922,7 +25193,8 @@
         "tags": [
           "Guardian Structures"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/gscodexcategories/{id}": {
@@ -24986,7 +25258,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -25059,6 +25332,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -25122,6 +25398,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -25524,7 +25803,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -25585,7 +25865,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/gscodexdata/count": {
@@ -25642,7 +25925,8 @@
         "tags": [
           "Guardian Structures"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/gscodexdata/{id}": {
@@ -25706,7 +25990,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -25779,6 +26064,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -25842,6 +26130,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -26244,7 +26535,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -26305,7 +26597,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/gsobelisks/count": {
@@ -26362,7 +26657,8 @@
         "tags": [
           "Guardian Structures"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/gsobelisks/{id}": {
@@ -26426,7 +26722,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -26499,6 +26796,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -26562,6 +26862,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -26964,7 +27267,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -27025,7 +27329,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/gsobeliskgroups/count": {
@@ -27082,7 +27389,8 @@
         "tags": [
           "Guardian Structures"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/gsobeliskgroups/{id}": {
@@ -27146,7 +27454,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -27219,6 +27528,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -27282,6 +27594,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -27684,7 +27999,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -27745,7 +28061,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/gsobeliskgroupreports/count": {
@@ -27802,7 +28119,8 @@
         "tags": [
           "Guardian Structure Reports"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/gsobeliskgroupreports/{id}": {
@@ -27866,7 +28184,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -27939,7 +28258,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "delete": {
         "deprecated": false,
@@ -28002,6 +28322,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "reportDelete"
         ]
       }
     },
@@ -28404,7 +28727,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -28465,7 +28789,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/gsobeliskreports/count": {
@@ -28522,7 +28847,8 @@
         "tags": [
           "Guardian Structure Reports"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/gsobeliskreports/{id}": {
@@ -28586,7 +28912,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -28659,7 +28986,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "delete": {
         "deprecated": false,
@@ -28722,6 +29050,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "reportDelete"
         ]
       }
     },
@@ -29124,7 +29455,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -29185,7 +29517,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/gsreports/count": {
@@ -29242,7 +29575,8 @@
         "tags": [
           "Guardian Structure Reports"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/gsreports/{id}": {
@@ -29306,7 +29640,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -29379,7 +29714,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "delete": {
         "deprecated": false,
@@ -29442,6 +29778,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "reportDelete"
         ]
       }
     },
@@ -30576,7 +30915,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -30637,7 +30977,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/gstypes/count": {
@@ -30694,7 +31037,8 @@
         "tags": [
           "Guardian Structures"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/gstypes/{id}": {
@@ -30758,7 +31102,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -30831,6 +31176,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -30894,6 +31242,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -31296,7 +31647,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -31357,7 +31709,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/gyreports/count": {
@@ -31414,7 +31767,8 @@
         "tags": [
           "Geyser Reports"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/gyreports/{id}": {
@@ -31478,7 +31832,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -31551,7 +31906,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "delete": {
         "deprecated": false,
@@ -31614,6 +31970,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "reportDelete"
         ]
       }
     },
@@ -32748,7 +33107,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -32809,7 +33169,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/gytypes/count": {
@@ -32866,7 +33229,8 @@
         "tags": [
           "Geysers"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/gytypes/{id}": {
@@ -32930,7 +33294,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -33003,6 +33368,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -33066,6 +33434,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -33468,7 +33839,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -33529,7 +33901,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/hdreports/count": {
@@ -33586,7 +33959,8 @@
         "tags": [
           "Hyperdiction Reports"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/hdreports/{id}": {
@@ -33650,7 +34024,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -33723,7 +34098,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "delete": {
         "deprecated": false,
@@ -33786,6 +34162,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "reportDelete"
         ]
       }
     },
@@ -34810,7 +35189,8 @@
         "tags": [
           "Canonn Use"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/version": {
@@ -34867,7 +35247,8 @@
         "tags": [
           "Canonn Use"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/journaldata": {
@@ -35034,7 +35415,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -35095,7 +35477,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/journaldata/count": {
@@ -35152,7 +35535,8 @@
         "tags": [
           "Canonn Use"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/journaldata/{id}": {
@@ -35216,7 +35600,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -35289,7 +35674,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "delete": {
         "deprecated": false,
@@ -35352,6 +35738,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "adminOnlyDelete"
         ]
       }
     },
@@ -35754,7 +36143,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -35815,7 +36205,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/killreports/count": {
@@ -35872,7 +36263,8 @@
         "tags": [
           "CMDRs"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/killreports/{id}": {
@@ -35936,7 +36328,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -36009,7 +36402,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "delete": {
         "deprecated": false,
@@ -36072,6 +36466,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "cmdrDelete"
         ]
       }
     },
@@ -36474,7 +36871,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -36535,7 +36933,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/lsreports/count": {
@@ -36592,7 +36991,8 @@
         "tags": [
           "Lava Spout Reports"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/lsreports/{id}": {
@@ -36656,7 +37056,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -36729,7 +37130,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "delete": {
         "deprecated": false,
@@ -36792,6 +37194,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "reportDelete"
         ]
       }
     },
@@ -37926,7 +38331,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -37987,7 +38393,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/msreports/count": {
@@ -38044,7 +38451,8 @@
         "tags": [
           "Megaship Reports"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/msreports/{id}": {
@@ -38108,7 +38516,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -38181,7 +38590,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "delete": {
         "deprecated": false,
@@ -38244,6 +38654,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "reportDelete"
         ]
       }
     },
@@ -38646,7 +39059,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -38707,7 +39121,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/msschedules/count": {
@@ -38764,7 +39181,8 @@
         "tags": [
           "Megaships"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/msschedules/{id}": {
@@ -38828,7 +39246,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -38901,6 +39320,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -38964,6 +39386,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -40098,7 +40523,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -40159,7 +40585,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/mstypes/count": {
@@ -40216,7 +40645,8 @@
         "tags": [
           "Megaships"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/mstypes/{id}": {
@@ -40280,7 +40710,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -40353,6 +40784,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -40416,6 +40850,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -40818,7 +41255,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -40879,7 +41317,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/nhssreports/count": {
@@ -40936,7 +41375,8 @@
         "tags": [
           "Non-Human Signal Source Reports"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/nhssreports/{id}": {
@@ -41000,7 +41440,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -41073,7 +41514,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "delete": {
         "deprecated": false,
@@ -41136,6 +41578,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "reportDelete"
         ]
       }
     },
@@ -42270,7 +42715,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -42331,7 +42777,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "locationWrite"
+        ]
       }
     },
     "/rings/count": {
@@ -42388,7 +42837,8 @@
         "tags": [
           "Rings"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/rings/{id}": {
@@ -42452,7 +42902,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -42525,6 +42976,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "locationWrite"
         ]
       },
       "delete": {
@@ -42588,6 +43042,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "locationDelete"
         ]
       }
     },
@@ -42990,7 +43447,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -43051,7 +43509,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "locationWrite"
+        ]
       }
     },
     "/systems/count": {
@@ -43108,7 +43569,8 @@
         "tags": [
           "Systems"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/systems/{id}": {
@@ -43172,7 +43634,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -43245,6 +43708,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "locationWrite"
         ]
       },
       "delete": {
@@ -43308,6 +43774,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "locationDelete"
         ]
       }
     },
@@ -43710,7 +44179,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -43771,7 +44241,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/tbcycles/count": {
@@ -43828,7 +44301,8 @@
         "tags": [
           "Thargoid Barnacles"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/tbcycles/{id}": {
@@ -43892,7 +44366,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -43965,6 +44440,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -44028,6 +44506,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -44430,7 +44911,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -44491,7 +44973,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/tbreports/count": {
@@ -44548,7 +45031,8 @@
         "tags": [
           "Thargoid Barnacle Reports"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/tbreports/{id}": {
@@ -44612,7 +45096,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -44685,7 +45170,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "delete": {
         "deprecated": false,
@@ -44748,6 +45234,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "reportDelete"
         ]
       }
     },
@@ -45882,7 +46371,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -45943,7 +46433,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/tbtypes/count": {
@@ -46000,7 +46493,8 @@
         "tags": [
           "Thargoid Barnacles"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/tbtypes/{id}": {
@@ -46064,7 +46558,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -46137,6 +46632,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -46200,6 +46698,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -47322,7 +47823,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -47383,7 +47885,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/tsreports/count": {
@@ -47440,7 +47943,8 @@
         "tags": [
           "Thargoid Structure Reports"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/tsreports/{id}": {
@@ -47504,7 +48008,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -47577,7 +48082,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "delete": {
         "deprecated": false,
@@ -47640,6 +48146,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "reportDelete"
         ]
       }
     },
@@ -48774,7 +49283,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -48835,7 +49345,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/tsstatuses/count": {
@@ -48892,7 +49405,8 @@
         "tags": [
           "Thargoid Structures"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/tsstatuses/{id}": {
@@ -48956,7 +49470,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -49029,6 +49544,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -49092,6 +49610,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -49494,7 +50015,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -49555,7 +50077,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/twreports/count": {
@@ -49612,7 +50135,8 @@
         "tags": [
           "Tube Worm Reports"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/twreports/{id}": {
@@ -49676,7 +50200,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -49749,7 +50274,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "delete": {
         "deprecated": false,
@@ -49812,6 +50338,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "reportDelete"
         ]
       }
     },

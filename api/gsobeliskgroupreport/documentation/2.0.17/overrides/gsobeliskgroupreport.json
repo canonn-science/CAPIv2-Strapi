@@ -6,14 +6,16 @@
         "summary": "",
         "tags": [
           "Guardian Structure Reports"
-        ]
+        ],
+        "security": []
       },
       "post": {
         "description": "Create a new GS Obelisk Group report entry",
         "summary": "",
         "tags": [
           "Guardian Structure Reports"
-        ]
+        ],
+        "security": []
       }
     },
     "/gsobeliskgroupreports/count": {
@@ -22,7 +24,8 @@
         "summary": "",
         "tags": [
           "Guardian Structure Reports"
-        ]
+        ],
+        "security": []
       }
     },
     "/gsobeliskgroupreports/{id}": {
@@ -31,20 +34,25 @@
         "summary": "",
         "tags": [
           "Guardian Structure Reports"
-        ]
+        ],
+        "security": []
       },
       "put": {
         "description": "Update a GS Obelisk Group report by id",
         "summary": "",
         "tags": [
           "Guardian Structure Reports"
-        ]
+        ],
+        "security": []
       },
       "delete": {
         "description": "Delete a GS Obelisk Group report by id",
         "summary": "",
         "tags": [
           "Guardian Structure Reports"
+        ],
+        "security": [
+          "reportDelete"
         ]
       }
     },

@@ -6,13 +6,17 @@
         "summary": "",
         "tags": [
           "Rings"
-        ]
+        ],
+        "security": []
       },
       "post": {
         "description": "Create a new Ring entry",
         "summary": "",
         "tags": [
           "Rings"
+        ],
+        "security": [
+          "locationWrite"
         ]
       }
     },
@@ -22,7 +26,8 @@
         "summary": "",
         "tags": [
           "Rings"
-        ]
+        ],
+        "security": []
       }
     },
     "/rings/{id}": {
@@ -31,13 +36,17 @@
         "summary": "",
         "tags": [
           "Rings"
-        ]
+        ],
+        "security": []
       },
       "put": {
         "description": "Update a Ring by id",
         "summary": "",
         "tags": [
           "Rings"
+        ],
+        "security": [
+          "locationWrite"
         ]
       },
       "delete": {
@@ -45,6 +54,9 @@
         "summary": "",
         "tags": [
           "Rings"
+        ],
+        "security": [
+          "locationDelete"
         ]
       }
     },

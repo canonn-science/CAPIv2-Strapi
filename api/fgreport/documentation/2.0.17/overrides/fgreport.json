@@ -6,14 +6,16 @@
         "summary": "",
         "tags": [
           "Fungal Gourd Reports"
-        ]
+        ],
+        "security": []
       },
       "post": {
         "description": "Create a new FG report entry",
         "summary": "",
         "tags": [
           "Fungal Gourd Reports"
-        ]
+        ],
+        "security": []
       }
     },
     "/fgreports/count": {
@@ -22,7 +24,8 @@
         "summary": "",
         "tags": [
           "Fungal Gourd Reports"
-        ]
+        ],
+        "security": []
       }
     },
     "/fgreports/{id}": {
@@ -31,20 +34,25 @@
         "summary": "",
         "tags": [
           "Fungal Gourd Reports"
-        ]
+        ],
+        "security": []
       },
       "put": {
         "description": "Update a FG report by id",
         "summary": "",
         "tags": [
           "Fungal Gourd Reports"
-        ]
+        ],
+        "security": []
       },
       "delete": {
         "description": "Delete a FG report by id",
         "summary": "",
         "tags": [
           "Fungal Gourd Reports"
+        ],
+        "security": [
+          "reportDelete"
         ]
       }
     },

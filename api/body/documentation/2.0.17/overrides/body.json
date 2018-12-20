@@ -6,13 +6,17 @@
         "summary": "",
         "tags": [
           "Bodies"
-        ]
+        ],
+        "security": []
       },
       "post": {
         "description": "Create a new Body entry",
         "summary": "",
         "tags": [
           "Bodies"
+        ],
+        "security": [
+          "locationWrite"
         ]
       }
     },
@@ -22,7 +26,8 @@
         "summary": "",
         "tags": [
           "Bodies"
-        ]
+        ],
+        "security": []
       }
     },
     "/bodies/{id}": {
@@ -31,13 +36,17 @@
         "summary": "",
         "tags": [
           "Bodies"
-        ]
+        ],
+        "security": []
       },
       "put": {
         "description": "Update a Body by id",
         "summary": "",
         "tags": [
           "Bodies"
+        ],
+        "security": [
+          "locationWrite"
         ]
       },
       "delete": {
@@ -45,6 +54,9 @@
         "summary": "",
         "tags": [
           "Bodies"
+        ],
+        "security": [
+          "locationDelete"
         ]
       }
     },

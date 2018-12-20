@@ -6,13 +6,17 @@
         "summary": "",
         "tags": [
           "CMDRs"
-        ]
+        ],
+        "security": []
       },
       "post": {
         "description": "Create a new CMDR Kill entry",
         "summary": "",
         "tags": [
           "CMDRs"
+        ],
+        "security": [
+          "cmdrKillWrite"
         ]
       }
     },
@@ -22,7 +26,8 @@
         "summary": "",
         "tags": [
           "CMDRs"
-        ]
+        ],
+        "security": []
       }
     },
     "/cmdrkills/{id}": {
@@ -31,13 +36,17 @@
         "summary": "",
         "tags": [
           "CMDRs"
-        ]
+        ],
+        "security": []
       },
       "put": {
         "description": "Update a CMDR Kill by id",
         "summary": "",
         "tags": [
           "CMDRs"
+        ],
+        "security": [
+          "cmdrUpdate"
         ]
       },
       "delete": {
@@ -45,6 +54,9 @@
         "summary": "",
         "tags": [
           "CMDRs"
+        ],
+        "security": [
+          "cmdrDelete"
         ]
       }
     },
