@@ -1,0 +1,93 @@
+{
+  "paths": {
+    "/gytypes": {
+      "get": {
+        "description": "Get all GY Type entries",
+        "summary": "",
+        "tags": [
+          "Geysers"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new GY Type entry",
+        "summary": "",
+        "tags": [
+          "Geysers"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      }
+    },
+    "/gytypes/count": {
+      "get": {
+        "description": "Get a count of all GY Type entries",
+        "summary": "",
+        "tags": [
+          "Geysers"
+        ],
+        "security": []
+      }
+    },
+    "/gytypes/{id}": {
+      "get": {
+        "description": "Get a GY Type by id",
+        "summary": "",
+        "tags": [
+          "Geysers"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a GY Type by id",
+        "summary": "",
+        "tags": [
+          "Geysers"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a GY Type by id",
+        "summary": "",
+        "tags": [
+          "Geysers"
+        ],
+        "security": [
+          "siteDelete"
+        ]
+      }
+    },
+    "/gytypes/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Geysers",
+      "description": "Code Name - GY"
+    }
+  ]
+}

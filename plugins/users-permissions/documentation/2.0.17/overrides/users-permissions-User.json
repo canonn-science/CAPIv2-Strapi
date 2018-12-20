@@ -55,6 +55,9 @@
     },
     "/users-permissions/search/{id}": {
       "get": {
+        "tags": [
+          "Strapi Usage Only"
+        ],
         "summary": "Retrieve a list of users by searching for their username or email",
         "parameters": [
           {
@@ -67,6 +70,37 @@
               "type": "string"
             }
           }
+        ]
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": [
+          "Strapi Usage Only"
+        ]
+      }
+    },
+    "/users/me": {
+      "get": {
+        "tags": [
+          "Strapi Usage Only"
+        ]
+      }
+    },
+    "/users/{_id}": {
+      "get": {
+        "tags": [
+          "Strapi Usage Only"
+        ]
+      },
+      "put": {
+        "tags": [
+          "Strapi Usage Only"
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Strapi Usage Only"
         ]
       }
     },
@@ -278,7 +312,8 @@
       }
     },
     {
-      "name": "Users-Permissions - User"
+      "name": "Strapi Usage Only",
+      "description": "Models for use by Canonn Admins"
     }
   ]
 }

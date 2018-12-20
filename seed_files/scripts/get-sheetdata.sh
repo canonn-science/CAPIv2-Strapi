@@ -26,7 +26,6 @@ currentDate=`date` && echo "exportRingType - $currentDate" >> ../CSV/updated.md 
 currentDate=`date` && echo "exportTBCycle - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/coreData/tbcycles.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTwm3_zkk1fzuFO4Rdh-VmC6Fbupdxryggp4LHbtX8QX9FjrSBjBK4MLE-Ping0gq5jHarr5rUoXXuK/pub?gid=0&single=true&output=csv'
 currentDate=`date` && echo "exportTBType - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/coreData/tbtypes.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ8nr6m-Qt70RhzXOQ_AjRd6q8jk4D8IEF0LPLWsUMoBvbkRh7XzTb3V-xR8EXakpB_tUR8k4Dvm6TB/pub?gid=0&single=true&output=csv'
 currentDate=`date` && echo "exportTSStatus - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/coreData/tsstatuses.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRHH7eDa-q5U1jBAMzW-I_N15wOhWe4sg_IfOpywyKGfBQ4T_k-RKw1PGV9KjXbkGOwODreNtG5xVKn/pub?gid=0&single=true&output=csv'
-currentDate=`date` && echo "exportUSSType - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/coreData/usstypes.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQvCyaOUjscvIyuVAusN7IY78xcn-4IPAFfBOFQ9j5jTMclIm3S-yTf2WkmMPUv1HgKlu46LYzPQQdY/pub?gid=0&single=true&output=csv'
 
 echo "Core data download finished"
 sleep 1

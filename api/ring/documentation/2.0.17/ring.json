@@ -863,19 +863,8 @@
           "ringName": {
             "type": "string"
           },
-          "ringtype": {
-            "required": [
-              "id",
-              "type"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "type": {
-                "type": "string"
-              }
-            }
+          "type": {
+            "type": "string"
           },
           "mass": {
             "type": "number"
@@ -899,7 +888,7 @@
           "ringName": {
             "type": "string"
           },
-          "ringtype": {
+          "type": {
             "type": "string"
           },
           "mass": {

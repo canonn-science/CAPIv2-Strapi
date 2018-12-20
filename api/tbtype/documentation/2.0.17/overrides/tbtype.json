@@ -1,0 +1,93 @@
+{
+  "paths": {
+    "/tbtypes": {
+      "get": {
+        "description": "Get all TB Type entries",
+        "summary": "",
+        "tags": [
+          "Thargoid Barnacles"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new TB Type entry",
+        "summary": "",
+        "tags": [
+          "Thargoid Barnacles"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      }
+    },
+    "/tbtypes/count": {
+      "get": {
+        "description": "Get a count of all TB Type entries",
+        "summary": "",
+        "tags": [
+          "Thargoid Barnacles"
+        ],
+        "security": []
+      }
+    },
+    "/tbtypes/{id}": {
+      "get": {
+        "description": "Get a TB Type by id",
+        "summary": "",
+        "tags": [
+          "Thargoid Barnacles"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a TB Type by id",
+        "summary": "",
+        "tags": [
+          "Thargoid Barnacles"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a TB Type by id",
+        "summary": "",
+        "tags": [
+          "Thargoid Barnacles"
+        ],
+        "security": [
+          "siteDelete"
+        ]
+      }
+    },
+    "/tbtypes/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Thargoid Barnacles",
+      "description": "Code Name - TB"
+    }
+  ]
+}

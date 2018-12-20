@@ -1,0 +1,81 @@
+{
+  "paths": {
+    "/tgencounterstats": {
+      "get": {
+        "description": "Get all CMDR Thargoid Encounter Stat entries",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ]
+      },
+      "post": {
+        "description": "Create a new CMDR Thargoid Encounter Stat entry",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ]
+      }
+    },
+    "/tgencounterstats/count": {
+      "get": {
+        "description": "Get a count of all CMDR Thargoid Encounter Stat entries",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ]
+      }
+    },
+    "/tgencounterstats/{id}": {
+      "get": {
+        "description": "Get a CMDR Thargoid Encounter Stat by id",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ]
+      },
+      "put": {
+        "description": "Update a CMDR Thargoid Encounter Stat by id",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ]
+      },
+      "delete": {
+        "description": "Delete a CMDR Thargoid Encounter Stat by id",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ]
+      }
+    },
+    "/tgencounterstats/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Canonn Use",
+      "description": "Endpoints used by Canonn for updating or maintaining the API"
+    }
+  ]
+}
