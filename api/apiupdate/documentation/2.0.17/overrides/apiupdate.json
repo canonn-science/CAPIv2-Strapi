@@ -6,13 +6,17 @@
         "summary": "",
         "tags": [
           "Canonn Use"
-        ]
+        ],
+        "security": []
       },
       "post": {
         "description": "Create a new CAPIv2-Updater log entry",
         "summary": "",
         "tags": [
           "Canonn Use"
+        ],
+        "security": [
+          "updateLogWrite"
         ]
       }
     },
@@ -22,7 +26,8 @@
         "summary": "",
         "tags": [
           "Canonn Use"
-        ]
+        ],
+        "security": []
       }
     },
     "/apiupdates/{id}": {
@@ -31,13 +36,17 @@
         "summary": "",
         "tags": [
           "Canonn Use"
-        ]
+        ],
+        "security": []
       },
       "put": {
         "description": "Update a CAPIv2-Updater log by id",
         "summary": "",
         "tags": [
           "Canonn Use"
+        ],
+        "security": [
+          "updateLogWrite"
         ]
       },
       "delete": {
@@ -45,6 +54,9 @@
         "summary": "",
         "tags": [
           "Canonn Use"
+        ],
+        "security": [
+          "updateLogWrite"
         ]
       }
     },
