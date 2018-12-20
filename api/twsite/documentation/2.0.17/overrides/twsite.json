@@ -6,13 +6,17 @@
         "summary": "",
         "tags": [
           "Tube Worms"
-        ]
+        ],
+        "security": []
       },
       "post": {
         "description": "Create a new TW Site entry",
         "summary": "",
         "tags": [
           "Tube Worms"
+        ],
+        "security": [
+          "siteWrite"
         ]
       }
     },
@@ -22,7 +26,8 @@
         "summary": "",
         "tags": [
           "Tube Worms"
-        ]
+        ],
+        "security": []
       }
     },
     "/twsites/{id}": {
@@ -31,13 +36,17 @@
         "summary": "",
         "tags": [
           "Tube Worms"
-        ]
+        ],
+        "security": []
       },
       "put": {
         "description": "Update a TW Site by id",
         "summary": "",
         "tags": [
           "Tube Worms"
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -45,6 +54,9 @@
         "summary": "",
         "tags": [
           "Tube Worms"
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },

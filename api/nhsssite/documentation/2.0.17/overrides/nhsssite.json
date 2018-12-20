@@ -6,13 +6,17 @@
         "summary": "",
         "tags": [
           "Non-Human Signal Sources"
-        ]
+        ],
+        "security": []
       },
       "post": {
         "description": "Create a new NHSS Site entry",
         "summary": "",
         "tags": [
           "Non-Human Signal Sources"
+        ],
+        "security": [
+          "siteWrite"
         ]
       }
     },
@@ -22,7 +26,8 @@
         "summary": "",
         "tags": [
           "Non-Human Signal Sources"
-        ]
+        ],
+        "security": []
       }
     },
     "/nhsssites/{id}": {
@@ -31,13 +36,17 @@
         "summary": "",
         "tags": [
           "Non-Human Signal Sources"
-        ]
+        ],
+        "security": []
       },
       "put": {
         "description": "Update a NHSS Site by id",
         "summary": "",
         "tags": [
           "Non-Human Signal Sources"
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -45,6 +54,9 @@
         "summary": "",
         "tags": [
           "Non-Human Signal Sources"
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },

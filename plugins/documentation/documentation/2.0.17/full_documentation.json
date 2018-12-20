@@ -14,7 +14,7 @@
       "name": "GNU-GPLv3",
       "url": "https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE"
     },
-    "x-generation-date": "12/20/2018 3:06:31 AM"
+    "x-generation-date": "12/20/2018 3:28:17 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -1680,7 +1680,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -1741,7 +1742,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/bmsites/count": {
@@ -1798,7 +1802,8 @@
         "tags": [
           "Bark Mounds"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/bmsites/{id}": {
@@ -1862,7 +1867,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -1935,6 +1941,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -1998,6 +2007,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -3840,7 +3852,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -3901,7 +3914,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/btsites/count": {
@@ -3958,7 +3974,8 @@
         "tags": [
           "Brain Trees"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/btsites/{id}": {
@@ -4022,7 +4039,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -4095,6 +4113,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -4158,6 +4179,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -6720,7 +6744,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -6781,7 +6806,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/fgsites/count": {
@@ -6838,7 +6866,8 @@
         "tags": [
           "Fungal Gourds"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/fgsites/{id}": {
@@ -6902,7 +6931,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -6975,6 +7005,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -7038,6 +7071,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -8160,7 +8196,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -8221,7 +8258,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/fmsites/count": {
@@ -8278,7 +8318,8 @@
         "tags": [
           "Fumaroles"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/fmsites/{id}": {
@@ -8342,7 +8383,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -8415,6 +8457,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -8478,6 +8523,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -11040,7 +11088,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -11101,7 +11150,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/gbsites/count": {
@@ -11158,7 +11210,8 @@
         "tags": [
           "Guardian Beacons"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/gbsites/{id}": {
@@ -11222,7 +11275,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -11295,6 +11349,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -11358,6 +11415,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -13200,7 +13260,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -13261,7 +13322,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/gensites/count": {
@@ -13318,7 +13382,8 @@
         "tags": [
           "Generation Ships"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/gensites/{id}": {
@@ -13382,7 +13447,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -13455,6 +13521,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -13518,6 +13587,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -21120,7 +21192,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -21181,7 +21254,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/grsites/count": {
@@ -21238,7 +21314,8 @@
         "tags": [
           "Guardian Ruins"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/grsites/{id}": {
@@ -21302,7 +21379,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -21375,6 +21453,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -21438,6 +21519,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -29760,7 +29844,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -29821,7 +29906,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/gssites/count": {
@@ -29878,7 +29966,8 @@
         "tags": [
           "Guardian Structures"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/gssites/{id}": {
@@ -29942,7 +30031,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -30015,6 +30105,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -30078,6 +30171,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -31920,7 +32016,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -31981,7 +32078,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/gysites/count": {
@@ -32038,7 +32138,8 @@
         "tags": [
           "Geysers"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/gysites/{id}": {
@@ -32102,7 +32203,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -32175,6 +32277,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -32238,6 +32343,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -34080,7 +34188,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -34141,7 +34250,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/hdsites/count": {
@@ -34198,7 +34310,8 @@
         "tags": [
           "Hyperdictions"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/hdsites/{id}": {
@@ -34262,7 +34375,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -34335,6 +34449,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -34398,6 +34515,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -37074,7 +37194,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -37135,7 +37256,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/lssites/count": {
@@ -37192,7 +37316,8 @@
         "tags": [
           "Lava Spouts"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/lssites/{id}": {
@@ -37256,7 +37381,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -37329,6 +37455,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -37392,6 +37521,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -39234,7 +39366,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -39295,7 +39428,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/mssites/count": {
@@ -39352,7 +39488,8 @@
         "tags": [
           "Megaships"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/mssites/{id}": {
@@ -39416,7 +39553,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -39489,6 +39627,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -39552,6 +39693,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -41394,7 +41538,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -41455,7 +41600,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/nhsssites/count": {
@@ -41512,7 +41660,8 @@
         "tags": [
           "Non-Human Signal Sources"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/nhsssites/{id}": {
@@ -41576,7 +41725,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -41649,6 +41799,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -41712,6 +41865,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -44994,7 +45150,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -45055,7 +45212,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/tbsites/count": {
@@ -45112,7 +45272,8 @@
         "tags": [
           "Thargoid Barnacles"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/tbsites/{id}": {
@@ -45176,7 +45337,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -45249,6 +45411,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -45312,6 +45477,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -47874,7 +48042,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -47935,7 +48104,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/tssites/count": {
@@ -47992,7 +48164,8 @@
         "tags": [
           "Thargoid Structures"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/tssites/{id}": {
@@ -48056,7 +48229,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -48129,6 +48303,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -48192,6 +48369,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
@@ -50034,7 +50214,8 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
@@ -50095,7 +50276,10 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "siteWrite"
+        ]
       }
     },
     "/twsites/count": {
@@ -50152,7 +50336,8 @@
         "tags": [
           "Tube Worms"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/twsites/{id}": {
@@ -50216,7 +50401,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
@@ -50289,6 +50475,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -50352,6 +50541,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },

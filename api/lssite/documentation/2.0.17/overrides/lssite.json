@@ -6,13 +6,17 @@
         "summary": "",
         "tags": [
           "Lava Spouts"
-        ]
+        ],
+        "security": []
       },
       "post": {
         "description": "Create a new LS Site entry",
         "summary": "",
         "tags": [
           "Lava Spouts"
+        ],
+        "security": [
+          "siteWrite"
         ]
       }
     },
@@ -22,7 +26,8 @@
         "summary": "",
         "tags": [
           "Lava Spouts"
-        ]
+        ],
+        "security": []
       }
     },
     "/lssites/{id}": {
@@ -31,13 +36,17 @@
         "summary": "",
         "tags": [
           "Lava Spouts"
-        ]
+        ],
+        "security": []
       },
       "put": {
         "description": "Update a LS Site by id",
         "summary": "",
         "tags": [
           "Lava Spouts"
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -45,6 +54,9 @@
         "summary": "",
         "tags": [
           "Lava Spouts"
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },

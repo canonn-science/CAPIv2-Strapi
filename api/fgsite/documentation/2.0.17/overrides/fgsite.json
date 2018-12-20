@@ -6,13 +6,17 @@
         "summary": "",
         "tags": [
           "Fungal Gourds"
-        ]
+        ],
+        "security": []
       },
       "post": {
         "description": "Create a new FG Site entry",
         "summary": "",
         "tags": [
           "Fungal Gourds"
+        ],
+        "security": [
+          "siteWrite"
         ]
       }
     },
@@ -22,7 +26,8 @@
         "summary": "",
         "tags": [
           "Fungal Gourds"
-        ]
+        ],
+        "security": []
       }
     },
     "/fgsites/{id}": {
@@ -31,13 +36,17 @@
         "summary": "",
         "tags": [
           "Fungal Gourds"
-        ]
+        ],
+        "security": []
       },
       "put": {
         "description": "Update a FG Site by id",
         "summary": "",
         "tags": [
           "Fungal Gourds"
+        ],
+        "security": [
+          "siteWrite"
         ]
       },
       "delete": {
@@ -45,6 +54,9 @@
         "summary": "",
         "tags": [
           "Fungal Gourds"
+        ],
+        "security": [
+          "siteDelete"
         ]
       }
     },
