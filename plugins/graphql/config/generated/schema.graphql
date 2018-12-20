@@ -200,6 +200,7 @@ type Btreport {
   latitude: Float!
   longitude: Float!
   count: Int
+  type: String
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
@@ -223,6 +224,7 @@ input BtreportInput {
   latitude: Float!
   longitude: Float!
   count: Int
+  type: String
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
@@ -246,6 +248,7 @@ type Btsite {
   latitude: Float!
   longitude: Float!
   count: Int
+  type: Bttype
   verified: Boolean
   visible: Boolean
   discoveredBy: Cmdr
@@ -259,9 +262,22 @@ input BtsiteInput {
   latitude: Float!
   longitude: Float!
   count: Int
+  type: ID
   verified: Boolean
   visible: Boolean
   discoveredBy: ID
+}
+
+"""Type of Brain Tree"""
+type Bttype {
+  id: ID!
+  type: String!
+  journalName: String
+}
+
+input BttypeInput {
+  type: String!
+  journalName: String
 }
 
 """CMDRs who have discovered sites"""
@@ -362,6 +378,14 @@ type createBtsitePayload {
   btsite: Btsite
 }
 
+input createBttypeInput {
+  data: BttypeInput
+}
+
+type createBttypePayload {
+  bttype: Bttype
+}
+
 input createCmdrInput {
   data: CmdrInput
 }
@@ -392,6 +416,14 @@ input createFgsiteInput {
 
 type createFgsitePayload {
   fgsite: Fgsite
+}
+
+input createFgtypeInput {
+  data: FgtypeInput
+}
+
+type createFgtypePayload {
+  fgtype: Fgtype
 }
 
 input createFmreportInput {
@@ -943,6 +975,14 @@ type deleteBtsitePayload {
   btsite: Btsite
 }
 
+input deleteBttypeInput {
+  where: InputID
+}
+
+type deleteBttypePayload {
+  bttype: Bttype
+}
+
 input deleteCmdrInput {
   where: InputID
 }
@@ -973,6 +1013,14 @@ input deleteFgsiteInput {
 
 type deleteFgsitePayload {
   fgsite: Fgsite
+}
+
+input deleteFgtypeInput {
+  where: InputID
+}
+
+type deleteFgtypePayload {
+  fgtype: Fgtype
 }
 
 input deleteFmreportInput {
@@ -1809,6 +1857,7 @@ type Fgreport {
   latitude: Float!
   longitude: Float!
   count: Int
+  type: String
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
@@ -1832,6 +1881,7 @@ input FgreportInput {
   latitude: Float!
   longitude: Float!
   count: Int
+  type: String
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
@@ -1854,6 +1904,7 @@ type Fgsite {
   extoolID: Int
   latitude: Float!
   longitude: Float!
+  type: Fgtype
   count: Int
   verified: Boolean
   visible: Boolean
@@ -1867,10 +1918,23 @@ input FgsiteInput {
   extoolID: Int
   latitude: Float!
   longitude: Float!
+  type: ID
   count: Int
   verified: Boolean
   visible: Boolean
   discoveredBy: ID
+}
+
+"""Type of Fungal Gourd"""
+type Fgtype {
+  id: ID!
+  type: String!
+  journalName: String
+}
+
+input FgtypeInput {
+  type: String!
+  journalName: String
 }
 
 input FileInput {
@@ -2919,7 +2983,7 @@ input LssiteInput {
   discoveredBy: ID
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Apiupdate | createApiupdatePayload | updateApiupdatePayload | deleteApiupdatePayload | Bmreport | createBmreportPayload | updateBmreportPayload | deleteBmreportPayload | Bmsite | createBmsitePayload | updateBmsitePayload | deleteBmsitePayload | Body | createBodyPayload | updateBodyPayload | deleteBodyPayload | Btreport | createBtreportPayload | updateBtreportPayload | deleteBtreportPayload | Btsite | createBtsitePayload | updateBtsitePayload | deleteBtsitePayload | Cmdr | createCmdrPayload | updateCmdrPayload | deleteCmdrPayload | Cmdrkill | createCmdrkillPayload | updateCmdrkillPayload | deleteCmdrkillPayload | Fgreport | createFgreportPayload | updateFgreportPayload | deleteFgreportPayload | Fgsite | createFgsitePayload | updateFgsitePayload | deleteFgsitePayload | Fmreport | createFmreportPayload | updateFmreportPayload | deleteFmreportPayload | Fmsite | createFmsitePayload | updateFmsitePayload | deleteFmsitePayload | Fmtype | createFmtypePayload | updateFmtypePayload | deleteFmtypePayload | Gbmessage | createGbmessagePayload | updateGbmessagePayload | deleteGbmessagePayload | Gbreport | createGbreportPayload | updateGbreportPayload | deleteGbreportPayload | Gbsite | createGbsitePayload | updateGbsitePayload | deleteGbsitePayload | Genlog | createGenlogPayload | updateGenlogPayload | deleteGenlogPayload | Genreport | createGenreportPayload | updateGenreportPayload | deleteGenreportPayload | Gensite | createGensitePayload | updateGensitePayload | deleteGensitePayload | Gractivegroup | createGractivegroupPayload | updateGractivegroupPayload | deleteGractivegroupPayload | Gractiveobelisk | createGractiveobeliskPayload | updateGractiveobeliskPayload | deleteGractiveobeliskPayload | Grartifact | createGrartifactPayload | updateGrartifactPayload | deleteGrartifactPayload | Grcodexcategory | createGrcodexcategoryPayload | updateGrcodexcategoryPayload | deleteGrcodexcategoryPayload | Grcodexdata | createGrcodexdataPayload | updateGrcodexdataPayload | deleteGrcodexdataPayload | Grobelisk | createGrobeliskPayload | updateGrobeliskPayload | deleteGrobeliskPayload | Grobeliskgroup | createGrobeliskgroupPayload | updateGrobeliskgroupPayload | deleteGrobeliskgroupPayload | Grobeliskgroupreport | createGrobeliskgroupreportPayload | updateGrobeliskgroupreportPayload | deleteGrobeliskgroupreportPayload | Grobeliskreport | createGrobeliskreportPayload | updateGrobeliskreportPayload | deleteGrobeliskreportPayload | Grreport | createGrreportPayload | updateGrreportPayload | deleteGrreportPayload | Grsite | createGrsitePayload | updateGrsitePayload | deleteGrsitePayload | Grtype | createGrtypePayload | updateGrtypePayload | deleteGrtypePayload | Gsactivegroup | createGsactivegroupPayload | updateGsactivegroupPayload | deleteGsactivegroupPayload | Gsactiveobelisk | createGsactiveobeliskPayload | updateGsactiveobeliskPayload | deleteGsactiveobeliskPayload | Gsartifact | createGsartifactPayload | updateGsartifactPayload | deleteGsartifactPayload | Gscodexcategory | createGscodexcategoryPayload | updateGscodexcategoryPayload | deleteGscodexcategoryPayload | Gscodexdata | createGscodexdataPayload | updateGscodexdataPayload | deleteGscodexdataPayload | Gsobelisk | createGsobeliskPayload | updateGsobeliskPayload | deleteGsobeliskPayload | Gsobeliskgroup | createGsobeliskgroupPayload | updateGsobeliskgroupPayload | deleteGsobeliskgroupPayload | Gsobeliskgroupreport | createGsobeliskgroupreportPayload | updateGsobeliskgroupreportPayload | deleteGsobeliskgroupreportPayload | Gsobeliskreport | createGsobeliskreportPayload | updateGsobeliskreportPayload | deleteGsobeliskreportPayload | Gsreport | createGsreportPayload | updateGsreportPayload | deleteGsreportPayload | Gssite | createGssitePayload | updateGssitePayload | deleteGssitePayload | Gstype | createGstypePayload | updateGstypePayload | deleteGstypePayload | Gyreport | createGyreportPayload | updateGyreportPayload | deleteGyreportPayload | Gysite | createGysitePayload | updateGysitePayload | deleteGysitePayload | Gytype | createGytypePayload | updateGytypePayload | deleteGytypePayload | Hdreport | createHdreportPayload | updateHdreportPayload | deleteHdreportPayload | Hdsite | createHdsitePayload | updateHdsitePayload | deleteHdsitePayload | Journaldata | createJournaldataPayload | updateJournaldataPayload | deleteJournaldataPayload | Killreport | createKillreportPayload | updateKillreportPayload | deleteKillreportPayload | Lsreport | createLsreportPayload | updateLsreportPayload | deleteLsreportPayload | Lssite | createLssitePayload | updateLssitePayload | deleteLssitePayload | Msreport | createMsreportPayload | updateMsreportPayload | deleteMsreportPayload | Msschedule | createMsschedulePayload | updateMsschedulePayload | deleteMsschedulePayload | Mssite | createMssitePayload | updateMssitePayload | deleteMssitePayload | Mstype | createMstypePayload | updateMstypePayload | deleteMstypePayload | Nhssreport | createNhssreportPayload | updateNhssreportPayload | deleteNhssreportPayload | Nhsssite | createNhsssitePayload | updateNhsssitePayload | deleteNhsssitePayload | Ring | createRingPayload | updateRingPayload | deleteRingPayload | System | createSystemPayload | updateSystemPayload | deleteSystemPayload | Tbcycle | createTbcyclePayload | updateTbcyclePayload | deleteTbcyclePayload | Tbreport | createTbreportPayload | updateTbreportPayload | deleteTbreportPayload | Tbsite | createTbsitePayload | updateTbsitePayload | deleteTbsitePayload | Tbtype | createTbtypePayload | updateTbtypePayload | deleteTbtypePayload | Tgencounterstat | createTgencounterstatPayload | updateTgencounterstatPayload | deleteTgencounterstatPayload | Tsreport | createTsreportPayload | updateTsreportPayload | deleteTsreportPayload | Tssite | createTssitePayload | updateTssitePayload | deleteTssitePayload | Tsstatus | createTsstatusPayload | updateTsstatusPayload | deleteTsstatusPayload | Twreport | createTwreportPayload | updateTwreportPayload | deleteTwreportPayload | Twsite | createTwsitePayload | updateTwsitePayload | deleteTwsitePayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Apiupdate | createApiupdatePayload | updateApiupdatePayload | deleteApiupdatePayload | Bmreport | createBmreportPayload | updateBmreportPayload | deleteBmreportPayload | Bmsite | createBmsitePayload | updateBmsitePayload | deleteBmsitePayload | Body | createBodyPayload | updateBodyPayload | deleteBodyPayload | Btreport | createBtreportPayload | updateBtreportPayload | deleteBtreportPayload | Btsite | createBtsitePayload | updateBtsitePayload | deleteBtsitePayload | Bttype | createBttypePayload | updateBttypePayload | deleteBttypePayload | Cmdr | createCmdrPayload | updateCmdrPayload | deleteCmdrPayload | Cmdrkill | createCmdrkillPayload | updateCmdrkillPayload | deleteCmdrkillPayload | Fgreport | createFgreportPayload | updateFgreportPayload | deleteFgreportPayload | Fgsite | createFgsitePayload | updateFgsitePayload | deleteFgsitePayload | Fgtype | createFgtypePayload | updateFgtypePayload | deleteFgtypePayload | Fmreport | createFmreportPayload | updateFmreportPayload | deleteFmreportPayload | Fmsite | createFmsitePayload | updateFmsitePayload | deleteFmsitePayload | Fmtype | createFmtypePayload | updateFmtypePayload | deleteFmtypePayload | Gbmessage | createGbmessagePayload | updateGbmessagePayload | deleteGbmessagePayload | Gbreport | createGbreportPayload | updateGbreportPayload | deleteGbreportPayload | Gbsite | createGbsitePayload | updateGbsitePayload | deleteGbsitePayload | Genlog | createGenlogPayload | updateGenlogPayload | deleteGenlogPayload | Genreport | createGenreportPayload | updateGenreportPayload | deleteGenreportPayload | Gensite | createGensitePayload | updateGensitePayload | deleteGensitePayload | Gractivegroup | createGractivegroupPayload | updateGractivegroupPayload | deleteGractivegroupPayload | Gractiveobelisk | createGractiveobeliskPayload | updateGractiveobeliskPayload | deleteGractiveobeliskPayload | Grartifact | createGrartifactPayload | updateGrartifactPayload | deleteGrartifactPayload | Grcodexcategory | createGrcodexcategoryPayload | updateGrcodexcategoryPayload | deleteGrcodexcategoryPayload | Grcodexdata | createGrcodexdataPayload | updateGrcodexdataPayload | deleteGrcodexdataPayload | Grobelisk | createGrobeliskPayload | updateGrobeliskPayload | deleteGrobeliskPayload | Grobeliskgroup | createGrobeliskgroupPayload | updateGrobeliskgroupPayload | deleteGrobeliskgroupPayload | Grobeliskgroupreport | createGrobeliskgroupreportPayload | updateGrobeliskgroupreportPayload | deleteGrobeliskgroupreportPayload | Grobeliskreport | createGrobeliskreportPayload | updateGrobeliskreportPayload | deleteGrobeliskreportPayload | Grreport | createGrreportPayload | updateGrreportPayload | deleteGrreportPayload | Grsite | createGrsitePayload | updateGrsitePayload | deleteGrsitePayload | Grtype | createGrtypePayload | updateGrtypePayload | deleteGrtypePayload | Gsactivegroup | createGsactivegroupPayload | updateGsactivegroupPayload | deleteGsactivegroupPayload | Gsactiveobelisk | createGsactiveobeliskPayload | updateGsactiveobeliskPayload | deleteGsactiveobeliskPayload | Gsartifact | createGsartifactPayload | updateGsartifactPayload | deleteGsartifactPayload | Gscodexcategory | createGscodexcategoryPayload | updateGscodexcategoryPayload | deleteGscodexcategoryPayload | Gscodexdata | createGscodexdataPayload | updateGscodexdataPayload | deleteGscodexdataPayload | Gsobelisk | createGsobeliskPayload | updateGsobeliskPayload | deleteGsobeliskPayload | Gsobeliskgroup | createGsobeliskgroupPayload | updateGsobeliskgroupPayload | deleteGsobeliskgroupPayload | Gsobeliskgroupreport | createGsobeliskgroupreportPayload | updateGsobeliskgroupreportPayload | deleteGsobeliskgroupreportPayload | Gsobeliskreport | createGsobeliskreportPayload | updateGsobeliskreportPayload | deleteGsobeliskreportPayload | Gsreport | createGsreportPayload | updateGsreportPayload | deleteGsreportPayload | Gssite | createGssitePayload | updateGssitePayload | deleteGssitePayload | Gstype | createGstypePayload | updateGstypePayload | deleteGstypePayload | Gyreport | createGyreportPayload | updateGyreportPayload | deleteGyreportPayload | Gysite | createGysitePayload | updateGysitePayload | deleteGysitePayload | Gytype | createGytypePayload | updateGytypePayload | deleteGytypePayload | Hdreport | createHdreportPayload | updateHdreportPayload | deleteHdreportPayload | Hdsite | createHdsitePayload | updateHdsitePayload | deleteHdsitePayload | Journaldata | createJournaldataPayload | updateJournaldataPayload | deleteJournaldataPayload | Killreport | createKillreportPayload | updateKillreportPayload | deleteKillreportPayload | Lsreport | createLsreportPayload | updateLsreportPayload | deleteLsreportPayload | Lssite | createLssitePayload | updateLssitePayload | deleteLssitePayload | Msreport | createMsreportPayload | updateMsreportPayload | deleteMsreportPayload | Msschedule | createMsschedulePayload | updateMsschedulePayload | deleteMsschedulePayload | Mssite | createMssitePayload | updateMssitePayload | deleteMssitePayload | Mstype | createMstypePayload | updateMstypePayload | deleteMstypePayload | Nhssreport | createNhssreportPayload | updateNhssreportPayload | deleteNhssreportPayload | Nhsssite | createNhsssitePayload | updateNhsssitePayload | deleteNhsssitePayload | Ring | createRingPayload | updateRingPayload | deleteRingPayload | System | createSystemPayload | updateSystemPayload | deleteSystemPayload | Tbcycle | createTbcyclePayload | updateTbcyclePayload | deleteTbcyclePayload | Tbreport | createTbreportPayload | updateTbreportPayload | deleteTbreportPayload | Tbsite | createTbsitePayload | updateTbsitePayload | deleteTbsitePayload | Tbtype | createTbtypePayload | updateTbtypePayload | deleteTbtypePayload | Tgencounterstat | createTgencounterstatPayload | updateTgencounterstatPayload | deleteTgencounterstatPayload | Tsreport | createTsreportPayload | updateTsreportPayload | deleteTsreportPayload | Tssite | createTssitePayload | updateTssitePayload | deleteTssitePayload | Tsstatus | createTsstatusPayload | updateTsstatusPayload | deleteTsstatusPayload | Twreport | createTwreportPayload | updateTwreportPayload | deleteTwreportPayload | Twsite | createTwsitePayload | updateTwsitePayload | deleteTwsitePayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
 
 """Reporting for Megaships"""
 type Msreport {
@@ -3058,6 +3122,9 @@ type Mutation {
   createBtsite(input: createBtsiteInput): createBtsitePayload
   updateBtsite(input: updateBtsiteInput): updateBtsitePayload
   deleteBtsite(input: deleteBtsiteInput): deleteBtsitePayload
+  createBttype(input: createBttypeInput): createBttypePayload
+  updateBttype(input: updateBttypeInput): updateBttypePayload
+  deleteBttype(input: deleteBttypeInput): deleteBttypePayload
   createCmdr(input: createCmdrInput): createCmdrPayload
   updateCmdr(input: updateCmdrInput): updateCmdrPayload
   deleteCmdr(input: deleteCmdrInput): deleteCmdrPayload
@@ -3070,6 +3137,9 @@ type Mutation {
   createFgsite(input: createFgsiteInput): createFgsitePayload
   updateFgsite(input: updateFgsiteInput): updateFgsitePayload
   deleteFgsite(input: deleteFgsiteInput): deleteFgsitePayload
+  createFgtype(input: createFgtypeInput): createFgtypePayload
+  updateFgtype(input: updateFgtypeInput): updateFgtypePayload
+  deleteFgtype(input: deleteFgtypeInput): deleteFgtypePayload
   createFmreport(input: createFmreportInput): createFmreportPayload
   updateFmreport(input: updateFmreportInput): updateFmreportPayload
   deleteFmreport(input: deleteFmreportInput): deleteFmreportPayload
@@ -3324,6 +3394,8 @@ type Query {
   btreports(sort: String, limit: Int, start: Int, where: JSON): [Btreport]
   btsite(id: ID!): Btsite
   btsites(sort: String, limit: Int, start: Int, where: JSON): [Btsite]
+  bttype(id: ID!): Bttype
+  bttypes(sort: String, limit: Int, start: Int, where: JSON): [Bttype]
   cmdr(id: ID!): Cmdr
   cmdrs(sort: String, limit: Int, start: Int, where: JSON): [Cmdr]
   cmdrkill(id: ID!): Cmdrkill
@@ -3332,6 +3404,8 @@ type Query {
   fgreports(sort: String, limit: Int, start: Int, where: JSON): [Fgreport]
   fgsite(id: ID!): Fgsite
   fgsites(sort: String, limit: Int, start: Int, where: JSON): [Fgsite]
+  fgtype(id: ID!): Fgtype
+  fgtypes(sort: String, limit: Int, start: Int, where: JSON): [Fgtype]
   fmreport(id: ID!): Fmreport
   fmreports(sort: String, limit: Int, start: Int, where: JSON): [Fmreport]
   fmsite(id: ID!): Fmsite
@@ -3888,6 +3962,15 @@ type updateBtsitePayload {
   btsite: Btsite
 }
 
+input updateBttypeInput {
+  where: InputID
+  data: BttypeInput
+}
+
+type updateBttypePayload {
+  bttype: Bttype
+}
+
 input updateCmdrInput {
   where: InputID
   data: CmdrInput
@@ -3922,6 +4005,15 @@ input updateFgsiteInput {
 
 type updateFgsitePayload {
   fgsite: Fgsite
+}
+
+input updateFgtypeInput {
+  where: InputID
+  data: FgtypeInput
+}
+
+type updateFgtypePayload {
+  fgtype: Fgtype
 }
 
 input updateFmreportInput {
@@ -4482,10 +4574,7 @@ type updateUserPayload {
   user: UsersPermissionsUser
 }
 
-"""
-The `Upload` scalar type represents a file upload promise that resolves an
-object containing `stream`, `filename`, `mimetype` and `encoding`.
-"""
+"""The `Upload` scalar type represents a file upload."""
 scalar Upload
 
 type UploadFile {

@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/btsites": {
+    "/bttypes": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Btsite"
+                    "$ref": "#/components/schemas/Bttype"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Btsite"
+          "Bttype"
         ],
         "parameters": [
           {
@@ -175,7 +175,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Btsite"
+                  "$ref": "#/components/schemas/Bttype"
                 }
               }
             }
@@ -213,7 +213,7 @@
         },
         "summary": "",
         "tags": [
-          "Btsite"
+          "Bttype"
         ],
         "requestBody": {
           "description": "",
@@ -221,14 +221,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewBtsite"
+                "$ref": "#/components/schemas/NewBttype"
               }
             }
           }
         }
       }
     },
-    "/btsites/count": {
+    "/bttypes/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -280,12 +280,12 @@
         },
         "summary": "",
         "tags": [
-          "Btsite"
+          "Bttype"
         ],
         "parameters": []
       }
     },
-    "/btsites/{id}": {
+    "/bttypes/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -295,7 +295,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Btsite"
+                  "$ref": "#/components/schemas/Bttype"
                 }
               }
             }
@@ -333,7 +333,7 @@
         },
         "summary": "",
         "tags": [
-          "Btsite"
+          "Bttype"
         ],
         "parameters": [
           {
@@ -357,7 +357,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Btsite"
+                  "$ref": "#/components/schemas/Bttype"
                 }
               }
             }
@@ -395,7 +395,7 @@
         },
         "summary": "",
         "tags": [
-          "Btsite"
+          "Bttype"
         ],
         "requestBody": {
           "description": "",
@@ -403,7 +403,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewBtsite"
+                "$ref": "#/components/schemas/NewBttype"
               }
             }
           }
@@ -469,7 +469,7 @@
         },
         "summary": "",
         "tags": [
-          "Btsite"
+          "Bttype"
         ],
         "parameters": [
           {
@@ -485,7 +485,7 @@
         ]
       }
     },
-    "/btsites/{id}/relationships/{relation}": {
+    "/bttypes/{id}/relationships/{relation}": {
       "post": {
         "deprecated": false,
         "description": "Create a new record",
@@ -537,7 +537,7 @@
         },
         "summary": "",
         "tags": [
-          "Btsite"
+          "Bttype"
         ],
         "requestBody": {
           "description": "",
@@ -606,7 +606,7 @@
         },
         "summary": "",
         "tags": [
-          "Btsite"
+          "Bttype"
         ],
         "requestBody": {
           "description": "",
@@ -694,7 +694,7 @@
         },
         "summary": "",
         "tags": [
-          "Btsite"
+          "Bttype"
         ],
         "parameters": [
           {
@@ -723,284 +723,37 @@
   },
   "components": {
     "schemas": {
-      "Btsite": {
+      "Bttype": {
         "required": [
           "id",
-          "siteID",
-          "latitude",
-          "longitude"
+          "type"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "system": {
-            "required": [
-              "id",
-              "systemName"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "systemName": {
-                "type": "string"
-              },
-              "id64": {
-                "type": "number"
-              },
-              "edsmID": {
-                "type": "number"
-              },
-              "edsmCoordX": {
-                "type": "number"
-              },
-              "edsmCoordY": {
-                "type": "number"
-              },
-              "edsmCoordZ": {
-                "type": "number"
-              },
-              "edsmCoordLocked": {
-                "type": "boolean"
-              },
-              "missingSkipCount": {
-                "type": "integer"
-              },
-              "bodies": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "body": {
-            "required": [
-              "id",
-              "bodyName"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "system": {
-                "type": "string"
-              },
-              "bodyName": {
-                "type": "string"
-              },
-              "id64": {
-                "type": "number"
-              },
-              "edsmID": {
-                "type": "number"
-              },
-              "bodyID": {
-                "type": "integer"
-              },
-              "type": {
-                "type": "string"
-              },
-              "subType": {
-                "type": "string"
-              },
-              "offset": {
-                "type": "integer"
-              },
-              "distanceToArrival": {
-                "type": "number"
-              },
-              "isMainStar": {
-                "type": "boolean"
-              },
-              "isScoopable": {
-                "type": "boolean"
-              },
-              "isLandable": {
-                "type": "boolean"
-              },
-              "age": {
-                "type": "integer"
-              },
-              "luminosity": {
-                "type": "string"
-              },
-              "absoluteMagnitude": {
-                "type": "number"
-              },
-              "solarMasses": {
-                "type": "number"
-              },
-              "solarRadius": {
-                "type": "number"
-              },
-              "gravity": {
-                "type": "number"
-              },
-              "earthMasses": {
-                "type": "number"
-              },
-              "radius": {
-                "type": "number"
-              },
-              "surfaceTemperature": {
-                "type": "number"
-              },
-              "surfacePressure": {
-                "type": "number"
-              },
-              "volcanismType": {
-                "type": "string"
-              },
-              "atmosphereType": {
-                "type": "string"
-              },
-              "terraformingState": {
-                "type": "string"
-              },
-              "orbitalPeriod": {
-                "type": "number"
-              },
-              "semiMajorAxis": {
-                "type": "number"
-              },
-              "orbitalEccentricity": {
-                "type": "number"
-              },
-              "orbitalInclination": {
-                "type": "number"
-              },
-              "argOfPeriapsis": {
-                "type": "number"
-              },
-              "rotationalPeriod": {
-                "type": "number"
-              },
-              "rotationalPeriodTidallyLocked": {
-                "type": "boolean"
-              },
-              "axialTilt": {
-                "type": "number"
-              },
-              "solidComposition": {
-                "type": "json"
-              },
-              "atmosphere": {
-                "type": "json"
-              },
-              "material": {
-                "type": "json"
-              },
-              "missingSkipCount": {
-                "type": "integer"
-              },
-              "rings": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "siteID": {
-            "type": "integer"
-          },
-          "extoolID": {
-            "type": "integer"
-          },
-          "latitude": {
-            "type": "number"
-          },
-          "longitude": {
-            "type": "number"
-          },
-          "count": {
-            "type": "integer"
-          },
           "type": {
-            "required": [
-              "id",
-              "type"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "type": {
-                "type": "string"
-              },
-              "journalName": {
-                "type": "string"
-              }
-            }
+            "type": "string",
+            "default": ""
           },
-          "verified": {
-            "type": "boolean"
-          },
-          "visible": {
-            "type": "boolean",
-            "default": true
-          },
-          "discoveredBy": {
-            "required": [
-              "id",
-              "cmdrName"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "cmdrName": {
-                "type": "string"
-              },
-              "cmdrkill": {
-                "type": "string"
-              }
-            }
+          "journalName": {
+            "type": "string",
+            "default": ""
           }
         }
       },
-      "NewBtsite": {
+      "NewBttype": {
         "required": [
-          "siteID",
-          "latitude",
-          "longitude"
+          "type"
         ],
         "properties": {
-          "system": {
-            "type": "string"
-          },
-          "body": {
-            "type": "string"
-          },
-          "siteID": {
-            "type": "integer"
-          },
-          "extoolID": {
-            "type": "integer"
-          },
-          "latitude": {
-            "type": "number"
-          },
-          "longitude": {
-            "type": "number"
-          },
-          "count": {
-            "type": "integer"
-          },
           "type": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
-          "verified": {
-            "type": "boolean"
-          },
-          "visible": {
-            "type": "boolean",
-            "default": true
-          },
-          "discoveredBy": {
-            "type": "string"
+          "journalName": {
+            "type": "string",
+            "default": ""
           }
         }
       }
@@ -1008,7 +761,7 @@
   },
   "tags": [
     {
-      "name": "Btsite"
+      "name": "Bttype"
     }
   ]
 }
