@@ -91,7 +91,8 @@ Also we are tracking the following:
   * Material composition (From EDSM) - **Planned v2.1.0**
   * All other body metrics (From EDSM) - **Planned v2.1.0**
 * Rings (Currently don't have any use, but in case future data is needed)
-* Non-Human Signal Source Kills
+* CMDRs
+  * CMDR Kills
 
 ## 3.1. Current Version
 
