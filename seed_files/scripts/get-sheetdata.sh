@@ -7,6 +7,8 @@ echo "Getting the updated CSVs from Google, this may take some time"
 echo "" > ../CSV/updated.md
 
 echo "Getting core data"
+currentDate=`date` && echo "exportBTType - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/coreData/bttypes.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS3FQ_avw1rKokIzWgTLALJCa2Vgi-1qtrOt0RUq_tbI-O7wKRccGYt_ax4tGYfnRPBeJbxAJ5qDfWN/pub?gid=0&single=true&output=csv'
+currentDate=`date` && echo "exportFGType - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/coreData/fgtypes.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTkJIXYYvdPOanc5L0VvjoEPTlyB960DZ41stlkXswelPbdBsqlk5EvFV7kL1YUrzgc8yHV1W19Bwcy/pub?gid=0&single=true&output=csv'
 currentDate=`date` && echo "exportFMType - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/coreData/fmtypes.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSTjQtbaHLiVqYg2nAPtQS6Hf8f56jZmBqoukbhTVAB3i_qO1hN7HxylMVIPR7wPGWmCyuegYuj4khU/pub?gid=0&single=true&output=csv'
 currentDate=`date` && echo "exportGRArtifact - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/coreData/grartifacts.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS6qxUh2QIL8IpxpVqWNgDgQfShA2o0-L1Sd180r9VthbCHfHiWQigwrOYte2eve5mfQCfcGa6BOOkQ/pub?gid=0&single=true&output=csv'
 currentDate=`date` && echo "exportGRCodexCategory - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/coreData/grcodexcategories.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRoWahlCQX-v11grlQYlKOO-uWE9nKfCDTkAu0qEs8Rh4rwGR0uVXTO9vK8H2Uv2rsWgKkYfxf36or3/pub?gid=0&single=true&output=csv'
