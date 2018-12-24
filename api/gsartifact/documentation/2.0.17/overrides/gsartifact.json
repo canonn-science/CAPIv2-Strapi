@@ -1,0 +1,93 @@
+{
+  "paths": {
+    "/gsartifacts": {
+      "get": {
+        "description": "Get all GS Artifact entries",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new GS Artifact entry",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      }
+    },
+    "/gsartifacts/count": {
+      "get": {
+        "description": "Get a count of all GS Artifact entries",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ],
+        "security": []
+      }
+    },
+    "/gsartifacts/{id}": {
+      "get": {
+        "description": "Get a GS Artifact by id",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a GS Artifact by id",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a GS Artifact by id",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ],
+        "security": [
+          "siteDelete"
+        ]
+      }
+    },
+    "/gsartifacts/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Guardian Structures",
+      "description": "Code Name - GS"
+    }
+  ]
+}

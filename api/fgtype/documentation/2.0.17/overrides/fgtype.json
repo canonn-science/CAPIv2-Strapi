@@ -1,0 +1,90 @@
+{
+  "paths": {
+    "/fgtypes": {
+      "get": {
+        "description": "Get all FG Type entries",
+        "summary": "",
+        "tags": [
+          "Fungal Gourds"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new FG Type entry",
+        "summary": "",
+        "tags": [
+          "Fungal Gourds"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      }
+    },
+    "/fgtypes/count": {
+      "get": {
+        "description": "Get a count of all FG Type entries",
+        "summary": "",
+        "tags": [
+          "Fungal Gourds"
+        ],
+        "security": []
+      }
+    },
+    "/fgtypes/{id}": {
+      "get": {
+        "description": "Get a FG Type by id",
+        "summary": "",
+        "tags": [
+          "Fungal Gourds"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a FG Type by id",
+        "summary": "",
+        "tags": [
+          "Fungal Gourds"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a FG Type by id",
+        "summary": "",
+        "tags": [
+          "Fungal Gourds"
+        ]
+      }
+    },
+    "/fgtypes/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Fungal Gourds",
+      "description": "Code Name - FG"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/nhssreports",
+      "handler": "Nhssreport.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/nhssreports/count",
+      "handler": "Nhssreport.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/nhssreports/:id",
+      "handler": "Nhssreport.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/nhssreports",
+      "handler": "Nhssreport.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/nhssreports/:id",
+      "handler": "Nhssreport.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/nhssreports/:id",
+      "handler": "Nhssreport.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/nhssreports/:id/relationships/:relation",
+      "handler": "Nhssreport.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/nhssreports/:id/relationships/:relation",
+      "handler": "Nhssreport.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/nhssreports/:id/relationships/:relation",
+      "handler": "Nhssreport.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

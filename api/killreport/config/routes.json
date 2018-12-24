@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/killreports",
+      "handler": "Killreport.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/killreports/count",
+      "handler": "Killreport.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/killreports/:id",
+      "handler": "Killreport.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/killreports",
+      "handler": "Killreport.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/killreports/:id",
+      "handler": "Killreport.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/killreports/:id",
+      "handler": "Killreport.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/killreports/:id/relationships/:relation",
+      "handler": "Killreport.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/killreports/:id/relationships/:relation",
+      "handler": "Killreport.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/killreports/:id/relationships/:relation",
+      "handler": "Killreport.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

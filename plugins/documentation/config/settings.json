@@ -1,0 +1,67 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "2.0.17",
+    "title": "Canonn APIv2",
+    "description": "An API for all the Science related information Canonn has in its datastores stored on the Gnosis, built using [Strapi](https://strapi.io) a Nodejs API framework.",
+    "termsOfService": "YOUR_TERMS_OF_SERVICE_URL",
+    "contact": {
+      "name": "Canonn R&D Team",
+      "email": "rd@canonn.technology",
+      "url": "https://canonn.science"
+    },
+    "license": {
+      "name": "GNU-GPLv3",
+      "url": "https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE"
+    }
+  },
+  "x-strapi-config": {
+    "path": "/documentation",
+    "showGeneratedFiles": true
+  },
+  "servers": [
+    {
+      "url": "https://api.canonn.tech:2053",
+      "description": "Beta Staging Server, should be used to test your application prior to deployment. "
+    },
+    {
+      "url": "https://api.canonn.tech",
+      "description": "Live Production Server, should be used if your application has been tested and deployed."
+    },
+    {
+      "url": "https://api.canonn.tech:2083",
+      "description": "Alpha Development Server, used by Canonn to test development prior to updating Staging and Production. "
+    },
+    {
+      "url": "http://localhost:1337",
+      "description": "If you are running a local server for testing."
+    }
+  ],
+  "externalDocs": {
+    "description": "Canonn API ReDocs",
+    "url": "https://docs.canonn.tech"
+  },
+  "security": [
+    {
+      "userAuth": [
+        "cmdrWrite",
+        "uploadWrite"
+      ],
+      "canonnAuth": [
+        "adminOnlyDelete",
+        "reportDelete",
+        "locationDelete",
+        "cmdrDelete",
+        "uploadDelete",
+        "journalDelete",
+        "siteDelete",
+        "updateLogDelete",
+        "locationWrite",
+        "siteWrite",
+        "updateLogWrite",
+        "cmdrUpdate",
+        "cmdrKillWrite"
+      ]
+    }
+  ]
+}
