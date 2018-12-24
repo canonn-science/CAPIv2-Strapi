@@ -1522,6 +1522,7 @@ type deleteUserPayload {
 enum ENUM_BMREPORT_REPORTSTATUS {
   pending
   updated
+  verified
   accepted
   declined
   issue
@@ -1541,6 +1542,7 @@ enum ENUM_BMREPORT_USERTYPE {
 enum ENUM_BTREPORT_REPORTSTATUS {
   pending
   updated
+  verified
   accepted
   declined
   issue
@@ -1560,6 +1562,7 @@ enum ENUM_BTREPORT_USERTYPE {
 enum ENUM_FGREPORT_REPORTSTATUS {
   pending
   updated
+  verified
   accepted
   declined
   issue
@@ -1579,6 +1582,7 @@ enum ENUM_FGREPORT_USERTYPE {
 enum ENUM_FMREPORT_REPORTSTATUS {
   pending
   updated
+  verified
   accepted
   declined
   issue
@@ -1598,6 +1602,7 @@ enum ENUM_FMREPORT_USERTYPE {
 enum ENUM_GBREPORT_REPORTSTATUS {
   pending
   updated
+  verified
   accepted
   declined
   issue
@@ -1617,6 +1622,7 @@ enum ENUM_GBREPORT_USERTYPE {
 enum ENUM_GENREPORT_REPORTSTATUS {
   pending
   updated
+  verified
   accepted
   declined
   issue
@@ -1636,6 +1642,7 @@ enum ENUM_GENREPORT_USERTYPE {
 enum ENUM_GRREPORT_REPORTSTATUS {
   pending
   updated
+  verified
   accepted
   declined
   issue
@@ -1661,6 +1668,7 @@ enum ENUM_GRREPORT_USERTYPE {
 enum ENUM_GSREPORT_REPORTSTATUS {
   pending
   updated
+  verified
   accepted
   declined
   issue
@@ -1690,6 +1698,7 @@ enum ENUM_GSREPORT_USERTYPE {
 enum ENUM_GYREPORT_REPORTSTATUS {
   pending
   updated
+  verified
   accepted
   declined
   issue
@@ -1709,6 +1718,7 @@ enum ENUM_GYREPORT_USERTYPE {
 enum ENUM_HDREPORT_REPORTSTATUS {
   pending
   updated
+  verified
   accepted
   declined
   issue
@@ -1717,6 +1727,7 @@ enum ENUM_HDREPORT_REPORTSTATUS {
 enum ENUM_LSREPORT_REPORTSTATUS {
   pending
   updated
+  verified
   accepted
   declined
   issue
@@ -1736,6 +1747,7 @@ enum ENUM_LSREPORT_USERTYPE {
 enum ENUM_MSREPORT_REPORTSTATUS {
   pending
   updated
+  verified
   accepted
   declined
   issue
@@ -1755,6 +1767,7 @@ enum ENUM_MSREPORT_USERTYPE {
 enum ENUM_NHSSREPORT_REPORTSTATUS {
   pending
   updated
+  verified
   accepted
   declined
   issue
@@ -1771,6 +1784,7 @@ enum ENUM_TBREPORT_CYCLE {
 enum ENUM_TBREPORT_REPORTSTATUS {
   pending
   updated
+  verified
   accepted
   declined
   issue
@@ -1801,6 +1815,7 @@ enum ENUM_TBREPORT_USERTYPE {
 enum ENUM_TSREPORT_REPORTSTATUS {
   pending
   updated
+  verified
   accepted
   declined
   issue
@@ -1825,6 +1840,7 @@ enum ENUM_TSREPORT_USERTYPE {
 enum ENUM_TWREPORT_REPORTSTATUS {
   pending
   updated
+  verified
   accepted
   declined
   issue
