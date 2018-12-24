@@ -1,7 +1,7 @@
 # 1. Canonn API v2 - (CAPIv2)
 
-[![Strapi Version](https://img.shields.io/badge/strapi-v3.0.0--alpha.15-blue.svg)](https://github.com/strapi/strapi) 
-[![CAPIv2 Version](https://img.shields.io/badge/capiv2-v2.0.16-orange.svg)](https://api.canonn.tech:2083) 
+[![Strapi Version](https://img.shields.io/badge/strapi-v3.0.0--alpha.17-blue.svg)](https://github.com/strapi/strapi) 
+[![CAPIv2 Version](https://img.shields.io/badge/capiv2-v2.0.17-orange.svg)](https://api.canonn.tech:2083) 
 [![Build Status](https://travis-ci.org/canonn-science/CAPIv2-Strapi.svg?branch=development)](https://travis-ci.org/canonn-science/CAPIv2-Strapi)
 [![EDCD Discord](https://img.shields.io/discord/164411426939600896.svg?logo=discord&label=EDCD%20Discord)](https://discord.gg/fhDWZBH)
 [![Canonn Discord](https://img.shields.io/discord/146714487695605760.svg?logo=discord&label=Canonn%20Discord)](https://discord.gg/HzzmG2f)
@@ -40,7 +40,9 @@ The Canonn APIv2 is designed to handle all our current science projects. Current
 
 * Bark Mounds (BM)
 * Brain Trees (BT)
+  * BT Types
 * Fungal Gourds (FG)
+  * FG Types
 * Fumaroles (FM)
   * FM Types
 * Generation Ships (GEN)
@@ -71,14 +73,14 @@ The Canonn APIv2 is designed to handle all our current science projects. Current
 * Lava Spouts (LS)
 * Megaships (MS) - **WIP**
   * MS Types
+* Non-Human Signal Sources (USS)
+  * USS Types
 * Thargoid Barnacles (TB)
   * TB Cycles
   * TB Types
 * Thargoid Structures (TS)
   * TS Status
-* Tubeworms (TW) - **Note subject to change**
-* Unknown Signal Sources (USS) - **WIP**
-  * USS Types
+* Tubeworms (TW)
 
 Also we are tracking the following:
 
@@ -89,11 +91,12 @@ Also we are tracking the following:
   * Material composition (From EDSM) - **Planned v2.1.0**
   * All other body metrics (From EDSM) - **Planned v2.1.0**
 * Rings (Currently don't have any use, but in case future data is needed)
-* Non-Human Signal Source Kills
+* CMDRs
+  * CMDR Kills
 
 ## 3.1. Current Version
 
-The current version of the CAPIv2 is `v2.0.16` and is still in active development and testing. If you would like to contribute please PM DMehaffy on discord `DMehaffy#1337`
+The current version of the CAPIv2 is `v2.0.17` and is still in active development and testing. If you would like to contribute please PM DMehaffy on discord `DMehaffy#1337`
 
 # 4. API Documentation
 

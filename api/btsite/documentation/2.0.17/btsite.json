@@ -918,6 +918,23 @@
           "count": {
             "type": "integer"
           },
+          "type": {
+            "required": [
+              "id",
+              "type"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "journalName": {
+                "type": "string"
+              }
+            }
+          },
           "verified": {
             "type": "boolean"
           },
@@ -971,6 +988,9 @@
           },
           "count": {
             "type": "integer"
+          },
+          "type": {
+            "type": "string"
           },
           "verified": {
             "type": "boolean"

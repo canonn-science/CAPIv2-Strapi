@@ -915,6 +915,23 @@
           "longitude": {
             "type": "number"
           },
+          "type": {
+            "required": [
+              "id",
+              "type"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "journalName": {
+                "type": "string"
+              }
+            }
+          },
           "count": {
             "type": "integer"
           },
@@ -968,6 +985,9 @@
           },
           "longitude": {
             "type": "number"
+          },
+          "type": {
+            "type": "string"
           },
           "count": {
             "type": "integer"
