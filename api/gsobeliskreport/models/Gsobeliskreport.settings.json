@@ -7,7 +7,7 @@
   },
   "options": {
     "increments": true,
-    "timestamps": false,
+    "timestamps": true,
     "comment": ""
   },
   "attributes": {
@@ -15,8 +15,11 @@
       "model": "gsreport",
       "via": "gsobeliskreport"
     },
-    "gsobelisk": {
-      "model": "gsobelisk"
+    "groups": {
+      "type": "json"
+    },
+    "obelisks": {
+      "type": "json"
     }
   }
 }

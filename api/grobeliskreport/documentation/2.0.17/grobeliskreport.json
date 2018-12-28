@@ -811,12 +811,6 @@
               "site": {
                 "type": "string"
               },
-              "grobeliskgroupreport": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "grobeliskreport": {
                 "type": "array",
                 "items": {
@@ -825,34 +819,11 @@
               }
             }
           },
-          "grobelisk": {
-            "required": [
-              "id",
-              "obeliskNumber"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "grType": {
-                "type": "string"
-              },
-              "grObeliskGroup": {
-                "type": "string"
-              },
-              "obeliskNumber": {
-                "type": "integer"
-              },
-              "broken": {
-                "type": "boolean"
-              },
-              "grCodexData": {
-                "type": "string"
-              },
-              "verified": {
-                "type": "boolean"
-              }
-            }
+          "groups": {
+            "type": "json"
+          },
+          "obelisks": {
+            "type": "json"
           }
         }
       },
@@ -861,8 +832,11 @@
           "grreport": {
             "type": "string"
           },
-          "grobelisk": {
-            "type": "string"
+          "groups": {
+            "type": "json"
+          },
+          "obelisks": {
+            "type": "json"
           }
         }
       }

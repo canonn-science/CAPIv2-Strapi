@@ -935,25 +935,6 @@
               }
             }
           },
-          "gsobeliskgroupreport": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "gsreport": {
-                  "type": "string"
-                },
-                "gsobeliskgroup": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "gsobeliskreport": {
             "type": "array",
             "items": {
@@ -967,8 +948,11 @@
                 "gsreport": {
                   "type": "string"
                 },
-                "gsobelisk": {
-                  "type": "string"
+                "groups": {
+                  "type": "json"
+                },
+                "obelisks": {
+                  "type": "json"
                 }
               }
             }
@@ -1078,12 +1062,6 @@
           },
           "site": {
             "type": "string"
-          },
-          "gsobeliskgroupreport": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
           },
           "gsobeliskreport": {
             "type": "array",
