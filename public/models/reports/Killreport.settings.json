@@ -1,9 +1,9 @@
 {
   "connection": "default",
-  "collectionName": "factionkillreports",
+  "collectionName": "killreports",
   "info": {
-    "name": "factionkillreport",
-    "description": "Records rewards for faction kills"
+    "name": "killreport",
+    "description": "Records rewards and kills by CMDR"
   },
   "options": {
     "increments": true,
@@ -33,6 +33,9 @@
       "type": "json"
     },
     "isbeta": {
+      "type": "boolean"
+    },
+    "reportAccepted": {
       "type": "boolean"
     }
   }

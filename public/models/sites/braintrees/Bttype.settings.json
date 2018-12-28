@@ -1,9 +1,9 @@
 {
   "connection": "default",
-  "collectionName": "usstypes",
+  "collectionName": "bttypes",
   "info": {
-    "name": "usstype",
-    "description": "Type of Unknown Signal Sources"
+    "name": "bttype",
+    "description": "Type of Brain Tree"
   },
   "options": {
     "increments": true,
@@ -12,14 +12,15 @@
   },
   "attributes": {
     "type": {
+      "default": "",
       "unique": true,
       "type": "string",
       "required": true
     },
     "journalName": {
+      "default": "",
       "unique": true,
-      "type": "string",
-      "required": true
+      "type": "string"
     }
   }
 }

@@ -1,0 +1,39 @@
+{
+  "connection": "default",
+  "collectionName": "apiupdates",
+  "info": {
+    "name": "apiupdate",
+    "description": "Canonn API updater logging and errors"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": false,
+    "comment": ""
+  },
+  "attributes": {
+    "UpdateTime": {
+      "default": "",
+      "type": "date"
+    },
+    "forced": {
+      "default": false,
+      "type": "boolean"
+    },
+    "systemsUpdated": {
+      "default": "",
+      "type": "json"
+    },
+    "bodiesUpdated": {
+      "default": "",
+      "type": "json"
+    },
+    "updateLog": {
+      "default": "",
+      "type": "json"
+    },
+    "notes": {
+      "default": "",
+      "type": "text"
+    }
+  }
+}

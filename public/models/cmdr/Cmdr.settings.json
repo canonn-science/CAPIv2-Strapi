@@ -15,6 +15,10 @@
       "unique": true,
       "type": "string",
       "required": true
+    },
+    "cmdrkill": {
+      "model": "cmdrkill",
+      "via": "cmdr"
     }
   }
 }

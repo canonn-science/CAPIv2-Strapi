@@ -1,9 +1,9 @@
 {
   "connection": "default",
-  "collectionName": "ringtypes",
+  "collectionName": "fgtypes",
   "info": {
-    "name": "ringtype",
-    "description": "Type of a Ring"
+    "name": "fgtype",
+    "description": "Type of Fungal Gourd"
   },
   "options": {
     "increments": true,
@@ -12,9 +12,15 @@
   },
   "attributes": {
     "type": {
+      "default": "",
       "unique": true,
       "type": "string",
       "required": true
+    },
+    "journalName": {
+      "default": "",
+      "unique": true,
+      "type": "string"
     }
   }
 }

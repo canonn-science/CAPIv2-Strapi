@@ -1,9 +1,9 @@
 {
   "connection": "default",
-  "collectionName": "hdreports",
+  "collectionName": "nhssreports",
   "info": {
-    "name": "hdreport",
-    "description": "Journal events and user reports for the Unknown Signal Sources"
+    "name": "nhssreport",
+    "description": "Automated journal reports for Non-Human Signal Sources"
   },
   "options": {
     "increments": true,
@@ -11,25 +11,19 @@
     "comment": ""
   },
   "attributes": {
-    "fromSystemName": {
-      "type": "string",
-      "required": true
+    "systemName": {
+      "type": "string"
     },
-    "toSystemName": {
-      "type": "string",
-      "required": true
+    "threatLevel": {
+      "min": 1,
+      "max": 10,
+      "type": "integer"
     },
     "cmdrName": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "cmdrComment": {
       "type": "text"
-    },
-    "screenshot": {
-      "model": "file",
-      "via": "related",
-      "plugin": "upload"
     },
     "isBeta": {
       "default": false,
@@ -56,9 +50,9 @@
       "type": "boolean"
     },
     "site": {
-      "model": "hdsite"
+      "model": "nhsssite"
     },
-    "hdRawJson": {
+    "nhssRawJson": {
       "type": "json"
     }
   }

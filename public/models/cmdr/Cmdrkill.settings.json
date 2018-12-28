@@ -1,9 +1,9 @@
 {
   "connection": "default",
-  "collectionName": "nhsstopcmdrsbykills",
+  "collectionName": "cmdrkills",
   "info": {
-    "name": "nhsstopcmdrsbykill",
-    "description": "Top ten CMDRs sorted by kills for Non-Human Signal Sources"
+    "name": "cmdrkill",
+    "description": "Aggregated CMDR Kill data and rewards"
   },
   "options": {
     "increments": true,
@@ -11,8 +11,9 @@
     "comment": ""
   },
   "attributes": {
-    "cmdrName": {
-      "type": "string"
+    "cmdr": {
+      "model": "cmdr",
+      "via": "cmdrkill"
     },
     "scoutKills": {
       "type": "integer"
