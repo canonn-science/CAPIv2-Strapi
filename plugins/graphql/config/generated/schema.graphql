@@ -1,7 +1,7 @@
 """Canonn API updater logging and errors"""
 type Apiupdate {
   id: ID!
-  UpdateTime: DateTime
+  updateTime: DateTime
   forced: Boolean
   systemsUpdated: JSON
   bodiesUpdated: JSON
@@ -10,7 +10,7 @@ type Apiupdate {
 }
 
 input ApiupdateInput {
-  UpdateTime: DateTime
+  updateTime: DateTime
   forced: Boolean
   systemsUpdated: JSON
   bodiesUpdated: JSON
