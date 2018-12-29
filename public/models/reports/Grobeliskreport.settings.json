@@ -1,0 +1,25 @@
+{
+  "connection": "default",
+  "collectionName": "grobeliskreports",
+  "info": {
+    "name": "grobeliskreport",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "grreport": {
+      "model": "grreport",
+      "via": "grobeliskreport"
+    },
+    "groups": {
+      "type": "json"
+    },
+    "obelisks": {
+      "type": "json"
+    }
+  }
+}
