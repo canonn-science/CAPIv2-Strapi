@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/csreports",
+      "handler": "Csreport.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/csreports/count",
+      "handler": "Csreport.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/csreports/:id",
+      "handler": "Csreport.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/csreports",
+      "handler": "Csreport.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/csreports/:id",
+      "handler": "Csreport.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/csreports/:id",
+      "handler": "Csreport.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/csreports/:id/relationships/:relation",
+      "handler": "Csreport.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/csreports/:id/relationships/:relation",
+      "handler": "Csreport.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/csreports/:id/relationships/:relation",
+      "handler": "Csreport.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
