@@ -1,0 +1,40 @@
+{
+  "connection": "default",
+  "collectionName": "genlogs",
+  "info": {
+    "name": "genlog",
+    "description": "Log messages from Generation Ships"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "gensite": {
+      "model": "gensite",
+      "via": "genlogs"
+    },
+    "logNumber": {
+      "default": "",
+      "min": 1,
+      "type": "integer",
+      "required": true
+    },
+    "logTitle": {
+      "default": "",
+      "type": "string",
+      "required": true
+    },
+    "logBody": {
+      "default": "",
+      "type": "text"
+    },
+    "audio": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

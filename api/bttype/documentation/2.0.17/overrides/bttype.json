@@ -1,0 +1,90 @@
+{
+  "paths": {
+    "/bttypes": {
+      "get": {
+        "description": "Get all BT Type entries",
+        "summary": "",
+        "tags": [
+          "Brain Trees"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new BT Type entry",
+        "summary": "",
+        "tags": [
+          "Brain Trees"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      }
+    },
+    "/bttypes/count": {
+      "get": {
+        "description": "Get a count of all BT Type entries",
+        "summary": "",
+        "tags": [
+          "Brain Trees"
+        ],
+        "security": []
+      }
+    },
+    "/bttypes/{id}": {
+      "get": {
+        "description": "Get a BT Type by id",
+        "summary": "",
+        "tags": [
+          "Brain Trees"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a BT Type by id",
+        "summary": "",
+        "tags": [
+          "Brain Trees"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a BT Type by id",
+        "summary": "",
+        "tags": [
+          "Brain Trees"
+        ]
+      }
+    },
+    "/bttypes/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Brain Trees",
+      "description": "Code Name - BT"
+    }
+  ]
+}

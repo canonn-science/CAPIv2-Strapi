@@ -16,10 +16,10 @@
       "required": true,
       "unique": true
     },
-    "edsmID": {
+    "id64": {
       "type": "float"
     },
-    "edsmID64": {
+    "edsmID": {
       "type": "float"
     },
     "edsmCoordX": {
@@ -33,6 +33,10 @@
     },
     "edsmCoordLocked": {
       "type": "boolean"
+    },
+    "missingSkipCount": {
+      "default": 0,
+      "type": "integer"
     },
     "bodies": {
       "collection": "body",

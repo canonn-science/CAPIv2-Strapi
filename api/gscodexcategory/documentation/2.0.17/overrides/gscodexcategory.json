@@ -1,0 +1,93 @@
+{
+  "paths": {
+    "/gscodexcategories": {
+      "get": {
+        "description": "Get all GS Codex Category entries",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new GS Codex Category entry",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      }
+    },
+    "/gscodexcategories/count": {
+      "get": {
+        "description": "Get a count of all GS Codex Category entries",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ],
+        "security": []
+      }
+    },
+    "/gscodexcategories/{id}": {
+      "get": {
+        "description": "Get a GS Codex Category by id",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a GS Codex Category by id",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a GS Codex Category by id",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ],
+        "security": [
+          "siteDelete"
+        ]
+      }
+    },
+    "/gscodexcategories/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Guardian Structures",
+      "description": "Code Name - GS"
+    }
+  ]
+}

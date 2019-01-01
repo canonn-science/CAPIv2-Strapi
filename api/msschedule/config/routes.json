@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/msschedules",
+      "handler": "Msschedule.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/msschedules/count",
+      "handler": "Msschedule.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/msschedules/:id",
+      "handler": "Msschedule.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/msschedules",
+      "handler": "Msschedule.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/msschedules/:id",
+      "handler": "Msschedule.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/msschedules/:id",
+      "handler": "Msschedule.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/msschedules/:id/relationships/:relation",
+      "handler": "Msschedule.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/msschedules/:id/relationships/:relation",
+      "handler": "Msschedule.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/msschedules/:id/relationships/:relation",
+      "handler": "Msschedule.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

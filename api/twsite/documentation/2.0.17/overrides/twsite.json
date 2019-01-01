@@ -1,0 +1,93 @@
+{
+  "paths": {
+    "/twsites": {
+      "get": {
+        "description": "Get all TW Site entries",
+        "summary": "",
+        "tags": [
+          "Tube Worms"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new TW Site entry",
+        "summary": "",
+        "tags": [
+          "Tube Worms"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      }
+    },
+    "/twsites/count": {
+      "get": {
+        "description": "Get a count of all TW Site entries",
+        "summary": "",
+        "tags": [
+          "Tube Worms"
+        ],
+        "security": []
+      }
+    },
+    "/twsites/{id}": {
+      "get": {
+        "description": "Get a TW Site by id",
+        "summary": "",
+        "tags": [
+          "Tube Worms"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a TW Site by id",
+        "summary": "",
+        "tags": [
+          "Tube Worms"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a TW Site by id",
+        "summary": "",
+        "tags": [
+          "Tube Worms"
+        ],
+        "security": [
+          "siteDelete"
+        ]
+      }
+    },
+    "/twsites/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Tube Worms",
+      "description": "Code Name - TW"
+    }
+  ]
+}

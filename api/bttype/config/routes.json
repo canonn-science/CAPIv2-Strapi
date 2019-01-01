@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/bttypes",
+      "handler": "Bttype.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/bttypes/count",
+      "handler": "Bttype.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/bttypes/:id",
+      "handler": "Bttype.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/bttypes",
+      "handler": "Bttype.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/bttypes/:id",
+      "handler": "Bttype.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/bttypes/:id",
+      "handler": "Bttype.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/bttypes/:id/relationships/:relation",
+      "handler": "Bttype.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/bttypes/:id/relationships/:relation",
+      "handler": "Bttype.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/bttypes/:id/relationships/:relation",
+      "handler": "Bttype.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
