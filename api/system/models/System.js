@@ -29,21 +29,7 @@ module.exports = {
 
   // After creating a value.
   // Fired after an `insert` query.
-  afterCreate: async (model, attrs, options) => {
-    var options = {
-      mode: 'text',
-      pythonPath: '/usr/bin/python3',
-      pythonOptions: ['-u'],
-      scriptPath: 'config/functions/',
-      args: ['--development', '--update-missing', '-delay-seconds', '1', '-batch-size', '5', '-batch-limit', '5']
-    };
-
-    PythonShell.run('system_update_edsm.py', options, function (err, results) {
-      if (err) throw err;
-      // results is an array consisting of messages collected during execution
-      //console.log('results: %j', results);
-    });
-  }
+  //afterCreate: async (model, attrs, options) => {},
 
   // Before updating a value.
   // Fired before an `update` query.
