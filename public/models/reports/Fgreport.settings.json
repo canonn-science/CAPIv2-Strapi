@@ -84,6 +84,10 @@
       "min": 1,
       "type": "integer"
     },
+    "type": {
+      "x-data-description": "Type",
+      "type": "string"
+    },
     "cmdrName": {
       "x-data-description": "Commander Name",
       "default": "Dr. Arcanonn",
@@ -115,6 +119,7 @@
       "enum": [
         "pending",
         "updated",
+        "verified",
         "accepted",
         "declined",
         "issue"

@@ -854,6 +854,7 @@
             "enum": [
               "pending",
               "updated",
+              "verified",
               "accepted",
               "declined",
               "issue"
@@ -924,25 +925,6 @@
               }
             }
           },
-          "grobeliskgroupreport": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "grreport": {
-                  "type": "string"
-                },
-                "grobeliskgroup": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "grobeliskreport": {
             "type": "array",
             "items": {
@@ -956,8 +938,11 @@
                 "grreport": {
                   "type": "string"
                 },
-                "grobelisk": {
-                  "type": "string"
+                "groups": {
+                  "type": "json"
+                },
+                "obelisks": {
+                  "type": "json"
                 }
               }
             }
@@ -1042,6 +1027,7 @@
             "enum": [
               "pending",
               "updated",
+              "verified",
               "accepted",
               "declined",
               "issue"
@@ -1059,12 +1045,6 @@
           },
           "site": {
             "type": "string"
-          },
-          "grobeliskgroupreport": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
           },
           "grobeliskreport": {
             "type": "array",

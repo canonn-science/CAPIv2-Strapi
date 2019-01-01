@@ -94,6 +94,7 @@
       "enum": [
         "pending",
         "updated",
+        "verified",
         "accepted",
         "declined",
         "issue"
@@ -111,10 +112,6 @@
     },
     "site": {
       "model": "grsite"
-    },
-    "grobeliskgroupreport": {
-      "collection": "grobeliskgroupreport",
-      "via": "grreport"
     },
     "grobeliskreport": {
       "collection": "grobeliskreport",

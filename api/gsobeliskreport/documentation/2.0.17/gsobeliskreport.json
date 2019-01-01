@@ -814,12 +814,6 @@
               "site": {
                 "type": "string"
               },
-              "gsobeliskgroupreport": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "gsobeliskreport": {
                 "type": "array",
                 "items": {
@@ -828,34 +822,11 @@
               }
             }
           },
-          "gsobelisk": {
-            "required": [
-              "id",
-              "obeliskNumber"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "gsType": {
-                "type": "string"
-              },
-              "gsObeliskGroup": {
-                "type": "string"
-              },
-              "obeliskNumber": {
-                "type": "integer"
-              },
-              "broken": {
-                "type": "boolean"
-              },
-              "gsCodexData": {
-                "type": "string"
-              },
-              "verified": {
-                "type": "boolean"
-              }
-            }
+          "groups": {
+            "type": "json"
+          },
+          "obelisks": {
+            "type": "json"
           }
         }
       },
@@ -864,8 +835,11 @@
           "gsreport": {
             "type": "string"
           },
-          "gsobelisk": {
-            "type": "string"
+          "groups": {
+            "type": "json"
+          },
+          "obelisks": {
+            "type": "json"
           }
         }
       }
