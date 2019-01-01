@@ -8,13 +8,9 @@ services:
 addons:
   mariadb: '10.2'
   apt:
-    sources:
-      - sourceline: 'deb http://apt.pm2.io/ubuntu stable main'
-        key_url: 'http://apt.pm2.io/ubuntu/apt.pm2.io.gpg.key'
     packages:
       - software-properties-common
       - build-essential
-      - pm2
 
 install:
   - cp config/environments/development/database.json.example config/environments/development/database.json
@@ -27,6 +23,7 @@ install:
   - mysql -u root --password="" -e "GRANT ALL PRIVILEGES ON * . * TO 'canonnuser'@'localhost'"
   - mysql -u root --password="" canonntest < seed_files/SQL/example-development*.sql
   - npm install -g newman
+  - npm install -g pm2
   - npm install
 
 script:
