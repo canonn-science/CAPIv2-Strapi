@@ -1,5 +1,3 @@
-var PythonShell = require('python-shell');
-
 'use strict';
 
 /**
