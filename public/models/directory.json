@@ -1,49 +1,114 @@
 {
   "cmdrs": {
     "cmdr": "cmdr/Cmdr.settings.json",
-    "factionkillreport": "cmdr/Factionkillreport.settings.json",
-    "nhsstopcmdrsbykill": "cmdr/Nhsstopcmdrsbykill.settings.json"
+    "cmdrkill": "cmdr/Cmdrkill.settings.json"
   },
   "locations": {
     "system": "locations/System.settings.json",
     "body": "locations/Body.settings.json",
-    "ring": "locations/Ring.settings.json",
-    "ringtype": "locations/Ringtype.settings.json"
+    "ring": "locations/Ring.settings.json"
   },
   "other": {
+    "apiupdate": "other/Apiupdate.settings.json",
     "journaldata": "other/Journaldata.settings.json"
   },
   "reports": {
-    "bmreport": "reports/Bmreport.settings.json",
-    "btreport": "reports/Btreport.settings.json",
-    "fgreport": "reports/Fgreport.settings.json",
-    "fmreport": "reports/Fmreport.settings.json",
-    "gbreport": "reports/Gbreport.settings.json",
-    "genreport": "reports/Genreport.settings.json",
-    "grobeliskgroupreport": "reports/Grobeliskgroupreport.settings.json",
-    "grobeliskreport": "reports/Grobeliskreport.settings.json",
-    "grreport": "reports/Grreport.settings.json",
-    "gsobeliskgroupreport": "reports/Gsobeliskgroupreport.settings.json",
-    "gsobeliskreport": "reports/Gsobeliskreport.settings.json",
-    "gsreport": "reports/Gsreport.settings.json",
-    "gyreport": "reports/Gyreport.settings.json",
-    "hdreport": "reports/Hdreport.settings.json",
-    "lsreport": "reports/Lsreport.settings.json",
-    "msreport": "reports/Msreport.settings.json",
-    "tbreport": "reports/Tbreport.settings.json",
-    "tsreport": "reports/Tsreport.settings.json",
-    "twreport": "reports/Twreport.settings.json",
-    "ussreport": "reports/Ussreport.settings.json"
+    "bmreport": {
+      "path": "reports/Bmreport.settings.json",
+      "agent": "all"
+    },
+    "btreport": {
+      "path": "reports/Btreport.settings.json",
+      "agent": "all"
+    },
+    "csreport": {
+      "path": "reports/Csreport.settings.json",
+      "agent": "all"
+    },
+    "fgreport": {
+      "path": "reports/Fgreport.settings.json",
+      "agent": "all"
+    },
+    "fmreport": {
+      "path": "reports/Fmreport.settings.json",
+      "agent": "all"
+    },
+    "gbreport": {
+      "path": "reports/Gbreport.settings.json",
+      "agent": "all"
+    },
+    "genreport": {
+      "path": "reports/Genreport.settings.json",
+      "agent": "all"
+    },
+    "grobeliskreport": {
+      "path": "reports/Grobeliskreport.settings.json",
+      "agent": "athena"
+    },
+    "grreport": {
+      "path": "reports/Grreport.settings.json",
+      "agent": "all",
+      "optional": "grobeliskreport"
+    },
+    "gsobeliskreport": {
+      "path": "reports/Gsobeliskreport.settings.json",
+      "agent": "athena"
+    },
+    "gsreport": {
+      "path": "reports/Gsreport.settings.json",
+      "agent": "all",
+      "optional": "gsobeliskreport"
+    },
+    "gyreport": {
+      "path": "reports/Gyreport.settings.json",
+      "agent": "all"
+    },
+    "hdreport": {
+      "path": "reports/Hdreport.settings.json",
+      "agent": "athens"
+    },
+    "killreport": {
+      "path": "reports/Killreport.settings.json",
+      "agent": "athens"
+    },
+    "lsreport": {
+      "path": "reports/Lsreport.settings.json",
+      "agent": "all"
+    },
+    "msreport": {
+      "path": "reports/Msreport.settings.json",
+      "agent": "all"
+    },
+    "nhssreport": {
+      "path": "reports/Nhssreport.settings.json",
+      "agent": "athens"
+    },
+    "tbreport": {
+      "path": "reports/Tbreport.settings.json",
+      "agent": "all"
+    },
+    "tsreport": {
+      "path": "reports/Tsreport.settings.json",
+      "agent": "all"
+    },
+    "twreport": {
+      "path": "reports/Twreport.settings.json",
+      "agent": "all"
+    }
   },
   "sites": {
     "bmsite": "sites/barkmounds/Bmsite.settings.json",
     "btsite": "sites/braintrees/Btsite.settings.json",
+    "bttype": "sites/braintrees/Bttype.settings.json",
+    "cssite": "sites/braintrees/Cssite.settings.json",
     "fmsite": "sites/fumaroles/Fmsite.settings.json",
     "fmtype": "sites/fumaroles/Fmtype.settings.json",
     "fgsite": "sites/fungalgourds/Fgsite.settings.json",
+    "fgtype": "sites/fungalgourds/Fgtype.settings.json",
     "gbsite": "sites/guardianbeacons/Gbsite.settings.json",
     "gbmessage": "sites/guardianbeacons/Gbmessage.settings.json",
     "gensite": "sites/generationships/Gensite.settings.json",
+    "genlog": "sites/generationships/Genlog.settings.json",
     "gysite": "sites/geysers/Gysite.settings.json",
     "gytype": "sites/geysers/Gytype.settings.json",
     "grsite": "sites/guardianruins/Grsite.settings.json",
@@ -66,15 +131,15 @@
     "gstype": "sites/guardianstructures/Gstype.settings.json",
     "hdsite": "sites/hyperdictions/Hdsite.settings.json",
     "lssite": "sites/lavaspouts/Lssite.settings.json",
+    "msschedule": "sites/megaships/Msschedule.settings.json",
     "mssite": "sites/megaships/Mssite.settings.json",
     "mstype": "sites/megaships/Mstype.settings.json",
+    "nhsssite": "sites/nonhumansignalsources/Nhsssite.settings.json",
     "tbsite": "sites/thargoidbarnacles/Tbsite.settings.json",
     "tbcycle": "sites/thargoidbarnacles/Tbcycle.settings.json",
     "tbtype": "sites/thargoidbarnacles/Tbtype.settings.json",
     "tssite": "sites/thargoidstructures/Tssite.settings.json",
     "tsstatus": "sites/thargoidstructures/Tsstatus.settings.json",
-    "twsite": "sites/tubeworms/Twsite.settings.json",
-    "usssite": "sites/unknownsignalsources/Usssite.settings.json",
-    "usstype": "sites/unknownsignalsources/Usstype.settings.json"
+    "twsite": "sites/tubeworms/Twsite.settings.json"
   }
 }

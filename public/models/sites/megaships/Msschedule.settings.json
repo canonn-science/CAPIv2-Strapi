@@ -1,0 +1,35 @@
+{
+  "connection": "default",
+  "collectionName": "msschedules",
+  "info": {
+    "name": "msschedule",
+    "description": "Schedule for Megaships that are flight ops capable"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "system": {
+      "model": "system"
+    },
+    "body": {
+      "model": "body"
+    },
+    "scheduleNumber": {
+      "default": "",
+      "min": 1,
+      "type": "integer",
+      "required": true
+    },
+    "notes": {
+      "default": "",
+      "type": "text"
+    },
+    "mssite": {
+      "model": "mssite",
+      "via": "msschedules"
+    }
+  }
+}

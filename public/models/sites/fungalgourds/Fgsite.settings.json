@@ -23,6 +23,11 @@
       "type": "integer",
       "required": true
     },
+    "extoolID": {
+      "unique": true,
+      "min": 1,
+      "type": "integer"
+    },
     "latitude": {
       "type": "float",
       "required": true
@@ -30,6 +35,9 @@
     "longitude": {
       "type": "float",
       "required": true
+    },
+    "type": {
+      "model": "fgtype"
     },
     "count": {
       "min": 1,

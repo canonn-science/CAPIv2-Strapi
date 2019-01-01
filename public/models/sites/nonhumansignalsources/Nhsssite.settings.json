@@ -1,0 +1,26 @@
+{
+  "connection": "default",
+  "collectionName": "nhsssites",
+  "info": {
+    "name": "nhsssite",
+    "description": "Non-Human Signal Source sites"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "system": {
+      "model": "system"
+    },
+    "threatLevel": {
+      "min": 1,
+      "max": 10,
+      "type": "integer"
+    },
+    "discoveredBy": {
+      "model": "cmdr"
+    }
+  }
+}

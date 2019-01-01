@@ -3,12 +3,11 @@
   "collectionName": "grobeliskreports",
   "info": {
     "name": "grobeliskreport",
-    "description": "",
-    "endpoint": "/grobeliskreports"
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": false,
+    "timestamps": true,
     "comment": ""
   },
   "attributes": {
@@ -16,8 +15,11 @@
       "model": "grreport",
       "via": "grobeliskreport"
     },
-    "grobelisk": {
-      "model": "grobelisk"
+    "groups": {
+      "type": "json"
+    },
+    "obelisks": {
+      "type": "json"
     }
   }
 }

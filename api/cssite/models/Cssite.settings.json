@@ -1,0 +1,54 @@
+{
+  "connection": "default",
+  "collectionName": "cssites",
+  "info": {
+    "name": "cssite",
+    "description": "Crystalline Shard sites"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "system": {
+      "model": "system"
+    },
+    "body": {
+      "model": "body"
+    },
+    "siteID": {
+      "unique": true,
+      "min": 1,
+      "type": "integer",
+      "required": true
+    },
+    "extoolID": {
+      "unique": true,
+      "min": 1,
+      "type": "integer"
+    },
+    "latitude": {
+      "type": "float",
+      "required": true
+    },
+    "longitude": {
+      "type": "float",
+      "required": true
+    },
+    "count": {
+      "type": "integer"
+    },
+    "verified": {
+      "type": "boolean",
+      "required": true
+    },
+    "visible": {
+      "default": true,
+      "type": "boolean"
+    },
+    "discoveredBy": {
+      "model": "cmdr"
+    }
+  }
+}
