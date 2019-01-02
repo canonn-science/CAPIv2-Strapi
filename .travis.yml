@@ -30,7 +30,7 @@ script:
   - NODE_ENV=development pm2 start strapi --no-pmx --name="capiv2" -- start
   - sleep 10
   - newman run 'tests/capiv2.postman_collection.json' -e tests/capiv2.postman_environment.json
-  - cat /home/travis/.pm2/logs/capiv2-error-0.log
+  - cat /home/travis/.pm2/logs/capiv2-error-0.log > /dev/null
 # Cutting main log to cut down on TravisCI build log size
 #  - cat /home/travis/.pm2/logs/capiv2-out-0.log
 
