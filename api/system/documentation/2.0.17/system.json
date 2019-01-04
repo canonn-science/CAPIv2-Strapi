@@ -887,6 +887,30 @@
                 }
               }
             }
+          },
+          "region": {
+            "required": [
+              "id",
+              "name"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "journalName": {
+                "type": "string"
+              },
+              "regionID": {
+                "type": "integer"
+              }
+            }
+          },
+          "primaryStar": {
+            "type": "json",
+            "default": ""
           }
         }
       },
@@ -925,6 +949,13 @@
             "items": {
               "type": "string"
             }
+          },
+          "region": {
+            "type": "string"
+          },
+          "primaryStar": {
+            "type": "json",
+            "default": ""
           }
         }
       }
