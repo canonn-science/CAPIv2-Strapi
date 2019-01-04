@@ -1,0 +1,89 @@
+{
+  "paths": {
+    "/gsobeliskreports": {
+      "get": {
+        "description": "Get all GS Obelisk report entries",
+        "summary": "",
+        "tags": [
+          "Guardian Structure Reports"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new GS Obelisk report entry",
+        "summary": "",
+        "tags": [
+          "Guardian Structure Reports"
+        ],
+        "security": []
+      }
+    },
+    "/gsobeliskreports/count": {
+      "get": {
+        "description": "Get a count of all GS Obelisk report entries",
+        "summary": "",
+        "tags": [
+          "Guardian Structure Reports"
+        ],
+        "security": []
+      }
+    },
+    "/gsobeliskreports/{id}": {
+      "get": {
+        "description": "Get a GS Obelisk report by id",
+        "summary": "",
+        "tags": [
+          "Guardian Structure Reports"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a GS Obelisk report by id",
+        "summary": "",
+        "tags": [
+          "Guardian Structure Reports"
+        ],
+        "security": []
+      },
+      "delete": {
+        "description": "Delete a GS Obelisk report by id",
+        "summary": "",
+        "tags": [
+          "Guardian Structure Reports"
+        ],
+        "security": [
+          "reportDelete"
+        ]
+      }
+    },
+    "/gsobeliskreports/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Guardian Structure Reports",
+      "description": "Public Reporting of GS Obelisk"
+    }
+  ]
+}
