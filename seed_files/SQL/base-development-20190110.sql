@@ -1,13 +1,13 @@
--- MySQL dump 10.16  Distrib 10.1.34-MariaDB, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.16  Distrib 10.2.21-MariaDB, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: capiv2_base
 -- ------------------------------------------------------
--- Server version	10.1.34-MariaDB-0ubuntu0.18.04.1
+-- Server version	10.2.21-MariaDB-10.2.21+maria~xenial-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -24,12 +24,12 @@ DROP TABLE IF EXISTS `apiupdates`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `apiupdates` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateTime` timestamp NULL DEFAULT current_timestamp(),
   `forced` tinyint(1) DEFAULT NULL,
-  `systemsUpdated` longtext,
-  `bodiesUpdated` longtext,
-  `updateLog` longtext,
-  `notes` longtext,
+  `systemsUpdated` longtext DEFAULT NULL,
+  `bodiesUpdated` longtext DEFAULT NULL,
+  `updateLog` longtext DEFAULT NULL,
+  `notes` longtext DEFAULT NULL,
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_APIUPDATES` (`notes`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -65,15 +65,15 @@ CREATE TABLE `bmreports` (
   `latitude` double DEFAULT NULL,
   `longitude` double DEFAULT NULL,
   `cmdrName` varchar(255) DEFAULT NULL,
-  `cmdrComment` longtext,
+  `cmdrComment` longtext DEFAULT NULL,
   `isBeta` tinyint(1) DEFAULT NULL,
   `reportStatus` varchar(255) NOT NULL,
-  `reportComment` longtext,
+  `reportComment` longtext DEFAULT NULL,
   `voteCount` int(11) DEFAULT NULL,
   `added` tinyint(1) DEFAULT NULL,
   `site` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_BMREPORTS` (`systemName`,`bodyName`,`cmdrName`,`cmdrComment`,`reportComment`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -106,8 +106,8 @@ CREATE TABLE `bmsites` (
   `verified` tinyint(1) DEFAULT NULL,
   `visible` tinyint(1) DEFAULT NULL,
   `discoveredBy` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `bmsites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -164,12 +164,12 @@ CREATE TABLE `bodies` (
   `rotationalPeriod` double DEFAULT NULL,
   `rotationalPeriodTidallyLocked` tinyint(1) DEFAULT NULL,
   `axialTilt` double DEFAULT NULL,
-  `solidComposition` longtext,
-  `atmosphere` longtext,
-  `material` longtext,
+  `solidComposition` longtext DEFAULT NULL,
+  `atmosphere` longtext DEFAULT NULL,
+  `material` longtext DEFAULT NULL,
   `missingSkipCount` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_BODIES` (`bodyName`,`type`,`subType`,`luminosity`,`volcanismType`,`atmosphereType`,`terraformingState`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -205,15 +205,15 @@ CREATE TABLE `btreports` (
   `latitude` double DEFAULT NULL,
   `longitude` double DEFAULT NULL,
   `cmdrName` varchar(255) DEFAULT NULL,
-  `cmdrComment` longtext,
+  `cmdrComment` longtext DEFAULT NULL,
   `isBeta` tinyint(1) DEFAULT NULL,
   `reportStatus` varchar(255) NOT NULL,
-  `reportComment` longtext,
+  `reportComment` longtext DEFAULT NULL,
   `voteCount` int(11) DEFAULT NULL,
   `added` tinyint(1) DEFAULT NULL,
   `site` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_BTREPORTS` (`systemName`,`bodyName`,`cmdrName`,`cmdrComment`,`reportComment`)
@@ -248,8 +248,8 @@ CREATE TABLE `btsites` (
   `verified` tinyint(1) DEFAULT NULL,
   `visible` tinyint(1) DEFAULT NULL,
   `discoveredBy` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `btsites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -313,8 +313,8 @@ CREATE TABLE `cmdrkills` (
   `unknownRewards` int(11) DEFAULT NULL,
   `totalRewards` int(11) DEFAULT NULL,
   `totalKills` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `cmdrkills_UN_cmdr` (`cmdr`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -339,8 +339,8 @@ DROP TABLE IF EXISTS `cmdrs`;
 CREATE TABLE `cmdrs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cmdrName` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `cmdrkill` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `cmdrs_UN_cmdrName` (`cmdrName`),
@@ -385,10 +385,10 @@ CREATE TABLE `codexreport` (
   `regionLocalised` varchar(255) DEFAULT NULL,
   `systemAddress` int(11) DEFAULT NULL,
   `voucherAmount` int(11) DEFAULT NULL,
-  `rawJson` longtext,
+  `rawJson` longtext DEFAULT NULL,
   `isBeta` tinyint(1) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_CODEXREPORT` (`cmdrName`,`systemName`,`bodyName`,`codexName`,`codexNameLocalised`,`subCategory`,`subCategoryLocalised`,`category`,`categoryLocalised`,`regionName`,`regionLocalised`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -413,7 +413,7 @@ DROP TABLE IF EXISTS `core_store`;
 CREATE TABLE `core_store` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `key` varchar(255) DEFAULT NULL,
-  `value` longtext,
+  `value` longtext DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
   `environment` varchar(255) DEFAULT NULL,
   `tag` varchar(255) DEFAULT NULL,
@@ -453,15 +453,15 @@ CREATE TABLE `csreports` (
   `latitude` double DEFAULT NULL,
   `longitude` double DEFAULT NULL,
   `cmdrName` varchar(255) DEFAULT NULL,
-  `cmdrComment` longtext,
+  `cmdrComment` longtext DEFAULT NULL,
   `isBeta` tinyint(1) DEFAULT NULL,
   `reportStatus` varchar(255) DEFAULT NULL,
-  `reportComment` longtext,
+  `reportComment` longtext DEFAULT NULL,
   `voteCount` int(11) DEFAULT NULL,
   `added` tinyint(1) DEFAULT NULL,
   `site` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_CSREPORTS` (`systemName`,`bodyName`,`cmdrName`,`cmdrComment`,`reportComment`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -494,8 +494,8 @@ CREATE TABLE `cssites` (
   `verified` tinyint(1) DEFAULT NULL,
   `visible` tinyint(1) DEFAULT NULL,
   `discoveredBy` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -530,15 +530,15 @@ CREATE TABLE `fgreports` (
   `latitude` double DEFAULT NULL,
   `longitude` double DEFAULT NULL,
   `cmdrName` varchar(255) DEFAULT NULL,
-  `cmdrComment` longtext,
+  `cmdrComment` longtext DEFAULT NULL,
   `isBeta` tinyint(1) DEFAULT NULL,
   `reportStatus` varchar(255) NOT NULL,
-  `reportComment` longtext,
+  `reportComment` longtext DEFAULT NULL,
   `voteCount` int(11) DEFAULT NULL,
   `added` tinyint(1) DEFAULT NULL,
   `site` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_FGREPORTS` (`systemName`,`bodyName`,`cmdrName`,`cmdrComment`,`reportComment`)
@@ -573,8 +573,8 @@ CREATE TABLE `fgsites` (
   `verified` tinyint(1) DEFAULT NULL,
   `visible` tinyint(1) DEFAULT NULL,
   `discoveredBy` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `fgsites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -638,15 +638,15 @@ CREATE TABLE `fmreports` (
   `longitude` double DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
   `cmdrName` varchar(255) DEFAULT NULL,
-  `cmdrComment` longtext,
+  `cmdrComment` longtext DEFAULT NULL,
   `isBeta` tinyint(1) DEFAULT NULL,
   `reportStatus` varchar(255) NOT NULL,
-  `reportComment` longtext,
+  `reportComment` longtext DEFAULT NULL,
   `voteCount` int(11) DEFAULT NULL,
   `added` tinyint(1) DEFAULT NULL,
   `site` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_FMREPORTS` (`systemName`,`bodyName`,`type`,`cmdrName`,`cmdrComment`,`reportComment`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -680,8 +680,8 @@ CREATE TABLE `fmsites` (
   `verified` tinyint(1) DEFAULT NULL,
   `visible` tinyint(1) DEFAULT NULL,
   `discoveredBy` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `fmsites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -711,7 +711,7 @@ CREATE TABLE `fmtypes` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `fmtypes_UN_type` (`type`),
   FULLTEXT KEY `SEARCH_FMTYPES` (`type`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -738,8 +738,8 @@ CREATE TABLE `gbmessages` (
   `messageBody` int(11) DEFAULT NULL,
   `latitude` double DEFAULT NULL,
   `longitude` double DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -776,15 +776,15 @@ CREATE TABLE `gbreports` (
   `messageLatitude` double DEFAULT NULL,
   `messageLongitude` double DEFAULT NULL,
   `cmdrName` varchar(255) DEFAULT NULL,
-  `cmdrComment` longtext,
+  `cmdrComment` longtext DEFAULT NULL,
   `isBeta` tinyint(1) DEFAULT NULL,
   `reportStatus` varchar(255) NOT NULL,
-  `reportComment` longtext,
+  `reportComment` longtext DEFAULT NULL,
   `voteCount` int(11) DEFAULT NULL,
   `added` tinyint(1) DEFAULT NULL,
   `site` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_GBREPORTS` (`systemName`,`bodyName`,`messageSystem`,`messageBody`,`cmdrName`,`cmdrComment`,`reportComment`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -816,8 +816,8 @@ CREATE TABLE `gbsites` (
   `visible` tinyint(1) DEFAULT NULL,
   `discoveredBy` int(11) DEFAULT NULL,
   `gbmessage` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `gbsites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -844,9 +844,9 @@ CREATE TABLE `genlogs` (
   `gensite` int(11) DEFAULT NULL,
   `logNumber` int(11) DEFAULT NULL,
   `logTitle` varchar(255) DEFAULT NULL,
-  `logBody` longtext,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `logBody` longtext DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_GENLOGS` (`logTitle`,`logBody`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -883,15 +883,15 @@ CREATE TABLE `genreports` (
   `directionSystem` varchar(255) DEFAULT NULL,
   `distance` double DEFAULT NULL,
   `cmdrName` varchar(255) DEFAULT NULL,
-  `cmdrComment` longtext,
+  `cmdrComment` longtext DEFAULT NULL,
   `isBeta` tinyint(1) DEFAULT NULL,
   `reportStatus` varchar(255) NOT NULL,
-  `reportComment` longtext,
+  `reportComment` longtext DEFAULT NULL,
   `voteCount` int(11) DEFAULT NULL,
   `added` tinyint(1) DEFAULT NULL,
   `site` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_GENREPORTS` (`systemName`,`orbitBody`,`shipName`,`directionSystem`,`cmdrName`,`cmdrComment`,`reportComment`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -922,8 +922,8 @@ CREATE TABLE `gensites` (
   `directionSystem` int(11) DEFAULT NULL,
   `distance` double DEFAULT NULL,
   `discoveredBy` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `gensites_UN_siteID` (`siteID`),
   UNIQUE KEY `gensites_UN_shipName` (`shipName`),
@@ -951,8 +951,8 @@ CREATE TABLE `gractivegroups` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `grSite` int(11) DEFAULT NULL,
   `activeGroup` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -977,8 +977,8 @@ CREATE TABLE `gractiveobelisks` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `grSite` int(11) DEFAULT NULL,
   `activeObelisk` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1057,9 +1057,9 @@ CREATE TABLE `grcodexdata` (
   `grPrimaryArtifact` int(11) DEFAULT NULL,
   `grSecondaryArtifact` int(11) DEFAULT NULL,
   `codexNumber` int(11) DEFAULT NULL,
-  `text` longtext,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `text` longtext DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_GRCODEXDATA` (`text`)
 ) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=utf8;
@@ -1087,8 +1087,8 @@ CREATE TABLE `grobeliskgroups` (
   `grType` int(11) DEFAULT NULL,
   `groupName` varchar(255) DEFAULT NULL,
   `amount` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_GROBELISKGROUPS` (`groupName`)
 ) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
@@ -1114,10 +1114,10 @@ DROP TABLE IF EXISTS `grobeliskreports`;
 CREATE TABLE `grobeliskreports` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `grreport` int(11) DEFAULT NULL,
-  `groups` longtext,
-  `obelisks` longtext,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `groups` longtext DEFAULT NULL,
+  `obelisks` longtext DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1146,8 +1146,8 @@ CREATE TABLE `grobelisks` (
   `broken` tinyint(1) DEFAULT NULL,
   `grCodexData` int(11) DEFAULT NULL,
   `verified` tinyint(1) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=953 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1184,15 +1184,15 @@ CREATE TABLE `grreports` (
   `longitude` double DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
   `cmdrName` varchar(255) DEFAULT NULL,
-  `cmdrComment` longtext,
+  `cmdrComment` longtext DEFAULT NULL,
   `isBeta` tinyint(1) DEFAULT NULL,
   `reportStatus` varchar(255) NOT NULL,
-  `reportComment` longtext,
+  `reportComment` longtext DEFAULT NULL,
   `voteCount` int(11) DEFAULT NULL,
   `added` tinyint(1) DEFAULT NULL,
   `site` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_GRREPORTS` (`systemName`,`bodyName`,`cmdrName`,`cmdrComment`,`reportComment`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1226,8 +1226,8 @@ CREATE TABLE `grsites` (
   `verified` tinyint(1) DEFAULT NULL,
   `visible` tinyint(1) DEFAULT NULL,
   `discoveredBy` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `grsites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1279,8 +1279,8 @@ CREATE TABLE `gsactivegroups` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `gsSite` int(11) DEFAULT NULL,
   `activeGroup` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1305,8 +1305,8 @@ CREATE TABLE `gsactiveobelisks` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `gsSite` int(11) DEFAULT NULL,
   `activeObelisk` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1385,9 +1385,9 @@ CREATE TABLE `gscodexdata` (
   `gsPrimaryArtifact` int(11) DEFAULT NULL,
   `gsSecondaryArtifact` int(11) DEFAULT NULL,
   `codexNumber` int(11) DEFAULT NULL,
-  `text` longtext,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `text` longtext DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_GSCODEXDATA` (`text`)
 ) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
@@ -1415,8 +1415,8 @@ CREATE TABLE `gsobeliskgroups` (
   `gsType` int(11) DEFAULT NULL,
   `groupName` varchar(255) DEFAULT NULL,
   `amount` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_GSOBELISKGROUPS` (`groupName`)
 ) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
@@ -1442,10 +1442,10 @@ DROP TABLE IF EXISTS `gsobeliskreports`;
 CREATE TABLE `gsobeliskreports` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `gsreport` int(11) DEFAULT NULL,
-  `groups` longtext,
-  `obelisks` longtext,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `groups` longtext DEFAULT NULL,
+  `obelisks` longtext DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1474,8 +1474,8 @@ CREATE TABLE `gsobelisks` (
   `broken` tinyint(1) DEFAULT NULL,
   `gsCodexData` int(11) DEFAULT NULL,
   `verified` tinyint(1) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=489 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1513,15 +1513,15 @@ CREATE TABLE `gsreports` (
   `type` varchar(255) DEFAULT NULL,
   `hasDatabank` tinyint(1) DEFAULT NULL,
   `cmdrName` varchar(255) DEFAULT NULL,
-  `cmdrComment` longtext,
+  `cmdrComment` longtext DEFAULT NULL,
   `isBeta` tinyint(1) DEFAULT NULL,
   `reportStatus` varchar(255) NOT NULL,
-  `reportComment` longtext,
+  `reportComment` longtext DEFAULT NULL,
   `voteCount` int(11) DEFAULT NULL,
   `added` tinyint(1) DEFAULT NULL,
   `site` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_GSREPORTS` (`systemName`,`bodyName`,`cmdrName`,`cmdrComment`,`reportComment`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1556,8 +1556,8 @@ CREATE TABLE `gssites` (
   `verified` tinyint(1) DEFAULT NULL,
   `visible` tinyint(1) DEFAULT NULL,
   `discoveredBy` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `gssites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1621,15 +1621,15 @@ CREATE TABLE `gyreports` (
   `longitude` double DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
   `cmdrName` varchar(255) DEFAULT NULL,
-  `cmdrComment` longtext,
+  `cmdrComment` longtext DEFAULT NULL,
   `isBeta` tinyint(1) DEFAULT NULL,
   `reportStatus` varchar(255) NOT NULL,
-  `reportComment` longtext,
+  `reportComment` longtext DEFAULT NULL,
   `voteCount` int(11) DEFAULT NULL,
   `added` tinyint(1) DEFAULT NULL,
   `site` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_GYREPORTS` (`systemName`,`bodyName`,`type`,`cmdrName`,`cmdrComment`,`reportComment`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1663,8 +1663,8 @@ CREATE TABLE `gysites` (
   `verified` tinyint(1) DEFAULT NULL,
   `visible` tinyint(1) DEFAULT NULL,
   `discoveredBy` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `gysites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1719,15 +1719,15 @@ CREATE TABLE `hdreports` (
   `fromSystemName` varchar(255) DEFAULT NULL,
   `toSystemName` varchar(255) DEFAULT NULL,
   `cmdrName` varchar(255) DEFAULT NULL,
-  `cmdrComment` longtext,
+  `cmdrComment` longtext DEFAULT NULL,
   `isBeta` tinyint(1) DEFAULT NULL,
   `reportStatus` varchar(255) NOT NULL,
-  `reportComment` longtext,
+  `reportComment` longtext DEFAULT NULL,
   `added` tinyint(1) DEFAULT NULL,
   `site` int(11) DEFAULT NULL,
-  `hdRawJson` longtext,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `hdRawJson` longtext DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_HDREPORTS` (`fromSystemName`,`toSystemName`,`cmdrName`,`cmdrComment`,`reportComment`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1754,8 +1754,8 @@ CREATE TABLE `hdsites` (
   `system` int(11) DEFAULT NULL,
   `solDistance` double DEFAULT NULL,
   `meropeDistance` double DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1786,9 +1786,9 @@ CREATE TABLE `journaldata` (
   `latitude` double DEFAULT NULL,
   `longitude` double DEFAULT NULL,
   `isBeta` tinyint(1) DEFAULT NULL,
-  `jsonData` longtext,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `jsonData` longtext DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_JOURNALDATA` (`eventName`,`systemName`,`bodyName`,`stationName`,`cmdrName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1813,12 +1813,12 @@ DROP TABLE IF EXISTS `killreports`;
 CREATE TABLE `killreports` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `systemName` varchar(255) DEFAULT NULL,
-  `edTimestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `edTimestamp` timestamp NOT NULL DEFAULT current_timestamp(),
   `cmdrName` varchar(255) DEFAULT NULL,
   `reward` int(11) DEFAULT NULL,
   `rewardingFaction` varchar(255) DEFAULT NULL,
   `victimFaction` varchar(255) DEFAULT NULL,
-  `rawEvent` longtext,
+  `rawEvent` longtext DEFAULT NULL,
   `isbeta` tinyint(1) DEFAULT NULL,
   `reportAccepted` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -1857,15 +1857,15 @@ CREATE TABLE `lsreports` (
   `latitude` double DEFAULT NULL,
   `longitude` double DEFAULT NULL,
   `cmdrName` varchar(255) DEFAULT NULL,
-  `cmdrComment` longtext,
+  `cmdrComment` longtext DEFAULT NULL,
   `isBeta` tinyint(1) DEFAULT NULL,
   `reportStatus` varchar(255) NOT NULL,
-  `reportComment` longtext,
+  `reportComment` longtext DEFAULT NULL,
   `voteCount` int(11) DEFAULT NULL,
   `added` tinyint(1) DEFAULT NULL,
   `site` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_LSREPORTS` (`systemName`,`bodyName`,`cmdrName`,`cmdrComment`,`reportComment`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1899,8 +1899,8 @@ CREATE TABLE `lssites` (
   `verified` tinyint(1) DEFAULT NULL,
   `visible` tinyint(1) DEFAULT NULL,
   `discoveredBy` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `lssites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1967,15 +1967,15 @@ CREATE TABLE `msreports` (
   `flightSchedule` tinyint(1) DEFAULT NULL,
   `dockable` tinyint(1) DEFAULT NULL,
   `cmdrName` varchar(255) DEFAULT NULL,
-  `cmdrComment` longtext,
+  `cmdrComment` longtext DEFAULT NULL,
   `isBeta` tinyint(1) DEFAULT NULL,
   `reportStatus` varchar(255) NOT NULL,
-  `reportComment` longtext,
+  `reportComment` longtext DEFAULT NULL,
   `voteCount` int(11) DEFAULT NULL,
   `added` tinyint(1) DEFAULT NULL,
   `site` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_MSREPORTS` (`systemName`,`orbitBody`,`shipName`,`shipTag`,`type`,`cmdrName`,`cmdrComment`,`reportComment`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -2002,10 +2002,10 @@ CREATE TABLE `msschedules` (
   `system` int(11) DEFAULT NULL,
   `body` int(11) DEFAULT NULL,
   `scheduleNumber` int(11) DEFAULT NULL,
-  `notes` longtext,
+  `notes` longtext DEFAULT NULL,
   `mssite` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_MSSCHEDULES` (`notes`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -2039,8 +2039,8 @@ CREATE TABLE `mssites` (
   `flightSchedule` tinyint(1) DEFAULT NULL,
   `dockable` tinyint(1) DEFAULT NULL,
   `discoveredBy` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `mssites_UN_siteID` (`siteID`),
   UNIQUE KEY `mssites_UN_shipName` (`shipName`),
@@ -2095,15 +2095,15 @@ CREATE TABLE `nhssreports` (
   `systemName` varchar(255) DEFAULT NULL,
   `threatLevel` int(11) DEFAULT NULL,
   `cmdrName` varchar(255) DEFAULT NULL,
-  `cmdrComment` longtext,
+  `cmdrComment` longtext DEFAULT NULL,
   `isBeta` tinyint(1) DEFAULT NULL,
   `reportStatus` varchar(255) NOT NULL,
-  `reportComment` longtext,
+  `reportComment` longtext DEFAULT NULL,
   `added` tinyint(1) DEFAULT NULL,
   `site` int(11) DEFAULT NULL,
-  `nhssRawJson` longtext,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `nhssRawJson` longtext DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_NHSSREPORTS` (`systemName`,`cmdrName`,`cmdrComment`,`reportComment`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -2130,8 +2130,8 @@ CREATE TABLE `nhsssites` (
   `system` int(11) DEFAULT NULL,
   `threatLevel` int(11) DEFAULT NULL,
   `discoveredBy` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -2189,8 +2189,8 @@ CREATE TABLE `rings` (
   `mass` double DEFAULT NULL,
   `innerRadius` double DEFAULT NULL,
   `outerRadius` double DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_RINGS` (`ringName`)
@@ -2222,11 +2222,11 @@ CREATE TABLE `systems` (
   `edsmCoordY` double DEFAULT NULL,
   `edsmCoordZ` double DEFAULT NULL,
   `edsmCoordLocked` tinyint(1) DEFAULT NULL,
-  `primaryStar` longtext,
+  `primaryStar` longtext DEFAULT NULL,
   `region` int(11) DEFAULT NULL,
   `missingSkipCount` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `systems_UN_systemName` (`systemName`),
   UNIQUE KEY `systems_UN_edsmID` (`edsmID`),
@@ -2292,15 +2292,15 @@ CREATE TABLE `tbreports` (
   `type` varchar(255) DEFAULT NULL,
   `cycle` varchar(255) DEFAULT NULL,
   `cmdrName` varchar(255) DEFAULT NULL,
-  `cmdrComment` longtext,
+  `cmdrComment` longtext DEFAULT NULL,
   `isBeta` tinyint(1) DEFAULT NULL,
   `reportStatus` varchar(255) NOT NULL,
-  `reportComment` longtext,
+  `reportComment` longtext DEFAULT NULL,
   `voteCount` int(11) DEFAULT NULL,
   `added` tinyint(1) DEFAULT NULL,
   `site` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_TBREPORTS` (`systemName`,`bodyName`,`cmdrName`,`cmdrComment`,`reportComment`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -2332,12 +2332,12 @@ CREATE TABLE `tbsites` (
   `longitude` double DEFAULT NULL,
   `type` int(11) DEFAULT NULL,
   `cycle` int(11) DEFAULT NULL,
-  `comment` longtext,
+  `comment` longtext DEFAULT NULL,
   `verified` tinyint(1) DEFAULT NULL,
   `visible` tinyint(1) DEFAULT NULL,
   `discoveredBy` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `tbsites_UN_siteID` (`siteID`),
   FULLTEXT KEY `SEARCH_TBSITES` (`comment`)
@@ -2390,14 +2390,14 @@ DROP TABLE IF EXISTS `tgencounterstat`;
 CREATE TABLE `tgencounterstat` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `hyperdictionSystemName` varchar(255) DEFAULT NULL,
-  `hyperdictionTimestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `hyperdictionTimestamp` timestamp NOT NULL DEFAULT current_timestamp(),
   `cmdrName` varchar(255) DEFAULT NULL,
   `wakesScanned` int(11) DEFAULT NULL,
   `thargoidScans` int(11) DEFAULT NULL,
   `thargoidSites` int(11) DEFAULT NULL,
   `hyperdictions` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_TGENCOUNTERSTAT` (`hyperdictionSystemName`,`cmdrName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -2434,15 +2434,15 @@ CREATE TABLE `tsreports` (
   `longitude` double DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
   `cmdrName` varchar(255) DEFAULT NULL,
-  `cmdrComment` longtext,
+  `cmdrComment` longtext DEFAULT NULL,
   `isBeta` tinyint(1) DEFAULT NULL,
   `reportStatus` varchar(255) NOT NULL,
-  `reportComment` longtext,
+  `reportComment` longtext DEFAULT NULL,
   `voteCount` int(11) DEFAULT NULL,
   `added` tinyint(1) DEFAULT NULL,
   `site` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_TSREPORTS` (`systemName`,`bodyName`,`cmdrName`,`cmdrComment`,`reportComment`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -2479,8 +2479,8 @@ CREATE TABLE `tssites` (
   `msg2Site` int(11) DEFAULT NULL,
   `msg3Site` int(11) DEFAULT NULL,
   `discoveredBy` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `tssites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -2543,15 +2543,15 @@ CREATE TABLE `twreports` (
   `longitude` double DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
   `cmdrName` varchar(255) DEFAULT NULL,
-  `cmdrComment` longtext,
+  `cmdrComment` longtext DEFAULT NULL,
   `isBeta` tinyint(1) DEFAULT NULL,
   `reportStatus` varchar(255) NOT NULL,
-  `reportComment` longtext,
+  `reportComment` longtext DEFAULT NULL,
   `voteCount` int(11) DEFAULT NULL,
   `added` tinyint(1) DEFAULT NULL,
   `site` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_TWREPORTS` (`systemName`,`bodyName`,`cmdrName`,`cmdrComment`,`reportComment`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -2585,8 +2585,8 @@ CREATE TABLE `twsites` (
   `verified` tinyint(1) DEFAULT NULL,
   `visible` tinyint(1) DEFAULT NULL,
   `discoveredBy` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `twsites_UN_siteID` (`siteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -2646,8 +2646,8 @@ CREATE TABLE `upload_file` (
   `url` varchar(255) DEFAULT NULL,
   `provider` varchar(255) DEFAULT NULL,
   `public_id` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_UPLOAD_FILE` (`name`,`hash`,`sha256`,`ext`,`mime`,`size`,`url`,`provider`,`public_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -2673,8 +2673,8 @@ CREATE TABLE `upload_file_morph` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `upload_file_id` int(11) DEFAULT NULL,
   `related_id` int(11) DEFAULT NULL,
-  `related_type` longtext,
-  `field` longtext,
+  `related_type` longtext DEFAULT NULL,
+  `field` longtext DEFAULT NULL,
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_UPLOAD_FILE_MORPH` (`related_type`,`field`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -2791,4 +2791,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-10  5:46:03
+-- Dump completed on 2019-01-10 10:30:53
