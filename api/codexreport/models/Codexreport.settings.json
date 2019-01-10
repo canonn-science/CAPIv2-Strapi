@@ -3,7 +3,7 @@
   "collectionName": "",
   "info": {
     "name": "codexreport",
-    "description": "Codex logs enhanced with coordinates. "
+    "description": "Codex logs enhanced with coordinates. Temporary model for tracking changes in the Journal"
   },
   "options": {
     "increments": true,
@@ -19,21 +19,21 @@
       "default": "",
       "type": "string"
     },
-    "edsmCoordX": {
-      "default": "",
-      "type": "decimal"
-    },
-    "edsmCoordY": {
-      "default": "",
-      "type": "integer"
-    },
-    "edsmCoordZ": {
-      "default": "",
-      "type": "decimal"
-    },
     "bodyName": {
       "default": "",
       "type": "string"
+    },
+    "coordX": {
+      "default": "",
+      "type": "decimal"
+    },
+    "coordY": {
+      "default": "",
+      "type": "integer"
+    },
+    "coordZ": {
+      "default": "",
+      "type": "decimal"
     },
     "latitude": {
       "default": "",
