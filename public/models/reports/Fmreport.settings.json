@@ -43,6 +43,11 @@
       "x-data-exclude": true,
       "type": "float"
     },
+    "regionID": {
+      "x-data-render": false,
+      "x-data-exclude": true,
+      "type": "integer"
+    },
     "coordX": {
       "x-data-render": false,
       "x-data-exclude": true,
@@ -82,11 +87,6 @@
     "type": {
       "x-data-description": "Type",
       "type": "string"
-    },
-    "count": {
-      "x-data-description": "Number of Bark Mounds",
-      "min": 1,
-      "type": "integer"
     },
     "cmdrName": {
       "x-data-description": "Commander Name",

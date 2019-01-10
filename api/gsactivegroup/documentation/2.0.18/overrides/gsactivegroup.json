@@ -1,0 +1,93 @@
+{
+  "paths": {
+    "/gsactivegroups": {
+      "get": {
+        "description": "Get all GS Site Active Group entries",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new GS Site Active Group entry",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      }
+    },
+    "/gsactivegroups/count": {
+      "get": {
+        "description": "Get a count of all GS Site Active Group entries",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ],
+        "security": []
+      }
+    },
+    "/gsactivegroups/{id}": {
+      "get": {
+        "description": "Get a GS Site Active Group by id",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a GS Site Active Group by id",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a GS Site Active Group by id",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ],
+        "security": [
+          "siteDelete"
+        ]
+      }
+    },
+    "/gsactivegroups/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Guardian Structures",
+      "description": "Code Name - GS"
+    }
+  ]
+}

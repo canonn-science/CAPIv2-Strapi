@@ -1,0 +1,89 @@
+{
+  "paths": {
+    "/codexreports": {
+      "get": {
+        "description": "Get all Codex report entries",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new Codex report entry",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": []
+      }
+    },
+    "/codexreports/count": {
+      "get": {
+        "description": "Get a count of all Codex report entries",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": []
+      }
+    },
+    "/codexreports/{id}": {
+      "get": {
+        "description": "Get a Codex report by id",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a Codex report by id",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": []
+      },
+      "delete": {
+        "description": "Delete a Codex report by id",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": [
+          "updateLogWrite"
+        ]
+      }
+    },
+    "/codexreports/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Canonn Use",
+      "description": "Endpoints used by Canonn for updating or maintaining the API"
+    }
+  ]
+}

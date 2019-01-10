@@ -37,6 +37,9 @@
     "systemAddress": {
       "type": "float"
     },
+    "regionID": {
+      "type": "integer"
+    },
     "coordX": {
       "type": "float"
     },
@@ -61,10 +64,6 @@
       "required": true,
       "min": -180,
       "max": 180
-    },
-    "count": {
-      "min": 1,
-      "type": "integer"
     },
     "cmdrName": {
       "type": "string",

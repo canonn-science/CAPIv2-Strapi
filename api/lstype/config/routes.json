@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/lstypes",
+      "handler": "Lstype.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/lstypes/count",
+      "handler": "Lstype.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/lstypes/:id",
+      "handler": "Lstype.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/lstypes",
+      "handler": "Lstype.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/lstypes/:id",
+      "handler": "Lstype.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/lstypes/:id",
+      "handler": "Lstype.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/lstypes/:id/relationships/:relation",
+      "handler": "Lstype.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/lstypes/:id/relationships/:relation",
+      "handler": "Lstype.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/lstypes/:id/relationships/:relation",
+      "handler": "Lstype.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

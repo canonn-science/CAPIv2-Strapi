@@ -27,7 +27,7 @@ module.exports = {
 
   // After creating a value.
   // Fired after an `insert` query.
-  //afterCreate: async (model, attrs, options) => {},
+  // afterCreate: async (model, attrs, options) => {},
 
   // Before updating a value.
   // Fired before an `update` query.

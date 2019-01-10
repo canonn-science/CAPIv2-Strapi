@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/twtypes",
+      "handler": "Twtype.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/twtypes/count",
+      "handler": "Twtype.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/twtypes/:id",
+      "handler": "Twtype.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/twtypes",
+      "handler": "Twtype.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/twtypes/:id",
+      "handler": "Twtype.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/twtypes/:id",
+      "handler": "Twtype.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/twtypes/:id/relationships/:relation",
+      "handler": "Twtype.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/twtypes/:id/relationships/:relation",
+      "handler": "Twtype.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/twtypes/:id/relationships/:relation",
+      "handler": "Twtype.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
