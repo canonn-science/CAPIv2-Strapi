@@ -14,7 +14,7 @@
       "name": "GNU-GPLv3",
       "url": "https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE"
     },
-    "x-generation-date": "01/01/2019 10:23:08 AM"
+    "x-generation-date": "01/03/2019 11:49:44 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -6618,6 +6618,726 @@
         "summary": "",
         "tags": [
           "z.Unused"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "relation",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/codexreports": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Codexreport"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Codexreport"
+        ],
+        "parameters": [
+          {
+            "name": "_limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of results possible",
+            "schema": {
+              "type": "integer"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_sort",
+            "in": "query",
+            "required": false,
+            "description": "Sort according to a specific field.",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_start",
+            "in": "query",
+            "required": false,
+            "description": "Skip a specific number of entries (especially useful for pagination)",
+            "schema": {
+              "type": "integer"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "=",
+            "in": "query",
+            "required": false,
+            "description": "Get entries that matches exactly your input",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_ne",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are not equals to something",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_lt",
+            "in": "query",
+            "required": false,
+            "description": "Get record that are lower than a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_lte",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are lower than or equal to a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_gt",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are greater than a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_gte",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are greater than  or equal a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_contains",
+            "in": "query",
+            "required": false,
+            "description": "Get records that contains a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_containss",
+            "in": "query",
+            "required": false,
+            "description": "Get records that contains (case sensitive) a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          }
+        ]
+      },
+      "post": {
+        "deprecated": false,
+        "description": "Create a new record",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Codexreport"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Codexreport"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewCodexreport"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/codexreports/count": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "count": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Codexreport"
+        ],
+        "parameters": []
+      }
+    },
+    "/codexreports/{id}": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Codexreport"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Codexreport"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "put": {
+        "deprecated": false,
+        "description": "Update a record",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Codexreport"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Codexreport"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewCodexreport"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "delete": {
+        "deprecated": false,
+        "description": "Delete a record",
+        "responses": {
+          "200": {
+            "description": "deletes a single record based on the ID supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Codexreport"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/codexreports/{id}/relationships/{relation}": {
+      "post": {
+        "deprecated": false,
+        "description": "Create a new record",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Codexreport"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "foo": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "deprecated": false,
+        "description": "Update a record",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Codexreport"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "foo": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "relation",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "delete": {
+        "deprecated": false,
+        "description": "Delete a record",
+        "responses": {
+          "200": {
+            "description": "deletes a single record based on the ID supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Codexreport"
         ],
         "parameters": [
           {
@@ -44015,6 +44735,738 @@
         ]
       }
     },
+    "/regions": {
+      "get": {
+        "deprecated": false,
+        "description": "Get all Region entries",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Region"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Regions"
+        ],
+        "parameters": [
+          {
+            "name": "_limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of results possible",
+            "schema": {
+              "type": "integer"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_sort",
+            "in": "query",
+            "required": false,
+            "description": "Sort according to a specific field.",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_start",
+            "in": "query",
+            "required": false,
+            "description": "Skip a specific number of entries (especially useful for pagination)",
+            "schema": {
+              "type": "integer"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "=",
+            "in": "query",
+            "required": false,
+            "description": "Get entries that matches exactly your input",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_ne",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are not equals to something",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_lt",
+            "in": "query",
+            "required": false,
+            "description": "Get record that are lower than a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_lte",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are lower than or equal to a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_gt",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are greater than a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_gte",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are greater than  or equal a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_contains",
+            "in": "query",
+            "required": false,
+            "description": "Get records that contains a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_containss",
+            "in": "query",
+            "required": false,
+            "description": "Get records that contains (case sensitive) a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          }
+        ],
+        "security": []
+      },
+      "post": {
+        "deprecated": false,
+        "description": "Create a new Region entry",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Region"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Regions"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewRegion"
+              }
+            }
+          }
+        },
+        "security": [
+          "locationWrite"
+        ]
+      }
+    },
+    "/regions/count": {
+      "get": {
+        "deprecated": false,
+        "description": "Get a count of all Region entries",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "count": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Regions"
+        ],
+        "parameters": [],
+        "security": []
+      }
+    },
+    "/regions/{id}": {
+      "get": {
+        "deprecated": false,
+        "description": "Get a Region by id",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Region"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Regions"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": []
+      },
+      "put": {
+        "deprecated": false,
+        "description": "Update a Region by id",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Region"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Regions"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewRegion"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          "locationWrite"
+        ]
+      },
+      "delete": {
+        "deprecated": false,
+        "description": "Delete a Region by id",
+        "responses": {
+          "200": {
+            "description": "deletes a single record based on the ID supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Regions"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          "locationDelete"
+        ]
+      }
+    },
+    "/regions/{id}/relationships/{relation}": {
+      "post": {
+        "deprecated": false,
+        "description": "Create a new record",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "foo": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "deprecated": false,
+        "description": "Update a record",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "foo": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "relation",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "delete": {
+        "deprecated": false,
+        "description": "Delete a record",
+        "responses": {
+          "200": {
+            "description": "deletes a single record based on the ID supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "relation",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
     "/rings": {
       "get": {
         "deprecated": false,
@@ -53860,13 +55312,24 @@
         ]
       }
     },
-    "/connect/*": {
+    "/connect/{0}": {
       "get": {
         "deprecated": false,
         "description": "Connect a provider",
         "responses": {
           "200": {
-            "description": "Your user is redirected"
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
           },
           "403": {
             "description": "Forbidden",
@@ -53899,27 +55362,22 @@
             }
           }
         },
-        "summary": "Authenticate your user with a custom provider",
+        "summary": "",
         "tags": [
-          "Authentication"
+          "Users-Permissions - User"
         ],
         "parameters": [
           {
-            "name": "provider",
+            "name": 0,
             "in": "path",
-            "required": true,
+            "description": "",
             "deprecated": false,
-            "description": "The name of the provider you want to use",
+            "required": true,
             "schema": {
               "type": "string"
             }
           }
-        ],
-        "security": [],
-        "externalDocs": {
-          "description": "Find out more about the authentication flow in the strapi documentation",
-          "url": "https://strapi.io/documentation/guides/authentication.html#providers"
-        }
+        ]
       }
     },
     "/auth/local": {
@@ -54895,6 +56353,9 @@
           "systemAddress": {
             "type": "number"
           },
+          "regionID": {
+            "type": "integer"
+          },
           "coordX": {
             "type": "number"
           },
@@ -55077,6 +56538,9 @@
           "systemAddress": {
             "type": "number"
           },
+          "regionID": {
+            "type": "integer"
+          },
           "coordX": {
             "type": "number"
           },
@@ -55184,6 +56648,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "region": {
+                "type": "string"
+              },
+              "primaryStar": {
+                "type": "json"
               }
             }
           },
@@ -55443,6 +56913,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "region": {
+                "type": "string"
+              },
+              "primaryStar": {
+                "type": "json"
               }
             }
           },
@@ -55753,6 +57229,9 @@
           "systemAddress": {
             "type": "number"
           },
+          "regionID": {
+            "type": "integer"
+          },
           "coordX": {
             "type": "number"
           },
@@ -55941,6 +57420,9 @@
           "systemAddress": {
             "type": "number"
           },
+          "regionID": {
+            "type": "integer"
+          },
           "coordX": {
             "type": "number"
           },
@@ -56051,6 +57533,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "region": {
+                "type": "string"
+              },
+              "primaryStar": {
+                "type": "json"
               }
             }
           },
@@ -56499,6 +57987,188 @@
           }
         }
       },
+      "Codexreport": {
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "cmdrName": {
+            "type": "string",
+            "default": ""
+          },
+          "systemName": {
+            "type": "string",
+            "default": ""
+          },
+          "edsmCoordX": {
+            "type": "number",
+            "default": ""
+          },
+          "edsmCoordY": {
+            "type": "integer",
+            "default": ""
+          },
+          "edsmCoordZ": {
+            "type": "number",
+            "default": ""
+          },
+          "bodyName": {
+            "type": "string",
+            "default": ""
+          },
+          "latitude": {
+            "type": "number",
+            "default": ""
+          },
+          "longitude": {
+            "type": "number",
+            "default": ""
+          },
+          "entryId": {
+            "type": "integer",
+            "default": ""
+          },
+          "codexName": {
+            "type": "string",
+            "default": ""
+          },
+          "codexNameLocalised": {
+            "type": "string",
+            "default": ""
+          },
+          "subCategory": {
+            "type": "string",
+            "default": ""
+          },
+          "subCategoryLocalised": {
+            "type": "string",
+            "default": ""
+          },
+          "category": {
+            "type": "string",
+            "default": ""
+          },
+          "categoryLocalised": {
+            "type": "string",
+            "default": ""
+          },
+          "regionName": {
+            "type": "string",
+            "default": ""
+          },
+          "regionLocalised": {
+            "type": "string",
+            "default": ""
+          },
+          "systemAddress": {
+            "type": "integer",
+            "default": ""
+          },
+          "voucherAmount": {
+            "type": "integer",
+            "default": ""
+          },
+          "rawJson": {
+            "type": "json",
+            "default": ""
+          },
+          "isBeta": {
+            "type": "boolean",
+            "default": false
+          }
+        }
+      },
+      "NewCodexreport": {
+        "properties": {
+          "cmdrName": {
+            "type": "string",
+            "default": ""
+          },
+          "systemName": {
+            "type": "string",
+            "default": ""
+          },
+          "edsmCoordX": {
+            "type": "number",
+            "default": ""
+          },
+          "edsmCoordY": {
+            "type": "integer",
+            "default": ""
+          },
+          "edsmCoordZ": {
+            "type": "number",
+            "default": ""
+          },
+          "bodyName": {
+            "type": "string",
+            "default": ""
+          },
+          "latitude": {
+            "type": "number",
+            "default": ""
+          },
+          "longitude": {
+            "type": "number",
+            "default": ""
+          },
+          "entryId": {
+            "type": "integer",
+            "default": ""
+          },
+          "codexName": {
+            "type": "string",
+            "default": ""
+          },
+          "codexNameLocalised": {
+            "type": "string",
+            "default": ""
+          },
+          "subCategory": {
+            "type": "string",
+            "default": ""
+          },
+          "subCategoryLocalised": {
+            "type": "string",
+            "default": ""
+          },
+          "category": {
+            "type": "string",
+            "default": ""
+          },
+          "categoryLocalised": {
+            "type": "string",
+            "default": ""
+          },
+          "regionName": {
+            "type": "string",
+            "default": ""
+          },
+          "regionLocalised": {
+            "type": "string",
+            "default": ""
+          },
+          "systemAddress": {
+            "type": "integer",
+            "default": ""
+          },
+          "voucherAmount": {
+            "type": "integer",
+            "default": ""
+          },
+          "rawJson": {
+            "type": "json",
+            "default": ""
+          },
+          "isBeta": {
+            "type": "boolean",
+            "default": false
+          }
+        }
+      },
       "Csreport": {
         "required": [
           "id",
@@ -56537,6 +58207,9 @@
           },
           "systemAddress": {
             "type": "number"
+          },
+          "regionID": {
+            "type": "integer"
           },
           "coordX": {
             "type": "number"
@@ -56721,6 +58394,9 @@
           "systemAddress": {
             "type": "number"
           },
+          "regionID": {
+            "type": "integer"
+          },
           "coordX": {
             "type": "number"
           },
@@ -56829,6 +58505,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "region": {
+                "type": "string"
+              },
+              "primaryStar": {
+                "type": "json"
               }
             }
           },
@@ -57081,6 +58763,9 @@
           "systemAddress": {
             "type": "number"
           },
+          "regionID": {
+            "type": "integer"
+          },
           "coordX": {
             "type": "number"
           },
@@ -57269,6 +58954,9 @@
           "systemAddress": {
             "type": "number"
           },
+          "regionID": {
+            "type": "integer"
+          },
           "coordX": {
             "type": "number"
           },
@@ -57379,6 +59067,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "region": {
+                "type": "string"
+              },
+              "primaryStar": {
+                "type": "json"
               }
             }
           },
@@ -57684,6 +59378,9 @@
           "systemAddress": {
             "type": "number"
           },
+          "regionID": {
+            "type": "integer"
+          },
           "coordX": {
             "type": "number"
           },
@@ -57872,6 +59569,9 @@
           "systemAddress": {
             "type": "number"
           },
+          "regionID": {
+            "type": "integer"
+          },
           "coordX": {
             "type": "number"
           },
@@ -57982,6 +59682,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "region": {
+                "type": "string"
+              },
+              "primaryStar": {
+                "type": "json"
               }
             }
           },
@@ -58318,6 +60024,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "region": {
+                "type": "string"
+              },
+              "primaryStar": {
+                "type": "json"
               }
             }
           },
@@ -58524,6 +60236,9 @@
           "systemAddress": {
             "type": "number"
           },
+          "regionID": {
+            "type": "integer"
+          },
           "coordX": {
             "type": "number"
           },
@@ -58709,6 +60424,9 @@
           "systemAddress": {
             "type": "number"
           },
+          "regionID": {
+            "type": "integer"
+          },
           "coordX": {
             "type": "number"
           },
@@ -58824,6 +60542,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "region": {
+                "type": "string"
+              },
+              "primaryStar": {
+                "type": "json"
               }
             }
           },
@@ -59277,6 +61001,9 @@
           "systemAddress": {
             "type": "number"
           },
+          "regionID": {
+            "type": "integer"
+          },
           "coordX": {
             "type": "number"
           },
@@ -59453,6 +61180,9 @@
           "systemAddress": {
             "type": "number"
           },
+          "regionID": {
+            "type": "integer"
+          },
           "coordX": {
             "type": "number"
           },
@@ -59559,6 +61289,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "region": {
+                "type": "string"
+              },
+              "primaryStar": {
+                "type": "json"
               }
             }
           },
@@ -59734,6 +61470,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "region": {
+                "type": "string"
+              },
+              "primaryStar": {
+                "type": "json"
               }
             }
           },
@@ -60346,6 +62088,9 @@
               "systemAddress": {
                 "type": "number"
               },
+              "regionID": {
+                "type": "integer"
+              },
               "coordX": {
                 "type": "number"
               },
@@ -60465,6 +62210,9 @@
           },
           "systemAddress": {
             "type": "number"
+          },
+          "regionID": {
+            "type": "integer"
           },
           "coordX": {
             "type": "number"
@@ -60688,6 +62436,9 @@
           "systemAddress": {
             "type": "number"
           },
+          "regionID": {
+            "type": "integer"
+          },
           "coordX": {
             "type": "number"
           },
@@ -60806,6 +62557,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "region": {
+                "type": "string"
+              },
+              "primaryStar": {
+                "type": "json"
               }
             }
           },
@@ -61690,6 +63447,9 @@
               "systemAddress": {
                 "type": "number"
               },
+              "regionID": {
+                "type": "integer"
+              },
               "coordX": {
                 "type": "number"
               },
@@ -61812,6 +63572,9 @@
           },
           "systemAddress": {
             "type": "number"
+          },
+          "regionID": {
+            "type": "integer"
           },
           "coordX": {
             "type": "number"
@@ -62045,6 +63808,9 @@
           "systemAddress": {
             "type": "number"
           },
+          "regionID": {
+            "type": "integer"
+          },
           "coordX": {
             "type": "number"
           },
@@ -62170,6 +63936,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "region": {
+                "type": "string"
+              },
+              "primaryStar": {
+                "type": "json"
               }
             }
           },
@@ -62524,6 +64296,9 @@
           "systemAddress": {
             "type": "number"
           },
+          "regionID": {
+            "type": "integer"
+          },
           "coordX": {
             "type": "number"
           },
@@ -62712,6 +64487,9 @@
           "systemAddress": {
             "type": "number"
           },
+          "regionID": {
+            "type": "integer"
+          },
           "coordX": {
             "type": "number"
           },
@@ -62822,6 +64600,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "region": {
+                "type": "string"
+              },
+              "primaryStar": {
+                "type": "json"
               }
             }
           },
@@ -63289,6 +65073,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "region": {
+                "type": "string"
+              },
+              "primaryStar": {
+                "type": "json"
               }
             }
           },
@@ -63496,6 +65286,9 @@
           "systemAddress": {
             "type": "number"
           },
+          "regionID": {
+            "type": "integer"
+          },
           "coordX": {
             "type": "number"
           },
@@ -63678,6 +65471,9 @@
           "systemAddress": {
             "type": "number"
           },
+          "regionID": {
+            "type": "integer"
+          },
           "coordX": {
             "type": "number"
           },
@@ -63785,6 +65581,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "region": {
+                "type": "string"
+              },
+              "primaryStar": {
+                "type": "json"
               }
             }
           },
@@ -64034,6 +65836,9 @@
           "systemAddress": {
             "type": "number"
           },
+          "regionID": {
+            "type": "integer"
+          },
           "coordX": {
             "type": "number"
           },
@@ -64232,6 +66037,9 @@
           "systemAddress": {
             "type": "number"
           },
+          "regionID": {
+            "type": "integer"
+          },
           "coordX": {
             "type": "number"
           },
@@ -64346,6 +66154,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "region": {
+                "type": "string"
+              },
+              "primaryStar": {
+                "type": "json"
               }
             }
           },
@@ -64615,6 +66429,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "region": {
+                "type": "string"
+              },
+              "primaryStar": {
+                "type": "json"
               }
             }
           },
@@ -65060,6 +66880,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "region": {
+                "type": "string"
+              },
+              "primaryStar": {
+                "type": "json"
               }
             }
           },
@@ -65095,6 +66921,42 @@
           },
           "discoveredBy": {
             "type": "string"
+          }
+        }
+      },
+      "Region": {
+        "required": [
+          "id",
+          "name"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "journalName": {
+            "type": "string"
+          },
+          "regionID": {
+            "type": "integer"
+          }
+        }
+      },
+      "NewRegion": {
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "journalName": {
+            "type": "string"
+          },
+          "regionID": {
+            "type": "integer"
           }
         }
       },
@@ -65441,6 +67303,30 @@
                 }
               }
             }
+          },
+          "region": {
+            "required": [
+              "id",
+              "name"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "journalName": {
+                "type": "string"
+              },
+              "regionID": {
+                "type": "integer"
+              }
+            }
+          },
+          "primaryStar": {
+            "type": "json",
+            "default": ""
           }
         }
       },
@@ -65479,6 +67365,13 @@
             "items": {
               "type": "string"
             }
+          },
+          "region": {
+            "type": "string"
+          },
+          "primaryStar": {
+            "type": "json",
+            "default": ""
           }
         }
       },
@@ -65546,6 +67439,9 @@
           },
           "systemAddress": {
             "type": "number"
+          },
+          "regionID": {
+            "type": "integer"
           },
           "coordX": {
             "type": "number"
@@ -65763,6 +67659,9 @@
           "systemAddress": {
             "type": "number"
           },
+          "regionID": {
+            "type": "integer"
+          },
           "coordX": {
             "type": "number"
           },
@@ -65893,6 +67792,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "region": {
+                "type": "string"
+              },
+              "primaryStar": {
+                "type": "json"
               }
             }
           },
@@ -66290,6 +68195,9 @@
           "systemAddress": {
             "type": "number"
           },
+          "regionID": {
+            "type": "integer"
+          },
           "coordX": {
             "type": "number"
           },
@@ -66486,6 +68394,9 @@
           "systemAddress": {
             "type": "number"
           },
+          "regionID": {
+            "type": "integer"
+          },
           "coordX": {
             "type": "number"
           },
@@ -66597,6 +68508,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "region": {
+                "type": "string"
+              },
+              "primaryStar": {
+                "type": "json"
               }
             }
           },
@@ -67048,6 +68965,9 @@
           "systemAddress": {
             "type": "number"
           },
+          "regionID": {
+            "type": "integer"
+          },
           "coordX": {
             "type": "number"
           },
@@ -67231,6 +69151,9 @@
           "systemAddress": {
             "type": "number"
           },
+          "regionID": {
+            "type": "integer"
+          },
           "coordX": {
             "type": "number"
           },
@@ -67339,6 +69262,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "region": {
+                "type": "string"
+              },
+              "primaryStar": {
+                "type": "json"
               }
             }
           },
@@ -67880,6 +69809,9 @@
       "description": "List of commanders credited with finding sites and their kills"
     },
     {
+      "name": "Codexreport"
+    },
+    {
       "name": "Crystalline Shard Reports",
       "description": "Public Reporting of CS"
     },
@@ -67974,6 +69906,10 @@
     {
       "name": "Non-Human Signal Sources",
       "description": "Code Name - NHSS"
+    },
+    {
+      "name": "Regions",
+      "description": "Regions stored in our API to use as references for systems"
     },
     {
       "name": "Rings",

@@ -762,6 +762,9 @@
           "systemAddress": {
             "type": "number"
           },
+          "regionID": {
+            "type": "integer"
+          },
           "coordX": {
             "type": "number"
           },
@@ -779,9 +782,6 @@
           },
           "longitude": {
             "type": "number"
-          },
-          "count": {
-            "type": "integer"
           },
           "cmdrName": {
             "type": "string"
@@ -943,6 +943,9 @@
           },
           "systemAddress": {
             "type": "number"
+          },
+          "regionID": {
+            "type": "integer"
           },
           "coordX": {
             "type": "number"

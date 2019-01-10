@@ -1,0 +1,93 @@
+{
+  "paths": {
+    "/grtypes": {
+      "get": {
+        "description": "Get all GR Type entries",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new GR Type entry",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      }
+    },
+    "/grtypes/count": {
+      "get": {
+        "description": "Get a count of all GR Type entries",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ],
+        "security": []
+      }
+    },
+    "/grtypes/{id}": {
+      "get": {
+        "description": "Get a GR Type by id",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a GR Type by id",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a GR Type by id",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ],
+        "security": [
+          "siteDelete"
+        ]
+      }
+    },
+    "/grtypes/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Guardian Ruins",
+      "description": "Code Name - GR"
+    }
+  ]
+}

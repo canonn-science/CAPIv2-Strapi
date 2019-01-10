@@ -43,6 +43,11 @@
       "x-data-exclude": true,
       "type": "float"
     },
+    "regionID": {
+      "x-data-render": false,
+      "x-data-exclude": true,
+      "type": "integer"
+    },
     "coordX": {
       "x-data-render": false,
       "x-data-exclude": true,
@@ -78,11 +83,6 @@
       "required": true,
       "min": -180,
       "max": 180
-    },
-    "count": {
-      "x-data-description": "Number of Lava Spouts",
-      "min": 1,
-      "type": "integer"
     },
     "cmdrName": {
       "x-data-description": "Commander Name",

@@ -43,6 +43,11 @@
       "x-data-exclude": true,
       "type": "float"
     },
+    "regionID": {
+      "x-data-render": false,
+      "x-data-exclude": true,
+      "type": "integer"
+    },
     "coordX": {
       "x-data-render": false,
       "x-data-exclude": true,
@@ -105,11 +110,6 @@
       ],
       "type": "enumeration",
       "required": true
-    },
-    "count": {
-      "x-data-description": "Number of Barnacles",
-      "min": 1,
-      "type": "integer"
     },
     "cmdrName": {
       "x-data-description": "Commander Name",
