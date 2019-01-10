@@ -334,6 +334,58 @@ input CmdrkillInput {
   totalKills: Int
 }
 
+"""Codex logs enhanced with coordinates. """
+type Codexreport {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  cmdrName: String
+  systemName: String
+  edsmCoordX: Float
+  edsmCoordY: Int
+  edsmCoordZ: Float
+  bodyName: String
+  latitude: Float
+  longitude: Float
+  entryId: Int
+  codexName: String
+  codexNameLocalised: String
+  subCategory: String
+  subCategoryLocalised: String
+  category: String
+  categoryLocalised: String
+  regionName: String
+  regionLocalised: String
+  systemAddress: Int
+  voucherAmount: Int
+  rawJson: JSON
+  isBeta: Boolean
+}
+
+input CodexreportInput {
+  cmdrName: String
+  systemName: String
+  edsmCoordX: Float
+  edsmCoordY: Int
+  edsmCoordZ: Float
+  bodyName: String
+  latitude: Float
+  longitude: Float
+  entryId: Int
+  codexName: String
+  codexNameLocalised: String
+  subCategory: String
+  subCategoryLocalised: String
+  category: String
+  categoryLocalised: String
+  regionName: String
+  regionLocalised: String
+  systemAddress: Int
+  voucherAmount: Int
+  rawJson: JSON
+  isBeta: Boolean
+}
+
 input createApiupdateInput {
   data: ApiupdateInput
 }
@@ -404,6 +456,14 @@ type createCmdrkillPayload {
 
 type createCmdrPayload {
   cmdr: Cmdr
+}
+
+input createCodexreportInput {
+  data: CodexreportInput
+}
+
+type createCodexreportPayload {
+  codexreport: Codexreport
 }
 
 input createCsreportInput {
@@ -1091,6 +1151,14 @@ type deleteCmdrkillPayload {
 
 type deleteCmdrPayload {
   cmdr: Cmdr
+}
+
+input deleteCodexreportInput {
+  where: InputID
+}
+
+type deleteCodexreportPayload {
+  codexreport: Codexreport
 }
 
 input deleteCsreportInput {
@@ -3269,6 +3337,9 @@ type Mutation {
   createCmdrkill(input: createCmdrkillInput): createCmdrkillPayload
   updateCmdrkill(input: updateCmdrkillInput): updateCmdrkillPayload
   deleteCmdrkill(input: deleteCmdrkillInput): deleteCmdrkillPayload
+  createCodexreport(input: createCodexreportInput): createCodexreportPayload
+  updateCodexreport(input: updateCodexreportInput): updateCodexreportPayload
+  deleteCodexreport(input: deleteCodexreportInput): deleteCodexreportPayload
   createCsreport(input: createCsreportInput): createCsreportPayload
   updateCsreport(input: updateCsreportInput): updateCsreportPayload
   deleteCsreport(input: deleteCsreportInput): deleteCsreportPayload
@@ -3541,6 +3612,8 @@ type Query {
   cmdrs(sort: String, limit: Int, start: Int, where: JSON): [Cmdr]
   cmdrkill(id: ID!): Cmdrkill
   cmdrkills(sort: String, limit: Int, start: Int, where: JSON): [Cmdrkill]
+  codexreport(id: ID!): Codexreport
+  codexreports(sort: String, limit: Int, start: Int, where: JSON): [Codexreport]
   csreport(id: ID!): Csreport
   csreports(sort: String, limit: Int, start: Int, where: JSON): [Csreport]
   cssite(id: ID!): Cssite
@@ -4156,6 +4229,15 @@ type updateCmdrPayload {
   cmdr: Cmdr
 }
 
+input updateCodexreportInput {
+  where: InputID
+  data: CodexreportInput
+}
+
+type updateCodexreportPayload {
+  codexreport: Codexreport
+}
+
 input updateCsreportInput {
   where: InputID
   data: CsreportInput
@@ -4750,7 +4832,10 @@ type updateUserPayload {
   user: UsersPermissionsUser
 }
 
-"""The `Upload` scalar type represents a file upload."""
+"""
+The `Upload` scalar type represents a file upload promise that resolves an
+object containing `stream`, `filename`, `mimetype` and `encoding`.
+"""
 scalar Upload
 
 type UploadFile {
