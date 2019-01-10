@@ -355,6 +355,7 @@ type Codexreport {
   systemAddress: Int
   voucherAmount: Int
   rawJson: JSON
+  isBeta: Boolean
 }
 
 input CodexreportInput {
@@ -378,6 +379,7 @@ input CodexreportInput {
   systemAddress: Int
   voucherAmount: Int
   rawJson: JSON
+  isBeta: Boolean
 }
 
 input createApiupdateInput {

@@ -1,6 +1,6 @@
 {
   "connection": "default",
-  "collectionName": "codexreports",
+  "collectionName": "",
   "info": {
     "name": "codexreport",
     "description": "Codex logs enhanced with coordinates. "
@@ -90,6 +90,10 @@
     "rawJson": {
       "default": "",
       "type": "json"
+    },
+    "isBeta": {
+      "default": false,
+      "type": "boolean"
     }
   }
 }
