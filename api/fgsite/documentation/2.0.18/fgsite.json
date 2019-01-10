@@ -935,11 +935,11 @@
               },
               "journalName": {
                 "type": "string"
+              },
+              "journalID": {
+                "type": "integer"
               }
             }
-          },
-          "count": {
-            "type": "integer"
           },
           "verified": {
             "type": "boolean"
@@ -994,9 +994,6 @@
           },
           "type": {
             "type": "string"
-          },
-          "count": {
-            "type": "integer"
           },
           "verified": {
             "type": "boolean"

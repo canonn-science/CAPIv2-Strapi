@@ -734,6 +734,14 @@
           },
           "type": {
             "type": "string"
+          },
+          "journalName": {
+            "type": "string",
+            "default": ""
+          },
+          "journalID": {
+            "type": "integer",
+            "default": ""
           }
         }
       },
@@ -744,6 +752,14 @@
         "properties": {
           "type": {
             "type": "string"
+          },
+          "journalName": {
+            "type": "string",
+            "default": ""
+          },
+          "journalID": {
+            "type": "integer",
+            "default": ""
           }
         }
       }

@@ -14,7 +14,7 @@
       "name": "GNU-GPLv3",
       "url": "https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE"
     },
-    "x-generation-date": "01/09/2019 11:15:47 PM"
+    "x-generation-date": "01/10/2019 5:23:16 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -40359,6 +40359,738 @@
         ]
       }
     },
+    "/lstypes": {
+      "get": {
+        "deprecated": false,
+        "description": "Get all LS Type entries",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Lstype"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Lava Spouts"
+        ],
+        "parameters": [
+          {
+            "name": "_limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of results possible",
+            "schema": {
+              "type": "integer"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_sort",
+            "in": "query",
+            "required": false,
+            "description": "Sort according to a specific field.",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_start",
+            "in": "query",
+            "required": false,
+            "description": "Skip a specific number of entries (especially useful for pagination)",
+            "schema": {
+              "type": "integer"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "=",
+            "in": "query",
+            "required": false,
+            "description": "Get entries that matches exactly your input",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_ne",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are not equals to something",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_lt",
+            "in": "query",
+            "required": false,
+            "description": "Get record that are lower than a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_lte",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are lower than or equal to a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_gt",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are greater than a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_gte",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are greater than  or equal a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_contains",
+            "in": "query",
+            "required": false,
+            "description": "Get records that contains a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_containss",
+            "in": "query",
+            "required": false,
+            "description": "Get records that contains (case sensitive) a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          }
+        ],
+        "security": []
+      },
+      "post": {
+        "deprecated": false,
+        "description": "Create a new LS Type entry",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Lstype"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Lava Spouts"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewLstype"
+              }
+            }
+          }
+        },
+        "security": [
+          "siteWrite"
+        ]
+      }
+    },
+    "/lstypes/count": {
+      "get": {
+        "deprecated": false,
+        "description": "Get a count of all LS Type entries",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "count": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Lava Spouts"
+        ],
+        "parameters": [],
+        "security": []
+      }
+    },
+    "/lstypes/{id}": {
+      "get": {
+        "deprecated": false,
+        "description": "Get a LS Type by id",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Lstype"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Lava Spouts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": []
+      },
+      "put": {
+        "deprecated": false,
+        "description": "Update a LS Type by id",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Lstype"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Lava Spouts"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewLstype"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      },
+      "delete": {
+        "deprecated": false,
+        "description": "Delete a LS Type by id",
+        "responses": {
+          "200": {
+            "description": "deletes a single record based on the ID supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Lava Spouts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          "siteDelete"
+        ]
+      }
+    },
+    "/lstypes/{id}/relationships/{relation}": {
+      "post": {
+        "deprecated": false,
+        "description": "Create a new record",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "foo": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "deprecated": false,
+        "description": "Update a record",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "foo": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "relation",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "delete": {
+        "deprecated": false,
+        "description": "Delete a record",
+        "responses": {
+          "200": {
+            "description": "deletes a single record based on the ID supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "relation",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
     "/msreports": {
       "get": {
         "deprecated": false,
@@ -54235,6 +54967,738 @@
         ]
       }
     },
+    "/twtypes": {
+      "get": {
+        "deprecated": false,
+        "description": "Get all TW Type entries",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Twtype"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Tube Worms"
+        ],
+        "parameters": [
+          {
+            "name": "_limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of results possible",
+            "schema": {
+              "type": "integer"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_sort",
+            "in": "query",
+            "required": false,
+            "description": "Sort according to a specific field.",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_start",
+            "in": "query",
+            "required": false,
+            "description": "Skip a specific number of entries (especially useful for pagination)",
+            "schema": {
+              "type": "integer"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "=",
+            "in": "query",
+            "required": false,
+            "description": "Get entries that matches exactly your input",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_ne",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are not equals to something",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_lt",
+            "in": "query",
+            "required": false,
+            "description": "Get record that are lower than a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_lte",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are lower than or equal to a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_gt",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are greater than a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_gte",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are greater than  or equal a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_contains",
+            "in": "query",
+            "required": false,
+            "description": "Get records that contains a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_containss",
+            "in": "query",
+            "required": false,
+            "description": "Get records that contains (case sensitive) a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          }
+        ],
+        "security": []
+      },
+      "post": {
+        "deprecated": false,
+        "description": "Create a new TW Type entry",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Twtype"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Tube Worms"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewTwtype"
+              }
+            }
+          }
+        },
+        "security": [
+          "siteWrite"
+        ]
+      }
+    },
+    "/twtypes/count": {
+      "get": {
+        "deprecated": false,
+        "description": "Get a count of all TW Type entries",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "count": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Tube Worms"
+        ],
+        "parameters": [],
+        "security": []
+      }
+    },
+    "/twtypes/{id}": {
+      "get": {
+        "deprecated": false,
+        "description": "Get a TW Type by id",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Twtype"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Tube Worms"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": []
+      },
+      "put": {
+        "deprecated": false,
+        "description": "Update a TW Type by id",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Twtype"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Tube Worms"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewTwtype"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      },
+      "delete": {
+        "deprecated": false,
+        "description": "Delete a TW Type by id",
+        "responses": {
+          "200": {
+            "description": "deletes a single record based on the ID supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Tube Worms"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          "siteDelete"
+        ]
+      }
+    },
+    "/twtypes/{id}/relationships/{relation}": {
+      "post": {
+        "deprecated": false,
+        "description": "Create a new record",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "foo": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "deprecated": false,
+        "description": "Update a record",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "foo": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "relation",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "delete": {
+        "deprecated": false,
+        "description": "Delete a record",
+        "responses": {
+          "200": {
+            "description": "deletes a single record based on the ID supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "relation",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
     "/email/": {
       "post": {
         "deprecated": false,
@@ -56376,9 +57840,6 @@
           "longitude": {
             "type": "number"
           },
-          "count": {
-            "type": "integer"
-          },
           "cmdrName": {
             "type": "string"
           },
@@ -56489,9 +57950,6 @@
               "longitude": {
                 "type": "number"
               },
-              "count": {
-                "type": "integer"
-              },
               "verified": {
                 "type": "boolean"
               },
@@ -56560,9 +58018,6 @@
           },
           "longitude": {
             "type": "number"
-          },
-          "count": {
-            "type": "integer"
           },
           "cmdrName": {
             "type": "string"
@@ -56799,9 +58254,6 @@
           "longitude": {
             "type": "number"
           },
-          "count": {
-            "type": "integer"
-          },
           "verified": {
             "type": "boolean"
           },
@@ -56852,9 +58304,6 @@
           },
           "longitude": {
             "type": "number"
-          },
-          "count": {
-            "type": "integer"
           },
           "verified": {
             "type": "boolean"
@@ -57252,9 +58701,6 @@
           "longitude": {
             "type": "number"
           },
-          "count": {
-            "type": "integer"
-          },
           "type": {
             "type": "string"
           },
@@ -57368,9 +58814,6 @@
               "longitude": {
                 "type": "number"
               },
-              "count": {
-                "type": "integer"
-              },
               "type": {
                 "type": "string"
               },
@@ -57442,9 +58885,6 @@
           },
           "longitude": {
             "type": "number"
-          },
-          "count": {
-            "type": "integer"
           },
           "type": {
             "type": "string"
@@ -57684,9 +59124,6 @@
           "longitude": {
             "type": "number"
           },
-          "count": {
-            "type": "integer"
-          },
           "type": {
             "required": [
               "id",
@@ -57701,6 +59138,9 @@
               },
               "journalName": {
                 "type": "string"
+              },
+              "journalID": {
+                "type": "integer"
               }
             }
           },
@@ -57755,9 +59195,6 @@
           "longitude": {
             "type": "number"
           },
-          "count": {
-            "type": "integer"
-          },
           "type": {
             "type": "string"
           },
@@ -57789,6 +59226,10 @@
           "journalName": {
             "type": "string",
             "default": ""
+          },
+          "journalID": {
+            "type": "integer",
+            "default": ""
           }
         }
       },
@@ -57803,6 +59244,10 @@
           },
           "journalName": {
             "type": "string",
+            "default": ""
+          },
+          "journalID": {
+            "type": "integer",
             "default": ""
           }
         }
@@ -58231,9 +59676,6 @@
           "longitude": {
             "type": "number"
           },
-          "count": {
-            "type": "integer"
-          },
           "cmdrName": {
             "type": "string"
           },
@@ -58345,9 +59787,6 @@
               "longitude": {
                 "type": "number"
               },
-              "count": {
-                "type": "integer"
-              },
               "verified": {
                 "type": "boolean"
               },
@@ -58416,9 +59855,6 @@
           },
           "longitude": {
             "type": "number"
-          },
-          "count": {
-            "type": "integer"
           },
           "cmdrName": {
             "type": "string"
@@ -58656,9 +60092,6 @@
           "longitude": {
             "type": "number"
           },
-          "count": {
-            "type": "integer"
-          },
           "verified": {
             "type": "boolean"
           },
@@ -58710,9 +60143,6 @@
           },
           "longitude": {
             "type": "number"
-          },
-          "count": {
-            "type": "integer"
           },
           "verified": {
             "type": "boolean"
@@ -58785,9 +60215,6 @@
           },
           "longitude": {
             "type": "number"
-          },
-          "count": {
-            "type": "integer"
           },
           "type": {
             "type": "string"
@@ -58905,9 +60332,6 @@
               "type": {
                 "type": "string"
               },
-              "count": {
-                "type": "integer"
-              },
               "verified": {
                 "type": "boolean"
               },
@@ -58976,9 +60400,6 @@
           },
           "longitude": {
             "type": "number"
-          },
-          "count": {
-            "type": "integer"
           },
           "type": {
             "type": "string"
@@ -59232,11 +60653,11 @@
               },
               "journalName": {
                 "type": "string"
+              },
+              "journalID": {
+                "type": "integer"
               }
             }
-          },
-          "count": {
-            "type": "integer"
           },
           "verified": {
             "type": "boolean"
@@ -59292,9 +60713,6 @@
           "type": {
             "type": "string"
           },
-          "count": {
-            "type": "integer"
-          },
           "verified": {
             "type": "boolean"
           },
@@ -59323,6 +60741,10 @@
           "journalName": {
             "type": "string",
             "default": ""
+          },
+          "journalID": {
+            "type": "integer",
+            "default": ""
           }
         }
       },
@@ -59337,6 +60759,10 @@
           },
           "journalName": {
             "type": "string",
+            "default": ""
+          },
+          "journalID": {
+            "type": "integer",
             "default": ""
           }
         }
@@ -59403,9 +60829,6 @@
           },
           "type": {
             "type": "string"
-          },
-          "count": {
-            "type": "integer"
           },
           "cmdrName": {
             "type": "string"
@@ -59517,9 +60940,6 @@
               "longitude": {
                 "type": "number"
               },
-              "count": {
-                "type": "integer"
-              },
               "type": {
                 "type": "string"
               },
@@ -59594,9 +61014,6 @@
           },
           "type": {
             "type": "string"
-          },
-          "count": {
-            "type": "integer"
           },
           "cmdrName": {
             "type": "string"
@@ -59833,9 +61250,6 @@
           "longitude": {
             "type": "number"
           },
-          "count": {
-            "type": "integer"
-          },
           "type": {
             "required": [
               "id",
@@ -59847,6 +61261,12 @@
               },
               "type": {
                 "type": "string"
+              },
+              "journalName": {
+                "type": "string"
+              },
+              "journalID": {
+                "type": "integer"
               }
             }
           },
@@ -59901,9 +61321,6 @@
           "longitude": {
             "type": "number"
           },
-          "count": {
-            "type": "integer"
-          },
           "type": {
             "type": "string"
           },
@@ -59930,6 +61347,14 @@
           },
           "type": {
             "type": "string"
+          },
+          "journalName": {
+            "type": "string",
+            "default": ""
+          },
+          "journalID": {
+            "type": "integer",
+            "default": ""
           }
         }
       },
@@ -59940,6 +61365,14 @@
         "properties": {
           "type": {
             "type": "string"
+          },
+          "journalName": {
+            "type": "string",
+            "default": ""
+          },
+          "journalID": {
+            "type": "integer",
+            "default": ""
           }
         }
       },
@@ -64322,9 +65755,6 @@
           "type": {
             "type": "string"
           },
-          "count": {
-            "type": "integer"
-          },
           "cmdrName": {
             "type": "string"
           },
@@ -64435,9 +65865,6 @@
               "longitude": {
                 "type": "number"
               },
-              "count": {
-                "type": "integer"
-              },
               "type": {
                 "type": "string"
               },
@@ -64512,9 +65939,6 @@
           },
           "type": {
             "type": "string"
-          },
-          "count": {
-            "type": "integer"
           },
           "cmdrName": {
             "type": "string"
@@ -64751,9 +66175,6 @@
           "longitude": {
             "type": "number"
           },
-          "count": {
-            "type": "integer"
-          },
           "type": {
             "required": [
               "id",
@@ -64765,6 +66186,12 @@
               },
               "type": {
                 "type": "string"
+              },
+              "journalName": {
+                "type": "string"
+              },
+              "journalID": {
+                "type": "integer"
               }
             }
           },
@@ -64819,9 +66246,6 @@
           "longitude": {
             "type": "number"
           },
-          "count": {
-            "type": "integer"
-          },
           "type": {
             "type": "string"
           },
@@ -64848,6 +66272,14 @@
           },
           "type": {
             "type": "string"
+          },
+          "journalName": {
+            "type": "string",
+            "default": ""
+          },
+          "journalID": {
+            "type": "integer",
+            "default": ""
           }
         }
       },
@@ -64858,6 +66290,14 @@
         "properties": {
           "type": {
             "type": "string"
+          },
+          "journalName": {
+            "type": "string",
+            "default": ""
+          },
+          "journalID": {
+            "type": "integer",
+            "default": ""
           }
         }
       },
@@ -65309,8 +66749,8 @@
           "longitude": {
             "type": "number"
           },
-          "count": {
-            "type": "integer"
+          "type": {
+            "type": "string"
           },
           "cmdrName": {
             "type": "string"
@@ -65422,8 +66862,8 @@
               "longitude": {
                 "type": "number"
               },
-              "count": {
-                "type": "integer"
+              "type": {
+                "type": "string"
               },
               "verified": {
                 "type": "boolean"
@@ -65494,8 +66934,8 @@
           "longitude": {
             "type": "number"
           },
-          "count": {
-            "type": "integer"
+          "type": {
+            "type": "string"
           },
           "cmdrName": {
             "type": "string"
@@ -65732,8 +67172,25 @@
           "longitude": {
             "type": "number"
           },
-          "count": {
-            "type": "integer"
+          "type": {
+            "required": [
+              "id",
+              "type"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "journalName": {
+                "type": "string"
+              },
+              "journalID": {
+                "type": "integer"
+              }
+            }
           },
           "verified": {
             "type": "boolean"
@@ -65786,8 +67243,8 @@
           "longitude": {
             "type": "number"
           },
-          "count": {
-            "type": "integer"
+          "type": {
+            "type": "string"
           },
           "verified": {
             "type": "boolean"
@@ -65798,6 +67255,46 @@
           },
           "discoveredBy": {
             "type": "string"
+          }
+        }
+      },
+      "Lstype": {
+        "required": [
+          "id",
+          "type"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "journalName": {
+            "type": "string",
+            "default": ""
+          },
+          "journalID": {
+            "type": "integer",
+            "default": ""
+          }
+        }
+      },
+      "NewLstype": {
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "journalName": {
+            "type": "string",
+            "default": ""
+          },
+          "journalID": {
+            "type": "integer",
+            "default": ""
           }
         }
       },
@@ -67486,9 +68983,6 @@
               "ABC"
             ]
           },
-          "count": {
-            "type": "integer"
-          },
           "cmdrName": {
             "type": "string"
           },
@@ -67605,9 +69099,6 @@
               "cycle": {
                 "type": "string"
               },
-              "count": {
-                "type": "integer"
-              },
               "comment": {
                 "type": "string"
               },
@@ -67704,9 +69195,6 @@
               "C",
               "ABC"
             ]
-          },
-          "count": {
-            "type": "integer"
           },
           "cmdrName": {
             "type": "string"
@@ -67974,9 +69462,6 @@
               }
             }
           },
-          "count": {
-            "type": "integer"
-          },
           "comment": {
             "type": "string"
           },
@@ -68036,9 +69521,6 @@
           },
           "cycle": {
             "type": "string"
-          },
-          "count": {
-            "type": "integer"
           },
           "comment": {
             "type": "string"
@@ -68988,8 +70470,8 @@
           "longitude": {
             "type": "number"
           },
-          "count": {
-            "type": "integer"
+          "type": {
+            "type": "string"
           },
           "cmdrName": {
             "type": "string"
@@ -69102,8 +70584,8 @@
               "longitude": {
                 "type": "number"
               },
-              "count": {
-                "type": "integer"
+              "type": {
+                "type": "string"
               },
               "verified": {
                 "type": "boolean"
@@ -69174,8 +70656,8 @@
           "longitude": {
             "type": "number"
           },
-          "count": {
-            "type": "integer"
+          "type": {
+            "type": "string"
           },
           "cmdrName": {
             "type": "string"
@@ -69413,8 +70895,25 @@
           "longitude": {
             "type": "number"
           },
-          "count": {
-            "type": "integer"
+          "type": {
+            "required": [
+              "id",
+              "type"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "journalName": {
+                "type": "string"
+              },
+              "journalID": {
+                "type": "integer"
+              }
+            }
           },
           "verified": {
             "type": "boolean"
@@ -69468,8 +70967,8 @@
           "longitude": {
             "type": "number"
           },
-          "count": {
-            "type": "integer"
+          "type": {
+            "type": "string"
           },
           "verified": {
             "type": "boolean"
@@ -69480,6 +70979,46 @@
           },
           "discoveredBy": {
             "type": "string"
+          }
+        }
+      },
+      "Twtype": {
+        "required": [
+          "id",
+          "type"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "journalName": {
+            "type": "string",
+            "default": ""
+          },
+          "journalID": {
+            "type": "integer",
+            "default": ""
+          }
+        }
+      },
+      "NewTwtype": {
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "journalName": {
+            "type": "string",
+            "default": ""
+          },
+          "journalID": {
+            "type": "integer",
+            "default": ""
           }
         }
       },

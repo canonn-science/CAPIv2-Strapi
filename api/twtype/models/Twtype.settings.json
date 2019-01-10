@@ -1,0 +1,28 @@
+{
+  "connection": "default",
+  "collectionName": "twtypes",
+  "info": {
+    "name": "twtype",
+    "description": "Type of a Tube Worm"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": false,
+    "comment": ""
+  },
+  "attributes": {
+    "type": {
+      "unique": true,
+      "type": "string",
+      "required": true
+    },
+    "journalName": {
+      "default": "",
+      "type": "string"
+    },
+    "journalID": {
+      "default": "",
+      "type": "integer"
+    }
+  }
+}
