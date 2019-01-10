@@ -54,6 +54,9 @@ currentDate=`date` && echo "exportLS - $currentDate" >> ../CSV/updated.md && wge
 currentDate=`date` && echo "exportTB - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/exampleData/tbsites.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTUQsBr9nCTNl_PxHOi8O9VAEvgFtlCFH7reGMbam0FIP7SLJtDIz2_wEI8w4yTxevilrctlrk4Mnoz/pub?gid=0&single=true&output=csv'
 currentDate=`date` && echo "exportTS - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/exampleData/tssites.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS7-JB6SchZ76dMbq08lFxH7ijZuZ-b02gY210o2Ge1cpMV1HSXYwo-DFRlYB1gea93bOwaKU8oemS6/pub?gid=0&single=true&output=csv'
 currentDate=`date` && echo "exportTW - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/exampleData/twsites.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRvpfmp_-KGgpQdinZ0vw7XKKwILUpBfGoMS8tJtYooCZ2JXy60lz_ZEgVy7tw9y2Kv70pzamNAFuSz/pub?gid=0&single=true&output=csv'
+## Temp Data
+currentDate=`date` && echo "exportCodexData - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/exampleData/codexreports.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ5eSSgtIFQfX4bu6KWt7NFZ0KKl1j---aSq4SDqr-jndqkPU05Dgl7Ed45jqOuRbHfLnecSv7Wl-Ex/pub?gid=2115620708&single=true&output=csv'
+##
 echo "Example data download finished"
 sleep 1
 echo "Downloads complete, showing update log:"
