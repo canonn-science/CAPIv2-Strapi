@@ -1,0 +1,89 @@
+{
+  "paths": {
+    "/gyreports": {
+      "get": {
+        "description": "Get all GY report entries",
+        "summary": "",
+        "tags": [
+          "Geyser Reports"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new GY report entry",
+        "summary": "",
+        "tags": [
+          "Geyser Reports"
+        ],
+        "security": []
+      }
+    },
+    "/gyreports/count": {
+      "get": {
+        "description": "Get a count of all GY report entries",
+        "summary": "",
+        "tags": [
+          "Geyser Reports"
+        ],
+        "security": []
+      }
+    },
+    "/gyreports/{id}": {
+      "get": {
+        "description": "Get a GY report by id",
+        "summary": "",
+        "tags": [
+          "Geyser Reports"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a GY report by id",
+        "summary": "",
+        "tags": [
+          "Geyser Reports"
+        ],
+        "security": []
+      },
+      "delete": {
+        "description": "Delete a GY report by id",
+        "summary": "",
+        "tags": [
+          "Geyser Reports"
+        ],
+        "security": [
+          "reportDelete"
+        ]
+      }
+    },
+    "/gyreports/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Geyser Reports",
+      "description": "Public Reporting of GY"
+    }
+  ]
+}

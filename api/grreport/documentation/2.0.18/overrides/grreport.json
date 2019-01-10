@@ -1,0 +1,89 @@
+{
+  "paths": {
+    "/grreports": {
+      "get": {
+        "description": "Get all GR report entries",
+        "summary": "",
+        "tags": [
+          "Guardian Ruin Reports"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new GR report entry",
+        "summary": "",
+        "tags": [
+          "Guardian Ruin Reports"
+        ],
+        "security": []
+      }
+    },
+    "/grreports/count": {
+      "get": {
+        "description": "Get a count of all GR report entries",
+        "summary": "",
+        "tags": [
+          "Guardian Ruin Reports"
+        ],
+        "security": []
+      }
+    },
+    "/grreports/{id}": {
+      "get": {
+        "description": "Get a GR report by id",
+        "summary": "",
+        "tags": [
+          "Guardian Ruin Reports"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a GR report by id",
+        "summary": "",
+        "tags": [
+          "Guardian Ruin Reports"
+        ],
+        "security": []
+      },
+      "delete": {
+        "description": "Delete a GR report by id",
+        "summary": "",
+        "tags": [
+          "Guardian Ruin Reports"
+        ],
+        "security": [
+          "siteDelete"
+        ]
+      }
+    },
+    "/grreports/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Guardian Ruin Reports",
+      "description": "Public Reporting of GR"
+    }
+  ]
+}

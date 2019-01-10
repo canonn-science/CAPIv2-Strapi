@@ -1,0 +1,93 @@
+{
+  "paths": {
+    "/regions": {
+      "get": {
+        "description": "Get all Region entries",
+        "summary": "",
+        "tags": [
+          "Regions"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new Region entry",
+        "summary": "",
+        "tags": [
+          "Regions"
+        ],
+        "security": [
+          "locationWrite"
+        ]
+      }
+    },
+    "/regions/count": {
+      "get": {
+        "description": "Get a count of all Region entries",
+        "summary": "",
+        "tags": [
+          "Regions"
+        ],
+        "security": []
+      }
+    },
+    "/regions/{id}": {
+      "get": {
+        "description": "Get a Region by id",
+        "summary": "",
+        "tags": [
+          "Regions"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a Region by id",
+        "summary": "",
+        "tags": [
+          "Regions"
+        ],
+        "security": [
+          "locationWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a Region by id",
+        "summary": "",
+        "tags": [
+          "Regions"
+        ],
+        "security": [
+          "locationDelete"
+        ]
+      }
+    },
+    "/regions/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Regions",
+      "description": "Regions stored in our API to use as references for systems"
+    }
+  ]
+}

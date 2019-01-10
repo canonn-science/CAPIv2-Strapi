@@ -1,0 +1,93 @@
+{
+  "paths": {
+    "/gbsites": {
+      "get": {
+        "description": "Get all GB Site entries",
+        "summary": "",
+        "tags": [
+          "Guardian Beacons"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new GB Site entry",
+        "summary": "",
+        "tags": [
+          "Guardian Beacons"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      }
+    },
+    "/gbsites/count": {
+      "get": {
+        "description": "Get a count of all GB Site entries",
+        "summary": "",
+        "tags": [
+          "Guardian Beacons"
+        ],
+        "security": []
+      }
+    },
+    "/gbsites/{id}": {
+      "get": {
+        "description": "Get a GB Site by id",
+        "summary": "",
+        "tags": [
+          "Guardian Beacons"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a GB Site by id",
+        "summary": "",
+        "tags": [
+          "Guardian Beacons"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a GB Site by id",
+        "summary": "",
+        "tags": [
+          "Guardian Beacons"
+        ],
+        "security": [
+          "siteDelete"
+        ]
+      }
+    },
+    "/gbsites/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Guardian Beacons",
+      "description": "Code Name - GB"
+    }
+  ]
+}

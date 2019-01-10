@@ -1,0 +1,93 @@
+{
+  "paths": {
+    "/grartifacts": {
+      "get": {
+        "description": "Get all GR Artifact entries",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new GR Artifact entry",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      }
+    },
+    "/grartifacts/count": {
+      "get": {
+        "description": "Get a count of all GR Artifact entries",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ],
+        "security": []
+      }
+    },
+    "/grartifacts/{id}": {
+      "get": {
+        "description": "Get a GR Artifact by id",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a GR Artifact by id",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a GR Artifact by id",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ],
+        "security": [
+          "siteDelete"
+        ]
+      }
+    },
+    "/grartifacts/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Guardian Ruins",
+      "description": "Code Name - GR"
+    }
+  ]
+}
