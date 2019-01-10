@@ -1,0 +1,95 @@
+{
+  "connection": "default",
+  "collectionName": "codexreports",
+  "info": {
+    "name": "codexreport",
+    "description": "Codex logs enhanced with coordinates. "
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "cmdrName": {
+      "default": "",
+      "type": "string"
+    },
+    "systemName": {
+      "default": "",
+      "type": "string"
+    },
+    "edsmCoordX": {
+      "default": "",
+      "type": "decimal"
+    },
+    "edsmCoordY": {
+      "default": "",
+      "type": "integer"
+    },
+    "edsmCoordZ": {
+      "default": "",
+      "type": "decimal"
+    },
+    "bodyName": {
+      "default": "",
+      "type": "string"
+    },
+    "latitude": {
+      "default": "",
+      "type": "decimal"
+    },
+    "longitude": {
+      "default": "",
+      "type": "decimal"
+    },
+    "entryId": {
+      "default": "",
+      "type": "integer"
+    },
+    "codexName": {
+      "default": "",
+      "type": "string"
+    },
+    "codexNameLocalised": {
+      "default": "",
+      "type": "string"
+    },
+    "subCategory": {
+      "default": "",
+      "type": "string"
+    },
+    "subCategoryLocalised": {
+      "default": "",
+      "type": "string"
+    },
+    "category": {
+      "default": "",
+      "type": "string"
+    },
+    "categoryLocalised": {
+      "default": "",
+      "type": "string"
+    },
+    "regionName": {
+      "default": "",
+      "type": "string"
+    },
+    "regionLocalised": {
+      "default": "",
+      "type": "string"
+    },
+    "systemAddress": {
+      "default": "",
+      "type": "integer"
+    },
+    "voucherAmount": {
+      "default": "",
+      "type": "integer"
+    },
+    "rawJson": {
+      "default": "",
+      "type": "json"
+    }
+  }
+}
