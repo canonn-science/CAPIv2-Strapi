@@ -1,0 +1,21 @@
+{
+  "connection": "default",
+  "collectionName": "excludeevents",
+  "info": {
+    "name": "excludeevent",
+    "description": "Journal Event blacklist"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "eventName": {
+      "type": "string"
+    },
+    "reason": {
+      "type": "text"
+    }
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "paths": {
+    "/excludeusses": {
+      "get": {
+        "description": "Get all USS Type Blacklist entries",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new USS Type Blacklist entry",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": [
+          "updateLogWrite"
+        ]
+      }
+    },
+    "/excludeusses/count": {
+      "get": {
+        "description": "Get a count of all USS Type Blacklist entries",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": []
+      }
+    },
+    "/excludeusses/{id}": {
+      "get": {
+        "description": "Get a USS Type Blacklist by id",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a USS Type Blacklist by id",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": [
+          "updateLogWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a USS Type Blacklist by id",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": [
+          "updateLogWrite"
+        ]
+      }
+    },
+    "/excludeusses/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Canonn Use",
+      "description": "Endpoints used by Canonn for updating or maintaining the API"
+    }
+  ]
+}

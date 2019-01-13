@@ -1,0 +1,104 @@
+'use strict';
+
+/**
+ * Excludeuss.js controller
+ *
+ * @description: A set of functions called "actions" for managing `Excludeuss`.
+ */
+
+module.exports = {
+
+  /**
+   * Retrieve excludeuss records.
+   *
+   * @return {Object|Array}
+   */
+
+  find: async (ctx) => {
+    if (ctx.query._q) {
+      return strapi.services.excludeuss.search(ctx.query);
+    } else {
+      return strapi.services.excludeuss.fetchAll(ctx.query);
+    }
+  },
+
+  /**
+   * Retrieve a excludeuss record.
+   *
+   * @return {Object}
+   */
+
+  findOne: async (ctx) => {
+    return strapi.services.excludeuss.fetch(ctx.params);
+  },
+
+  /**
+   * Count excludeuss records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx) => {
+    return strapi.services.excludeuss.count(ctx.query);
+  },
+
+  /**
+   * Create a/an excludeuss record.
+   *
+   * @return {Object}
+   */
+
+  create: async (ctx) => {
+    return strapi.services.excludeuss.add(ctx.request.body);
+  },
+
+  /**
+   * Update a/an excludeuss record.
+   *
+   * @return {Object}
+   */
+
+  update: async (ctx, next) => {
+    return strapi.services.excludeuss.edit(ctx.params, ctx.request.body) ;
+  },
+
+  /**
+   * Destroy a/an excludeuss record.
+   *
+   * @return {Object}
+   */
+
+  destroy: async (ctx, next) => {
+    return strapi.services.excludeuss.remove(ctx.params);
+  },
+
+  /**
+   * Add relation to a/an excludeuss record.
+   *
+   * @return {Object}
+   */
+
+  createRelation: async (ctx, next) => {
+    return strapi.services.excludeuss.addRelation(ctx.params, ctx.request.body);
+  },
+
+  /**
+   * Update relation to a/an excludeuss record.
+   *
+   * @return {Object}
+   */
+
+  updateRelation: async (ctx, next) => {
+    return strapi.services.excludeuss.editRelation(ctx.params, ctx.request.body);
+  },
+
+  /**
+   * Destroy relation to a/an excludeuss record.
+   *
+   * @return {Object}
+   */
+
+  destroyRelation: async (ctx, next) => {
+    return strapi.services.excludeuss.removeRelation(ctx.params, ctx.request.body);
+  }
+};
