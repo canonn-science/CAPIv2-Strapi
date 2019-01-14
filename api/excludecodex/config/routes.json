@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/excludecodices",
+      "handler": "Excludecodex.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/excludecodices/count",
+      "handler": "Excludecodex.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/excludecodices/:id",
+      "handler": "Excludecodex.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/excludecodices",
+      "handler": "Excludecodex.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/excludecodices/:id",
+      "handler": "Excludecodex.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/excludecodices/:id",
+      "handler": "Excludecodex.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/excludecodices/:id/relationships/:relation",
+      "handler": "Excludecodex.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/excludecodices/:id/relationships/:relation",
+      "handler": "Excludecodex.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/excludecodices/:id/relationships/:relation",
+      "handler": "Excludecodex.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

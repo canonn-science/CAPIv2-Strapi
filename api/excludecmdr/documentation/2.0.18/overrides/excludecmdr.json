@@ -1,0 +1,93 @@
+{
+  "paths": {
+    "/excludecmdrs": {
+      "get": {
+        "description": "Get all CMDR Blacklist entries",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new CMDR Blacklist entry",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": [
+          "updateLogWrite"
+        ]
+      }
+    },
+    "/excludecmdrs/count": {
+      "get": {
+        "description": "Get a count of all CMDR Blacklist entries",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": []
+      }
+    },
+    "/excludecmdrs/{id}": {
+      "get": {
+        "description": "Get a CMDR Blacklist by id",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a CMDR Blacklist by id",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": [
+          "updateLogWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a CMDR Blacklist by id",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": [
+          "updateLogWrite"
+        ]
+      }
+    },
+    "/excludecmdrs/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Canonn Use",
+      "description": "Endpoints used by Canonn for updating or maintaining the API"
+    }
+  ]
+}
