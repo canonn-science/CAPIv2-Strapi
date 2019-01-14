@@ -742,6 +742,7 @@
               "longitude",
               "type",
               "cmdrName",
+              "clientVersion",
               "reportStatus"
             ],
             "properties": {
@@ -795,6 +796,9 @@
               },
               "isBeta": {
                 "type": "boolean"
+              },
+              "clientVersion": {
+                "type": "string"
               },
               "screenshot": {
                 "type": "array",

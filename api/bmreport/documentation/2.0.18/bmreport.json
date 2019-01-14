@@ -733,6 +733,7 @@
           "latitude",
           "longitude",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -792,6 +793,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "screenshot": {
             "type": "array",
@@ -915,6 +919,7 @@
           "latitude",
           "longitude",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -971,6 +976,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "reportStatus": {
             "type": "string",

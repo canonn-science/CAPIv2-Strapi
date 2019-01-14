@@ -14,7 +14,7 @@
       "name": "GNU-GPLv3",
       "url": "https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE"
     },
-    "x-generation-date": "01/13/2019 9:06:59 PM"
+    "x-generation-date": "01/13/2019 9:29:38 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -61450,6 +61450,7 @@
           "latitude",
           "longitude",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -61509,6 +61510,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "screenshot": {
             "type": "array",
@@ -61632,6 +61636,7 @@
           "latitude",
           "longitude",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -61688,6 +61693,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "reportStatus": {
             "type": "string",
@@ -62311,6 +62319,7 @@
           "latitude",
           "longitude",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -62373,6 +62382,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "screenshot": {
             "type": "array",
@@ -62499,6 +62511,7 @@
           "latitude",
           "longitude",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -62558,6 +62571,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "reportStatus": {
             "type": "string",
@@ -63096,7 +63112,8 @@
       },
       "Codexreport": {
         "required": [
-          "id"
+          "id",
+          "clientVersion"
         ],
         "properties": {
           "id": {
@@ -63185,10 +63202,16 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           }
         }
       },
       "NewCodexreport": {
+        "required": [
+          "clientVersion"
+        ],
         "properties": {
           "cmdrName": {
             "type": "string",
@@ -63273,6 +63296,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           }
         }
       },
@@ -63286,6 +63312,7 @@
           "latitude",
           "longitude",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -63345,6 +63372,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "screenshot": {
             "type": "array",
@@ -63469,6 +63499,7 @@
           "latitude",
           "longitude",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -63525,6 +63556,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "reportStatus": {
             "type": "string",
@@ -63956,6 +63990,7 @@
           "latitude",
           "longitude",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -64018,6 +64053,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "screenshot": {
             "type": "array",
@@ -64144,6 +64182,7 @@
           "latitude",
           "longitude",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -64203,6 +64242,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "reportStatus": {
             "type": "string",
@@ -64567,6 +64609,7 @@
           "latitude",
           "longitude",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -64629,6 +64672,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "screenshot": {
             "type": "array",
@@ -64755,6 +64801,7 @@
           "latitude",
           "longitude",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -64814,6 +64861,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "reportStatus": {
             "type": "string",
@@ -65432,6 +65482,7 @@
           "messageLatitude",
           "messageLongitude",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -65502,6 +65553,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "screenshot": {
             "type": "array",
@@ -65623,6 +65677,7 @@
           "messageLatitude",
           "messageLongitude",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -65690,6 +65745,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "reportStatus": {
             "type": "string",
@@ -66197,6 +66255,7 @@
           "systemName",
           "shipName",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -66259,6 +66318,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "screenshot": {
             "type": "array",
@@ -66379,6 +66441,7 @@
           "systemName",
           "shipName",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -66438,6 +66501,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "reportStatus": {
             "type": "string",
@@ -67295,6 +67361,7 @@
               "longitude",
               "type",
               "cmdrName",
+              "clientVersion",
               "reportStatus"
             ],
             "properties": {
@@ -67345,6 +67412,9 @@
               },
               "isBeta": {
                 "type": "boolean"
+              },
+              "clientVersion": {
+                "type": "string"
               },
               "screenshot": {
                 "type": "array",
@@ -67407,6 +67477,7 @@
           "longitude",
           "type",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -67474,6 +67545,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "screenshot": {
             "type": "array",
@@ -67635,6 +67709,7 @@
           "longitude",
           "type",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -67699,6 +67774,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "reportStatus": {
             "type": "string",
@@ -68654,6 +68732,7 @@
               "longitude",
               "type",
               "cmdrName",
+              "clientVersion",
               "reportStatus"
             ],
             "properties": {
@@ -68707,6 +68786,9 @@
               },
               "isBeta": {
                 "type": "boolean"
+              },
+              "clientVersion": {
+                "type": "string"
               },
               "screenshot": {
                 "type": "array",
@@ -68769,6 +68851,7 @@
           "longitude",
           "type",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -68843,6 +68926,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "screenshot": {
             "type": "array",
@@ -69007,6 +69093,7 @@
           "longitude",
           "type",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -69078,6 +69165,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "reportStatus": {
             "type": "string",
@@ -69492,6 +69582,7 @@
           "latitude",
           "longitude",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -69554,6 +69645,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "screenshot": {
             "type": "array",
@@ -69680,6 +69774,7 @@
           "latitude",
           "longitude",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -69739,6 +69834,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "reportStatus": {
             "type": "string",
@@ -70097,6 +70195,7 @@
           "fromSystemName",
           "toSystemName",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -70165,6 +70264,9 @@
             "type": "boolean",
             "default": false
           },
+          "clientVersion": {
+            "type": "string"
+          },
           "reportStatus": {
             "type": "string",
             "default": "pending",
@@ -70213,6 +70315,7 @@
           "fromSystemName",
           "toSystemName",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -70231,6 +70334,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "reportStatus": {
             "type": "string",
@@ -70413,7 +70519,8 @@
       },
       "Killreport": {
         "required": [
-          "id"
+          "id",
+          "clientVersion"
         ],
         "properties": {
           "id": {
@@ -70440,8 +70547,11 @@
           "rawEvent": {
             "type": "json"
           },
-          "isbeta": {
+          "isBeta": {
             "type": "boolean"
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "reportAccepted": {
             "type": "boolean"
@@ -70449,6 +70559,9 @@
         }
       },
       "NewKillreport": {
+        "required": [
+          "clientVersion"
+        ],
         "properties": {
           "systemName": {
             "type": "string"
@@ -70471,8 +70584,11 @@
           "rawEvent": {
             "type": "json"
           },
-          "isbeta": {
+          "isBeta": {
             "type": "boolean"
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "reportAccepted": {
             "type": "boolean"
@@ -70489,6 +70605,7 @@
           "latitude",
           "longitude",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -70551,6 +70668,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "screenshot": {
             "type": "array",
@@ -70677,6 +70797,7 @@
           "latitude",
           "longitude",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -70736,6 +70857,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "reportStatus": {
             "type": "string",
@@ -71096,6 +71220,7 @@
           "systemName",
           "shipName",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -71167,6 +71292,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "screenshot": {
             "type": "array",
@@ -71300,6 +71428,7 @@
           "systemName",
           "shipName",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -71368,6 +71497,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "reportStatus": {
             "type": "string",
@@ -72010,6 +72142,7 @@
       "Nhssreport": {
         "required": [
           "id",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -72031,6 +72164,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "reportStatus": {
             "type": "string",
@@ -72077,6 +72213,7 @@
       },
       "NewNhssreport": {
         "required": [
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -72095,6 +72232,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "reportStatus": {
             "type": "string",
@@ -72700,6 +72840,7 @@
           "type",
           "cycle",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -72782,6 +72923,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "screenshot": {
             "type": "array",
@@ -72916,6 +73060,7 @@
           "type",
           "cycle",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -72995,6 +73140,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "reportStatus": {
             "type": "string",
@@ -73440,6 +73588,7 @@
           "longitude",
           "status",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -73506,6 +73655,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "screenshot": {
             "type": "array",
@@ -73642,6 +73794,7 @@
           "longitude",
           "status",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -73705,6 +73858,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "reportStatus": {
             "type": "string",
@@ -74210,6 +74366,7 @@
           "latitude",
           "longitude",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -74272,6 +74429,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "screenshot": {
             "type": "array",
@@ -74399,6 +74559,7 @@
           "latitude",
           "longitude",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -74458,6 +74619,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "reportStatus": {
             "type": "string",

@@ -725,7 +725,8 @@
     "schemas": {
       "Killreport": {
         "required": [
-          "id"
+          "id",
+          "clientVersion"
         ],
         "properties": {
           "id": {
@@ -752,8 +753,11 @@
           "rawEvent": {
             "type": "json"
           },
-          "isbeta": {
+          "isBeta": {
             "type": "boolean"
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "reportAccepted": {
             "type": "boolean"
@@ -761,6 +765,9 @@
         }
       },
       "NewKillreport": {
+        "required": [
+          "clientVersion"
+        ],
         "properties": {
           "systemName": {
             "type": "string"
@@ -783,8 +790,11 @@
           "rawEvent": {
             "type": "json"
           },
-          "isbeta": {
+          "isBeta": {
             "type": "boolean"
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "reportAccepted": {
             "type": "boolean"
