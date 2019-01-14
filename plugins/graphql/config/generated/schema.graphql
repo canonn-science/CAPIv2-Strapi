@@ -37,6 +37,7 @@ type Bmreport {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_BMREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -60,6 +61,7 @@ input BmreportInput {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   screenshot: [ID]
   reportStatus: ENUM_BMREPORT_REPORTSTATUS!
   reportComment: String
@@ -202,6 +204,7 @@ type Btreport {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_BTREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -226,6 +229,7 @@ input BtreportInput {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   screenshot: [ID]
   reportStatus: ENUM_BTREPORT_REPORTSTATUS!
   reportComment: String
@@ -356,6 +360,7 @@ type Codexreport {
   voucherAmount: Int
   rawJson: JSON
   isBeta: Boolean
+  clientVersion: String!
 }
 
 input CodexreportInput {
@@ -380,6 +385,7 @@ input CodexreportInput {
   voucherAmount: Int
   rawJson: JSON
   isBeta: Boolean
+  clientVersion: String!
 }
 
 input createApiupdateInput {
@@ -1065,6 +1071,7 @@ type Csreport {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_CSREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -1088,6 +1095,7 @@ input CsreportInput {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   screenshot: [ID]
   reportStatus: ENUM_CSREPORT_REPORTSTATUS!
   reportComment: String
@@ -2241,6 +2249,7 @@ type Fgreport {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_FGREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -2265,6 +2274,7 @@ input FgreportInput {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   screenshot: [ID]
   reportStatus: ENUM_FGREPORT_REPORTSTATUS!
   reportComment: String
@@ -2350,6 +2360,7 @@ type Fmreport {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_FMREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -2374,6 +2385,7 @@ input FmreportInput {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   screenshot: [ID]
   reportStatus: ENUM_FMREPORT_REPORTSTATUS!
   reportComment: String
@@ -2467,6 +2479,7 @@ type Gbreport {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_GBREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -2492,6 +2505,7 @@ input GbreportInput {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   screenshot: [ID]
   reportStatus: ENUM_GBREPORT_REPORTSTATUS!
   reportComment: String
@@ -2566,6 +2580,7 @@ type Genreport {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_GENREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -2590,6 +2605,7 @@ input GenreportInput {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   screenshot: [ID]
   reportStatus: ENUM_GENREPORT_REPORTSTATUS!
   reportComment: String
@@ -2765,6 +2781,7 @@ type Grreport {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_GRREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -2790,6 +2807,7 @@ input GrreportInput {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   screenshot: [ID]
   reportStatus: ENUM_GRREPORT_REPORTSTATUS!
   reportComment: String
@@ -2987,6 +3005,7 @@ type Gsreport {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_GSREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -3013,6 +3032,7 @@ input GsreportInput {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   screenshot: [ID]
   reportStatus: ENUM_GSREPORT_REPORTSTATUS!
   reportComment: String
@@ -3090,6 +3110,7 @@ type Gyreport {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_GYREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -3114,6 +3135,7 @@ input GyreportInput {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   screenshot: [ID]
   reportStatus: ENUM_GYREPORT_REPORTSTATUS!
   reportComment: String
@@ -3177,6 +3199,7 @@ type Hdreport {
   cmdrComment: String
   screenshot: UploadFile
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_HDREPORT_REPORTSTATUS!
   reportComment: String
   added: Boolean
@@ -3191,6 +3214,7 @@ input HdreportInput {
   cmdrComment: String
   screenshot: ID
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_HDREPORT_REPORTSTATUS!
   reportComment: String
   added: Boolean
@@ -3261,7 +3285,8 @@ type Killreport {
   rewardingFaction: String
   victimFaction: String
   rawEvent: JSON
-  isbeta: Boolean
+  isBeta: Boolean
+  clientVersion: String!
   reportAccepted: Boolean
 }
 
@@ -3273,7 +3298,8 @@ input KillreportInput {
   rewardingFaction: String
   victimFaction: String
   rawEvent: JSON
-  isbeta: Boolean
+  isBeta: Boolean
+  clientVersion: String!
   reportAccepted: Boolean
 }
 
@@ -3297,6 +3323,7 @@ type Lsreport {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_LSREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -3321,6 +3348,7 @@ input LsreportInput {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   screenshot: [ID]
   reportStatus: ENUM_LSREPORT_REPORTSTATUS!
   reportComment: String
@@ -3398,6 +3426,7 @@ type Msreport {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_MSREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -3425,6 +3454,7 @@ input MsreportInput {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   screenshot: [ID]
   reportStatus: ENUM_MSREPORT_REPORTSTATUS!
   reportComment: String
@@ -3764,6 +3794,7 @@ type Nhssreport {
   cmdrName: String
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_NHSSREPORT_REPORTSTATUS!
   reportComment: String
   added: Boolean
@@ -3777,6 +3808,7 @@ input NhssreportInput {
   cmdrName: String
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_NHSSREPORT_REPORTSTATUS!
   reportComment: String
   added: Boolean
@@ -4082,6 +4114,7 @@ type Tbreport {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_TBREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -4107,6 +4140,7 @@ input TbreportInput {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   screenshot: [ID]
   reportStatus: ENUM_TBREPORT_REPORTSTATUS!
   reportComment: String
@@ -4205,6 +4239,7 @@ type Tsreport {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_TSREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -4229,6 +4264,7 @@ input TsreportInput {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   screenshot: [ID]
   reportStatus: ENUM_TSREPORT_REPORTSTATUS!
   reportComment: String
@@ -4303,6 +4339,7 @@ type Twreport {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_TWREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -4327,6 +4364,7 @@ input TwreportInput {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   screenshot: [ID]
   reportStatus: ENUM_TWREPORT_REPORTSTATUS!
   reportComment: String

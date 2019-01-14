@@ -725,7 +725,8 @@
     "schemas": {
       "Codexreport": {
         "required": [
-          "id"
+          "id",
+          "clientVersion"
         ],
         "properties": {
           "id": {
@@ -814,10 +815,16 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           }
         }
       },
       "NewCodexreport": {
+        "required": [
+          "clientVersion"
+        ],
         "properties": {
           "cmdrName": {
             "type": "string",
@@ -902,6 +909,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           }
         }
       }

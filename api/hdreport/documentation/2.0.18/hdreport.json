@@ -729,6 +729,7 @@
           "fromSystemName",
           "toSystemName",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -797,6 +798,9 @@
             "type": "boolean",
             "default": false
           },
+          "clientVersion": {
+            "type": "string"
+          },
           "reportStatus": {
             "type": "string",
             "default": "pending",
@@ -845,6 +849,7 @@
           "fromSystemName",
           "toSystemName",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -863,6 +868,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "reportStatus": {
             "type": "string",

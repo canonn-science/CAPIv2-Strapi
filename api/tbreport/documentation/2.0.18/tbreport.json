@@ -735,6 +735,7 @@
           "type",
           "cycle",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -817,6 +818,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "screenshot": {
             "type": "array",
@@ -951,6 +955,7 @@
           "type",
           "cycle",
           "cmdrName",
+          "clientVersion",
           "reportStatus"
         ],
         "properties": {
@@ -1030,6 +1035,9 @@
           "isBeta": {
             "type": "boolean",
             "default": false
+          },
+          "clientVersion": {
+            "type": "string"
           },
           "reportStatus": {
             "type": "string",
