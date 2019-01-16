@@ -1,0 +1,89 @@
+{
+  "paths": {
+    "/gvreports": {
+      "get": {
+        "description": "Get all GV report entries",
+        "summary": "",
+        "tags": [
+          "Gas Vent Reports"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new GV report entry",
+        "summary": "",
+        "tags": [
+          "Gas Vent Reports"
+        ],
+        "security": []
+      }
+    },
+    "/gvreports/count": {
+      "get": {
+        "description": "Get a count of all GV report entries",
+        "summary": "",
+        "tags": [
+          "Gas Vent Reports"
+        ],
+        "security": []
+      }
+    },
+    "/gvreports/{id}": {
+      "get": {
+        "description": "Get a GV report by id",
+        "summary": "",
+        "tags": [
+          "Gas Vent Reports"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a GV report by id",
+        "summary": "",
+        "tags": [
+          "Gas Vent Reports"
+        ],
+        "security": []
+      },
+      "delete": {
+        "description": "Delete a GV report by id",
+        "summary": "",
+        "tags": [
+          "Gas Vent Reports"
+        ],
+        "security": [
+          "reportDelete"
+        ]
+      }
+    },
+    "/gvreports/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Gas Vent Reports",
+      "description": "Public Reporting of GV"
+    }
+  ]
+}

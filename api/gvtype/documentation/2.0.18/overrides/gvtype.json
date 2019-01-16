@@ -1,0 +1,93 @@
+{
+  "paths": {
+    "/gvtypes": {
+      "get": {
+        "description": "Get all GV Type entries",
+        "summary": "",
+        "tags": [
+          "Gas Vents"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new GV Type entry",
+        "summary": "",
+        "tags": [
+          "Gas Vents"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      }
+    },
+    "/gvtypes/count": {
+      "get": {
+        "description": "Get a count of all GV Type entries",
+        "summary": "",
+        "tags": [
+          "Gas Vents"
+        ],
+        "security": []
+      }
+    },
+    "/gvtypes/{id}": {
+      "get": {
+        "description": "Get a GV Type by id",
+        "summary": "",
+        "tags": [
+          "Gas Vents"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a GV Type by id",
+        "summary": "",
+        "tags": [
+          "Gas Vents"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a GV Type by id",
+        "summary": "",
+        "tags": [
+          "Gas Vents"
+        ],
+        "security": [
+          "siteDelete"
+        ]
+      }
+    },
+    "/gvtypes/{id}/relationships/{relation}": {
+      "post": {
+        "description": "Create a new record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "put": {
+        "description": "Update a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      },
+      "delete": {
+        "description": "Delete a record",
+        "summary": "",
+        "tags": [
+          "z.Unused"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Gas Vents",
+      "description": "Code Name - GV"
+    }
+  ]
+}

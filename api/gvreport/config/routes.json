@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/gvreports",
+      "handler": "Gvreport.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gvreports/count",
+      "handler": "Gvreport.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gvreports/:id",
+      "handler": "Gvreport.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/gvreports",
+      "handler": "Gvreport.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/gvreports/:id",
+      "handler": "Gvreport.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/gvreports/:id",
+      "handler": "Gvreport.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/gvreports/:id/relationships/:relation",
+      "handler": "Gvreport.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/gvreports/:id/relationships/:relation",
+      "handler": "Gvreport.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/gvreports/:id/relationships/:relation",
+      "handler": "Gvreport.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
