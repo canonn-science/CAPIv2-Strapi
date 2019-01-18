@@ -68,6 +68,8 @@ The Canonn APIv2 is designed to handle all our current science projects. Current
   * GS Obelisks
   * GS Obelisk Groups
   * GS Types
+* Gas Vents (GV)
+  * GV Types
 * Geysers (GY)
   * GY Types
 * Hyperdictions (HD) - **WIP**

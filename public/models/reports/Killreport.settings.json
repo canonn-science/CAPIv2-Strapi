@@ -35,6 +35,11 @@
     "isbeta": {
       "type": "boolean"
     },
+    "clientVersion": {
+      "x-data-render": false,
+      "required": true,
+      "type": "string"
+    },
     "reportAccepted": {
       "type": "boolean"
     }
