@@ -70,35 +70,5 @@ module.exports = {
 
   destroy: async (ctx, next) => {
     return strapi.services.tbcycle.remove(ctx.params);
-  },
-
-  /**
-   * Add relation to a/an tbcycle record.
-   *
-   * @return {Object}
-   */
-
-  createRelation: async (ctx, next) => {
-    return strapi.services.tbcycle.addRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Update relation to a/an tbcycle record.
-   *
-   * @return {Object}
-   */
-
-  updateRelation: async (ctx, next) => {
-    return strapi.services.tbcycle.editRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Destroy relation to a/an tbcycle record.
-   *
-   * @return {Object}
-   */
-
-  destroyRelation: async (ctx, next) => {
-    return strapi.services.tbcycle.removeRelation(ctx.params, ctx.request.body);
   }
 };

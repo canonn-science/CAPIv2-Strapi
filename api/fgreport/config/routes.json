@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/fgreports/:id/relationships/:relation",
-      "handler": "Fgreport.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/fgreports/:id/relationships/:relation",
-      "handler": "Fgreport.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/fgreports/:id/relationships/:relation",
-      "handler": "Fgreport.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

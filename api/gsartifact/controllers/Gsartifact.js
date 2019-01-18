@@ -70,35 +70,5 @@ module.exports = {
 
   destroy: async (ctx, next) => {
     return strapi.services.gsartifact.remove(ctx.params);
-  },
-
-  /**
-   * Add relation to a/an gsartifact record.
-   *
-   * @return {Object}
-   */
-
-  createRelation: async (ctx, next) => {
-    return strapi.services.gsartifact.addRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Update relation to a/an gsartifact record.
-   *
-   * @return {Object}
-   */
-
-  updateRelation: async (ctx, next) => {
-    return strapi.services.gsartifact.editRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Destroy relation to a/an gsartifact record.
-   *
-   * @return {Object}
-   */
-
-  destroyRelation: async (ctx, next) => {
-    return strapi.services.gsartifact.removeRelation(ctx.params, ctx.request.body);
   }
 };

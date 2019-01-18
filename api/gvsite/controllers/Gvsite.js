@@ -70,35 +70,5 @@ module.exports = {
 
   destroy: async (ctx, next) => {
     return strapi.services.gvsite.remove(ctx.params);
-  },
-
-  /**
-   * Add relation to a/an gvsite record.
-   *
-   * @return {Object}
-   */
-
-  createRelation: async (ctx, next) => {
-    return strapi.services.gvsite.addRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Update relation to a/an gvsite record.
-   *
-   * @return {Object}
-   */
-
-  updateRelation: async (ctx, next) => {
-    return strapi.services.gvsite.editRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Destroy relation to a/an gvsite record.
-   *
-   * @return {Object}
-   */
-
-  destroyRelation: async (ctx, next) => {
-    return strapi.services.gvsite.removeRelation(ctx.params, ctx.request.body);
   }
 };

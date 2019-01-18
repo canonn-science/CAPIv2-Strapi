@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/gvreports/:id/relationships/:relation",
-      "handler": "Gvreport.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/gvreports/:id/relationships/:relation",
-      "handler": "Gvreport.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/gvreports/:id/relationships/:relation",
-      "handler": "Gvreport.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

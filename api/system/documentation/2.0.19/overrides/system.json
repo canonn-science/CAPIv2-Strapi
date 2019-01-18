@@ -1,0 +1,70 @@
+{
+  "paths": {
+    "/systems": {
+      "get": {
+        "description": "Get all System entries",
+        "summary": "",
+        "tags": [
+          "Systems"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new System entry",
+        "summary": "",
+        "tags": [
+          "Systems"
+        ],
+        "security": [
+          "locationWrite"
+        ]
+      }
+    },
+    "/systems/count": {
+      "get": {
+        "description": "Get a count of all System entries",
+        "summary": "",
+        "tags": [
+          "Systems"
+        ],
+        "security": []
+      }
+    },
+    "/systems/{id}": {
+      "get": {
+        "description": "Get a System by id",
+        "summary": "",
+        "tags": [
+          "Systems"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a System by id",
+        "summary": "",
+        "tags": [
+          "Systems"
+        ],
+        "security": [
+          "locationWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a System by id",
+        "summary": "",
+        "tags": [
+          "Systems"
+        ],
+        "security": [
+          "locationDelete"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Systems",
+      "description": "Systems stored in our API to use as references for sites"
+    }
+  ]
+}

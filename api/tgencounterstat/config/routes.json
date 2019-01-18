@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/tgencounterstats/:id/relationships/:relation",
-      "handler": "Tgencounterstat.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/tgencounterstats/:id/relationships/:relation",
-      "handler": "Tgencounterstat.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/tgencounterstats/:id/relationships/:relation",
-      "handler": "Tgencounterstat.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

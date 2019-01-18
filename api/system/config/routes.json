@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/systems/:id/relationships/:relation",
-      "handler": "System.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/systems/:id/relationships/:relation",
-      "handler": "System.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/systems/:id/relationships/:relation",
-      "handler": "System.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

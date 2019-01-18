@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/nhsssites/:id/relationships/:relation",
-      "handler": "Nhsssite.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/nhsssites/:id/relationships/:relation",
-      "handler": "Nhsssite.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/nhsssites/:id/relationships/:relation",
-      "handler": "Nhsssite.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

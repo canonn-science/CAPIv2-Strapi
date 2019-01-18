@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/cmdrkills/:id/relationships/:relation",
-      "handler": "Cmdrkill.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/cmdrkills/:id/relationships/:relation",
-      "handler": "Cmdrkill.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/cmdrkills/:id/relationships/:relation",
-      "handler": "Cmdrkill.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

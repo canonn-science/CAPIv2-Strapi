@@ -1,0 +1,70 @@
+{
+  "paths": {
+    "/rings": {
+      "get": {
+        "description": "Get all Ring entries",
+        "summary": "",
+        "tags": [
+          "Rings"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new Ring entry",
+        "summary": "",
+        "tags": [
+          "Rings"
+        ],
+        "security": [
+          "locationWrite"
+        ]
+      }
+    },
+    "/rings/count": {
+      "get": {
+        "description": "Get a count of all Ring entries",
+        "summary": "",
+        "tags": [
+          "Rings"
+        ],
+        "security": []
+      }
+    },
+    "/rings/{id}": {
+      "get": {
+        "description": "Get a Ring by id",
+        "summary": "",
+        "tags": [
+          "Rings"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a Ring by id",
+        "summary": "",
+        "tags": [
+          "Rings"
+        ],
+        "security": [
+          "locationWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a Ring by id",
+        "summary": "",
+        "tags": [
+          "Rings"
+        ],
+        "security": [
+          "locationDelete"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Rings",
+      "description": "Rings stored in our API to use as references for sites"
+    }
+  ]
+}

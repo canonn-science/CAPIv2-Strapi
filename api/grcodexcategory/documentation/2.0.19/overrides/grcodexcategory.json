@@ -1,0 +1,70 @@
+{
+  "paths": {
+    "/grcodexcategories": {
+      "get": {
+        "description": "Get all GR Codex Category entries",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new GR Codex Category entry",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      }
+    },
+    "/grcodexcategories/count": {
+      "get": {
+        "description": "Get a count of all GR Codex Category entries",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ],
+        "security": []
+      }
+    },
+    "/grcodexcategories/{id}": {
+      "get": {
+        "description": "Get a GR Codex Category by id",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a GR Codex Category by id",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a GR Codex Category by id",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ],
+        "security": [
+          "siteDelete"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Guardian Ruins",
+      "description": "Code Name - GR"
+    }
+  ]
+}

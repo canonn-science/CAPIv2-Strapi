@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/tbsites/:id/relationships/:relation",
-      "handler": "Tbsite.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/tbsites/:id/relationships/:relation",
-      "handler": "Tbsite.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/tbsites/:id/relationships/:relation",
-      "handler": "Tbsite.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }
