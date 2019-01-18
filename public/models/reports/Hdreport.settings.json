@@ -35,6 +35,11 @@
       "default": false,
       "type": "boolean"
     },
+    "clientVersion": {
+      "x-data-render": false,
+      "required": true,
+      "type": "string"
+    },
     "reportStatus": {
       "default": "pending",
       "type": "enumeration",

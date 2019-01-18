@@ -1,10 +1,10 @@
 {
   "connection": "default",
-  "collectionName": "grreports",
+  "collectionName": "gvreports",
   "info": {
-    "name": "grreport",
-    "description": "Reporting for Guardian Ruins",
-    "endpoint": "/grreports"
+    "name": "gvreport",
+    "description": "Reporting for Gas Vents",
+    "endpoint": "/gvreports"
   },
   "options": {
     "increments": true,
@@ -86,13 +86,7 @@
     },
     "type": {
       "x-data-description": "Type",
-      "enum": [
-        "Alpha",
-        "Beta",
-        "Gamma"
-      ],
-      "type": "enumeration",
-      "required": true
+      "type": "string"
     },
     "cmdrName": {
       "x-data-description": "Commander Name",
@@ -155,19 +149,7 @@
     "site": {
       "x-data-render": false,
       "x-data-exclude": true,
-      "model": "grsite"
-    },
-    "grobeliskgroupreport": {
-      "x-data-render": false,
-      "x-data-exclude": true,
-      "collection": "grobeliskgroupreport",
-      "via": "grreport"
-    },
-    "grobeliskreport": {
-      "x-data-render": false,
-      "x-data-exclude": true,
-      "collection": "grobeliskreport",
-      "via": "grreport"
+      "model": "gvsite"
     }
   }
 }

@@ -1,0 +1,21 @@
+{
+  "connection": "default",
+  "collectionName": "excludeusses",
+  "info": {
+    "name": "excludeuss",
+    "description": "USS Type blacklist"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "ussType": {
+      "type": "string"
+    },
+    "reason": {
+      "type": "text"
+    }
+  }
+}
