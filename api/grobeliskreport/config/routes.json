@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/grobeliskreports/:id/relationships/:relation",
-      "handler": "Grobeliskreport.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/grobeliskreports/:id/relationships/:relation",
-      "handler": "Grobeliskreport.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/grobeliskreports/:id/relationships/:relation",
-      "handler": "Grobeliskreport.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

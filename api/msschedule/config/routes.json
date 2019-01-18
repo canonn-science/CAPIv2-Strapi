@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/msschedules/:id/relationships/:relation",
-      "handler": "Msschedule.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/msschedules/:id/relationships/:relation",
-      "handler": "Msschedule.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/msschedules/:id/relationships/:relation",
-      "handler": "Msschedule.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

@@ -70,35 +70,5 @@ module.exports = {
 
   destroy: async (ctx, next) => {
     return strapi.services.mstype.remove(ctx.params);
-  },
-
-  /**
-   * Add relation to a/an mstype record.
-   *
-   * @return {Object}
-   */
-
-  createRelation: async (ctx, next) => {
-    return strapi.services.mstype.addRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Update relation to a/an mstype record.
-   *
-   * @return {Object}
-   */
-
-  updateRelation: async (ctx, next) => {
-    return strapi.services.mstype.editRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Destroy relation to a/an mstype record.
-   *
-   * @return {Object}
-   */
-
-  destroyRelation: async (ctx, next) => {
-    return strapi.services.mstype.removeRelation(ctx.params, ctx.request.body);
   }
 };

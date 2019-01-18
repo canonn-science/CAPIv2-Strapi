@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/excludeevents/:id/relationships/:relation",
-      "handler": "Excludeevent.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/excludeevents/:id/relationships/:relation",
-      "handler": "Excludeevent.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/excludeevents/:id/relationships/:relation",
-      "handler": "Excludeevent.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

@@ -70,35 +70,5 @@ module.exports = {
 
   destroy: async (ctx, next) => {
     return strapi.services.tsreport.remove(ctx.params);
-  },
-
-  /**
-   * Add relation to a/an tsreport record.
-   *
-   * @return {Object}
-   */
-
-  createRelation: async (ctx, next) => {
-    return strapi.services.tsreport.addRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Update relation to a/an tsreport record.
-   *
-   * @return {Object}
-   */
-
-  updateRelation: async (ctx, next) => {
-    return strapi.services.tsreport.editRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Destroy relation to a/an tsreport record.
-   *
-   * @return {Object}
-   */
-
-  destroyRelation: async (ctx, next) => {
-    return strapi.services.tsreport.removeRelation(ctx.params, ctx.request.body);
   }
 };

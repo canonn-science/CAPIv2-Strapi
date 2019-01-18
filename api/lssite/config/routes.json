@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/lssites/:id/relationships/:relation",
-      "handler": "Lssite.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/lssites/:id/relationships/:relation",
-      "handler": "Lssite.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/lssites/:id/relationships/:relation",
-      "handler": "Lssite.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

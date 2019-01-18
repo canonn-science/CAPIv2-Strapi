@@ -70,35 +70,5 @@ module.exports = {
 
   destroy: async (ctx, next) => {
     return strapi.services.gbmessage.remove(ctx.params);
-  },
-
-  /**
-   * Add relation to a/an gbmessage record.
-   *
-   * @return {Object}
-   */
-
-  createRelation: async (ctx, next) => {
-    return strapi.services.gbmessage.addRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Update relation to a/an gbmessage record.
-   *
-   * @return {Object}
-   */
-
-  updateRelation: async (ctx, next) => {
-    return strapi.services.gbmessage.editRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Destroy relation to a/an gbmessage record.
-   *
-   * @return {Object}
-   */
-
-  destroyRelation: async (ctx, next) => {
-    return strapi.services.gbmessage.removeRelation(ctx.params, ctx.request.body);
   }
 };

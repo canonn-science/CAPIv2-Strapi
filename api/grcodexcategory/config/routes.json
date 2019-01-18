@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/grcodexcategories/:id/relationships/:relation",
-      "handler": "Grcodexcategory.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/grcodexcategories/:id/relationships/:relation",
-      "handler": "Grcodexcategory.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/grcodexcategories/:id/relationships/:relation",
-      "handler": "Grcodexcategory.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

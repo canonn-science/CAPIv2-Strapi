@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/regions/:id/relationships/:relation",
-      "handler": "Region.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/regions/:id/relationships/:relation",
-      "handler": "Region.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/regions/:id/relationships/:relation",
-      "handler": "Region.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

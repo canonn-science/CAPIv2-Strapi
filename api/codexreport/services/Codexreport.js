@@ -30,7 +30,7 @@ module.exports = {
 
     return Codexreport.query(function(qb) {
       _.forEach(filters.where, (where, key) => {
-        if (_.isArray(where.value)) {
+        if (_.isArray(where.value) && where.symbol !== 'IN') {
           for (const value in where.value) {
             qb[value ? 'where' : 'orWhere'](key, where.symbol, where.value[value])
           }
@@ -81,7 +81,7 @@ module.exports = {
       _.forEach(filters.where, (where, key) => {
         if (_.isArray(where.value)) {
           for (const value in where.value) {
-            qb[value ? 'where' : 'orWhere'](key, where.symbol, where.value[value])
+            qb[value ? 'where' : 'orWhere'](key, where.symbol, where.value[value]);
           }
         } else {
           qb.where(key, where.symbol, where.value);

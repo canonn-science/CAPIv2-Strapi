@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/mssites/:id/relationships/:relation",
-      "handler": "Mssite.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/mssites/:id/relationships/:relation",
-      "handler": "Mssite.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/mssites/:id/relationships/:relation",
-      "handler": "Mssite.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

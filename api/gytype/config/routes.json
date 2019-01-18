@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/gytypes/:id/relationships/:relation",
-      "handler": "Gytype.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/gytypes/:id/relationships/:relation",
-      "handler": "Gytype.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/gytypes/:id/relationships/:relation",
-      "handler": "Gytype.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

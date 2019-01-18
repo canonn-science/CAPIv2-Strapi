@@ -1,0 +1,70 @@
+{
+  "paths": {
+    "/fmsites": {
+      "get": {
+        "description": "Get all FM Site entries",
+        "summary": "",
+        "tags": [
+          "Fumaroles"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new FM Site entry",
+        "summary": "",
+        "tags": [
+          "Fumaroles"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      }
+    },
+    "/fmsites/count": {
+      "get": {
+        "description": "Get a count of all FM Site entries",
+        "summary": "",
+        "tags": [
+          "Fumaroles"
+        ],
+        "security": []
+      }
+    },
+    "/fmsites/{id}": {
+      "get": {
+        "description": "Get a FM Site by id",
+        "summary": "",
+        "tags": [
+          "Fumaroles"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a FM Site by id",
+        "summary": "",
+        "tags": [
+          "Fumaroles"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a FM Site by id",
+        "summary": "",
+        "tags": [
+          "Fumaroles"
+        ],
+        "security": [
+          "siteDelete"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Fumaroles",
+      "description": "Code Name - FM"
+    }
+  ]
+}

@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/excludecmdrs/:id/relationships/:relation",
-      "handler": "Excludecmdr.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/excludecmdrs/:id/relationships/:relation",
-      "handler": "Excludecmdr.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/excludecmdrs/:id/relationships/:relation",
-      "handler": "Excludecmdr.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/apiupdates/:id/relationships/:relation",
-      "handler": "Apiupdate.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/apiupdates/:id/relationships/:relation",
-      "handler": "Apiupdate.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/apiupdates/:id/relationships/:relation",
-      "handler": "Apiupdate.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

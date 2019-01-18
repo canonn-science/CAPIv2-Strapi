@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/gscodexcategories/:id/relationships/:relation",
-      "handler": "Gscodexcategory.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/gscodexcategories/:id/relationships/:relation",
-      "handler": "Gscodexcategory.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/gscodexcategories/:id/relationships/:relation",
-      "handler": "Gscodexcategory.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

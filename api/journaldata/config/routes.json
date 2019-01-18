@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/journaldata/:id/relationships/:relation",
-      "handler": "Journaldata.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/journaldata/:id/relationships/:relation",
-      "handler": "Journaldata.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/journaldata/:id/relationships/:relation",
-      "handler": "Journaldata.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }
