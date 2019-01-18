@@ -70,35 +70,5 @@ module.exports = {
 
   destroy: async (ctx, next) => {
     return strapi.services.msschedule.remove(ctx.params);
-  },
-
-  /**
-   * Add relation to a/an msschedule record.
-   *
-   * @return {Object}
-   */
-
-  createRelation: async (ctx, next) => {
-    return strapi.services.msschedule.addRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Update relation to a/an msschedule record.
-   *
-   * @return {Object}
-   */
-
-  updateRelation: async (ctx, next) => {
-    return strapi.services.msschedule.editRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Destroy relation to a/an msschedule record.
-   *
-   * @return {Object}
-   */
-
-  destroyRelation: async (ctx, next) => {
-    return strapi.services.msschedule.removeRelation(ctx.params, ctx.request.body);
   }
 };

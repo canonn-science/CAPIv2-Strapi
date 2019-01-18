@@ -1,0 +1,66 @@
+{
+  "paths": {
+    "/msreports": {
+      "get": {
+        "description": "Get all MS report entries",
+        "summary": "",
+        "tags": [
+          "Megaship Reports"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new MS report entry",
+        "summary": "",
+        "tags": [
+          "Megaship Reports"
+        ],
+        "security": []
+      }
+    },
+    "/msreports/count": {
+      "get": {
+        "description": "Get a count of all MS report entries",
+        "summary": "",
+        "tags": [
+          "Megaship Reports"
+        ],
+        "security": []
+      }
+    },
+    "/msreports/{id}": {
+      "get": {
+        "description": "Get a MS report by id",
+        "summary": "",
+        "tags": [
+          "Megaship Reports"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a MS report by id",
+        "summary": "",
+        "tags": [
+          "Megaship Reports"
+        ],
+        "security": []
+      },
+      "delete": {
+        "description": "Delete a MS report by id",
+        "summary": "",
+        "tags": [
+          "Megaship Reports"
+        ],
+        "security": [
+          "reportDelete"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Megaship Reports",
+      "description": "Public Reporting of MS"
+    }
+  ]
+}

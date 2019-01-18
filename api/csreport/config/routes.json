@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/csreports/:id/relationships/:relation",
-      "handler": "Csreport.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/csreports/:id/relationships/:relation",
-      "handler": "Csreport.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/csreports/:id/relationships/:relation",
-      "handler": "Csreport.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

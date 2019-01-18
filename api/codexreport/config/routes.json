@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/codexreports/:id/relationships/:relation",
-      "handler": "Codexreport.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/codexreports/:id/relationships/:relation",
-      "handler": "Codexreport.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/codexreports/:id/relationships/:relation",
-      "handler": "Codexreport.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

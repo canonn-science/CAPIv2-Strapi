@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/mstypes/:id/relationships/:relation",
-      "handler": "Mstype.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/mstypes/:id/relationships/:relation",
-      "handler": "Mstype.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/mstypes/:id/relationships/:relation",
-      "handler": "Mstype.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

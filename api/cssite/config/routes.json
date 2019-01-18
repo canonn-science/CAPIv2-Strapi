@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/cssites/:id/relationships/:relation",
-      "handler": "Cssite.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/cssites/:id/relationships/:relation",
-      "handler": "Cssite.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/cssites/:id/relationships/:relation",
-      "handler": "Cssite.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

@@ -70,35 +70,5 @@ module.exports = {
 
   destroy: async (ctx, next) => {
     return strapi.services.ring.remove(ctx.params);
-  },
-
-  /**
-   * Add relation to a/an ring record.
-   *
-   * @return {Object}
-   */
-
-  createRelation: async (ctx, next) => {
-    return strapi.services.ring.addRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Update relation to a/an ring record.
-   *
-   * @return {Object}
-   */
-
-  updateRelation: async (ctx, next) => {
-    return strapi.services.ring.editRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Destroy relation to a/an ring record.
-   *
-   * @return {Object}
-   */
-
-  destroyRelation: async (ctx, next) => {
-    return strapi.services.ring.removeRelation(ctx.params, ctx.request.body);
   }
 };

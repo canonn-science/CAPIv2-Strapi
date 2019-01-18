@@ -70,35 +70,5 @@ module.exports = {
 
   destroy: async (ctx, next) => {
     return strapi.services.nhsssite.remove(ctx.params);
-  },
-
-  /**
-   * Add relation to a/an nhsssite record.
-   *
-   * @return {Object}
-   */
-
-  createRelation: async (ctx, next) => {
-    return strapi.services.nhsssite.addRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Update relation to a/an nhsssite record.
-   *
-   * @return {Object}
-   */
-
-  updateRelation: async (ctx, next) => {
-    return strapi.services.nhsssite.editRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Destroy relation to a/an nhsssite record.
-   *
-   * @return {Object}
-   */
-
-  destroyRelation: async (ctx, next) => {
-    return strapi.services.nhsssite.removeRelation(ctx.params, ctx.request.body);
   }
 };

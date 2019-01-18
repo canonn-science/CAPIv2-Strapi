@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/gsactiveobelisks/:id/relationships/:relation",
-      "handler": "Gsactiveobelisk.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/gsactiveobelisks/:id/relationships/:relation",
-      "handler": "Gsactiveobelisk.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/gsactiveobelisks/:id/relationships/:relation",
-      "handler": "Gsactiveobelisk.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/hdreports/:id/relationships/:relation",
-      "handler": "Hdreport.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/hdreports/:id/relationships/:relation",
-      "handler": "Hdreport.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/hdreports/:id/relationships/:relation",
-      "handler": "Hdreport.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/grartifacts/:id/relationships/:relation",
-      "handler": "Grartifact.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/grartifacts/:id/relationships/:relation",
-      "handler": "Grartifact.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/grartifacts/:id/relationships/:relation",
-      "handler": "Grartifact.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

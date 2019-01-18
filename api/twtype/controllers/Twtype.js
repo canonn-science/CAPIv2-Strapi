@@ -70,35 +70,5 @@ module.exports = {
 
   destroy: async (ctx, next) => {
     return strapi.services.twtype.remove(ctx.params);
-  },
-
-  /**
-   * Add relation to a/an twtype record.
-   *
-   * @return {Object}
-   */
-
-  createRelation: async (ctx, next) => {
-    return strapi.services.twtype.addRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Update relation to a/an twtype record.
-   *
-   * @return {Object}
-   */
-
-  updateRelation: async (ctx, next) => {
-    return strapi.services.twtype.editRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Destroy relation to a/an twtype record.
-   *
-   * @return {Object}
-   */
-
-  destroyRelation: async (ctx, next) => {
-    return strapi.services.twtype.removeRelation(ctx.params, ctx.request.body);
   }
 };

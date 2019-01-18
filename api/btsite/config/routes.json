@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/btsites/:id/relationships/:relation",
-      "handler": "Btsite.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/btsites/:id/relationships/:relation",
-      "handler": "Btsite.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/btsites/:id/relationships/:relation",
-      "handler": "Btsite.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

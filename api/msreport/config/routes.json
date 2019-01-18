@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/msreports/:id/relationships/:relation",
-      "handler": "Msreport.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/msreports/:id/relationships/:relation",
-      "handler": "Msreport.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/msreports/:id/relationships/:relation",
-      "handler": "Msreport.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

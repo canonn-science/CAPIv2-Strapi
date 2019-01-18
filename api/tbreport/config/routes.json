@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/tbreports/:id/relationships/:relation",
-      "handler": "Tbreport.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/tbreports/:id/relationships/:relation",
-      "handler": "Tbreport.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/tbreports/:id/relationships/:relation",
-      "handler": "Tbreport.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

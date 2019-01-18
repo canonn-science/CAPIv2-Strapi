@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/gvtypes/:id/relationships/:relation",
-      "handler": "Gvtype.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/gvtypes/:id/relationships/:relation",
-      "handler": "Gvtype.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/gvtypes/:id/relationships/:relation",
-      "handler": "Gvtype.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }
