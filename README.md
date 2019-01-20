@@ -75,8 +75,6 @@ The Canonn APIv2 is designed to handle all our current science projects. Current
 * Hyperdictions (HD) - **WIP**
 * Lava Spouts (LS)
   * LS types
-* Megaships (MS) - **WIP**
-  * MS Types
 * Non-Human Signal Sources (NHSS)
 * Thargoid Barnacles (TB)
   * TB Cycles
