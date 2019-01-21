@@ -388,7 +388,7 @@ CREATE TABLE `codexreport` (
   `categoryLocalised` varchar(255) DEFAULT NULL,
   `regionName` varchar(255) DEFAULT NULL,
   `regionLocalised` varchar(255) DEFAULT NULL,
-  `systemAddress` int(11) DEFAULT NULL,
+  `systemAddress` double DEFAULT NULL,
   `voucherAmount` int(11) DEFAULT NULL,
   `rawJson` longtext DEFAULT NULL,
   `isBeta` tinyint(1) DEFAULT NULL,
