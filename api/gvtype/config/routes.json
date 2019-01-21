@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/gvtypes",
+      "handler": "Gvtype.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gvtypes/count",
+      "handler": "Gvtype.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gvtypes/:id",
+      "handler": "Gvtype.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/gvtypes",
+      "handler": "Gvtype.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/gvtypes/:id",
+      "handler": "Gvtype.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/gvtypes/:id",
+      "handler": "Gvtype.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

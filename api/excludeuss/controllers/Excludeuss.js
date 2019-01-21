@@ -70,35 +70,5 @@ module.exports = {
 
   destroy: async (ctx, next) => {
     return strapi.services.excludeuss.remove(ctx.params);
-  },
-
-  /**
-   * Add relation to a/an excludeuss record.
-   *
-   * @return {Object}
-   */
-
-  createRelation: async (ctx, next) => {
-    return strapi.services.excludeuss.addRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Update relation to a/an excludeuss record.
-   *
-   * @return {Object}
-   */
-
-  updateRelation: async (ctx, next) => {
-    return strapi.services.excludeuss.editRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Destroy relation to a/an excludeuss record.
-   *
-   * @return {Object}
-   */
-
-  destroyRelation: async (ctx, next) => {
-    return strapi.services.excludeuss.removeRelation(ctx.params, ctx.request.body);
   }
 };

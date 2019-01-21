@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/genlogs/:id/relationships/:relation",
-      "handler": "Genlog.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/genlogs/:id/relationships/:relation",
-      "handler": "Genlog.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/genlogs/:id/relationships/:relation",
-      "handler": "Genlog.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

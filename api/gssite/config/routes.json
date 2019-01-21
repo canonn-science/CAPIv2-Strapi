@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/gssites/:id/relationships/:relation",
-      "handler": "Gssite.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/gssites/:id/relationships/:relation",
-      "handler": "Gssite.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/gssites/:id/relationships/:relation",
-      "handler": "Gssite.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

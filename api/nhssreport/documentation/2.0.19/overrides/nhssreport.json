@@ -1,0 +1,66 @@
+{
+  "paths": {
+    "/nhssreports": {
+      "get": {
+        "description": "Get all NHSS report entries",
+        "summary": "",
+        "tags": [
+          "Non-Human Signal Source Reports"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new NHSS report entry",
+        "summary": "",
+        "tags": [
+          "Non-Human Signal Source Reports"
+        ],
+        "security": []
+      }
+    },
+    "/nhssreports/count": {
+      "get": {
+        "description": "Get a count of all NHSS report entries",
+        "summary": "",
+        "tags": [
+          "Non-Human Signal Source Reports"
+        ],
+        "security": []
+      }
+    },
+    "/nhssreports/{id}": {
+      "get": {
+        "description": "Get a NHSS report by id",
+        "summary": "",
+        "tags": [
+          "Non-Human Signal Source Reports"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a NHSS report by id",
+        "summary": "",
+        "tags": [
+          "Non-Human Signal Source Reports"
+        ],
+        "security": []
+      },
+      "delete": {
+        "description": "Delete a NHSS report by id",
+        "summary": "",
+        "tags": [
+          "Non-Human Signal Source Reports"
+        ],
+        "security": [
+          "reportDelete"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Non-Human Signal Source Reports",
+      "description": "Public Reporting of NHSS"
+    }
+  ]
+}

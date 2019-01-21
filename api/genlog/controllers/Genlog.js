@@ -70,35 +70,5 @@ module.exports = {
 
   destroy: async (ctx, next) => {
     return strapi.services.genlog.remove(ctx.params);
-  },
-
-  /**
-   * Add relation to a/an genlog record.
-   *
-   * @return {Object}
-   */
-
-  createRelation: async (ctx, next) => {
-    return strapi.services.genlog.addRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Update relation to a/an genlog record.
-   *
-   * @return {Object}
-   */
-
-  updateRelation: async (ctx, next) => {
-    return strapi.services.genlog.editRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Destroy relation to a/an genlog record.
-   *
-   * @return {Object}
-   */
-
-  destroyRelation: async (ctx, next) => {
-    return strapi.services.genlog.removeRelation(ctx.params, ctx.request.body);
   }
 };

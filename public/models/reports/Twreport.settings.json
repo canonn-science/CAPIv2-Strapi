@@ -99,6 +99,11 @@
       "default": false,
       "type": "boolean"
     },
+    "clientVersion": {
+      "x-data-render": false,
+      "required": true,
+      "type": "string"
+    },
     "screenshot": {
       "x-data-description": "Screenshot",
       "x-data-type": "image",

@@ -70,35 +70,5 @@ module.exports = {
 
   destroy: async (ctx, next) => {
     return strapi.services.cmdr.remove(ctx.params);
-  },
-
-  /**
-   * Add relation to a/an cmdr record.
-   *
-   * @return {Object}
-   */
-
-  createRelation: async (ctx, next) => {
-    return strapi.services.cmdr.addRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Update relation to a/an cmdr record.
-   *
-   * @return {Object}
-   */
-
-  updateRelation: async (ctx, next) => {
-    return strapi.services.cmdr.editRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Destroy relation to a/an cmdr record.
-   *
-   * @return {Object}
-   */
-
-  destroyRelation: async (ctx, next) => {
-    return strapi.services.cmdr.removeRelation(ctx.params, ctx.request.body);
   }
 };

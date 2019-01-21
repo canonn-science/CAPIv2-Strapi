@@ -1,0 +1,70 @@
+{
+  "paths": {
+    "/nhsssites": {
+      "get": {
+        "description": "Get all NHSS Site entries",
+        "summary": "",
+        "tags": [
+          "Non-Human Signal Sources"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new NHSS Site entry",
+        "summary": "",
+        "tags": [
+          "Non-Human Signal Sources"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      }
+    },
+    "/nhsssites/count": {
+      "get": {
+        "description": "Get a count of all NHSS Site entries",
+        "summary": "",
+        "tags": [
+          "Non-Human Signal Sources"
+        ],
+        "security": []
+      }
+    },
+    "/nhsssites/{id}": {
+      "get": {
+        "description": "Get a NHSS Site by id",
+        "summary": "",
+        "tags": [
+          "Non-Human Signal Sources"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a NHSS Site by id",
+        "summary": "",
+        "tags": [
+          "Non-Human Signal Sources"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a NHSS Site by id",
+        "summary": "",
+        "tags": [
+          "Non-Human Signal Sources"
+        ],
+        "security": [
+          "siteDelete"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Non-Human Signal Sources",
+      "description": "Code Name - NHSS"
+    }
+  ]
+}

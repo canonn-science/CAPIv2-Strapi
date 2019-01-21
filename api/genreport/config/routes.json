@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/genreports/:id/relationships/:relation",
-      "handler": "Genreport.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/genreports/:id/relationships/:relation",
-      "handler": "Genreport.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/genreports/:id/relationships/:relation",
-      "handler": "Genreport.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

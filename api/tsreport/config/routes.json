@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/tsreports/:id/relationships/:relation",
-      "handler": "Tsreport.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/tsreports/:id/relationships/:relation",
-      "handler": "Tsreport.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/tsreports/:id/relationships/:relation",
-      "handler": "Tsreport.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

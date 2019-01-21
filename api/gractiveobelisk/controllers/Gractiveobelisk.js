@@ -70,35 +70,5 @@ module.exports = {
 
   destroy: async (ctx, next) => {
     return strapi.services.gractiveobelisk.remove(ctx.params);
-  },
-
-  /**
-   * Add relation to a/an gractiveobelisk record.
-   *
-   * @return {Object}
-   */
-
-  createRelation: async (ctx, next) => {
-    return strapi.services.gractiveobelisk.addRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Update relation to a/an gractiveobelisk record.
-   *
-   * @return {Object}
-   */
-
-  updateRelation: async (ctx, next) => {
-    return strapi.services.gractiveobelisk.editRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Destroy relation to a/an gractiveobelisk record.
-   *
-   * @return {Object}
-   */
-
-  destroyRelation: async (ctx, next) => {
-    return strapi.services.gractiveobelisk.removeRelation(ctx.params, ctx.request.body);
   }
 };

@@ -3,6 +3,13 @@
     "cmdr": "cmdr/Cmdr.settings.json",
     "cmdrkill": "cmdr/Cmdrkill.settings.json"
   },
+  "excludes": {
+    "excludeclient": "excludes/Excludeclient.settings.json",
+    "excludecmdr": "excludes/Excludecmdr.settings.json",
+    "excludecodex": "excludes/Excludecodex.settings.json",
+    "excludeevent": "excludes/Excludeevent.settings.json",
+    "excludeuss": "excludes/Excludeuss.settings.json"
+  },
   "locations": {
     "system": "locations/System.settings.json",
     "body": "locations/Body.settings.json",
@@ -11,6 +18,7 @@
   },
   "other": {
     "apiupdate": "other/Apiupdate.settings.json",
+    "codexreport": "other/Codexreport.settings.json",
     "journaldata": "other/Journaldata.settings.json"
   },
   "reports": {
@@ -60,6 +68,10 @@
       "agent": "all",
       "optional": "gsobeliskreport"
     },
+    "gvreport": {
+      "path": "reports/Gvreport.settings.json",
+      "agent": "all"
+    },
     "gyreport": {
       "path": "reports/Gyreport.settings.json",
       "agent": "all"
@@ -74,10 +86,6 @@
     },
     "lsreport": {
       "path": "reports/Lsreport.settings.json",
-      "agent": "all"
-    },
-    "msreport": {
-      "path": "reports/Msreport.settings.json",
       "agent": "all"
     },
     "nhssreport": {
@@ -130,11 +138,10 @@
     "gsobelisk": "sites/guardianstructures/Gsobelisk.settings.json",
     "gsobeliskgroup": "sites/guardianstructures/Gsobeliskgroup.settings.json",
     "gstype": "sites/guardianstructures/Gstype.settings.json",
+    "gvsite": "sites/gasvents/Gvsite.settings.json",
+    "gvtype": "sites/gasvents/Gvtype.settings.json",
     "hdsite": "sites/hyperdictions/Hdsite.settings.json",
     "lssite": "sites/lavaspouts/Lssite.settings.json",
-    "msschedule": "sites/megaships/Msschedule.settings.json",
-    "mssite": "sites/megaships/Mssite.settings.json",
-    "mstype": "sites/megaships/Mstype.settings.json",
     "nhsssite": "sites/nonhumansignalsources/Nhsssite.settings.json",
     "tbsite": "sites/thargoidbarnacles/Tbsite.settings.json",
     "tbcycle": "sites/thargoidbarnacles/Tbcycle.settings.json",

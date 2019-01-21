@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/fmreports/:id/relationships/:relation",
-      "handler": "Fmreport.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/fmreports/:id/relationships/:relation",
-      "handler": "Fmreport.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/fmreports/:id/relationships/:relation",
-      "handler": "Fmreport.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

@@ -1,0 +1,70 @@
+{
+  "paths": {
+    "/grobeliskgroups": {
+      "get": {
+        "description": "Get all GR Obelisk Group entries",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new GR Obelisk Group entry",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      }
+    },
+    "/grobeliskgroups/count": {
+      "get": {
+        "description": "Get a count of all GR Obelisk Group entries",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ],
+        "security": []
+      }
+    },
+    "/grobeliskgroups/{id}": {
+      "get": {
+        "description": "Get a GR Obelisk Group by id",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a GR Obelisk Group by id",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a GR Obelisk Group by id",
+        "summary": "",
+        "tags": [
+          "Guardian Ruins"
+        ],
+        "security": [
+          "siteDelete"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Guardian Ruins",
+      "description": "Code Name - GR"
+    }
+  ]
+}

@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/grtypes/:id/relationships/:relation",
-      "handler": "Grtype.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/grtypes/:id/relationships/:relation",
-      "handler": "Grtype.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/grtypes/:id/relationships/:relation",
-      "handler": "Grtype.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

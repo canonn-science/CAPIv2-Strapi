@@ -70,35 +70,5 @@ module.exports = {
 
   destroy: async (ctx, next) => {
     return strapi.services.excludecmdr.remove(ctx.params);
-  },
-
-  /**
-   * Add relation to a/an excludecmdr record.
-   *
-   * @return {Object}
-   */
-
-  createRelation: async (ctx, next) => {
-    return strapi.services.excludecmdr.addRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Update relation to a/an excludecmdr record.
-   *
-   * @return {Object}
-   */
-
-  updateRelation: async (ctx, next) => {
-    return strapi.services.excludecmdr.editRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Destroy relation to a/an excludecmdr record.
-   *
-   * @return {Object}
-   */
-
-  destroyRelation: async (ctx, next) => {
-    return strapi.services.excludecmdr.removeRelation(ctx.params, ctx.request.body);
   }
 };

@@ -1,0 +1,70 @@
+{
+  "paths": {
+    "/lstypes": {
+      "get": {
+        "description": "Get all LS Type entries",
+        "summary": "",
+        "tags": [
+          "Lava Spouts"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new LS Type entry",
+        "summary": "",
+        "tags": [
+          "Lava Spouts"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      }
+    },
+    "/lstypes/count": {
+      "get": {
+        "description": "Get a count of all LS Type entries",
+        "summary": "",
+        "tags": [
+          "Lava Spouts"
+        ],
+        "security": []
+      }
+    },
+    "/lstypes/{id}": {
+      "get": {
+        "description": "Get a LS Type by id",
+        "summary": "",
+        "tags": [
+          "Lava Spouts"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a LS Type by id",
+        "summary": "",
+        "tags": [
+          "Lava Spouts"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a LS Type by id",
+        "summary": "",
+        "tags": [
+          "Lava Spouts"
+        ],
+        "security": [
+          "siteDelete"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Lava Spouts",
+      "description": "Code Name - LS"
+    }
+  ]
+}

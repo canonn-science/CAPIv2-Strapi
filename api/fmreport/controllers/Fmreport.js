@@ -70,35 +70,5 @@ module.exports = {
 
   destroy: async (ctx, next) => {
     return strapi.services.fmreport.remove(ctx.params);
-  },
-
-  /**
-   * Add relation to a/an fmreport record.
-   *
-   * @return {Object}
-   */
-
-  createRelation: async (ctx, next) => {
-    return strapi.services.fmreport.addRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Update relation to a/an fmreport record.
-   *
-   * @return {Object}
-   */
-
-  updateRelation: async (ctx, next) => {
-    return strapi.services.fmreport.editRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Destroy relation to a/an fmreport record.
-   *
-   * @return {Object}
-   */
-
-  destroyRelation: async (ctx, next) => {
-    return strapi.services.fmreport.removeRelation(ctx.params, ctx.request.body);
   }
 };
