@@ -14,7 +14,7 @@
       "name": "GNU-GPLv3",
       "url": "https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE"
     },
-    "x-generation-date": "01/20/2019 1:14:38 AM"
+    "x-generation-date": "01/22/2019 11:58:08 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -6008,6 +6008,499 @@
         ],
         "security": [
           "siteDelete"
+        ]
+      }
+    },
+    "/eventreports": {
+      "get": {
+        "deprecated": false,
+        "description": "Get all Journal Event report entries",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Eventreport"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "parameters": [
+          {
+            "name": "_limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of results possible",
+            "schema": {
+              "type": "integer"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_sort",
+            "in": "query",
+            "required": false,
+            "description": "Sort according to a specific field.",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_start",
+            "in": "query",
+            "required": false,
+            "description": "Skip a specific number of entries (especially useful for pagination)",
+            "schema": {
+              "type": "integer"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "=",
+            "in": "query",
+            "required": false,
+            "description": "Get entries that matches exactly your input",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_ne",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are not equals to something",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_lt",
+            "in": "query",
+            "required": false,
+            "description": "Get record that are lower than a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_lte",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are lower than or equal to a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_gt",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are greater than a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_gte",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are greater than  or equal a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_contains",
+            "in": "query",
+            "required": false,
+            "description": "Get records that contains a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_containss",
+            "in": "query",
+            "required": false,
+            "description": "Get records that contains (case sensitive) a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          }
+        ],
+        "security": []
+      },
+      "post": {
+        "deprecated": false,
+        "description": "Create a new Journal Event report entry",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Eventreport"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewEventreport"
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/eventreports/count": {
+      "get": {
+        "deprecated": false,
+        "description": "Get a count of all Journal Event report entries",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "count": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "parameters": [],
+        "security": []
+      }
+    },
+    "/eventreports/{id}": {
+      "get": {
+        "deprecated": false,
+        "description": "Get a Journal Event report by id",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Eventreport"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": []
+      },
+      "put": {
+        "deprecated": false,
+        "description": "Update a Journal Event report by id",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Eventreport"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewEventreport"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": []
+      },
+      "delete": {
+        "deprecated": false,
+        "description": "Delete a Journal Event report by id",
+        "responses": {
+          "200": {
+            "description": "deletes a single record based on the ID supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          "updateLogWrite"
         ]
       }
     },
@@ -29427,499 +29920,6 @@
         "security": []
       }
     },
-    "/journaldata": {
-      "get": {
-        "deprecated": false,
-        "description": "Get all debug journal dump entries",
-        "responses": {
-          "200": {
-            "description": "Retrieve journaldata document(s)",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Journaldata"
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Canonn Use"
-        ],
-        "parameters": [
-          {
-            "name": "_limit",
-            "in": "query",
-            "required": false,
-            "description": "Maximum number of results possible",
-            "schema": {
-              "type": "integer"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_sort",
-            "in": "query",
-            "required": false,
-            "description": "Sort according to a specific field.",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_start",
-            "in": "query",
-            "required": false,
-            "description": "Skip a specific number of entries (especially useful for pagination)",
-            "schema": {
-              "type": "integer"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "=",
-            "in": "query",
-            "required": false,
-            "description": "Get entries that matches exactly your input",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_ne",
-            "in": "query",
-            "required": false,
-            "description": "Get records that are not equals to something",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_lt",
-            "in": "query",
-            "required": false,
-            "description": "Get record that are lower than a value",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_lte",
-            "in": "query",
-            "required": false,
-            "description": "Get records that are lower than or equal to a value",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_gt",
-            "in": "query",
-            "required": false,
-            "description": "Get records that are greater than a value",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_gte",
-            "in": "query",
-            "required": false,
-            "description": "Get records that are greater than  or equal a value",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_contains",
-            "in": "query",
-            "required": false,
-            "description": "Get records that contains a value",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_containss",
-            "in": "query",
-            "required": false,
-            "description": "Get records that contains (case sensitive) a value",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          }
-        ],
-        "security": []
-      },
-      "post": {
-        "deprecated": false,
-        "description": "Create a new debug journal dump entry",
-        "responses": {
-          "200": {
-            "description": "Retrieve journaldata document(s)",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Journaldata"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Canonn Use"
-        ],
-        "requestBody": {
-          "description": "",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewJournaldata"
-              }
-            }
-          }
-        },
-        "security": []
-      }
-    },
-    "/journaldata/count": {
-      "get": {
-        "deprecated": false,
-        "description": "Get a count of all debug journal dump entries",
-        "responses": {
-          "200": {
-            "description": "Retrieve journaldata document(s)",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "count": {
-                      "type": "integer"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Canonn Use"
-        ],
-        "parameters": [],
-        "security": []
-      }
-    },
-    "/journaldata/{id}": {
-      "get": {
-        "deprecated": false,
-        "description": "Get a debug journal dump by id",
-        "responses": {
-          "200": {
-            "description": "Retrieve journaldata document(s)",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Journaldata"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Canonn Use"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": []
-      },
-      "put": {
-        "deprecated": false,
-        "description": "Update a debug journal dump by id",
-        "responses": {
-          "200": {
-            "description": "Retrieve journaldata document(s)",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Journaldata"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Canonn Use"
-        ],
-        "requestBody": {
-          "description": "",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewJournaldata"
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": []
-      },
-      "delete": {
-        "deprecated": false,
-        "description": "Delete a debug journal dump by id",
-        "responses": {
-          "200": {
-            "description": "deletes a single journaldata based on the ID supplied",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Canonn Use"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": [
-          "adminOnlyDelete"
-        ]
-      }
-    },
     "/killreports": {
       "get": {
         "deprecated": false,
@@ -41859,20 +41859,12 @@
             "type": "boolean",
             "default": false
           },
-          "systemsUpdated": {
-            "type": "json",
-            "default": ""
-          },
-          "bodiesUpdated": {
-            "type": "json",
+          "notes": {
+            "type": "string",
             "default": ""
           },
           "updateLog": {
             "type": "json",
-            "default": ""
-          },
-          "notes": {
-            "type": "string",
             "default": ""
           }
         }
@@ -41887,20 +41879,12 @@
             "type": "boolean",
             "default": false
           },
-          "systemsUpdated": {
-            "type": "json",
-            "default": ""
-          },
-          "bodiesUpdated": {
-            "type": "json",
+          "notes": {
+            "type": "string",
             "default": ""
           },
           "updateLog": {
             "type": "json",
-            "default": ""
-          },
-          "notes": {
-            "type": "string",
             "default": ""
           }
         }
@@ -41943,7 +41927,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "number"
+            "type": "biginteger"
           },
           "regionID": {
             "type": "integer"
@@ -42126,7 +42110,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "number"
+            "type": "biginteger"
           },
           "regionID": {
             "type": "integer"
@@ -42213,10 +42197,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "edsmCoordX": {
                 "type": "number"
@@ -42263,10 +42247,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "bodyID": {
                 "type": "integer"
@@ -42472,10 +42456,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "edsmCoordX": {
                 "type": "number"
@@ -42510,10 +42494,10 @@
             "type": "string"
           },
           "id64": {
-            "type": "number"
+            "type": "biginteger"
           },
           "edsmID": {
-            "type": "number"
+            "type": "integer"
           },
           "bodyID": {
             "type": "integer"
@@ -42661,10 +42645,10 @@
             "type": "string"
           },
           "id64": {
-            "type": "number"
+            "type": "biginteger"
           },
           "edsmID": {
-            "type": "number"
+            "type": "integer"
           },
           "bodyID": {
             "type": "integer"
@@ -42812,7 +42796,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "number"
+            "type": "biginteger"
           },
           "regionID": {
             "type": "integer"
@@ -43001,7 +42985,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "number"
+            "type": "biginteger"
           },
           "regionID": {
             "type": "integer"
@@ -43091,10 +43075,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "edsmCoordX": {
                 "type": "number"
@@ -43141,10 +43125,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "bodyID": {
                 "type": "integer"
@@ -43601,7 +43585,7 @@
             "default": ""
           },
           "coordY": {
-            "type": "integer",
+            "type": "number",
             "default": ""
           },
           "coordZ": {
@@ -43653,15 +43637,10 @@
             "default": ""
           },
           "systemAddress": {
-            "type": "integer",
-            "default": ""
+            "type": "biginteger"
           },
           "voucherAmount": {
             "type": "integer",
-            "default": ""
-          },
-          "rawJson": {
-            "type": "json",
             "default": ""
           },
           "isBeta": {
@@ -43670,6 +43649,10 @@
           },
           "clientVersion": {
             "type": "string"
+          },
+          "rawJson": {
+            "type": "json",
+            "default": ""
           }
         }
       },
@@ -43695,7 +43678,7 @@
             "default": ""
           },
           "coordY": {
-            "type": "integer",
+            "type": "number",
             "default": ""
           },
           "coordZ": {
@@ -43747,15 +43730,10 @@
             "default": ""
           },
           "systemAddress": {
-            "type": "integer",
-            "default": ""
+            "type": "biginteger"
           },
           "voucherAmount": {
             "type": "integer",
-            "default": ""
-          },
-          "rawJson": {
-            "type": "json",
             "default": ""
           },
           "isBeta": {
@@ -43764,6 +43742,10 @@
           },
           "clientVersion": {
             "type": "string"
+          },
+          "rawJson": {
+            "type": "json",
+            "default": ""
           }
         }
       },
@@ -43805,7 +43787,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "number"
+            "type": "biginteger"
           },
           "regionID": {
             "type": "integer"
@@ -43989,7 +43971,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "number"
+            "type": "biginteger"
           },
           "regionID": {
             "type": "integer"
@@ -44077,10 +44059,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "edsmCoordX": {
                 "type": "number"
@@ -44127,10 +44109,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "bodyID": {
                 "type": "integer"
@@ -44315,6 +44297,86 @@
           }
         }
       },
+      "Eventreport": {
+        "required": [
+          "id",
+          "clientVersion",
+          "rawJson"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "cmdrName": {
+            "type": "string"
+          },
+          "systemName": {
+            "type": "string"
+          },
+          "bodyName": {
+            "type": "string"
+          },
+          "stationName": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "number"
+          },
+          "longitude": {
+            "type": "number"
+          },
+          "isBeta": {
+            "type": "boolean"
+          },
+          "clientVersion": {
+            "type": "string"
+          },
+          "rawJson": {
+            "type": "json"
+          }
+        }
+      },
+      "NewEventreport": {
+        "required": [
+          "clientVersion",
+          "rawJson"
+        ],
+        "properties": {
+          "eventName": {
+            "type": "string"
+          },
+          "cmdrName": {
+            "type": "string"
+          },
+          "systemName": {
+            "type": "string"
+          },
+          "bodyName": {
+            "type": "string"
+          },
+          "stationName": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "number"
+          },
+          "longitude": {
+            "type": "number"
+          },
+          "isBeta": {
+            "type": "boolean"
+          },
+          "clientVersion": {
+            "type": "string"
+          },
+          "rawJson": {
+            "type": "json"
+          }
+        }
+      },
       "Excludeclient": {
         "required": [
           "id"
@@ -44483,7 +44545,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "number"
+            "type": "biginteger"
           },
           "regionID": {
             "type": "integer"
@@ -44672,7 +44734,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "number"
+            "type": "biginteger"
           },
           "regionID": {
             "type": "integer"
@@ -44762,10 +44824,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "edsmCoordX": {
                 "type": "number"
@@ -44812,10 +44874,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "bodyID": {
                 "type": "integer"
@@ -45102,7 +45164,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "number"
+            "type": "biginteger"
           },
           "regionID": {
             "type": "integer"
@@ -45291,7 +45353,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "number"
+            "type": "biginteger"
           },
           "regionID": {
             "type": "integer"
@@ -45381,10 +45443,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "edsmCoordX": {
                 "type": "number"
@@ -45431,10 +45493,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "bodyID": {
                 "type": "integer"
@@ -45739,10 +45801,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "edsmCoordX": {
                 "type": "number"
@@ -45789,10 +45851,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "bodyID": {
                 "type": "integer"
@@ -45975,7 +46037,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "number"
+            "type": "biginteger"
           },
           "regionID": {
             "type": "integer"
@@ -46167,7 +46229,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "number"
+            "type": "biginteger"
           },
           "regionID": {
             "type": "integer"
@@ -46265,10 +46327,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "edsmCoordX": {
                 "type": "number"
@@ -46315,10 +46377,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "bodyID": {
                 "type": "integer"
@@ -46748,7 +46810,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "number"
+            "type": "biginteger"
           },
           "regionID": {
             "type": "integer"
@@ -46931,7 +46993,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "number"
+            "type": "biginteger"
           },
           "regionID": {
             "type": "integer"
@@ -47020,10 +47082,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "edsmCoordX": {
                 "type": "number"
@@ -47070,10 +47132,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "bodyID": {
                 "type": "integer"
@@ -47201,10 +47263,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "edsmCoordX": {
                 "type": "number"
@@ -47849,7 +47911,7 @@
                 "type": "string"
               },
               "systemAddress": {
-                "type": "number"
+                "type": "biginteger"
               },
               "regionID": {
                 "type": "integer"
@@ -47976,7 +48038,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "number"
+            "type": "biginteger"
           },
           "regionID": {
             "type": "integer"
@@ -48205,7 +48267,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "number"
+            "type": "biginteger"
           },
           "regionID": {
             "type": "integer"
@@ -48306,10 +48368,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "edsmCoordX": {
                 "type": "number"
@@ -48356,10 +48418,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "bodyID": {
                 "type": "integer"
@@ -49231,7 +49293,7 @@
                 "type": "string"
               },
               "systemAddress": {
-                "type": "number"
+                "type": "biginteger"
               },
               "regionID": {
                 "type": "integer"
@@ -49361,7 +49423,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "number"
+            "type": "biginteger"
           },
           "regionID": {
             "type": "integer"
@@ -49600,7 +49662,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "number"
+            "type": "biginteger"
           },
           "regionID": {
             "type": "integer"
@@ -49708,10 +49770,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "edsmCoordX": {
                 "type": "number"
@@ -49758,10 +49820,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "bodyID": {
                 "type": "integer"
@@ -50092,7 +50154,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "number"
+            "type": "biginteger"
           },
           "regionID": {
             "type": "integer"
@@ -50281,7 +50343,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "number"
+            "type": "biginteger"
           },
           "regionID": {
             "type": "integer"
@@ -50371,10 +50433,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "edsmCoordX": {
                 "type": "number"
@@ -50421,10 +50483,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "bodyID": {
                 "type": "integer"
@@ -50709,7 +50771,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "number"
+            "type": "biginteger"
           },
           "regionID": {
             "type": "integer"
@@ -50898,7 +50960,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "number"
+            "type": "biginteger"
           },
           "regionID": {
             "type": "integer"
@@ -50988,10 +51050,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "edsmCoordX": {
                 "type": "number"
@@ -51038,10 +51100,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "bodyID": {
                 "type": "integer"
@@ -51485,10 +51547,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "edsmCoordX": {
                 "type": "number"
@@ -51541,78 +51603,6 @@
           "meropeDistance": {
             "type": "number",
             "default": ""
-          }
-        }
-      },
-      "Journaldata": {
-        "required": [
-          "id",
-          "jsonData"
-        ],
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "eventName": {
-            "type": "string"
-          },
-          "systemName": {
-            "type": "string"
-          },
-          "bodyName": {
-            "type": "string"
-          },
-          "stationName": {
-            "type": "string"
-          },
-          "cmdrName": {
-            "type": "string"
-          },
-          "latitude": {
-            "type": "number"
-          },
-          "longitude": {
-            "type": "number"
-          },
-          "isBeta": {
-            "type": "boolean"
-          },
-          "jsonData": {
-            "type": "json"
-          }
-        }
-      },
-      "NewJournaldata": {
-        "required": [
-          "jsonData"
-        ],
-        "properties": {
-          "eventName": {
-            "type": "string"
-          },
-          "systemName": {
-            "type": "string"
-          },
-          "bodyName": {
-            "type": "string"
-          },
-          "stationName": {
-            "type": "string"
-          },
-          "cmdrName": {
-            "type": "string"
-          },
-          "latitude": {
-            "type": "number"
-          },
-          "longitude": {
-            "type": "number"
-          },
-          "isBeta": {
-            "type": "boolean"
-          },
-          "jsonData": {
-            "type": "json"
           }
         }
       },
@@ -51732,7 +51722,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "number"
+            "type": "biginteger"
           },
           "regionID": {
             "type": "integer"
@@ -51921,7 +51911,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "number"
+            "type": "biginteger"
           },
           "regionID": {
             "type": "integer"
@@ -52011,10 +52001,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "edsmCoordX": {
                 "type": "number"
@@ -52061,10 +52051,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "bodyID": {
                 "type": "integer"
@@ -52456,10 +52446,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "edsmCoordX": {
                 "type": "number"
@@ -52586,10 +52576,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "bodyID": {
                 "type": "integer"
@@ -52753,10 +52743,10 @@
             "type": "string"
           },
           "id64": {
-            "type": "number"
+            "type": "biginteger"
           },
           "edsmID": {
-            "type": "number"
+            "type": "integer"
           },
           "edsmCoordX": {
             "type": "number"
@@ -52792,10 +52782,10 @@
                   "type": "string"
                 },
                 "id64": {
-                  "type": "number"
+                  "type": "biginteger"
                 },
                 "edsmID": {
-                  "type": "number"
+                  "type": "integer"
                 },
                 "bodyID": {
                   "type": "integer"
@@ -52940,10 +52930,10 @@
             "type": "string"
           },
           "id64": {
-            "type": "number"
+            "type": "biginteger"
           },
           "edsmID": {
-            "type": "number"
+            "type": "integer"
           },
           "edsmCoordX": {
             "type": "number"
@@ -53040,7 +53030,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "number"
+            "type": "biginteger"
           },
           "regionID": {
             "type": "integer"
@@ -53257,7 +53247,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "number"
+            "type": "biginteger"
           },
           "regionID": {
             "type": "integer"
@@ -53367,10 +53357,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "edsmCoordX": {
                 "type": "number"
@@ -53417,10 +53407,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "bodyID": {
                 "type": "integer"
@@ -53788,7 +53778,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "number"
+            "type": "biginteger"
           },
           "regionID": {
             "type": "integer"
@@ -53991,7 +53981,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "number"
+            "type": "biginteger"
           },
           "regionID": {
             "type": "integer"
@@ -54085,10 +54075,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "edsmCoordX": {
                 "type": "number"
@@ -54135,10 +54125,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "bodyID": {
                 "type": "integer"
@@ -54566,7 +54556,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "number"
+            "type": "biginteger"
           },
           "regionID": {
             "type": "integer"
@@ -54756,7 +54746,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "number"
+            "type": "biginteger"
           },
           "regionID": {
             "type": "integer"
@@ -54847,10 +54837,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "edsmCoordX": {
                 "type": "number"
@@ -54897,10 +54887,10 @@
                 "type": "string"
               },
               "id64": {
-                "type": "number"
+                "type": "biginteger"
               },
               "edsmID": {
-                "type": "number"
+                "type": "integer"
               },
               "bodyID": {
                 "type": "integer"

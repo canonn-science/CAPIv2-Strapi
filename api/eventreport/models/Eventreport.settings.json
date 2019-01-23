@@ -1,0 +1,47 @@
+{
+  "connection": "default",
+  "collectionName": "eventreports",
+  "info": {
+    "name": "eventreport",
+    "description": "Non-Codex journal logs. Staging model for tracking changes in the Journal"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "eventName": {
+      "type": "string"
+    },
+    "cmdrName": {
+      "type": "string"
+    },
+    "systemName": {
+      "type": "string"
+    },
+    "bodyName": {
+      "type": "string"
+    },
+    "stationName": {
+      "type": "string"
+    },
+    "latitude": {
+      "type": "float"
+    },
+    "longitude": {
+      "type": "float"
+    },
+    "isBeta": {
+      "type": "boolean"
+    },
+    "clientVersion": {
+      "required": true,
+      "type": "string"
+    },
+    "rawJson": {
+      "type": "json",
+      "required": true
+    }
+  }
+}

@@ -514,7 +514,7 @@
             "default": ""
           },
           "coordY": {
-            "type": "integer",
+            "type": "number",
             "default": ""
           },
           "coordZ": {
@@ -566,15 +566,10 @@
             "default": ""
           },
           "systemAddress": {
-            "type": "integer",
-            "default": ""
+            "type": "biginteger"
           },
           "voucherAmount": {
             "type": "integer",
-            "default": ""
-          },
-          "rawJson": {
-            "type": "json",
             "default": ""
           },
           "isBeta": {
@@ -583,6 +578,10 @@
           },
           "clientVersion": {
             "type": "string"
+          },
+          "rawJson": {
+            "type": "json",
+            "default": ""
           }
         }
       },
@@ -608,7 +607,7 @@
             "default": ""
           },
           "coordY": {
-            "type": "integer",
+            "type": "number",
             "default": ""
           },
           "coordZ": {
@@ -660,15 +659,10 @@
             "default": ""
           },
           "systemAddress": {
-            "type": "integer",
-            "default": ""
+            "type": "biginteger"
           },
           "voucherAmount": {
             "type": "integer",
-            "default": ""
-          },
-          "rawJson": {
-            "type": "json",
             "default": ""
           },
           "isBeta": {
@@ -677,6 +671,10 @@
           },
           "clientVersion": {
             "type": "string"
+          },
+          "rawJson": {
+            "type": "json",
+            "default": ""
           }
         }
       }

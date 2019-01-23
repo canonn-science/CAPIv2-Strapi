@@ -3,7 +3,7 @@
   "collectionName": "",
   "info": {
     "name": "codexreport",
-    "description": "Codex logs enhanced with coordinates. Temporary model for tracking changes in the Journal"
+    "description": "Codex logs enhanced with coordinates. Staging model for tracking changes in the Journal"
   },
   "options": {
     "increments": true,
@@ -80,16 +80,11 @@
       "type": "string"
     },
     "systemAddress": {
-      "default": "",
-      "type": "bigint"
+      "type": "biginteger"
     },
     "voucherAmount": {
       "default": "",
       "type": "integer"
-    },
-    "rawJson": {
-      "default": "",
-      "type": "json"
     },
     "isBeta": {
       "default": false,
@@ -98,6 +93,10 @@
     "clientVersion": {
       "required": true,
       "type": "string"
+    },
+    "rawJson": {
+      "default": "",
+      "type": "json"
     }
   }
 }
