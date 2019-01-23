@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Journaldata.js service
+ * Eventreport.js service
  *
  * @description: A set of functions similar to controller's actions to avoid code duplication.
  */
@@ -15,20 +15,20 @@ const utils = require('strapi-hook-bookshelf/lib/utils/');
 module.exports = {
 
   /**
-   * Promise to fetch all journaldata.
+   * Promise to fetch all eventreports.
    *
    * @return {Promise}
    */
 
   fetchAll: (params) => {
     // Convert `params` object to filters compatible with Bookshelf.
-    const filters = strapi.utils.models.convertParams('journaldata', params);
+    const filters = strapi.utils.models.convertParams('eventreport', params);
     // Select field to populate.
-    const populate = Journaldata.associations
+    const populate = Eventreport.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias);
 
-    return Journaldata.query(function(qb) {
+    return Eventreport.query(function(qb) {
       _.forEach(filters.where, (where, key) => {
         if (_.isArray(where.value) && where.symbol !== 'IN') {
           for (const value in where.value) {
@@ -51,33 +51,33 @@ module.exports = {
   },
 
   /**
-   * Promise to fetch a/an journaldata.
+   * Promise to fetch a/an eventreport.
    *
    * @return {Promise}
    */
 
   fetch: (params) => {
     // Select field to populate.
-    const populate = Journaldata.associations
+    const populate = Eventreport.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias);
 
-    return Journaldata.forge(_.pick(params, 'id')).fetch({
+    return Eventreport.forge(_.pick(params, 'id')).fetch({
       withRelated: populate
     });
   },
 
   /**
-   * Promise to count a/an journaldata.
+   * Promise to count a/an eventreport.
    *
    * @return {Promise}
    */
 
   count: (params) => {
     // Convert `params` object to filters compatible with Bookshelf.
-    const filters = strapi.utils.models.convertParams('journaldata', params);
+    const filters = strapi.utils.models.convertParams('eventreport', params);
 
-    return Journaldata.query(function(qb) {
+    return Eventreport.query(function(qb) {
       _.forEach(filters.where, (where, key) => {
         if (_.isArray(where.value)) {
           for (const value in where.value) {
@@ -91,50 +91,50 @@ module.exports = {
   },
 
   /**
-   * Promise to add a/an journaldata.
+   * Promise to add a/an eventreport.
    *
    * @return {Promise}
    */
 
   add: async (values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Journaldata.associations.map(ast => ast.alias));
-    const data = _.omit(values, Journaldata.associations.map(ast => ast.alias));
+    const relations = _.pick(values, Eventreport.associations.map(ast => ast.alias));
+    const data = _.omit(values, Eventreport.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = await Journaldata.forge(data).save();
+    const entry = await Eventreport.forge(data).save();
 
     // Create relational data and return the entry.
-    return Journaldata.updateRelations({ id: entry.id , values: relations });
+    return Eventreport.updateRelations({ id: entry.id , values: relations });
   },
 
   /**
-   * Promise to edit a/an journaldata.
+   * Promise to edit a/an eventreport.
    *
    * @return {Promise}
    */
 
   edit: async (params, values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Journaldata.associations.map(ast => ast.alias));
-    const data = _.omit(values, Journaldata.associations.map(ast => ast.alias));
+    const relations = _.pick(values, Eventreport.associations.map(ast => ast.alias));
+    const data = _.omit(values, Eventreport.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = Journaldata.forge(params).save(data);
+    const entry = Eventreport.forge(params).save(data);
 
     // Create relational data and return the entry.
-    return Journaldata.updateRelations(Object.assign(params, { values: relations }));
+    return Eventreport.updateRelations(Object.assign(params, { values: relations }));
   },
 
   /**
-   * Promise to remove a/an journaldata.
+   * Promise to remove a/an eventreport.
    *
    * @return {Promise}
    */
 
   remove: async (params) => {
     params.values = {};
-    Journaldata.associations.map(association => {
+    Eventreport.associations.map(association => {
       switch (association.nature) {
         case 'oneWay':
         case 'oneToOne':
@@ -151,45 +151,45 @@ module.exports = {
       }
     });
 
-    await Journaldata.updateRelations(params);
+    await Eventreport.updateRelations(params);
 
-    return Journaldata.forge(params).destroy();
+    return Eventreport.forge(params).destroy();
   },
 
   /**
-   * Promise to search a/an journaldata.
+   * Promise to search a/an eventreport.
    *
    * @return {Promise}
    */
 
   search: async (params) => {
     // Convert `params` object to filters compatible with Bookshelf.
-    const filters = strapi.utils.models.convertParams('journaldata', params);
+    const filters = strapi.utils.models.convertParams('eventreport', params);
     // Select field to populate.
-    const populate = Journaldata.associations
+    const populate = Eventreport.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias);
 
-    const associations = Journaldata.associations.map(x => x.alias);
-    const searchText = Object.keys(Journaldata._attributes)
-      .filter(attribute => attribute !== Journaldata.primaryKey && !associations.includes(attribute))
-      .filter(attribute => ['string', 'text'].includes(Journaldata._attributes[attribute].type));
+    const associations = Eventreport.associations.map(x => x.alias);
+    const searchText = Object.keys(Eventreport._attributes)
+      .filter(attribute => attribute !== Eventreport.primaryKey && !associations.includes(attribute))
+      .filter(attribute => ['string', 'text'].includes(Eventreport._attributes[attribute].type));
 
-    const searchNoText = Object.keys(Journaldata._attributes)
-      .filter(attribute => attribute !== Journaldata.primaryKey && !associations.includes(attribute))
-      .filter(attribute => !['string', 'text', 'boolean', 'integer', 'decimal', 'float'].includes(Journaldata._attributes[attribute].type));
+    const searchNoText = Object.keys(Eventreport._attributes)
+      .filter(attribute => attribute !== Eventreport.primaryKey && !associations.includes(attribute))
+      .filter(attribute => !['string', 'text', 'boolean', 'integer', 'decimal', 'float'].includes(Eventreport._attributes[attribute].type));
 
-    const searchInt = Object.keys(Journaldata._attributes)
-      .filter(attribute => attribute !== Journaldata.primaryKey && !associations.includes(attribute))
-      .filter(attribute => ['integer', 'decimal', 'float'].includes(Journaldata._attributes[attribute].type));
+    const searchInt = Object.keys(Eventreport._attributes)
+      .filter(attribute => attribute !== Eventreport.primaryKey && !associations.includes(attribute))
+      .filter(attribute => ['integer', 'decimal', 'float'].includes(Eventreport._attributes[attribute].type));
 
-    const searchBool = Object.keys(Journaldata._attributes)
-      .filter(attribute => attribute !== Journaldata.primaryKey && !associations.includes(attribute))
-      .filter(attribute => ['boolean'].includes(Journaldata._attributes[attribute].type));
+    const searchBool = Object.keys(Eventreport._attributes)
+      .filter(attribute => attribute !== Eventreport.primaryKey && !associations.includes(attribute))
+      .filter(attribute => ['boolean'].includes(Eventreport._attributes[attribute].type));
 
     const query = (params._q || '').replace(/[^a-zA-Z0-9.-\s]+/g, '');
 
-    return Journaldata.query(qb => {
+    return Eventreport.query(qb => {
       // Search in columns which are not text value.
       searchNoText.forEach(attribute => {
         qb.orWhereRaw(`LOWER(${attribute}) LIKE '%${_.toLower(query)}%'`);
@@ -208,7 +208,7 @@ module.exports = {
       }
 
       // Search in columns with text using index.
-      switch (Journaldata.client) {
+      switch (Eventreport.client) {
         case 'pg': {
           const searchQuery = searchText.map(attribute =>
             _.toLower(attribute) === attribute

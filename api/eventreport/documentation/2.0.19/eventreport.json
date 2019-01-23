@@ -1,18 +1,18 @@
 {
   "paths": {
-    "/journaldata": {
+    "/eventreports": {
       "get": {
         "deprecated": false,
-        "description": "Find all the journaldata's records",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Retrieve journaldata document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Journaldata"
+                    "$ref": "#/components/schemas/Eventreport"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Journaldata"
+          "Eventreport"
         ],
         "parameters": [
           {
@@ -168,14 +168,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new journaldata record",
+        "description": "Create a new record",
         "responses": {
           "200": {
-            "description": "Retrieve journaldata document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Journaldata"
+                  "$ref": "#/components/schemas/Eventreport"
                 }
               }
             }
@@ -213,7 +213,7 @@
         },
         "summary": "",
         "tags": [
-          "Journaldata"
+          "Eventreport"
         ],
         "requestBody": {
           "description": "",
@@ -221,20 +221,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewJournaldata"
+                "$ref": "#/components/schemas/NewEventreport"
               }
             }
           }
         }
       }
     },
-    "/journaldata/count": {
+    "/eventreports/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the numver of journaldata documents",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Retrieve journaldata document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
@@ -280,22 +280,22 @@
         },
         "summary": "",
         "tags": [
-          "Journaldata"
+          "Eventreport"
         ],
         "parameters": []
       }
     },
-    "/journaldata/{id}": {
+    "/eventreports/{id}": {
       "get": {
         "deprecated": false,
-        "description": "Find one journaldata record",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Retrieve journaldata document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Journaldata"
+                  "$ref": "#/components/schemas/Eventreport"
                 }
               }
             }
@@ -333,7 +333,7 @@
         },
         "summary": "",
         "tags": [
-          "Journaldata"
+          "Eventreport"
         ],
         "parameters": [
           {
@@ -350,14 +350,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a single journaldata record",
+        "description": "Update a record",
         "responses": {
           "200": {
-            "description": "Retrieve journaldata document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Journaldata"
+                  "$ref": "#/components/schemas/Eventreport"
                 }
               }
             }
@@ -395,7 +395,7 @@
         },
         "summary": "",
         "tags": [
-          "Journaldata"
+          "Eventreport"
         ],
         "requestBody": {
           "description": "",
@@ -403,7 +403,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewJournaldata"
+                "$ref": "#/components/schemas/NewEventreport"
               }
             }
           }
@@ -423,10 +423,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a single journaldata record",
+        "description": "Delete a record",
         "responses": {
           "200": {
-            "description": "deletes a single journaldata based on the ID supplied",
+            "description": "deletes a single record based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -469,7 +469,7 @@
         },
         "summary": "",
         "tags": [
-          "Journaldata"
+          "Eventreport"
         ],
         "parameters": [
           {
@@ -488,10 +488,11 @@
   },
   "components": {
     "schemas": {
-      "Journaldata": {
+      "Eventreport": {
         "required": [
           "id",
-          "jsonData"
+          "clientVersion",
+          "rawJson"
         ],
         "properties": {
           "id": {
@@ -500,6 +501,9 @@
           "eventName": {
             "type": "string"
           },
+          "cmdrName": {
+            "type": "string"
+          },
           "systemName": {
             "type": "string"
           },
@@ -507,9 +511,6 @@
             "type": "string"
           },
           "stationName": {
-            "type": "string"
-          },
-          "cmdrName": {
             "type": "string"
           },
           "latitude": {
@@ -521,19 +522,26 @@
           "isBeta": {
             "type": "boolean"
           },
-          "jsonData": {
+          "clientVersion": {
+            "type": "string"
+          },
+          "rawJson": {
             "type": "json"
           }
         }
       },
-      "NewJournaldata": {
+      "NewEventreport": {
         "required": [
-          "jsonData"
+          "clientVersion",
+          "rawJson"
         ],
         "properties": {
           "eventName": {
             "type": "string"
           },
+          "cmdrName": {
+            "type": "string"
+          },
           "systemName": {
             "type": "string"
           },
@@ -541,9 +549,6 @@
             "type": "string"
           },
           "stationName": {
-            "type": "string"
-          },
-          "cmdrName": {
             "type": "string"
           },
           "latitude": {
@@ -555,7 +560,10 @@
           "isBeta": {
             "type": "boolean"
           },
-          "jsonData": {
+          "clientVersion": {
+            "type": "string"
+          },
+          "rawJson": {
             "type": "json"
           }
         }
@@ -564,7 +572,7 @@
   },
   "tags": [
     {
-      "name": "Journaldata"
+      "name": "Eventreport"
     }
   ]
 }

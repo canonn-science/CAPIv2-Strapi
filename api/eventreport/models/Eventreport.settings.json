@@ -1,9 +1,9 @@
 {
   "connection": "default",
-  "collectionName": "journaldata",
+  "collectionName": "eventreports",
   "info": {
-    "name": "journaldata",
-    "description": "Raw journal dumps"
+    "name": "eventreport",
+    "description": "Non-Codex journal logs. Staging model for tracking changes in the Journal"
   },
   "options": {
     "increments": true,
@@ -14,6 +14,9 @@
     "eventName": {
       "type": "string"
     },
+    "cmdrName": {
+      "type": "string"
+    },
     "systemName": {
       "type": "string"
     },
@@ -21,9 +24,6 @@
       "type": "string"
     },
     "stationName": {
-      "type": "string"
-    },
-    "cmdrName": {
       "type": "string"
     },
     "latitude": {
@@ -39,7 +39,7 @@
       "required": true,
       "type": "string"
     },
-    "jsonData": {
+    "rawJson": {
       "type": "json",
       "required": true
     }

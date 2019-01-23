@@ -1,8 +1,8 @@
 {
   "paths": {
-    "/journaldata": {
+    "/eventreports": {
       "get": {
-        "description": "Get all debug journal dump entries",
+        "description": "Get all Journal Event report entries",
         "summary": "",
         "tags": [
           "Canonn Use"
@@ -10,7 +10,7 @@
         "security": []
       },
       "post": {
-        "description": "Create a new debug journal dump entry",
+        "description": "Create a new Journal Event report entry",
         "summary": "",
         "tags": [
           "Canonn Use"
@@ -18,9 +18,9 @@
         "security": []
       }
     },
-    "/journaldata/count": {
+    "/eventreports/count": {
       "get": {
-        "description": "Get a count of all debug journal dump entries",
+        "description": "Get a count of all Journal Event report entries",
         "summary": "",
         "tags": [
           "Canonn Use"
@@ -28,9 +28,9 @@
         "security": []
       }
     },
-    "/journaldata/{id}": {
+    "/eventreports/{id}": {
       "get": {
-        "description": "Get a debug journal dump by id",
+        "description": "Get a Journal Event report by id",
         "summary": "",
         "tags": [
           "Canonn Use"
@@ -38,7 +38,7 @@
         "security": []
       },
       "put": {
-        "description": "Update a debug journal dump by id",
+        "description": "Update a Journal Event report by id",
         "summary": "",
         "tags": [
           "Canonn Use"
@@ -46,13 +46,13 @@
         "security": []
       },
       "delete": {
-        "description": "Delete a debug journal dump by id",
+        "description": "Delete a Journal Event report by id",
         "summary": "",
         "tags": [
           "Canonn Use"
         ],
         "security": [
-          "adminOnlyDelete"
+          "updateLogWrite"
         ]
       }
     }

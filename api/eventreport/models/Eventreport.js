@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Lifecycle callbacks for the `Journaldata` model.
+ * Lifecycle callbacks for the `Eventreport` model.
  */
 
 module.exports = {
