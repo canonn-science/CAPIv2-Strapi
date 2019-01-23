@@ -87,10 +87,6 @@
       "default": "",
       "type": "integer"
     },
-    "rawJson": {
-      "default": "",
-      "type": "json"
-    },
     "isBeta": {
       "default": false,
       "type": "boolean"
@@ -98,6 +94,10 @@
     "clientVersion": {
       "required": true,
       "type": "string"
+    },
+    "rawJson": {
+      "default": "",
+      "type": "json"
     }
   }
 }
