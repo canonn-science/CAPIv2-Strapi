@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/bmtypes",
+      "handler": "Bmtype.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/bmtypes/count",
+      "handler": "Bmtype.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/bmtypes/:id",
+      "handler": "Bmtype.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/bmtypes",
+      "handler": "Bmtype.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/bmtypes/:id",
+      "handler": "Bmtype.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/bmtypes/:id",
+      "handler": "Bmtype.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
