@@ -1,0 +1,70 @@
+{
+  "paths": {
+    "/btsites": {
+      "get": {
+        "description": "Get all BT Site entries",
+        "summary": "",
+        "tags": [
+          "Brain Trees"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new BT Site entry",
+        "summary": "",
+        "tags": [
+          "Brain Trees"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      }
+    },
+    "/btsites/count": {
+      "get": {
+        "description": "Get a count of all BT Site entries",
+        "summary": "",
+        "tags": [
+          "Brain Trees"
+        ],
+        "security": []
+      }
+    },
+    "/btsites/{id}": {
+      "get": {
+        "description": "Get a BT Site by id",
+        "summary": "",
+        "tags": [
+          "Brain Trees"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a BT Site by id",
+        "summary": "",
+        "tags": [
+          "Brain Trees"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a BT Site by id",
+        "summary": "",
+        "tags": [
+          "Brain Trees"
+        ],
+        "security": [
+          "siteDelete"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Brain Trees",
+      "description": "Code Name - BT"
+    }
+  ]
+}

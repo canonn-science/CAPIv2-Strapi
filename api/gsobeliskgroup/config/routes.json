@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/gsobeliskgroups/:id/relationships/:relation",
-      "handler": "Gsobeliskgroup.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/gsobeliskgroups/:id/relationships/:relation",
-      "handler": "Gsobeliskgroup.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/gsobeliskgroups/:id/relationships/:relation",
-      "handler": "Gsobeliskgroup.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

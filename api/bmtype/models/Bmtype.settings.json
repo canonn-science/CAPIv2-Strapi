@@ -1,0 +1,30 @@
+{
+  "connection": "default",
+  "collectionName": "bmtypes",
+  "info": {
+    "name": "bmtype",
+    "description": "Type of Bark Mound"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": false,
+    "comment": ""
+  },
+  "attributes": {
+    "type": {
+      "default": "",
+      "unique": true,
+      "type": "string",
+      "required": true
+    },
+    "journalName": {
+      "default": "",
+      "unique": true,
+      "type": "string"
+    },
+    "journalID": {
+      "default": "",
+      "type": "integer"
+    }
+  }
+}

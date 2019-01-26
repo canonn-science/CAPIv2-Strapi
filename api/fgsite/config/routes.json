@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/fgsites/:id/relationships/:relation",
-      "handler": "Fgsite.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/fgsites/:id/relationships/:relation",
-      "handler": "Fgsite.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/fgsites/:id/relationships/:relation",
-      "handler": "Fgsite.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

@@ -3,19 +3,15 @@ type Apiupdate {
   id: ID!
   updateTime: DateTime
   forced: Boolean
-  systemsUpdated: JSON
-  bodiesUpdated: JSON
-  updateLog: JSON
   notes: String
+  updateLog: JSON
 }
 
 input ApiupdateInput {
   updateTime: DateTime
   forced: Boolean
-  systemsUpdated: JSON
-  bodiesUpdated: JSON
-  updateLog: JSON
   notes: String
+  updateLog: JSON
 }
 
 """Reporting for Bark Mounds"""
@@ -26,17 +22,18 @@ type Bmreport {
   userType: ENUM_BMREPORT_USERTYPE!
   reportType: ENUM_BMREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: Float
+  systemAddress: String
+  regionID: Int
   coordX: Float
   coordY: Float
   coordZ: Float
   bodyName: String!
   latitude: Float!
   longitude: Float!
-  count: Int
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_BMREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -49,17 +46,18 @@ input BmreportInput {
   userType: ENUM_BMREPORT_USERTYPE!
   reportType: ENUM_BMREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: Float
+  systemAddress: String
+  regionID: Int
   coordX: Float
   coordY: Float
   coordZ: Float
   bodyName: String!
   latitude: Float!
   longitude: Float!
-  count: Int
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   screenshot: [ID]
   reportStatus: ENUM_BMREPORT_REPORTSTATUS!
   reportComment: String
@@ -79,7 +77,7 @@ type Bmsite {
   extoolID: Int
   latitude: Float!
   longitude: Float!
-  count: Int
+  type: Bmtype
   verified: Boolean
   visible: Boolean
   discoveredBy: Cmdr
@@ -92,10 +90,24 @@ input BmsiteInput {
   extoolID: Int
   latitude: Float!
   longitude: Float!
-  count: Int
+  type: ID
   verified: Boolean
   visible: Boolean
   discoveredBy: ID
+}
+
+"""Type of Bark Mound"""
+type Bmtype {
+  id: ID!
+  type: String!
+  journalName: String
+  journalID: Int
+}
+
+input BmtypeInput {
+  type: String!
+  journalName: String
+  journalID: Int
 }
 
 """Bodies stored in the Canonn database"""
@@ -105,8 +117,8 @@ type Body {
   updatedAt: DateTime!
   system: System
   bodyName: String!
-  id64: Float
-  edsmID: Float
+  id64: String
+  edsmID: Int
   bodyID: Int
   type: String
   subType: String
@@ -146,8 +158,8 @@ type Body {
 input BodyInput {
   system: ID
   bodyName: String!
-  id64: Float
-  edsmID: Float
+  id64: String
+  edsmID: Int
   bodyID: Int
   type: String
   subType: String
@@ -192,18 +204,19 @@ type Btreport {
   userType: ENUM_BTREPORT_USERTYPE!
   reportType: ENUM_BTREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: Float
+  systemAddress: String
+  regionID: Int
   coordX: Float
   coordY: Float
   coordZ: Float
   bodyName: String!
   latitude: Float!
   longitude: Float!
-  count: Int
   type: String
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_BTREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -216,18 +229,19 @@ input BtreportInput {
   userType: ENUM_BTREPORT_USERTYPE!
   reportType: ENUM_BTREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: Float
+  systemAddress: String
+  regionID: Int
   coordX: Float
   coordY: Float
   coordZ: Float
   bodyName: String!
   latitude: Float!
   longitude: Float!
-  count: Int
   type: String
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   screenshot: [ID]
   reportStatus: ENUM_BTREPORT_REPORTSTATUS!
   reportComment: String
@@ -247,7 +261,6 @@ type Btsite {
   extoolID: Int
   latitude: Float!
   longitude: Float!
-  count: Int
   type: Bttype
   verified: Boolean
   visible: Boolean
@@ -261,7 +274,6 @@ input BtsiteInput {
   extoolID: Int
   latitude: Float!
   longitude: Float!
-  count: Int
   type: ID
   verified: Boolean
   visible: Boolean
@@ -273,11 +285,13 @@ type Bttype {
   id: ID!
   type: String!
   journalName: String
+  journalID: Int
 }
 
 input BttypeInput {
   type: String!
   journalName: String
+  journalID: Int
 }
 
 """CMDRs who have discovered sites"""
@@ -330,6 +344,62 @@ input CmdrkillInput {
   totalKills: Int
 }
 
+"""
+Codex logs enhanced with coordinates. Staging model for tracking changes in the Journal
+"""
+type Codexreport {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  cmdrName: String
+  systemName: String
+  bodyName: String
+  coordX: Float
+  coordY: Float
+  coordZ: Float
+  latitude: Float
+  longitude: Float
+  entryId: Int
+  codexName: String
+  codexNameLocalised: String
+  subCategory: String
+  subCategoryLocalised: String
+  category: String
+  categoryLocalised: String
+  regionName: String
+  regionLocalised: String
+  systemAddress: String
+  voucherAmount: Int
+  isBeta: Boolean
+  clientVersion: String!
+  rawJson: JSON
+}
+
+input CodexreportInput {
+  cmdrName: String
+  systemName: String
+  bodyName: String
+  coordX: Float
+  coordY: Float
+  coordZ: Float
+  latitude: Float
+  longitude: Float
+  entryId: Int
+  codexName: String
+  codexNameLocalised: String
+  subCategory: String
+  subCategoryLocalised: String
+  category: String
+  categoryLocalised: String
+  regionName: String
+  regionLocalised: String
+  systemAddress: String
+  voucherAmount: Int
+  isBeta: Boolean
+  clientVersion: String!
+  rawJson: JSON
+}
+
 input createApiupdateInput {
   data: ApiupdateInput
 }
@@ -352,6 +422,14 @@ input createBmsiteInput {
 
 type createBmsitePayload {
   bmsite: Bmsite
+}
+
+input createBmtypeInput {
+  data: BmtypeInput
+}
+
+type createBmtypePayload {
+  bmtype: Bmtype
 }
 
 input createBodyInput {
@@ -402,6 +480,14 @@ type createCmdrPayload {
   cmdr: Cmdr
 }
 
+input createCodexreportInput {
+  data: CodexreportInput
+}
+
+type createCodexreportPayload {
+  codexreport: Codexreport
+}
+
 input createCsreportInput {
   data: CsreportInput
 }
@@ -416,6 +502,62 @@ input createCssiteInput {
 
 type createCssitePayload {
   cssite: Cssite
+}
+
+input createCstypeInput {
+  data: CstypeInput
+}
+
+type createCstypePayload {
+  cstype: Cstype
+}
+
+input createEventreportInput {
+  data: EventreportInput
+}
+
+type createEventreportPayload {
+  eventreport: Eventreport
+}
+
+input createExcludeclientInput {
+  data: ExcludeclientInput
+}
+
+type createExcludeclientPayload {
+  excludeclient: Excludeclient
+}
+
+input createExcludecmdrInput {
+  data: ExcludecmdrInput
+}
+
+type createExcludecmdrPayload {
+  excludecmdr: Excludecmdr
+}
+
+input createExcludecodexInput {
+  data: ExcludecodexInput
+}
+
+type createExcludecodexPayload {
+  excludecodex: Excludecodex
+}
+
+input createExcludeeventInput {
+  data: ExcludeeventInput
+}
+
+type createExcludeeventPayload {
+  excludeevent: Excludeevent
+}
+
+input createExcludeussInput {
+  data: ExcludeussInput
+}
+
+type createExcludeussPayload {
+  excludeuss: Excludeuss
 }
 
 input createFgreportInput {
@@ -690,6 +832,30 @@ type createGstypePayload {
   gstype: Gstype
 }
 
+input createGvreportInput {
+  data: GvreportInput
+}
+
+type createGvreportPayload {
+  gvreport: Gvreport
+}
+
+input createGvsiteInput {
+  data: GvsiteInput
+}
+
+type createGvsitePayload {
+  gvsite: Gvsite
+}
+
+input createGvtypeInput {
+  data: GvtypeInput
+}
+
+type createGvtypePayload {
+  gvtype: Gvtype
+}
+
 input createGyreportInput {
   data: GyreportInput
 }
@@ -730,14 +896,6 @@ type createHdsitePayload {
   hdsite: Hdsite
 }
 
-input createJournaldataInput {
-  data: JournaldataInput
-}
-
-type createJournaldataPayload {
-  journaldatum: Journaldata
-}
-
 input createKillreportInput {
   data: KillreportInput
 }
@@ -762,36 +920,12 @@ type createLssitePayload {
   lssite: Lssite
 }
 
-input createMsreportInput {
-  data: MsreportInput
+input createLstypeInput {
+  data: LstypeInput
 }
 
-type createMsreportPayload {
-  msreport: Msreport
-}
-
-input createMsscheduleInput {
-  data: MsscheduleInput
-}
-
-type createMsschedulePayload {
-  msschedule: Msschedule
-}
-
-input createMssiteInput {
-  data: MssiteInput
-}
-
-type createMssitePayload {
-  mssite: Mssite
-}
-
-input createMstypeInput {
-  data: MstypeInput
-}
-
-type createMstypePayload {
-  mstype: Mstype
+type createLstypePayload {
+  lstype: Lstype
 }
 
 input createNhssreportInput {
@@ -808,6 +942,22 @@ input createNhsssiteInput {
 
 type createNhsssitePayload {
   nhsssite: Nhsssite
+}
+
+input createRegionInput {
+  data: RegionInput
+}
+
+type createRegionPayload {
+  region: Region
+}
+
+input createReporttypeInput {
+  data: ReporttypeInput
+}
+
+type createReporttypePayload {
+  reporttype: Reporttype
 }
 
 input createRingInput {
@@ -914,6 +1064,14 @@ type createTwsitePayload {
   twsite: Twsite
 }
 
+input createTwtypeInput {
+  data: TwtypeInput
+}
+
+type createTwtypePayload {
+  twtype: Twtype
+}
+
 input createUserInput {
   data: UserInput
 }
@@ -930,17 +1088,18 @@ type Csreport {
   userType: ENUM_CSREPORT_USERTYPE!
   reportType: ENUM_CSREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: Float
+  systemAddress: String
+  regionID: Int
   coordX: Float
   coordY: Float
   coordZ: Float
   bodyName: String!
   latitude: Float!
   longitude: Float!
-  count: Int
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_CSREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -953,17 +1112,18 @@ input CsreportInput {
   userType: ENUM_CSREPORT_USERTYPE!
   reportType: ENUM_CSREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: Float
+  systemAddress: String
+  regionID: Int
   coordX: Float
   coordY: Float
   coordZ: Float
   bodyName: String!
   latitude: Float!
   longitude: Float!
-  count: Int
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   screenshot: [ID]
   reportStatus: ENUM_CSREPORT_REPORTSTATUS!
   reportComment: String
@@ -983,7 +1143,7 @@ type Cssite {
   extoolID: Int
   latitude: Float!
   longitude: Float!
-  count: Int
+  type: Cstype
   verified: Boolean!
   visible: Boolean
   discoveredBy: Cmdr
@@ -996,10 +1156,24 @@ input CssiteInput {
   extoolID: Int
   latitude: Float!
   longitude: Float!
-  count: Int
+  type: ID
   verified: Boolean!
   visible: Boolean
   discoveredBy: ID
+}
+
+"""Type of Crystalline Shard"""
+type Cstype {
+  id: ID!
+  type: String!
+  journalName: String
+  journalID: Int
+}
+
+input CstypeInput {
+  type: String!
+  journalName: String
+  journalID: Int
 }
 
 """
@@ -1029,6 +1203,14 @@ input deleteBmsiteInput {
 
 type deleteBmsitePayload {
   bmsite: Bmsite
+}
+
+input deleteBmtypeInput {
+  where: InputID
+}
+
+type deleteBmtypePayload {
+  bmtype: Bmtype
 }
 
 input deleteBodyInput {
@@ -1079,6 +1261,14 @@ type deleteCmdrPayload {
   cmdr: Cmdr
 }
 
+input deleteCodexreportInput {
+  where: InputID
+}
+
+type deleteCodexreportPayload {
+  codexreport: Codexreport
+}
+
 input deleteCsreportInput {
   where: InputID
 }
@@ -1093,6 +1283,62 @@ input deleteCssiteInput {
 
 type deleteCssitePayload {
   cssite: Cssite
+}
+
+input deleteCstypeInput {
+  where: InputID
+}
+
+type deleteCstypePayload {
+  cstype: Cstype
+}
+
+input deleteEventreportInput {
+  where: InputID
+}
+
+type deleteEventreportPayload {
+  eventreport: Eventreport
+}
+
+input deleteExcludeclientInput {
+  where: InputID
+}
+
+type deleteExcludeclientPayload {
+  excludeclient: Excludeclient
+}
+
+input deleteExcludecmdrInput {
+  where: InputID
+}
+
+type deleteExcludecmdrPayload {
+  excludecmdr: Excludecmdr
+}
+
+input deleteExcludecodexInput {
+  where: InputID
+}
+
+type deleteExcludecodexPayload {
+  excludecodex: Excludecodex
+}
+
+input deleteExcludeeventInput {
+  where: InputID
+}
+
+type deleteExcludeeventPayload {
+  excludeevent: Excludeevent
+}
+
+input deleteExcludeussInput {
+  where: InputID
+}
+
+type deleteExcludeussPayload {
+  excludeuss: Excludeuss
 }
 
 input deleteFgreportInput {
@@ -1367,6 +1613,30 @@ type deleteGstypePayload {
   gstype: Gstype
 }
 
+input deleteGvreportInput {
+  where: InputID
+}
+
+type deleteGvreportPayload {
+  gvreport: Gvreport
+}
+
+input deleteGvsiteInput {
+  where: InputID
+}
+
+type deleteGvsitePayload {
+  gvsite: Gvsite
+}
+
+input deleteGvtypeInput {
+  where: InputID
+}
+
+type deleteGvtypePayload {
+  gvtype: Gvtype
+}
+
 input deleteGyreportInput {
   where: InputID
 }
@@ -1407,14 +1677,6 @@ type deleteHdsitePayload {
   hdsite: Hdsite
 }
 
-input deleteJournaldataInput {
-  where: InputID
-}
-
-type deleteJournaldataPayload {
-  journaldatum: Journaldata
-}
-
 input deleteKillreportInput {
   where: InputID
 }
@@ -1439,36 +1701,12 @@ type deleteLssitePayload {
   lssite: Lssite
 }
 
-input deleteMsreportInput {
+input deleteLstypeInput {
   where: InputID
 }
 
-type deleteMsreportPayload {
-  msreport: Msreport
-}
-
-input deleteMsscheduleInput {
-  where: InputID
-}
-
-type deleteMsschedulePayload {
-  msschedule: Msschedule
-}
-
-input deleteMssiteInput {
-  where: InputID
-}
-
-type deleteMssitePayload {
-  mssite: Mssite
-}
-
-input deleteMstypeInput {
-  where: InputID
-}
-
-type deleteMstypePayload {
-  mstype: Mstype
+type deleteLstypePayload {
+  lstype: Lstype
 }
 
 input deleteNhssreportInput {
@@ -1485,6 +1723,22 @@ input deleteNhsssiteInput {
 
 type deleteNhsssitePayload {
   nhsssite: Nhsssite
+}
+
+input deleteRegionInput {
+  where: InputID
+}
+
+type deleteRegionPayload {
+  region: Region
+}
+
+input deleteReporttypeInput {
+  where: InputID
+}
+
+type deleteReporttypePayload {
+  reporttype: Reporttype
 }
 
 input deleteRingInput {
@@ -1589,6 +1843,14 @@ input deleteTwsiteInput {
 
 type deleteTwsitePayload {
   twsite: Twsite
+}
+
+input deleteTwtypeInput {
+  where: InputID
+}
+
+type deleteTwtypePayload {
+  twtype: Twtype
 }
 
 input deleteUserInput {
@@ -1795,6 +2057,26 @@ enum ENUM_GSREPORT_USERTYPE {
   pc
 }
 
+enum ENUM_GVREPORT_REPORTSTATUS {
+  pending
+  updated
+  verified
+  accepted
+  declined
+  issue
+}
+
+enum ENUM_GVREPORT_REPORTTYPE {
+  new
+  update
+  error
+}
+
+enum ENUM_GVREPORT_USERTYPE {
+  console
+  pc
+}
+
 enum ENUM_GYREPORT_REPORTSTATUS {
   pending
   updated
@@ -1844,26 +2126,6 @@ enum ENUM_LSREPORT_USERTYPE {
   pc
 }
 
-enum ENUM_MSREPORT_REPORTSTATUS {
-  pending
-  updated
-  verified
-  accepted
-  declined
-  issue
-}
-
-enum ENUM_MSREPORT_REPORTTYPE {
-  new
-  update
-  error
-}
-
-enum ENUM_MSREPORT_USERTYPE {
-  console
-  pc
-}
-
 enum ENUM_NHSSREPORT_REPORTSTATUS {
   pending
   updated
@@ -1871,6 +2133,11 @@ enum ENUM_NHSSREPORT_REPORTSTATUS {
   accepted
   declined
   issue
+}
+
+enum ENUM_REPORTTYPE_LOCATION {
+  body
+  orbital
 }
 
 enum ENUM_TBREPORT_CYCLE {
@@ -1957,6 +2224,108 @@ enum ENUM_TWREPORT_USERTYPE {
   pc
 }
 
+"""
+Non-Codex journal logs. Staging model for tracking changes in the Journal
+"""
+type Eventreport {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  eventName: String
+  cmdrName: String
+  systemName: String
+  bodyName: String
+  stationName: String
+  latitude: Float
+  longitude: Float
+  isBeta: Boolean
+  clientVersion: String!
+  rawJson: JSON!
+}
+
+input EventreportInput {
+  eventName: String
+  cmdrName: String
+  systemName: String
+  bodyName: String
+  stationName: String
+  latitude: Float
+  longitude: Float
+  isBeta: Boolean
+  clientVersion: String!
+  rawJson: JSON!
+}
+
+"""Client Version blacklist"""
+type Excludeclient {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  version: String
+  reason: String
+}
+
+input ExcludeclientInput {
+  version: String
+  reason: String
+}
+
+"""CMDR blacklist"""
+type Excludecmdr {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  cmdrName: String
+  reason: String
+}
+
+input ExcludecmdrInput {
+  cmdrName: String
+  reason: String
+}
+
+"""Codex Entry blacklist"""
+type Excludecodex {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  codexName: String
+  reason: String
+}
+
+input ExcludecodexInput {
+  codexName: String
+  reason: String
+}
+
+"""Journal Event blacklist"""
+type Excludeevent {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  eventName: String
+  reason: String
+}
+
+input ExcludeeventInput {
+  eventName: String
+  reason: String
+}
+
+"""USS Type blacklist"""
+type Excludeuss {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  ussType: String
+  reason: String
+}
+
+input ExcludeussInput {
+  ussType: String
+  reason: String
+}
+
 """Reporting for Fungal Gourds"""
 type Fgreport {
   id: ID!
@@ -1965,18 +2334,19 @@ type Fgreport {
   userType: ENUM_FGREPORT_USERTYPE!
   reportType: ENUM_FGREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: Float
+  systemAddress: String
+  regionID: Int
   coordX: Float
   coordY: Float
   coordZ: Float
   bodyName: String!
   latitude: Float!
   longitude: Float!
-  count: Int
   type: String
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_FGREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -1989,18 +2359,19 @@ input FgreportInput {
   userType: ENUM_FGREPORT_USERTYPE!
   reportType: ENUM_FGREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: Float
+  systemAddress: String
+  regionID: Int
   coordX: Float
   coordY: Float
   coordZ: Float
   bodyName: String!
   latitude: Float!
   longitude: Float!
-  count: Int
   type: String
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   screenshot: [ID]
   reportStatus: ENUM_FGREPORT_REPORTSTATUS!
   reportComment: String
@@ -2021,7 +2392,6 @@ type Fgsite {
   latitude: Float!
   longitude: Float!
   type: Fgtype
-  count: Int
   verified: Boolean
   visible: Boolean
   discoveredBy: Cmdr
@@ -2035,7 +2405,6 @@ input FgsiteInput {
   latitude: Float!
   longitude: Float!
   type: ID
-  count: Int
   verified: Boolean
   visible: Boolean
   discoveredBy: ID
@@ -2046,11 +2415,13 @@ type Fgtype {
   id: ID!
   type: String!
   journalName: String
+  journalID: Int
 }
 
 input FgtypeInput {
   type: String!
   journalName: String
+  journalID: Int
 }
 
 input FileInput {
@@ -2074,7 +2445,8 @@ type Fmreport {
   userType: ENUM_FMREPORT_USERTYPE!
   reportType: ENUM_FMREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: Float
+  systemAddress: String
+  regionID: Int
   coordX: Float
   coordY: Float
   coordZ: Float
@@ -2082,10 +2454,10 @@ type Fmreport {
   latitude: Float!
   longitude: Float!
   type: String
-  count: Int
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_FMREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -2098,7 +2470,8 @@ input FmreportInput {
   userType: ENUM_FMREPORT_USERTYPE!
   reportType: ENUM_FMREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: Float
+  systemAddress: String
+  regionID: Int
   coordX: Float
   coordY: Float
   coordZ: Float
@@ -2106,10 +2479,10 @@ input FmreportInput {
   latitude: Float!
   longitude: Float!
   type: String
-  count: Int
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   screenshot: [ID]
   reportStatus: ENUM_FMREPORT_REPORTSTATUS!
   reportComment: String
@@ -2129,7 +2502,6 @@ type Fmsite {
   extoolID: Int
   latitude: Float!
   longitude: Float!
-  count: Int
   type: Fmtype
   verified: Boolean
   visible: Boolean
@@ -2143,7 +2515,6 @@ input FmsiteInput {
   extoolID: Int
   latitude: Float!
   longitude: Float!
-  count: Int
   type: ID
   verified: Boolean
   visible: Boolean
@@ -2154,10 +2525,14 @@ input FmsiteInput {
 type Fmtype {
   id: ID!
   type: String!
+  journalName: String
+  journalID: Int
 }
 
 input FmtypeInput {
   type: String!
+  journalName: String
+  journalID: Int
 }
 
 """Message from a Guardian Beacon site"""
@@ -2188,7 +2563,8 @@ type Gbreport {
   userType: ENUM_GBREPORT_USERTYPE!
   reportType: ENUM_GBREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: Float
+  systemAddress: String
+  regionID: Int
   coordX: Float
   coordY: Float
   coordZ: Float
@@ -2200,6 +2576,7 @@ type Gbreport {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_GBREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -2212,7 +2589,8 @@ input GbreportInput {
   userType: ENUM_GBREPORT_USERTYPE!
   reportType: ENUM_GBREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: Float
+  systemAddress: String
+  regionID: Int
   coordX: Float
   coordY: Float
   coordZ: Float
@@ -2224,6 +2602,7 @@ input GbreportInput {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   screenshot: [ID]
   reportStatus: ENUM_GBREPORT_REPORTSTATUS!
   reportComment: String
@@ -2286,7 +2665,8 @@ type Genreport {
   userType: ENUM_GENREPORT_USERTYPE!
   reportType: ENUM_GENREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: Float
+  systemAddress: String
+  regionID: Int
   coordX: Float
   coordY: Float
   coordZ: Float
@@ -2297,6 +2677,7 @@ type Genreport {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_GENREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -2309,7 +2690,8 @@ input GenreportInput {
   userType: ENUM_GENREPORT_USERTYPE!
   reportType: ENUM_GENREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: Float
+  systemAddress: String
+  regionID: Int
   coordX: Float
   coordY: Float
   coordZ: Float
@@ -2320,6 +2702,7 @@ input GenreportInput {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   screenshot: [ID]
   reportStatus: ENUM_GENREPORT_REPORTSTATUS!
   reportComment: String
@@ -2483,7 +2866,8 @@ type Grreport {
   userType: ENUM_GRREPORT_USERTYPE!
   reportType: ENUM_GRREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: Float
+  systemAddress: String
+  regionID: Int
   coordX: Float
   coordY: Float
   coordZ: Float
@@ -2494,6 +2878,7 @@ type Grreport {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_GRREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -2507,7 +2892,8 @@ input GrreportInput {
   userType: ENUM_GRREPORT_USERTYPE!
   reportType: ENUM_GRREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: Float
+  systemAddress: String
+  regionID: Int
   coordX: Float
   coordY: Float
   coordZ: Float
@@ -2518,6 +2904,7 @@ input GrreportInput {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   screenshot: [ID]
   reportStatus: ENUM_GRREPORT_REPORTSTATUS!
   reportComment: String
@@ -2565,10 +2952,12 @@ input GrsiteInput {
 type Grtype {
   id: ID!
   type: String!
+  journalName: String
 }
 
 input GrtypeInput {
   type: String!
+  journalName: String
 }
 
 """Active groups of Obelisks at a Guardian Structure site"""
@@ -2702,7 +3091,8 @@ type Gsreport {
   userType: ENUM_GSREPORT_USERTYPE!
   reportType: ENUM_GSREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: Float
+  systemAddress: String
+  regionID: Int
   coordX: Float
   coordY: Float
   coordZ: Float
@@ -2714,6 +3104,7 @@ type Gsreport {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_GSREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -2727,7 +3118,8 @@ input GsreportInput {
   userType: ENUM_GSREPORT_USERTYPE!
   reportType: ENUM_GSREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: Float
+  systemAddress: String
+  regionID: Int
   coordX: Float
   coordY: Float
   coordZ: Float
@@ -2739,6 +3131,7 @@ input GsreportInput {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   screenshot: [ID]
   reportStatus: ENUM_GSREPORT_REPORTSTATUS!
   reportComment: String
@@ -2796,6 +3189,104 @@ input GstypeInput {
   journalName: String!
 }
 
+"""Reporting for Gas Vents"""
+type Gvreport {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  userType: ENUM_GVREPORT_USERTYPE!
+  reportType: ENUM_GVREPORT_REPORTTYPE!
+  systemName: String!
+  systemAddress: String
+  regionID: Int
+  coordX: Float
+  coordY: Float
+  coordZ: Float
+  bodyName: String!
+  latitude: Float!
+  longitude: Float!
+  type: String
+  cmdrName: String!
+  cmdrComment: String
+  isBeta: Boolean
+  clientVersion: String!
+  reportStatus: ENUM_GVREPORT_REPORTSTATUS!
+  reportComment: String
+  voteCount: Int
+  added: Boolean
+  site: Gvsite
+  screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+}
+
+input GvreportInput {
+  userType: ENUM_GVREPORT_USERTYPE!
+  reportType: ENUM_GVREPORT_REPORTTYPE!
+  systemName: String!
+  systemAddress: String
+  regionID: Int
+  coordX: Float
+  coordY: Float
+  coordZ: Float
+  bodyName: String!
+  latitude: Float!
+  longitude: Float!
+  type: String
+  cmdrName: String!
+  cmdrComment: String
+  isBeta: Boolean
+  clientVersion: String!
+  screenshot: [ID]
+  reportStatus: ENUM_GVREPORT_REPORTSTATUS!
+  reportComment: String
+  voteCount: Int
+  added: Boolean
+  site: ID
+}
+
+"""Gas Vent sites"""
+type Gvsite {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  system: System
+  body: Body
+  siteID: Int!
+  extoolID: Int
+  latitude: Float!
+  longitude: Float!
+  type: Gvtype
+  verified: Boolean
+  visible: Boolean
+  discoveredBy: Cmdr
+}
+
+input GvsiteInput {
+  system: ID
+  body: ID
+  siteID: Int!
+  extoolID: Int
+  latitude: Float!
+  longitude: Float!
+  type: ID
+  verified: Boolean
+  visible: Boolean
+  discoveredBy: ID
+}
+
+"""Type of a Gas Vent"""
+type Gvtype {
+  id: ID!
+  type: String!
+  journalName: String
+  journalID: Int
+}
+
+input GvtypeInput {
+  type: String!
+  journalName: String
+  journalID: Int
+}
+
 """Reporting for Geysers"""
 type Gyreport {
   id: ID!
@@ -2804,7 +3295,8 @@ type Gyreport {
   userType: ENUM_GYREPORT_USERTYPE!
   reportType: ENUM_GYREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: Float
+  systemAddress: String
+  regionID: Int
   coordX: Float
   coordY: Float
   coordZ: Float
@@ -2812,10 +3304,10 @@ type Gyreport {
   latitude: Float!
   longitude: Float!
   type: String
-  count: Int
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_GYREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -2828,7 +3320,8 @@ input GyreportInput {
   userType: ENUM_GYREPORT_USERTYPE!
   reportType: ENUM_GYREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: Float
+  systemAddress: String
+  regionID: Int
   coordX: Float
   coordY: Float
   coordZ: Float
@@ -2836,10 +3329,10 @@ input GyreportInput {
   latitude: Float!
   longitude: Float!
   type: String
-  count: Int
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   screenshot: [ID]
   reportStatus: ENUM_GYREPORT_REPORTSTATUS!
   reportComment: String
@@ -2859,7 +3352,6 @@ type Gysite {
   extoolID: Int
   latitude: Float!
   longitude: Float!
-  count: Int
   type: Gytype
   verified: Boolean
   visible: Boolean
@@ -2873,7 +3365,6 @@ input GysiteInput {
   extoolID: Int
   latitude: Float!
   longitude: Float!
-  count: Int
   type: ID
   verified: Boolean
   visible: Boolean
@@ -2884,10 +3375,14 @@ input GysiteInput {
 type Gytype {
   id: ID!
   type: String!
+  journalName: String
+  journalID: Int
 }
 
 input GytypeInput {
   type: String!
+  journalName: String
+  journalID: Int
 }
 
 """Journal events and user reports for the Unknown Signal Sources"""
@@ -2901,6 +3396,7 @@ type Hdreport {
   cmdrComment: String
   screenshot: UploadFile
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_HDREPORT_REPORTSTATUS!
   reportComment: String
   added: Boolean
@@ -2915,6 +3411,7 @@ input HdreportInput {
   cmdrComment: String
   screenshot: ID
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_HDREPORT_REPORTSTATUS!
   reportComment: String
   added: Boolean
@@ -2942,34 +3439,6 @@ input InputID {
   id: ID!
 }
 
-"""Raw journal dumps"""
-type Journaldata {
-  id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  eventName: String
-  systemName: String
-  bodyName: String
-  stationName: String
-  cmdrName: String
-  latitude: Float
-  longitude: Float
-  isBeta: Boolean
-  jsonData: JSON!
-}
-
-input JournaldataInput {
-  eventName: String
-  systemName: String
-  bodyName: String
-  stationName: String
-  cmdrName: String
-  latitude: Float
-  longitude: Float
-  isBeta: Boolean
-  jsonData: JSON!
-}
-
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
@@ -2985,7 +3454,8 @@ type Killreport {
   rewardingFaction: String
   victimFaction: String
   rawEvent: JSON
-  isbeta: Boolean
+  isBeta: Boolean
+  clientVersion: String!
   reportAccepted: Boolean
 }
 
@@ -2997,7 +3467,8 @@ input KillreportInput {
   rewardingFaction: String
   victimFaction: String
   rawEvent: JSON
-  isbeta: Boolean
+  isBeta: Boolean
+  clientVersion: String!
   reportAccepted: Boolean
 }
 
@@ -3009,17 +3480,19 @@ type Lsreport {
   userType: ENUM_LSREPORT_USERTYPE!
   reportType: ENUM_LSREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: Float
+  systemAddress: String
+  regionID: Int
   coordX: Float
   coordY: Float
   coordZ: Float
   bodyName: String!
   latitude: Float!
   longitude: Float!
-  count: Int
+  type: String
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_LSREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -3032,17 +3505,19 @@ input LsreportInput {
   userType: ENUM_LSREPORT_USERTYPE!
   reportType: ENUM_LSREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: Float
+  systemAddress: String
+  regionID: Int
   coordX: Float
   coordY: Float
   coordZ: Float
   bodyName: String!
   latitude: Float!
   longitude: Float!
-  count: Int
+  type: String
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   screenshot: [ID]
   reportStatus: ENUM_LSREPORT_REPORTSTATUS!
   reportComment: String
@@ -3062,7 +3537,7 @@ type Lssite {
   extoolID: Int
   latitude: Float!
   longitude: Float!
-  count: Int
+  type: Lstype
   verified: Boolean
   visible: Boolean
   discoveredBy: Cmdr
@@ -3075,131 +3550,27 @@ input LssiteInput {
   extoolID: Int
   latitude: Float!
   longitude: Float!
-  count: Int
+  type: ID
   verified: Boolean
   visible: Boolean
   discoveredBy: ID
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Apiupdate | createApiupdatePayload | updateApiupdatePayload | deleteApiupdatePayload | Bmreport | createBmreportPayload | updateBmreportPayload | deleteBmreportPayload | Bmsite | createBmsitePayload | updateBmsitePayload | deleteBmsitePayload | Body | createBodyPayload | updateBodyPayload | deleteBodyPayload | Btreport | createBtreportPayload | updateBtreportPayload | deleteBtreportPayload | Btsite | createBtsitePayload | updateBtsitePayload | deleteBtsitePayload | Bttype | createBttypePayload | updateBttypePayload | deleteBttypePayload | Cmdr | createCmdrPayload | updateCmdrPayload | deleteCmdrPayload | Cmdrkill | createCmdrkillPayload | updateCmdrkillPayload | deleteCmdrkillPayload | Csreport | createCsreportPayload | updateCsreportPayload | deleteCsreportPayload | Cssite | createCssitePayload | updateCssitePayload | deleteCssitePayload | Fgreport | createFgreportPayload | updateFgreportPayload | deleteFgreportPayload | Fgsite | createFgsitePayload | updateFgsitePayload | deleteFgsitePayload | Fgtype | createFgtypePayload | updateFgtypePayload | deleteFgtypePayload | Fmreport | createFmreportPayload | updateFmreportPayload | deleteFmreportPayload | Fmsite | createFmsitePayload | updateFmsitePayload | deleteFmsitePayload | Fmtype | createFmtypePayload | updateFmtypePayload | deleteFmtypePayload | Gbmessage | createGbmessagePayload | updateGbmessagePayload | deleteGbmessagePayload | Gbreport | createGbreportPayload | updateGbreportPayload | deleteGbreportPayload | Gbsite | createGbsitePayload | updateGbsitePayload | deleteGbsitePayload | Genlog | createGenlogPayload | updateGenlogPayload | deleteGenlogPayload | Genreport | createGenreportPayload | updateGenreportPayload | deleteGenreportPayload | Gensite | createGensitePayload | updateGensitePayload | deleteGensitePayload | Gractivegroup | createGractivegroupPayload | updateGractivegroupPayload | deleteGractivegroupPayload | Gractiveobelisk | createGractiveobeliskPayload | updateGractiveobeliskPayload | deleteGractiveobeliskPayload | Grartifact | createGrartifactPayload | updateGrartifactPayload | deleteGrartifactPayload | Grcodexcategory | createGrcodexcategoryPayload | updateGrcodexcategoryPayload | deleteGrcodexcategoryPayload | Grcodexdata | createGrcodexdataPayload | updateGrcodexdataPayload | deleteGrcodexdataPayload | Grobelisk | createGrobeliskPayload | updateGrobeliskPayload | deleteGrobeliskPayload | Grobeliskgroup | createGrobeliskgroupPayload | updateGrobeliskgroupPayload | deleteGrobeliskgroupPayload | Grobeliskreport | createGrobeliskreportPayload | updateGrobeliskreportPayload | deleteGrobeliskreportPayload | Grreport | createGrreportPayload | updateGrreportPayload | deleteGrreportPayload | Grsite | createGrsitePayload | updateGrsitePayload | deleteGrsitePayload | Grtype | createGrtypePayload | updateGrtypePayload | deleteGrtypePayload | Gsactivegroup | createGsactivegroupPayload | updateGsactivegroupPayload | deleteGsactivegroupPayload | Gsactiveobelisk | createGsactiveobeliskPayload | updateGsactiveobeliskPayload | deleteGsactiveobeliskPayload | Gsartifact | createGsartifactPayload | updateGsartifactPayload | deleteGsartifactPayload | Gscodexcategory | createGscodexcategoryPayload | updateGscodexcategoryPayload | deleteGscodexcategoryPayload | Gscodexdata | createGscodexdataPayload | updateGscodexdataPayload | deleteGscodexdataPayload | Gsobelisk | createGsobeliskPayload | updateGsobeliskPayload | deleteGsobeliskPayload | Gsobeliskgroup | createGsobeliskgroupPayload | updateGsobeliskgroupPayload | deleteGsobeliskgroupPayload | Gsobeliskreport | createGsobeliskreportPayload | updateGsobeliskreportPayload | deleteGsobeliskreportPayload | Gsreport | createGsreportPayload | updateGsreportPayload | deleteGsreportPayload | Gssite | createGssitePayload | updateGssitePayload | deleteGssitePayload | Gstype | createGstypePayload | updateGstypePayload | deleteGstypePayload | Gyreport | createGyreportPayload | updateGyreportPayload | deleteGyreportPayload | Gysite | createGysitePayload | updateGysitePayload | deleteGysitePayload | Gytype | createGytypePayload | updateGytypePayload | deleteGytypePayload | Hdreport | createHdreportPayload | updateHdreportPayload | deleteHdreportPayload | Hdsite | createHdsitePayload | updateHdsitePayload | deleteHdsitePayload | Journaldata | createJournaldataPayload | updateJournaldataPayload | deleteJournaldataPayload | Killreport | createKillreportPayload | updateKillreportPayload | deleteKillreportPayload | Lsreport | createLsreportPayload | updateLsreportPayload | deleteLsreportPayload | Lssite | createLssitePayload | updateLssitePayload | deleteLssitePayload | Msreport | createMsreportPayload | updateMsreportPayload | deleteMsreportPayload | Msschedule | createMsschedulePayload | updateMsschedulePayload | deleteMsschedulePayload | Mssite | createMssitePayload | updateMssitePayload | deleteMssitePayload | Mstype | createMstypePayload | updateMstypePayload | deleteMstypePayload | Nhssreport | createNhssreportPayload | updateNhssreportPayload | deleteNhssreportPayload | Nhsssite | createNhsssitePayload | updateNhsssitePayload | deleteNhsssitePayload | Ring | createRingPayload | updateRingPayload | deleteRingPayload | System | createSystemPayload | updateSystemPayload | deleteSystemPayload | Tbcycle | createTbcyclePayload | updateTbcyclePayload | deleteTbcyclePayload | Tbreport | createTbreportPayload | updateTbreportPayload | deleteTbreportPayload | Tbsite | createTbsitePayload | updateTbsitePayload | deleteTbsitePayload | Tbtype | createTbtypePayload | updateTbtypePayload | deleteTbtypePayload | Tgencounterstat | createTgencounterstatPayload | updateTgencounterstatPayload | deleteTgencounterstatPayload | Tsreport | createTsreportPayload | updateTsreportPayload | deleteTsreportPayload | Tssite | createTssitePayload | updateTssitePayload | deleteTssitePayload | Tsstatus | createTsstatusPayload | updateTsstatusPayload | deleteTsstatusPayload | Twreport | createTwreportPayload | updateTwreportPayload | deleteTwreportPayload | Twsite | createTwsitePayload | updateTwsitePayload | deleteTwsitePayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
-
-"""Reporting for Megaships"""
-type Msreport {
-  id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  userType: ENUM_MSREPORT_USERTYPE!
-  reportType: ENUM_MSREPORT_REPORTTYPE!
-  systemName: String!
-  systemAddress: Float
-  coordX: Float
-  coordY: Float
-  coordZ: Float
-  orbitBody: String
-  shipName: String!
-  shipTag: String
-  type: String
-  flightOps: Boolean
-  flightSchedule: Boolean
-  dockable: Boolean
-  cmdrName: String!
-  cmdrComment: String
-  isBeta: Boolean
-  reportStatus: ENUM_MSREPORT_REPORTSTATUS!
-  reportComment: String
-  voteCount: Int
-  added: Boolean
-  site: Mssite
-  screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
-}
-
-input MsreportInput {
-  userType: ENUM_MSREPORT_USERTYPE!
-  reportType: ENUM_MSREPORT_REPORTTYPE!
-  systemName: String!
-  systemAddress: Float
-  coordX: Float
-  coordY: Float
-  coordZ: Float
-  orbitBody: String
-  shipName: String!
-  shipTag: String
-  type: String
-  flightOps: Boolean
-  flightSchedule: Boolean
-  dockable: Boolean
-  cmdrName: String!
-  cmdrComment: String
-  isBeta: Boolean
-  screenshot: [ID]
-  reportStatus: ENUM_MSREPORT_REPORTSTATUS!
-  reportComment: String
-  voteCount: Int
-  added: Boolean
-  site: ID
-}
-
-"""Schedule for Megaships that are flight ops capable"""
-type Msschedule {
-  id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  system: System
-  body: Body
-  scheduleNumber: Int!
-  notes: String
-  mssite: Mssite
-}
-
-input MsscheduleInput {
-  system: ID
-  body: ID
-  scheduleNumber: Int!
-  notes: String
-  mssite: ID
-}
-
-"""Mega-Ship sites"""
-type Mssite {
-  id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  system: System
-  body: Body
-  siteID: Int!
-  shipName: String!
-  shipTag: String!
-  type: Mstype
-  flightOps: Boolean!
-  flightSchedule: Boolean!
-  dockable: Boolean!
-  discoveredBy: Cmdr
-  msschedules(sort: String, limit: Int, start: Int, where: JSON): [Msschedule]
-}
-
-input MssiteInput {
-  system: ID
-  body: ID
-  siteID: Int!
-  shipName: String!
-  shipTag: String!
-  type: ID
-  flightOps: Boolean!
-  flightSchedule: Boolean!
-  dockable: Boolean!
-  discoveredBy: ID
-  msschedules: [ID]
-}
-
-"""Ship type of a Mega-ship"""
-type Mstype {
+"""Type of a Lava Spout"""
+type Lstype {
   id: ID!
   type: String!
+  journalName: String
+  journalID: Int
 }
 
-input MstypeInput {
+input LstypeInput {
   type: String!
+  journalName: String
+  journalID: Int
 }
+
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Apiupdate | createApiupdatePayload | updateApiupdatePayload | deleteApiupdatePayload | Bmreport | createBmreportPayload | updateBmreportPayload | deleteBmreportPayload | Bmsite | createBmsitePayload | updateBmsitePayload | deleteBmsitePayload | Bmtype | createBmtypePayload | updateBmtypePayload | deleteBmtypePayload | Body | createBodyPayload | updateBodyPayload | deleteBodyPayload | Btreport | createBtreportPayload | updateBtreportPayload | deleteBtreportPayload | Btsite | createBtsitePayload | updateBtsitePayload | deleteBtsitePayload | Bttype | createBttypePayload | updateBttypePayload | deleteBttypePayload | Cmdr | createCmdrPayload | updateCmdrPayload | deleteCmdrPayload | Cmdrkill | createCmdrkillPayload | updateCmdrkillPayload | deleteCmdrkillPayload | Codexreport | createCodexreportPayload | updateCodexreportPayload | deleteCodexreportPayload | Csreport | createCsreportPayload | updateCsreportPayload | deleteCsreportPayload | Cssite | createCssitePayload | updateCssitePayload | deleteCssitePayload | Cstype | createCstypePayload | updateCstypePayload | deleteCstypePayload | Eventreport | createEventreportPayload | updateEventreportPayload | deleteEventreportPayload | Excludeclient | createExcludeclientPayload | updateExcludeclientPayload | deleteExcludeclientPayload | Excludecmdr | createExcludecmdrPayload | updateExcludecmdrPayload | deleteExcludecmdrPayload | Excludecodex | createExcludecodexPayload | updateExcludecodexPayload | deleteExcludecodexPayload | Excludeevent | createExcludeeventPayload | updateExcludeeventPayload | deleteExcludeeventPayload | Excludeuss | createExcludeussPayload | updateExcludeussPayload | deleteExcludeussPayload | Fgreport | createFgreportPayload | updateFgreportPayload | deleteFgreportPayload | Fgsite | createFgsitePayload | updateFgsitePayload | deleteFgsitePayload | Fgtype | createFgtypePayload | updateFgtypePayload | deleteFgtypePayload | Fmreport | createFmreportPayload | updateFmreportPayload | deleteFmreportPayload | Fmsite | createFmsitePayload | updateFmsitePayload | deleteFmsitePayload | Fmtype | createFmtypePayload | updateFmtypePayload | deleteFmtypePayload | Gbmessage | createGbmessagePayload | updateGbmessagePayload | deleteGbmessagePayload | Gbreport | createGbreportPayload | updateGbreportPayload | deleteGbreportPayload | Gbsite | createGbsitePayload | updateGbsitePayload | deleteGbsitePayload | Genlog | createGenlogPayload | updateGenlogPayload | deleteGenlogPayload | Genreport | createGenreportPayload | updateGenreportPayload | deleteGenreportPayload | Gensite | createGensitePayload | updateGensitePayload | deleteGensitePayload | Gractivegroup | createGractivegroupPayload | updateGractivegroupPayload | deleteGractivegroupPayload | Gractiveobelisk | createGractiveobeliskPayload | updateGractiveobeliskPayload | deleteGractiveobeliskPayload | Grartifact | createGrartifactPayload | updateGrartifactPayload | deleteGrartifactPayload | Grcodexcategory | createGrcodexcategoryPayload | updateGrcodexcategoryPayload | deleteGrcodexcategoryPayload | Grcodexdata | createGrcodexdataPayload | updateGrcodexdataPayload | deleteGrcodexdataPayload | Grobelisk | createGrobeliskPayload | updateGrobeliskPayload | deleteGrobeliskPayload | Grobeliskgroup | createGrobeliskgroupPayload | updateGrobeliskgroupPayload | deleteGrobeliskgroupPayload | Grobeliskreport | createGrobeliskreportPayload | updateGrobeliskreportPayload | deleteGrobeliskreportPayload | Grreport | createGrreportPayload | updateGrreportPayload | deleteGrreportPayload | Grsite | createGrsitePayload | updateGrsitePayload | deleteGrsitePayload | Grtype | createGrtypePayload | updateGrtypePayload | deleteGrtypePayload | Gsactivegroup | createGsactivegroupPayload | updateGsactivegroupPayload | deleteGsactivegroupPayload | Gsactiveobelisk | createGsactiveobeliskPayload | updateGsactiveobeliskPayload | deleteGsactiveobeliskPayload | Gsartifact | createGsartifactPayload | updateGsartifactPayload | deleteGsartifactPayload | Gscodexcategory | createGscodexcategoryPayload | updateGscodexcategoryPayload | deleteGscodexcategoryPayload | Gscodexdata | createGscodexdataPayload | updateGscodexdataPayload | deleteGscodexdataPayload | Gsobelisk | createGsobeliskPayload | updateGsobeliskPayload | deleteGsobeliskPayload | Gsobeliskgroup | createGsobeliskgroupPayload | updateGsobeliskgroupPayload | deleteGsobeliskgroupPayload | Gsobeliskreport | createGsobeliskreportPayload | updateGsobeliskreportPayload | deleteGsobeliskreportPayload | Gsreport | createGsreportPayload | updateGsreportPayload | deleteGsreportPayload | Gssite | createGssitePayload | updateGssitePayload | deleteGssitePayload | Gstype | createGstypePayload | updateGstypePayload | deleteGstypePayload | Gvreport | createGvreportPayload | updateGvreportPayload | deleteGvreportPayload | Gvsite | createGvsitePayload | updateGvsitePayload | deleteGvsitePayload | Gvtype | createGvtypePayload | updateGvtypePayload | deleteGvtypePayload | Gyreport | createGyreportPayload | updateGyreportPayload | deleteGyreportPayload | Gysite | createGysitePayload | updateGysitePayload | deleteGysitePayload | Gytype | createGytypePayload | updateGytypePayload | deleteGytypePayload | Hdreport | createHdreportPayload | updateHdreportPayload | deleteHdreportPayload | Hdsite | createHdsitePayload | updateHdsitePayload | deleteHdsitePayload | Killreport | createKillreportPayload | updateKillreportPayload | deleteKillreportPayload | Lsreport | createLsreportPayload | updateLsreportPayload | deleteLsreportPayload | Lssite | createLssitePayload | updateLssitePayload | deleteLssitePayload | Lstype | createLstypePayload | updateLstypePayload | deleteLstypePayload | Nhssreport | createNhssreportPayload | updateNhssreportPayload | deleteNhssreportPayload | Nhsssite | createNhsssitePayload | updateNhsssitePayload | deleteNhsssitePayload | Region | createRegionPayload | updateRegionPayload | deleteRegionPayload | Reporttype | createReporttypePayload | updateReporttypePayload | deleteReporttypePayload | Ring | createRingPayload | updateRingPayload | deleteRingPayload | System | createSystemPayload | updateSystemPayload | deleteSystemPayload | Tbcycle | createTbcyclePayload | updateTbcyclePayload | deleteTbcyclePayload | Tbreport | createTbreportPayload | updateTbreportPayload | deleteTbreportPayload | Tbsite | createTbsitePayload | updateTbsitePayload | deleteTbsitePayload | Tbtype | createTbtypePayload | updateTbtypePayload | deleteTbtypePayload | Tgencounterstat | createTgencounterstatPayload | updateTgencounterstatPayload | deleteTgencounterstatPayload | Tsreport | createTsreportPayload | updateTsreportPayload | deleteTsreportPayload | Tssite | createTssitePayload | updateTssitePayload | deleteTssitePayload | Tsstatus | createTsstatusPayload | updateTsstatusPayload | deleteTsstatusPayload | Twreport | createTwreportPayload | updateTwreportPayload | deleteTwreportPayload | Twsite | createTwsitePayload | updateTwsitePayload | deleteTwsitePayload | Twtype | createTwtypePayload | updateTwtypePayload | deleteTwtypePayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
 
 type Mutation {
   createApiupdate(input: createApiupdateInput): createApiupdatePayload
@@ -3211,6 +3582,9 @@ type Mutation {
   createBmsite(input: createBmsiteInput): createBmsitePayload
   updateBmsite(input: updateBmsiteInput): updateBmsitePayload
   deleteBmsite(input: deleteBmsiteInput): deleteBmsitePayload
+  createBmtype(input: createBmtypeInput): createBmtypePayload
+  updateBmtype(input: updateBmtypeInput): updateBmtypePayload
+  deleteBmtype(input: deleteBmtypeInput): deleteBmtypePayload
   createBody(input: createBodyInput): createBodyPayload
   updateBody(input: updateBodyInput): updateBodyPayload
   deleteBody(input: deleteBodyInput): deleteBodyPayload
@@ -3229,12 +3603,36 @@ type Mutation {
   createCmdrkill(input: createCmdrkillInput): createCmdrkillPayload
   updateCmdrkill(input: updateCmdrkillInput): updateCmdrkillPayload
   deleteCmdrkill(input: deleteCmdrkillInput): deleteCmdrkillPayload
+  createCodexreport(input: createCodexreportInput): createCodexreportPayload
+  updateCodexreport(input: updateCodexreportInput): updateCodexreportPayload
+  deleteCodexreport(input: deleteCodexreportInput): deleteCodexreportPayload
   createCsreport(input: createCsreportInput): createCsreportPayload
   updateCsreport(input: updateCsreportInput): updateCsreportPayload
   deleteCsreport(input: deleteCsreportInput): deleteCsreportPayload
   createCssite(input: createCssiteInput): createCssitePayload
   updateCssite(input: updateCssiteInput): updateCssitePayload
   deleteCssite(input: deleteCssiteInput): deleteCssitePayload
+  createCstype(input: createCstypeInput): createCstypePayload
+  updateCstype(input: updateCstypeInput): updateCstypePayload
+  deleteCstype(input: deleteCstypeInput): deleteCstypePayload
+  createEventreport(input: createEventreportInput): createEventreportPayload
+  updateEventreport(input: updateEventreportInput): updateEventreportPayload
+  deleteEventreport(input: deleteEventreportInput): deleteEventreportPayload
+  createExcludeclient(input: createExcludeclientInput): createExcludeclientPayload
+  updateExcludeclient(input: updateExcludeclientInput): updateExcludeclientPayload
+  deleteExcludeclient(input: deleteExcludeclientInput): deleteExcludeclientPayload
+  createExcludecmdr(input: createExcludecmdrInput): createExcludecmdrPayload
+  updateExcludecmdr(input: updateExcludecmdrInput): updateExcludecmdrPayload
+  deleteExcludecmdr(input: deleteExcludecmdrInput): deleteExcludecmdrPayload
+  createExcludecodex(input: createExcludecodexInput): createExcludecodexPayload
+  updateExcludecodex(input: updateExcludecodexInput): updateExcludecodexPayload
+  deleteExcludecodex(input: deleteExcludecodexInput): deleteExcludecodexPayload
+  createExcludeevent(input: createExcludeeventInput): createExcludeeventPayload
+  updateExcludeevent(input: updateExcludeeventInput): updateExcludeeventPayload
+  deleteExcludeevent(input: deleteExcludeeventInput): deleteExcludeeventPayload
+  createExcludeuss(input: createExcludeussInput): createExcludeussPayload
+  updateExcludeuss(input: updateExcludeussInput): updateExcludeussPayload
+  deleteExcludeuss(input: deleteExcludeussInput): deleteExcludeussPayload
   createFgreport(input: createFgreportInput): createFgreportPayload
   updateFgreport(input: updateFgreportInput): updateFgreportPayload
   deleteFgreport(input: deleteFgreportInput): deleteFgreportPayload
@@ -3337,6 +3735,15 @@ type Mutation {
   createGstype(input: createGstypeInput): createGstypePayload
   updateGstype(input: updateGstypeInput): updateGstypePayload
   deleteGstype(input: deleteGstypeInput): deleteGstypePayload
+  createGvreport(input: createGvreportInput): createGvreportPayload
+  updateGvreport(input: updateGvreportInput): updateGvreportPayload
+  deleteGvreport(input: deleteGvreportInput): deleteGvreportPayload
+  createGvsite(input: createGvsiteInput): createGvsitePayload
+  updateGvsite(input: updateGvsiteInput): updateGvsitePayload
+  deleteGvsite(input: deleteGvsiteInput): deleteGvsitePayload
+  createGvtype(input: createGvtypeInput): createGvtypePayload
+  updateGvtype(input: updateGvtypeInput): updateGvtypePayload
+  deleteGvtype(input: deleteGvtypeInput): deleteGvtypePayload
   createGyreport(input: createGyreportInput): createGyreportPayload
   updateGyreport(input: updateGyreportInput): updateGyreportPayload
   deleteGyreport(input: deleteGyreportInput): deleteGyreportPayload
@@ -3352,9 +3759,6 @@ type Mutation {
   createHdsite(input: createHdsiteInput): createHdsitePayload
   updateHdsite(input: updateHdsiteInput): updateHdsitePayload
   deleteHdsite(input: deleteHdsiteInput): deleteHdsitePayload
-  createJournaldata(input: createJournaldataInput): createJournaldataPayload
-  updateJournaldata(input: updateJournaldataInput): updateJournaldataPayload
-  deleteJournaldata(input: deleteJournaldataInput): deleteJournaldataPayload
   createKillreport(input: createKillreportInput): createKillreportPayload
   updateKillreport(input: updateKillreportInput): updateKillreportPayload
   deleteKillreport(input: deleteKillreportInput): deleteKillreportPayload
@@ -3364,24 +3768,21 @@ type Mutation {
   createLssite(input: createLssiteInput): createLssitePayload
   updateLssite(input: updateLssiteInput): updateLssitePayload
   deleteLssite(input: deleteLssiteInput): deleteLssitePayload
-  createMsreport(input: createMsreportInput): createMsreportPayload
-  updateMsreport(input: updateMsreportInput): updateMsreportPayload
-  deleteMsreport(input: deleteMsreportInput): deleteMsreportPayload
-  createMsschedule(input: createMsscheduleInput): createMsschedulePayload
-  updateMsschedule(input: updateMsscheduleInput): updateMsschedulePayload
-  deleteMsschedule(input: deleteMsscheduleInput): deleteMsschedulePayload
-  createMssite(input: createMssiteInput): createMssitePayload
-  updateMssite(input: updateMssiteInput): updateMssitePayload
-  deleteMssite(input: deleteMssiteInput): deleteMssitePayload
-  createMstype(input: createMstypeInput): createMstypePayload
-  updateMstype(input: updateMstypeInput): updateMstypePayload
-  deleteMstype(input: deleteMstypeInput): deleteMstypePayload
+  createLstype(input: createLstypeInput): createLstypePayload
+  updateLstype(input: updateLstypeInput): updateLstypePayload
+  deleteLstype(input: deleteLstypeInput): deleteLstypePayload
   createNhssreport(input: createNhssreportInput): createNhssreportPayload
   updateNhssreport(input: updateNhssreportInput): updateNhssreportPayload
   deleteNhssreport(input: deleteNhssreportInput): deleteNhssreportPayload
   createNhsssite(input: createNhsssiteInput): createNhsssitePayload
   updateNhsssite(input: updateNhsssiteInput): updateNhsssitePayload
   deleteNhsssite(input: deleteNhsssiteInput): deleteNhsssitePayload
+  createRegion(input: createRegionInput): createRegionPayload
+  updateRegion(input: updateRegionInput): updateRegionPayload
+  deleteRegion(input: deleteRegionInput): deleteRegionPayload
+  createReporttype(input: createReporttypeInput): createReporttypePayload
+  updateReporttype(input: updateReporttypeInput): updateReporttypePayload
+  deleteReporttype(input: deleteReporttypeInput): deleteReporttypePayload
   createRing(input: createRingInput): createRingPayload
   updateRing(input: updateRingInput): updateRingPayload
   deleteRing(input: deleteRingInput): deleteRingPayload
@@ -3418,6 +3819,9 @@ type Mutation {
   createTwsite(input: createTwsiteInput): createTwsitePayload
   updateTwsite(input: updateTwsiteInput): updateTwsitePayload
   deleteTwsite(input: deleteTwsiteInput): deleteTwsitePayload
+  createTwtype(input: createTwtypeInput): createTwtypePayload
+  updateTwtype(input: updateTwtypeInput): updateTwtypePayload
+  deleteTwtype(input: deleteTwtypeInput): deleteTwtypePayload
 
   """Create a new role"""
   createRole(input: createRoleInput): createRolePayload
@@ -3443,6 +3847,7 @@ type Nhssreport {
   cmdrName: String
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_NHSSREPORT_REPORTSTATUS!
   reportComment: String
   added: Boolean
@@ -3456,6 +3861,7 @@ input NhssreportInput {
   cmdrName: String
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_NHSSREPORT_REPORTSTATUS!
   reportComment: String
   added: Boolean
@@ -3486,6 +3892,8 @@ type Query {
   bmreports(sort: String, limit: Int, start: Int, where: JSON): [Bmreport]
   bmsite(id: ID!): Bmsite
   bmsites(sort: String, limit: Int, start: Int, where: JSON): [Bmsite]
+  bmtype(id: ID!): Bmtype
+  bmtypes(sort: String, limit: Int, start: Int, where: JSON): [Bmtype]
   body(id: ID!): Body
   bodies(sort: String, limit: Int, start: Int, where: JSON): [Body]
   btreport(id: ID!): Btreport
@@ -3498,10 +3906,26 @@ type Query {
   cmdrs(sort: String, limit: Int, start: Int, where: JSON): [Cmdr]
   cmdrkill(id: ID!): Cmdrkill
   cmdrkills(sort: String, limit: Int, start: Int, where: JSON): [Cmdrkill]
+  codexreport(id: ID!): Codexreport
+  codexreports(sort: String, limit: Int, start: Int, where: JSON): [Codexreport]
   csreport(id: ID!): Csreport
   csreports(sort: String, limit: Int, start: Int, where: JSON): [Csreport]
   cssite(id: ID!): Cssite
   cssites(sort: String, limit: Int, start: Int, where: JSON): [Cssite]
+  cstype(id: ID!): Cstype
+  cstypes(sort: String, limit: Int, start: Int, where: JSON): [Cstype]
+  eventreport(id: ID!): Eventreport
+  eventreports(sort: String, limit: Int, start: Int, where: JSON): [Eventreport]
+  excludeclient(id: ID!): Excludeclient
+  excludeclients(sort: String, limit: Int, start: Int, where: JSON): [Excludeclient]
+  excludecmdr(id: ID!): Excludecmdr
+  excludecmdrs(sort: String, limit: Int, start: Int, where: JSON): [Excludecmdr]
+  excludecodex(id: ID!): Excludecodex
+  excludecodices(sort: String, limit: Int, start: Int, where: JSON): [Excludecodex]
+  excludeevent(id: ID!): Excludeevent
+  excludeevents(sort: String, limit: Int, start: Int, where: JSON): [Excludeevent]
+  excludeuss(id: ID!): Excludeuss
+  excludeusses(sort: String, limit: Int, start: Int, where: JSON): [Excludeuss]
   fgreport(id: ID!): Fgreport
   fgreports(sort: String, limit: Int, start: Int, where: JSON): [Fgreport]
   fgsite(id: ID!): Fgsite
@@ -3570,6 +3994,12 @@ type Query {
   gssites(sort: String, limit: Int, start: Int, where: JSON): [Gssite]
   gstype(id: ID!): Gstype
   gstypes(sort: String, limit: Int, start: Int, where: JSON): [Gstype]
+  gvreport(id: ID!): Gvreport
+  gvreports(sort: String, limit: Int, start: Int, where: JSON): [Gvreport]
+  gvsite(id: ID!): Gvsite
+  gvsites(sort: String, limit: Int, start: Int, where: JSON): [Gvsite]
+  gvtype(id: ID!): Gvtype
+  gvtypes(sort: String, limit: Int, start: Int, where: JSON): [Gvtype]
   gyreport(id: ID!): Gyreport
   gyreports(sort: String, limit: Int, start: Int, where: JSON): [Gyreport]
   gysite(id: ID!): Gysite
@@ -3580,26 +4010,22 @@ type Query {
   hdreports(sort: String, limit: Int, start: Int, where: JSON): [Hdreport]
   hdsite(id: ID!): Hdsite
   hdsites(sort: String, limit: Int, start: Int, where: JSON): [Hdsite]
-  journaldatum(id: ID!): Journaldata
-  journaldata(sort: String, limit: Int, start: Int, where: JSON): [Journaldata]
   killreport(id: ID!): Killreport
   killreports(sort: String, limit: Int, start: Int, where: JSON): [Killreport]
   lsreport(id: ID!): Lsreport
   lsreports(sort: String, limit: Int, start: Int, where: JSON): [Lsreport]
   lssite(id: ID!): Lssite
   lssites(sort: String, limit: Int, start: Int, where: JSON): [Lssite]
-  msreport(id: ID!): Msreport
-  msreports(sort: String, limit: Int, start: Int, where: JSON): [Msreport]
-  msschedule(id: ID!): Msschedule
-  msschedules(sort: String, limit: Int, start: Int, where: JSON): [Msschedule]
-  mssite(id: ID!): Mssite
-  mssites(sort: String, limit: Int, start: Int, where: JSON): [Mssite]
-  mstype(id: ID!): Mstype
-  mstypes(sort: String, limit: Int, start: Int, where: JSON): [Mstype]
+  lstype(id: ID!): Lstype
+  lstypes(sort: String, limit: Int, start: Int, where: JSON): [Lstype]
   nhssreport(id: ID!): Nhssreport
   nhssreports(sort: String, limit: Int, start: Int, where: JSON): [Nhssreport]
   nhsssite(id: ID!): Nhsssite
   nhsssites(sort: String, limit: Int, start: Int, where: JSON): [Nhsssite]
+  region(id: ID!): Region
+  regions(sort: String, limit: Int, start: Int, where: JSON): [Region]
+  reporttype(id: ID!): Reporttype
+  reporttypes(sort: String, limit: Int, start: Int, where: JSON): [Reporttype]
   ring(id: ID!): Ring
   rings(sort: String, limit: Int, start: Int, where: JSON): [Ring]
   system(id: ID!): System
@@ -3624,6 +4050,8 @@ type Query {
   twreports(sort: String, limit: Int, start: Int, where: JSON): [Twreport]
   twsite(id: ID!): Twsite
   twsites(sort: String, limit: Int, start: Int, where: JSON): [Twsite]
+  twtype(id: ID!): Twtype
+  twtypes(sort: String, limit: Int, start: Int, where: JSON): [Twtype]
   files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   role(id: ID!): UsersPermissionsRole
 
@@ -3634,6 +4062,38 @@ type Query {
   user(id: ID!): UsersPermissionsUser
   users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
   me: UsersPermissionsMe
+}
+
+"""Regions of Space"""
+type Region {
+  id: ID!
+  name: String!
+  journalName: String
+  regionID: Int
+}
+
+input RegionInput {
+  name: String!
+  journalName: String
+  regionID: Int
+}
+
+"""Report endpoints used by Canonn Plugins"""
+type Reporttype {
+  id: ID!
+  type: String!
+  location: ENUM_REPORTTYPE_LOCATION
+  journalName: String
+  journalID: Int
+  endpoint: String!
+}
+
+input ReporttypeInput {
+  type: String!
+  location: ENUM_REPORTTYPE_LOCATION
+  journalName: String
+  journalID: Int
+  endpoint: String!
 }
 
 """Rings stored in the Canonn database"""
@@ -3672,26 +4132,30 @@ type System {
   createdAt: DateTime!
   updatedAt: DateTime!
   systemName: String!
-  id64: Float
-  edsmID: Float
+  id64: String
+  edsmID: Int
   edsmCoordX: Float
   edsmCoordY: Float
   edsmCoordZ: Float
   edsmCoordLocked: Boolean
   missingSkipCount: Int
+  region: Region
+  primaryStar: JSON
   bodies(sort: String, limit: Int, start: Int, where: JSON): [Body]
 }
 
 input SystemInput {
   systemName: String!
-  id64: Float
-  edsmID: Float
+  id64: String
+  edsmID: Int
   edsmCoordX: Float
   edsmCoordY: Float
   edsmCoordZ: Float
   edsmCoordLocked: Boolean
   missingSkipCount: Int
   bodies: [ID]
+  region: ID
+  primaryStar: JSON
 }
 
 """Thargoid Barnacle Cycles"""
@@ -3712,7 +4176,8 @@ type Tbreport {
   userType: ENUM_TBREPORT_USERTYPE!
   reportType: ENUM_TBREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: Float
+  systemAddress: String
+  regionID: Int
   coordX: Float
   coordY: Float
   coordZ: Float
@@ -3721,10 +4186,10 @@ type Tbreport {
   longitude: Float!
   type: ENUM_TBREPORT_TYPE!
   cycle: ENUM_TBREPORT_CYCLE!
-  count: Int
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_TBREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -3737,7 +4202,8 @@ input TbreportInput {
   userType: ENUM_TBREPORT_USERTYPE!
   reportType: ENUM_TBREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: Float
+  systemAddress: String
+  regionID: Int
   coordX: Float
   coordY: Float
   coordZ: Float
@@ -3746,10 +4212,10 @@ input TbreportInput {
   longitude: Float!
   type: ENUM_TBREPORT_TYPE!
   cycle: ENUM_TBREPORT_CYCLE!
-  count: Int
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   screenshot: [ID]
   reportStatus: ENUM_TBREPORT_REPORTSTATUS!
   reportComment: String
@@ -3771,7 +4237,6 @@ type Tbsite {
   longitude: Float!
   type: Tbtype
   cycle: Tbcycle
-  count: Int
   comment: String
   verified: Boolean
   visible: Boolean
@@ -3787,7 +4252,6 @@ input TbsiteInput {
   longitude: Float!
   type: ID
   cycle: ID
-  count: Int
   comment: String
   verified: Boolean
   visible: Boolean
@@ -3838,7 +4302,8 @@ type Tsreport {
   userType: ENUM_TSREPORT_USERTYPE!
   reportType: ENUM_TSREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: Float
+  systemAddress: String
+  regionID: Int
   coordX: Float
   coordY: Float
   coordZ: Float
@@ -3849,6 +4314,7 @@ type Tsreport {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_TSREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -3861,7 +4327,8 @@ input TsreportInput {
   userType: ENUM_TSREPORT_USERTYPE!
   reportType: ENUM_TSREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: Float
+  systemAddress: String
+  regionID: Int
   coordX: Float
   coordY: Float
   coordZ: Float
@@ -3872,6 +4339,7 @@ input TsreportInput {
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   screenshot: [ID]
   reportStatus: ENUM_TSREPORT_REPORTSTATUS!
   reportComment: String
@@ -3934,17 +4402,19 @@ type Twreport {
   userType: ENUM_TWREPORT_USERTYPE!
   reportType: ENUM_TWREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: Float
+  systemAddress: String
+  regionID: Int
   coordX: Float
   coordY: Float
   coordZ: Float
   bodyName: String!
   latitude: Float!
   longitude: Float!
-  count: Int
+  type: String
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   reportStatus: ENUM_TWREPORT_REPORTSTATUS!
   reportComment: String
   voteCount: Int
@@ -3957,17 +4427,19 @@ input TwreportInput {
   userType: ENUM_TWREPORT_USERTYPE!
   reportType: ENUM_TWREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: Float
+  systemAddress: String
+  regionID: Int
   coordX: Float
   coordY: Float
   coordZ: Float
   bodyName: String!
   latitude: Float!
   longitude: Float!
-  count: Int
+  type: String
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
+  clientVersion: String!
   screenshot: [ID]
   reportStatus: ENUM_TWREPORT_REPORTSTATUS!
   reportComment: String
@@ -3987,7 +4459,7 @@ type Twsite {
   extoolID: Int
   latitude: Float!
   longitude: Float!
-  count: Int
+  type: Twtype
   verified: Boolean!
   visible: Boolean
   discoveredBy: Cmdr
@@ -4000,10 +4472,24 @@ input TwsiteInput {
   extoolID: Int
   latitude: Float!
   longitude: Float!
-  count: Int
+  type: ID
   verified: Boolean!
   visible: Boolean
   discoveredBy: ID
+}
+
+"""Type of a Tube Worm"""
+type Twtype {
+  id: ID!
+  type: String!
+  journalName: String
+  journalID: Int
+}
+
+input TwtypeInput {
+  type: String!
+  journalName: String
+  journalID: Int
 }
 
 input updateApiupdateInput {
@@ -4031,6 +4517,15 @@ input updateBmsiteInput {
 
 type updateBmsitePayload {
   bmsite: Bmsite
+}
+
+input updateBmtypeInput {
+  where: InputID
+  data: BmtypeInput
+}
+
+type updateBmtypePayload {
+  bmtype: Bmtype
 }
 
 input updateBodyInput {
@@ -4087,6 +4582,15 @@ type updateCmdrPayload {
   cmdr: Cmdr
 }
 
+input updateCodexreportInput {
+  where: InputID
+  data: CodexreportInput
+}
+
+type updateCodexreportPayload {
+  codexreport: Codexreport
+}
+
 input updateCsreportInput {
   where: InputID
   data: CsreportInput
@@ -4103,6 +4607,69 @@ input updateCssiteInput {
 
 type updateCssitePayload {
   cssite: Cssite
+}
+
+input updateCstypeInput {
+  where: InputID
+  data: CstypeInput
+}
+
+type updateCstypePayload {
+  cstype: Cstype
+}
+
+input updateEventreportInput {
+  where: InputID
+  data: EventreportInput
+}
+
+type updateEventreportPayload {
+  eventreport: Eventreport
+}
+
+input updateExcludeclientInput {
+  where: InputID
+  data: ExcludeclientInput
+}
+
+type updateExcludeclientPayload {
+  excludeclient: Excludeclient
+}
+
+input updateExcludecmdrInput {
+  where: InputID
+  data: ExcludecmdrInput
+}
+
+type updateExcludecmdrPayload {
+  excludecmdr: Excludecmdr
+}
+
+input updateExcludecodexInput {
+  where: InputID
+  data: ExcludecodexInput
+}
+
+type updateExcludecodexPayload {
+  excludecodex: Excludecodex
+}
+
+input updateExcludeeventInput {
+  where: InputID
+  data: ExcludeeventInput
+}
+
+type updateExcludeeventPayload {
+  excludeevent: Excludeevent
+}
+
+input updateExcludeussInput {
+  where: InputID
+  data: ExcludeussInput
+}
+
+type updateExcludeussPayload {
+  excludeuss: Excludeuss
 }
 
 input updateFgreportInput {
@@ -4411,6 +4978,33 @@ type updateGstypePayload {
   gstype: Gstype
 }
 
+input updateGvreportInput {
+  where: InputID
+  data: GvreportInput
+}
+
+type updateGvreportPayload {
+  gvreport: Gvreport
+}
+
+input updateGvsiteInput {
+  where: InputID
+  data: GvsiteInput
+}
+
+type updateGvsitePayload {
+  gvsite: Gvsite
+}
+
+input updateGvtypeInput {
+  where: InputID
+  data: GvtypeInput
+}
+
+type updateGvtypePayload {
+  gvtype: Gvtype
+}
+
 input updateGyreportInput {
   where: InputID
   data: GyreportInput
@@ -4456,15 +5050,6 @@ type updateHdsitePayload {
   hdsite: Hdsite
 }
 
-input updateJournaldataInput {
-  where: InputID
-  data: JournaldataInput
-}
-
-type updateJournaldataPayload {
-  journaldatum: Journaldata
-}
-
 input updateKillreportInput {
   where: InputID
   data: KillreportInput
@@ -4492,40 +5077,13 @@ type updateLssitePayload {
   lssite: Lssite
 }
 
-input updateMsreportInput {
+input updateLstypeInput {
   where: InputID
-  data: MsreportInput
+  data: LstypeInput
 }
 
-type updateMsreportPayload {
-  msreport: Msreport
-}
-
-input updateMsscheduleInput {
-  where: InputID
-  data: MsscheduleInput
-}
-
-type updateMsschedulePayload {
-  msschedule: Msschedule
-}
-
-input updateMssiteInput {
-  where: InputID
-  data: MssiteInput
-}
-
-type updateMssitePayload {
-  mssite: Mssite
-}
-
-input updateMstypeInput {
-  where: InputID
-  data: MstypeInput
-}
-
-type updateMstypePayload {
-  mstype: Mstype
+type updateLstypePayload {
+  lstype: Lstype
 }
 
 input updateNhssreportInput {
@@ -4544,6 +5102,24 @@ input updateNhsssiteInput {
 
 type updateNhsssitePayload {
   nhsssite: Nhsssite
+}
+
+input updateRegionInput {
+  where: InputID
+  data: RegionInput
+}
+
+type updateRegionPayload {
+  region: Region
+}
+
+input updateReporttypeInput {
+  where: InputID
+  data: ReporttypeInput
+}
+
+type updateReporttypePayload {
+  reporttype: Reporttype
 }
 
 input updateRingInput {
@@ -4661,6 +5237,15 @@ input updateTwsiteInput {
 
 type updateTwsitePayload {
   twsite: Twsite
+}
+
+input updateTwtypeInput {
+  where: InputID
+  data: TwtypeInput
+}
+
+type updateTwtypePayload {
+  twtype: Twtype
 }
 
 input updateUserInput {

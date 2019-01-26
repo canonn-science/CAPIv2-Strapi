@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/gbreports/:id/relationships/:relation",
-      "handler": "Gbreport.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/gbreports/:id/relationships/:relation",
-      "handler": "Gbreport.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/gbreports/:id/relationships/:relation",
-      "handler": "Gbreport.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

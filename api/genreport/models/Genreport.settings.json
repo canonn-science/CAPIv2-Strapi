@@ -35,7 +35,10 @@
       "required": true
     },
     "systemAddress": {
-      "type": "float"
+      "type": "biginteger"
+    },
+    "regionID": {
+      "type": "integer"
     },
     "coordX": {
       "type": "float"
@@ -69,6 +72,10 @@
     "isBeta": {
       "default": false,
       "type": "boolean"
+    },
+    "clientVersion": {
+      "required": true,
+      "type": "string"
     },
     "screenshot": {
       "collection": "file",

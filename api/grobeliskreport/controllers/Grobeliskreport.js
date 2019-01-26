@@ -70,35 +70,5 @@ module.exports = {
 
   destroy: async (ctx, next) => {
     return strapi.services.grobeliskreport.remove(ctx.params);
-  },
-
-  /**
-   * Add relation to a/an grobeliskreport record.
-   *
-   * @return {Object}
-   */
-
-  createRelation: async (ctx, next) => {
-    return strapi.services.grobeliskreport.addRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Update relation to a/an grobeliskreport record.
-   *
-   * @return {Object}
-   */
-
-  updateRelation: async (ctx, next) => {
-    return strapi.services.grobeliskreport.editRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Destroy relation to a/an grobeliskreport record.
-   *
-   * @return {Object}
-   */
-
-  destroyRelation: async (ctx, next) => {
-    return strapi.services.grobeliskreport.removeRelation(ctx.params, ctx.request.body);
   }
 };

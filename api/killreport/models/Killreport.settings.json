@@ -32,8 +32,12 @@
     "rawEvent": {
       "type": "json"
     },
-    "isbeta": {
+    "isBeta": {
       "type": "boolean"
+    },
+    "clientVersion": {
+      "required": true,
+      "type": "string"
     },
     "reportAccepted": {
       "type": "boolean"

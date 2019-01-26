@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/excludeusses",
+      "handler": "Excludeuss.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/excludeusses/count",
+      "handler": "Excludeuss.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/excludeusses/:id",
+      "handler": "Excludeuss.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/excludeusses",
+      "handler": "Excludeuss.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/excludeusses/:id",
+      "handler": "Excludeuss.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/excludeusses/:id",
+      "handler": "Excludeuss.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

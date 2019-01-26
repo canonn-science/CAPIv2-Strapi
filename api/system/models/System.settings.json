@@ -17,10 +17,10 @@
       "unique": true
     },
     "id64": {
-      "type": "float"
+      "type": "biginteger"
     },
     "edsmID": {
-      "type": "float"
+      "type": "integer"
     },
     "edsmCoordX": {
       "type": "float"
@@ -41,6 +41,13 @@
     "bodies": {
       "collection": "body",
       "via": "system"
+    },
+    "region": {
+      "model": "region"
+    },
+    "primaryStar": {
+      "default": "",
+      "type": "json"
     }
   }
 }

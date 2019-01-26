@@ -1,0 +1,70 @@
+{
+  "paths": {
+    "/gysites": {
+      "get": {
+        "description": "Get all GY Site entries",
+        "summary": "",
+        "tags": [
+          "Geysers"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new GY Site entry",
+        "summary": "",
+        "tags": [
+          "Geysers"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      }
+    },
+    "/gysites/count": {
+      "get": {
+        "description": "Get a count of all GY Site entries",
+        "summary": "",
+        "tags": [
+          "Geysers"
+        ],
+        "security": []
+      }
+    },
+    "/gysites/{id}": {
+      "get": {
+        "description": "Get a GY Site by id",
+        "summary": "",
+        "tags": [
+          "Geysers"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a GY Site by id",
+        "summary": "",
+        "tags": [
+          "Geysers"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a GY Site by id",
+        "summary": "",
+        "tags": [
+          "Geysers"
+        ],
+        "security": [
+          "siteDelete"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Geysers",
+      "description": "Code Name - GY"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "connection": "default",
+  "collectionName": "excludecodices",
+  "info": {
+    "name": "excludecodex",
+    "description": "Codex Entry blacklist"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "codexName": {
+      "type": "string"
+    },
+    "reason": {
+      "type": "text"
+    }
+  }
+}

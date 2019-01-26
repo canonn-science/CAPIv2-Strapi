@@ -70,35 +70,5 @@ module.exports = {
 
   destroy: async (ctx, next) => {
     return strapi.services.grartifact.remove(ctx.params);
-  },
-
-  /**
-   * Add relation to a/an grartifact record.
-   *
-   * @return {Object}
-   */
-
-  createRelation: async (ctx, next) => {
-    return strapi.services.grartifact.addRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Update relation to a/an grartifact record.
-   *
-   * @return {Object}
-   */
-
-  updateRelation: async (ctx, next) => {
-    return strapi.services.grartifact.editRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Destroy relation to a/an grartifact record.
-   *
-   * @return {Object}
-   */
-
-  destroyRelation: async (ctx, next) => {
-    return strapi.services.grartifact.removeRelation(ctx.params, ctx.request.body);
   }
 };

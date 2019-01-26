@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/tbtypes/:id/relationships/:relation",
-      "handler": "Tbtype.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/tbtypes/:id/relationships/:relation",
-      "handler": "Tbtype.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/tbtypes/:id/relationships/:relation",
-      "handler": "Tbtype.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

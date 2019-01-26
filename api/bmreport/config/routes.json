@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/bmreports/:id/relationships/:relation",
-      "handler": "Bmreport.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/bmreports/:id/relationships/:relation",
-      "handler": "Bmreport.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/bmreports/:id/relationships/:relation",
-      "handler": "Bmreport.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

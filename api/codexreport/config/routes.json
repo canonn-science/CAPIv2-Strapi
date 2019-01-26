@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/codexreports",
+      "handler": "Codexreport.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/codexreports/count",
+      "handler": "Codexreport.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/codexreports/:id",
+      "handler": "Codexreport.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/codexreports",
+      "handler": "Codexreport.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/codexreports/:id",
+      "handler": "Codexreport.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/codexreports/:id",
+      "handler": "Codexreport.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

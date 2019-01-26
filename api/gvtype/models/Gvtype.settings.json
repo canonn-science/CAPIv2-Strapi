@@ -1,0 +1,28 @@
+{
+  "connection": "default",
+  "collectionName": "gvtypes",
+  "info": {
+    "name": "gvtype",
+    "description": "Type of a Gas Vent"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": false,
+    "comment": ""
+  },
+  "attributes": {
+    "type": {
+      "unique": true,
+      "type": "string",
+      "required": true
+    },
+    "journalName": {
+      "default": "",
+      "type": "string"
+    },
+    "journalID": {
+      "default": "",
+      "type": "integer"
+    }
+  }
+}

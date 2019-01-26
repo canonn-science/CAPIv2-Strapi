@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/excludeclients",
+      "handler": "Excludeclient.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/excludeclients/count",
+      "handler": "Excludeclient.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/excludeclients/:id",
+      "handler": "Excludeclient.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/excludeclients",
+      "handler": "Excludeclient.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/excludeclients/:id",
+      "handler": "Excludeclient.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/excludeclients/:id",
+      "handler": "Excludeclient.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

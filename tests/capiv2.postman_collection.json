@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "47409e45-1ce0-4564-adeb-3a6163ff19f5",
+		"_postman_id": "4c1c3ef3-2913-4aed-85c2-641e6ce6f1b2",
 		"name": "Canonn APIv2 Postman Test Collection",
 		"description": "An API for all the Science related information Canonn has in its datastores stored on the Gnosis, built using [Strapi](https://strapi.io) a Nodejs API framework. \n\nWe have two different documentation types, our [Redocs](https://api.canonn.tech) or use the [Swagger-UI](https://api.canonn.tech/swaggerui)\n\nWe also have 3 API servers; Live (Production), Beta (Staging), Alpha (Development). You should use the Beta server for testing your application prior to using the Live server. The Alpha server is used by Canonn to test our changes prior to releasing a new version.\n\nData between the Live and Beta servers are replicated as needed, eventually we plan to dynamically replicate the data every night at midnight Phoenix, Arizona USA time (MST-Arizona GMT-7)\n\nHere are the following URLs for each server\n\n* Live - https://api.canonn.tech\n* Beta - https://api.canonn.tech:2053\n* Alpha - https://api.canonn.tech:2083\n\nThank you for your support, and thank you to all the CMDRs who supply us with our data!\n",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -70,7 +70,6 @@
 							"listen": "test",
 							"script": {
 								"id": "9bc6c97b-019f-42ec-ad70-ebc9b4322b5d",
-								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"pm.environment.set(\"bmID\", jsonData.id);",
@@ -83,12 +82,13 @@
 									"    pm.expect(jsonData.bodyName).to.eql(\"2 B\");",
 									"    pm.expect(jsonData.latitude).to.eql(-3.3269);",
 									"    pm.expect(jsonData.longitude).to.eql(139.8931);",
-									"    pm.expect(jsonData.count).to.eql(1);",
 									"    pm.expect(jsonData.cmdrName).to.eql(\"Galactic Fork\");",
 									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Bark Mound Report\");",
 									"    pm.expect(jsonData.reportStatus).to.eql(\"pending\");",
+									"    pm.expect(jsonData.clientVersion).to.eql(\"postman-test\");",
 									"});"
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -106,7 +106,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"ROSETTE SECTOR EL-Y D15\",\n  \"bodyName\": \"2 B\",\n  \"latitude\": -3.3269,\n  \"longitude\": 139.8931,\n  \"count\": 1,\n  \"cmdrName\": \"Galactic Fork\",\n  \"cmdrComment\": \"TEST - Bark Mound Report\",\n  \"reportStatus\": \"pending\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"ROSETTE SECTOR EL-Y D15\",\n  \"bodyName\": \"2 B\",\n  \"latitude\": -3.3269,\n  \"longitude\": 139.8931,\n  \"cmdrName\": \"Galactic Fork\",\n  \"cmdrComment\": \"TEST - Bark Mound Report\",\n  \"reportStatus\": \"pending\",\n  \"clientVersion\": \"postman-test\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/bmreports",
@@ -247,7 +247,6 @@
 							"listen": "test",
 							"script": {
 								"id": "10f73f4d-f8aa-403a-a675-8eb0857a5212",
-								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"BM updated values match\", function () {",
 									"    var jsonData = pm.response.json();",
@@ -257,14 +256,15 @@
 									"    pm.expect(jsonData.bodyName).to.eql(\"2 B\");",
 									"    pm.expect(jsonData.latitude).to.eql(-3.3269);",
 									"    pm.expect(jsonData.longitude).to.eql(139.8931);",
-									"    pm.expect(jsonData.count).to.eql(1);",
 									"    pm.expect(jsonData.cmdrName).to.eql(\"Galactic Fork\");",
 									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Bark Mound Report\");",
 									"    pm.expect(jsonData.reportStatus).to.eql(\"declined\");",
 									"    pm.expect(jsonData.reportComment).to.eql(\"TEST - Update entry\");",
 									"    pm.expect(jsonData.voteCount).to.eql(1);",
+									"    pm.expect(jsonData.clientVersion).to.eql(\"postman-test\");",
 									"});"
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -353,7 +353,6 @@
 							"listen": "test",
 							"script": {
 								"id": "50ec68a9-052f-4b20-b4a0-3e760735163f",
-								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"pm.environment.set(\"btID\", jsonData.id);",
@@ -366,12 +365,14 @@
 									"    pm.expect(jsonData.bodyName).to.eql(\"5 C A\");",
 									"    pm.expect(jsonData.latitude).to.eql(-4.8631);",
 									"    pm.expect(jsonData.longitude).to.eql(3.0394);",
-									"    pm.expect(jsonData.count).to.eql(2);",
+									"    pm.expect(jsonData.type).to.eql(\"Test Type\");",
 									"    pm.expect(jsonData.cmdrName).to.eql(\"Panpiper\");",
 									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Brain Tree Report\");",
 									"    pm.expect(jsonData.reportStatus).to.eql(\"pending\");",
+									"    pm.expect(jsonData.clientVersion).to.eql(\"postman-test\");",
 									"});"
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -389,7 +390,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"164 G. CANIS MAJORIS\",\n  \"bodyName\": \"5 C A\",\n  \"latitude\": -4.8631,\n  \"longitude\": 3.0394,\n  \"count\": 2,\n  \"cmdrName\": \"Panpiper\",\n  \"cmdrComment\": \"TEST - Brain Tree Report\",\n  \"reportStatus\": \"pending\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"164 G. CANIS MAJORIS\",\n  \"bodyName\": \"5 C A\",\n  \"latitude\": -4.8631,\n  \"longitude\": 3.0394,\n  \"type\": \"Test Type\",\n  \"cmdrName\": \"Panpiper\",\n  \"cmdrComment\": \"TEST - Brain Tree Report\",\n  \"reportStatus\": \"pending\",\n  \"clientVersion\": \"postman-test\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/btreports",
@@ -518,7 +519,6 @@
 							"listen": "test",
 							"script": {
 								"id": "da0b5e11-96fb-4b4f-a370-08cf5555f8b0",
-								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"BT updated values match\", function () {",
 									"    var jsonData = pm.response.json();",
@@ -528,14 +528,16 @@
 									"    pm.expect(jsonData.bodyName).to.eql(\"5 C A\");",
 									"    pm.expect(jsonData.latitude).to.eql(-4.8631);",
 									"    pm.expect(jsonData.longitude).to.eql(3.0394);",
-									"    pm.expect(jsonData.count).to.eql(2);",
+									"    pm.expect(jsonData.type).to.eql(\"Test Type\");",
 									"    pm.expect(jsonData.cmdrName).to.eql(\"Panpiper\");",
 									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Brain Tree Report\");",
 									"    pm.expect(jsonData.reportStatus).to.eql(\"declined\");",
 									"    pm.expect(jsonData.reportComment).to.eql(\"TEST - Update entry\");",
 									"    pm.expect(jsonData.voteCount).to.eql(1);",
+									"    pm.expect(jsonData.clientVersion).to.eql(\"postman-test\");",
 									"});"
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -636,10 +638,10 @@
 									"    pm.expect(jsonData.bodyName).to.eql(\"Test Body\");",
 									"    pm.expect(jsonData.latitude).to.eql(123.1234);",
 									"    pm.expect(jsonData.longitude).to.eql(-123.4321);",
-									"    pm.expect(jsonData.count).to.eql(10);",
 									"    pm.expect(jsonData.cmdrName).to.eql(\"Test CMDR\");",
 									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Crystalline Shard Report\");",
 									"    pm.expect(jsonData.reportStatus).to.eql(\"pending\");",
+									"    pm.expect(jsonData.clientVersion).to.eql(\"postman-test\");",
 									"});"
 								],
 								"type": "text/javascript"
@@ -660,7 +662,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"Test System\",\n  \"bodyName\": \"Test Body\",\n  \"latitude\": 123.1234,\n  \"longitude\": -123.4321,\n  \"count\": 10,\n  \"cmdrName\": \"Test CMDR\",\n  \"cmdrComment\": \"TEST - Crystalline Shard Report\",\n  \"reportStatus\": \"pending\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"Test System\",\n  \"bodyName\": \"Test Body\",\n  \"latitude\": 123.1234,\n  \"longitude\": -123.4321,\n  \"cmdrName\": \"Test CMDR\",\n  \"cmdrComment\": \"TEST - Crystalline Shard Report\",\n  \"reportStatus\": \"pending\",\n  \"clientVersion\": \"postman-test\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/csreports",
@@ -798,12 +800,12 @@
 									"    pm.expect(jsonData.bodyName).to.eql(\"Test Body\");",
 									"    pm.expect(jsonData.latitude).to.eql(123.1234);",
 									"    pm.expect(jsonData.longitude).to.eql(-123.4321);",
-									"    pm.expect(jsonData.count).to.eql(10);",
 									"    pm.expect(jsonData.cmdrName).to.eql(\"Test CMDR\");",
 									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Crystalline Shard Report\");",
 									"    pm.expect(jsonData.reportStatus).to.eql(\"declined\");",
 									"    pm.expect(jsonData.reportComment).to.eql(\"TEST - Update entry\");",
 									"    pm.expect(jsonData.voteCount).to.eql(1);",
+									"    pm.expect(jsonData.clientVersion).to.eql(\"postman-test\");",
 									"});"
 								],
 								"type": "text/javascript"
@@ -895,7 +897,6 @@
 							"listen": "test",
 							"script": {
 								"id": "4dfc1f9b-29b0-4130-8d6d-1fb2d38d409f",
-								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"pm.environment.set(\"fgID\", jsonData.id);",
@@ -908,12 +909,14 @@
 									"    pm.expect(jsonData.bodyName).to.eql(\"A 6 C A\");",
 									"    pm.expect(jsonData.latitude).to.eql(-1.4054);",
 									"    pm.expect(jsonData.longitude).to.eql(140.8423);",
-									"    pm.expect(jsonData.count).to.eql(3);",
+									"    pm.expect(jsonData.type).to.eql(\"Test Type\");",
 									"    pm.expect(jsonData.cmdrName).to.eql(\"Clobbertime\");",
 									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Fungal Gourd Report\");",
 									"    pm.expect(jsonData.reportStatus).to.eql(\"pending\");",
+									"    pm.expect(jsonData.clientVersion).to.eql(\"postman-test\");",
 									"});"
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -931,7 +934,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"HIP 37610\",\n  \"bodyName\": \"A 6 C A\",\n  \"latitude\": -1.4054,\n  \"longitude\": 140.8423,\n  \"count\": 3,\n  \"cmdrName\": \"Clobbertime\",\n  \"cmdrComment\": \"TEST - Fungal Gourd Report\",\n  \"reportStatus\": \"pending\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"HIP 37610\",\n  \"bodyName\": \"A 6 C A\",\n  \"latitude\": -1.4054,\n  \"longitude\": 140.8423,\n  \"type\": \"Test Type\",\n  \"cmdrName\": \"Clobbertime\",\n  \"cmdrComment\": \"TEST - Fungal Gourd Report\",\n  \"reportStatus\": \"pending\",\n  \"clientVersion\": \"postman-test\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/fgreports",
@@ -1084,7 +1087,6 @@
 							"listen": "test",
 							"script": {
 								"id": "52462177-ed5e-4a99-b8ad-895c4c5ec6df",
-								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"FG updated values match\", function () {",
 									"    var jsonData = pm.response.json();",
@@ -1094,14 +1096,16 @@
 									"    pm.expect(jsonData.bodyName).to.eql(\"A 6 C A\");",
 									"    pm.expect(jsonData.latitude).to.eql(-1.4054);",
 									"    pm.expect(jsonData.longitude).to.eql(140.8423);",
-									"    pm.expect(jsonData.count).to.eql(3);",
+									"    pm.expect(jsonData.type).to.eql(\"Test Type\");",
 									"    pm.expect(jsonData.cmdrName).to.eql(\"Clobbertime\");",
 									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Fungal Gourd Report\");",
 									"    pm.expect(jsonData.reportStatus).to.eql(\"declined\");",
 									"    pm.expect(jsonData.reportComment).to.eql(\"TEST - Update entry\");",
 									"    pm.expect(jsonData.voteCount).to.eql(1);",
+									"    pm.expect(jsonData.clientVersion).to.eql(\"postman-test\");",
 									"});"
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -1190,7 +1194,6 @@
 							"listen": "test",
 							"script": {
 								"id": "1f05215d-5675-4781-a989-c4ebd59df15a",
-								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"pm.environment.set(\"fmID\", jsonData.id);",
@@ -1203,13 +1206,14 @@
 									"    pm.expect(jsonData.bodyName).to.eql(\"B 3 A\");",
 									"    pm.expect(jsonData.latitude).to.eql(-26.1589);",
 									"    pm.expect(jsonData.longitude).to.eql(-90.6344);",
-									"    pm.expect(jsonData.count).to.eql(4);",
-									"    pm.expect(jsonData.type).to.eql(\"Iron Magma\");",
+									"    pm.expect(jsonData.type).to.eql(\"Test Type\");",
 									"    pm.expect(jsonData.cmdrName).to.eql(\"Rory Clague\");",
 									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Fumaroles Report\");",
 									"    pm.expect(jsonData.reportStatus).to.eql(\"pending\");",
+									"    pm.expect(jsonData.clientVersion).to.eql(\"postman-test\");",
 									"});"
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -1227,7 +1231,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"PROOE PHIO GP-W C3-5\",\n  \"bodyName\": \"B 3 A\",\n  \"latitude\": -26.1589,\n  \"longitude\": -90.6344,\n  \"count\": 4,\n  \"type\": \"Iron Magma\",\n  \"cmdrName\": \"Rory Clague\",\n  \"cmdrComment\": \"TEST - Fumaroles Report\",\n  \"reportStatus\": \"pending\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"PROOE PHIO GP-W C3-5\",\n  \"bodyName\": \"B 3 A\",\n  \"latitude\": -26.1589,\n  \"longitude\": -90.6344,\n  \"type\": \"Test Type\",\n  \"cmdrName\": \"Rory Clague\",\n  \"cmdrComment\": \"TEST - Fumaroles Report\",\n  \"reportStatus\": \"pending\",\n  \"clientVersion\": \"postman-test\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/fmreports",
@@ -1356,7 +1360,6 @@
 							"listen": "test",
 							"script": {
 								"id": "479341ab-b189-4a2e-9c72-5661642b2d58",
-								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"FM updated values match\", function () {",
 									"    var jsonData = pm.response.json();",
@@ -1366,15 +1369,16 @@
 									"    pm.expect(jsonData.bodyName).to.eql(\"B 3 A\");",
 									"    pm.expect(jsonData.latitude).to.eql(-26.1589);",
 									"    pm.expect(jsonData.longitude).to.eql(-90.6344);",
-									"    pm.expect(jsonData.count).to.eql(4);",
-									"    pm.expect(jsonData.type).to.eql(\"Iron Magma\");",
+									"    pm.expect(jsonData.type).to.eql(\"Test Type\");",
 									"    pm.expect(jsonData.cmdrName).to.eql(\"Rory Clague\");",
 									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Fumaroles Report\");",
 									"    pm.expect(jsonData.reportStatus).to.eql(\"declined\");",
 									"    pm.expect(jsonData.reportComment).to.eql(\"TEST - Update entry\");",
 									"    pm.expect(jsonData.voteCount).to.eql(1);",
+									"    pm.expect(jsonData.clientVersion).to.eql(\"postman-test\");",
 									"});"
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -2976,35 +2980,35 @@
 			"description": "Folder for gsreport"
 		},
 		{
-			"name": "gyreport",
+			"name": "gvreport",
 			"item": [
 				{
-					"name": "Post a new GY Report",
+					"name": "Post a new GV Report",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"id": "df93b1d9-04bc-4834-937f-300b52876579",
-								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
-									"pm.environment.set(\"gyID\", jsonData.id);",
+									"pm.environment.set(\"gvID\", jsonData.id);",
 									"",
-									"pm.test(\"GY created values match\", function () {",
+									"pm.test(\"GV created values match\", function () {",
 									"    var jsonData = pm.response.json();",
 									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
 									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
-									"    pm.expect(jsonData.systemName).to.eql(\"XOTHUIA AF-P D6-102\");",
-									"    pm.expect(jsonData.bodyName).to.eql(\"3 D A\");",
-									"    pm.expect(jsonData.latitude).to.eql(38.8111);",
-									"    pm.expect(jsonData.longitude).to.eql(-130.3432);",
-									"    pm.expect(jsonData.count).to.eql(5);",
-									"    pm.expect(jsonData.type).to.eql(\"Silicate Vapour\");",
-									"    pm.expect(jsonData.cmdrName).to.eql(\"Baton\");",
-									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Geyser Report\");",
+									"    pm.expect(jsonData.systemName).to.eql(\"PLEIADES SECTOR FM-V C2-7\");",
+									"    pm.expect(jsonData.bodyName).to.eql(\"2 A\");",
+									"    pm.expect(jsonData.latitude).to.eql(15.9);",
+									"    pm.expect(jsonData.longitude).to.eql(128.7378);",
+									"    pm.expect(jsonData.type).to.eql(\"Test Type\");",
+									"    pm.expect(jsonData.cmdrName).to.eql(\"LCU No Fool Like One\");",
+									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Gas Vent Report\");",
 									"    pm.expect(jsonData.reportStatus).to.eql(\"pending\");",
+									"    pm.expect(jsonData.clientVersion).to.eql(\"postman-test\");",
 									"});"
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -3022,7 +3026,316 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"XOTHUIA AF-P D6-102\",\n  \"bodyName\": \"3 D A\",\n  \"latitude\": 38.8111,\n  \"longitude\": -130.3432,\n  \"count\": 5,\n  \"type\": \"Silicate Vapour\",\n  \"cmdrName\": \"Baton\",\n  \"cmdrComment\": \"TEST - Geyser Report\",\n  \"reportStatus\": \"pending\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"PLEIADES SECTOR FM-V C2-7\",\n  \"bodyName\": \"2 A\",\n  \"latitude\": 15.9,\n  \"longitude\": 128.7378,\n  \"type\": \"Test Type\",\n  \"cmdrName\": \"LCU No Fool Like One\",\n  \"cmdrComment\": \"TEST - Gas Vent Report\",\n  \"reportStatus\": \"pending\",\n  \"clientVersion\": \"postman-test\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/gvreports",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gvreports"
+							]
+						},
+						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a count of all GV Reports",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a84ccb1f-bbfe-4e3b-b45e-7f28136a7efe",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/gvreports/count",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gvreports",
+								"count"
+							]
+						},
+						"description": "The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests."
+					},
+					"response": []
+				},
+				{
+					"name": "Get a list of GV Reports",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/gvreports",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gvreports"
+							]
+						},
+						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
+					},
+					"response": []
+				},
+				{
+					"name": "Update a GV Report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b1cad327-c133-4d5d-ad28-35c84a53c405",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
+						},
+						"url": {
+							"raw": "{{url}}/gvreports/{{gvID}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gvreports",
+								"{{gvID}}"
+							]
+						},
+						"description": "You do not need to send the entire report again, you can send only changed fields"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Single GV Report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b20350c0-4077-4dcc-85d7-4db660c7922a",
+								"exec": [
+									"pm.test(\"GV updated values match\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
+									"    pm.expect(jsonData.systemName).to.eql(\"PLEIADES SECTOR FM-V C2-7\");",
+									"    pm.expect(jsonData.bodyName).to.eql(\"2 A\");",
+									"    pm.expect(jsonData.latitude).to.eql(15.9);",
+									"    pm.expect(jsonData.longitude).to.eql(128.7378);",
+									"    pm.expect(jsonData.type).to.eql(\"Test Type\");",
+									"    pm.expect(jsonData.cmdrName).to.eql(\"LCU No Fool Like One\");",
+									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Gas Vent Report\");",
+									"    pm.expect(jsonData.reportStatus).to.eql(\"declined\");",
+									"    pm.expect(jsonData.reportComment).to.eql(\"TEST - Update entry\");",
+									"    pm.expect(jsonData.voteCount).to.eql(1);",
+									"    pm.expect(jsonData.clientVersion).to.eql(\"postman-test\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/gvreports/{{gvID}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gvreports",
+								"{{gvID}}"
+							]
+						},
+						"description": "Provide the ID to get a single report"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a GV Report",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/gvreports/{{gvID}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gvreports",
+								"{{gvID}}"
+							]
+						},
+						"description": "The response is just an empty JSON, deleting a report requires auth"
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for gvreport",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f1a679be-b356-4cf8-a7d8-f2670e700627",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "d5d51846-5f60-4236-b9ae-3fe54b04b0f8",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "gyreport",
+			"item": [
+				{
+					"name": "Post a new GY Report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "df93b1d9-04bc-4834-937f-300b52876579",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"gyID\", jsonData.id);",
+									"",
+									"pm.test(\"GY created values match\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
+									"    pm.expect(jsonData.systemName).to.eql(\"XOTHUIA AF-P D6-102\");",
+									"    pm.expect(jsonData.bodyName).to.eql(\"3 D A\");",
+									"    pm.expect(jsonData.latitude).to.eql(38.8111);",
+									"    pm.expect(jsonData.longitude).to.eql(-130.3432);",
+									"    pm.expect(jsonData.type).to.eql(\"Test Type\");",
+									"    pm.expect(jsonData.cmdrName).to.eql(\"Baton\");",
+									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Geyser Report\");",
+									"    pm.expect(jsonData.reportStatus).to.eql(\"pending\");",
+									"    pm.expect(jsonData.clientVersion).to.eql(\"postman-test\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"XOTHUIA AF-P D6-102\",\n  \"bodyName\": \"3 D A\",\n  \"latitude\": 38.8111,\n  \"longitude\": -130.3432,\n  \"type\": \"Test Type\",\n  \"cmdrName\": \"Baton\",\n  \"cmdrComment\": \"TEST - Geyser Report\",\n  \"reportStatus\": \"pending\",\n  \"clientVersion\": \"postman-test\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/gyreports",
@@ -3165,7 +3478,6 @@
 							"listen": "test",
 							"script": {
 								"id": "b20350c0-4077-4dcc-85d7-4db660c7922a",
-								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"GY updated values match\", function () {",
 									"    var jsonData = pm.response.json();",
@@ -3175,15 +3487,16 @@
 									"    pm.expect(jsonData.bodyName).to.eql(\"3 D A\");",
 									"    pm.expect(jsonData.latitude).to.eql(38.8111);",
 									"    pm.expect(jsonData.longitude).to.eql(-130.3432);",
-									"    pm.expect(jsonData.count).to.eql(5);",
-									"    pm.expect(jsonData.type).to.eql(\"Silicate Vapour\");",
+									"    pm.expect(jsonData.type).to.eql(\"Test Type\");",
 									"    pm.expect(jsonData.cmdrName).to.eql(\"Baton\");",
 									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Geyser Report\");",
 									"    pm.expect(jsonData.reportStatus).to.eql(\"declined\");",
 									"    pm.expect(jsonData.reportComment).to.eql(\"TEST - Update entry\");",
 									"    pm.expect(jsonData.voteCount).to.eql(1);",
+									"    pm.expect(jsonData.clientVersion).to.eql(\"postman-test\");",
 									"});"
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -3272,7 +3585,6 @@
 							"listen": "test",
 							"script": {
 								"id": "48c03803-0857-4006-aa59-343b9c97eb94",
-								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"pm.environment.set(\"lsID\", jsonData.id);",
@@ -3285,12 +3597,14 @@
 									"    pm.expect(jsonData.bodyName).to.eql(\"7 E A\");",
 									"    pm.expect(jsonData.latitude).to.eql(75.9209);",
 									"    pm.expect(jsonData.longitude).to.eql(-50.3884);",
-									"    pm.expect(jsonData.count).to.eql(6);",
+									"    pm.expect(jsonData.type).to.eql(\"Test Type\");",
 									"    pm.expect(jsonData.cmdrName).to.eql(\"Steyla\");",
 									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Lava Spout Report\");",
 									"    pm.expect(jsonData.reportStatus).to.eql(\"pending\");",
+									"    pm.expect(jsonData.clientVersion).to.eql(\"postman-test\");",
 									"});"
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -3308,7 +3622,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"DROETH OD-T D3-1\",\n  \"bodyName\": \"7 E A\",\n  \"latitude\": 75.9209,\n  \"longitude\": -50.3884,\n  \"count\": 6,\n  \"cmdrName\": \"Steyla\",\n  \"cmdrComment\": \"TEST - Lava Spout Report\",\n  \"reportStatus\": \"pending\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"DROETH OD-T D3-1\",\n  \"bodyName\": \"7 E A\",\n  \"latitude\": 75.9209,\n  \"longitude\": -50.3884,\n  \"type\": \"Test Type\",\n  \"cmdrName\": \"Steyla\",\n  \"cmdrComment\": \"TEST - Lava Spout Report\",\n  \"reportStatus\": \"pending\",\n  \"clientVersion\": \"postman-test\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/lsreports",
@@ -3437,7 +3751,6 @@
 							"listen": "test",
 							"script": {
 								"id": "016dc592-59fe-4911-b9d6-2e0ee0e8e80d",
-								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"LS updated values match\", function () {",
 									"    var jsonData = pm.response.json();",
@@ -3447,14 +3760,16 @@
 									"    pm.expect(jsonData.bodyName).to.eql(\"7 E A\");",
 									"    pm.expect(jsonData.latitude).to.eql(75.9209);",
 									"    pm.expect(jsonData.longitude).to.eql(-50.3884);",
-									"    pm.expect(jsonData.count).to.eql(6);",
+									"    pm.expect(jsonData.type).to.eql(\"Test Type\");",
 									"    pm.expect(jsonData.cmdrName).to.eql(\"Steyla\");",
 									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Lava Spout Report\");",
 									"    pm.expect(jsonData.reportStatus).to.eql(\"declined\");",
 									"    pm.expect(jsonData.reportComment).to.eql(\"TEST - Update entry\");",
 									"    pm.expect(jsonData.voteCount).to.eql(1);",
+									"    pm.expect(jsonData.clientVersion).to.eql(\"postman-test\");",
 									"});"
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -3534,283 +3849,6 @@
 			"description": "Folder for lsreport"
 		},
 		{
-			"name": "msreport",
-			"item": [
-				{
-					"name": "Post a new MS Report",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "5985b03a-5b98-48cc-9a41-8c381b70afb4",
-								"type": "text/javascript",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"pm.environment.set(\"msID\", jsonData.id);",
-									"",
-									"pm.test(\"MS created values match\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
-									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
-									"    pm.expect(jsonData.systemName).to.eql(\"HIP 17692\");",
-									"    pm.expect(jsonData.orbitBody).to.eql(\"A 3\");",
-									"    pm.expect(jsonData.shipName).to.eql(\"JJF-048\");",
-									"    pm.expect(jsonData.shipTag).to.eql(\"jjf048\");",
-									"    pm.expect(jsonData.type).to.eql(\"Alcatraz Class Prison Ship\");",
-									"    pm.expect(jsonData.flightOps).to.eql(false);",
-									"    pm.expect(jsonData.flightSchedule).to.eql(false);",
-									"    pm.expect(jsonData.dockable).to.eql(false);",
-									"    pm.expect(jsonData.cmdrName).to.eql(\"Unknown\");",
-									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Megaship Report\");",
-									"    pm.expect(jsonData.reportStatus).to.eql(\"pending\");",
-									"});"
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"HIP 17692\",\n  \"orbitBody\": \"A 3\",\n  \"shipName\": \"JJF-048\",\n  \"shipTag\": \"jjf048\",\n  \"type\": \"Alcatraz Class Prison Ship\",\n  \"flightOps\": false,\n  \"flightSchedule\": false,\n  \"dockable\": false,\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Megaship Report\",\n  \"reportStatus\": \"pending\"\n}"
-						},
-						"url": {
-							"raw": "{{url}}/msreports",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"msreports"
-							]
-						},
-						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
-					},
-					"response": []
-				},
-				{
-					"name": "Get a count of all MS Reports",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/msreports/count",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"msreports",
-								"count"
-							]
-						},
-						"description": "The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests."
-					},
-					"response": []
-				},
-				{
-					"name": "Get a list of MS Reports",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/msreports",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"msreports"
-							]
-						},
-						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
-					},
-					"response": []
-				},
-				{
-					"name": "Update a MS Report",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "f6c99df5-a31a-4c48-8a41-18dec9ffbdc3",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
-						},
-						"url": {
-							"raw": "{{url}}/msreports/{{msID}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"msreports",
-								"{{msID}}"
-							]
-						},
-						"description": "You do not need to send the entire report again, you can send only changed fields"
-					},
-					"response": []
-				},
-				{
-					"name": "Get a Single MS Report",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "7056543f-dc11-4c2c-b4da-64f8fbe0d033",
-								"type": "text/javascript",
-								"exec": [
-									"pm.test(\"MS updated values match\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
-									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
-									"    pm.expect(jsonData.systemName).to.eql(\"HIP 17692\");",
-									"    pm.expect(jsonData.orbitBody).to.eql(\"A 3\");",
-									"    pm.expect(jsonData.shipName).to.eql(\"JJF-048\");",
-									"    pm.expect(jsonData.shipTag).to.eql(\"jjf048\");",
-									"    pm.expect(jsonData.type).to.eql(\"Alcatraz Class Prison Ship\");",
-									"    pm.expect(jsonData.flightOps).to.eql(false);",
-									"    pm.expect(jsonData.flightSchedule).to.eql(false);",
-									"    pm.expect(jsonData.dockable).to.eql(false);",
-									"    pm.expect(jsonData.cmdrName).to.eql(\"Unknown\");",
-									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Megaship Report\");",
-									"    pm.expect(jsonData.reportStatus).to.eql(\"declined\");",
-									"    pm.expect(jsonData.reportComment).to.eql(\"TEST - Update entry\");",
-									"    pm.expect(jsonData.voteCount).to.eql(1);",
-									"});"
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/msreports/{{msID}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"msreports",
-								"{{msID}}"
-							]
-						},
-						"description": "Provide the ID to get a single report"
-					},
-					"response": []
-				},
-				{
-					"name": "Delete a MS Report",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{jwt}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/msreports/{{msID}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"msreports",
-								"{{msID}}"
-							]
-						},
-						"description": "The response is just an empty JSON, deleting a report requires auth"
-					},
-					"response": []
-				}
-			],
-			"description": "Folder for msreport"
-		},
-		{
 			"name": "tbreport",
 			"item": [
 				{
@@ -3820,7 +3858,6 @@
 							"listen": "test",
 							"script": {
 								"id": "526afeb4-a7ec-463c-9d20-aae0955245db",
-								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"pm.environment.set(\"tbID\", jsonData.id);",
@@ -3834,12 +3871,12 @@
 									"    pm.expect(jsonData.latitude).to.eql(2.3189);",
 									"    pm.expect(jsonData.longitude).to.eql(177.2434);",
 									"    pm.expect(jsonData.cycle).to.eql(\"B\");",
-									"    pm.expect(jsonData.count).to.eql(7);",
 									"    pm.expect(jsonData.cmdrName).to.eql(\"Unknown\");",
 									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Thargoid Barnacle Report\");",
 									"    pm.expect(jsonData.reportStatus).to.eql(\"pending\");",
 									"});"
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -3857,7 +3894,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"PLEIONE\",\n  \"bodyName\": \"11 A\",\n  \"latitude\": 2.3189,\n  \"longitude\": 177.2434,\n  \"type\": \"Barnacle\",\n  \"cycle\": \"B\",\n  \"count\": 7,\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Thargoid Barnacle Report\",\n  \"reportStatus\": \"pending\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"PLEIONE\",\n  \"bodyName\": \"11 A\",\n  \"latitude\": 2.3189,\n  \"longitude\": 177.2434,\n  \"type\": \"Barnacle\",\n  \"cycle\": \"B\",\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Thargoid Barnacle Report\",\n  \"reportStatus\": \"pending\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/tbreports",
@@ -3986,7 +4023,6 @@
 							"listen": "test",
 							"script": {
 								"id": "e76f134a-a726-41af-84db-b47acc491c39",
-								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"TB updated values match\", function () {",
 									"    var jsonData = pm.response.json();",
@@ -3997,14 +4033,14 @@
 									"    pm.expect(jsonData.latitude).to.eql(2.3189);",
 									"    pm.expect(jsonData.longitude).to.eql(177.2434);",
 									"    pm.expect(jsonData.cycle).to.eql(\"B\");",
-									"    pm.expect(jsonData.count).to.eql(7);",
 									"    pm.expect(jsonData.cmdrName).to.eql(\"Unknown\");",
 									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Thargoid Barnacle Report\");",
 									"    pm.expect(jsonData.reportStatus).to.eql(\"declined\");",
 									"    pm.expect(jsonData.reportComment).to.eql(\"TEST - Update entry\");",
 									"    pm.expect(jsonData.voteCount).to.eql(1);",
 									"});"
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -4364,7 +4400,6 @@
 							"listen": "test",
 							"script": {
 								"id": "0f272dea-d76e-466a-aa76-ba7d389c58f2",
-								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"pm.environment.set(\"twID\", jsonData.id);",
@@ -4377,12 +4412,14 @@
 									"    pm.expect(jsonData.bodyName).to.eql(\"Test Body\");",
 									"    pm.expect(jsonData.latitude).to.eql(123.1234);",
 									"    pm.expect(jsonData.longitude).to.eql(-123.4321);",
-									"    pm.expect(jsonData.count).to.eql(10);",
+									"    pm.expect(jsonData.type).to.eql(\"Test Type\");",
 									"    pm.expect(jsonData.cmdrName).to.eql(\"Test CMDR\");",
 									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Tube Worm Report\");",
 									"    pm.expect(jsonData.reportStatus).to.eql(\"pending\");",
+									"    pm.expect(jsonData.clientVersion).to.eql(\"postman-test\");",
 									"});"
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -4400,7 +4437,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"Test System\",\n  \"bodyName\": \"Test Body\",\n  \"latitude\": 123.1234,\n  \"longitude\": -123.4321,\n  \"count\": 10,\n  \"cmdrName\": \"Test CMDR\",\n  \"cmdrComment\": \"TEST - Tube Worm Report\",\n  \"reportStatus\": \"pending\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"Test System\",\n  \"bodyName\": \"Test Body\",\n  \"latitude\": 123.1234,\n  \"longitude\": -123.4321,\n  \"type\": \"Test Type\",\n  \"cmdrName\": \"Test CMDR\",\n  \"cmdrComment\": \"TEST - Tube Worm Report\",\n  \"reportStatus\": \"pending\",\n  \"clientVersion\": \"postman-test\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/twreports",
@@ -4529,7 +4566,6 @@
 							"listen": "test",
 							"script": {
 								"id": "6e5307a1-28f2-4c8f-afde-f92fd6c66bb9",
-								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"TW updated values match\", function () {",
 									"    var jsonData = pm.response.json();",
@@ -4539,14 +4575,16 @@
 									"    pm.expect(jsonData.bodyName).to.eql(\"Test Body\");",
 									"    pm.expect(jsonData.latitude).to.eql(123.1234);",
 									"    pm.expect(jsonData.longitude).to.eql(-123.4321);",
-									"    pm.expect(jsonData.count).to.eql(10);",
+									"    pm.expect(jsonData.type).to.eql(\"Test Type\");",
 									"    pm.expect(jsonData.cmdrName).to.eql(\"Test CMDR\");",
 									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Tube Worm Report\");",
 									"    pm.expect(jsonData.reportStatus).to.eql(\"declined\");",
 									"    pm.expect(jsonData.reportComment).to.eql(\"TEST - Update entry\");",
 									"    pm.expect(jsonData.voteCount).to.eql(1);",
+									"    pm.expect(jsonData.clientVersion).to.eql(\"postman-test\");",
 									"});"
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],

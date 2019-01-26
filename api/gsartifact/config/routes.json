@@ -47,30 +47,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/gsartifacts/:id/relationships/:relation",
-      "handler": "Gsartifact.createRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/gsartifacts/:id/relationships/:relation",
-      "handler": "Gsartifact.updateRelation",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/gsartifacts/:id/relationships/:relation",
-      "handler": "Gsartifact.destroyRelation",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }

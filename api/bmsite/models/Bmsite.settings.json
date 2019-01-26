@@ -36,9 +36,8 @@
       "type": "float",
       "required": true
     },
-    "count": {
-      "min": 1,
-      "type": "integer"
+    "type": {
+      "model": "bmtype"
     },
     "verified": {
       "type": "boolean"

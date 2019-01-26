@@ -70,35 +70,5 @@ module.exports = {
 
   destroy: async (ctx, next) => {
     return strapi.services.gractivegroup.remove(ctx.params);
-  },
-
-  /**
-   * Add relation to a/an gractivegroup record.
-   *
-   * @return {Object}
-   */
-
-  createRelation: async (ctx, next) => {
-    return strapi.services.gractivegroup.addRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Update relation to a/an gractivegroup record.
-   *
-   * @return {Object}
-   */
-
-  updateRelation: async (ctx, next) => {
-    return strapi.services.gractivegroup.editRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Destroy relation to a/an gractivegroup record.
-   *
-   * @return {Object}
-   */
-
-  destroyRelation: async (ctx, next) => {
-    return strapi.services.gractivegroup.removeRelation(ctx.params, ctx.request.body);
   }
 };

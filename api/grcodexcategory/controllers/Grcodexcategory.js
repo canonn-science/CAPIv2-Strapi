@@ -70,35 +70,5 @@ module.exports = {
 
   destroy: async (ctx, next) => {
     return strapi.services.grcodexcategory.remove(ctx.params);
-  },
-
-  /**
-   * Add relation to a/an grcodexcategory record.
-   *
-   * @return {Object}
-   */
-
-  createRelation: async (ctx, next) => {
-    return strapi.services.grcodexcategory.addRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Update relation to a/an grcodexcategory record.
-   *
-   * @return {Object}
-   */
-
-  updateRelation: async (ctx, next) => {
-    return strapi.services.grcodexcategory.editRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Destroy relation to a/an grcodexcategory record.
-   *
-   * @return {Object}
-   */
-
-  destroyRelation: async (ctx, next) => {
-    return strapi.services.grcodexcategory.removeRelation(ctx.params, ctx.request.body);
   }
 };

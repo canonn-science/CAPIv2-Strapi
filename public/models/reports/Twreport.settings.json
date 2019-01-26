@@ -41,7 +41,12 @@
     "systemAddress": {
       "x-data-render": false,
       "x-data-exclude": true,
-      "type": "float"
+      "type": "biginteger"
+    },
+    "regionID": {
+      "x-data-render": false,
+      "x-data-exclude": true,
+      "type": "integer"
     },
     "coordX": {
       "x-data-render": false,
@@ -79,11 +84,6 @@
       "min": -180,
       "max": 180
     },
-    "count": {
-      "x-data-description": "Number of Tube Worms",
-      "min": 1,
-      "type": "integer"
-    },
     "cmdrName": {
       "x-data-description": "Commander Name",
       "default": "Dr. Arcanonn",
@@ -98,6 +98,11 @@
       "x-data-render": false,
       "default": false,
       "type": "boolean"
+    },
+    "clientVersion": {
+      "x-data-render": false,
+      "required": true,
+      "type": "string"
     },
     "screenshot": {
       "x-data-description": "Screenshot",

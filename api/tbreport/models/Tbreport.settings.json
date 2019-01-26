@@ -35,7 +35,10 @@
       "required": true
     },
     "systemAddress": {
-      "type": "float"
+      "type": "biginteger"
+    },
+    "regionID": {
+      "type": "integer"
     },
     "coordX": {
       "type": "float"
@@ -87,10 +90,6 @@
       "type": "enumeration",
       "required": true
     },
-    "count": {
-      "min": 1,
-      "type": "integer"
-    },
     "cmdrName": {
       "type": "string",
       "required": true
@@ -101,6 +100,10 @@
     "isBeta": {
       "default": false,
       "type": "boolean"
+    },
+    "clientVersion": {
+      "required": true,
+      "type": "string"
     },
     "screenshot": {
       "collection": "file",

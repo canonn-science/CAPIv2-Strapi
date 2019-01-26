@@ -1,0 +1,28 @@
+{
+  "connection": "default",
+  "collectionName": "lstypes",
+  "info": {
+    "name": "lstype",
+    "description": "Type of a Lava Spout"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": false,
+    "comment": ""
+  },
+  "attributes": {
+    "type": {
+      "unique": true,
+      "type": "string",
+      "required": true
+    },
+    "journalName": {
+      "default": "",
+      "type": "string"
+    },
+    "journalID": {
+      "default": "",
+      "type": "integer"
+    }
+  }
+}
