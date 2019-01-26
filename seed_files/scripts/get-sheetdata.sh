@@ -26,6 +26,7 @@ currentDate=`date` && echo "exportTSStatus - $currentDate" >> ../CSV/updated.md 
 
 ## baseTypeData
 echo "" >> ../CSV/updated.md && echo "baseTypeData" >> ../CSV/updated.md
+currentDate=`date` && echo "exportReportType - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/baseTypeData/reporttypes.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ2ABT8JHYMPuJq1QoQK_N_DCBhRg7_NTcXsZV0twrjcW5SG8brdwK9gwneeqaPuAncilGTG8fND0zb/pub?gid=0&single=true&output=csv'
 currentDate=`date` && echo "exportBMType - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/baseTypeData/bmtypes.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSjXXP6ETXZs2xVed--4pAlWUzb14qFpfj-uLixQDUn4fq-UiJdBa2yOhEI58L6QaQ86T4gSVs1vZmL/pub?gid=0&single=true&output=csv'
 currentDate=`date` && echo "exportBTType - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/baseTypeData/bttypes.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS3FQ_avw1rKokIzWgTLALJCa2Vgi-1qtrOt0RUq_tbI-O7wKRccGYt_ax4tGYfnRPBeJbxAJ5qDfWN/pub?gid=0&single=true&output=csv'
 currentDate=`date` && echo "exportCSType - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/baseTypeData/cstypes.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQjeDHnk0a2QjmAaypPQmJqbrY89cTETl4pm6LhqD8XTMShDYQBxaey8AMXrqIS7PNwh7H1N2RD4AMn/pub?gid=0&single=true&output=csv'
