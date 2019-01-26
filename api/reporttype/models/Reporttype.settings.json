@@ -1,0 +1,40 @@
+{
+  "connection": "default",
+  "collectionName": "reporttypes",
+  "info": {
+    "name": "reporttype",
+    "description": "Report endpoints used by Canonn Plugins"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": false,
+    "comment": ""
+  },
+  "attributes": {
+    "type": {
+      "unique": true,
+      "type": "string",
+      "required": true
+    },
+    "location": {
+      "enum": [
+        "body",
+        "orbital"
+      ],
+      "type": "enumeration"
+    },
+    "journalName": {
+      "default": "",
+      "type": "string"
+    },
+    "journalID": {
+      "default": "",
+      "type": "integer"
+    },
+    "endpoint": {
+      "default": "",
+      "type": "string",
+      "required": true
+    }
+  }
+}

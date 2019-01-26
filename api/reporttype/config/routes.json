@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/reporttypes",
+      "handler": "Reporttype.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/reporttypes/count",
+      "handler": "Reporttype.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/reporttypes/:id",
+      "handler": "Reporttype.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/reporttypes",
+      "handler": "Reporttype.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/reporttypes/:id",
+      "handler": "Reporttype.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/reporttypes/:id",
+      "handler": "Reporttype.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
