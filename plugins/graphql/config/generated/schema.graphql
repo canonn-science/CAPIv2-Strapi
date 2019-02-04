@@ -30,6 +30,8 @@ type Bmreport {
   bodyName: String!
   latitude: Float!
   longitude: Float!
+  type: String
+  frontierID: Int
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
@@ -54,6 +56,8 @@ input BmreportInput {
   bodyName: String!
   latitude: Float!
   longitude: Float!
+  type: String
+  frontierID: Int
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
@@ -78,6 +82,7 @@ type Bmsite {
   latitude: Float!
   longitude: Float!
   type: Bmtype
+  frontierID: Int
   verified: Boolean
   visible: Boolean
   discoveredBy: Cmdr
@@ -91,6 +96,7 @@ input BmsiteInput {
   latitude: Float!
   longitude: Float!
   type: ID
+  frontierID: Int
   verified: Boolean
   visible: Boolean
   discoveredBy: ID
@@ -213,6 +219,7 @@ type Btreport {
   latitude: Float!
   longitude: Float!
   type: String
+  frontierID: Int
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
@@ -238,6 +245,7 @@ input BtreportInput {
   latitude: Float!
   longitude: Float!
   type: String
+  frontierID: Int
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
@@ -262,6 +270,7 @@ type Btsite {
   latitude: Float!
   longitude: Float!
   type: Bttype
+  frontierID: Int
   verified: Boolean
   visible: Boolean
   discoveredBy: Cmdr
@@ -275,6 +284,7 @@ input BtsiteInput {
   latitude: Float!
   longitude: Float!
   type: ID
+  frontierID: Int
   verified: Boolean
   visible: Boolean
   discoveredBy: ID
@@ -1096,6 +1106,8 @@ type Csreport {
   bodyName: String!
   latitude: Float!
   longitude: Float!
+  type: String
+  frontierID: Int
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
@@ -1120,6 +1132,8 @@ input CsreportInput {
   bodyName: String!
   latitude: Float!
   longitude: Float!
+  type: String
+  frontierID: Int
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
@@ -1144,6 +1158,7 @@ type Cssite {
   latitude: Float!
   longitude: Float!
   type: Cstype
+  frontierID: Int
   verified: Boolean!
   visible: Boolean
   discoveredBy: Cmdr
@@ -1157,6 +1172,7 @@ input CssiteInput {
   latitude: Float!
   longitude: Float!
   type: ID
+  frontierID: Int
   verified: Boolean!
   visible: Boolean
   discoveredBy: ID
@@ -2343,6 +2359,7 @@ type Fgreport {
   latitude: Float!
   longitude: Float!
   type: String
+  frontierID: Int
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
@@ -2368,6 +2385,7 @@ input FgreportInput {
   latitude: Float!
   longitude: Float!
   type: String
+  frontierID: Int
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
@@ -2392,6 +2410,7 @@ type Fgsite {
   latitude: Float!
   longitude: Float!
   type: Fgtype
+  frontierID: Int
   verified: Boolean
   visible: Boolean
   discoveredBy: Cmdr
@@ -2405,6 +2424,7 @@ input FgsiteInput {
   latitude: Float!
   longitude: Float!
   type: ID
+  frontierID: Int
   verified: Boolean
   visible: Boolean
   discoveredBy: ID
@@ -2454,6 +2474,7 @@ type Fmreport {
   latitude: Float!
   longitude: Float!
   type: String
+  frontierID: Int
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
@@ -2479,6 +2500,7 @@ input FmreportInput {
   latitude: Float!
   longitude: Float!
   type: String
+  frontierID: Int
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
@@ -2503,6 +2525,7 @@ type Fmsite {
   latitude: Float!
   longitude: Float!
   type: Fmtype
+  frontierID: Int
   verified: Boolean
   visible: Boolean
   discoveredBy: Cmdr
@@ -2516,6 +2539,7 @@ input FmsiteInput {
   latitude: Float!
   longitude: Float!
   type: ID
+  frontierID: Int
   verified: Boolean
   visible: Boolean
   discoveredBy: ID
@@ -3206,6 +3230,7 @@ type Gvreport {
   latitude: Float!
   longitude: Float!
   type: String
+  frontierID: Int
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
@@ -3231,6 +3256,7 @@ input GvreportInput {
   latitude: Float!
   longitude: Float!
   type: String
+  frontierID: Int
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
@@ -3255,6 +3281,7 @@ type Gvsite {
   latitude: Float!
   longitude: Float!
   type: Gvtype
+  frontierID: Int
   verified: Boolean
   visible: Boolean
   discoveredBy: Cmdr
@@ -3268,6 +3295,7 @@ input GvsiteInput {
   latitude: Float!
   longitude: Float!
   type: ID
+  frontierID: Int
   verified: Boolean
   visible: Boolean
   discoveredBy: ID
@@ -3304,6 +3332,7 @@ type Gyreport {
   latitude: Float!
   longitude: Float!
   type: String
+  frontierID: Int
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
@@ -3329,6 +3358,7 @@ input GyreportInput {
   latitude: Float!
   longitude: Float!
   type: String
+  frontierID: Int
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
@@ -3353,6 +3383,7 @@ type Gysite {
   latitude: Float!
   longitude: Float!
   type: Gytype
+  frontierID: Int
   verified: Boolean
   visible: Boolean
   discoveredBy: Cmdr
@@ -3366,6 +3397,7 @@ input GysiteInput {
   latitude: Float!
   longitude: Float!
   type: ID
+  frontierID: Int
   verified: Boolean
   visible: Boolean
   discoveredBy: ID
@@ -3489,6 +3521,7 @@ type Lsreport {
   latitude: Float!
   longitude: Float!
   type: String
+  frontierID: Int
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
@@ -3514,6 +3547,7 @@ input LsreportInput {
   latitude: Float!
   longitude: Float!
   type: String
+  frontierID: Int
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
@@ -3538,6 +3572,7 @@ type Lssite {
   latitude: Float!
   longitude: Float!
   type: Lstype
+  frontierID: Int
   verified: Boolean
   visible: Boolean
   discoveredBy: Cmdr
@@ -3551,6 +3586,7 @@ input LssiteInput {
   latitude: Float!
   longitude: Float!
   type: ID
+  frontierID: Int
   verified: Boolean
   visible: Boolean
   discoveredBy: ID
@@ -4186,6 +4222,7 @@ type Tbreport {
   longitude: Float!
   type: ENUM_TBREPORT_TYPE!
   cycle: ENUM_TBREPORT_CYCLE!
+  frontierID: Int
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
@@ -4212,6 +4249,7 @@ input TbreportInput {
   longitude: Float!
   type: ENUM_TBREPORT_TYPE!
   cycle: ENUM_TBREPORT_CYCLE!
+  frontierID: Int
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
@@ -4236,6 +4274,7 @@ type Tbsite {
   latitude: Float!
   longitude: Float!
   type: Tbtype
+  frontierID: Int
   cycle: Tbcycle
   comment: String
   verified: Boolean
@@ -4251,6 +4290,7 @@ input TbsiteInput {
   latitude: Float!
   longitude: Float!
   type: ID
+  frontierID: Int
   cycle: ID
   comment: String
   verified: Boolean
@@ -4411,6 +4451,7 @@ type Twreport {
   latitude: Float!
   longitude: Float!
   type: String
+  frontierID: Int
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
@@ -4436,6 +4477,7 @@ input TwreportInput {
   latitude: Float!
   longitude: Float!
   type: String
+  frontierID: Int
   cmdrName: String!
   cmdrComment: String
   isBeta: Boolean
@@ -4460,6 +4502,7 @@ type Twsite {
   latitude: Float!
   longitude: Float!
   type: Twtype
+  frontierID: Int
   verified: Boolean!
   visible: Boolean
   discoveredBy: Cmdr
@@ -4473,6 +4516,7 @@ input TwsiteInput {
   latitude: Float!
   longitude: Float!
   type: ID
+  frontierID: Int
   verified: Boolean!
   visible: Boolean
   discoveredBy: ID
