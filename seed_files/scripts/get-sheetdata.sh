@@ -82,7 +82,3 @@ currentDate=`date` && echo "exportGRActiveObelisk - $currentDate" >> ../CSV/upda
 currentDate=`date` && echo "exportGSActiveGroup - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/exampleMetaData/gsactivegroups.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQquPoDfXYsqmON5MeiIxrf3j7RU7WUzzEyjUBJcsp_NG6Y7o8Ql7wkR8IkSZN_3F0u_gUeXfGcEqf-/pub?gid=0&single=true&output=csv'
 currentDate=`date` && echo "exportGSActiveObelisk - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/exampleMetaData/gsactiveobelisks.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTq8Ya_dLPFqJaSbnrpgnnZW6LvBDUUmCWsuZZWzbSPw9YxXZfz4F1Y2jwFjg6CkfFo8r-SwdmObNU4/pub?gid=0&single=true&output=csv'
 sleep 1
-
-## tempData
-echo "" >> ../CSV/updated.md && echo "tempData" >> ../CSV/updated.md
-currentDate=`date` && echo "exportCodexData - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/tempData/codexreports.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ5eSSgtIFQfX4bu6KWt7NFZ0KKl1j---aSq4SDqr-jndqkPU05Dgl7Ed45jqOuRbHfLnecSv7Wl-Ex/pub?gid=2115620708&single=true&output=csv'
