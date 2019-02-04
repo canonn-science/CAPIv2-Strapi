@@ -703,6 +703,9 @@
               }
             }
           },
+          "frontierID": {
+            "type": "integer"
+          },
           "cycle": {
             "required": [
               "id",
@@ -773,6 +776,9 @@
           },
           "type": {
             "type": "string"
+          },
+          "frontierID": {
+            "type": "integer"
           },
           "cycle": {
             "type": "string"

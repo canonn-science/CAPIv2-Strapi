@@ -14,7 +14,7 @@
       "name": "GNU-GPLv3",
       "url": "https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE"
     },
-    "x-generation-date": "01/26/2019 9:23:20 AM"
+    "x-generation-date": "02/04/2019 12:50:00 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -43435,6 +43435,12 @@
           "longitude": {
             "type": "number"
           },
+          "type": {
+            "type": "string"
+          },
+          "frontierID": {
+            "type": "integer"
+          },
           "cmdrName": {
             "type": "string"
           },
@@ -43551,6 +43557,9 @@
               "type": {
                 "type": "string"
               },
+              "frontierID": {
+                "type": "integer"
+              },
               "verified": {
                 "type": "boolean"
               },
@@ -43620,6 +43629,12 @@
           },
           "longitude": {
             "type": "number"
+          },
+          "type": {
+            "type": "string"
+          },
+          "frontierID": {
+            "type": "integer"
           },
           "cmdrName": {
             "type": "string"
@@ -43879,6 +43894,9 @@
               }
             }
           },
+          "frontierID": {
+            "type": "integer"
+          },
           "verified": {
             "type": "boolean"
           },
@@ -43932,6 +43950,9 @@
           },
           "type": {
             "type": "string"
+          },
+          "frontierID": {
+            "type": "integer"
           },
           "verified": {
             "type": "boolean"
@@ -44375,6 +44396,9 @@
           "type": {
             "type": "string"
           },
+          "frontierID": {
+            "type": "integer"
+          },
           "cmdrName": {
             "type": "string"
           },
@@ -44491,6 +44515,9 @@
               "type": {
                 "type": "string"
               },
+              "frontierID": {
+                "type": "integer"
+              },
               "verified": {
                 "type": "boolean"
               },
@@ -44563,6 +44590,9 @@
           },
           "type": {
             "type": "string"
+          },
+          "frontierID": {
+            "type": "integer"
           },
           "cmdrName": {
             "type": "string"
@@ -44822,6 +44852,9 @@
               }
             }
           },
+          "frontierID": {
+            "type": "integer"
+          },
           "verified": {
             "type": "boolean"
           },
@@ -44875,6 +44908,9 @@
           },
           "type": {
             "type": "string"
+          },
+          "frontierID": {
+            "type": "integer"
           },
           "verified": {
             "type": "boolean"
@@ -45363,6 +45399,12 @@
           "longitude": {
             "type": "number"
           },
+          "type": {
+            "type": "string"
+          },
+          "frontierID": {
+            "type": "integer"
+          },
           "cmdrName": {
             "type": "string"
           },
@@ -45480,6 +45522,9 @@
               "type": {
                 "type": "string"
               },
+              "frontierID": {
+                "type": "integer"
+              },
               "verified": {
                 "type": "boolean"
               },
@@ -45549,6 +45594,12 @@
           },
           "longitude": {
             "type": "number"
+          },
+          "type": {
+            "type": "string"
+          },
+          "frontierID": {
+            "type": "integer"
           },
           "cmdrName": {
             "type": "string"
@@ -45809,6 +45860,9 @@
               }
             }
           },
+          "frontierID": {
+            "type": "integer"
+          },
           "verified": {
             "type": "boolean"
           },
@@ -45863,6 +45917,9 @@
           },
           "type": {
             "type": "string"
+          },
+          "frontierID": {
+            "type": "integer"
           },
           "verified": {
             "type": "boolean"
@@ -46192,6 +46249,9 @@
           "type": {
             "type": "string"
           },
+          "frontierID": {
+            "type": "integer"
+          },
           "cmdrName": {
             "type": "string"
           },
@@ -46308,6 +46368,9 @@
               "type": {
                 "type": "string"
               },
+              "frontierID": {
+                "type": "integer"
+              },
               "verified": {
                 "type": "boolean"
               },
@@ -46380,6 +46443,9 @@
           },
           "type": {
             "type": "string"
+          },
+          "frontierID": {
+            "type": "integer"
           },
           "cmdrName": {
             "type": "string"
@@ -46639,6 +46705,9 @@
               }
             }
           },
+          "frontierID": {
+            "type": "integer"
+          },
           "verified": {
             "type": "boolean"
           },
@@ -46692,6 +46761,9 @@
           },
           "type": {
             "type": "string"
+          },
+          "frontierID": {
+            "type": "integer"
           },
           "verified": {
             "type": "boolean"
@@ -46811,6 +46883,9 @@
           "type": {
             "type": "string"
           },
+          "frontierID": {
+            "type": "integer"
+          },
           "cmdrName": {
             "type": "string"
           },
@@ -46927,6 +47002,9 @@
               "type": {
                 "type": "string"
               },
+              "frontierID": {
+                "type": "integer"
+              },
               "verified": {
                 "type": "boolean"
               },
@@ -46999,6 +47077,9 @@
           },
           "type": {
             "type": "string"
+          },
+          "frontierID": {
+            "type": "integer"
           },
           "cmdrName": {
             "type": "string"
@@ -47258,6 +47339,9 @@
               }
             }
           },
+          "frontierID": {
+            "type": "integer"
+          },
           "verified": {
             "type": "boolean"
           },
@@ -47311,6 +47395,9 @@
           },
           "type": {
             "type": "string"
+          },
+          "frontierID": {
+            "type": "integer"
           },
           "verified": {
             "type": "boolean"
@@ -51801,6 +51888,9 @@
           "type": {
             "type": "string"
           },
+          "frontierID": {
+            "type": "integer"
+          },
           "cmdrName": {
             "type": "string"
           },
@@ -51917,6 +52007,9 @@
               "type": {
                 "type": "string"
               },
+              "frontierID": {
+                "type": "integer"
+              },
               "verified": {
                 "type": "boolean"
               },
@@ -51989,6 +52082,9 @@
           },
           "type": {
             "type": "string"
+          },
+          "frontierID": {
+            "type": "integer"
           },
           "cmdrName": {
             "type": "string"
@@ -52248,6 +52344,9 @@
               }
             }
           },
+          "frontierID": {
+            "type": "integer"
+          },
           "verified": {
             "type": "boolean"
           },
@@ -52301,6 +52400,9 @@
           },
           "type": {
             "type": "string"
+          },
+          "frontierID": {
+            "type": "integer"
           },
           "verified": {
             "type": "boolean"
@@ -52418,6 +52520,9 @@
           "type": {
             "type": "string"
           },
+          "frontierID": {
+            "type": "integer"
+          },
           "cmdrName": {
             "type": "string"
           },
@@ -52534,6 +52639,9 @@
               "type": {
                 "type": "string"
               },
+              "frontierID": {
+                "type": "integer"
+              },
               "verified": {
                 "type": "boolean"
               },
@@ -52606,6 +52714,9 @@
           },
           "type": {
             "type": "string"
+          },
+          "frontierID": {
+            "type": "integer"
           },
           "cmdrName": {
             "type": "string"
@@ -52865,6 +52976,9 @@
               }
             }
           },
+          "frontierID": {
+            "type": "integer"
+          },
           "verified": {
             "type": "boolean"
           },
@@ -52918,6 +53032,9 @@
           },
           "type": {
             "type": "string"
+          },
+          "frontierID": {
+            "type": "integer"
           },
           "verified": {
             "type": "boolean"
@@ -53369,6 +53486,9 @@
           "type": {
             "type": "string"
           },
+          "frontierID": {
+            "type": "integer"
+          },
           "cmdrName": {
             "type": "string"
           },
@@ -53485,6 +53605,9 @@
               "type": {
                 "type": "string"
               },
+              "frontierID": {
+                "type": "integer"
+              },
               "verified": {
                 "type": "boolean"
               },
@@ -53557,6 +53680,9 @@
           },
           "type": {
             "type": "string"
+          },
+          "frontierID": {
+            "type": "integer"
           },
           "cmdrName": {
             "type": "string"
@@ -53816,6 +53942,9 @@
               }
             }
           },
+          "frontierID": {
+            "type": "integer"
+          },
           "verified": {
             "type": "boolean"
           },
@@ -53869,6 +53998,9 @@
           },
           "type": {
             "type": "string"
+          },
+          "frontierID": {
+            "type": "integer"
           },
           "verified": {
             "type": "boolean"
@@ -54761,6 +54893,9 @@
               "ABC"
             ]
           },
+          "frontierID": {
+            "type": "integer"
+          },
           "cmdrName": {
             "type": "string"
           },
@@ -54877,6 +55012,9 @@
               "type": {
                 "type": "string"
               },
+              "frontierID": {
+                "type": "integer"
+              },
               "cycle": {
                 "type": "string"
               },
@@ -54977,6 +55115,9 @@
               "C",
               "ABC"
             ]
+          },
+          "frontierID": {
+            "type": "integer"
           },
           "cmdrName": {
             "type": "string"
@@ -55233,6 +55374,9 @@
               }
             }
           },
+          "frontierID": {
+            "type": "integer"
+          },
           "cycle": {
             "required": [
               "id",
@@ -55303,6 +55447,9 @@
           },
           "type": {
             "type": "string"
+          },
+          "frontierID": {
+            "type": "integer"
           },
           "cycle": {
             "type": "string"
@@ -56267,6 +56414,9 @@
           "type": {
             "type": "string"
           },
+          "frontierID": {
+            "type": "integer"
+          },
           "cmdrName": {
             "type": "string"
           },
@@ -56384,6 +56534,9 @@
               "type": {
                 "type": "string"
               },
+              "frontierID": {
+                "type": "integer"
+              },
               "verified": {
                 "type": "boolean"
               },
@@ -56456,6 +56609,9 @@
           },
           "type": {
             "type": "string"
+          },
+          "frontierID": {
+            "type": "integer"
           },
           "cmdrName": {
             "type": "string"
@@ -56716,6 +56872,9 @@
               }
             }
           },
+          "frontierID": {
+            "type": "integer"
+          },
           "verified": {
             "type": "boolean"
           },
@@ -56770,6 +56929,9 @@
           },
           "type": {
             "type": "string"
+          },
+          "frontierID": {
+            "type": "integer"
           },
           "verified": {
             "type": "boolean"

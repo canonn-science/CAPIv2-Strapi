@@ -549,6 +549,12 @@
           "longitude": {
             "type": "number"
           },
+          "type": {
+            "type": "string"
+          },
+          "frontierID": {
+            "type": "integer"
+          },
           "cmdrName": {
             "type": "string"
           },
@@ -666,6 +672,9 @@
               "type": {
                 "type": "string"
               },
+              "frontierID": {
+                "type": "integer"
+              },
               "verified": {
                 "type": "boolean"
               },
@@ -735,6 +744,12 @@
           },
           "longitude": {
             "type": "number"
+          },
+          "type": {
+            "type": "string"
+          },
+          "frontierID": {
+            "type": "integer"
           },
           "cmdrName": {
             "type": "string"
