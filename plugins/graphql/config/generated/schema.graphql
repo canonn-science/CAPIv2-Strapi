@@ -17,8 +17,8 @@ input ApiupdateInput {
 """Reporting for Bark Mounds"""
 type Bmreport {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   userType: ENUM_BMREPORT_USERTYPE!
   reportType: ENUM_BMREPORT_REPORTTYPE!
   systemName: String!
@@ -73,8 +73,8 @@ input BmreportInput {
 """Bark Mound sites"""
 type Bmsite {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   system: System
   body: Body
   siteID: Int!
@@ -119,8 +119,8 @@ input BmtypeInput {
 """Bodies stored in the Canonn database"""
 type Body {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   system: System
   bodyName: String!
   id64: String
@@ -205,8 +205,8 @@ input BodyInput {
 """Reporting for Brain Trees"""
 type Btreport {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   userType: ENUM_BTREPORT_USERTYPE!
   reportType: ENUM_BTREPORT_REPORTTYPE!
   systemName: String!
@@ -261,8 +261,8 @@ input BtreportInput {
 """Brain Tree sites"""
 type Btsite {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   system: System
   body: Body
   siteID: Int!
@@ -307,8 +307,8 @@ input BttypeInput {
 """CMDRs who have discovered sites"""
 type Cmdr {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   cmdrName: String!
   cmdrkill: Cmdrkill
 }
@@ -321,8 +321,8 @@ input CmdrInput {
 """Aggregated CMDR Kill data and rewards"""
 type Cmdrkill {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   cmdr: Cmdr
   scoutKills: Int
   cyclopsKills: Int
@@ -359,8 +359,8 @@ Codex logs enhanced with coordinates. Staging model for tracking changes in the 
 """
 type Codexreport {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   cmdrName: String
   systemName: String
   bodyName: String
@@ -1093,8 +1093,8 @@ type createUserPayload {
 """Reporting for Crystalline Shards"""
 type Csreport {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   userType: ENUM_CSREPORT_USERTYPE!
   reportType: ENUM_CSREPORT_REPORTTYPE!
   systemName: String!
@@ -1149,8 +1149,8 @@ input CsreportInput {
 """Crystalline Shard sites"""
 type Cssite {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   system: System
   body: Body
   siteID: Int!
@@ -1877,6 +1877,1060 @@ type deleteUserPayload {
   user: UsersPermissionsUser
 }
 
+input editApiupdateInput {
+  updateTime: DateTime
+  forced: Boolean
+  notes: String
+  updateLog: JSON
+}
+
+input editBmreportInput {
+  userType: ENUM_BMREPORT_USERTYPE
+  reportType: ENUM_BMREPORT_REPORTTYPE
+  systemName: String
+  systemAddress: String
+  regionID: Int
+  coordX: Float
+  coordY: Float
+  coordZ: Float
+  bodyName: String
+  latitude: Float
+  longitude: Float
+  type: String
+  frontierID: Int
+  cmdrName: String
+  cmdrComment: String
+  isBeta: Boolean
+  clientVersion: String
+  screenshot: [ID]
+  reportStatus: ENUM_BMREPORT_REPORTSTATUS
+  reportComment: String
+  voteCount: Int
+  added: Boolean
+  site: ID
+}
+
+input editBmsiteInput {
+  system: ID
+  body: ID
+  siteID: Int
+  extoolID: Int
+  latitude: Float
+  longitude: Float
+  type: ID
+  frontierID: Int
+  verified: Boolean
+  visible: Boolean
+  discoveredBy: ID
+}
+
+input editBmtypeInput {
+  type: String
+  journalName: String
+  journalID: Int
+}
+
+input editBodyInput {
+  system: ID
+  bodyName: String
+  id64: String
+  edsmID: Int
+  bodyID: Int
+  type: String
+  subType: String
+  offset: Int
+  distanceToArrival: Float
+  isMainStar: Boolean
+  isScoopable: Boolean
+  isLandable: Boolean
+  age: Int
+  luminosity: String
+  absoluteMagnitude: Float
+  solarMasses: Float
+  solarRadius: Float
+  gravity: Float
+  earthMasses: Float
+  radius: Float
+  surfaceTemperature: Float
+  surfacePressure: Float
+  volcanismType: String
+  atmosphereType: String
+  terraformingState: String
+  orbitalPeriod: Float
+  semiMajorAxis: Float
+  orbitalEccentricity: Float
+  orbitalInclination: Float
+  argOfPeriapsis: Float
+  rotationalPeriod: Float
+  rotationalPeriodTidallyLocked: Boolean
+  axialTilt: Float
+  solidComposition: JSON
+  atmosphere: JSON
+  material: JSON
+  missingSkipCount: Int
+  rings: [ID]
+}
+
+input editBtreportInput {
+  userType: ENUM_BTREPORT_USERTYPE
+  reportType: ENUM_BTREPORT_REPORTTYPE
+  systemName: String
+  systemAddress: String
+  regionID: Int
+  coordX: Float
+  coordY: Float
+  coordZ: Float
+  bodyName: String
+  latitude: Float
+  longitude: Float
+  type: String
+  frontierID: Int
+  cmdrName: String
+  cmdrComment: String
+  isBeta: Boolean
+  clientVersion: String
+  screenshot: [ID]
+  reportStatus: ENUM_BTREPORT_REPORTSTATUS
+  reportComment: String
+  voteCount: Int
+  added: Boolean
+  site: ID
+}
+
+input editBtsiteInput {
+  system: ID
+  body: ID
+  siteID: Int
+  extoolID: Int
+  latitude: Float
+  longitude: Float
+  type: ID
+  frontierID: Int
+  verified: Boolean
+  visible: Boolean
+  discoveredBy: ID
+}
+
+input editBttypeInput {
+  type: String
+  journalName: String
+  journalID: Int
+}
+
+input editCmdrInput {
+  cmdrName: String
+  cmdrkill: ID
+}
+
+input editCmdrkillInput {
+  cmdr: ID
+  scoutKills: Int
+  cyclopsKills: Int
+  basiliskKills: Int
+  medusaKills: Int
+  unknownKills: Int
+  scoutRewards: Int
+  cyclopsRewards: Int
+  basiliskRewards: Int
+  medusaRewards: Int
+  unknownRewards: Int
+  totalRewards: Int
+  totalKills: Int
+}
+
+input editCodexreportInput {
+  cmdrName: String
+  systemName: String
+  bodyName: String
+  coordX: Float
+  coordY: Float
+  coordZ: Float
+  latitude: Float
+  longitude: Float
+  entryId: Int
+  codexName: String
+  codexNameLocalised: String
+  subCategory: String
+  subCategoryLocalised: String
+  category: String
+  categoryLocalised: String
+  regionName: String
+  regionLocalised: String
+  systemAddress: String
+  voucherAmount: Int
+  isBeta: Boolean
+  clientVersion: String
+  rawJson: JSON
+}
+
+input editCsreportInput {
+  userType: ENUM_CSREPORT_USERTYPE
+  reportType: ENUM_CSREPORT_REPORTTYPE
+  systemName: String
+  systemAddress: String
+  regionID: Int
+  coordX: Float
+  coordY: Float
+  coordZ: Float
+  bodyName: String
+  latitude: Float
+  longitude: Float
+  type: String
+  frontierID: Int
+  cmdrName: String
+  cmdrComment: String
+  isBeta: Boolean
+  clientVersion: String
+  screenshot: [ID]
+  reportStatus: ENUM_CSREPORT_REPORTSTATUS
+  reportComment: String
+  voteCount: Int
+  added: Boolean
+  site: ID
+}
+
+input editCssiteInput {
+  system: ID
+  body: ID
+  siteID: Int
+  extoolID: Int
+  latitude: Float
+  longitude: Float
+  type: ID
+  frontierID: Int
+  verified: Boolean
+  visible: Boolean
+  discoveredBy: ID
+}
+
+input editCstypeInput {
+  type: String
+  journalName: String
+  journalID: Int
+}
+
+input editEventreportInput {
+  eventName: String
+  cmdrName: String
+  systemName: String
+  bodyName: String
+  stationName: String
+  latitude: Float
+  longitude: Float
+  isBeta: Boolean
+  clientVersion: String
+  rawJson: JSON
+}
+
+input editExcludeclientInput {
+  version: String
+  reason: String
+}
+
+input editExcludecmdrInput {
+  cmdrName: String
+  reason: String
+}
+
+input editExcludecodexInput {
+  codexName: String
+  reason: String
+}
+
+input editExcludeeventInput {
+  eventName: String
+  reason: String
+}
+
+input editExcludeussInput {
+  ussType: String
+  reason: String
+}
+
+input editFgreportInput {
+  userType: ENUM_FGREPORT_USERTYPE
+  reportType: ENUM_FGREPORT_REPORTTYPE
+  systemName: String
+  systemAddress: String
+  regionID: Int
+  coordX: Float
+  coordY: Float
+  coordZ: Float
+  bodyName: String
+  latitude: Float
+  longitude: Float
+  type: String
+  frontierID: Int
+  cmdrName: String
+  cmdrComment: String
+  isBeta: Boolean
+  clientVersion: String
+  screenshot: [ID]
+  reportStatus: ENUM_FGREPORT_REPORTSTATUS
+  reportComment: String
+  voteCount: Int
+  added: Boolean
+  site: ID
+}
+
+input editFgsiteInput {
+  system: ID
+  body: ID
+  siteID: Int
+  extoolID: Int
+  latitude: Float
+  longitude: Float
+  type: ID
+  frontierID: Int
+  verified: Boolean
+  visible: Boolean
+  discoveredBy: ID
+}
+
+input editFgtypeInput {
+  type: String
+  journalName: String
+  journalID: Int
+}
+
+input editFileInput {
+  name: String
+  hash: String
+  sha256: String
+  ext: String
+  mime: String
+  size: String
+  url: String
+  provider: String
+  public_id: String
+  related: [ID]
+}
+
+input editFmreportInput {
+  userType: ENUM_FMREPORT_USERTYPE
+  reportType: ENUM_FMREPORT_REPORTTYPE
+  systemName: String
+  systemAddress: String
+  regionID: Int
+  coordX: Float
+  coordY: Float
+  coordZ: Float
+  bodyName: String
+  latitude: Float
+  longitude: Float
+  type: String
+  frontierID: Int
+  cmdrName: String
+  cmdrComment: String
+  isBeta: Boolean
+  clientVersion: String
+  screenshot: [ID]
+  reportStatus: ENUM_FMREPORT_REPORTSTATUS
+  reportComment: String
+  voteCount: Int
+  added: Boolean
+  site: ID
+}
+
+input editFmsiteInput {
+  system: ID
+  body: ID
+  siteID: Int
+  extoolID: Int
+  latitude: Float
+  longitude: Float
+  type: ID
+  frontierID: Int
+  verified: Boolean
+  visible: Boolean
+  discoveredBy: ID
+}
+
+input editFmtypeInput {
+  type: String
+  journalName: String
+  journalID: Int
+}
+
+input editGbmessageInput {
+  gbsite: ID
+  messageSystem: ID
+  messageBody: ID
+  latitude: Float
+  longitude: Float
+}
+
+input editGbreportInput {
+  userType: ENUM_GBREPORT_USERTYPE
+  reportType: ENUM_GBREPORT_REPORTTYPE
+  systemName: String
+  systemAddress: String
+  regionID: Int
+  coordX: Float
+  coordY: Float
+  coordZ: Float
+  bodyName: String
+  messageSystem: String
+  messageBody: String
+  messageLatitude: Float
+  messageLongitude: Float
+  cmdrName: String
+  cmdrComment: String
+  isBeta: Boolean
+  clientVersion: String
+  screenshot: [ID]
+  reportStatus: ENUM_GBREPORT_REPORTSTATUS
+  reportComment: String
+  voteCount: Int
+  added: Boolean
+  site: ID
+}
+
+input editGbsiteInput {
+  system: ID
+  body: ID
+  siteID: Int
+  gssite: ID
+  verified: Boolean
+  visible: Boolean
+  discoveredBy: ID
+  gbmessage: ID
+}
+
+input editGenlogInput {
+  gensite: ID
+  logNumber: Int
+  logTitle: String
+  logBody: String
+  audio: [ID]
+}
+
+input editGenreportInput {
+  userType: ENUM_GENREPORT_USERTYPE
+  reportType: ENUM_GENREPORT_REPORTTYPE
+  systemName: String
+  systemAddress: String
+  regionID: Int
+  coordX: Float
+  coordY: Float
+  coordZ: Float
+  orbitBody: String
+  shipName: String
+  directionSystem: String
+  distance: Float
+  cmdrName: String
+  cmdrComment: String
+  isBeta: Boolean
+  clientVersion: String
+  screenshot: [ID]
+  reportStatus: ENUM_GENREPORT_REPORTSTATUS
+  reportComment: String
+  voteCount: Int
+  added: Boolean
+  site: ID
+}
+
+input editGensiteInput {
+  system: ID
+  body: ID
+  siteID: Int
+  shipName: String
+  directionSystem: ID
+  distance: Float
+  discoveredBy: ID
+  genlogs: [ID]
+}
+
+input editGractivegroupInput {
+  grSite: ID
+  activeGroup: ID
+}
+
+input editGractiveobeliskInput {
+  grSite: ID
+  activeObelisk: ID
+}
+
+input editGrartifactInput {
+  artifactName: String
+}
+
+input editGrcodexcategoryInput {
+  categoryName: String
+}
+
+input editGrcodexdataInput {
+  grCodexCategory: ID
+  grPrimaryArtifact: ID
+  grSecondaryArtifact: ID
+  codexNumber: Int
+  text: String
+}
+
+input editGrobeliskgroupInput {
+  grType: ID
+  groupName: String
+  amount: Int
+}
+
+input editGrobeliskInput {
+  grType: ID
+  grObeliskGroup: ID
+  obeliskNumber: Int
+  broken: Boolean
+  grCodexData: ID
+  verified: Boolean
+}
+
+input editGrobeliskreportInput {
+  grreport: ID
+  groups: JSON
+  obelisks: JSON
+}
+
+input editGrreportInput {
+  userType: ENUM_GRREPORT_USERTYPE
+  reportType: ENUM_GRREPORT_REPORTTYPE
+  systemName: String
+  systemAddress: String
+  regionID: Int
+  coordX: Float
+  coordY: Float
+  coordZ: Float
+  bodyName: String
+  latitude: Float
+  longitude: Float
+  type: ENUM_GRREPORT_TYPE
+  cmdrName: String
+  cmdrComment: String
+  isBeta: Boolean
+  clientVersion: String
+  screenshot: [ID]
+  reportStatus: ENUM_GRREPORT_REPORTSTATUS
+  reportComment: String
+  voteCount: Int
+  added: Boolean
+  site: ID
+  grobeliskreport: [ID]
+}
+
+input editGrsiteInput {
+  system: ID
+  body: ID
+  siteID: Int
+  extoolID: Int
+  latitude: Float
+  longitude: Float
+  type: ID
+  verified: Boolean
+  visible: Boolean
+  activeGroups: [ID]
+  activeObelisks: [ID]
+  discoveredBy: ID
+}
+
+input editGrtypeInput {
+  type: String
+  journalName: String
+}
+
+input editGsactivegroupInput {
+  gsSite: ID
+  activeGroup: ID
+}
+
+input editGsactiveobeliskInput {
+  gsSite: ID
+  activeObelisk: ID
+}
+
+input editGsartifactInput {
+  artifactName: String
+}
+
+input editGscodexcategoryInput {
+  categoryName: String
+}
+
+input editGscodexdataInput {
+  gsCodexCategory: ID
+  gsPrimaryArtifact: ID
+  gsSecondaryArtifact: ID
+  codexNumber: Int
+  text: String
+  audio: ID
+}
+
+input editGsobeliskgroupInput {
+  gsType: ID
+  groupName: String
+  amount: Int
+}
+
+input editGsobeliskInput {
+  gsType: ID
+  gsObeliskGroup: ID
+  obeliskNumber: Int
+  broken: Boolean
+  gsCodexData: ID
+  verified: Boolean
+}
+
+input editGsobeliskreportInput {
+  gsreport: ID
+  groups: JSON
+  obelisks: JSON
+}
+
+input editGsreportInput {
+  userType: ENUM_GSREPORT_USERTYPE
+  reportType: ENUM_GSREPORT_REPORTTYPE
+  systemName: String
+  systemAddress: String
+  regionID: Int
+  coordX: Float
+  coordY: Float
+  coordZ: Float
+  bodyName: String
+  latitude: Float
+  longitude: Float
+  type: ENUM_GSREPORT_TYPE
+  hasDatabank: Boolean
+  cmdrName: String
+  cmdrComment: String
+  isBeta: Boolean
+  clientVersion: String
+  screenshot: [ID]
+  reportStatus: ENUM_GSREPORT_REPORTSTATUS
+  reportComment: String
+  voteCount: Int
+  added: Boolean
+  site: ID
+  gsobeliskreport: [ID]
+}
+
+input editGssiteInput {
+  system: ID
+  body: ID
+  siteID: Int
+  extoolID: Int
+  latitude: Float
+  longitude: Float
+  type: ID
+  hasDatabank: Boolean
+  verified: Boolean
+  visible: Boolean
+  activeGroups: [ID]
+  activeObelisks: [ID]
+  discoveredBy: ID
+}
+
+input editGstypeInput {
+  type: String
+  journalName: String
+}
+
+input editGvreportInput {
+  userType: ENUM_GVREPORT_USERTYPE
+  reportType: ENUM_GVREPORT_REPORTTYPE
+  systemName: String
+  systemAddress: String
+  regionID: Int
+  coordX: Float
+  coordY: Float
+  coordZ: Float
+  bodyName: String
+  latitude: Float
+  longitude: Float
+  type: String
+  frontierID: Int
+  cmdrName: String
+  cmdrComment: String
+  isBeta: Boolean
+  clientVersion: String
+  screenshot: [ID]
+  reportStatus: ENUM_GVREPORT_REPORTSTATUS
+  reportComment: String
+  voteCount: Int
+  added: Boolean
+  site: ID
+}
+
+input editGvsiteInput {
+  system: ID
+  body: ID
+  siteID: Int
+  extoolID: Int
+  latitude: Float
+  longitude: Float
+  type: ID
+  frontierID: Int
+  verified: Boolean
+  visible: Boolean
+  discoveredBy: ID
+}
+
+input editGvtypeInput {
+  type: String
+  journalName: String
+  journalID: Int
+}
+
+input editGyreportInput {
+  userType: ENUM_GYREPORT_USERTYPE
+  reportType: ENUM_GYREPORT_REPORTTYPE
+  systemName: String
+  systemAddress: String
+  regionID: Int
+  coordX: Float
+  coordY: Float
+  coordZ: Float
+  bodyName: String
+  latitude: Float
+  longitude: Float
+  type: String
+  frontierID: Int
+  cmdrName: String
+  cmdrComment: String
+  isBeta: Boolean
+  clientVersion: String
+  screenshot: [ID]
+  reportStatus: ENUM_GYREPORT_REPORTSTATUS
+  reportComment: String
+  voteCount: Int
+  added: Boolean
+  site: ID
+}
+
+input editGysiteInput {
+  system: ID
+  body: ID
+  siteID: Int
+  extoolID: Int
+  latitude: Float
+  longitude: Float
+  type: ID
+  frontierID: Int
+  verified: Boolean
+  visible: Boolean
+  discoveredBy: ID
+}
+
+input editGytypeInput {
+  type: String
+  journalName: String
+  journalID: Int
+}
+
+input editHdreportInput {
+  fromSystemName: String
+  toSystemName: String
+  cmdrName: String
+  cmdrComment: String
+  screenshot: ID
+  isBeta: Boolean
+  clientVersion: String
+  reportStatus: ENUM_HDREPORT_REPORTSTATUS
+  reportComment: String
+  added: Boolean
+  site: ID
+  hdRawJson: JSON
+}
+
+input editHdsiteInput {
+  system: ID
+  solDistance: Float
+  meropeDistance: Float
+}
+
+input editKillreportInput {
+  systemName: String
+  edTimestamp: DateTime
+  cmdrName: String
+  reward: Int
+  rewardingFaction: String
+  victimFaction: String
+  rawEvent: JSON
+  isBeta: Boolean
+  clientVersion: String
+  reportAccepted: Boolean
+}
+
+input editLsreportInput {
+  userType: ENUM_LSREPORT_USERTYPE
+  reportType: ENUM_LSREPORT_REPORTTYPE
+  systemName: String
+  systemAddress: String
+  regionID: Int
+  coordX: Float
+  coordY: Float
+  coordZ: Float
+  bodyName: String
+  latitude: Float
+  longitude: Float
+  type: String
+  frontierID: Int
+  cmdrName: String
+  cmdrComment: String
+  isBeta: Boolean
+  clientVersion: String
+  screenshot: [ID]
+  reportStatus: ENUM_LSREPORT_REPORTSTATUS
+  reportComment: String
+  voteCount: Int
+  added: Boolean
+  site: ID
+}
+
+input editLssiteInput {
+  system: ID
+  body: ID
+  siteID: Int
+  extoolID: Int
+  latitude: Float
+  longitude: Float
+  type: ID
+  frontierID: Int
+  verified: Boolean
+  visible: Boolean
+  discoveredBy: ID
+}
+
+input editLstypeInput {
+  type: String
+  journalName: String
+  journalID: Int
+}
+
+input editNhssreportInput {
+  systemName: String
+  threatLevel: Int
+  cmdrName: String
+  cmdrComment: String
+  isBeta: Boolean
+  clientVersion: String
+  reportStatus: ENUM_NHSSREPORT_REPORTSTATUS
+  reportComment: String
+  added: Boolean
+  site: ID
+  nhssRawJson: JSON
+}
+
+input editNhsssiteInput {
+  system: ID
+  threatLevel: Int
+  discoveredBy: ID
+}
+
+input editRegionInput {
+  name: String
+  journalName: String
+  regionID: Int
+}
+
+input editReporttypeInput {
+  type: String
+  location: ENUM_REPORTTYPE_LOCATION
+  journalName: String
+  journalID: Int
+  endpoint: String
+}
+
+input editRingInput {
+  body: ID
+  ringName: String
+  type: String
+  mass: Float
+  innerRadius: Float
+  outerRadius: Float
+}
+
+input editRoleInput {
+  name: String
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+}
+
+input editSystemInput {
+  systemName: String
+  id64: String
+  edsmID: Int
+  edsmCoordX: Float
+  edsmCoordY: Float
+  edsmCoordZ: Float
+  edsmCoordLocked: Boolean
+  missingSkipCount: Int
+  bodies: [ID]
+  region: ID
+  primaryStar: JSON
+}
+
+input editTbcycleInput {
+  cycle: String
+}
+
+input editTbreportInput {
+  userType: ENUM_TBREPORT_USERTYPE
+  reportType: ENUM_TBREPORT_REPORTTYPE
+  systemName: String
+  systemAddress: String
+  regionID: Int
+  coordX: Float
+  coordY: Float
+  coordZ: Float
+  bodyName: String
+  latitude: Float
+  longitude: Float
+  type: ENUM_TBREPORT_TYPE
+  cycle: ENUM_TBREPORT_CYCLE
+  frontierID: Int
+  cmdrName: String
+  cmdrComment: String
+  isBeta: Boolean
+  clientVersion: String
+  screenshot: [ID]
+  reportStatus: ENUM_TBREPORT_REPORTSTATUS
+  reportComment: String
+  voteCount: Int
+  added: Boolean
+  site: ID
+}
+
+input editTbsiteInput {
+  system: ID
+  body: ID
+  siteID: Int
+  extoolID: Int
+  latitude: Float
+  longitude: Float
+  type: ID
+  frontierID: Int
+  cycle: ID
+  comment: String
+  verified: Boolean
+  visible: Boolean
+  discoveredBy: ID
+}
+
+input editTbtypeInput {
+  type: String
+  metaAlloyCount: Int
+}
+
+input editTgencounterstatInput {
+  hyperdictionSystemName: String
+  hyperdictionTimestamp: DateTime
+  cmdrName: String
+  wakesScanned: Int
+  thargoidScans: Int
+  thargoidSites: Int
+  hyperdictions: Int
+}
+
+input editTsreportInput {
+  userType: ENUM_TSREPORT_USERTYPE
+  reportType: ENUM_TSREPORT_REPORTTYPE
+  systemName: String
+  systemAddress: String
+  regionID: Int
+  coordX: Float
+  coordY: Float
+  coordZ: Float
+  bodyName: String
+  latitude: Float
+  longitude: Float
+  status: ENUM_TSREPORT_STATUS
+  cmdrName: String
+  cmdrComment: String
+  isBeta: Boolean
+  clientVersion: String
+  screenshot: [ID]
+  reportStatus: ENUM_TSREPORT_REPORTSTATUS
+  reportComment: String
+  voteCount: Int
+  added: Boolean
+  site: ID
+}
+
+input editTssiteInput {
+  system: ID
+  body: ID
+  siteID: Int
+  extoolID: Int
+  latitude: Float
+  longitude: Float
+  status: ID
+  verified: Boolean
+  visible: Boolean
+  msg1Site: ID
+  msg2Site: ID
+  msg3Site: ID
+  discoveredBy: ID
+}
+
+input editTsstatusInput {
+  status: String
+}
+
+input editTwreportInput {
+  userType: ENUM_TWREPORT_USERTYPE
+  reportType: ENUM_TWREPORT_REPORTTYPE
+  systemName: String
+  systemAddress: String
+  regionID: Int
+  coordX: Float
+  coordY: Float
+  coordZ: Float
+  bodyName: String
+  latitude: Float
+  longitude: Float
+  type: String
+  frontierID: Int
+  cmdrName: String
+  cmdrComment: String
+  isBeta: Boolean
+  clientVersion: String
+  screenshot: [ID]
+  reportStatus: ENUM_TWREPORT_REPORTSTATUS
+  reportComment: String
+  voteCount: Int
+  added: Boolean
+  site: ID
+}
+
+input editTwsiteInput {
+  system: ID
+  body: ID
+  siteID: Int
+  extoolID: Int
+  latitude: Float
+  longitude: Float
+  type: ID
+  frontierID: Int
+  verified: Boolean
+  visible: Boolean
+  discoveredBy: ID
+}
+
+input editTwtypeInput {
+  type: String
+  journalName: String
+  journalID: Int
+}
+
+input editUserInput {
+  username: String
+  email: String
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+}
+
 enum ENUM_BMREPORT_REPORTSTATUS {
   pending
   updated
@@ -2245,8 +3299,8 @@ Non-Codex journal logs. Staging model for tracking changes in the Journal
 """
 type Eventreport {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   eventName: String
   cmdrName: String
   systemName: String
@@ -2275,8 +3329,8 @@ input EventreportInput {
 """Client Version blacklist"""
 type Excludeclient {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   version: String
   reason: String
 }
@@ -2289,8 +3343,8 @@ input ExcludeclientInput {
 """CMDR blacklist"""
 type Excludecmdr {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   cmdrName: String
   reason: String
 }
@@ -2303,8 +3357,8 @@ input ExcludecmdrInput {
 """Codex Entry blacklist"""
 type Excludecodex {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   codexName: String
   reason: String
 }
@@ -2317,8 +3371,8 @@ input ExcludecodexInput {
 """Journal Event blacklist"""
 type Excludeevent {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   eventName: String
   reason: String
 }
@@ -2331,8 +3385,8 @@ input ExcludeeventInput {
 """USS Type blacklist"""
 type Excludeuss {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   ussType: String
   reason: String
 }
@@ -2345,8 +3399,8 @@ input ExcludeussInput {
 """Reporting for Fungal Gourds"""
 type Fgreport {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   userType: ENUM_FGREPORT_USERTYPE!
   reportType: ENUM_FGREPORT_REPORTTYPE!
   systemName: String!
@@ -2401,8 +3455,8 @@ input FgreportInput {
 """Fungal Gourd sites"""
 type Fgsite {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   system: System
   body: Body
   siteID: Int!
@@ -2460,8 +3514,8 @@ input FileInput {
 """Reporting for Fumaroles"""
 type Fmreport {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   userType: ENUM_FMREPORT_USERTYPE!
   reportType: ENUM_FMREPORT_REPORTTYPE!
   systemName: String!
@@ -2516,8 +3570,8 @@ input FmreportInput {
 """Fumarole sites"""
 type Fmsite {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   system: System
   body: Body
   siteID: Int!
@@ -2562,8 +3616,8 @@ input FmtypeInput {
 """Message from a Guardian Beacon site"""
 type Gbmessage {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   gbsite: Gbsite
   messageSystem: System
   messageBody: Body
@@ -2582,8 +3636,8 @@ input GbmessageInput {
 """Reporting for Guardian Beacons"""
 type Gbreport {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   userType: ENUM_GBREPORT_USERTYPE!
   reportType: ENUM_GBREPORT_REPORTTYPE!
   systemName: String!
@@ -2638,8 +3692,8 @@ input GbreportInput {
 """Guardian Beacon site"""
 type Gbsite {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   system: System
   body: Body
   siteID: Int!
@@ -2664,8 +3718,8 @@ input GbsiteInput {
 """Log messages from Generation Ships"""
 type Genlog {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   gensite: Gensite
   logNumber: Int!
   logTitle: String!
@@ -2684,8 +3738,8 @@ input GenlogInput {
 """Reporting for Generation Ships"""
 type Genreport {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   userType: ENUM_GENREPORT_USERTYPE!
   reportType: ENUM_GENREPORT_REPORTTYPE!
   systemName: String!
@@ -2738,8 +3792,8 @@ input GenreportInput {
 """Generation Ship sites"""
 type Gensite {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   system: System
   body: Body
   siteID: Int!
@@ -2764,8 +3818,8 @@ input GensiteInput {
 """Active groups of Obelisks at a Guardian Ruins site"""
 type Gractivegroup {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   grSite: Grsite
   activeGroup: Grobeliskgroup
 }
@@ -2778,8 +3832,8 @@ input GractivegroupInput {
 """Active Obeliskss at a Guardian Ruin site"""
 type Gractiveobelisk {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   grSite: Grsite
   activeObelisk: Grobelisk
 }
@@ -2812,8 +3866,8 @@ input GrcodexcategoryInput {
 """Data entires received at a Guardian Ruin site"""
 type Grcodexdata {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   grCodexCategory: Grcodexcategory
   grPrimaryArtifact: Grartifact
   grSecondaryArtifact: Grartifact
@@ -2832,8 +3886,8 @@ input GrcodexdataInput {
 """Obelisks at a Guardian Ruin site"""
 type Grobelisk {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   grType: Grtype
   grObeliskGroup: Grobeliskgroup
   obeliskNumber: Int!
@@ -2845,8 +3899,8 @@ type Grobelisk {
 """Groups of Obelisks at a Guardian Ruin site"""
 type Grobeliskgroup {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   grType: Grtype
   groupName: String!
   amount: Int!
@@ -2869,8 +3923,8 @@ input GrobeliskInput {
 
 type Grobeliskreport {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   grreport: Grreport
   groups: JSON
   obelisks: JSON
@@ -2885,8 +3939,8 @@ input GrobeliskreportInput {
 """Reporting for Guardian Ruins"""
 type Grreport {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   userType: ENUM_GRREPORT_USERTYPE!
   reportType: ENUM_GRREPORT_REPORTTYPE!
   systemName: String!
@@ -2941,8 +3995,8 @@ input GrreportInput {
 """Guardian Ruin site"""
 type Grsite {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   system: System
   body: Body
   siteID: Int!
@@ -2987,8 +4041,8 @@ input GrtypeInput {
 """Active groups of Obelisks at a Guardian Structure site"""
 type Gsactivegroup {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   gsSite: Gssite
   activeGroup: Gsobeliskgroup
 }
@@ -3001,8 +4055,8 @@ input GsactivegroupInput {
 """Active Obeliskss at a Guardian Structure site"""
 type Gsactiveobelisk {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   gsSite: Gssite
   activeObelisk: Gsobelisk
 }
@@ -3035,8 +4089,8 @@ input GscodexcategoryInput {
 """Data entires received at a Guardian Structure site"""
 type Gscodexdata {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   gsCodexCategory: Gscodexcategory
   gsPrimaryArtifact: Gsartifact
   gsSecondaryArtifact: Gsartifact
@@ -3057,8 +4111,8 @@ input GscodexdataInput {
 """Obelisks at a Guardian Structure site"""
 type Gsobelisk {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   gsType: Gstype
   gsObeliskGroup: Gsobeliskgroup
   obeliskNumber: Int!
@@ -3070,8 +4124,8 @@ type Gsobelisk {
 """Groups of Obelisks at a Guardian Structure site"""
 type Gsobeliskgroup {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   gsType: Gstype
   groupName: String!
   amount: Int!
@@ -3094,8 +4148,8 @@ input GsobeliskInput {
 
 type Gsobeliskreport {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   gsreport: Gsreport
   groups: JSON
   obelisks: JSON
@@ -3110,8 +4164,8 @@ input GsobeliskreportInput {
 """Reporting for Guardian Structures"""
 type Gsreport {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   userType: ENUM_GSREPORT_USERTYPE!
   reportType: ENUM_GSREPORT_REPORTTYPE!
   systemName: String!
@@ -3168,8 +4222,8 @@ input GsreportInput {
 """Guardian Structure sites"""
 type Gssite {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   system: System
   body: Body
   siteID: Int!
@@ -3216,8 +4270,8 @@ input GstypeInput {
 """Reporting for Gas Vents"""
 type Gvreport {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   userType: ENUM_GVREPORT_USERTYPE!
   reportType: ENUM_GVREPORT_REPORTTYPE!
   systemName: String!
@@ -3272,8 +4326,8 @@ input GvreportInput {
 """Gas Vent sites"""
 type Gvsite {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   system: System
   body: Body
   siteID: Int!
@@ -3318,8 +4372,8 @@ input GvtypeInput {
 """Reporting for Geysers"""
 type Gyreport {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   userType: ENUM_GYREPORT_USERTYPE!
   reportType: ENUM_GYREPORT_REPORTTYPE!
   systemName: String!
@@ -3374,8 +4428,8 @@ input GyreportInput {
 """Geyser sites"""
 type Gysite {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   system: System
   body: Body
   siteID: Int!
@@ -3420,8 +4474,8 @@ input GytypeInput {
 """Journal events and user reports for the Unknown Signal Sources"""
 type Hdreport {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   fromSystemName: String!
   toSystemName: String!
   cmdrName: String!
@@ -3454,8 +4508,8 @@ input HdreportInput {
 """Thargoid Hyperdiction sites"""
 type Hdsite {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   system: System
   solDistance: Float
   meropeDistance: Float
@@ -3507,8 +4561,8 @@ input KillreportInput {
 """Reporting for Lava Spouts"""
 type Lsreport {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   userType: ENUM_LSREPORT_USERTYPE!
   reportType: ENUM_LSREPORT_REPORTTYPE!
   systemName: String!
@@ -3563,8 +4617,8 @@ input LsreportInput {
 """Lava Spout sites"""
 type Lssite {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   system: System
   body: Body
   siteID: Int!
@@ -3867,8 +4921,14 @@ type Mutation {
 
   """Delete an existing role"""
   deleteRole(input: deleteRoleInput): deleteRolePayload
+
+  """Create a new user"""
   createUser(input: createUserInput): createUserPayload
+
+  """Update an existing user"""
   updateUser(input: updateUserInput): updateUserPayload
+
+  """Delete an existing user"""
   deleteUser(input: deleteUserInput): deleteUserPayload
   upload(refId: ID, ref: String, source: String, file: Upload!): UploadFile!
 }
@@ -3876,8 +4936,8 @@ type Mutation {
 """Automated journal reports for Non-Human Signal Sources"""
 type Nhssreport {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   systemName: String
   threatLevel: Int
   cmdrName: String
@@ -3908,8 +4968,8 @@ input NhssreportInput {
 """Non-Human Signal Source sites"""
 type Nhsssite {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   system: System
   threatLevel: Int
   discoveredBy: Cmdr
@@ -4135,8 +5195,8 @@ input ReporttypeInput {
 """Rings stored in the Canonn database"""
 type Ring {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   body: Body
   ringName: String!
   type: String
@@ -4165,8 +5225,8 @@ input RoleInput {
 """Systems stored in the Canonn database"""
 type System {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   systemName: String!
   id64: String
   edsmID: Int
@@ -4207,8 +5267,8 @@ input TbcycleInput {
 """Reporting for Thargoid Barnacles"""
 type Tbreport {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   userType: ENUM_TBREPORT_USERTYPE!
   reportType: ENUM_TBREPORT_REPORTTYPE!
   systemName: String!
@@ -4265,8 +5325,8 @@ input TbreportInput {
 """Thargoid Barnacle sites"""
 type Tbsite {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   system: System
   body: Body
   siteID: Int!
@@ -4313,8 +5373,8 @@ input TbtypeInput {
 """TG_ENCOUNTERS from the Statistics Journal Event"""
 type Tgencounterstat {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   hyperdictionSystemName: String
   hyperdictionTimestamp: DateTime
   cmdrName: String
@@ -4337,8 +5397,8 @@ input TgencounterstatInput {
 """Reporting for Thargoid Structures"""
 type Tsreport {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   userType: ENUM_TSREPORT_USERTYPE!
   reportType: ENUM_TSREPORT_REPORTTYPE!
   systemName: String!
@@ -4391,8 +5451,8 @@ input TsreportInput {
 """Thargoid Structure sites"""
 type Tssite {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   system: System
   body: Body
   siteID: Int!
@@ -4437,8 +5497,8 @@ input TsstatusInput {
 """Reporting for Tube Worms"""
 type Twreport {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   userType: ENUM_TWREPORT_USERTYPE!
   reportType: ENUM_TWREPORT_REPORTTYPE!
   systemName: String!
@@ -4493,8 +5553,8 @@ input TwreportInput {
 """Tube Worm sites"""
 type Twsite {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   system: System
   body: Body
   siteID: Int!
@@ -4538,7 +5598,7 @@ input TwtypeInput {
 
 input updateApiupdateInput {
   where: InputID
-  data: ApiupdateInput
+  data: editApiupdateInput
 }
 
 type updateApiupdatePayload {
@@ -4547,7 +5607,7 @@ type updateApiupdatePayload {
 
 input updateBmreportInput {
   where: InputID
-  data: BmreportInput
+  data: editBmreportInput
 }
 
 type updateBmreportPayload {
@@ -4556,7 +5616,7 @@ type updateBmreportPayload {
 
 input updateBmsiteInput {
   where: InputID
-  data: BmsiteInput
+  data: editBmsiteInput
 }
 
 type updateBmsitePayload {
@@ -4565,7 +5625,7 @@ type updateBmsitePayload {
 
 input updateBmtypeInput {
   where: InputID
-  data: BmtypeInput
+  data: editBmtypeInput
 }
 
 type updateBmtypePayload {
@@ -4574,7 +5634,7 @@ type updateBmtypePayload {
 
 input updateBodyInput {
   where: InputID
-  data: BodyInput
+  data: editBodyInput
 }
 
 type updateBodyPayload {
@@ -4583,7 +5643,7 @@ type updateBodyPayload {
 
 input updateBtreportInput {
   where: InputID
-  data: BtreportInput
+  data: editBtreportInput
 }
 
 type updateBtreportPayload {
@@ -4592,7 +5652,7 @@ type updateBtreportPayload {
 
 input updateBtsiteInput {
   where: InputID
-  data: BtsiteInput
+  data: editBtsiteInput
 }
 
 type updateBtsitePayload {
@@ -4601,7 +5661,7 @@ type updateBtsitePayload {
 
 input updateBttypeInput {
   where: InputID
-  data: BttypeInput
+  data: editBttypeInput
 }
 
 type updateBttypePayload {
@@ -4610,12 +5670,12 @@ type updateBttypePayload {
 
 input updateCmdrInput {
   where: InputID
-  data: CmdrInput
+  data: editCmdrInput
 }
 
 input updateCmdrkillInput {
   where: InputID
-  data: CmdrkillInput
+  data: editCmdrkillInput
 }
 
 type updateCmdrkillPayload {
@@ -4628,7 +5688,7 @@ type updateCmdrPayload {
 
 input updateCodexreportInput {
   where: InputID
-  data: CodexreportInput
+  data: editCodexreportInput
 }
 
 type updateCodexreportPayload {
@@ -4637,7 +5697,7 @@ type updateCodexreportPayload {
 
 input updateCsreportInput {
   where: InputID
-  data: CsreportInput
+  data: editCsreportInput
 }
 
 type updateCsreportPayload {
@@ -4646,7 +5706,7 @@ type updateCsreportPayload {
 
 input updateCssiteInput {
   where: InputID
-  data: CssiteInput
+  data: editCssiteInput
 }
 
 type updateCssitePayload {
@@ -4655,7 +5715,7 @@ type updateCssitePayload {
 
 input updateCstypeInput {
   where: InputID
-  data: CstypeInput
+  data: editCstypeInput
 }
 
 type updateCstypePayload {
@@ -4664,7 +5724,7 @@ type updateCstypePayload {
 
 input updateEventreportInput {
   where: InputID
-  data: EventreportInput
+  data: editEventreportInput
 }
 
 type updateEventreportPayload {
@@ -4673,7 +5733,7 @@ type updateEventreportPayload {
 
 input updateExcludeclientInput {
   where: InputID
-  data: ExcludeclientInput
+  data: editExcludeclientInput
 }
 
 type updateExcludeclientPayload {
@@ -4682,7 +5742,7 @@ type updateExcludeclientPayload {
 
 input updateExcludecmdrInput {
   where: InputID
-  data: ExcludecmdrInput
+  data: editExcludecmdrInput
 }
 
 type updateExcludecmdrPayload {
@@ -4691,7 +5751,7 @@ type updateExcludecmdrPayload {
 
 input updateExcludecodexInput {
   where: InputID
-  data: ExcludecodexInput
+  data: editExcludecodexInput
 }
 
 type updateExcludecodexPayload {
@@ -4700,7 +5760,7 @@ type updateExcludecodexPayload {
 
 input updateExcludeeventInput {
   where: InputID
-  data: ExcludeeventInput
+  data: editExcludeeventInput
 }
 
 type updateExcludeeventPayload {
@@ -4709,7 +5769,7 @@ type updateExcludeeventPayload {
 
 input updateExcludeussInput {
   where: InputID
-  data: ExcludeussInput
+  data: editExcludeussInput
 }
 
 type updateExcludeussPayload {
@@ -4718,7 +5778,7 @@ type updateExcludeussPayload {
 
 input updateFgreportInput {
   where: InputID
-  data: FgreportInput
+  data: editFgreportInput
 }
 
 type updateFgreportPayload {
@@ -4727,7 +5787,7 @@ type updateFgreportPayload {
 
 input updateFgsiteInput {
   where: InputID
-  data: FgsiteInput
+  data: editFgsiteInput
 }
 
 type updateFgsitePayload {
@@ -4736,7 +5796,7 @@ type updateFgsitePayload {
 
 input updateFgtypeInput {
   where: InputID
-  data: FgtypeInput
+  data: editFgtypeInput
 }
 
 type updateFgtypePayload {
@@ -4745,7 +5805,7 @@ type updateFgtypePayload {
 
 input updateFmreportInput {
   where: InputID
-  data: FmreportInput
+  data: editFmreportInput
 }
 
 type updateFmreportPayload {
@@ -4754,7 +5814,7 @@ type updateFmreportPayload {
 
 input updateFmsiteInput {
   where: InputID
-  data: FmsiteInput
+  data: editFmsiteInput
 }
 
 type updateFmsitePayload {
@@ -4763,7 +5823,7 @@ type updateFmsitePayload {
 
 input updateFmtypeInput {
   where: InputID
-  data: FmtypeInput
+  data: editFmtypeInput
 }
 
 type updateFmtypePayload {
@@ -4772,7 +5832,7 @@ type updateFmtypePayload {
 
 input updateGbmessageInput {
   where: InputID
-  data: GbmessageInput
+  data: editGbmessageInput
 }
 
 type updateGbmessagePayload {
@@ -4781,7 +5841,7 @@ type updateGbmessagePayload {
 
 input updateGbreportInput {
   where: InputID
-  data: GbreportInput
+  data: editGbreportInput
 }
 
 type updateGbreportPayload {
@@ -4790,7 +5850,7 @@ type updateGbreportPayload {
 
 input updateGbsiteInput {
   where: InputID
-  data: GbsiteInput
+  data: editGbsiteInput
 }
 
 type updateGbsitePayload {
@@ -4799,7 +5859,7 @@ type updateGbsitePayload {
 
 input updateGenlogInput {
   where: InputID
-  data: GenlogInput
+  data: editGenlogInput
 }
 
 type updateGenlogPayload {
@@ -4808,7 +5868,7 @@ type updateGenlogPayload {
 
 input updateGenreportInput {
   where: InputID
-  data: GenreportInput
+  data: editGenreportInput
 }
 
 type updateGenreportPayload {
@@ -4817,7 +5877,7 @@ type updateGenreportPayload {
 
 input updateGensiteInput {
   where: InputID
-  data: GensiteInput
+  data: editGensiteInput
 }
 
 type updateGensitePayload {
@@ -4826,7 +5886,7 @@ type updateGensitePayload {
 
 input updateGractivegroupInput {
   where: InputID
-  data: GractivegroupInput
+  data: editGractivegroupInput
 }
 
 type updateGractivegroupPayload {
@@ -4835,7 +5895,7 @@ type updateGractivegroupPayload {
 
 input updateGractiveobeliskInput {
   where: InputID
-  data: GractiveobeliskInput
+  data: editGractiveobeliskInput
 }
 
 type updateGractiveobeliskPayload {
@@ -4844,7 +5904,7 @@ type updateGractiveobeliskPayload {
 
 input updateGrartifactInput {
   where: InputID
-  data: GrartifactInput
+  data: editGrartifactInput
 }
 
 type updateGrartifactPayload {
@@ -4853,7 +5913,7 @@ type updateGrartifactPayload {
 
 input updateGrcodexcategoryInput {
   where: InputID
-  data: GrcodexcategoryInput
+  data: editGrcodexcategoryInput
 }
 
 type updateGrcodexcategoryPayload {
@@ -4862,7 +5922,7 @@ type updateGrcodexcategoryPayload {
 
 input updateGrcodexdataInput {
   where: InputID
-  data: GrcodexdataInput
+  data: editGrcodexdataInput
 }
 
 type updateGrcodexdataPayload {
@@ -4871,7 +5931,7 @@ type updateGrcodexdataPayload {
 
 input updateGrobeliskgroupInput {
   where: InputID
-  data: GrobeliskgroupInput
+  data: editGrobeliskgroupInput
 }
 
 type updateGrobeliskgroupPayload {
@@ -4880,7 +5940,7 @@ type updateGrobeliskgroupPayload {
 
 input updateGrobeliskInput {
   where: InputID
-  data: GrobeliskInput
+  data: editGrobeliskInput
 }
 
 type updateGrobeliskPayload {
@@ -4889,7 +5949,7 @@ type updateGrobeliskPayload {
 
 input updateGrobeliskreportInput {
   where: InputID
-  data: GrobeliskreportInput
+  data: editGrobeliskreportInput
 }
 
 type updateGrobeliskreportPayload {
@@ -4898,7 +5958,7 @@ type updateGrobeliskreportPayload {
 
 input updateGrreportInput {
   where: InputID
-  data: GrreportInput
+  data: editGrreportInput
 }
 
 type updateGrreportPayload {
@@ -4907,7 +5967,7 @@ type updateGrreportPayload {
 
 input updateGrsiteInput {
   where: InputID
-  data: GrsiteInput
+  data: editGrsiteInput
 }
 
 type updateGrsitePayload {
@@ -4916,7 +5976,7 @@ type updateGrsitePayload {
 
 input updateGrtypeInput {
   where: InputID
-  data: GrtypeInput
+  data: editGrtypeInput
 }
 
 type updateGrtypePayload {
@@ -4925,7 +5985,7 @@ type updateGrtypePayload {
 
 input updateGsactivegroupInput {
   where: InputID
-  data: GsactivegroupInput
+  data: editGsactivegroupInput
 }
 
 type updateGsactivegroupPayload {
@@ -4934,7 +5994,7 @@ type updateGsactivegroupPayload {
 
 input updateGsactiveobeliskInput {
   where: InputID
-  data: GsactiveobeliskInput
+  data: editGsactiveobeliskInput
 }
 
 type updateGsactiveobeliskPayload {
@@ -4943,7 +6003,7 @@ type updateGsactiveobeliskPayload {
 
 input updateGsartifactInput {
   where: InputID
-  data: GsartifactInput
+  data: editGsartifactInput
 }
 
 type updateGsartifactPayload {
@@ -4952,7 +6012,7 @@ type updateGsartifactPayload {
 
 input updateGscodexcategoryInput {
   where: InputID
-  data: GscodexcategoryInput
+  data: editGscodexcategoryInput
 }
 
 type updateGscodexcategoryPayload {
@@ -4961,7 +6021,7 @@ type updateGscodexcategoryPayload {
 
 input updateGscodexdataInput {
   where: InputID
-  data: GscodexdataInput
+  data: editGscodexdataInput
 }
 
 type updateGscodexdataPayload {
@@ -4970,7 +6030,7 @@ type updateGscodexdataPayload {
 
 input updateGsobeliskgroupInput {
   where: InputID
-  data: GsobeliskgroupInput
+  data: editGsobeliskgroupInput
 }
 
 type updateGsobeliskgroupPayload {
@@ -4979,7 +6039,7 @@ type updateGsobeliskgroupPayload {
 
 input updateGsobeliskInput {
   where: InputID
-  data: GsobeliskInput
+  data: editGsobeliskInput
 }
 
 type updateGsobeliskPayload {
@@ -4988,7 +6048,7 @@ type updateGsobeliskPayload {
 
 input updateGsobeliskreportInput {
   where: InputID
-  data: GsobeliskreportInput
+  data: editGsobeliskreportInput
 }
 
 type updateGsobeliskreportPayload {
@@ -4997,7 +6057,7 @@ type updateGsobeliskreportPayload {
 
 input updateGsreportInput {
   where: InputID
-  data: GsreportInput
+  data: editGsreportInput
 }
 
 type updateGsreportPayload {
@@ -5006,7 +6066,7 @@ type updateGsreportPayload {
 
 input updateGssiteInput {
   where: InputID
-  data: GssiteInput
+  data: editGssiteInput
 }
 
 type updateGssitePayload {
@@ -5015,7 +6075,7 @@ type updateGssitePayload {
 
 input updateGstypeInput {
   where: InputID
-  data: GstypeInput
+  data: editGstypeInput
 }
 
 type updateGstypePayload {
@@ -5024,7 +6084,7 @@ type updateGstypePayload {
 
 input updateGvreportInput {
   where: InputID
-  data: GvreportInput
+  data: editGvreportInput
 }
 
 type updateGvreportPayload {
@@ -5033,7 +6093,7 @@ type updateGvreportPayload {
 
 input updateGvsiteInput {
   where: InputID
-  data: GvsiteInput
+  data: editGvsiteInput
 }
 
 type updateGvsitePayload {
@@ -5042,7 +6102,7 @@ type updateGvsitePayload {
 
 input updateGvtypeInput {
   where: InputID
-  data: GvtypeInput
+  data: editGvtypeInput
 }
 
 type updateGvtypePayload {
@@ -5051,7 +6111,7 @@ type updateGvtypePayload {
 
 input updateGyreportInput {
   where: InputID
-  data: GyreportInput
+  data: editGyreportInput
 }
 
 type updateGyreportPayload {
@@ -5060,7 +6120,7 @@ type updateGyreportPayload {
 
 input updateGysiteInput {
   where: InputID
-  data: GysiteInput
+  data: editGysiteInput
 }
 
 type updateGysitePayload {
@@ -5069,7 +6129,7 @@ type updateGysitePayload {
 
 input updateGytypeInput {
   where: InputID
-  data: GytypeInput
+  data: editGytypeInput
 }
 
 type updateGytypePayload {
@@ -5078,7 +6138,7 @@ type updateGytypePayload {
 
 input updateHdreportInput {
   where: InputID
-  data: HdreportInput
+  data: editHdreportInput
 }
 
 type updateHdreportPayload {
@@ -5087,7 +6147,7 @@ type updateHdreportPayload {
 
 input updateHdsiteInput {
   where: InputID
-  data: HdsiteInput
+  data: editHdsiteInput
 }
 
 type updateHdsitePayload {
@@ -5096,7 +6156,7 @@ type updateHdsitePayload {
 
 input updateKillreportInput {
   where: InputID
-  data: KillreportInput
+  data: editKillreportInput
 }
 
 type updateKillreportPayload {
@@ -5105,7 +6165,7 @@ type updateKillreportPayload {
 
 input updateLsreportInput {
   where: InputID
-  data: LsreportInput
+  data: editLsreportInput
 }
 
 type updateLsreportPayload {
@@ -5114,7 +6174,7 @@ type updateLsreportPayload {
 
 input updateLssiteInput {
   where: InputID
-  data: LssiteInput
+  data: editLssiteInput
 }
 
 type updateLssitePayload {
@@ -5123,7 +6183,7 @@ type updateLssitePayload {
 
 input updateLstypeInput {
   where: InputID
-  data: LstypeInput
+  data: editLstypeInput
 }
 
 type updateLstypePayload {
@@ -5132,7 +6192,7 @@ type updateLstypePayload {
 
 input updateNhssreportInput {
   where: InputID
-  data: NhssreportInput
+  data: editNhssreportInput
 }
 
 type updateNhssreportPayload {
@@ -5141,7 +6201,7 @@ type updateNhssreportPayload {
 
 input updateNhsssiteInput {
   where: InputID
-  data: NhsssiteInput
+  data: editNhsssiteInput
 }
 
 type updateNhsssitePayload {
@@ -5150,7 +6210,7 @@ type updateNhsssitePayload {
 
 input updateRegionInput {
   where: InputID
-  data: RegionInput
+  data: editRegionInput
 }
 
 type updateRegionPayload {
@@ -5159,7 +6219,7 @@ type updateRegionPayload {
 
 input updateReporttypeInput {
   where: InputID
-  data: ReporttypeInput
+  data: editReporttypeInput
 }
 
 type updateReporttypePayload {
@@ -5168,7 +6228,7 @@ type updateReporttypePayload {
 
 input updateRingInput {
   where: InputID
-  data: RingInput
+  data: editRingInput
 }
 
 type updateRingPayload {
@@ -5177,7 +6237,7 @@ type updateRingPayload {
 
 input updateRoleInput {
   where: InputID
-  data: RoleInput
+  data: editRoleInput
 }
 
 type updateRolePayload {
@@ -5186,7 +6246,7 @@ type updateRolePayload {
 
 input updateSystemInput {
   where: InputID
-  data: SystemInput
+  data: editSystemInput
 }
 
 type updateSystemPayload {
@@ -5195,7 +6255,7 @@ type updateSystemPayload {
 
 input updateTbcycleInput {
   where: InputID
-  data: TbcycleInput
+  data: editTbcycleInput
 }
 
 type updateTbcyclePayload {
@@ -5204,7 +6264,7 @@ type updateTbcyclePayload {
 
 input updateTbreportInput {
   where: InputID
-  data: TbreportInput
+  data: editTbreportInput
 }
 
 type updateTbreportPayload {
@@ -5213,7 +6273,7 @@ type updateTbreportPayload {
 
 input updateTbsiteInput {
   where: InputID
-  data: TbsiteInput
+  data: editTbsiteInput
 }
 
 type updateTbsitePayload {
@@ -5222,7 +6282,7 @@ type updateTbsitePayload {
 
 input updateTbtypeInput {
   where: InputID
-  data: TbtypeInput
+  data: editTbtypeInput
 }
 
 type updateTbtypePayload {
@@ -5231,7 +6291,7 @@ type updateTbtypePayload {
 
 input updateTgencounterstatInput {
   where: InputID
-  data: TgencounterstatInput
+  data: editTgencounterstatInput
 }
 
 type updateTgencounterstatPayload {
@@ -5240,7 +6300,7 @@ type updateTgencounterstatPayload {
 
 input updateTsreportInput {
   where: InputID
-  data: TsreportInput
+  data: editTsreportInput
 }
 
 type updateTsreportPayload {
@@ -5249,7 +6309,7 @@ type updateTsreportPayload {
 
 input updateTssiteInput {
   where: InputID
-  data: TssiteInput
+  data: editTssiteInput
 }
 
 type updateTssitePayload {
@@ -5258,7 +6318,7 @@ type updateTssitePayload {
 
 input updateTsstatusInput {
   where: InputID
-  data: TsstatusInput
+  data: editTsstatusInput
 }
 
 type updateTsstatusPayload {
@@ -5267,7 +6327,7 @@ type updateTsstatusPayload {
 
 input updateTwreportInput {
   where: InputID
-  data: TwreportInput
+  data: editTwreportInput
 }
 
 type updateTwreportPayload {
@@ -5276,7 +6336,7 @@ type updateTwreportPayload {
 
 input updateTwsiteInput {
   where: InputID
-  data: TwsiteInput
+  data: editTwsiteInput
 }
 
 type updateTwsitePayload {
@@ -5285,7 +6345,7 @@ type updateTwsitePayload {
 
 input updateTwtypeInput {
   where: InputID
-  data: TwtypeInput
+  data: editTwtypeInput
 }
 
 type updateTwtypePayload {
@@ -5294,7 +6354,7 @@ type updateTwtypePayload {
 
 input updateUserInput {
   where: InputID
-  data: UserInput
+  data: editUserInput
 }
 
 type updateUserPayload {
@@ -5306,8 +6366,8 @@ scalar Upload
 
 type UploadFile {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   name: String!
   hash: String!
   sha256: String
@@ -5324,6 +6384,8 @@ input UserInput {
   username: String!
   email: String!
   provider: String
+  password: String
+  resetPasswordToken: String
   confirmed: Boolean
   blocked: Boolean
   role: ID
