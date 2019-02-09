@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/fsstypes",
+      "handler": "Fsstypes.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/fsstypes/count",
+      "handler": "Fsstypes.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/fsstypes/:_id",
+      "handler": "Fsstypes.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/fsstypes",
+      "handler": "Fsstypes.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/fsstypes/:_id",
+      "handler": "Fsstypes.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/fsstypes/:_id",
+      "handler": "Fsstypes.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

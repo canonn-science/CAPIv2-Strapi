@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/fssreports",
+      "handler": "Fssreport.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/fssreports/count",
+      "handler": "Fssreport.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/fssreports/:_id",
+      "handler": "Fssreport.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/fssreports",
+      "handler": "Fssreport.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/fssreports/:_id",
+      "handler": "Fssreport.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/fssreports/:_id",
+      "handler": "Fssreport.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
