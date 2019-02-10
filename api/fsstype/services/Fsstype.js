@@ -1,8 +1,8 @@
-/* global Fssreport */
+/* global Fsstype */
 'use strict';
 
 /**
- * Fssreport.js service
+ * Fsstype.js service
  *
  * @description: A set of functions similar to controller's actions to avoid code duplication.
  */
@@ -16,20 +16,20 @@ const utils = require('strapi-hook-bookshelf/lib/utils/');
 module.exports = {
 
   /**
-   * Promise to fetch all fssreports.
+   * Promise to fetch all fsstypes.
    *
    * @return {Promise}
    */
 
   fetchAll: (params) => {
     // Convert `params` object to filters compatible with Bookshelf.
-    const filters = strapi.utils.models.convertParams('fssreport', params);
+    const filters = strapi.utils.models.convertParams('fsstype', params);
     // Select field to populate.
-    const populate = Fssreport.associations
+    const populate = Fsstype.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias);
 
-    return Fssreport.query(function(qb) {
+    return Fsstype.query(function(qb) {
       _.forEach(filters.where, (where, key) => {
         if (_.isArray(where.value) && where.symbol !== 'IN') {
           for (const value in where.value) {
@@ -52,33 +52,33 @@ module.exports = {
   },
 
   /**
-   * Promise to fetch a/an fssreport.
+   * Promise to fetch a/an fsstype.
    *
    * @return {Promise}
    */
 
   fetch: (params) => {
     // Select field to populate.
-    const populate = Fssreport.associations
+    const populate = Fsstype.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias);
 
-    return Fssreport.forge(_.pick(params, 'id')).fetch({
+    return Fsstype.forge(_.pick(params, 'id')).fetch({
       withRelated: populate
     });
   },
 
   /**
-   * Promise to count a/an fssreport.
+   * Promise to count a/an fsstype.
    *
    * @return {Promise}
    */
 
   count: (params) => {
     // Convert `params` object to filters compatible with Bookshelf.
-    const filters = strapi.utils.models.convertParams('fssreport', params);
+    const filters = strapi.utils.models.convertParams('fsstype', params);
 
-    return Fssreport.query(function(qb) {
+    return Fsstype.query(function(qb) {
       _.forEach(filters.where, (where, key) => {
         if (_.isArray(where.value)) {
           for (const value in where.value) {
@@ -92,50 +92,50 @@ module.exports = {
   },
 
   /**
-   * Promise to add a/an fssreport.
+   * Promise to add a/an fsstype.
    *
    * @return {Promise}
    */
 
   add: async (values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Fssreport.associations.map(ast => ast.alias));
-    const data = _.omit(values, Fssreport.associations.map(ast => ast.alias));
+    const relations = _.pick(values, Fsstype.associations.map(ast => ast.alias));
+    const data = _.omit(values, Fsstype.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = await Fssreport.forge(data).save();
+    const entry = await Fsstype.forge(data).save();
 
     // Create relational data and return the entry.
-    return Fssreport.updateRelations({ id: entry.id , values: relations });
+    return Fsstype.updateRelations({ id: entry.id , values: relations });
   },
 
   /**
-   * Promise to edit a/an fssreport.
+   * Promise to edit a/an fsstype.
    *
    * @return {Promise}
    */
 
   edit: async (params, values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Fssreport.associations.map(ast => ast.alias));
-    const data = _.omit(values, Fssreport.associations.map(ast => ast.alias));
+    const relations = _.pick(values, Fsstype.associations.map(ast => ast.alias));
+    const data = _.omit(values, Fsstype.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = Fssreport.forge(params).save(data);
+    const entry = Fsstype.forge(params).save(data);
 
     // Create relational data and return the entry.
-    return Fssreport.updateRelations(Object.assign(params, { values: relations }));
+    return Fsstype.updateRelations(Object.assign(params, { values: relations }));
   },
 
   /**
-   * Promise to remove a/an fssreport.
+   * Promise to remove a/an fsstype.
    *
    * @return {Promise}
    */
 
   remove: async (params) => {
     params.values = {};
-    Fssreport.associations.map(association => {
+    Fsstype.associations.map(association => {
       switch (association.nature) {
         case 'oneWay':
         case 'oneToOne':
@@ -152,45 +152,45 @@ module.exports = {
       }
     });
 
-    await Fssreport.updateRelations(params);
+    await Fsstype.updateRelations(params);
 
-    return Fssreport.forge(params).destroy();
+    return Fsstype.forge(params).destroy();
   },
 
   /**
-   * Promise to search a/an fssreport.
+   * Promise to search a/an fsstype.
    *
    * @return {Promise}
    */
 
   search: async (params) => {
     // Convert `params` object to filters compatible with Bookshelf.
-    const filters = strapi.utils.models.convertParams('fssreport', params);
+    const filters = strapi.utils.models.convertParams('fsstype', params);
     // Select field to populate.
-    const populate = Fssreport.associations
+    const populate = Fsstype.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias);
 
-    const associations = Fssreport.associations.map(x => x.alias);
-    const searchText = Object.keys(Fssreport._attributes)
-      .filter(attribute => attribute !== Fssreport.primaryKey && !associations.includes(attribute))
-      .filter(attribute => ['string', 'text'].includes(Fssreport._attributes[attribute].type));
+    const associations = Fsstype.associations.map(x => x.alias);
+    const searchText = Object.keys(Fsstype._attributes)
+      .filter(attribute => attribute !== Fsstype.primaryKey && !associations.includes(attribute))
+      .filter(attribute => ['string', 'text'].includes(Fsstype._attributes[attribute].type));
 
-    const searchNoText = Object.keys(Fssreport._attributes)
-      .filter(attribute => attribute !== Fssreport.primaryKey && !associations.includes(attribute))
-      .filter(attribute => !['string', 'text', 'boolean', 'integer', 'decimal', 'float'].includes(Fssreport._attributes[attribute].type));
+    const searchNoText = Object.keys(Fsstype._attributes)
+      .filter(attribute => attribute !== Fsstype.primaryKey && !associations.includes(attribute))
+      .filter(attribute => !['string', 'text', 'boolean', 'integer', 'decimal', 'float'].includes(Fsstype._attributes[attribute].type));
 
-    const searchInt = Object.keys(Fssreport._attributes)
-      .filter(attribute => attribute !== Fssreport.primaryKey && !associations.includes(attribute))
-      .filter(attribute => ['integer', 'decimal', 'float'].includes(Fssreport._attributes[attribute].type));
+    const searchInt = Object.keys(Fsstype._attributes)
+      .filter(attribute => attribute !== Fsstype.primaryKey && !associations.includes(attribute))
+      .filter(attribute => ['integer', 'decimal', 'float'].includes(Fsstype._attributes[attribute].type));
 
-    const searchBool = Object.keys(Fssreport._attributes)
-      .filter(attribute => attribute !== Fssreport.primaryKey && !associations.includes(attribute))
-      .filter(attribute => ['boolean'].includes(Fssreport._attributes[attribute].type));
+    const searchBool = Object.keys(Fsstype._attributes)
+      .filter(attribute => attribute !== Fsstype.primaryKey && !associations.includes(attribute))
+      .filter(attribute => ['boolean'].includes(Fsstype._attributes[attribute].type));
 
     const query = (params._q || '').replace(/[^a-zA-Z0-9.-\s]+/g, '');
 
-    return Fssreport.query(qb => {
+    return Fsstype.query(qb => {
       // Search in columns which are not text value.
       searchNoText.forEach(attribute => {
         qb.orWhereRaw(`LOWER(${attribute}) LIKE '%${_.toLower(query)}%'`);
@@ -209,7 +209,7 @@ module.exports = {
       }
 
       // Search in columns with text using index.
-      switch (Fssreport.client) {
+      switch (Fsstype.client) {
         case 'mysql':
           qb.orWhereRaw(`MATCH(${searchText.join(',')}) AGAINST(? IN BOOLEAN MODE)`, `*${query}*`);
           break;

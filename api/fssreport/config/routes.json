@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/fssreports/:_id",
+      "path": "/fssreports/:id",
       "handler": "Fssreport.findOne",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/fssreports/:_id",
+      "path": "/fssreports/:id",
       "handler": "Fssreport.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/fssreports/:_id",
+      "path": "/fssreports/:id",
       "handler": "Fssreport.destroy",
       "config": {
         "policies": []

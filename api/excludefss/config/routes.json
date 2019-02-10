@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/excludefsses/:_id",
+      "path": "/excludefsses/:id",
       "handler": "Excludefss.findOne",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/excludefsses/:_id",
+      "path": "/excludefsses/:id",
       "handler": "Excludefss.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/excludefsses/:_id",
+      "path": "/excludefsses/:id",
       "handler": "Excludefss.destroy",
       "config": {
         "policies": []

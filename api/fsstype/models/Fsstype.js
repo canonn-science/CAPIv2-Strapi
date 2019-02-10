@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Lifecycle callbacks for the `Fssreport` model.
+ * Lifecycle callbacks for the `Fsstype` model.
  */
 
 module.exports = {
