@@ -1,0 +1,24 @@
+{
+  "connection": "default",
+  "collectionName": "clientreports",
+  "info": {
+    "name": "clientreport",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "cmdr name": {
+  "type": "string"
+},
+"is beta": {
+  "type": "boolean"
+},
+"client version": {
+  "type": "string"
+}
+  }
+}
