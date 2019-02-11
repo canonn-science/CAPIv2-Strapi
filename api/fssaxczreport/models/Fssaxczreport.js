@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Lifecycle callbacks for the `Axczreport` model.
+ * Lifecycle callbacks for the `Fssaxczreport` model.
  */
 
 module.exports = {

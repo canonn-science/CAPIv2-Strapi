@@ -1,12 +1,14 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "fssaxczreports",
   "info": {
-    "name": "fssreport",
+    "name": "fssaxczreport",
     "description": ""
   },
   "options": {
-    "timestamps": true
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
   },
   "attributes": {
     "cmdrName": {
@@ -23,24 +25,6 @@
     },
     "signalNameLocalised": {
       "type": "string"
-    },
-    "ussType": {
-      "type": "string"
-    },
-    "ussTypeLocalised": {
-      "type": "string"
-    },
-    "spawningState": {
-      "type": "string"
-    },
-    "spawningStateLocalised": {
-      "type": "string"
-    },
-    "spawningFaction": {
-      "type": "string"
-    },
-    "threatLevel": {
-      "type": "integer"
     },
     "isBeta": {
       "type": "boolean"

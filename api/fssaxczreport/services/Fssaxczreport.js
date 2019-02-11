@@ -1,8 +1,8 @@
-/* global Axczreport */
+/* global Fssaxczreport */
 'use strict';
 
 /**
- * Axczreport.js service
+ * Fssaxczreport.js service
  *
  * @description: A set of functions similar to controller's actions to avoid code duplication.
  */
@@ -16,20 +16,20 @@ const utils = require('strapi-hook-bookshelf/lib/utils/');
 module.exports = {
 
   /**
-   * Promise to fetch all axczreports.
+   * Promise to fetch all fssaxczreports.
    *
    * @return {Promise}
    */
 
   fetchAll: (params) => {
     // Convert `params` object to filters compatible with Bookshelf.
-    const filters = strapi.utils.models.convertParams('axczreport', params);
+    const filters = strapi.utils.models.convertParams('fssaxczreport', params);
     // Select field to populate.
-    const populate = Axczreport.associations
+    const populate = Fssaxczreport.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias);
 
-    return Axczreport.query(function(qb) {
+    return Fssaxczreport.query(function(qb) {
       _.forEach(filters.where, (where, key) => {
         if (_.isArray(where.value) && where.symbol !== 'IN') {
           for (const value in where.value) {
@@ -52,33 +52,33 @@ module.exports = {
   },
 
   /**
-   * Promise to fetch a/an axczreport.
+   * Promise to fetch a/an fssaxczreport.
    *
    * @return {Promise}
    */
 
   fetch: (params) => {
     // Select field to populate.
-    const populate = Axczreport.associations
+    const populate = Fssaxczreport.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias);
 
-    return Axczreport.forge(_.pick(params, 'id')).fetch({
+    return Fssaxczreport.forge(_.pick(params, 'id')).fetch({
       withRelated: populate
     });
   },
 
   /**
-   * Promise to count a/an axczreport.
+   * Promise to count a/an fssaxczreport.
    *
    * @return {Promise}
    */
 
   count: (params) => {
     // Convert `params` object to filters compatible with Bookshelf.
-    const filters = strapi.utils.models.convertParams('axczreport', params);
+    const filters = strapi.utils.models.convertParams('fssaxczreport', params);
 
-    return Axczreport.query(function(qb) {
+    return Fssaxczreport.query(function(qb) {
       _.forEach(filters.where, (where, key) => {
         if (_.isArray(where.value)) {
           for (const value in where.value) {
@@ -92,50 +92,50 @@ module.exports = {
   },
 
   /**
-   * Promise to add a/an axczreport.
+   * Promise to add a/an fssaxczreport.
    *
    * @return {Promise}
    */
 
   add: async (values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Axczreport.associations.map(ast => ast.alias));
-    const data = _.omit(values, Axczreport.associations.map(ast => ast.alias));
+    const relations = _.pick(values, Fssaxczreport.associations.map(ast => ast.alias));
+    const data = _.omit(values, Fssaxczreport.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = await Axczreport.forge(data).save();
+    const entry = await Fssaxczreport.forge(data).save();
 
     // Create relational data and return the entry.
-    return Axczreport.updateRelations({ id: entry.id , values: relations });
+    return Fssaxczreport.updateRelations({ id: entry.id , values: relations });
   },
 
   /**
-   * Promise to edit a/an axczreport.
+   * Promise to edit a/an fssaxczreport.
    *
    * @return {Promise}
    */
 
   edit: async (params, values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Axczreport.associations.map(ast => ast.alias));
-    const data = _.omit(values, Axczreport.associations.map(ast => ast.alias));
+    const relations = _.pick(values, Fssaxczreport.associations.map(ast => ast.alias));
+    const data = _.omit(values, Fssaxczreport.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = Axczreport.forge(params).save(data);
+    const entry = Fssaxczreport.forge(params).save(data);
 
     // Create relational data and return the entry.
-    return Axczreport.updateRelations(Object.assign(params, { values: relations }));
+    return Fssaxczreport.updateRelations(Object.assign(params, { values: relations }));
   },
 
   /**
-   * Promise to remove a/an axczreport.
+   * Promise to remove a/an fssaxczreport.
    *
    * @return {Promise}
    */
 
   remove: async (params) => {
     params.values = {};
-    Axczreport.associations.map(association => {
+    Fssaxczreport.associations.map(association => {
       switch (association.nature) {
         case 'oneWay':
         case 'oneToOne':
@@ -152,45 +152,45 @@ module.exports = {
       }
     });
 
-    await Axczreport.updateRelations(params);
+    await Fssaxczreport.updateRelations(params);
 
-    return Axczreport.forge(params).destroy();
+    return Fssaxczreport.forge(params).destroy();
   },
 
   /**
-   * Promise to search a/an axczreport.
+   * Promise to search a/an fssaxczreport.
    *
    * @return {Promise}
    */
 
   search: async (params) => {
     // Convert `params` object to filters compatible with Bookshelf.
-    const filters = strapi.utils.models.convertParams('axczreport', params);
+    const filters = strapi.utils.models.convertParams('fssaxczreport', params);
     // Select field to populate.
-    const populate = Axczreport.associations
+    const populate = Fssaxczreport.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias);
 
-    const associations = Axczreport.associations.map(x => x.alias);
-    const searchText = Object.keys(Axczreport._attributes)
-      .filter(attribute => attribute !== Axczreport.primaryKey && !associations.includes(attribute))
-      .filter(attribute => ['string', 'text'].includes(Axczreport._attributes[attribute].type));
+    const associations = Fssaxczreport.associations.map(x => x.alias);
+    const searchText = Object.keys(Fssaxczreport._attributes)
+      .filter(attribute => attribute !== Fssaxczreport.primaryKey && !associations.includes(attribute))
+      .filter(attribute => ['string', 'text'].includes(Fssaxczreport._attributes[attribute].type));
 
-    const searchNoText = Object.keys(Axczreport._attributes)
-      .filter(attribute => attribute !== Axczreport.primaryKey && !associations.includes(attribute))
-      .filter(attribute => !['string', 'text', 'boolean', 'integer', 'decimal', 'float'].includes(Axczreport._attributes[attribute].type));
+    const searchNoText = Object.keys(Fssaxczreport._attributes)
+      .filter(attribute => attribute !== Fssaxczreport.primaryKey && !associations.includes(attribute))
+      .filter(attribute => !['string', 'text', 'boolean', 'integer', 'decimal', 'float'].includes(Fssaxczreport._attributes[attribute].type));
 
-    const searchInt = Object.keys(Axczreport._attributes)
-      .filter(attribute => attribute !== Axczreport.primaryKey && !associations.includes(attribute))
-      .filter(attribute => ['integer', 'decimal', 'float'].includes(Axczreport._attributes[attribute].type));
+    const searchInt = Object.keys(Fssaxczreport._attributes)
+      .filter(attribute => attribute !== Fssaxczreport.primaryKey && !associations.includes(attribute))
+      .filter(attribute => ['integer', 'decimal', 'float'].includes(Fssaxczreport._attributes[attribute].type));
 
-    const searchBool = Object.keys(Axczreport._attributes)
-      .filter(attribute => attribute !== Axczreport.primaryKey && !associations.includes(attribute))
-      .filter(attribute => ['boolean'].includes(Axczreport._attributes[attribute].type));
+    const searchBool = Object.keys(Fssaxczreport._attributes)
+      .filter(attribute => attribute !== Fssaxczreport.primaryKey && !associations.includes(attribute))
+      .filter(attribute => ['boolean'].includes(Fssaxczreport._attributes[attribute].type));
 
     const query = (params._q || '').replace(/[^a-zA-Z0-9.-\s]+/g, '');
 
-    return Axczreport.query(qb => {
+    return Fssaxczreport.query(qb => {
       // Search in columns which are not text value.
       searchNoText.forEach(attribute => {
         qb.orWhereRaw(`LOWER(${attribute}) LIKE '%${_.toLower(query)}%'`);
@@ -209,7 +209,7 @@ module.exports = {
       }
 
       // Search in columns with text using index.
-      switch (Axczreport.client) {
+      switch (Fssaxczreport.client) {
         case 'mysql':
           qb.orWhereRaw(`MATCH(${searchText.join(',')}) AGAINST(? IN BOOLEAN MODE)`, `*${query}*`);
           break;
