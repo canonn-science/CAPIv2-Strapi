@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/apiupdates": {
+    "/reportfsses": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Apiupdate"
+                    "$ref": "#/components/schemas/Reportfss"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Apiupdate"
+          "Reportfss"
         ],
         "parameters": [
           {
@@ -175,7 +175,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Apiupdate"
+                  "$ref": "#/components/schemas/Reportfss"
                 }
               }
             }
@@ -213,7 +213,7 @@
         },
         "summary": "",
         "tags": [
-          "Apiupdate"
+          "Reportfss"
         ],
         "requestBody": {
           "description": "",
@@ -221,14 +221,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewApiupdate"
+                "$ref": "#/components/schemas/NewReportfss"
               }
             }
           }
         }
       }
     },
-    "/apiupdates/count": {
+    "/reportfsses/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -280,12 +280,12 @@
         },
         "summary": "",
         "tags": [
-          "Apiupdate"
+          "Reportfss"
         ],
         "parameters": []
       }
     },
-    "/apiupdates/{id}": {
+    "/reportfsses/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -295,7 +295,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Apiupdate"
+                  "$ref": "#/components/schemas/Reportfss"
                 }
               }
             }
@@ -333,7 +333,7 @@
         },
         "summary": "",
         "tags": [
-          "Apiupdate"
+          "Reportfss"
         ],
         "parameters": [
           {
@@ -357,7 +357,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Apiupdate"
+                  "$ref": "#/components/schemas/Reportfss"
                 }
               }
             }
@@ -395,7 +395,7 @@
         },
         "summary": "",
         "tags": [
-          "Apiupdate"
+          "Reportfss"
         ],
         "requestBody": {
           "description": "",
@@ -403,7 +403,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewApiupdate"
+                "$ref": "#/components/schemas/NewReportfss"
               }
             }
           }
@@ -469,7 +469,7 @@
         },
         "summary": "",
         "tags": [
-          "Apiupdate"
+          "Reportfss"
         ],
         "parameters": [
           {
@@ -488,7 +488,7 @@
   },
   "components": {
     "schemas": {
-      "Apiupdate": {
+      "Reportfss": {
         "required": [
           "id"
         ],
@@ -496,41 +496,99 @@
           "id": {
             "type": "string"
           },
-          "updateTime": {
-            "type": "string",
-            "default": ""
+          "cmdrName": {
+            "type": "string"
           },
-          "error": {
-            "type": "boolean",
-            "default": false
+          "systemName": {
+            "type": "string"
           },
-          "notes": {
-            "type": "string",
-            "default": ""
+          "systemAddress": {
+            "type": "biginteger"
           },
-          "updateLog": {
-            "type": "json",
-            "default": ""
+          "signalName": {
+            "type": "string"
+          },
+          "signalNameLocalised": {
+            "type": "string"
+          },
+          "ussType": {
+            "type": "string"
+          },
+          "ussTypeLocalised": {
+            "type": "string"
+          },
+          "spawningState": {
+            "type": "string"
+          },
+          "spawningStateLocalised": {
+            "type": "string"
+          },
+          "spawningFaction": {
+            "type": "string"
+          },
+          "threatLevel": {
+            "type": "integer"
+          },
+          "isBeta": {
+            "type": "boolean"
+          },
+          "clientVersion": {
+            "type": "string"
+          },
+          "reportStatus": {
+            "type": "string"
+          },
+          "rawJson": {
+            "type": "json"
           }
         }
       },
-      "NewApiupdate": {
+      "NewReportfss": {
         "properties": {
-          "updateTime": {
-            "type": "string",
-            "default": ""
+          "cmdrName": {
+            "type": "string"
           },
-          "error": {
-            "type": "boolean",
-            "default": false
+          "systemName": {
+            "type": "string"
           },
-          "notes": {
-            "type": "string",
-            "default": ""
+          "systemAddress": {
+            "type": "biginteger"
           },
-          "updateLog": {
-            "type": "json",
-            "default": ""
+          "signalName": {
+            "type": "string"
+          },
+          "signalNameLocalised": {
+            "type": "string"
+          },
+          "ussType": {
+            "type": "string"
+          },
+          "ussTypeLocalised": {
+            "type": "string"
+          },
+          "spawningState": {
+            "type": "string"
+          },
+          "spawningStateLocalised": {
+            "type": "string"
+          },
+          "spawningFaction": {
+            "type": "string"
+          },
+          "threatLevel": {
+            "type": "integer"
+          },
+          "isBeta": {
+            "type": "boolean"
+          },
+          "clientVersion": {
+            "type": "string"
+          },
+          "reportStatus": {
+            "type": "string"
+          },
+          "rawJson": {
+            "type": "json"
           }
         }
       }
@@ -538,7 +596,7 @@
   },
   "tags": [
     {
-      "name": "Apiupdate"
+      "name": "Reportfss"
     }
   ]
 }

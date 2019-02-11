@@ -503,6 +503,7 @@
           },
           "location": {
             "type": "string",
+            "default": "body",
             "enum": [
               "body",
               "orbital"
@@ -515,6 +516,15 @@
           "journalID": {
             "type": "integer",
             "default": ""
+          },
+          "journalType": {
+            "type": "string",
+            "default": "codex",
+            "enum": [
+              "codex",
+              "event",
+              "fss"
+            ]
           },
           "endpoint": {
             "type": "string",
@@ -533,6 +543,7 @@
           },
           "location": {
             "type": "string",
+            "default": "body",
             "enum": [
               "body",
               "orbital"
@@ -545,6 +556,15 @@
           "journalID": {
             "type": "integer",
             "default": ""
+          },
+          "journalType": {
+            "type": "string",
+            "default": "codex",
+            "enum": [
+              "codex",
+              "event",
+              "fss"
+            ]
           },
           "endpoint": {
             "type": "string",

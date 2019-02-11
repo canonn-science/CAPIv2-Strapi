@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/apiupdates": {
+    "/reportcodices": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Apiupdate"
+                    "$ref": "#/components/schemas/Reportcodex"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Apiupdate"
+          "Reportcodex"
         ],
         "parameters": [
           {
@@ -175,7 +175,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Apiupdate"
+                  "$ref": "#/components/schemas/Reportcodex"
                 }
               }
             }
@@ -213,7 +213,7 @@
         },
         "summary": "",
         "tags": [
-          "Apiupdate"
+          "Reportcodex"
         ],
         "requestBody": {
           "description": "",
@@ -221,14 +221,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewApiupdate"
+                "$ref": "#/components/schemas/NewReportcodex"
               }
             }
           }
         }
       }
     },
-    "/apiupdates/count": {
+    "/reportcodices/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -280,12 +280,12 @@
         },
         "summary": "",
         "tags": [
-          "Apiupdate"
+          "Reportcodex"
         ],
         "parameters": []
       }
     },
-    "/apiupdates/{id}": {
+    "/reportcodices/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -295,7 +295,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Apiupdate"
+                  "$ref": "#/components/schemas/Reportcodex"
                 }
               }
             }
@@ -333,7 +333,7 @@
         },
         "summary": "",
         "tags": [
-          "Apiupdate"
+          "Reportcodex"
         ],
         "parameters": [
           {
@@ -357,7 +357,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Apiupdate"
+                  "$ref": "#/components/schemas/Reportcodex"
                 }
               }
             }
@@ -395,7 +395,7 @@
         },
         "summary": "",
         "tags": [
-          "Apiupdate"
+          "Reportcodex"
         ],
         "requestBody": {
           "description": "",
@@ -403,7 +403,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewApiupdate"
+                "$ref": "#/components/schemas/NewReportcodex"
               }
             }
           }
@@ -469,7 +469,7 @@
         },
         "summary": "",
         "tags": [
-          "Apiupdate"
+          "Reportcodex"
         ],
         "parameters": [
           {
@@ -488,47 +488,191 @@
   },
   "components": {
     "schemas": {
-      "Apiupdate": {
+      "Reportcodex": {
         "required": [
-          "id"
+          "id",
+          "clientVersion"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "updateTime": {
+          "cmdrName": {
             "type": "string",
             "default": ""
           },
-          "error": {
+          "systemName": {
+            "type": "string",
+            "default": ""
+          },
+          "bodyName": {
+            "type": "string",
+            "default": ""
+          },
+          "coordX": {
+            "type": "number",
+            "default": ""
+          },
+          "coordY": {
+            "type": "number",
+            "default": ""
+          },
+          "coordZ": {
+            "type": "number",
+            "default": ""
+          },
+          "latitude": {
+            "type": "number",
+            "default": ""
+          },
+          "longitude": {
+            "type": "number",
+            "default": ""
+          },
+          "entryId": {
+            "type": "integer",
+            "default": ""
+          },
+          "codexName": {
+            "type": "string",
+            "default": ""
+          },
+          "codexNameLocalised": {
+            "type": "string",
+            "default": ""
+          },
+          "subCategory": {
+            "type": "string",
+            "default": ""
+          },
+          "subCategoryLocalised": {
+            "type": "string",
+            "default": ""
+          },
+          "category": {
+            "type": "string",
+            "default": ""
+          },
+          "categoryLocalised": {
+            "type": "string",
+            "default": ""
+          },
+          "regionName": {
+            "type": "string",
+            "default": ""
+          },
+          "regionLocalised": {
+            "type": "string",
+            "default": ""
+          },
+          "systemAddress": {
+            "type": "biginteger"
+          },
+          "voucherAmount": {
+            "type": "integer",
+            "default": ""
+          },
+          "isBeta": {
             "type": "boolean",
             "default": false
           },
-          "notes": {
-            "type": "string",
-            "default": ""
+          "clientVersion": {
+            "type": "string"
           },
-          "updateLog": {
+          "rawJson": {
             "type": "json",
             "default": ""
           }
         }
       },
-      "NewApiupdate": {
+      "NewReportcodex": {
+        "required": [
+          "clientVersion"
+        ],
         "properties": {
-          "updateTime": {
+          "cmdrName": {
             "type": "string",
             "default": ""
           },
-          "error": {
+          "systemName": {
+            "type": "string",
+            "default": ""
+          },
+          "bodyName": {
+            "type": "string",
+            "default": ""
+          },
+          "coordX": {
+            "type": "number",
+            "default": ""
+          },
+          "coordY": {
+            "type": "number",
+            "default": ""
+          },
+          "coordZ": {
+            "type": "number",
+            "default": ""
+          },
+          "latitude": {
+            "type": "number",
+            "default": ""
+          },
+          "longitude": {
+            "type": "number",
+            "default": ""
+          },
+          "entryId": {
+            "type": "integer",
+            "default": ""
+          },
+          "codexName": {
+            "type": "string",
+            "default": ""
+          },
+          "codexNameLocalised": {
+            "type": "string",
+            "default": ""
+          },
+          "subCategory": {
+            "type": "string",
+            "default": ""
+          },
+          "subCategoryLocalised": {
+            "type": "string",
+            "default": ""
+          },
+          "category": {
+            "type": "string",
+            "default": ""
+          },
+          "categoryLocalised": {
+            "type": "string",
+            "default": ""
+          },
+          "regionName": {
+            "type": "string",
+            "default": ""
+          },
+          "regionLocalised": {
+            "type": "string",
+            "default": ""
+          },
+          "systemAddress": {
+            "type": "biginteger"
+          },
+          "voucherAmount": {
+            "type": "integer",
+            "default": ""
+          },
+          "isBeta": {
             "type": "boolean",
             "default": false
           },
-          "notes": {
-            "type": "string",
-            "default": ""
+          "clientVersion": {
+            "type": "string"
           },
-          "updateLog": {
+          "rawJson": {
             "type": "json",
             "default": ""
           }
@@ -538,7 +682,7 @@
   },
   "tags": [
     {
-      "name": "Apiupdate"
+      "name": "Reportcodex"
     }
   ]
 }
