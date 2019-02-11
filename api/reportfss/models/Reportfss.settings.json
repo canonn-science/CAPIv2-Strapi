@@ -1,0 +1,61 @@
+{
+  "connection": "default",
+  "collectionName": "reportfsses",
+  "info": {
+    "name": "reportfss",
+    "description": "FSS Scan events, Staging model for tracking changes in FSS scans"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "cmdrName": {
+      "type": "string"
+    },
+    "systemName": {
+      "type": "string"
+    },
+    "systemAddress": {
+      "type": "biginteger"
+    },
+    "signalName": {
+      "type": "string"
+    },
+    "signalNameLocalised": {
+      "type": "string"
+    },
+    "ussType": {
+      "type": "string"
+    },
+    "ussTypeLocalised": {
+      "type": "string"
+    },
+    "spawningState": {
+      "type": "string"
+    },
+    "spawningStateLocalised": {
+      "type": "string"
+    },
+    "spawningFaction": {
+      "type": "string"
+    },
+    "threatLevel": {
+      "type": "integer"
+    },
+    "isBeta": {
+      "type": "boolean"
+    },
+    "clientVersion": {
+      "type": "string"
+    },
+    "reportStatus": {
+      "type": "string"
+    },
+    "rawJson": {
+      "type": "json"
+    }
+  }
+}
+

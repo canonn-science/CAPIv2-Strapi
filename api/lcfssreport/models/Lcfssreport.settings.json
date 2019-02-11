@@ -1,0 +1,42 @@
+{
+  "connection": "default",
+  "collectionName": "lcfssreports",
+  "info": {
+    "name": "lcfssreport",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "cmdrName": {
+      "type": "string"
+    },
+    "systemName": {
+      "type": "string"
+    },
+    "systemAddress": {
+      "type": "biginteger"
+    },
+    "signalName": {
+      "type": "string"
+    },
+    "signalNameLocalised": {
+      "type": "string"
+    },
+    "isBeta": {
+      "type": "boolean"
+    },
+    "clientVersion": {
+      "type": "string"
+    },
+    "reportStatus": {
+      "type": "string"
+    },
+    "rawJson": {
+      "type": "json"
+    }
+  }
+}

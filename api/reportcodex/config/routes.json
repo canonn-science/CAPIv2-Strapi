@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/reportcodices",
+      "handler": "Reportcodex.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/reportcodices/count",
+      "handler": "Reportcodex.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/reportcodices/:id",
+      "handler": "Reportcodex.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/reportcodices",
+      "handler": "Reportcodex.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/reportcodices/:id",
+      "handler": "Reportcodex.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/reportcodices/:id",
+      "handler": "Reportcodex.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

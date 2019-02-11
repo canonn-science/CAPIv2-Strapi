@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/reportfsses",
+      "handler": "Reportfss.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/reportfsses/count",
+      "handler": "Reportfss.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/reportfsses/:id",
+      "handler": "Reportfss.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/reportfsses",
+      "handler": "Reportfss.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/reportfsses/:id",
+      "handler": "Reportfss.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/reportfsses/:id",
+      "handler": "Reportfss.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

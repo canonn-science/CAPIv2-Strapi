@@ -17,6 +17,7 @@
       "required": true
     },
     "location": {
+      "default": "body",
       "enum": [
         "body",
         "orbital"
@@ -30,6 +31,15 @@
     "journalID": {
       "default": "",
       "type": "integer"
+    },
+    "journalType": {
+      "default": "codex",
+      "enum": [
+        "codex",
+        "event",
+        "fss"
+      ],
+      "type": "enumeration"
     },
     "endpoint": {
       "default": "",
