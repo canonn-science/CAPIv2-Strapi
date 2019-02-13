@@ -14,7 +14,7 @@
       "name": "GNU-GPLv3",
       "url": "https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE"
     },
-    "x-generation-date": "02/12/2019 11:35:34 PM"
+    "x-generation-date": "02/13/2019 12:28:20 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -566,7 +566,7 @@
     "/axczfssreports": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Get all AX CZ FSS report entries",
         "responses": {
           "200": {
             "description": "response",
@@ -614,7 +614,7 @@
         },
         "summary": "",
         "tags": [
-          "Axczfssreport"
+          "AX Combat Zone Reports"
         ],
         "parameters": [
           {
@@ -727,11 +727,12 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new record",
+        "description": "Create a new AX CZ FSS report entry",
         "responses": {
           "200": {
             "description": "response",
@@ -776,7 +777,7 @@
         },
         "summary": "",
         "tags": [
-          "Axczfssreport"
+          "AX Combat Zone Reports"
         ],
         "requestBody": {
           "description": "",
@@ -788,13 +789,14 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/axczfssreports/count": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Get a count of all AX CZ FSS report entries",
         "responses": {
           "200": {
             "description": "response",
@@ -843,15 +845,16 @@
         },
         "summary": "",
         "tags": [
-          "Axczfssreport"
+          "AX Combat Zone Reports"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/axczfssreports/{id}": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Get a AX CZ FSS report by id",
         "responses": {
           "200": {
             "description": "response",
@@ -896,7 +899,7 @@
         },
         "summary": "",
         "tags": [
-          "Axczfssreport"
+          "AX Combat Zone Reports"
         ],
         "parameters": [
           {
@@ -909,11 +912,12 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
-        "description": "Update a record",
+        "description": "Update a AX CZ FSS report by id",
         "responses": {
           "200": {
             "description": "response",
@@ -958,7 +962,7 @@
         },
         "summary": "",
         "tags": [
-          "Axczfssreport"
+          "AX Combat Zone Reports"
         ],
         "requestBody": {
           "description": "",
@@ -982,11 +986,12 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a record",
+        "description": "Delete a AX CZ FSS report by id",
         "responses": {
           "200": {
             "description": "deletes a single record based on the ID supplied",
@@ -1032,7 +1037,7 @@
         },
         "summary": "",
         "tags": [
-          "Axczfssreport"
+          "AX Combat Zone Reports"
         ],
         "parameters": [
           {
@@ -1045,6 +1050,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "reportDelete"
         ]
       }
     },
@@ -4516,7 +4524,7 @@
     "/clientreports": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Get all Client version report entries",
         "responses": {
           "200": {
             "description": "response",
@@ -4564,7 +4572,7 @@
         },
         "summary": "",
         "tags": [
-          "Clientreport"
+          "Canonn Use"
         ],
         "parameters": [
           {
@@ -4677,11 +4685,12 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new record",
+        "description": "Create a new Client version report entry",
         "responses": {
           "200": {
             "description": "response",
@@ -4726,7 +4735,7 @@
         },
         "summary": "",
         "tags": [
-          "Clientreport"
+          "Canonn Use"
         ],
         "requestBody": {
           "description": "",
@@ -4738,13 +4747,14 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/clientreports/count": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Get a count of all Client version report entries",
         "responses": {
           "200": {
             "description": "response",
@@ -4793,15 +4803,16 @@
         },
         "summary": "",
         "tags": [
-          "Clientreport"
+          "Canonn Use"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/clientreports/{id}": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Get a Client version report by id",
         "responses": {
           "200": {
             "description": "response",
@@ -4846,7 +4857,7 @@
         },
         "summary": "",
         "tags": [
-          "Clientreport"
+          "Canonn Use"
         ],
         "parameters": [
           {
@@ -4859,11 +4870,12 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
-        "description": "Update a record",
+        "description": "Update a Client version report by id",
         "responses": {
           "200": {
             "description": "response",
@@ -4908,7 +4920,7 @@
         },
         "summary": "",
         "tags": [
-          "Clientreport"
+          "Canonn Use"
         ],
         "requestBody": {
           "description": "",
@@ -4932,11 +4944,14 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "updateLogWrite"
         ]
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a record",
+        "description": "Delete a Client version report by id",
         "responses": {
           "200": {
             "description": "deletes a single record based on the ID supplied",
@@ -4982,7 +4997,7 @@
         },
         "summary": "",
         "tags": [
-          "Clientreport"
+          "Canonn Use"
         ],
         "parameters": [
           {
@@ -4995,13 +5010,16 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "updateLogWrite"
         ]
       }
     },
     "/clientroutes": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Get all Client version route entries",
         "responses": {
           "200": {
             "description": "response",
@@ -5049,7 +5067,7 @@
         },
         "summary": "",
         "tags": [
-          "Clientroute"
+          "Canonn Use"
         ],
         "parameters": [
           {
@@ -5162,11 +5180,12 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new record",
+        "description": "Create a new Client version route entry",
         "responses": {
           "200": {
             "description": "response",
@@ -5211,7 +5230,7 @@
         },
         "summary": "",
         "tags": [
-          "Clientroute"
+          "Canonn Use"
         ],
         "requestBody": {
           "description": "",
@@ -5223,13 +5242,14 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/clientroutes/count": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Get a count of all Client version route entries",
         "responses": {
           "200": {
             "description": "response",
@@ -5278,15 +5298,16 @@
         },
         "summary": "",
         "tags": [
-          "Clientroute"
+          "Canonn Use"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/clientroutes/{id}": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Get a Client version route by id",
         "responses": {
           "200": {
             "description": "response",
@@ -5331,7 +5352,7 @@
         },
         "summary": "",
         "tags": [
-          "Clientroute"
+          "Canonn Use"
         ],
         "parameters": [
           {
@@ -5344,11 +5365,12 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
-        "description": "Update a record",
+        "description": "Update a Client version route by id",
         "responses": {
           "200": {
             "description": "response",
@@ -5393,7 +5415,7 @@
         },
         "summary": "",
         "tags": [
-          "Clientroute"
+          "Canonn Use"
         ],
         "requestBody": {
           "description": "",
@@ -5417,11 +5439,14 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "updateLogWrite"
         ]
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a record",
+        "description": "Delete a Client version route by id",
         "responses": {
           "200": {
             "description": "deletes a single record based on the ID supplied",
@@ -5467,7 +5492,7 @@
         },
         "summary": "",
         "tags": [
-          "Clientroute"
+          "Canonn Use"
         ],
         "parameters": [
           {
@@ -5480,6 +5505,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "updateLogWrite"
         ]
       }
     },
@@ -9952,7 +9980,7 @@
     "/excludefsses": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Get all FSS Scan Blacklist entries",
         "responses": {
           "200": {
             "description": "response",
@@ -10000,7 +10028,7 @@
         },
         "summary": "",
         "tags": [
-          "Excludefss"
+          "Canonn Use"
         ],
         "parameters": [
           {
@@ -10113,11 +10141,12 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new record",
+        "description": "Create a new FSS Scan Blacklist entry",
         "responses": {
           "200": {
             "description": "response",
@@ -10162,7 +10191,7 @@
         },
         "summary": "",
         "tags": [
-          "Excludefss"
+          "Canonn Use"
         ],
         "requestBody": {
           "description": "",
@@ -10174,13 +10203,16 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          "updateLogWrite"
+        ]
       }
     },
     "/excludefsses/count": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Get a count of all FSS Scan Blacklist entries",
         "responses": {
           "200": {
             "description": "response",
@@ -10229,15 +10261,16 @@
         },
         "summary": "",
         "tags": [
-          "Excludefss"
+          "Canonn Use"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/excludefsses/{id}": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Get a FSS Scan Blacklist by id",
         "responses": {
           "200": {
             "description": "response",
@@ -10282,7 +10315,7 @@
         },
         "summary": "",
         "tags": [
-          "Excludefss"
+          "Canonn Use"
         ],
         "parameters": [
           {
@@ -10295,11 +10328,12 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
-        "description": "Update a record",
+        "description": "Update a FSS Scan Blacklist by id",
         "responses": {
           "200": {
             "description": "response",
@@ -10344,7 +10378,7 @@
         },
         "summary": "",
         "tags": [
-          "Excludefss"
+          "Canonn Use"
         ],
         "requestBody": {
           "description": "",
@@ -10368,11 +10402,14 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "updateLogWrite"
         ]
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a record",
+        "description": "Delete a FSS Scan Blacklist by id",
         "responses": {
           "200": {
             "description": "deletes a single record based on the ID supplied",
@@ -10418,7 +10455,7 @@
         },
         "summary": "",
         "tags": [
-          "Excludefss"
+          "Canonn Use"
         ],
         "parameters": [
           {
@@ -10431,6 +10468,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "updateLogWrite"
         ]
       }
     },
@@ -32358,7 +32398,7 @@
     "/lcfssreports": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Get all LC FSS report entries",
         "responses": {
           "200": {
             "description": "response",
@@ -32406,7 +32446,7 @@
         },
         "summary": "",
         "tags": [
-          "Lcfssreport"
+          "Lagrange Cloud Reports"
         ],
         "parameters": [
           {
@@ -32519,11 +32559,12 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new record",
+        "description": "Create a new LC FSS report entry",
         "responses": {
           "200": {
             "description": "response",
@@ -32568,7 +32609,7 @@
         },
         "summary": "",
         "tags": [
-          "Lcfssreport"
+          "Lagrange Cloud Reports"
         ],
         "requestBody": {
           "description": "",
@@ -32580,13 +32621,14 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/lcfssreports/count": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Get a count of all LC FSS report entries",
         "responses": {
           "200": {
             "description": "response",
@@ -32635,15 +32677,16 @@
         },
         "summary": "",
         "tags": [
-          "Lcfssreport"
+          "Lagrange Cloud Reports"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/lcfssreports/{id}": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Get a LC FSS report by id",
         "responses": {
           "200": {
             "description": "response",
@@ -32688,7 +32731,7 @@
         },
         "summary": "",
         "tags": [
-          "Lcfssreport"
+          "Lagrange Cloud Reports"
         ],
         "parameters": [
           {
@@ -32701,11 +32744,12 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
-        "description": "Update a record",
+        "description": "Update a LC FSS report by id",
         "responses": {
           "200": {
             "description": "response",
@@ -32750,7 +32794,7 @@
         },
         "summary": "",
         "tags": [
-          "Lcfssreport"
+          "Lagrange Cloud Reports"
         ],
         "requestBody": {
           "description": "",
@@ -32774,11 +32818,12 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a record",
+        "description": "Delete a LC FSS report by id",
         "responses": {
           "200": {
             "description": "deletes a single record based on the ID supplied",
@@ -32824,7 +32869,7 @@
         },
         "summary": "",
         "tags": [
-          "Lcfssreport"
+          "Lagrange Cloud Reports"
         ],
         "parameters": [
           {
@@ -32837,6 +32882,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "reportDelete"
         ]
       }
     },
@@ -35817,7 +35865,7 @@
     "/reportcodices": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Get all Codex Journal Debug entries",
         "responses": {
           "200": {
             "description": "response",
@@ -35865,7 +35913,7 @@
         },
         "summary": "",
         "tags": [
-          "Reportcodex"
+          "Canonn Use"
         ],
         "parameters": [
           {
@@ -35978,11 +36026,12 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new record",
+        "description": "Create a new Codex Journal Debug entry",
         "responses": {
           "200": {
             "description": "response",
@@ -36027,7 +36076,7 @@
         },
         "summary": "",
         "tags": [
-          "Reportcodex"
+          "Canonn Use"
         ],
         "requestBody": {
           "description": "",
@@ -36039,13 +36088,14 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/reportcodices/count": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Get a count of all Codex Journal Debug entries",
         "responses": {
           "200": {
             "description": "response",
@@ -36094,15 +36144,16 @@
         },
         "summary": "",
         "tags": [
-          "Reportcodex"
+          "Canonn Use"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/reportcodices/{id}": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Get a Codex Journal Debug by id",
         "responses": {
           "200": {
             "description": "response",
@@ -36147,7 +36198,7 @@
         },
         "summary": "",
         "tags": [
-          "Reportcodex"
+          "Canonn Use"
         ],
         "parameters": [
           {
@@ -36160,11 +36211,12 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
-        "description": "Update a record",
+        "description": "Update a Codex Journal Debug by id",
         "responses": {
           "200": {
             "description": "response",
@@ -36209,7 +36261,7 @@
         },
         "summary": "",
         "tags": [
-          "Reportcodex"
+          "Canonn Use"
         ],
         "requestBody": {
           "description": "",
@@ -36233,11 +36285,12 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a record",
+        "description": "Delete a Codex Journal Debug by id",
         "responses": {
           "200": {
             "description": "deletes a single record based on the ID supplied",
@@ -36283,7 +36336,7 @@
         },
         "summary": "",
         "tags": [
-          "Reportcodex"
+          "Canonn Use"
         ],
         "parameters": [
           {
@@ -36296,13 +36349,16 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "updateLogWrite"
         ]
       }
     },
     "/reportevents": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Get all Journal Event Debug entries",
         "responses": {
           "200": {
             "description": "response",
@@ -36350,7 +36406,7 @@
         },
         "summary": "",
         "tags": [
-          "Reportevent"
+          "Canonn Use"
         ],
         "parameters": [
           {
@@ -36463,11 +36519,12 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new record",
+        "description": "Create a new Journal Event Debug entry",
         "responses": {
           "200": {
             "description": "response",
@@ -36512,7 +36569,7 @@
         },
         "summary": "",
         "tags": [
-          "Reportevent"
+          "Canonn Use"
         ],
         "requestBody": {
           "description": "",
@@ -36524,13 +36581,14 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/reportevents/count": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Get a count of all Journal Event Debug entries",
         "responses": {
           "200": {
             "description": "response",
@@ -36579,15 +36637,16 @@
         },
         "summary": "",
         "tags": [
-          "Reportevent"
+          "Canonn Use"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/reportevents/{id}": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Get a Journal Event Debug by id",
         "responses": {
           "200": {
             "description": "response",
@@ -36632,7 +36691,7 @@
         },
         "summary": "",
         "tags": [
-          "Reportevent"
+          "Canonn Use"
         ],
         "parameters": [
           {
@@ -36645,11 +36704,12 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
-        "description": "Update a record",
+        "description": "Update a Journal Event Debug by id",
         "responses": {
           "200": {
             "description": "response",
@@ -36694,7 +36754,7 @@
         },
         "summary": "",
         "tags": [
-          "Reportevent"
+          "Canonn Use"
         ],
         "requestBody": {
           "description": "",
@@ -36718,11 +36778,12 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a record",
+        "description": "Delete a Journal Event Debug by id",
         "responses": {
           "200": {
             "description": "deletes a single record based on the ID supplied",
@@ -36768,7 +36829,7 @@
         },
         "summary": "",
         "tags": [
-          "Reportevent"
+          "Canonn Use"
         ],
         "parameters": [
           {
@@ -36781,13 +36842,16 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "updateLogWrite"
         ]
       }
     },
     "/reportfsses": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Get all FSS Scan Event Debug entries",
         "responses": {
           "200": {
             "description": "response",
@@ -36835,7 +36899,7 @@
         },
         "summary": "",
         "tags": [
-          "Reportfss"
+          "Canonn Use"
         ],
         "parameters": [
           {
@@ -36948,11 +37012,12 @@
             },
             "deprecated": false
           }
-        ]
+        ],
+        "security": []
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new record",
+        "description": "Create a new FSS Scan Event Debug entry",
         "responses": {
           "200": {
             "description": "response",
@@ -36997,7 +37062,7 @@
         },
         "summary": "",
         "tags": [
-          "Reportfss"
+          "Canonn Use"
         ],
         "requestBody": {
           "description": "",
@@ -37009,13 +37074,14 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/reportfsses/count": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Get a count of all FSS Scan Event Debug entries",
         "responses": {
           "200": {
             "description": "response",
@@ -37064,15 +37130,16 @@
         },
         "summary": "",
         "tags": [
-          "Reportfss"
+          "Canonn Use"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/reportfsses/{id}": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Get a FSS Scan Event Debug by id",
         "responses": {
           "200": {
             "description": "response",
@@ -37117,7 +37184,7 @@
         },
         "summary": "",
         "tags": [
-          "Reportfss"
+          "Canonn Use"
         ],
         "parameters": [
           {
@@ -37130,11 +37197,12 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "put": {
         "deprecated": false,
-        "description": "Update a record",
+        "description": "Update a FSS Scan Event Debug by id",
         "responses": {
           "200": {
             "description": "response",
@@ -37179,7 +37247,7 @@
         },
         "summary": "",
         "tags": [
-          "Reportfss"
+          "Canonn Use"
         ],
         "requestBody": {
           "description": "",
@@ -37203,11 +37271,12 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "security": []
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a record",
+        "description": "Delete a FSS Scan Event Debug by id",
         "responses": {
           "200": {
             "description": "deletes a single record based on the ID supplied",
@@ -37253,7 +37322,7 @@
         },
         "summary": "",
         "tags": [
-          "Reportfss"
+          "Canonn Use"
         ],
         "parameters": [
           {
@@ -37266,6 +37335,9 @@
               "type": "string"
             }
           }
+        ],
+        "security": [
+          "updateLogWrite"
         ]
       }
     },
@@ -60134,7 +60206,8 @@
       "description": "Endpoints used by Canonn for updating or maintaining the API"
     },
     {
-      "name": "Axczfssreport"
+      "name": "AX Combat Zone Reports",
+      "description": "Public Reporting of AX CZ"
     },
     {
       "name": "Bark Mound Reports",
@@ -60157,12 +60230,6 @@
       "description": "Code Name - BT"
     },
     {
-      "name": "Clientreport"
-    },
-    {
-      "name": "Clientroute"
-    },
-    {
       "name": "CMDRs",
       "description": "List of commanders credited with finding sites and their kills"
     },
@@ -60173,9 +60240,6 @@
     {
       "name": "Crystalline Shards",
       "description": "Code Name - CS"
-    },
-    {
-      "name": "Excludefss"
     },
     {
       "name": "Fungal Gourd Reports",
@@ -60250,7 +60314,8 @@
       "description": "Code Name - HD"
     },
     {
-      "name": "Lcfssreport"
+      "name": "Lagrange Cloud Reports",
+      "description": "Public Reporting of LC"
     },
     {
       "name": "Lava Spout Reports",
@@ -60271,15 +60336,6 @@
     {
       "name": "Regions",
       "description": "Regions stored in our API to use as references for systems"
-    },
-    {
-      "name": "Reportcodex"
-    },
-    {
-      "name": "Reportevent"
-    },
-    {
-      "name": "Reportfss"
     },
     {
       "name": "Rings",
