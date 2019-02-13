@@ -34,12 +34,12 @@
     },
     "journalType": {
       "default": "codex",
+      "type": "enumeration",
       "enum": [
         "codex",
         "event",
         "fss"
-      ],
-      "type": "enumeration"
+      ]
     },
     "endpoint": {
       "default": "",

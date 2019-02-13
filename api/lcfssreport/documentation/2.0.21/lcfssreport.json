@@ -490,7 +490,8 @@
     "schemas": {
       "Lcfssreport": {
         "required": [
-          "id"
+          "id",
+          "reportStatus"
         ],
         "properties": {
           "id": {
@@ -518,7 +519,16 @@
             "type": "string"
           },
           "reportStatus": {
-            "type": "string"
+            "type": "string",
+            "default": "pending",
+            "enum": [
+              "pending",
+              "updated",
+              "verified",
+              "accepted",
+              "declined",
+              "issue"
+            ]
           },
           "rawJson": {
             "type": "json"
@@ -526,6 +536,9 @@
         }
       },
       "NewLcfssreport": {
+        "required": [
+          "reportStatus"
+        ],
         "properties": {
           "cmdrName": {
             "type": "string"
@@ -549,7 +562,16 @@
             "type": "string"
           },
           "reportStatus": {
-            "type": "string"
+            "type": "string",
+            "default": "pending",
+            "enum": [
+              "pending",
+              "updated",
+              "verified",
+              "accepted",
+              "declined",
+              "issue"
+            ]
           },
           "rawJson": {
             "type": "json"

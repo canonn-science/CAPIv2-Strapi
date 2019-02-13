@@ -491,7 +491,11 @@
       "Reportevent": {
         "required": [
           "id",
+          "eventName",
+          "cmdrName",
+          "systemName",
           "clientVersion",
+          "reportStatus",
           "rawJson"
         ],
         "properties": {
@@ -508,22 +512,39 @@
             "type": "string"
           },
           "bodyName": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "stationName": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "latitude": {
-            "type": "number"
+            "type": "number",
+            "default": ""
           },
           "longitude": {
-            "type": "number"
+            "type": "number",
+            "default": ""
           },
           "isBeta": {
-            "type": "boolean"
+            "type": "boolean",
+            "default": false
           },
           "clientVersion": {
             "type": "string"
+          },
+          "reportStatus": {
+            "type": "string",
+            "default": "pending",
+            "enum": [
+              "pending",
+              "updated",
+              "verified",
+              "accepted",
+              "declined",
+              "issue"
+            ]
           },
           "rawJson": {
             "type": "json"
@@ -532,7 +553,11 @@
       },
       "NewReportevent": {
         "required": [
+          "eventName",
+          "cmdrName",
+          "systemName",
           "clientVersion",
+          "reportStatus",
           "rawJson"
         ],
         "properties": {
@@ -546,22 +571,39 @@
             "type": "string"
           },
           "bodyName": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "stationName": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "latitude": {
-            "type": "number"
+            "type": "number",
+            "default": ""
           },
           "longitude": {
-            "type": "number"
+            "type": "number",
+            "default": ""
           },
           "isBeta": {
-            "type": "boolean"
+            "type": "boolean",
+            "default": false
           },
           "clientVersion": {
             "type": "string"
+          },
+          "reportStatus": {
+            "type": "string",
+            "default": "pending",
+            "enum": [
+              "pending",
+              "updated",
+              "verified",
+              "accepted",
+              "declined",
+              "issue"
+            ]
           },
           "rawJson": {
             "type": "json"

@@ -33,7 +33,17 @@
       "type": "string"
     },
     "reportStatus": {
-      "type": "string"
+      "default": "pending",
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "pending",
+        "updated",
+        "verified",
+        "accepted",
+        "declined",
+        "issue"
+      ]
     },
     "rawJson": {
       "type": "json"

@@ -14,7 +14,7 @@
       "name": "GNU-GPLv3",
       "url": "https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE"
     },
-    "x-generation-date": "02/11/2019 11:58:00 AM"
+    "x-generation-date": "02/12/2019 11:35:34 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -45785,7 +45785,8 @@
       },
       "Axczfssreport": {
         "required": [
-          "id"
+          "id",
+          "reportStatus"
         ],
         "properties": {
           "id": {
@@ -45813,7 +45814,16 @@
             "type": "string"
           },
           "reportStatus": {
-            "type": "string"
+            "type": "string",
+            "default": "pending",
+            "enum": [
+              "pending",
+              "updated",
+              "verified",
+              "accepted",
+              "declined",
+              "issue"
+            ]
           },
           "rawJson": {
             "type": "json"
@@ -45821,6 +45831,9 @@
         }
       },
       "NewAxczfssreport": {
+        "required": [
+          "reportStatus"
+        ],
         "properties": {
           "cmdrName": {
             "type": "string"
@@ -45844,7 +45857,16 @@
             "type": "string"
           },
           "reportStatus": {
-            "type": "string"
+            "type": "string",
+            "default": "pending",
+            "enum": [
+              "pending",
+              "updated",
+              "verified",
+              "accepted",
+              "declined",
+              "issue"
+            ]
           },
           "rawJson": {
             "type": "json"
@@ -48432,7 +48454,7 @@
           "id": {
             "type": "string"
           },
-          "name": {
+          "fssName": {
             "type": "string"
           },
           "reason": {
@@ -48442,7 +48464,7 @@
       },
       "NewExcludefss": {
         "properties": {
-          "name": {
+          "fssName": {
             "type": "string"
           },
           "reason": {
@@ -55715,7 +55737,8 @@
       },
       "Lcfssreport": {
         "required": [
-          "id"
+          "id",
+          "reportStatus"
         ],
         "properties": {
           "id": {
@@ -55743,7 +55766,16 @@
             "type": "string"
           },
           "reportStatus": {
-            "type": "string"
+            "type": "string",
+            "default": "pending",
+            "enum": [
+              "pending",
+              "updated",
+              "verified",
+              "accepted",
+              "declined",
+              "issue"
+            ]
           },
           "rawJson": {
             "type": "json"
@@ -55751,6 +55783,9 @@
         }
       },
       "NewLcfssreport": {
+        "required": [
+          "reportStatus"
+        ],
         "properties": {
           "cmdrName": {
             "type": "string"
@@ -55774,7 +55809,16 @@
             "type": "string"
           },
           "reportStatus": {
-            "type": "string"
+            "type": "string",
+            "default": "pending",
+            "enum": [
+              "pending",
+              "updated",
+              "verified",
+              "accepted",
+              "declined",
+              "issue"
+            ]
           },
           "rawJson": {
             "type": "json"
@@ -56666,23 +56710,28 @@
       "Reportcodex": {
         "required": [
           "id",
-          "clientVersion"
+          "cmdrName",
+          "systemName",
+          "clientVersion",
+          "reportStatus",
+          "rawJson"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
           "cmdrName": {
-            "type": "string",
-            "default": ""
+            "type": "string"
           },
           "systemName": {
-            "type": "string",
-            "default": ""
+            "type": "string"
           },
           "bodyName": {
             "type": "string",
             "default": ""
+          },
+          "systemAddress": {
+            "type": "biginteger"
           },
           "coordX": {
             "type": "number",
@@ -56740,9 +56789,6 @@
             "type": "string",
             "default": ""
           },
-          "systemAddress": {
-            "type": "biginteger"
-          },
           "voucherAmount": {
             "type": "integer",
             "default": ""
@@ -56754,28 +56800,44 @@
           "clientVersion": {
             "type": "string"
           },
+          "reportStatus": {
+            "type": "string",
+            "default": "pending",
+            "enum": [
+              "pending",
+              "updated",
+              "verified",
+              "accepted",
+              "declined",
+              "issue"
+            ]
+          },
           "rawJson": {
-            "type": "json",
-            "default": ""
+            "type": "json"
           }
         }
       },
       "NewReportcodex": {
         "required": [
-          "clientVersion"
+          "cmdrName",
+          "systemName",
+          "clientVersion",
+          "reportStatus",
+          "rawJson"
         ],
         "properties": {
           "cmdrName": {
-            "type": "string",
-            "default": ""
+            "type": "string"
           },
           "systemName": {
-            "type": "string",
-            "default": ""
+            "type": "string"
           },
           "bodyName": {
             "type": "string",
             "default": ""
+          },
+          "systemAddress": {
+            "type": "biginteger"
           },
           "coordX": {
             "type": "number",
@@ -56833,9 +56895,6 @@
             "type": "string",
             "default": ""
           },
-          "systemAddress": {
-            "type": "biginteger"
-          },
           "voucherAmount": {
             "type": "integer",
             "default": ""
@@ -56847,16 +56906,31 @@
           "clientVersion": {
             "type": "string"
           },
+          "reportStatus": {
+            "type": "string",
+            "default": "pending",
+            "enum": [
+              "pending",
+              "updated",
+              "verified",
+              "accepted",
+              "declined",
+              "issue"
+            ]
+          },
           "rawJson": {
-            "type": "json",
-            "default": ""
+            "type": "json"
           }
         }
       },
       "Reportevent": {
         "required": [
           "id",
+          "eventName",
+          "cmdrName",
+          "systemName",
           "clientVersion",
+          "reportStatus",
           "rawJson"
         ],
         "properties": {
@@ -56873,22 +56947,39 @@
             "type": "string"
           },
           "bodyName": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "stationName": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "latitude": {
-            "type": "number"
+            "type": "number",
+            "default": ""
           },
           "longitude": {
-            "type": "number"
+            "type": "number",
+            "default": ""
           },
           "isBeta": {
-            "type": "boolean"
+            "type": "boolean",
+            "default": false
           },
           "clientVersion": {
             "type": "string"
+          },
+          "reportStatus": {
+            "type": "string",
+            "default": "pending",
+            "enum": [
+              "pending",
+              "updated",
+              "verified",
+              "accepted",
+              "declined",
+              "issue"
+            ]
           },
           "rawJson": {
             "type": "json"
@@ -56897,7 +56988,11 @@
       },
       "NewReportevent": {
         "required": [
+          "eventName",
+          "cmdrName",
+          "systemName",
           "clientVersion",
+          "reportStatus",
           "rawJson"
         ],
         "properties": {
@@ -56911,22 +57006,39 @@
             "type": "string"
           },
           "bodyName": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "stationName": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "latitude": {
-            "type": "number"
+            "type": "number",
+            "default": ""
           },
           "longitude": {
-            "type": "number"
+            "type": "number",
+            "default": ""
           },
           "isBeta": {
-            "type": "boolean"
+            "type": "boolean",
+            "default": false
           },
           "clientVersion": {
             "type": "string"
+          },
+          "reportStatus": {
+            "type": "string",
+            "default": "pending",
+            "enum": [
+              "pending",
+              "updated",
+              "verified",
+              "accepted",
+              "declined",
+              "issue"
+            ]
           },
           "rawJson": {
             "type": "json"
@@ -56935,7 +57047,12 @@
       },
       "Reportfss": {
         "required": [
-          "id"
+          "id",
+          "cmdrName",
+          "systemName",
+          "clientVersion",
+          "reportStatus",
+          "rawJson"
         ],
         "properties": {
           "id": {
@@ -56948,40 +57065,59 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "biginteger",
+            "default": ""
           },
           "signalName": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "signalNameLocalised": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "ussType": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "ussTypeLocalised": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "spawningState": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "spawningStateLocalised": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "spawningFaction": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "threatLevel": {
-            "type": "integer"
+            "type": "integer",
+            "default": ""
           },
           "isBeta": {
-            "type": "boolean"
+            "type": "boolean",
+            "default": false
           },
           "clientVersion": {
             "type": "string"
           },
           "reportStatus": {
-            "type": "string"
+            "type": "string",
+            "default": "pending",
+            "enum": [
+              "pending",
+              "updated",
+              "verified",
+              "accepted",
+              "declined",
+              "issue"
+            ]
           },
           "rawJson": {
             "type": "json"
@@ -56989,6 +57125,13 @@
         }
       },
       "NewReportfss": {
+        "required": [
+          "cmdrName",
+          "systemName",
+          "clientVersion",
+          "reportStatus",
+          "rawJson"
+        ],
         "properties": {
           "cmdrName": {
             "type": "string"
@@ -56997,40 +57140,59 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "biginteger",
+            "default": ""
           },
           "signalName": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "signalNameLocalised": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "ussType": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "ussTypeLocalised": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "spawningState": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "spawningStateLocalised": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "spawningFaction": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "threatLevel": {
-            "type": "integer"
+            "type": "integer",
+            "default": ""
           },
           "isBeta": {
-            "type": "boolean"
+            "type": "boolean",
+            "default": false
           },
           "clientVersion": {
             "type": "string"
           },
           "reportStatus": {
-            "type": "string"
+            "type": "string",
+            "default": "pending",
+            "enum": [
+              "pending",
+              "updated",
+              "verified",
+              "accepted",
+              "declined",
+              "issue"
+            ]
           },
           "rawJson": {
             "type": "json"

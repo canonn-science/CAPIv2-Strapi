@@ -3,7 +3,7 @@
   "collectionName": "axczfssreports",
   "info": {
     "name": "axczfssreport",
-    "description": ""
+    "description": "AX Combat Zone FSS Scan Reports"
   },
   "options": {
     "increments": true,
@@ -33,7 +33,17 @@
       "type": "string"
     },
     "reportStatus": {
-      "type": "string"
+      "default": "pending",
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "pending",
+        "updated",
+        "verified",
+        "accepted",
+        "declined",
+        "issue"
+      ]
     },
     "rawJson": {
       "type": "json"

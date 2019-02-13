@@ -490,7 +490,12 @@
     "schemas": {
       "Reportfss": {
         "required": [
-          "id"
+          "id",
+          "cmdrName",
+          "systemName",
+          "clientVersion",
+          "reportStatus",
+          "rawJson"
         ],
         "properties": {
           "id": {
@@ -503,40 +508,59 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "biginteger",
+            "default": ""
           },
           "signalName": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "signalNameLocalised": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "ussType": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "ussTypeLocalised": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "spawningState": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "spawningStateLocalised": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "spawningFaction": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "threatLevel": {
-            "type": "integer"
+            "type": "integer",
+            "default": ""
           },
           "isBeta": {
-            "type": "boolean"
+            "type": "boolean",
+            "default": false
           },
           "clientVersion": {
             "type": "string"
           },
           "reportStatus": {
-            "type": "string"
+            "type": "string",
+            "default": "pending",
+            "enum": [
+              "pending",
+              "updated",
+              "verified",
+              "accepted",
+              "declined",
+              "issue"
+            ]
           },
           "rawJson": {
             "type": "json"
@@ -544,6 +568,13 @@
         }
       },
       "NewReportfss": {
+        "required": [
+          "cmdrName",
+          "systemName",
+          "clientVersion",
+          "reportStatus",
+          "rawJson"
+        ],
         "properties": {
           "cmdrName": {
             "type": "string"
@@ -552,40 +583,59 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "biginteger",
+            "default": ""
           },
           "signalName": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "signalNameLocalised": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "ussType": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "ussTypeLocalised": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "spawningState": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "spawningStateLocalised": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "spawningFaction": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "threatLevel": {
-            "type": "integer"
+            "type": "integer",
+            "default": ""
           },
           "isBeta": {
-            "type": "boolean"
+            "type": "boolean",
+            "default": false
           },
           "clientVersion": {
             "type": "string"
           },
           "reportStatus": {
-            "type": "string"
+            "type": "string",
+            "default": "pending",
+            "enum": [
+              "pending",
+              "updated",
+              "verified",
+              "accepted",
+              "declined",
+              "issue"
+            ]
           },
           "rawJson": {
             "type": "json"

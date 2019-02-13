@@ -12,32 +12,53 @@
   },
   "attributes": {
     "eventName": {
+      "required": true,
       "type": "string"
     },
     "cmdrName": {
+      "required": true,
       "type": "string"
     },
     "systemName": {
+      "required": true,
       "type": "string"
     },
     "bodyName": {
+      "default": "",
       "type": "string"
     },
     "stationName": {
+      "default": "",
       "type": "string"
     },
     "latitude": {
+      "default": "",
       "type": "float"
     },
     "longitude": {
+      "default": "",
       "type": "float"
     },
     "isBeta": {
+      "default": false,
       "type": "boolean"
     },
     "clientVersion": {
       "required": true,
       "type": "string"
+    },
+    "reportStatus": {
+      "default": "pending",
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "pending",
+        "updated",
+        "verified",
+        "accepted",
+        "declined",
+        "issue"
+      ]
     },
     "rawJson": {
       "type": "json",

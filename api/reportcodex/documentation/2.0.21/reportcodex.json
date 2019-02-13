@@ -491,23 +491,28 @@
       "Reportcodex": {
         "required": [
           "id",
-          "clientVersion"
+          "cmdrName",
+          "systemName",
+          "clientVersion",
+          "reportStatus",
+          "rawJson"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
           "cmdrName": {
-            "type": "string",
-            "default": ""
+            "type": "string"
           },
           "systemName": {
-            "type": "string",
-            "default": ""
+            "type": "string"
           },
           "bodyName": {
             "type": "string",
             "default": ""
+          },
+          "systemAddress": {
+            "type": "biginteger"
           },
           "coordX": {
             "type": "number",
@@ -565,9 +570,6 @@
             "type": "string",
             "default": ""
           },
-          "systemAddress": {
-            "type": "biginteger"
-          },
           "voucherAmount": {
             "type": "integer",
             "default": ""
@@ -579,28 +581,44 @@
           "clientVersion": {
             "type": "string"
           },
+          "reportStatus": {
+            "type": "string",
+            "default": "pending",
+            "enum": [
+              "pending",
+              "updated",
+              "verified",
+              "accepted",
+              "declined",
+              "issue"
+            ]
+          },
           "rawJson": {
-            "type": "json",
-            "default": ""
+            "type": "json"
           }
         }
       },
       "NewReportcodex": {
         "required": [
-          "clientVersion"
+          "cmdrName",
+          "systemName",
+          "clientVersion",
+          "reportStatus",
+          "rawJson"
         ],
         "properties": {
           "cmdrName": {
-            "type": "string",
-            "default": ""
+            "type": "string"
           },
           "systemName": {
-            "type": "string",
-            "default": ""
+            "type": "string"
           },
           "bodyName": {
             "type": "string",
             "default": ""
+          },
+          "systemAddress": {
+            "type": "biginteger"
           },
           "coordX": {
             "type": "number",
@@ -658,9 +676,6 @@
             "type": "string",
             "default": ""
           },
-          "systemAddress": {
-            "type": "biginteger"
-          },
           "voucherAmount": {
             "type": "integer",
             "default": ""
@@ -672,9 +687,20 @@
           "clientVersion": {
             "type": "string"
           },
+          "reportStatus": {
+            "type": "string",
+            "default": "pending",
+            "enum": [
+              "pending",
+              "updated",
+              "verified",
+              "accepted",
+              "declined",
+              "issue"
+            ]
+          },
           "rawJson": {
-            "type": "json",
-            "default": ""
+            "type": "json"
           }
         }
       }

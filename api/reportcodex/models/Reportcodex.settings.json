@@ -12,16 +12,19 @@
   },
   "attributes": {
     "cmdrName": {
-      "default": "",
+      "required": true,
       "type": "string"
     },
     "systemName": {
-      "default": "",
+      "required": true,
       "type": "string"
     },
     "bodyName": {
       "default": "",
       "type": "string"
+    },
+    "systemAddress": {
+      "type": "biginteger"
     },
     "coordX": {
       "default": "",
@@ -79,9 +82,6 @@
       "default": "",
       "type": "string"
     },
-    "systemAddress": {
-      "type": "biginteger"
-    },
     "voucherAmount": {
       "default": "",
       "type": "integer"
@@ -94,9 +94,22 @@
       "required": true,
       "type": "string"
     },
+    "reportStatus": {
+      "default": "pending",
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "pending",
+        "updated",
+        "verified",
+        "accepted",
+        "declined",
+        "issue"
+      ]
+    },
     "rawJson": {
-      "default": "",
-      "type": "json"
+      "type": "json",
+      "required": true
     }
   }
 }

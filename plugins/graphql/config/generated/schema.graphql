@@ -14,6 +14,7 @@ input ApiupdateInput {
   updateLog: JSON
 }
 
+"""AX Combat Zone FSS Scan Reports"""
 type Axczfssreport {
   id: ID!
   created_at: DateTime!
@@ -25,7 +26,7 @@ type Axczfssreport {
   signalNameLocalised: String
   isBeta: Boolean
   clientVersion: String
-  reportStatus: String
+  reportStatus: ENUM_AXCZFSSREPORT_REPORTSTATUS!
   rawJson: JSON
 }
 
@@ -37,7 +38,7 @@ input AxczfssreportInput {
   signalNameLocalised: String
   isBeta: Boolean
   clientVersion: String
-  reportStatus: String
+  reportStatus: ENUM_AXCZFSSREPORT_REPORTSTATUS!
   rawJson: JSON
 }
 
@@ -1971,7 +1972,7 @@ input editAxczfssreportInput {
   signalNameLocalised: String
   isBeta: Boolean
   clientVersion: String
-  reportStatus: String
+  reportStatus: ENUM_AXCZFSSREPORT_REPORTSTATUS
   rawJson: JSON
 }
 
@@ -2207,7 +2208,7 @@ input editExcludeeventInput {
 }
 
 input editExcludefssInput {
-  name: String
+  fssName: String
   reason: String
 }
 
@@ -2733,7 +2734,7 @@ input editLcfssreportInput {
   signalNameLocalised: String
   isBeta: Boolean
   clientVersion: String
-  reportStatus: String
+  reportStatus: ENUM_LCFSSREPORT_REPORTSTATUS
   rawJson: JSON
 }
 
@@ -2813,6 +2814,7 @@ input editReportcodexInput {
   cmdrName: String
   systemName: String
   bodyName: String
+  systemAddress: String
   coordX: Float
   coordY: Float
   coordZ: Float
@@ -2827,10 +2829,10 @@ input editReportcodexInput {
   categoryLocalised: String
   regionName: String
   regionLocalised: String
-  systemAddress: String
   voucherAmount: Int
   isBeta: Boolean
   clientVersion: String
+  reportStatus: ENUM_REPORTCODEX_REPORTSTATUS
   rawJson: JSON
 }
 
@@ -2844,6 +2846,7 @@ input editReporteventInput {
   longitude: Float
   isBeta: Boolean
   clientVersion: String
+  reportStatus: ENUM_REPORTEVENT_REPORTSTATUS
   rawJson: JSON
 }
 
@@ -2861,7 +2864,7 @@ input editReportfssInput {
   threatLevel: Int
   isBeta: Boolean
   clientVersion: String
-  reportStatus: String
+  reportStatus: ENUM_REPORTFSS_REPORTSTATUS
   rawJson: JSON
 }
 
@@ -3057,6 +3060,15 @@ input editUserInput {
   confirmed: Boolean
   blocked: Boolean
   role: ID
+}
+
+enum ENUM_AXCZFSSREPORT_REPORTSTATUS {
+  pending
+  updated
+  verified
+  accepted
+  declined
+  issue
 }
 
 enum ENUM_BMREPORT_REPORTSTATUS {
@@ -3304,6 +3316,15 @@ enum ENUM_HDREPORT_REPORTSTATUS {
   issue
 }
 
+enum ENUM_LCFSSREPORT_REPORTSTATUS {
+  pending
+  updated
+  verified
+  accepted
+  declined
+  issue
+}
+
 enum ENUM_LSREPORT_REPORTSTATUS {
   pending
   updated
@@ -3325,6 +3346,33 @@ enum ENUM_LSREPORT_USERTYPE {
 }
 
 enum ENUM_NHSSREPORT_REPORTSTATUS {
+  pending
+  updated
+  verified
+  accepted
+  declined
+  issue
+}
+
+enum ENUM_REPORTCODEX_REPORTSTATUS {
+  pending
+  updated
+  verified
+  accepted
+  declined
+  issue
+}
+
+enum ENUM_REPORTEVENT_REPORTSTATUS {
+  pending
+  updated
+  verified
+  accepted
+  declined
+  issue
+}
+
+enum ENUM_REPORTFSS_REPORTSTATUS {
   pending
   updated
   verified
@@ -3488,12 +3536,12 @@ type Excludefss {
   id: ID!
   created_at: DateTime!
   updated_at: DateTime!
-  name: String
+  fssName: String
   reason: String
 }
 
 input ExcludefssInput {
-  name: String
+  fssName: String
   reason: String
 }
 
@@ -4684,7 +4732,7 @@ type Lcfssreport {
   signalNameLocalised: String
   isBeta: Boolean
   clientVersion: String
-  reportStatus: String
+  reportStatus: ENUM_LCFSSREPORT_REPORTSTATUS!
   rawJson: JSON
 }
 
@@ -4696,7 +4744,7 @@ input LcfssreportInput {
   signalNameLocalised: String
   isBeta: Boolean
   clientVersion: String
-  reportStatus: String
+  reportStatus: ENUM_LCFSSREPORT_REPORTSTATUS!
   rawJson: JSON
 }
 
@@ -5348,9 +5396,10 @@ type Reportcodex {
   id: ID!
   created_at: DateTime!
   updated_at: DateTime!
-  cmdrName: String
-  systemName: String
+  cmdrName: String!
+  systemName: String!
   bodyName: String
+  systemAddress: String
   coordX: Float
   coordY: Float
   coordZ: Float
@@ -5365,17 +5414,18 @@ type Reportcodex {
   categoryLocalised: String
   regionName: String
   regionLocalised: String
-  systemAddress: String
   voucherAmount: Int
   isBeta: Boolean
   clientVersion: String!
-  rawJson: JSON
+  reportStatus: ENUM_REPORTCODEX_REPORTSTATUS!
+  rawJson: JSON!
 }
 
 input ReportcodexInput {
-  cmdrName: String
-  systemName: String
+  cmdrName: String!
+  systemName: String!
   bodyName: String
+  systemAddress: String
   coordX: Float
   coordY: Float
   coordZ: Float
@@ -5390,11 +5440,11 @@ input ReportcodexInput {
   categoryLocalised: String
   regionName: String
   regionLocalised: String
-  systemAddress: String
   voucherAmount: Int
   isBeta: Boolean
   clientVersion: String!
-  rawJson: JSON
+  reportStatus: ENUM_REPORTCODEX_REPORTSTATUS!
+  rawJson: JSON!
 }
 
 """Journal Event logs, Staging model for tracking changes in the Journal"""
@@ -5402,28 +5452,30 @@ type Reportevent {
   id: ID!
   created_at: DateTime!
   updated_at: DateTime!
-  eventName: String
-  cmdrName: String
-  systemName: String
+  eventName: String!
+  cmdrName: String!
+  systemName: String!
   bodyName: String
   stationName: String
   latitude: Float
   longitude: Float
   isBeta: Boolean
   clientVersion: String!
+  reportStatus: ENUM_REPORTEVENT_REPORTSTATUS!
   rawJson: JSON!
 }
 
 input ReporteventInput {
-  eventName: String
-  cmdrName: String
-  systemName: String
+  eventName: String!
+  cmdrName: String!
+  systemName: String!
   bodyName: String
   stationName: String
   latitude: Float
   longitude: Float
   isBeta: Boolean
   clientVersion: String!
+  reportStatus: ENUM_REPORTEVENT_REPORTSTATUS!
   rawJson: JSON!
 }
 
@@ -5432,8 +5484,8 @@ type Reportfss {
   id: ID!
   created_at: DateTime!
   updated_at: DateTime!
-  cmdrName: String
-  systemName: String
+  cmdrName: String!
+  systemName: String!
   systemAddress: String
   signalName: String
   signalNameLocalised: String
@@ -5444,14 +5496,14 @@ type Reportfss {
   spawningFaction: String
   threatLevel: Int
   isBeta: Boolean
-  clientVersion: String
-  reportStatus: String
-  rawJson: JSON
+  clientVersion: String!
+  reportStatus: ENUM_REPORTFSS_REPORTSTATUS!
+  rawJson: JSON!
 }
 
 input ReportfssInput {
-  cmdrName: String
-  systemName: String
+  cmdrName: String!
+  systemName: String!
   systemAddress: String
   signalName: String
   signalNameLocalised: String
@@ -5462,9 +5514,9 @@ input ReportfssInput {
   spawningFaction: String
   threatLevel: Int
   isBeta: Boolean
-  clientVersion: String
-  reportStatus: String
-  rawJson: JSON
+  clientVersion: String!
+  reportStatus: ENUM_REPORTFSS_REPORTSTATUS!
+  rawJson: JSON!
 }
 
 """Report endpoints used by Canonn Plugins"""
