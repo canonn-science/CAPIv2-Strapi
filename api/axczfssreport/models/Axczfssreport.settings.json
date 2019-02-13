@@ -1,0 +1,52 @@
+{
+  "connection": "default",
+  "collectionName": "axczfssreports",
+  "info": {
+    "name": "axczfssreport",
+    "description": "AX Combat Zone FSS Scan Reports"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "cmdrName": {
+      "type": "string"
+    },
+    "systemName": {
+      "type": "string"
+    },
+    "systemAddress": {
+      "type": "biginteger"
+    },
+    "signalName": {
+      "type": "string"
+    },
+    "signalNameLocalised": {
+      "type": "string"
+    },
+    "isBeta": {
+      "type": "boolean"
+    },
+    "clientVersion": {
+      "type": "string"
+    },
+    "reportStatus": {
+      "default": "pending",
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "pending",
+        "updated",
+        "verified",
+        "accepted",
+        "declined",
+        "issue"
+      ]
+    },
+    "rawJson": {
+      "type": "json"
+    }
+  }
+}

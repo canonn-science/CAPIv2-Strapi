@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/reportevents",
+      "handler": "Reportevent.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/reportevents/count",
+      "handler": "Reportevent.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/reportevents/:id",
+      "handler": "Reportevent.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/reportevents",
+      "handler": "Reportevent.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/reportevents/:id",
+      "handler": "Reportevent.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/reportevents/:id",
+      "handler": "Reportevent.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

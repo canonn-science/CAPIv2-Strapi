@@ -1,0 +1,66 @@
+{
+  "paths": {
+    "/axczfssreports": {
+      "get": {
+        "description": "Get all AX CZ FSS report entries",
+        "summary": "",
+        "tags": [
+          "AX Combat Zone Reports"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new AX CZ FSS report entry",
+        "summary": "",
+        "tags": [
+          "AX Combat Zone Reports"
+        ],
+        "security": []
+      }
+    },
+    "/axczfssreports/count": {
+      "get": {
+        "description": "Get a count of all AX CZ FSS report entries",
+        "summary": "",
+        "tags": [
+          "AX Combat Zone Reports"
+        ],
+        "security": []
+      }
+    },
+    "/axczfssreports/{id}": {
+      "get": {
+        "description": "Get a AX CZ FSS report by id",
+        "summary": "",
+        "tags": [
+          "AX Combat Zone Reports"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a AX CZ FSS report by id",
+        "summary": "",
+        "tags": [
+          "AX Combat Zone Reports"
+        ],
+        "security": []
+      },
+      "delete": {
+        "description": "Delete a AX CZ FSS report by id",
+        "summary": "",
+        "tags": [
+          "AX Combat Zone Reports"
+        ],
+        "security": [
+          "reportDelete"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "AX Combat Zone Reports",
+      "description": "Public Reporting of AX CZ"
+    }
+  ]
+}
