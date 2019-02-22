@@ -1,0 +1,21 @@
+{
+  "defaultConnection": "default",
+  "connections": {
+    "default": {
+      "connector": "strapi-hook-bookshelf",
+      "settings": {
+        "client": "mysql",
+        "host": "${process.env.DATABASE_HOST_PROD || '127.0.0.1'}",
+        "port": "${process.env.DATABASE_PORT_PROD || 3306}",
+        "database": "${process.env.DATABASE_NAME_PROD || 'capiv2_production'}",
+        "username": "${process.env.DATABASE_USERNAME_PROD || 'capiv2system'}",
+        "password": "${process.env.DATABASE_PASSWORD_PROD || 'capiv2password'}"
+      },
+      "options": {
+        "ssl": false,
+        "debug": false,
+        "acquireConnectionTimeout": 100000
+      }
+    }
+  }
+}
