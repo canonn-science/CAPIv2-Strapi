@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/alerts",
+      "handler": "Alert.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/alerts/count",
+      "handler": "Alert.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/alerts/:id",
+      "handler": "Alert.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/alerts",
+      "handler": "Alert.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/alerts/:id",
+      "handler": "Alert.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/alerts/:id",
+      "handler": "Alert.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
