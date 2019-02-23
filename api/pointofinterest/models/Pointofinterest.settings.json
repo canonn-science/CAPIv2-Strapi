@@ -1,0 +1,36 @@
+{
+  "connection": "default",
+  "collectionName": "pointofinterests",
+  "info": {
+    "name": "pointofinterest",
+    "description": "Points of Interest that are outside our typical Schemas"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "system": {
+      "model": "system"
+    },
+    "body": {
+      "model": "body"
+    },
+    "ring": {
+      "model": "ring"
+    },
+    "poiDescription": {
+      "default": "",
+      "type": "string"
+    },
+    "type": {
+      "default": "",
+      "type": "string"
+    },
+    "active": {
+      "default": false,
+      "type": "boolean"
+    }
+  }
+}
