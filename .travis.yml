@@ -13,7 +13,7 @@ addons:
       - build-essential
 
 install:
-  - cp config/environments/development/database.json.example config/environments/development/database.json
+  - cp tests/.env.travis .env
   - sed -i s/exampledatabase/canonntest/g config/environments/development/database.json
   - sed -i s/exampleuser/canonnuser/g config/environments/development/database.json
   - sed -i s/examplepassword/canonnpassword/g config/environments/development/database.json
