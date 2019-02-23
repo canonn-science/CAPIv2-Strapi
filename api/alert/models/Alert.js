@@ -36,8 +36,7 @@ module.exports = {
       const msg = new webhook.MessageBuilder()
         .setName('Gnosis Emergency Alert System')
         .setColor('#E74C3C')
-        .addField("Alert Level", model.attributes.alertLevel)
-        .addField(model.attributes.title, model.attributes.body)
+        .addField(model.attributes.title + 'Alert Level: ' + model.attributes.alertLevel, model.attributes.body)
         .setTime();
 
       Hook.send(msg);
@@ -59,8 +58,7 @@ module.exports = {
       const msg = new webhook.MessageBuilder()
         .setName('Gnosis Emergency Alert System')
         .setColor('#E74C3C')
-        .addField("Alert Level", model.attributes.alertLevel)
-        .addField(model.attributes.title, model.attributes.body)
+        .addField(model.attributes.title + ' - Alert Level: ' + model.attributes.alertLevel, model.attributes.body)
         .setTime();
 
       Hook.send(msg);
