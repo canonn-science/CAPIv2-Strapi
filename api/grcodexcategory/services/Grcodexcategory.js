@@ -1,3 +1,4 @@
+/* global Grcodexcategory */
 'use strict';
 
 /**
@@ -30,7 +31,7 @@ module.exports = {
 
     return Grcodexcategory.query(function(qb) {
       _.forEach(filters.where, (where, key) => {
-        if (_.isArray(where.value) && where.symbol !== 'IN') {
+        if (_.isArray(where.value) && where.symbol !== 'IN' && where.symbol !== 'NOT IN') {
           for (const value in where.value) {
             qb[value ? 'where' : 'orWhere'](key, where.symbol, where.value[value])
           }
@@ -46,7 +47,7 @@ module.exports = {
       qb.offset(filters.start);
       qb.limit(filters.limit);
     }).fetchAll({
-      withRelated: populate
+      withRelated: filters.populate || populate
     });
   },
 
@@ -209,6 +210,9 @@ module.exports = {
 
       // Search in columns with text using index.
       switch (Grcodexcategory.client) {
+        case 'mysql':
+          qb.orWhereRaw(`MATCH(${searchText.join(',')}) AGAINST(? IN BOOLEAN MODE)`, `*${query}*`);
+          break;
         case 'pg': {
           const searchQuery = searchText.map(attribute =>
             _.toLower(attribute) === attribute
@@ -219,9 +223,6 @@ module.exports = {
           qb.orWhereRaw(`${searchQuery.join(' || ')} @@ to_tsquery(?)`, query);
           break;
         }
-        default:
-          qb.orWhereRaw(`MATCH(${searchText.join(',')}) AGAINST(? IN BOOLEAN MODE)`, `*${query}*`);
-          break;
       }
 
       if (filters.sort) {

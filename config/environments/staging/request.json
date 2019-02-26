@@ -18,6 +18,8 @@
   },
   "parser": {
     "enabled": true,
-    "multipart": true
+    "multipart": true,
+    "formLimit": "128mb",
+    "jsonLimit": "256mb"
   }
 }

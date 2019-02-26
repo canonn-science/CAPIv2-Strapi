@@ -1,0 +1,66 @@
+{
+  "paths": {
+    "/lcfssreports": {
+      "get": {
+        "description": "Get all LC FSS report entries",
+        "summary": "",
+        "tags": [
+          "Lagrange Cloud Reports"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new LC FSS report entry",
+        "summary": "",
+        "tags": [
+          "Lagrange Cloud Reports"
+        ],
+        "security": []
+      }
+    },
+    "/lcfssreports/count": {
+      "get": {
+        "description": "Get a count of all LC FSS report entries",
+        "summary": "",
+        "tags": [
+          "Lagrange Cloud Reports"
+        ],
+        "security": []
+      }
+    },
+    "/lcfssreports/{id}": {
+      "get": {
+        "description": "Get a LC FSS report by id",
+        "summary": "",
+        "tags": [
+          "Lagrange Cloud Reports"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a LC FSS report by id",
+        "summary": "",
+        "tags": [
+          "Lagrange Cloud Reports"
+        ],
+        "security": []
+      },
+      "delete": {
+        "description": "Delete a LC FSS report by id",
+        "summary": "",
+        "tags": [
+          "Lagrange Cloud Reports"
+        ],
+        "security": [
+          "reportDelete"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Lagrange Cloud Reports",
+      "description": "Public Reporting of LC"
+    }
+  ]
+}

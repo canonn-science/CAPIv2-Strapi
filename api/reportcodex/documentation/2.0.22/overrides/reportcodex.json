@@ -1,0 +1,66 @@
+{
+  "paths": {
+    "/reportcodices": {
+      "get": {
+        "description": "Get all Codex Journal Debug entries",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new Codex Journal Debug entry",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": []
+      }
+    },
+    "/reportcodices/count": {
+      "get": {
+        "description": "Get a count of all Codex Journal Debug entries",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": []
+      }
+    },
+    "/reportcodices/{id}": {
+      "get": {
+        "description": "Get a Codex Journal Debug by id",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a Codex Journal Debug by id",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": []
+      },
+      "delete": {
+        "description": "Delete a Codex Journal Debug by id",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": [
+          "updateLogWrite"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Canonn Use",
+      "description": "Endpoints used by Canonn for updating or maintaining the API"
+    }
+  ]
+}
