@@ -13,15 +13,13 @@ addons:
       - build-essential
 
 install:
-  - cp config/environments/development/database.json.example config/environments/development/database.json
-  - sed -i s/exampledatabase/canonntest/g config/environments/development/database.json
-  - sed -i s/exampleuser/canonnuser/g config/environments/development/database.json
-  - sed -i s/examplepassword/canonnpassword/g config/environments/development/database.json
-  - cat config/environments/development/database.json
-  - mysql -u root --password="" -e "CREATE DATABASE canonntest"
+  - cp tests/.env.travis .env
+  - mysql -u root --password="" -e "CREATE DATABASE canonntest_data"
+  - mysql -u root --password="" -e "CREATE DATABASE canonntest_user"
   - mysql -u root --password="" -e "CREATE USER 'canonnuser'@'localhost' IDENTIFIED BY 'canonnpassword'"
   - mysql -u root --password="" -e "GRANT ALL PRIVILEGES ON * . * TO 'canonnuser'@'localhost'"
-  - mysql -u root --password="" canonntest < seed_files/SQL/example-development*.sql
+  - mysql -u root --password="" canonntest_data < seed_files/SQL/example-development*.sql
+  - mysql -u root --password="" canonntest_user < seed_files/SQL/example-users*.sql
   - npm install -g newman
   - npm install -g pm2
   - npm install
@@ -30,9 +28,6 @@ script:
   - NODE_ENV=development pm2 start strapi --no-pmx --name="capiv2" -- start
   - sleep 10
   - newman run 'tests/capiv2.postman_collection.json' -e tests/capiv2.postman_environment.json
-#  - cat /home/travis/.pm2/logs/capiv2-error-0.log > /dev/null
-# Cutting main log to cut down on TravisCI build log size
-#  - cat /home/travis/.pm2/logs/capiv2-out-0.log
 
 after_success:
   - pm2 stop capiv2

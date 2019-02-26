@@ -108,9 +108,8 @@ coverage
 # Database
 ############################
 
-config/environments/development/database.json
-config/environments/staging/database.json
-config/environments/production/database.json
+*.env
+seed_files/SQL/users-*.sql
 
 ############################
 # Script Storage

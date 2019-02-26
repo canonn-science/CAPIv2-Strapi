@@ -1,0 +1,21 @@
+{
+  "connection": "default",
+  "collectionName": "clientroutes",
+  "info": {
+    "name": "clientroute",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "clientVersion": {
+      "type": "string"
+    },
+    "route": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "connection": "default",
+  "collectionName": "reportcodices",
+  "info": {
+    "name": "reportcodex",
+    "description": "Codex logs enhanced with coordinates. Staging model for tracking changes in the Journal"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "cmdrName": {
+      "required": true,
+      "type": "string"
+    },
+    "systemName": {
+      "required": true,
+      "type": "string"
+    },
+    "bodyName": {
+      "default": "",
+      "type": "string"
+    },
+    "systemAddress": {
+      "type": "biginteger"
+    },
+    "coordX": {
+      "default": "",
+      "type": "float"
+    },
+    "coordY": {
+      "default": "",
+      "type": "float"
+    },
+    "coordZ": {
+      "default": "",
+      "type": "float"
+    },
+    "latitude": {
+      "default": "",
+      "type": "float"
+    },
+    "longitude": {
+      "default": "",
+      "type": "float"
+    },
+    "entryId": {
+      "default": "",
+      "type": "integer"
+    },
+    "codexName": {
+      "default": "",
+      "type": "string"
+    },
+    "codexNameLocalised": {
+      "default": "",
+      "type": "string"
+    },
+    "subCategory": {
+      "default": "",
+      "type": "string"
+    },
+    "subCategoryLocalised": {
+      "default": "",
+      "type": "string"
+    },
+    "category": {
+      "default": "",
+      "type": "string"
+    },
+    "categoryLocalised": {
+      "default": "",
+      "type": "string"
+    },
+    "regionName": {
+      "default": "",
+      "type": "string"
+    },
+    "regionLocalised": {
+      "default": "",
+      "type": "string"
+    },
+    "voucherAmount": {
+      "default": "",
+      "type": "integer"
+    },
+    "isBeta": {
+      "default": false,
+      "type": "boolean"
+    },
+    "clientVersion": {
+      "required": true,
+      "type": "string"
+    },
+    "reportStatus": {
+      "default": "pending",
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "pending",
+        "updated",
+        "verified",
+        "accepted",
+        "declined",
+        "issue"
+      ]
+    },
+    "rawJson": {
+      "type": "json",
+      "required": true
+    }
+  }
+}

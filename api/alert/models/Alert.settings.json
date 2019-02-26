@@ -1,0 +1,44 @@
+{
+  "connection": "default",
+  "collectionName": "alerts",
+  "info": {
+    "name": "alert",
+    "description": "Canonn Emergency Alerts"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "title": {
+      "default": "",
+      "type": "string",
+      "required": true
+    },
+    "body": {
+      "default": "",
+      "type": "text",
+      "required": true
+    },
+    "alertLevel": {
+      "default": "",
+      "max": 10,
+      "min": 1,
+      "type": "integer",
+      "required": true
+    },
+    "active": {
+      "default": true,
+      "type": "boolean"
+    },
+    "tldr": {
+      "default": "",
+      "type": "string"
+    },
+    "alertURL": {
+      "default": "",
+      "type": "string"
+    }
+  }
+}

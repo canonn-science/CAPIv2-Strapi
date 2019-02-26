@@ -1,17 +1,67 @@
+"""Canonn Emergency Alerts"""
+type Alert {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String!
+  body: String!
+  alertLevel: Int!
+  active: Boolean
+  tldr: String
+  alertURL: String
+}
+
+input AlertInput {
+  title: String!
+  body: String!
+  alertLevel: Int!
+  active: Boolean
+  tldr: String
+  alertURL: String
+}
+
 """Canonn API updater logging and errors"""
 type Apiupdate {
   id: ID!
   updateTime: DateTime
-  forced: Boolean
+  error: Boolean
   notes: String
   updateLog: JSON
 }
 
 input ApiupdateInput {
   updateTime: DateTime
-  forced: Boolean
+  error: Boolean
   notes: String
   updateLog: JSON
+}
+
+"""AX Combat Zone FSS Scan Reports"""
+type Axczfssreport {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  cmdrName: String
+  systemName: String
+  systemAddress: String
+  signalName: String
+  signalNameLocalised: String
+  isBeta: Boolean
+  clientVersion: String
+  reportStatus: ENUM_AXCZFSSREPORT_REPORTSTATUS!
+  rawJson: JSON
+}
+
+input AxczfssreportInput {
+  cmdrName: String
+  systemName: String
+  systemAddress: String
+  signalName: String
+  signalNameLocalised: String
+  isBeta: Boolean
+  clientVersion: String
+  reportStatus: ENUM_AXCZFSSREPORT_REPORTSTATUS!
+  rawJson: JSON
 }
 
 """Reporting for Bark Mounds"""
@@ -304,6 +354,34 @@ input BttypeInput {
   journalID: Int
 }
 
+type Clientreport {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  cmdrName: String
+  isBeta: Boolean
+  clientVersion: String
+}
+
+input ClientreportInput {
+  cmdrName: String
+  isBeta: Boolean
+  clientVersion: String
+}
+
+type Clientroute {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  clientVersion: String
+  route: String
+}
+
+input ClientrouteInput {
+  clientVersion: String
+  route: String
+}
+
 """CMDRs who have discovered sites"""
 type Cmdr {
   id: ID!
@@ -354,60 +432,12 @@ input CmdrkillInput {
   totalKills: Int
 }
 
-"""
-Codex logs enhanced with coordinates. Staging model for tracking changes in the Journal
-"""
-type Codexreport {
-  id: ID!
-  created_at: DateTime!
-  updated_at: DateTime!
-  cmdrName: String
-  systemName: String
-  bodyName: String
-  coordX: Float
-  coordY: Float
-  coordZ: Float
-  latitude: Float
-  longitude: Float
-  entryId: Int
-  codexName: String
-  codexNameLocalised: String
-  subCategory: String
-  subCategoryLocalised: String
-  category: String
-  categoryLocalised: String
-  regionName: String
-  regionLocalised: String
-  systemAddress: String
-  voucherAmount: Int
-  isBeta: Boolean
-  clientVersion: String!
-  rawJson: JSON
+input createAlertInput {
+  data: AlertInput
 }
 
-input CodexreportInput {
-  cmdrName: String
-  systemName: String
-  bodyName: String
-  coordX: Float
-  coordY: Float
-  coordZ: Float
-  latitude: Float
-  longitude: Float
-  entryId: Int
-  codexName: String
-  codexNameLocalised: String
-  subCategory: String
-  subCategoryLocalised: String
-  category: String
-  categoryLocalised: String
-  regionName: String
-  regionLocalised: String
-  systemAddress: String
-  voucherAmount: Int
-  isBeta: Boolean
-  clientVersion: String!
-  rawJson: JSON
+type createAlertPayload {
+  alert: Alert
 }
 
 input createApiupdateInput {
@@ -416,6 +446,14 @@ input createApiupdateInput {
 
 type createApiupdatePayload {
   apiupdate: Apiupdate
+}
+
+input createAxczfssreportInput {
+  data: AxczfssreportInput
+}
+
+type createAxczfssreportPayload {
+  axczfssreport: Axczfssreport
 }
 
 input createBmreportInput {
@@ -474,6 +512,22 @@ type createBttypePayload {
   bttype: Bttype
 }
 
+input createClientreportInput {
+  data: ClientreportInput
+}
+
+type createClientreportPayload {
+  clientreport: Clientreport
+}
+
+input createClientrouteInput {
+  data: ClientrouteInput
+}
+
+type createClientroutePayload {
+  clientroute: Clientroute
+}
+
 input createCmdrInput {
   data: CmdrInput
 }
@@ -488,14 +542,6 @@ type createCmdrkillPayload {
 
 type createCmdrPayload {
   cmdr: Cmdr
-}
-
-input createCodexreportInput {
-  data: CodexreportInput
-}
-
-type createCodexreportPayload {
-  codexreport: Codexreport
 }
 
 input createCsreportInput {
@@ -520,14 +566,6 @@ input createCstypeInput {
 
 type createCstypePayload {
   cstype: Cstype
-}
-
-input createEventreportInput {
-  data: EventreportInput
-}
-
-type createEventreportPayload {
-  eventreport: Eventreport
 }
 
 input createExcludeclientInput {
@@ -560,6 +598,14 @@ input createExcludeeventInput {
 
 type createExcludeeventPayload {
   excludeevent: Excludeevent
+}
+
+input createExcludefssInput {
+  data: ExcludefssInput
+}
+
+type createExcludefssPayload {
+  excludefss: Excludefss
 }
 
 input createExcludeussInput {
@@ -914,6 +960,14 @@ type createKillreportPayload {
   killreport: Killreport
 }
 
+input createLcfssreportInput {
+  data: LcfssreportInput
+}
+
+type createLcfssreportPayload {
+  lcfssreport: Lcfssreport
+}
+
 input createLsreportInput {
   data: LsreportInput
 }
@@ -954,12 +1008,44 @@ type createNhsssitePayload {
   nhsssite: Nhsssite
 }
 
+input createPointofinterestInput {
+  data: PointofinterestInput
+}
+
+type createPointofinterestPayload {
+  pointofinterest: Pointofinterest
+}
+
 input createRegionInput {
   data: RegionInput
 }
 
 type createRegionPayload {
   region: Region
+}
+
+input createReportcodexInput {
+  data: ReportcodexInput
+}
+
+type createReportcodexPayload {
+  reportcodex: Reportcodex
+}
+
+input createReporteventInput {
+  data: ReporteventInput
+}
+
+type createReporteventPayload {
+  reportevent: Reportevent
+}
+
+input createReportfssInput {
+  data: ReportfssInput
+}
+
+type createReportfssPayload {
+  reportfss: Reportfss
 }
 
 input createReporttypeInput {
@@ -1024,14 +1110,6 @@ input createTbtypeInput {
 
 type createTbtypePayload {
   tbtype: Tbtype
-}
-
-input createTgencounterstatInput {
-  data: TgencounterstatInput
-}
-
-type createTgencounterstatPayload {
-  tgencounterstat: Tgencounterstat
 }
 
 input createTsreportInput {
@@ -1197,12 +1275,28 @@ The `DateTime` scalar represents a date and time following the ISO 8601 standard
 """
 scalar DateTime
 
+input deleteAlertInput {
+  where: InputID
+}
+
+type deleteAlertPayload {
+  alert: Alert
+}
+
 input deleteApiupdateInput {
   where: InputID
 }
 
 type deleteApiupdatePayload {
   apiupdate: Apiupdate
+}
+
+input deleteAxczfssreportInput {
+  where: InputID
+}
+
+type deleteAxczfssreportPayload {
+  axczfssreport: Axczfssreport
 }
 
 input deleteBmreportInput {
@@ -1261,6 +1355,22 @@ type deleteBttypePayload {
   bttype: Bttype
 }
 
+input deleteClientreportInput {
+  where: InputID
+}
+
+type deleteClientreportPayload {
+  clientreport: Clientreport
+}
+
+input deleteClientrouteInput {
+  where: InputID
+}
+
+type deleteClientroutePayload {
+  clientroute: Clientroute
+}
+
 input deleteCmdrInput {
   where: InputID
 }
@@ -1275,14 +1385,6 @@ type deleteCmdrkillPayload {
 
 type deleteCmdrPayload {
   cmdr: Cmdr
-}
-
-input deleteCodexreportInput {
-  where: InputID
-}
-
-type deleteCodexreportPayload {
-  codexreport: Codexreport
 }
 
 input deleteCsreportInput {
@@ -1307,14 +1409,6 @@ input deleteCstypeInput {
 
 type deleteCstypePayload {
   cstype: Cstype
-}
-
-input deleteEventreportInput {
-  where: InputID
-}
-
-type deleteEventreportPayload {
-  eventreport: Eventreport
 }
 
 input deleteExcludeclientInput {
@@ -1347,6 +1441,14 @@ input deleteExcludeeventInput {
 
 type deleteExcludeeventPayload {
   excludeevent: Excludeevent
+}
+
+input deleteExcludefssInput {
+  where: InputID
+}
+
+type deleteExcludefssPayload {
+  excludefss: Excludefss
 }
 
 input deleteExcludeussInput {
@@ -1701,6 +1803,14 @@ type deleteKillreportPayload {
   killreport: Killreport
 }
 
+input deleteLcfssreportInput {
+  where: InputID
+}
+
+type deleteLcfssreportPayload {
+  lcfssreport: Lcfssreport
+}
+
 input deleteLsreportInput {
   where: InputID
 }
@@ -1741,12 +1851,44 @@ type deleteNhsssitePayload {
   nhsssite: Nhsssite
 }
 
+input deletePointofinterestInput {
+  where: InputID
+}
+
+type deletePointofinterestPayload {
+  pointofinterest: Pointofinterest
+}
+
 input deleteRegionInput {
   where: InputID
 }
 
 type deleteRegionPayload {
   region: Region
+}
+
+input deleteReportcodexInput {
+  where: InputID
+}
+
+type deleteReportcodexPayload {
+  reportcodex: Reportcodex
+}
+
+input deleteReporteventInput {
+  where: InputID
+}
+
+type deleteReporteventPayload {
+  reportevent: Reportevent
+}
+
+input deleteReportfssInput {
+  where: InputID
+}
+
+type deleteReportfssPayload {
+  reportfss: Reportfss
 }
 
 input deleteReporttypeInput {
@@ -1813,14 +1955,6 @@ type deleteTbtypePayload {
   tbtype: Tbtype
 }
 
-input deleteTgencounterstatInput {
-  where: InputID
-}
-
-type deleteTgencounterstatPayload {
-  tgencounterstat: Tgencounterstat
-}
-
 input deleteTsreportInput {
   where: InputID
 }
@@ -1877,11 +2011,32 @@ type deleteUserPayload {
   user: UsersPermissionsUser
 }
 
+input editAlertInput {
+  title: String
+  body: String
+  alertLevel: Int
+  active: Boolean
+  tldr: String
+  alertURL: String
+}
+
 input editApiupdateInput {
   updateTime: DateTime
-  forced: Boolean
+  error: Boolean
   notes: String
   updateLog: JSON
+}
+
+input editAxczfssreportInput {
+  cmdrName: String
+  systemName: String
+  systemAddress: String
+  signalName: String
+  signalNameLocalised: String
+  isBeta: Boolean
+  clientVersion: String
+  reportStatus: ENUM_AXCZFSSREPORT_REPORTSTATUS
+  rawJson: JSON
 }
 
 input editBmreportInput {
@@ -2017,6 +2172,17 @@ input editBttypeInput {
   journalID: Int
 }
 
+input editClientreportInput {
+  cmdrName: String
+  isBeta: Boolean
+  clientVersion: String
+}
+
+input editClientrouteInput {
+  clientVersion: String
+  route: String
+}
+
 input editCmdrInput {
   cmdrName: String
   cmdrkill: ID
@@ -2036,31 +2202,6 @@ input editCmdrkillInput {
   unknownRewards: Int
   totalRewards: Int
   totalKills: Int
-}
-
-input editCodexreportInput {
-  cmdrName: String
-  systemName: String
-  bodyName: String
-  coordX: Float
-  coordY: Float
-  coordZ: Float
-  latitude: Float
-  longitude: Float
-  entryId: Int
-  codexName: String
-  codexNameLocalised: String
-  subCategory: String
-  subCategoryLocalised: String
-  category: String
-  categoryLocalised: String
-  regionName: String
-  regionLocalised: String
-  systemAddress: String
-  voucherAmount: Int
-  isBeta: Boolean
-  clientVersion: String
-  rawJson: JSON
 }
 
 input editCsreportInput {
@@ -2109,19 +2250,6 @@ input editCstypeInput {
   journalID: Int
 }
 
-input editEventreportInput {
-  eventName: String
-  cmdrName: String
-  systemName: String
-  bodyName: String
-  stationName: String
-  latitude: Float
-  longitude: Float
-  isBeta: Boolean
-  clientVersion: String
-  rawJson: JSON
-}
-
 input editExcludeclientInput {
   version: String
   reason: String
@@ -2139,6 +2267,11 @@ input editExcludecodexInput {
 
 input editExcludeeventInput {
   eventName: String
+  reason: String
+}
+
+input editExcludefssInput {
+  fssName: String
   reason: String
 }
 
@@ -2656,6 +2789,18 @@ input editKillreportInput {
   reportAccepted: Boolean
 }
 
+input editLcfssreportInput {
+  cmdrName: String
+  systemName: String
+  systemAddress: String
+  signalName: String
+  signalNameLocalised: String
+  isBeta: Boolean
+  clientVersion: String
+  reportStatus: ENUM_LCFSSREPORT_REPORTSTATUS
+  rawJson: JSON
+}
+
 input editLsreportInput {
   userType: ENUM_LSREPORT_USERTYPE
   reportType: ENUM_LSREPORT_REPORTTYPE
@@ -2722,10 +2867,77 @@ input editNhsssiteInput {
   discoveredBy: ID
 }
 
+input editPointofinterestInput {
+  system: ID
+  body: ID
+  ring: ID
+  poiDescription: String
+  type: String
+  active: Boolean
+}
+
 input editRegionInput {
   name: String
   journalName: String
   regionID: Int
+}
+
+input editReportcodexInput {
+  cmdrName: String
+  systemName: String
+  bodyName: String
+  systemAddress: String
+  coordX: Float
+  coordY: Float
+  coordZ: Float
+  latitude: Float
+  longitude: Float
+  entryId: Int
+  codexName: String
+  codexNameLocalised: String
+  subCategory: String
+  subCategoryLocalised: String
+  category: String
+  categoryLocalised: String
+  regionName: String
+  regionLocalised: String
+  voucherAmount: Int
+  isBeta: Boolean
+  clientVersion: String
+  reportStatus: ENUM_REPORTCODEX_REPORTSTATUS
+  rawJson: JSON
+}
+
+input editReporteventInput {
+  eventName: String
+  cmdrName: String
+  systemName: String
+  bodyName: String
+  stationName: String
+  latitude: Float
+  longitude: Float
+  isBeta: Boolean
+  clientVersion: String
+  reportStatus: ENUM_REPORTEVENT_REPORTSTATUS
+  rawJson: JSON
+}
+
+input editReportfssInput {
+  cmdrName: String
+  systemName: String
+  systemAddress: String
+  signalName: String
+  signalNameLocalised: String
+  ussType: String
+  ussTypeLocalised: String
+  spawningState: String
+  spawningStateLocalised: String
+  spawningFaction: String
+  threatLevel: Int
+  isBeta: Boolean
+  clientVersion: String
+  reportStatus: ENUM_REPORTFSS_REPORTSTATUS
+  rawJson: JSON
 }
 
 input editReporttypeInput {
@@ -2733,6 +2945,7 @@ input editReporttypeInput {
   location: ENUM_REPORTTYPE_LOCATION
   journalName: String
   journalID: Int
+  journalType: ENUM_REPORTTYPE_JOURNALTYPE
   endpoint: String
 }
 
@@ -2817,16 +3030,6 @@ input editTbsiteInput {
 input editTbtypeInput {
   type: String
   metaAlloyCount: Int
-}
-
-input editTgencounterstatInput {
-  hyperdictionSystemName: String
-  hyperdictionTimestamp: DateTime
-  cmdrName: String
-  wakesScanned: Int
-  thargoidScans: Int
-  thargoidSites: Int
-  hyperdictions: Int
 }
 
 input editTsreportInput {
@@ -2929,6 +3132,15 @@ input editUserInput {
   confirmed: Boolean
   blocked: Boolean
   role: ID
+}
+
+enum ENUM_AXCZFSSREPORT_REPORTSTATUS {
+  pending
+  updated
+  verified
+  accepted
+  declined
+  issue
 }
 
 enum ENUM_BMREPORT_REPORTSTATUS {
@@ -3176,6 +3388,15 @@ enum ENUM_HDREPORT_REPORTSTATUS {
   issue
 }
 
+enum ENUM_LCFSSREPORT_REPORTSTATUS {
+  pending
+  updated
+  verified
+  accepted
+  declined
+  issue
+}
+
 enum ENUM_LSREPORT_REPORTSTATUS {
   pending
   updated
@@ -3203,6 +3424,39 @@ enum ENUM_NHSSREPORT_REPORTSTATUS {
   accepted
   declined
   issue
+}
+
+enum ENUM_REPORTCODEX_REPORTSTATUS {
+  pending
+  updated
+  verified
+  accepted
+  declined
+  issue
+}
+
+enum ENUM_REPORTEVENT_REPORTSTATUS {
+  pending
+  updated
+  verified
+  accepted
+  declined
+  issue
+}
+
+enum ENUM_REPORTFSS_REPORTSTATUS {
+  pending
+  updated
+  verified
+  accepted
+  declined
+  issue
+}
+
+enum ENUM_REPORTTYPE_JOURNALTYPE {
+  codex
+  event
+  fss
 }
 
 enum ENUM_REPORTTYPE_LOCATION {
@@ -3294,38 +3548,6 @@ enum ENUM_TWREPORT_USERTYPE {
   pc
 }
 
-"""
-Non-Codex journal logs. Staging model for tracking changes in the Journal
-"""
-type Eventreport {
-  id: ID!
-  created_at: DateTime!
-  updated_at: DateTime!
-  eventName: String
-  cmdrName: String
-  systemName: String
-  bodyName: String
-  stationName: String
-  latitude: Float
-  longitude: Float
-  isBeta: Boolean
-  clientVersion: String!
-  rawJson: JSON!
-}
-
-input EventreportInput {
-  eventName: String
-  cmdrName: String
-  systemName: String
-  bodyName: String
-  stationName: String
-  latitude: Float
-  longitude: Float
-  isBeta: Boolean
-  clientVersion: String!
-  rawJson: JSON!
-}
-
 """Client Version blacklist"""
 type Excludeclient {
   id: ID!
@@ -3379,6 +3601,19 @@ type Excludeevent {
 
 input ExcludeeventInput {
   eventName: String
+  reason: String
+}
+
+type Excludefss {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  fssName: String
+  reason: String
+}
+
+input ExcludefssInput {
+  fssName: String
   reason: String
 }
 
@@ -4558,6 +4793,33 @@ input KillreportInput {
   reportAccepted: Boolean
 }
 
+type Lcfssreport {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  cmdrName: String
+  systemName: String
+  systemAddress: String
+  signalName: String
+  signalNameLocalised: String
+  isBeta: Boolean
+  clientVersion: String
+  reportStatus: ENUM_LCFSSREPORT_REPORTSTATUS!
+  rawJson: JSON
+}
+
+input LcfssreportInput {
+  cmdrName: String
+  systemName: String
+  systemAddress: String
+  signalName: String
+  signalNameLocalised: String
+  isBeta: Boolean
+  clientVersion: String
+  reportStatus: ENUM_LCFSSREPORT_REPORTSTATUS!
+  rawJson: JSON
+}
+
 """Reporting for Lava Spouts"""
 type Lsreport {
   id: ID!
@@ -4660,12 +4922,18 @@ input LstypeInput {
   journalID: Int
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Apiupdate | createApiupdatePayload | updateApiupdatePayload | deleteApiupdatePayload | Bmreport | createBmreportPayload | updateBmreportPayload | deleteBmreportPayload | Bmsite | createBmsitePayload | updateBmsitePayload | deleteBmsitePayload | Bmtype | createBmtypePayload | updateBmtypePayload | deleteBmtypePayload | Body | createBodyPayload | updateBodyPayload | deleteBodyPayload | Btreport | createBtreportPayload | updateBtreportPayload | deleteBtreportPayload | Btsite | createBtsitePayload | updateBtsitePayload | deleteBtsitePayload | Bttype | createBttypePayload | updateBttypePayload | deleteBttypePayload | Cmdr | createCmdrPayload | updateCmdrPayload | deleteCmdrPayload | Cmdrkill | createCmdrkillPayload | updateCmdrkillPayload | deleteCmdrkillPayload | Codexreport | createCodexreportPayload | updateCodexreportPayload | deleteCodexreportPayload | Csreport | createCsreportPayload | updateCsreportPayload | deleteCsreportPayload | Cssite | createCssitePayload | updateCssitePayload | deleteCssitePayload | Cstype | createCstypePayload | updateCstypePayload | deleteCstypePayload | Eventreport | createEventreportPayload | updateEventreportPayload | deleteEventreportPayload | Excludeclient | createExcludeclientPayload | updateExcludeclientPayload | deleteExcludeclientPayload | Excludecmdr | createExcludecmdrPayload | updateExcludecmdrPayload | deleteExcludecmdrPayload | Excludecodex | createExcludecodexPayload | updateExcludecodexPayload | deleteExcludecodexPayload | Excludeevent | createExcludeeventPayload | updateExcludeeventPayload | deleteExcludeeventPayload | Excludeuss | createExcludeussPayload | updateExcludeussPayload | deleteExcludeussPayload | Fgreport | createFgreportPayload | updateFgreportPayload | deleteFgreportPayload | Fgsite | createFgsitePayload | updateFgsitePayload | deleteFgsitePayload | Fgtype | createFgtypePayload | updateFgtypePayload | deleteFgtypePayload | Fmreport | createFmreportPayload | updateFmreportPayload | deleteFmreportPayload | Fmsite | createFmsitePayload | updateFmsitePayload | deleteFmsitePayload | Fmtype | createFmtypePayload | updateFmtypePayload | deleteFmtypePayload | Gbmessage | createGbmessagePayload | updateGbmessagePayload | deleteGbmessagePayload | Gbreport | createGbreportPayload | updateGbreportPayload | deleteGbreportPayload | Gbsite | createGbsitePayload | updateGbsitePayload | deleteGbsitePayload | Genlog | createGenlogPayload | updateGenlogPayload | deleteGenlogPayload | Genreport | createGenreportPayload | updateGenreportPayload | deleteGenreportPayload | Gensite | createGensitePayload | updateGensitePayload | deleteGensitePayload | Gractivegroup | createGractivegroupPayload | updateGractivegroupPayload | deleteGractivegroupPayload | Gractiveobelisk | createGractiveobeliskPayload | updateGractiveobeliskPayload | deleteGractiveobeliskPayload | Grartifact | createGrartifactPayload | updateGrartifactPayload | deleteGrartifactPayload | Grcodexcategory | createGrcodexcategoryPayload | updateGrcodexcategoryPayload | deleteGrcodexcategoryPayload | Grcodexdata | createGrcodexdataPayload | updateGrcodexdataPayload | deleteGrcodexdataPayload | Grobelisk | createGrobeliskPayload | updateGrobeliskPayload | deleteGrobeliskPayload | Grobeliskgroup | createGrobeliskgroupPayload | updateGrobeliskgroupPayload | deleteGrobeliskgroupPayload | Grobeliskreport | createGrobeliskreportPayload | updateGrobeliskreportPayload | deleteGrobeliskreportPayload | Grreport | createGrreportPayload | updateGrreportPayload | deleteGrreportPayload | Grsite | createGrsitePayload | updateGrsitePayload | deleteGrsitePayload | Grtype | createGrtypePayload | updateGrtypePayload | deleteGrtypePayload | Gsactivegroup | createGsactivegroupPayload | updateGsactivegroupPayload | deleteGsactivegroupPayload | Gsactiveobelisk | createGsactiveobeliskPayload | updateGsactiveobeliskPayload | deleteGsactiveobeliskPayload | Gsartifact | createGsartifactPayload | updateGsartifactPayload | deleteGsartifactPayload | Gscodexcategory | createGscodexcategoryPayload | updateGscodexcategoryPayload | deleteGscodexcategoryPayload | Gscodexdata | createGscodexdataPayload | updateGscodexdataPayload | deleteGscodexdataPayload | Gsobelisk | createGsobeliskPayload | updateGsobeliskPayload | deleteGsobeliskPayload | Gsobeliskgroup | createGsobeliskgroupPayload | updateGsobeliskgroupPayload | deleteGsobeliskgroupPayload | Gsobeliskreport | createGsobeliskreportPayload | updateGsobeliskreportPayload | deleteGsobeliskreportPayload | Gsreport | createGsreportPayload | updateGsreportPayload | deleteGsreportPayload | Gssite | createGssitePayload | updateGssitePayload | deleteGssitePayload | Gstype | createGstypePayload | updateGstypePayload | deleteGstypePayload | Gvreport | createGvreportPayload | updateGvreportPayload | deleteGvreportPayload | Gvsite | createGvsitePayload | updateGvsitePayload | deleteGvsitePayload | Gvtype | createGvtypePayload | updateGvtypePayload | deleteGvtypePayload | Gyreport | createGyreportPayload | updateGyreportPayload | deleteGyreportPayload | Gysite | createGysitePayload | updateGysitePayload | deleteGysitePayload | Gytype | createGytypePayload | updateGytypePayload | deleteGytypePayload | Hdreport | createHdreportPayload | updateHdreportPayload | deleteHdreportPayload | Hdsite | createHdsitePayload | updateHdsitePayload | deleteHdsitePayload | Killreport | createKillreportPayload | updateKillreportPayload | deleteKillreportPayload | Lsreport | createLsreportPayload | updateLsreportPayload | deleteLsreportPayload | Lssite | createLssitePayload | updateLssitePayload | deleteLssitePayload | Lstype | createLstypePayload | updateLstypePayload | deleteLstypePayload | Nhssreport | createNhssreportPayload | updateNhssreportPayload | deleteNhssreportPayload | Nhsssite | createNhsssitePayload | updateNhsssitePayload | deleteNhsssitePayload | Region | createRegionPayload | updateRegionPayload | deleteRegionPayload | Reporttype | createReporttypePayload | updateReporttypePayload | deleteReporttypePayload | Ring | createRingPayload | updateRingPayload | deleteRingPayload | System | createSystemPayload | updateSystemPayload | deleteSystemPayload | Tbcycle | createTbcyclePayload | updateTbcyclePayload | deleteTbcyclePayload | Tbreport | createTbreportPayload | updateTbreportPayload | deleteTbreportPayload | Tbsite | createTbsitePayload | updateTbsitePayload | deleteTbsitePayload | Tbtype | createTbtypePayload | updateTbtypePayload | deleteTbtypePayload | Tgencounterstat | createTgencounterstatPayload | updateTgencounterstatPayload | deleteTgencounterstatPayload | Tsreport | createTsreportPayload | updateTsreportPayload | deleteTsreportPayload | Tssite | createTssitePayload | updateTssitePayload | deleteTssitePayload | Tsstatus | createTsstatusPayload | updateTsstatusPayload | deleteTsstatusPayload | Twreport | createTwreportPayload | updateTwreportPayload | deleteTwreportPayload | Twsite | createTwsitePayload | updateTwsitePayload | deleteTwsitePayload | Twtype | createTwtypePayload | updateTwtypePayload | deleteTwtypePayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Alert | createAlertPayload | updateAlertPayload | deleteAlertPayload | Apiupdate | createApiupdatePayload | updateApiupdatePayload | deleteApiupdatePayload | Axczfssreport | createAxczfssreportPayload | updateAxczfssreportPayload | deleteAxczfssreportPayload | Bmreport | createBmreportPayload | updateBmreportPayload | deleteBmreportPayload | Bmsite | createBmsitePayload | updateBmsitePayload | deleteBmsitePayload | Bmtype | createBmtypePayload | updateBmtypePayload | deleteBmtypePayload | Body | createBodyPayload | updateBodyPayload | deleteBodyPayload | Btreport | createBtreportPayload | updateBtreportPayload | deleteBtreportPayload | Btsite | createBtsitePayload | updateBtsitePayload | deleteBtsitePayload | Bttype | createBttypePayload | updateBttypePayload | deleteBttypePayload | Clientreport | createClientreportPayload | updateClientreportPayload | deleteClientreportPayload | Clientroute | createClientroutePayload | updateClientroutePayload | deleteClientroutePayload | Cmdr | createCmdrPayload | updateCmdrPayload | deleteCmdrPayload | Cmdrkill | createCmdrkillPayload | updateCmdrkillPayload | deleteCmdrkillPayload | Csreport | createCsreportPayload | updateCsreportPayload | deleteCsreportPayload | Cssite | createCssitePayload | updateCssitePayload | deleteCssitePayload | Cstype | createCstypePayload | updateCstypePayload | deleteCstypePayload | Excludeclient | createExcludeclientPayload | updateExcludeclientPayload | deleteExcludeclientPayload | Excludecmdr | createExcludecmdrPayload | updateExcludecmdrPayload | deleteExcludecmdrPayload | Excludecodex | createExcludecodexPayload | updateExcludecodexPayload | deleteExcludecodexPayload | Excludeevent | createExcludeeventPayload | updateExcludeeventPayload | deleteExcludeeventPayload | Excludefss | createExcludefssPayload | updateExcludefssPayload | deleteExcludefssPayload | Excludeuss | createExcludeussPayload | updateExcludeussPayload | deleteExcludeussPayload | Fgreport | createFgreportPayload | updateFgreportPayload | deleteFgreportPayload | Fgsite | createFgsitePayload | updateFgsitePayload | deleteFgsitePayload | Fgtype | createFgtypePayload | updateFgtypePayload | deleteFgtypePayload | Fmreport | createFmreportPayload | updateFmreportPayload | deleteFmreportPayload | Fmsite | createFmsitePayload | updateFmsitePayload | deleteFmsitePayload | Fmtype | createFmtypePayload | updateFmtypePayload | deleteFmtypePayload | Gbmessage | createGbmessagePayload | updateGbmessagePayload | deleteGbmessagePayload | Gbreport | createGbreportPayload | updateGbreportPayload | deleteGbreportPayload | Gbsite | createGbsitePayload | updateGbsitePayload | deleteGbsitePayload | Genlog | createGenlogPayload | updateGenlogPayload | deleteGenlogPayload | Genreport | createGenreportPayload | updateGenreportPayload | deleteGenreportPayload | Gensite | createGensitePayload | updateGensitePayload | deleteGensitePayload | Gractivegroup | createGractivegroupPayload | updateGractivegroupPayload | deleteGractivegroupPayload | Gractiveobelisk | createGractiveobeliskPayload | updateGractiveobeliskPayload | deleteGractiveobeliskPayload | Grartifact | createGrartifactPayload | updateGrartifactPayload | deleteGrartifactPayload | Grcodexcategory | createGrcodexcategoryPayload | updateGrcodexcategoryPayload | deleteGrcodexcategoryPayload | Grcodexdata | createGrcodexdataPayload | updateGrcodexdataPayload | deleteGrcodexdataPayload | Grobelisk | createGrobeliskPayload | updateGrobeliskPayload | deleteGrobeliskPayload | Grobeliskgroup | createGrobeliskgroupPayload | updateGrobeliskgroupPayload | deleteGrobeliskgroupPayload | Grobeliskreport | createGrobeliskreportPayload | updateGrobeliskreportPayload | deleteGrobeliskreportPayload | Grreport | createGrreportPayload | updateGrreportPayload | deleteGrreportPayload | Grsite | createGrsitePayload | updateGrsitePayload | deleteGrsitePayload | Grtype | createGrtypePayload | updateGrtypePayload | deleteGrtypePayload | Gsactivegroup | createGsactivegroupPayload | updateGsactivegroupPayload | deleteGsactivegroupPayload | Gsactiveobelisk | createGsactiveobeliskPayload | updateGsactiveobeliskPayload | deleteGsactiveobeliskPayload | Gsartifact | createGsartifactPayload | updateGsartifactPayload | deleteGsartifactPayload | Gscodexcategory | createGscodexcategoryPayload | updateGscodexcategoryPayload | deleteGscodexcategoryPayload | Gscodexdata | createGscodexdataPayload | updateGscodexdataPayload | deleteGscodexdataPayload | Gsobelisk | createGsobeliskPayload | updateGsobeliskPayload | deleteGsobeliskPayload | Gsobeliskgroup | createGsobeliskgroupPayload | updateGsobeliskgroupPayload | deleteGsobeliskgroupPayload | Gsobeliskreport | createGsobeliskreportPayload | updateGsobeliskreportPayload | deleteGsobeliskreportPayload | Gsreport | createGsreportPayload | updateGsreportPayload | deleteGsreportPayload | Gssite | createGssitePayload | updateGssitePayload | deleteGssitePayload | Gstype | createGstypePayload | updateGstypePayload | deleteGstypePayload | Gvreport | createGvreportPayload | updateGvreportPayload | deleteGvreportPayload | Gvsite | createGvsitePayload | updateGvsitePayload | deleteGvsitePayload | Gvtype | createGvtypePayload | updateGvtypePayload | deleteGvtypePayload | Gyreport | createGyreportPayload | updateGyreportPayload | deleteGyreportPayload | Gysite | createGysitePayload | updateGysitePayload | deleteGysitePayload | Gytype | createGytypePayload | updateGytypePayload | deleteGytypePayload | Hdreport | createHdreportPayload | updateHdreportPayload | deleteHdreportPayload | Hdsite | createHdsitePayload | updateHdsitePayload | deleteHdsitePayload | Killreport | createKillreportPayload | updateKillreportPayload | deleteKillreportPayload | Lcfssreport | createLcfssreportPayload | updateLcfssreportPayload | deleteLcfssreportPayload | Lsreport | createLsreportPayload | updateLsreportPayload | deleteLsreportPayload | Lssite | createLssitePayload | updateLssitePayload | deleteLssitePayload | Lstype | createLstypePayload | updateLstypePayload | deleteLstypePayload | Nhssreport | createNhssreportPayload | updateNhssreportPayload | deleteNhssreportPayload | Nhsssite | createNhsssitePayload | updateNhsssitePayload | deleteNhsssitePayload | Pointofinterest | createPointofinterestPayload | updatePointofinterestPayload | deletePointofinterestPayload | Region | createRegionPayload | updateRegionPayload | deleteRegionPayload | Reportcodex | createReportcodexPayload | updateReportcodexPayload | deleteReportcodexPayload | Reportevent | createReporteventPayload | updateReporteventPayload | deleteReporteventPayload | Reportfss | createReportfssPayload | updateReportfssPayload | deleteReportfssPayload | Reporttype | createReporttypePayload | updateReporttypePayload | deleteReporttypePayload | Ring | createRingPayload | updateRingPayload | deleteRingPayload | System | createSystemPayload | updateSystemPayload | deleteSystemPayload | Tbcycle | createTbcyclePayload | updateTbcyclePayload | deleteTbcyclePayload | Tbreport | createTbreportPayload | updateTbreportPayload | deleteTbreportPayload | Tbsite | createTbsitePayload | updateTbsitePayload | deleteTbsitePayload | Tbtype | createTbtypePayload | updateTbtypePayload | deleteTbtypePayload | Tsreport | createTsreportPayload | updateTsreportPayload | deleteTsreportPayload | Tssite | createTssitePayload | updateTssitePayload | deleteTssitePayload | Tsstatus | createTsstatusPayload | updateTsstatusPayload | deleteTsstatusPayload | Twreport | createTwreportPayload | updateTwreportPayload | deleteTwreportPayload | Twsite | createTwsitePayload | updateTwsitePayload | deleteTwsitePayload | Twtype | createTwtypePayload | updateTwtypePayload | deleteTwtypePayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
 
 type Mutation {
+  createAlert(input: createAlertInput): createAlertPayload
+  updateAlert(input: updateAlertInput): updateAlertPayload
+  deleteAlert(input: deleteAlertInput): deleteAlertPayload
   createApiupdate(input: createApiupdateInput): createApiupdatePayload
   updateApiupdate(input: updateApiupdateInput): updateApiupdatePayload
   deleteApiupdate(input: deleteApiupdateInput): deleteApiupdatePayload
+  createAxczfssreport(input: createAxczfssreportInput): createAxczfssreportPayload
+  updateAxczfssreport(input: updateAxczfssreportInput): updateAxczfssreportPayload
+  deleteAxczfssreport(input: deleteAxczfssreportInput): deleteAxczfssreportPayload
   createBmreport(input: createBmreportInput): createBmreportPayload
   updateBmreport(input: updateBmreportInput): updateBmreportPayload
   deleteBmreport(input: deleteBmreportInput): deleteBmreportPayload
@@ -4687,15 +4955,18 @@ type Mutation {
   createBttype(input: createBttypeInput): createBttypePayload
   updateBttype(input: updateBttypeInput): updateBttypePayload
   deleteBttype(input: deleteBttypeInput): deleteBttypePayload
+  createClientreport(input: createClientreportInput): createClientreportPayload
+  updateClientreport(input: updateClientreportInput): updateClientreportPayload
+  deleteClientreport(input: deleteClientreportInput): deleteClientreportPayload
+  createClientroute(input: createClientrouteInput): createClientroutePayload
+  updateClientroute(input: updateClientrouteInput): updateClientroutePayload
+  deleteClientroute(input: deleteClientrouteInput): deleteClientroutePayload
   createCmdr(input: createCmdrInput): createCmdrPayload
   updateCmdr(input: updateCmdrInput): updateCmdrPayload
   deleteCmdr(input: deleteCmdrInput): deleteCmdrPayload
   createCmdrkill(input: createCmdrkillInput): createCmdrkillPayload
   updateCmdrkill(input: updateCmdrkillInput): updateCmdrkillPayload
   deleteCmdrkill(input: deleteCmdrkillInput): deleteCmdrkillPayload
-  createCodexreport(input: createCodexreportInput): createCodexreportPayload
-  updateCodexreport(input: updateCodexreportInput): updateCodexreportPayload
-  deleteCodexreport(input: deleteCodexreportInput): deleteCodexreportPayload
   createCsreport(input: createCsreportInput): createCsreportPayload
   updateCsreport(input: updateCsreportInput): updateCsreportPayload
   deleteCsreport(input: deleteCsreportInput): deleteCsreportPayload
@@ -4705,9 +4976,6 @@ type Mutation {
   createCstype(input: createCstypeInput): createCstypePayload
   updateCstype(input: updateCstypeInput): updateCstypePayload
   deleteCstype(input: deleteCstypeInput): deleteCstypePayload
-  createEventreport(input: createEventreportInput): createEventreportPayload
-  updateEventreport(input: updateEventreportInput): updateEventreportPayload
-  deleteEventreport(input: deleteEventreportInput): deleteEventreportPayload
   createExcludeclient(input: createExcludeclientInput): createExcludeclientPayload
   updateExcludeclient(input: updateExcludeclientInput): updateExcludeclientPayload
   deleteExcludeclient(input: deleteExcludeclientInput): deleteExcludeclientPayload
@@ -4720,6 +4988,9 @@ type Mutation {
   createExcludeevent(input: createExcludeeventInput): createExcludeeventPayload
   updateExcludeevent(input: updateExcludeeventInput): updateExcludeeventPayload
   deleteExcludeevent(input: deleteExcludeeventInput): deleteExcludeeventPayload
+  createExcludefss(input: createExcludefssInput): createExcludefssPayload
+  updateExcludefss(input: updateExcludefssInput): updateExcludefssPayload
+  deleteExcludefss(input: deleteExcludefssInput): deleteExcludefssPayload
   createExcludeuss(input: createExcludeussInput): createExcludeussPayload
   updateExcludeuss(input: updateExcludeussInput): updateExcludeussPayload
   deleteExcludeuss(input: deleteExcludeussInput): deleteExcludeussPayload
@@ -4852,6 +5123,9 @@ type Mutation {
   createKillreport(input: createKillreportInput): createKillreportPayload
   updateKillreport(input: updateKillreportInput): updateKillreportPayload
   deleteKillreport(input: deleteKillreportInput): deleteKillreportPayload
+  createLcfssreport(input: createLcfssreportInput): createLcfssreportPayload
+  updateLcfssreport(input: updateLcfssreportInput): updateLcfssreportPayload
+  deleteLcfssreport(input: deleteLcfssreportInput): deleteLcfssreportPayload
   createLsreport(input: createLsreportInput): createLsreportPayload
   updateLsreport(input: updateLsreportInput): updateLsreportPayload
   deleteLsreport(input: deleteLsreportInput): deleteLsreportPayload
@@ -4867,9 +5141,21 @@ type Mutation {
   createNhsssite(input: createNhsssiteInput): createNhsssitePayload
   updateNhsssite(input: updateNhsssiteInput): updateNhsssitePayload
   deleteNhsssite(input: deleteNhsssiteInput): deleteNhsssitePayload
+  createPointofinterest(input: createPointofinterestInput): createPointofinterestPayload
+  updatePointofinterest(input: updatePointofinterestInput): updatePointofinterestPayload
+  deletePointofinterest(input: deletePointofinterestInput): deletePointofinterestPayload
   createRegion(input: createRegionInput): createRegionPayload
   updateRegion(input: updateRegionInput): updateRegionPayload
   deleteRegion(input: deleteRegionInput): deleteRegionPayload
+  createReportcodex(input: createReportcodexInput): createReportcodexPayload
+  updateReportcodex(input: updateReportcodexInput): updateReportcodexPayload
+  deleteReportcodex(input: deleteReportcodexInput): deleteReportcodexPayload
+  createReportevent(input: createReporteventInput): createReporteventPayload
+  updateReportevent(input: updateReporteventInput): updateReporteventPayload
+  deleteReportevent(input: deleteReporteventInput): deleteReporteventPayload
+  createReportfss(input: createReportfssInput): createReportfssPayload
+  updateReportfss(input: updateReportfssInput): updateReportfssPayload
+  deleteReportfss(input: deleteReportfssInput): deleteReportfssPayload
   createReporttype(input: createReporttypeInput): createReporttypePayload
   updateReporttype(input: updateReporttypeInput): updateReporttypePayload
   deleteReporttype(input: deleteReporttypeInput): deleteReporttypePayload
@@ -4891,9 +5177,6 @@ type Mutation {
   createTbtype(input: createTbtypeInput): createTbtypePayload
   updateTbtype(input: updateTbtypeInput): updateTbtypePayload
   deleteTbtype(input: deleteTbtypeInput): deleteTbtypePayload
-  createTgencounterstat(input: createTgencounterstatInput): createTgencounterstatPayload
-  updateTgencounterstat(input: updateTgencounterstatInput): updateTgencounterstatPayload
-  deleteTgencounterstat(input: deleteTgencounterstatInput): deleteTgencounterstatPayload
   createTsreport(input: createTsreportInput): createTsreportPayload
   updateTsreport(input: updateTsreportInput): updateTsreportPayload
   deleteTsreport(input: deleteTsreportInput): deleteTsreportPayload
@@ -4981,9 +5264,35 @@ input NhsssiteInput {
   discoveredBy: ID
 }
 
+"""Points of Interest that are outside our typical Schemas"""
+type Pointofinterest {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  system: System
+  body: Body
+  ring: Ring
+  poiDescription: String
+  type: String
+  active: Boolean
+}
+
+input PointofinterestInput {
+  system: ID
+  body: ID
+  ring: ID
+  poiDescription: String
+  type: String
+  active: Boolean
+}
+
 type Query {
+  alert(id: ID!): Alert
+  alerts(sort: String, limit: Int, start: Int, where: JSON): [Alert]
   apiupdate(id: ID!): Apiupdate
   apiupdates(sort: String, limit: Int, start: Int, where: JSON): [Apiupdate]
+  axczfssreport(id: ID!): Axczfssreport
+  axczfssreports(sort: String, limit: Int, start: Int, where: JSON): [Axczfssreport]
   bmreport(id: ID!): Bmreport
   bmreports(sort: String, limit: Int, start: Int, where: JSON): [Bmreport]
   bmsite(id: ID!): Bmsite
@@ -4998,20 +5307,20 @@ type Query {
   btsites(sort: String, limit: Int, start: Int, where: JSON): [Btsite]
   bttype(id: ID!): Bttype
   bttypes(sort: String, limit: Int, start: Int, where: JSON): [Bttype]
+  clientreport(id: ID!): Clientreport
+  clientreports(sort: String, limit: Int, start: Int, where: JSON): [Clientreport]
+  clientroute(id: ID!): Clientroute
+  clientroutes(sort: String, limit: Int, start: Int, where: JSON): [Clientroute]
   cmdr(id: ID!): Cmdr
   cmdrs(sort: String, limit: Int, start: Int, where: JSON): [Cmdr]
   cmdrkill(id: ID!): Cmdrkill
   cmdrkills(sort: String, limit: Int, start: Int, where: JSON): [Cmdrkill]
-  codexreport(id: ID!): Codexreport
-  codexreports(sort: String, limit: Int, start: Int, where: JSON): [Codexreport]
   csreport(id: ID!): Csreport
   csreports(sort: String, limit: Int, start: Int, where: JSON): [Csreport]
   cssite(id: ID!): Cssite
   cssites(sort: String, limit: Int, start: Int, where: JSON): [Cssite]
   cstype(id: ID!): Cstype
   cstypes(sort: String, limit: Int, start: Int, where: JSON): [Cstype]
-  eventreport(id: ID!): Eventreport
-  eventreports(sort: String, limit: Int, start: Int, where: JSON): [Eventreport]
   excludeclient(id: ID!): Excludeclient
   excludeclients(sort: String, limit: Int, start: Int, where: JSON): [Excludeclient]
   excludecmdr(id: ID!): Excludecmdr
@@ -5020,6 +5329,8 @@ type Query {
   excludecodices(sort: String, limit: Int, start: Int, where: JSON): [Excludecodex]
   excludeevent(id: ID!): Excludeevent
   excludeevents(sort: String, limit: Int, start: Int, where: JSON): [Excludeevent]
+  excludefss(id: ID!): Excludefss
+  excludefsses(sort: String, limit: Int, start: Int, where: JSON): [Excludefss]
   excludeuss(id: ID!): Excludeuss
   excludeusses(sort: String, limit: Int, start: Int, where: JSON): [Excludeuss]
   fgreport(id: ID!): Fgreport
@@ -5108,6 +5419,8 @@ type Query {
   hdsites(sort: String, limit: Int, start: Int, where: JSON): [Hdsite]
   killreport(id: ID!): Killreport
   killreports(sort: String, limit: Int, start: Int, where: JSON): [Killreport]
+  lcfssreport(id: ID!): Lcfssreport
+  lcfssreports(sort: String, limit: Int, start: Int, where: JSON): [Lcfssreport]
   lsreport(id: ID!): Lsreport
   lsreports(sort: String, limit: Int, start: Int, where: JSON): [Lsreport]
   lssite(id: ID!): Lssite
@@ -5118,8 +5431,16 @@ type Query {
   nhssreports(sort: String, limit: Int, start: Int, where: JSON): [Nhssreport]
   nhsssite(id: ID!): Nhsssite
   nhsssites(sort: String, limit: Int, start: Int, where: JSON): [Nhsssite]
+  pointofinterest(id: ID!): Pointofinterest
+  pointofinterests(sort: String, limit: Int, start: Int, where: JSON): [Pointofinterest]
   region(id: ID!): Region
   regions(sort: String, limit: Int, start: Int, where: JSON): [Region]
+  reportcodex(id: ID!): Reportcodex
+  reportcodices(sort: String, limit: Int, start: Int, where: JSON): [Reportcodex]
+  reportevent(id: ID!): Reportevent
+  reportevents(sort: String, limit: Int, start: Int, where: JSON): [Reportevent]
+  reportfss(id: ID!): Reportfss
+  reportfsses(sort: String, limit: Int, start: Int, where: JSON): [Reportfss]
   reporttype(id: ID!): Reporttype
   reporttypes(sort: String, limit: Int, start: Int, where: JSON): [Reporttype]
   ring(id: ID!): Ring
@@ -5134,8 +5455,6 @@ type Query {
   tbsites(sort: String, limit: Int, start: Int, where: JSON): [Tbsite]
   tbtype(id: ID!): Tbtype
   tbtypes(sort: String, limit: Int, start: Int, where: JSON): [Tbtype]
-  tgencounterstat(id: ID!): Tgencounterstat
-  tgencounterstats(sort: String, limit: Int, start: Int, where: JSON): [Tgencounterstat]
   tsreport(id: ID!): Tsreport
   tsreports(sort: String, limit: Int, start: Int, where: JSON): [Tsreport]
   tssite(id: ID!): Tssite
@@ -5174,6 +5493,136 @@ input RegionInput {
   regionID: Int
 }
 
+"""
+Codex logs enhanced with coordinates. Staging model for tracking changes in the Journal
+"""
+type Reportcodex {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  cmdrName: String!
+  systemName: String!
+  bodyName: String
+  systemAddress: String
+  coordX: Float
+  coordY: Float
+  coordZ: Float
+  latitude: Float
+  longitude: Float
+  entryId: Int
+  codexName: String
+  codexNameLocalised: String
+  subCategory: String
+  subCategoryLocalised: String
+  category: String
+  categoryLocalised: String
+  regionName: String
+  regionLocalised: String
+  voucherAmount: Int
+  isBeta: Boolean
+  clientVersion: String!
+  reportStatus: ENUM_REPORTCODEX_REPORTSTATUS!
+  rawJson: JSON!
+}
+
+input ReportcodexInput {
+  cmdrName: String!
+  systemName: String!
+  bodyName: String
+  systemAddress: String
+  coordX: Float
+  coordY: Float
+  coordZ: Float
+  latitude: Float
+  longitude: Float
+  entryId: Int
+  codexName: String
+  codexNameLocalised: String
+  subCategory: String
+  subCategoryLocalised: String
+  category: String
+  categoryLocalised: String
+  regionName: String
+  regionLocalised: String
+  voucherAmount: Int
+  isBeta: Boolean
+  clientVersion: String!
+  reportStatus: ENUM_REPORTCODEX_REPORTSTATUS!
+  rawJson: JSON!
+}
+
+"""Journal Event logs, Staging model for tracking changes in the Journal"""
+type Reportevent {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  eventName: String!
+  cmdrName: String!
+  systemName: String!
+  bodyName: String
+  stationName: String
+  latitude: Float
+  longitude: Float
+  isBeta: Boolean
+  clientVersion: String!
+  reportStatus: ENUM_REPORTEVENT_REPORTSTATUS!
+  rawJson: JSON!
+}
+
+input ReporteventInput {
+  eventName: String!
+  cmdrName: String!
+  systemName: String!
+  bodyName: String
+  stationName: String
+  latitude: Float
+  longitude: Float
+  isBeta: Boolean
+  clientVersion: String!
+  reportStatus: ENUM_REPORTEVENT_REPORTSTATUS!
+  rawJson: JSON!
+}
+
+"""FSS Scan events, Staging model for tracking changes in FSS scans"""
+type Reportfss {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  cmdrName: String!
+  systemName: String!
+  systemAddress: String
+  signalName: String
+  signalNameLocalised: String
+  ussType: String
+  ussTypeLocalised: String
+  spawningState: String
+  spawningStateLocalised: String
+  spawningFaction: String
+  threatLevel: Int
+  isBeta: Boolean
+  clientVersion: String!
+  reportStatus: ENUM_REPORTFSS_REPORTSTATUS!
+  rawJson: JSON!
+}
+
+input ReportfssInput {
+  cmdrName: String!
+  systemName: String!
+  systemAddress: String
+  signalName: String
+  signalNameLocalised: String
+  ussType: String
+  ussTypeLocalised: String
+  spawningState: String
+  spawningStateLocalised: String
+  spawningFaction: String
+  threatLevel: Int
+  isBeta: Boolean
+  clientVersion: String!
+  reportStatus: ENUM_REPORTFSS_REPORTSTATUS!
+  rawJson: JSON!
+}
+
 """Report endpoints used by Canonn Plugins"""
 type Reporttype {
   id: ID!
@@ -5181,6 +5630,7 @@ type Reporttype {
   location: ENUM_REPORTTYPE_LOCATION
   journalName: String
   journalID: Int
+  journalType: ENUM_REPORTTYPE_JOURNALTYPE
   endpoint: String!
 }
 
@@ -5189,6 +5639,7 @@ input ReporttypeInput {
   location: ENUM_REPORTTYPE_LOCATION
   journalName: String
   journalID: Int
+  journalType: ENUM_REPORTTYPE_JOURNALTYPE
   endpoint: String!
 }
 
@@ -5368,30 +5819,6 @@ type Tbtype {
 input TbtypeInput {
   type: String!
   metaAlloyCount: Int
-}
-
-"""TG_ENCOUNTERS from the Statistics Journal Event"""
-type Tgencounterstat {
-  id: ID!
-  created_at: DateTime!
-  updated_at: DateTime!
-  hyperdictionSystemName: String
-  hyperdictionTimestamp: DateTime
-  cmdrName: String
-  wakesScanned: Int
-  thargoidScans: Int
-  thargoidSites: Int
-  hyperdictions: Int
-}
-
-input TgencounterstatInput {
-  hyperdictionSystemName: String
-  hyperdictionTimestamp: DateTime
-  cmdrName: String
-  wakesScanned: Int
-  thargoidScans: Int
-  thargoidSites: Int
-  hyperdictions: Int
 }
 
 """Reporting for Thargoid Structures"""
@@ -5596,6 +6023,15 @@ input TwtypeInput {
   journalID: Int
 }
 
+input updateAlertInput {
+  where: InputID
+  data: editAlertInput
+}
+
+type updateAlertPayload {
+  alert: Alert
+}
+
 input updateApiupdateInput {
   where: InputID
   data: editApiupdateInput
@@ -5603,6 +6039,15 @@ input updateApiupdateInput {
 
 type updateApiupdatePayload {
   apiupdate: Apiupdate
+}
+
+input updateAxczfssreportInput {
+  where: InputID
+  data: editAxczfssreportInput
+}
+
+type updateAxczfssreportPayload {
+  axczfssreport: Axczfssreport
 }
 
 input updateBmreportInput {
@@ -5668,6 +6113,24 @@ type updateBttypePayload {
   bttype: Bttype
 }
 
+input updateClientreportInput {
+  where: InputID
+  data: editClientreportInput
+}
+
+type updateClientreportPayload {
+  clientreport: Clientreport
+}
+
+input updateClientrouteInput {
+  where: InputID
+  data: editClientrouteInput
+}
+
+type updateClientroutePayload {
+  clientroute: Clientroute
+}
+
 input updateCmdrInput {
   where: InputID
   data: editCmdrInput
@@ -5684,15 +6147,6 @@ type updateCmdrkillPayload {
 
 type updateCmdrPayload {
   cmdr: Cmdr
-}
-
-input updateCodexreportInput {
-  where: InputID
-  data: editCodexreportInput
-}
-
-type updateCodexreportPayload {
-  codexreport: Codexreport
 }
 
 input updateCsreportInput {
@@ -5720,15 +6174,6 @@ input updateCstypeInput {
 
 type updateCstypePayload {
   cstype: Cstype
-}
-
-input updateEventreportInput {
-  where: InputID
-  data: editEventreportInput
-}
-
-type updateEventreportPayload {
-  eventreport: Eventreport
 }
 
 input updateExcludeclientInput {
@@ -5765,6 +6210,15 @@ input updateExcludeeventInput {
 
 type updateExcludeeventPayload {
   excludeevent: Excludeevent
+}
+
+input updateExcludefssInput {
+  where: InputID
+  data: editExcludefssInput
+}
+
+type updateExcludefssPayload {
+  excludefss: Excludefss
 }
 
 input updateExcludeussInput {
@@ -6163,6 +6617,15 @@ type updateKillreportPayload {
   killreport: Killreport
 }
 
+input updateLcfssreportInput {
+  where: InputID
+  data: editLcfssreportInput
+}
+
+type updateLcfssreportPayload {
+  lcfssreport: Lcfssreport
+}
+
 input updateLsreportInput {
   where: InputID
   data: editLsreportInput
@@ -6208,6 +6671,15 @@ type updateNhsssitePayload {
   nhsssite: Nhsssite
 }
 
+input updatePointofinterestInput {
+  where: InputID
+  data: editPointofinterestInput
+}
+
+type updatePointofinterestPayload {
+  pointofinterest: Pointofinterest
+}
+
 input updateRegionInput {
   where: InputID
   data: editRegionInput
@@ -6215,6 +6687,33 @@ input updateRegionInput {
 
 type updateRegionPayload {
   region: Region
+}
+
+input updateReportcodexInput {
+  where: InputID
+  data: editReportcodexInput
+}
+
+type updateReportcodexPayload {
+  reportcodex: Reportcodex
+}
+
+input updateReporteventInput {
+  where: InputID
+  data: editReporteventInput
+}
+
+type updateReporteventPayload {
+  reportevent: Reportevent
+}
+
+input updateReportfssInput {
+  where: InputID
+  data: editReportfssInput
+}
+
+type updateReportfssPayload {
+  reportfss: Reportfss
 }
 
 input updateReporttypeInput {
@@ -6287,15 +6786,6 @@ input updateTbtypeInput {
 
 type updateTbtypePayload {
   tbtype: Tbtype
-}
-
-input updateTgencounterstatInput {
-  where: InputID
-  data: editTgencounterstatInput
-}
-
-type updateTgencounterstatPayload {
-  tgencounterstat: Tgencounterstat
 }
 
 input updateTsreportInput {
