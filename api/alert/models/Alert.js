@@ -33,9 +33,19 @@ module.exports = {
     const Hook = new webhook.Webhook(process.env.CHANNEL_RD);
 
     if(model.attributes.active === true) {
+      let alertURL = null;
+      if (model.attributes.alertLevel >= 9) {
+        alertURL = "https://canonn.tech/images/Canonn-Red-Alert.gif";
+      } else if (model.attributes.alertLevel >= 5) {
+        alertURL = "https://canonn.tech/images/Canonn-Yellow-Alert.gif";
+      } else {
+        alertURL = "https://canonn.tech/images/Canonn-Green-Alert.gif";
+      }
+
       const msg = new webhook.MessageBuilder()
         .setName('Gnosis Emergency Alert System')
         .setColor('#E74C3C')
+        .setImage(alertURL)
         .addField(model.attributes.title + ' - Alert Level: ' + model.attributes.alertLevel, model.attributes.body)
         .setTime();
 
@@ -55,9 +65,19 @@ module.exports = {
     const Hook = new webhook.Webhook(process.env.CHANNEL_RD);
 
     if(model.attributes.active === true) {
+      let alertURL = null;
+      if (model.attributes.alertLevel >= 9) {
+        alertURL = "https://canonn.tech/images/Canonn-Red-Alert.gif";
+      } else if (model.attributes.alertLevel >= 5) {
+        alertURL = "https://canonn.tech/images/Canonn-Yellow-Alert.gif";
+      } else {
+        alertURL = "https://canonn.tech/images/Canonn-Green-Alert.gif";
+      }
+
       const msg = new webhook.MessageBuilder()
         .setName('Gnosis Emergency Alert System')
         .setColor('#E74C3C')
+        .setImage(alertURL)
         .addField(model.attributes.title + ' - Alert Level: ' + model.attributes.alertLevel, model.attributes.body)
         .setTime();
 
