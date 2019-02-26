@@ -32,19 +32,24 @@ module.exports = {
 
     const Hook = new webhook.Webhook(process.env.CHANNEL_RD);
 
-    if(model.attributes.active === true) {
+    if (model.attributes.active === true) {
+
       let alertURL = null;
+      let alertColor = null;
       if (model.attributes.alertLevel >= 9) {
-        alertURL = "https://canonn.tech/images/Canonn-Red-Alert.gif";
+        alertURL = "https://canonn.tech/images/Canonn-Red-Alert_25.gif";
+        alertColor = '#F72D01';
       } else if (model.attributes.alertLevel >= 5) {
-        alertURL = "https://canonn.tech/images/Canonn-Yellow-Alert.gif";
+        alertURL = "https://canonn.tech/images/Canonn-Yellow-Alert_25.gif";
+        alertColor = '#F7E801';
       } else {
-        alertURL = "https://canonn.tech/images/Canonn-Green-Alert.gif";
+        alertURL = "https://canonn.tech/images/Canonn-Green-Alert_25.gif";
+        alertColor = '#39F701';
       }
 
       const msg = new webhook.MessageBuilder()
         .setName('Gnosis Emergency Alert System')
-        .setColor('#E74C3C')
+        .setColor(alertColor)
         .setImage(alertURL)
         .addField(model.attributes.title + ' - Alert Level: ' + model.attributes.alertLevel, model.attributes.body)
         .setTime();
@@ -64,19 +69,24 @@ module.exports = {
 
     const Hook = new webhook.Webhook(process.env.CHANNEL_RD);
 
-    if(model.attributes.active === true) {
+    if (model.attributes.active === true) {
+
       let alertURL = null;
+      let alertColor = null;
       if (model.attributes.alertLevel >= 9) {
-        alertURL = "https://canonn.tech/images/Canonn-Red-Alert.gif";
+        alertURL = "https://canonn.tech/images/Canonn-Red-Alert_25.gif";
+        alertColor = '#F72D01';
       } else if (model.attributes.alertLevel >= 5) {
-        alertURL = "https://canonn.tech/images/Canonn-Yellow-Alert.gif";
+        alertURL = "https://canonn.tech/images/Canonn-Yellow-Alert_25.gif";
+        alertColor = '#F7E801';
       } else {
-        alertURL = "https://canonn.tech/images/Canonn-Green-Alert.gif";
+        alertURL = "https://canonn.tech/images/Canonn-Green-Alert_25.gif";
+        alertColor = '#39F701';
       }
 
       const msg = new webhook.MessageBuilder()
         .setName('Gnosis Emergency Alert System')
-        .setColor('#E74C3C')
+        .setColor(alertColor)
         .setImage(alertURL)
         .addField(model.attributes.title + ' - Alert Level: ' + model.attributes.alertLevel, model.attributes.body)
         .setTime();

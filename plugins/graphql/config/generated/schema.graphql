@@ -9,6 +9,7 @@ type Alert {
   active: Boolean
   tldr: String
   alertURL: String
+  alertImage: Boolean
 }
 
 input AlertInput {
@@ -18,6 +19,7 @@ input AlertInput {
   active: Boolean
   tldr: String
   alertURL: String
+  alertImage: Boolean
 }
 
 """Canonn API updater logging and errors"""
@@ -2018,6 +2020,7 @@ input editAlertInput {
   active: Boolean
   tldr: String
   alertURL: String
+  alertImage: Boolean
 }
 
 input editApiupdateInput {
