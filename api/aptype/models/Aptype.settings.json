@@ -1,0 +1,30 @@
+{
+  "connection": "default",
+  "collectionName": "aptypes",
+  "info": {
+    "name": "aptype",
+    "description": "Type of Amphora Plant"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": false,
+    "comment": ""
+  },
+  "attributes": {
+    "type": {
+      "default": "",
+      "unique": true,
+      "type": "string",
+      "required": true
+    },
+    "journalName": {
+      "default": "",
+      "unique": true,
+      "type": "string"
+    },
+    "journalID": {
+      "default": "",
+      "type": "integer"
+    }
+  }
+}

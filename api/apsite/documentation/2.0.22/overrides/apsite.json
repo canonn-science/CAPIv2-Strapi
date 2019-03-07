@@ -1,0 +1,70 @@
+{
+  "paths": {
+    "/apsites": {
+      "get": {
+        "description": "Get all AP Site entries",
+        "summary": "",
+        "tags": [
+          "Amphora Plants"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new AP Site entry",
+        "summary": "",
+        "tags": [
+          "Amphora Plants"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      }
+    },
+    "/apsites/count": {
+      "get": {
+        "description": "Get a count of all AP Site entries",
+        "summary": "",
+        "tags": [
+          "Amphora Plants"
+        ],
+        "security": []
+      }
+    },
+    "/apsites/{id}": {
+      "get": {
+        "description": "Get a AP Site by id",
+        "summary": "",
+        "tags": [
+          "Amphora Plants"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a AP Site by id",
+        "summary": "",
+        "tags": [
+          "Amphora Plants"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a AP Site by id",
+        "summary": "",
+        "tags": [
+          "Amphora Plants"
+        ],
+        "security": [
+          "siteDelete"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Amphora Plants",
+      "description": "Code Name - AP"
+    }
+  ]
+}
