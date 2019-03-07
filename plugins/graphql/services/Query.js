@@ -22,7 +22,9 @@ module.exports = {
   convertToParams: (params, primaryKey) => {
     return Object.keys(params).reduce((acc, current) => {
       return Object.assign(acc, {
-        [`${primaryKey === current ? '' : '_'}${current}`]: params[current],
+        [`${
+          primaryKey === current || "id" === current ? "" : "_"
+        }${current}`]: params[current]
       });
     }, {});
   },
@@ -226,7 +228,7 @@ module.exports = {
 
     return async (obj, options = {}, { context }) => {
       const _options = _.cloneDeep(options);
-      
+
       // Hack to be able to handle permissions for each query.
       const ctx = Object.assign(_.clone(context), {
         request: Object.assign(_.clone(context.request), {
