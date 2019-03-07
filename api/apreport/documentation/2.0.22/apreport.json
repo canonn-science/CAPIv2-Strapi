@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/bmreports": {
+    "/apreports": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Bmreport"
+                    "$ref": "#/components/schemas/Apreport"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Bmreport"
+          "Apreport"
         ],
         "parameters": [
           {
@@ -195,7 +195,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Bmreport"
+                  "$ref": "#/components/schemas/Apreport"
                 }
               }
             }
@@ -233,7 +233,7 @@
         },
         "summary": "",
         "tags": [
-          "Bmreport"
+          "Apreport"
         ],
         "requestBody": {
           "description": "",
@@ -241,14 +241,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewBmreport"
+                "$ref": "#/components/schemas/NewApreport"
               }
             }
           }
         }
       }
     },
-    "/bmreports/count": {
+    "/apreports/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -300,12 +300,12 @@
         },
         "summary": "",
         "tags": [
-          "Bmreport"
+          "Apreport"
         ],
         "parameters": []
       }
     },
-    "/bmreports/{id}": {
+    "/apreports/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -315,7 +315,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Bmreport"
+                  "$ref": "#/components/schemas/Apreport"
                 }
               }
             }
@@ -353,7 +353,7 @@
         },
         "summary": "",
         "tags": [
-          "Bmreport"
+          "Apreport"
         ],
         "parameters": [
           {
@@ -377,7 +377,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Bmreport"
+                  "$ref": "#/components/schemas/Apreport"
                 }
               }
             }
@@ -415,7 +415,7 @@
         },
         "summary": "",
         "tags": [
-          "Bmreport"
+          "Apreport"
         ],
         "requestBody": {
           "description": "",
@@ -423,7 +423,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewBmreport"
+                "$ref": "#/components/schemas/NewApreport"
               }
             }
           }
@@ -489,7 +489,7 @@
         },
         "summary": "",
         "tags": [
-          "Bmreport"
+          "Apreport"
         ],
         "parameters": [
           {
@@ -508,7 +508,7 @@
   },
   "components": {
     "schemas": {
-      "Bmreport": {
+      "Apreport": {
         "required": [
           "id",
           "userType",
@@ -707,7 +707,7 @@
           }
         }
       },
-      "NewBmreport": {
+      "NewApreport": {
         "required": [
           "userType",
           "reportType",
@@ -814,7 +814,7 @@
   },
   "tags": [
     {
-      "name": "Bmreport"
+      "name": "Apreport"
     }
   ]
 }

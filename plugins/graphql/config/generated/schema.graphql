@@ -38,6 +38,108 @@ input ApiupdateInput {
   updateLog: JSON
 }
 
+"""Reporting for Bark Mounds"""
+type Apreport {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  userType: ENUM_APREPORT_USERTYPE!
+  reportType: ENUM_APREPORT_REPORTTYPE!
+  systemName: String!
+  systemAddress: String
+  regionID: Int
+  coordX: Float
+  coordY: Float
+  coordZ: Float
+  bodyName: String!
+  latitude: Float!
+  longitude: Float!
+  type: String
+  frontierID: Int
+  cmdrName: String!
+  cmdrComment: String
+  isBeta: Boolean
+  clientVersion: String!
+  reportStatus: ENUM_APREPORT_REPORTSTATUS!
+  reportComment: String
+  voteCount: Int
+  added: Boolean
+  site: Apsite
+  screenshot(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+}
+
+input ApreportInput {
+  userType: ENUM_APREPORT_USERTYPE!
+  reportType: ENUM_APREPORT_REPORTTYPE!
+  systemName: String!
+  systemAddress: String
+  regionID: Int
+  coordX: Float
+  coordY: Float
+  coordZ: Float
+  bodyName: String!
+  latitude: Float!
+  longitude: Float!
+  type: String
+  frontierID: Int
+  cmdrName: String!
+  cmdrComment: String
+  isBeta: Boolean
+  clientVersion: String!
+  screenshot: [ID]
+  reportStatus: ENUM_APREPORT_REPORTSTATUS!
+  reportComment: String
+  voteCount: Int
+  added: Boolean
+  site: ID
+}
+
+"""Bark Mound sites"""
+type Apsite {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  system: System
+  body: Body
+  siteID: Int!
+  extoolID: Int
+  latitude: Float!
+  longitude: Float!
+  type: Aptype
+  frontierID: Int
+  verified: Boolean
+  visible: Boolean
+  discoveredBy: Cmdr
+}
+
+input ApsiteInput {
+  system: ID
+  body: ID
+  siteID: Int!
+  extoolID: Int
+  latitude: Float!
+  longitude: Float!
+  type: ID
+  frontierID: Int
+  verified: Boolean
+  visible: Boolean
+  discoveredBy: ID
+}
+
+"""Type of Amphora Plant"""
+type Aptype {
+  id: ID!
+  type: String!
+  journalName: String
+  journalID: Int
+}
+
+input AptypeInput {
+  type: String!
+  journalName: String
+  journalID: Int
+}
+
 """AX Combat Zone FSS Scan Reports"""
 type Axczfssreport {
   id: ID!
@@ -448,6 +550,30 @@ input createApiupdateInput {
 
 type createApiupdatePayload {
   apiupdate: Apiupdate
+}
+
+input createApreportInput {
+  data: ApreportInput
+}
+
+type createApreportPayload {
+  apreport: Apreport
+}
+
+input createApsiteInput {
+  data: ApsiteInput
+}
+
+type createApsitePayload {
+  apsite: Apsite
+}
+
+input createAptypeInput {
+  data: AptypeInput
+}
+
+type createAptypePayload {
+  aptype: Aptype
 }
 
 input createAxczfssreportInput {
@@ -1293,6 +1419,30 @@ type deleteApiupdatePayload {
   apiupdate: Apiupdate
 }
 
+input deleteApreportInput {
+  where: InputID
+}
+
+type deleteApreportPayload {
+  apreport: Apreport
+}
+
+input deleteApsiteInput {
+  where: InputID
+}
+
+type deleteApsitePayload {
+  apsite: Apsite
+}
+
+input deleteAptypeInput {
+  where: InputID
+}
+
+type deleteAptypePayload {
+  aptype: Aptype
+}
+
 input deleteAxczfssreportInput {
   where: InputID
 }
@@ -2028,6 +2178,52 @@ input editApiupdateInput {
   error: Boolean
   notes: String
   updateLog: JSON
+}
+
+input editApreportInput {
+  userType: ENUM_APREPORT_USERTYPE
+  reportType: ENUM_APREPORT_REPORTTYPE
+  systemName: String
+  systemAddress: String
+  regionID: Int
+  coordX: Float
+  coordY: Float
+  coordZ: Float
+  bodyName: String
+  latitude: Float
+  longitude: Float
+  type: String
+  frontierID: Int
+  cmdrName: String
+  cmdrComment: String
+  isBeta: Boolean
+  clientVersion: String
+  screenshot: [ID]
+  reportStatus: ENUM_APREPORT_REPORTSTATUS
+  reportComment: String
+  voteCount: Int
+  added: Boolean
+  site: ID
+}
+
+input editApsiteInput {
+  system: ID
+  body: ID
+  siteID: Int
+  extoolID: Int
+  latitude: Float
+  longitude: Float
+  type: ID
+  frontierID: Int
+  verified: Boolean
+  visible: Boolean
+  discoveredBy: ID
+}
+
+input editAptypeInput {
+  type: String
+  journalName: String
+  journalID: Int
 }
 
 input editAxczfssreportInput {
@@ -3135,6 +3331,26 @@ input editUserInput {
   confirmed: Boolean
   blocked: Boolean
   role: ID
+}
+
+enum ENUM_APREPORT_REPORTSTATUS {
+  pending
+  updated
+  verified
+  accepted
+  declined
+  issue
+}
+
+enum ENUM_APREPORT_REPORTTYPE {
+  new
+  update
+  error
+}
+
+enum ENUM_APREPORT_USERTYPE {
+  console
+  pc
 }
 
 enum ENUM_AXCZFSSREPORT_REPORTSTATUS {
@@ -4925,7 +5141,7 @@ input LstypeInput {
   journalID: Int
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Alert | createAlertPayload | updateAlertPayload | deleteAlertPayload | Apiupdate | createApiupdatePayload | updateApiupdatePayload | deleteApiupdatePayload | Axczfssreport | createAxczfssreportPayload | updateAxczfssreportPayload | deleteAxczfssreportPayload | Bmreport | createBmreportPayload | updateBmreportPayload | deleteBmreportPayload | Bmsite | createBmsitePayload | updateBmsitePayload | deleteBmsitePayload | Bmtype | createBmtypePayload | updateBmtypePayload | deleteBmtypePayload | Body | createBodyPayload | updateBodyPayload | deleteBodyPayload | Btreport | createBtreportPayload | updateBtreportPayload | deleteBtreportPayload | Btsite | createBtsitePayload | updateBtsitePayload | deleteBtsitePayload | Bttype | createBttypePayload | updateBttypePayload | deleteBttypePayload | Clientreport | createClientreportPayload | updateClientreportPayload | deleteClientreportPayload | Clientroute | createClientroutePayload | updateClientroutePayload | deleteClientroutePayload | Cmdr | createCmdrPayload | updateCmdrPayload | deleteCmdrPayload | Cmdrkill | createCmdrkillPayload | updateCmdrkillPayload | deleteCmdrkillPayload | Csreport | createCsreportPayload | updateCsreportPayload | deleteCsreportPayload | Cssite | createCssitePayload | updateCssitePayload | deleteCssitePayload | Cstype | createCstypePayload | updateCstypePayload | deleteCstypePayload | Excludeclient | createExcludeclientPayload | updateExcludeclientPayload | deleteExcludeclientPayload | Excludecmdr | createExcludecmdrPayload | updateExcludecmdrPayload | deleteExcludecmdrPayload | Excludecodex | createExcludecodexPayload | updateExcludecodexPayload | deleteExcludecodexPayload | Excludeevent | createExcludeeventPayload | updateExcludeeventPayload | deleteExcludeeventPayload | Excludefss | createExcludefssPayload | updateExcludefssPayload | deleteExcludefssPayload | Excludeuss | createExcludeussPayload | updateExcludeussPayload | deleteExcludeussPayload | Fgreport | createFgreportPayload | updateFgreportPayload | deleteFgreportPayload | Fgsite | createFgsitePayload | updateFgsitePayload | deleteFgsitePayload | Fgtype | createFgtypePayload | updateFgtypePayload | deleteFgtypePayload | Fmreport | createFmreportPayload | updateFmreportPayload | deleteFmreportPayload | Fmsite | createFmsitePayload | updateFmsitePayload | deleteFmsitePayload | Fmtype | createFmtypePayload | updateFmtypePayload | deleteFmtypePayload | Gbmessage | createGbmessagePayload | updateGbmessagePayload | deleteGbmessagePayload | Gbreport | createGbreportPayload | updateGbreportPayload | deleteGbreportPayload | Gbsite | createGbsitePayload | updateGbsitePayload | deleteGbsitePayload | Genlog | createGenlogPayload | updateGenlogPayload | deleteGenlogPayload | Genreport | createGenreportPayload | updateGenreportPayload | deleteGenreportPayload | Gensite | createGensitePayload | updateGensitePayload | deleteGensitePayload | Gractivegroup | createGractivegroupPayload | updateGractivegroupPayload | deleteGractivegroupPayload | Gractiveobelisk | createGractiveobeliskPayload | updateGractiveobeliskPayload | deleteGractiveobeliskPayload | Grartifact | createGrartifactPayload | updateGrartifactPayload | deleteGrartifactPayload | Grcodexcategory | createGrcodexcategoryPayload | updateGrcodexcategoryPayload | deleteGrcodexcategoryPayload | Grcodexdata | createGrcodexdataPayload | updateGrcodexdataPayload | deleteGrcodexdataPayload | Grobelisk | createGrobeliskPayload | updateGrobeliskPayload | deleteGrobeliskPayload | Grobeliskgroup | createGrobeliskgroupPayload | updateGrobeliskgroupPayload | deleteGrobeliskgroupPayload | Grobeliskreport | createGrobeliskreportPayload | updateGrobeliskreportPayload | deleteGrobeliskreportPayload | Grreport | createGrreportPayload | updateGrreportPayload | deleteGrreportPayload | Grsite | createGrsitePayload | updateGrsitePayload | deleteGrsitePayload | Grtype | createGrtypePayload | updateGrtypePayload | deleteGrtypePayload | Gsactivegroup | createGsactivegroupPayload | updateGsactivegroupPayload | deleteGsactivegroupPayload | Gsactiveobelisk | createGsactiveobeliskPayload | updateGsactiveobeliskPayload | deleteGsactiveobeliskPayload | Gsartifact | createGsartifactPayload | updateGsartifactPayload | deleteGsartifactPayload | Gscodexcategory | createGscodexcategoryPayload | updateGscodexcategoryPayload | deleteGscodexcategoryPayload | Gscodexdata | createGscodexdataPayload | updateGscodexdataPayload | deleteGscodexdataPayload | Gsobelisk | createGsobeliskPayload | updateGsobeliskPayload | deleteGsobeliskPayload | Gsobeliskgroup | createGsobeliskgroupPayload | updateGsobeliskgroupPayload | deleteGsobeliskgroupPayload | Gsobeliskreport | createGsobeliskreportPayload | updateGsobeliskreportPayload | deleteGsobeliskreportPayload | Gsreport | createGsreportPayload | updateGsreportPayload | deleteGsreportPayload | Gssite | createGssitePayload | updateGssitePayload | deleteGssitePayload | Gstype | createGstypePayload | updateGstypePayload | deleteGstypePayload | Gvreport | createGvreportPayload | updateGvreportPayload | deleteGvreportPayload | Gvsite | createGvsitePayload | updateGvsitePayload | deleteGvsitePayload | Gvtype | createGvtypePayload | updateGvtypePayload | deleteGvtypePayload | Gyreport | createGyreportPayload | updateGyreportPayload | deleteGyreportPayload | Gysite | createGysitePayload | updateGysitePayload | deleteGysitePayload | Gytype | createGytypePayload | updateGytypePayload | deleteGytypePayload | Hdreport | createHdreportPayload | updateHdreportPayload | deleteHdreportPayload | Hdsite | createHdsitePayload | updateHdsitePayload | deleteHdsitePayload | Killreport | createKillreportPayload | updateKillreportPayload | deleteKillreportPayload | Lcfssreport | createLcfssreportPayload | updateLcfssreportPayload | deleteLcfssreportPayload | Lsreport | createLsreportPayload | updateLsreportPayload | deleteLsreportPayload | Lssite | createLssitePayload | updateLssitePayload | deleteLssitePayload | Lstype | createLstypePayload | updateLstypePayload | deleteLstypePayload | Nhssreport | createNhssreportPayload | updateNhssreportPayload | deleteNhssreportPayload | Nhsssite | createNhsssitePayload | updateNhsssitePayload | deleteNhsssitePayload | Pointofinterest | createPointofinterestPayload | updatePointofinterestPayload | deletePointofinterestPayload | Region | createRegionPayload | updateRegionPayload | deleteRegionPayload | Reportcodex | createReportcodexPayload | updateReportcodexPayload | deleteReportcodexPayload | Reportevent | createReporteventPayload | updateReporteventPayload | deleteReporteventPayload | Reportfss | createReportfssPayload | updateReportfssPayload | deleteReportfssPayload | Reporttype | createReporttypePayload | updateReporttypePayload | deleteReporttypePayload | Ring | createRingPayload | updateRingPayload | deleteRingPayload | System | createSystemPayload | updateSystemPayload | deleteSystemPayload | Tbcycle | createTbcyclePayload | updateTbcyclePayload | deleteTbcyclePayload | Tbreport | createTbreportPayload | updateTbreportPayload | deleteTbreportPayload | Tbsite | createTbsitePayload | updateTbsitePayload | deleteTbsitePayload | Tbtype | createTbtypePayload | updateTbtypePayload | deleteTbtypePayload | Tsreport | createTsreportPayload | updateTsreportPayload | deleteTsreportPayload | Tssite | createTssitePayload | updateTssitePayload | deleteTssitePayload | Tsstatus | createTsstatusPayload | updateTsstatusPayload | deleteTsstatusPayload | Twreport | createTwreportPayload | updateTwreportPayload | deleteTwreportPayload | Twsite | createTwsitePayload | updateTwsitePayload | deleteTwsitePayload | Twtype | createTwtypePayload | updateTwtypePayload | deleteTwtypePayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Alert | createAlertPayload | updateAlertPayload | deleteAlertPayload | Apiupdate | createApiupdatePayload | updateApiupdatePayload | deleteApiupdatePayload | Apreport | createApreportPayload | updateApreportPayload | deleteApreportPayload | Apsite | createApsitePayload | updateApsitePayload | deleteApsitePayload | Aptype | createAptypePayload | updateAptypePayload | deleteAptypePayload | Axczfssreport | createAxczfssreportPayload | updateAxczfssreportPayload | deleteAxczfssreportPayload | Bmreport | createBmreportPayload | updateBmreportPayload | deleteBmreportPayload | Bmsite | createBmsitePayload | updateBmsitePayload | deleteBmsitePayload | Bmtype | createBmtypePayload | updateBmtypePayload | deleteBmtypePayload | Body | createBodyPayload | updateBodyPayload | deleteBodyPayload | Btreport | createBtreportPayload | updateBtreportPayload | deleteBtreportPayload | Btsite | createBtsitePayload | updateBtsitePayload | deleteBtsitePayload | Bttype | createBttypePayload | updateBttypePayload | deleteBttypePayload | Clientreport | createClientreportPayload | updateClientreportPayload | deleteClientreportPayload | Clientroute | createClientroutePayload | updateClientroutePayload | deleteClientroutePayload | Cmdr | createCmdrPayload | updateCmdrPayload | deleteCmdrPayload | Cmdrkill | createCmdrkillPayload | updateCmdrkillPayload | deleteCmdrkillPayload | Csreport | createCsreportPayload | updateCsreportPayload | deleteCsreportPayload | Cssite | createCssitePayload | updateCssitePayload | deleteCssitePayload | Cstype | createCstypePayload | updateCstypePayload | deleteCstypePayload | Excludeclient | createExcludeclientPayload | updateExcludeclientPayload | deleteExcludeclientPayload | Excludecmdr | createExcludecmdrPayload | updateExcludecmdrPayload | deleteExcludecmdrPayload | Excludecodex | createExcludecodexPayload | updateExcludecodexPayload | deleteExcludecodexPayload | Excludeevent | createExcludeeventPayload | updateExcludeeventPayload | deleteExcludeeventPayload | Excludefss | createExcludefssPayload | updateExcludefssPayload | deleteExcludefssPayload | Excludeuss | createExcludeussPayload | updateExcludeussPayload | deleteExcludeussPayload | Fgreport | createFgreportPayload | updateFgreportPayload | deleteFgreportPayload | Fgsite | createFgsitePayload | updateFgsitePayload | deleteFgsitePayload | Fgtype | createFgtypePayload | updateFgtypePayload | deleteFgtypePayload | Fmreport | createFmreportPayload | updateFmreportPayload | deleteFmreportPayload | Fmsite | createFmsitePayload | updateFmsitePayload | deleteFmsitePayload | Fmtype | createFmtypePayload | updateFmtypePayload | deleteFmtypePayload | Gbmessage | createGbmessagePayload | updateGbmessagePayload | deleteGbmessagePayload | Gbreport | createGbreportPayload | updateGbreportPayload | deleteGbreportPayload | Gbsite | createGbsitePayload | updateGbsitePayload | deleteGbsitePayload | Genlog | createGenlogPayload | updateGenlogPayload | deleteGenlogPayload | Genreport | createGenreportPayload | updateGenreportPayload | deleteGenreportPayload | Gensite | createGensitePayload | updateGensitePayload | deleteGensitePayload | Gractivegroup | createGractivegroupPayload | updateGractivegroupPayload | deleteGractivegroupPayload | Gractiveobelisk | createGractiveobeliskPayload | updateGractiveobeliskPayload | deleteGractiveobeliskPayload | Grartifact | createGrartifactPayload | updateGrartifactPayload | deleteGrartifactPayload | Grcodexcategory | createGrcodexcategoryPayload | updateGrcodexcategoryPayload | deleteGrcodexcategoryPayload | Grcodexdata | createGrcodexdataPayload | updateGrcodexdataPayload | deleteGrcodexdataPayload | Grobelisk | createGrobeliskPayload | updateGrobeliskPayload | deleteGrobeliskPayload | Grobeliskgroup | createGrobeliskgroupPayload | updateGrobeliskgroupPayload | deleteGrobeliskgroupPayload | Grobeliskreport | createGrobeliskreportPayload | updateGrobeliskreportPayload | deleteGrobeliskreportPayload | Grreport | createGrreportPayload | updateGrreportPayload | deleteGrreportPayload | Grsite | createGrsitePayload | updateGrsitePayload | deleteGrsitePayload | Grtype | createGrtypePayload | updateGrtypePayload | deleteGrtypePayload | Gsactivegroup | createGsactivegroupPayload | updateGsactivegroupPayload | deleteGsactivegroupPayload | Gsactiveobelisk | createGsactiveobeliskPayload | updateGsactiveobeliskPayload | deleteGsactiveobeliskPayload | Gsartifact | createGsartifactPayload | updateGsartifactPayload | deleteGsartifactPayload | Gscodexcategory | createGscodexcategoryPayload | updateGscodexcategoryPayload | deleteGscodexcategoryPayload | Gscodexdata | createGscodexdataPayload | updateGscodexdataPayload | deleteGscodexdataPayload | Gsobelisk | createGsobeliskPayload | updateGsobeliskPayload | deleteGsobeliskPayload | Gsobeliskgroup | createGsobeliskgroupPayload | updateGsobeliskgroupPayload | deleteGsobeliskgroupPayload | Gsobeliskreport | createGsobeliskreportPayload | updateGsobeliskreportPayload | deleteGsobeliskreportPayload | Gsreport | createGsreportPayload | updateGsreportPayload | deleteGsreportPayload | Gssite | createGssitePayload | updateGssitePayload | deleteGssitePayload | Gstype | createGstypePayload | updateGstypePayload | deleteGstypePayload | Gvreport | createGvreportPayload | updateGvreportPayload | deleteGvreportPayload | Gvsite | createGvsitePayload | updateGvsitePayload | deleteGvsitePayload | Gvtype | createGvtypePayload | updateGvtypePayload | deleteGvtypePayload | Gyreport | createGyreportPayload | updateGyreportPayload | deleteGyreportPayload | Gysite | createGysitePayload | updateGysitePayload | deleteGysitePayload | Gytype | createGytypePayload | updateGytypePayload | deleteGytypePayload | Hdreport | createHdreportPayload | updateHdreportPayload | deleteHdreportPayload | Hdsite | createHdsitePayload | updateHdsitePayload | deleteHdsitePayload | Killreport | createKillreportPayload | updateKillreportPayload | deleteKillreportPayload | Lcfssreport | createLcfssreportPayload | updateLcfssreportPayload | deleteLcfssreportPayload | Lsreport | createLsreportPayload | updateLsreportPayload | deleteLsreportPayload | Lssite | createLssitePayload | updateLssitePayload | deleteLssitePayload | Lstype | createLstypePayload | updateLstypePayload | deleteLstypePayload | Nhssreport | createNhssreportPayload | updateNhssreportPayload | deleteNhssreportPayload | Nhsssite | createNhsssitePayload | updateNhsssitePayload | deleteNhsssitePayload | Pointofinterest | createPointofinterestPayload | updatePointofinterestPayload | deletePointofinterestPayload | Region | createRegionPayload | updateRegionPayload | deleteRegionPayload | Reportcodex | createReportcodexPayload | updateReportcodexPayload | deleteReportcodexPayload | Reportevent | createReporteventPayload | updateReporteventPayload | deleteReporteventPayload | Reportfss | createReportfssPayload | updateReportfssPayload | deleteReportfssPayload | Reporttype | createReporttypePayload | updateReporttypePayload | deleteReporttypePayload | Ring | createRingPayload | updateRingPayload | deleteRingPayload | System | createSystemPayload | updateSystemPayload | deleteSystemPayload | Tbcycle | createTbcyclePayload | updateTbcyclePayload | deleteTbcyclePayload | Tbreport | createTbreportPayload | updateTbreportPayload | deleteTbreportPayload | Tbsite | createTbsitePayload | updateTbsitePayload | deleteTbsitePayload | Tbtype | createTbtypePayload | updateTbtypePayload | deleteTbtypePayload | Tsreport | createTsreportPayload | updateTsreportPayload | deleteTsreportPayload | Tssite | createTssitePayload | updateTssitePayload | deleteTssitePayload | Tsstatus | createTsstatusPayload | updateTsstatusPayload | deleteTsstatusPayload | Twreport | createTwreportPayload | updateTwreportPayload | deleteTwreportPayload | Twsite | createTwsitePayload | updateTwsitePayload | deleteTwsitePayload | Twtype | createTwtypePayload | updateTwtypePayload | deleteTwtypePayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
 
 type Mutation {
   createAlert(input: createAlertInput): createAlertPayload
@@ -4934,6 +5150,15 @@ type Mutation {
   createApiupdate(input: createApiupdateInput): createApiupdatePayload
   updateApiupdate(input: updateApiupdateInput): updateApiupdatePayload
   deleteApiupdate(input: deleteApiupdateInput): deleteApiupdatePayload
+  createApreport(input: createApreportInput): createApreportPayload
+  updateApreport(input: updateApreportInput): updateApreportPayload
+  deleteApreport(input: deleteApreportInput): deleteApreportPayload
+  createApsite(input: createApsiteInput): createApsitePayload
+  updateApsite(input: updateApsiteInput): updateApsitePayload
+  deleteApsite(input: deleteApsiteInput): deleteApsitePayload
+  createAptype(input: createAptypeInput): createAptypePayload
+  updateAptype(input: updateAptypeInput): updateAptypePayload
+  deleteAptype(input: deleteAptypeInput): deleteAptypePayload
   createAxczfssreport(input: createAxczfssreportInput): createAxczfssreportPayload
   updateAxczfssreport(input: updateAxczfssreportInput): updateAxczfssreportPayload
   deleteAxczfssreport(input: deleteAxczfssreportInput): deleteAxczfssreportPayload
@@ -5294,6 +5519,12 @@ type Query {
   alerts(sort: String, limit: Int, start: Int, where: JSON): [Alert]
   apiupdate(id: ID!): Apiupdate
   apiupdates(sort: String, limit: Int, start: Int, where: JSON): [Apiupdate]
+  apreport(id: ID!): Apreport
+  apreports(sort: String, limit: Int, start: Int, where: JSON): [Apreport]
+  apsite(id: ID!): Apsite
+  apsites(sort: String, limit: Int, start: Int, where: JSON): [Apsite]
+  aptype(id: ID!): Aptype
+  aptypes(sort: String, limit: Int, start: Int, where: JSON): [Aptype]
   axczfssreport(id: ID!): Axczfssreport
   axczfssreports(sort: String, limit: Int, start: Int, where: JSON): [Axczfssreport]
   bmreport(id: ID!): Bmreport
@@ -6042,6 +6273,33 @@ input updateApiupdateInput {
 
 type updateApiupdatePayload {
   apiupdate: Apiupdate
+}
+
+input updateApreportInput {
+  where: InputID
+  data: editApreportInput
+}
+
+type updateApreportPayload {
+  apreport: Apreport
+}
+
+input updateApsiteInput {
+  where: InputID
+  data: editApsiteInput
+}
+
+type updateApsitePayload {
+  apsite: Apsite
+}
+
+input updateAptypeInput {
+  where: InputID
+  data: editAptypeInput
+}
+
+type updateAptypePayload {
+  aptype: Aptype
 }
 
 input updateAxczfssreportInput {

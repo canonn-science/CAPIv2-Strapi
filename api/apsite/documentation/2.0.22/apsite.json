@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/bmsites": {
+    "/apsites": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Bmsite"
+                    "$ref": "#/components/schemas/Apsite"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Bmsite"
+          "Apsite"
         ],
         "parameters": [
           {
@@ -195,7 +195,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Bmsite"
+                  "$ref": "#/components/schemas/Apsite"
                 }
               }
             }
@@ -233,7 +233,7 @@
         },
         "summary": "",
         "tags": [
-          "Bmsite"
+          "Apsite"
         ],
         "requestBody": {
           "description": "",
@@ -241,14 +241,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewBmsite"
+                "$ref": "#/components/schemas/NewApsite"
               }
             }
           }
         }
       }
     },
-    "/bmsites/count": {
+    "/apsites/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -300,12 +300,12 @@
         },
         "summary": "",
         "tags": [
-          "Bmsite"
+          "Apsite"
         ],
         "parameters": []
       }
     },
-    "/bmsites/{id}": {
+    "/apsites/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -315,7 +315,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Bmsite"
+                  "$ref": "#/components/schemas/Apsite"
                 }
               }
             }
@@ -353,7 +353,7 @@
         },
         "summary": "",
         "tags": [
-          "Bmsite"
+          "Apsite"
         ],
         "parameters": [
           {
@@ -377,7 +377,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Bmsite"
+                  "$ref": "#/components/schemas/Apsite"
                 }
               }
             }
@@ -415,7 +415,7 @@
         },
         "summary": "",
         "tags": [
-          "Bmsite"
+          "Apsite"
         ],
         "requestBody": {
           "description": "",
@@ -423,7 +423,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewBmsite"
+                "$ref": "#/components/schemas/NewApsite"
               }
             }
           }
@@ -489,7 +489,7 @@
         },
         "summary": "",
         "tags": [
-          "Bmsite"
+          "Apsite"
         ],
         "parameters": [
           {
@@ -508,7 +508,7 @@
   },
   "components": {
     "schemas": {
-      "Bmsite": {
+      "Apsite": {
         "required": [
           "id",
           "siteID",
@@ -755,7 +755,7 @@
           }
         }
       },
-      "NewBmsite": {
+      "NewApsite": {
         "required": [
           "siteID",
           "latitude",
@@ -802,7 +802,7 @@
   },
   "tags": [
     {
-      "name": "Bmsite"
+      "name": "Apsite"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/bmtypes": {
+    "/aptypes": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Bmtype"
+                    "$ref": "#/components/schemas/Aptype"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Bmtype"
+          "Aptype"
         ],
         "parameters": [
           {
@@ -195,7 +195,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Bmtype"
+                  "$ref": "#/components/schemas/Aptype"
                 }
               }
             }
@@ -233,7 +233,7 @@
         },
         "summary": "",
         "tags": [
-          "Bmtype"
+          "Aptype"
         ],
         "requestBody": {
           "description": "",
@@ -241,14 +241,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewBmtype"
+                "$ref": "#/components/schemas/NewAptype"
               }
             }
           }
         }
       }
     },
-    "/bmtypes/count": {
+    "/aptypes/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -300,12 +300,12 @@
         },
         "summary": "",
         "tags": [
-          "Bmtype"
+          "Aptype"
         ],
         "parameters": []
       }
     },
-    "/bmtypes/{id}": {
+    "/aptypes/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -315,7 +315,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Bmtype"
+                  "$ref": "#/components/schemas/Aptype"
                 }
               }
             }
@@ -353,7 +353,7 @@
         },
         "summary": "",
         "tags": [
-          "Bmtype"
+          "Aptype"
         ],
         "parameters": [
           {
@@ -377,7 +377,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Bmtype"
+                  "$ref": "#/components/schemas/Aptype"
                 }
               }
             }
@@ -415,7 +415,7 @@
         },
         "summary": "",
         "tags": [
-          "Bmtype"
+          "Aptype"
         ],
         "requestBody": {
           "description": "",
@@ -423,7 +423,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewBmtype"
+                "$ref": "#/components/schemas/NewAptype"
               }
             }
           }
@@ -489,7 +489,7 @@
         },
         "summary": "",
         "tags": [
-          "Bmtype"
+          "Aptype"
         ],
         "parameters": [
           {
@@ -508,7 +508,7 @@
   },
   "components": {
     "schemas": {
-      "Bmtype": {
+      "Aptype": {
         "required": [
           "id",
           "type"
@@ -531,7 +531,7 @@
           }
         }
       },
-      "NewBmtype": {
+      "NewAptype": {
         "required": [
           "type"
         ],
@@ -554,7 +554,7 @@
   },
   "tags": [
     {
-      "name": "Bmtype"
+      "name": "Aptype"
     }
   ]
 }
