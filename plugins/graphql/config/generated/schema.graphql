@@ -464,12 +464,14 @@ type Clientreport {
   updated_at: DateTime!
   cmdrName: String
   isBeta: Boolean
+  autoUpdateDisabled: Boolean
   clientVersion: String
 }
 
 input ClientreportInput {
   cmdrName: String
   isBeta: Boolean
+  autoUpdateDisabled: Boolean
   clientVersion: String
 }
 
@@ -2374,6 +2376,7 @@ input editBttypeInput {
 input editClientreportInput {
   cmdrName: String
   isBeta: Boolean
+  autoUpdateDisabled: Boolean
   clientVersion: String
 }
 
@@ -3340,6 +3343,7 @@ enum ENUM_APREPORT_REPORTSTATUS {
   accepted
   declined
   issue
+  duplicate
 }
 
 enum ENUM_APREPORT_REPORTTYPE {
@@ -3360,6 +3364,7 @@ enum ENUM_AXCZFSSREPORT_REPORTSTATUS {
   accepted
   declined
   issue
+  duplicate
 }
 
 enum ENUM_BMREPORT_REPORTSTATUS {
@@ -3369,6 +3374,7 @@ enum ENUM_BMREPORT_REPORTSTATUS {
   accepted
   declined
   issue
+  duplicate
 }
 
 enum ENUM_BMREPORT_REPORTTYPE {
@@ -3389,6 +3395,7 @@ enum ENUM_BTREPORT_REPORTSTATUS {
   accepted
   declined
   issue
+  duplicate
 }
 
 enum ENUM_BTREPORT_REPORTTYPE {
@@ -3409,6 +3416,7 @@ enum ENUM_CSREPORT_REPORTSTATUS {
   accepted
   declined
   issue
+  duplicate
 }
 
 enum ENUM_CSREPORT_REPORTTYPE {
@@ -3429,6 +3437,7 @@ enum ENUM_FGREPORT_REPORTSTATUS {
   accepted
   declined
   issue
+  duplicate
 }
 
 enum ENUM_FGREPORT_REPORTTYPE {
@@ -3449,6 +3458,7 @@ enum ENUM_FMREPORT_REPORTSTATUS {
   accepted
   declined
   issue
+  duplicate
 }
 
 enum ENUM_FMREPORT_REPORTTYPE {
@@ -3469,6 +3479,7 @@ enum ENUM_GBREPORT_REPORTSTATUS {
   accepted
   declined
   issue
+  duplicate
 }
 
 enum ENUM_GBREPORT_REPORTTYPE {
@@ -3489,6 +3500,7 @@ enum ENUM_GENREPORT_REPORTSTATUS {
   accepted
   declined
   issue
+  duplicate
 }
 
 enum ENUM_GENREPORT_REPORTTYPE {
@@ -3509,6 +3521,7 @@ enum ENUM_GRREPORT_REPORTSTATUS {
   accepted
   declined
   issue
+  duplicate
 }
 
 enum ENUM_GRREPORT_REPORTTYPE {
@@ -3535,6 +3548,7 @@ enum ENUM_GSREPORT_REPORTSTATUS {
   accepted
   declined
   issue
+  duplicate
 }
 
 enum ENUM_GSREPORT_REPORTTYPE {
@@ -3565,6 +3579,7 @@ enum ENUM_GVREPORT_REPORTSTATUS {
   accepted
   declined
   issue
+  duplicate
 }
 
 enum ENUM_GVREPORT_REPORTTYPE {
@@ -3585,6 +3600,7 @@ enum ENUM_GYREPORT_REPORTSTATUS {
   accepted
   declined
   issue
+  duplicate
 }
 
 enum ENUM_GYREPORT_REPORTTYPE {
@@ -3605,6 +3621,7 @@ enum ENUM_HDREPORT_REPORTSTATUS {
   accepted
   declined
   issue
+  duplicate
 }
 
 enum ENUM_LCFSSREPORT_REPORTSTATUS {
@@ -3614,6 +3631,7 @@ enum ENUM_LCFSSREPORT_REPORTSTATUS {
   accepted
   declined
   issue
+  duplicate
 }
 
 enum ENUM_LSREPORT_REPORTSTATUS {
@@ -3623,6 +3641,7 @@ enum ENUM_LSREPORT_REPORTSTATUS {
   accepted
   declined
   issue
+  duplicate
 }
 
 enum ENUM_LSREPORT_REPORTTYPE {
@@ -3643,6 +3662,7 @@ enum ENUM_NHSSREPORT_REPORTSTATUS {
   accepted
   declined
   issue
+  duplicate
 }
 
 enum ENUM_REPORTCODEX_REPORTSTATUS {
@@ -3652,6 +3672,7 @@ enum ENUM_REPORTCODEX_REPORTSTATUS {
   accepted
   declined
   issue
+  duplicate
 }
 
 enum ENUM_REPORTEVENT_REPORTSTATUS {
@@ -3661,6 +3682,7 @@ enum ENUM_REPORTEVENT_REPORTSTATUS {
   accepted
   declined
   issue
+  duplicate
 }
 
 enum ENUM_REPORTFSS_REPORTSTATUS {
@@ -3670,6 +3692,7 @@ enum ENUM_REPORTFSS_REPORTSTATUS {
   accepted
   declined
   issue
+  duplicate
 }
 
 enum ENUM_REPORTTYPE_JOURNALTYPE {
@@ -3698,6 +3721,7 @@ enum ENUM_TBREPORT_REPORTSTATUS {
   accepted
   declined
   issue
+  duplicate
 }
 
 enum ENUM_TBREPORT_REPORTTYPE {
@@ -3729,6 +3753,7 @@ enum ENUM_TSREPORT_REPORTSTATUS {
   accepted
   declined
   issue
+  duplicate
 }
 
 enum ENUM_TSREPORT_REPORTTYPE {
@@ -3754,6 +3779,7 @@ enum ENUM_TWREPORT_REPORTSTATUS {
   accepted
   declined
   issue
+  duplicate
 }
 
 enum ENUM_TWREPORT_REPORTTYPE {
