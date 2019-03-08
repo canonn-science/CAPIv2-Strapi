@@ -13,7 +13,7 @@
       "name": "GNU-GPLv3",
       "url": "https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE"
     },
-    "x-generation-date": "02/25/2019 11:43:06 PM"
+    "x-generation-date": "03/08/2019 6:32:57 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -1097,6 +1097,1550 @@
         ],
         "security": [
           "updateLogWrite"
+        ]
+      }
+    },
+    "/apreports": {
+      "get": {
+        "deprecated": false,
+        "description": "Get all AP report entries",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Apreport"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Amphora Plant Reports"
+        ],
+        "parameters": [
+          {
+            "name": "_limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of results possible",
+            "schema": {
+              "type": "integer"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_sort",
+            "in": "query",
+            "required": false,
+            "description": "Sort according to a specific field.",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_start",
+            "in": "query",
+            "required": false,
+            "description": "Skip a specific number of entries (especially useful for pagination)",
+            "schema": {
+              "type": "integer"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "=",
+            "in": "query",
+            "required": false,
+            "description": "Get entries that matches exactly your input",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_ne",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are not equals to something",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_lt",
+            "in": "query",
+            "required": false,
+            "description": "Get record that are lower than a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_lte",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are lower than or equal to a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_gt",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are greater than a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_gte",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are greater than  or equal a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_contains",
+            "in": "query",
+            "required": false,
+            "description": "Get records that contains a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_containss",
+            "in": "query",
+            "required": false,
+            "description": "Get records that contains (case sensitive) a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_in",
+            "in": "query",
+            "required": false,
+            "description": "Get records that matches any value in the array of values",
+            "schema": {
+              "type": "array"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_nin",
+            "in": "query",
+            "required": false,
+            "description": "Get records that doesn't match any value in the array of values",
+            "schema": {
+              "type": "array"
+            },
+            "deprecated": false
+          }
+        ],
+        "security": []
+      },
+      "post": {
+        "deprecated": false,
+        "description": "Create a new AP report entry",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Apreport"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Amphora Plant Reports"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewApreport"
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/apreports/count": {
+      "get": {
+        "deprecated": false,
+        "description": "Get a count of all AP report entries",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "count": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Amphora Plant Reports"
+        ],
+        "parameters": [],
+        "security": []
+      }
+    },
+    "/apreports/{id}": {
+      "get": {
+        "deprecated": false,
+        "description": "Get a AP report by id",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Apreport"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Amphora Plant Reports"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": []
+      },
+      "put": {
+        "deprecated": false,
+        "description": "Update a AP report by id",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Apreport"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Amphora Plant Reports"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewApreport"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": []
+      },
+      "delete": {
+        "deprecated": false,
+        "description": "Delete a AP report by id",
+        "responses": {
+          "200": {
+            "description": "deletes a single record based on the ID supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Amphora Plant Reports"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          "reportDelete"
+        ]
+      }
+    },
+    "/apsites": {
+      "get": {
+        "deprecated": false,
+        "description": "Get all AP Site entries",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Apsite"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Amphora Plants"
+        ],
+        "parameters": [
+          {
+            "name": "_limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of results possible",
+            "schema": {
+              "type": "integer"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_sort",
+            "in": "query",
+            "required": false,
+            "description": "Sort according to a specific field.",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_start",
+            "in": "query",
+            "required": false,
+            "description": "Skip a specific number of entries (especially useful for pagination)",
+            "schema": {
+              "type": "integer"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "=",
+            "in": "query",
+            "required": false,
+            "description": "Get entries that matches exactly your input",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_ne",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are not equals to something",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_lt",
+            "in": "query",
+            "required": false,
+            "description": "Get record that are lower than a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_lte",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are lower than or equal to a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_gt",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are greater than a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_gte",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are greater than  or equal a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_contains",
+            "in": "query",
+            "required": false,
+            "description": "Get records that contains a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_containss",
+            "in": "query",
+            "required": false,
+            "description": "Get records that contains (case sensitive) a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_in",
+            "in": "query",
+            "required": false,
+            "description": "Get records that matches any value in the array of values",
+            "schema": {
+              "type": "array"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_nin",
+            "in": "query",
+            "required": false,
+            "description": "Get records that doesn't match any value in the array of values",
+            "schema": {
+              "type": "array"
+            },
+            "deprecated": false
+          }
+        ],
+        "security": []
+      },
+      "post": {
+        "deprecated": false,
+        "description": "Create a new AP Site entry",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Apsite"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Amphora Plants"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewApsite"
+              }
+            }
+          }
+        },
+        "security": [
+          "siteWrite"
+        ]
+      }
+    },
+    "/apsites/count": {
+      "get": {
+        "deprecated": false,
+        "description": "Get a count of all AP Site entries",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "count": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Amphora Plants"
+        ],
+        "parameters": [],
+        "security": []
+      }
+    },
+    "/apsites/{id}": {
+      "get": {
+        "deprecated": false,
+        "description": "Get a AP Site by id",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Apsite"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Amphora Plants"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": []
+      },
+      "put": {
+        "deprecated": false,
+        "description": "Update a AP Site by id",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Apsite"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Amphora Plants"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewApsite"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      },
+      "delete": {
+        "deprecated": false,
+        "description": "Delete a AP Site by id",
+        "responses": {
+          "200": {
+            "description": "deletes a single record based on the ID supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Amphora Plants"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          "siteDelete"
+        ]
+      }
+    },
+    "/aptypes": {
+      "get": {
+        "deprecated": false,
+        "description": "Get all AP Type entries",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Aptype"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Amphora Plants"
+        ],
+        "parameters": [
+          {
+            "name": "_limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of results possible",
+            "schema": {
+              "type": "integer"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_sort",
+            "in": "query",
+            "required": false,
+            "description": "Sort according to a specific field.",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_start",
+            "in": "query",
+            "required": false,
+            "description": "Skip a specific number of entries (especially useful for pagination)",
+            "schema": {
+              "type": "integer"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "=",
+            "in": "query",
+            "required": false,
+            "description": "Get entries that matches exactly your input",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_ne",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are not equals to something",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_lt",
+            "in": "query",
+            "required": false,
+            "description": "Get record that are lower than a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_lte",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are lower than or equal to a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_gt",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are greater than a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_gte",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are greater than  or equal a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_contains",
+            "in": "query",
+            "required": false,
+            "description": "Get records that contains a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_containss",
+            "in": "query",
+            "required": false,
+            "description": "Get records that contains (case sensitive) a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_in",
+            "in": "query",
+            "required": false,
+            "description": "Get records that matches any value in the array of values",
+            "schema": {
+              "type": "array"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_nin",
+            "in": "query",
+            "required": false,
+            "description": "Get records that doesn't match any value in the array of values",
+            "schema": {
+              "type": "array"
+            },
+            "deprecated": false
+          }
+        ],
+        "security": []
+      },
+      "post": {
+        "deprecated": false,
+        "description": "Create a new AP Type entry",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Aptype"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Amphora Plants"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewAptype"
+              }
+            }
+          }
+        },
+        "security": [
+          "siteWrite"
+        ]
+      }
+    },
+    "/aptypes/count": {
+      "get": {
+        "deprecated": false,
+        "description": "Get a count of all AP Type entries",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "count": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Amphora Plants"
+        ],
+        "parameters": [],
+        "security": []
+      }
+    },
+    "/aptypes/{id}": {
+      "get": {
+        "deprecated": false,
+        "description": "Get a AP Type by id",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Aptype"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Amphora Plants"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": []
+      },
+      "put": {
+        "deprecated": false,
+        "description": "Update a AP Type by id",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Aptype"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Amphora Plants"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewAptype"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      },
+      "delete": {
+        "deprecated": false,
+        "description": "Delete a AP Type by id",
+        "responses": {
+          "200": {
+            "description": "deletes a single record based on the ID supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Amphora Plants"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ]
       }
     },
@@ -48767,6 +50311,642 @@
           }
         }
       },
+      "Apreport": {
+        "required": [
+          "id",
+          "userType",
+          "reportType",
+          "systemName",
+          "bodyName",
+          "latitude",
+          "longitude",
+          "cmdrName",
+          "clientVersion",
+          "reportStatus"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "userType": {
+            "type": "string",
+            "default": "console",
+            "enum": [
+              "console",
+              "pc"
+            ]
+          },
+          "reportType": {
+            "type": "string",
+            "default": "new",
+            "enum": [
+              "new",
+              "update",
+              "error"
+            ]
+          },
+          "systemName": {
+            "type": "string"
+          },
+          "systemAddress": {
+            "type": "biginteger"
+          },
+          "regionID": {
+            "type": "integer"
+          },
+          "coordX": {
+            "type": "number"
+          },
+          "coordY": {
+            "type": "number"
+          },
+          "coordZ": {
+            "type": "number"
+          },
+          "bodyName": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "number"
+          },
+          "longitude": {
+            "type": "number"
+          },
+          "type": {
+            "type": "string"
+          },
+          "frontierID": {
+            "type": "integer"
+          },
+          "cmdrName": {
+            "type": "string"
+          },
+          "cmdrComment": {
+            "type": "string"
+          },
+          "isBeta": {
+            "type": "boolean",
+            "default": false
+          },
+          "clientVersion": {
+            "type": "string"
+          },
+          "screenshot": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "name",
+                "hash",
+                "mime",
+                "size",
+                "url",
+                "provider"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "hash": {
+                  "type": "string"
+                },
+                "sha256": {
+                  "type": "string"
+                },
+                "ext": {
+                  "type": "string"
+                },
+                "mime": {
+                  "type": "string"
+                },
+                "size": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "provider": {
+                  "type": "string"
+                },
+                "public_id": {
+                  "type": "string"
+                },
+                "related": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "reportStatus": {
+            "type": "string",
+            "default": "pending",
+            "enum": [
+              "pending",
+              "updated",
+              "verified",
+              "accepted",
+              "declined",
+              "issue",
+              "duplicate"
+            ]
+          },
+          "reportComment": {
+            "type": "string"
+          },
+          "voteCount": {
+            "type": "integer"
+          },
+          "added": {
+            "type": "boolean",
+            "default": false
+          },
+          "site": {
+            "required": [
+              "id",
+              "siteID",
+              "latitude",
+              "longitude"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "system": {
+                "type": "string"
+              },
+              "body": {
+                "type": "string"
+              },
+              "siteID": {
+                "type": "integer"
+              },
+              "extoolID": {
+                "type": "integer"
+              },
+              "latitude": {
+                "type": "number"
+              },
+              "longitude": {
+                "type": "number"
+              },
+              "type": {
+                "type": "string"
+              },
+              "frontierID": {
+                "type": "integer"
+              },
+              "verified": {
+                "type": "boolean"
+              },
+              "visible": {
+                "type": "boolean"
+              },
+              "discoveredBy": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "NewApreport": {
+        "required": [
+          "userType",
+          "reportType",
+          "systemName",
+          "bodyName",
+          "latitude",
+          "longitude",
+          "cmdrName",
+          "clientVersion",
+          "reportStatus"
+        ],
+        "properties": {
+          "userType": {
+            "type": "string",
+            "default": "console",
+            "enum": [
+              "console",
+              "pc"
+            ]
+          },
+          "reportType": {
+            "type": "string",
+            "default": "new",
+            "enum": [
+              "new",
+              "update",
+              "error"
+            ]
+          },
+          "systemName": {
+            "type": "string"
+          },
+          "systemAddress": {
+            "type": "biginteger"
+          },
+          "regionID": {
+            "type": "integer"
+          },
+          "coordX": {
+            "type": "number"
+          },
+          "coordY": {
+            "type": "number"
+          },
+          "coordZ": {
+            "type": "number"
+          },
+          "bodyName": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "number"
+          },
+          "longitude": {
+            "type": "number"
+          },
+          "type": {
+            "type": "string"
+          },
+          "frontierID": {
+            "type": "integer"
+          },
+          "cmdrName": {
+            "type": "string"
+          },
+          "cmdrComment": {
+            "type": "string"
+          },
+          "isBeta": {
+            "type": "boolean",
+            "default": false
+          },
+          "clientVersion": {
+            "type": "string"
+          },
+          "reportStatus": {
+            "type": "string",
+            "default": "pending",
+            "enum": [
+              "pending",
+              "updated",
+              "verified",
+              "accepted",
+              "declined",
+              "issue",
+              "duplicate"
+            ]
+          },
+          "reportComment": {
+            "type": "string"
+          },
+          "voteCount": {
+            "type": "integer"
+          },
+          "added": {
+            "type": "boolean",
+            "default": false
+          },
+          "site": {
+            "type": "string"
+          }
+        }
+      },
+      "Apsite": {
+        "required": [
+          "id",
+          "siteID",
+          "latitude",
+          "longitude"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "system": {
+            "required": [
+              "id",
+              "systemName"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "systemName": {
+                "type": "string"
+              },
+              "id64": {
+                "type": "biginteger"
+              },
+              "edsmID": {
+                "type": "integer"
+              },
+              "edsmCoordX": {
+                "type": "number"
+              },
+              "edsmCoordY": {
+                "type": "number"
+              },
+              "edsmCoordZ": {
+                "type": "number"
+              },
+              "edsmCoordLocked": {
+                "type": "boolean"
+              },
+              "missingSkipCount": {
+                "type": "integer"
+              },
+              "bodies": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "region": {
+                "type": "string"
+              },
+              "primaryStar": {
+                "type": "json"
+              }
+            }
+          },
+          "body": {
+            "required": [
+              "id",
+              "bodyName"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "system": {
+                "type": "string"
+              },
+              "bodyName": {
+                "type": "string"
+              },
+              "id64": {
+                "type": "biginteger"
+              },
+              "edsmID": {
+                "type": "integer"
+              },
+              "bodyID": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "string"
+              },
+              "subType": {
+                "type": "string"
+              },
+              "offset": {
+                "type": "integer"
+              },
+              "distanceToArrival": {
+                "type": "number"
+              },
+              "isMainStar": {
+                "type": "boolean"
+              },
+              "isScoopable": {
+                "type": "boolean"
+              },
+              "isLandable": {
+                "type": "boolean"
+              },
+              "age": {
+                "type": "integer"
+              },
+              "luminosity": {
+                "type": "string"
+              },
+              "absoluteMagnitude": {
+                "type": "number"
+              },
+              "solarMasses": {
+                "type": "number"
+              },
+              "solarRadius": {
+                "type": "number"
+              },
+              "gravity": {
+                "type": "number"
+              },
+              "earthMasses": {
+                "type": "number"
+              },
+              "radius": {
+                "type": "number"
+              },
+              "surfaceTemperature": {
+                "type": "number"
+              },
+              "surfacePressure": {
+                "type": "number"
+              },
+              "volcanismType": {
+                "type": "string"
+              },
+              "atmosphereType": {
+                "type": "string"
+              },
+              "terraformingState": {
+                "type": "string"
+              },
+              "orbitalPeriod": {
+                "type": "number"
+              },
+              "semiMajorAxis": {
+                "type": "number"
+              },
+              "orbitalEccentricity": {
+                "type": "number"
+              },
+              "orbitalInclination": {
+                "type": "number"
+              },
+              "argOfPeriapsis": {
+                "type": "number"
+              },
+              "rotationalPeriod": {
+                "type": "number"
+              },
+              "rotationalPeriodTidallyLocked": {
+                "type": "boolean"
+              },
+              "axialTilt": {
+                "type": "number"
+              },
+              "solidComposition": {
+                "type": "json"
+              },
+              "atmosphere": {
+                "type": "json"
+              },
+              "material": {
+                "type": "json"
+              },
+              "missingSkipCount": {
+                "type": "integer"
+              },
+              "rings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "siteID": {
+            "type": "integer"
+          },
+          "extoolID": {
+            "type": "integer"
+          },
+          "latitude": {
+            "type": "number"
+          },
+          "longitude": {
+            "type": "number"
+          },
+          "type": {
+            "required": [
+              "id",
+              "type"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "journalName": {
+                "type": "string"
+              },
+              "journalID": {
+                "type": "integer"
+              }
+            }
+          },
+          "frontierID": {
+            "type": "integer"
+          },
+          "verified": {
+            "type": "boolean"
+          },
+          "visible": {
+            "type": "boolean",
+            "default": true
+          },
+          "discoveredBy": {
+            "required": [
+              "id",
+              "cmdrName"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "cmdrName": {
+                "type": "string"
+              },
+              "cmdrkill": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "NewApsite": {
+        "required": [
+          "siteID",
+          "latitude",
+          "longitude"
+        ],
+        "properties": {
+          "system": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "siteID": {
+            "type": "integer"
+          },
+          "extoolID": {
+            "type": "integer"
+          },
+          "latitude": {
+            "type": "number"
+          },
+          "longitude": {
+            "type": "number"
+          },
+          "type": {
+            "type": "string"
+          },
+          "frontierID": {
+            "type": "integer"
+          },
+          "verified": {
+            "type": "boolean"
+          },
+          "visible": {
+            "type": "boolean",
+            "default": true
+          },
+          "discoveredBy": {
+            "type": "string"
+          }
+        }
+      },
+      "Aptype": {
+        "required": [
+          "id",
+          "type"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "default": ""
+          },
+          "journalName": {
+            "type": "string",
+            "default": ""
+          },
+          "journalID": {
+            "type": "integer",
+            "default": ""
+          }
+        }
+      },
+      "NewAptype": {
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "default": ""
+          },
+          "journalName": {
+            "type": "string",
+            "default": ""
+          },
+          "journalID": {
+            "type": "integer",
+            "default": ""
+          }
+        }
+      },
       "Axczfssreport": {
         "required": [
           "id",
@@ -48806,7 +50986,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "rawJson": {
@@ -48849,7 +51030,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "rawJson": {
@@ -48995,7 +51177,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -49141,7 +51324,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -49953,7 +52137,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -50099,7 +52284,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -50463,6 +52649,9 @@
           "isBeta": {
             "type": "boolean"
           },
+          "autoUpdateDisabled": {
+            "type": "boolean"
+          },
           "clientVersion": {
             "type": "string"
           }
@@ -50474,6 +52663,9 @@
             "type": "string"
           },
           "isBeta": {
+            "type": "boolean"
+          },
+          "autoUpdateDisabled": {
             "type": "boolean"
           },
           "clientVersion": {
@@ -50827,7 +53019,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -50974,7 +53167,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -51620,7 +53814,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -51766,7 +53961,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -52254,7 +54450,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -52400,7 +54597,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -53147,7 +55345,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -53290,7 +55489,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -53912,7 +56112,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -54046,7 +56247,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -55145,7 +57347,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -55325,7 +57528,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -56537,7 +58741,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -56727,7 +58932,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -57259,7 +59465,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -57405,7 +59612,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -57891,7 +60099,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -58037,7 +60246,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -58472,7 +60682,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -58543,7 +60754,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -58758,7 +60970,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "rawJson": {
@@ -58801,7 +61014,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "rawJson": {
@@ -58947,7 +61161,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -59093,7 +61308,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -59479,7 +61695,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -59547,7 +61764,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -60044,7 +62262,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "rawJson": {
@@ -60150,7 +62369,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "rawJson": {
@@ -60213,7 +62433,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "rawJson": {
@@ -60272,7 +62493,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "rawJson": {
@@ -60351,7 +62573,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "rawJson": {
@@ -60426,7 +62649,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "rawJson": {
@@ -61117,7 +63341,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -61291,7 +63516,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -61791,7 +64017,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -61945,7 +64172,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -62568,7 +64796,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -62715,7 +64944,8 @@
               "verified",
               "accepted",
               "declined",
-              "issue"
+              "issue",
+              "duplicate"
             ]
           },
           "reportComment": {
@@ -63371,6 +65601,14 @@
     {
       "name": "Canonn Use",
       "description": "Endpoints used by Canonn for updating or maintaining the API"
+    },
+    {
+      "name": "Amphora Plant Reports",
+      "description": "Public Reporting of AP"
+    },
+    {
+      "name": "Amphora Plants",
+      "description": "Code Name - AP"
     },
     {
       "name": "AX Combat Zone Reports",

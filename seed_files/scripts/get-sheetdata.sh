@@ -27,6 +27,7 @@ currentDate=`date` && echo "exportTSStatus - $currentDate" >> ../CSV/updated.md 
 ## baseTypeData
 echo "" >> ../CSV/updated.md && echo "baseTypeData" >> ../CSV/updated.md
 currentDate=`date` && echo "exportReportType - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/baseTypeData/reporttypes.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ2ABT8JHYMPuJq1QoQK_N_DCBhRg7_NTcXsZV0twrjcW5SG8brdwK9gwneeqaPuAncilGTG8fND0zb/pub?gid=0&single=true&output=csv'
+currentDate=`date` && echo "exportAPType - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/baseTypeData/aptypes.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vST00fFipDsUlX1Zvf6nPDf_hgU-9g1fQr6Of6caIaV7z2T3flYBTnG1sIF455YWUxqWLBxe865lPj9/pub?gid=0&single=true&output=csv'
 currentDate=`date` && echo "exportBMType - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/baseTypeData/bmtypes.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSjXXP6ETXZs2xVed--4pAlWUzb14qFpfj-uLixQDUn4fq-UiJdBa2yOhEI58L6QaQ86T4gSVs1vZmL/pub?gid=0&single=true&output=csv'
 currentDate=`date` && echo "exportBTType - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/baseTypeData/bttypes.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS3FQ_avw1rKokIzWgTLALJCa2Vgi-1qtrOt0RUq_tbI-O7wKRccGYt_ax4tGYfnRPBeJbxAJ5qDfWN/pub?gid=0&single=true&output=csv'
 currentDate=`date` && echo "exportCSType - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/baseTypeData/cstypes.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQjeDHnk0a2QjmAaypPQmJqbrY89cTETl4pm6LhqD8XTMShDYQBxaey8AMXrqIS7PNwh7H1N2RD4AMn/pub?gid=0&single=true&output=csv'
@@ -56,6 +57,7 @@ sleep 1
 
 ## exampleSiteData
 echo "" >> ../CSV/updated.md && echo "exampleSiteData" >> ../CSV/updated.md
+currentDate=`date` && echo "exportAP - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/exampleSiteData/apsites.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR9uX-Iyf-gdvmxdbieWsfIU0BdbgGibHPXshUJWLhlBshhQQq0fsRxCAXmrEb64a8FjZXxdM4HqblZ/pub?gid=0&single=true&output=csv'
 currentDate=`date` && echo "exportBM - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/exampleSiteData/bmsites.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRg0MK3POtXYWmb7WP04g83W8mY6eI5SBDbCuj3T3shi5-D9KyTenBbUSZAB4L1AJ-xqmfqiT2c51cm/pub?gid=0&single=true&output=csv'
 currentDate=`date` && echo "exportBT - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/exampleSiteData/btsites.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTwBVREDc6KaznttjmAcDS9gjrqpYtwkw2iFqXQIB-lHD5EovKFbLx5S0SEd6QPZ08vpjWWAo5kSfvq/pub?gid=0&single=true&output=csv'
 currentDate=`date` && echo "exportCS - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/exampleSiteData/cssites.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR-VjF0wl60DLInMhhWTKwOmuwGkYesbw5tLA7GchgmQs-3HATEH_y39CpV2I2738JSkbB3tMaaGkfw/pub?gid=0&single=true&output=csv'
