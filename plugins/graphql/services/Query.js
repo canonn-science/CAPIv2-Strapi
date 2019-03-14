@@ -228,7 +228,7 @@ module.exports = {
 
     return async (obj, options = {}, { context }) => {
       const _options = _.cloneDeep(options);
-
+      
       // Hack to be able to handle permissions for each query.
       const ctx = Object.assign(_.clone(context), {
         request: Object.assign(_.clone(context.request), {

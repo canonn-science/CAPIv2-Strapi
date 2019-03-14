@@ -121,7 +121,7 @@ module.exports = {
     const data = _.omit(values, Grtype.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = Grtype.forge(params).save(data);
+    const entry = await Grtype.forge(params).save(data);
 
     // Create relational data and return the entry.
     return Grtype.updateRelations(Object.assign(params, { values: relations }));
@@ -237,7 +237,7 @@ module.exports = {
         qb.limit(_.toNumber(filters.limit));
       }
     }).fetchAll({
-      width: populate
+      withRelated: populate
     });
   }
 };

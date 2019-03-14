@@ -1,27 +1,27 @@
 {
-  "_from": "strapi-plugin-users-permissions@3.0.0-alpha.24.1",
-  "_id": "strapi-plugin-users-permissions@3.0.0-alpha.24.1",
+  "_from": "strapi-plugin-users-permissions@3.0.0-alpha.25",
+  "_id": "strapi-plugin-users-permissions@3.0.0-alpha.25",
   "_inBundle": false,
-  "_integrity": "sha512-YiVMv4QMFf+5lAkFiOPwbmBCW6ICf4vCat2oCwuuYL50hGdiB970aeR01r+p5eIMYWejaF5vC3nvf9JP+2cwYg==",
+  "_integrity": "sha512-2R18jWnUIPm7hWwXuUeK+LxolvBDfRk/fcqbQYLakOktnrBjNu1VITWKE4pVlZQcnGNTFfkut1OUKPjuehrq+w==",
   "_location": "/strapi-plugin-users-permissions",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "strapi-plugin-users-permissions@3.0.0-alpha.24.1",
+    "raw": "strapi-plugin-users-permissions@3.0.0-alpha.25",
     "name": "strapi-plugin-users-permissions",
     "escapedName": "strapi-plugin-users-permissions",
-    "rawSpec": "3.0.0-alpha.24.1",
+    "rawSpec": "3.0.0-alpha.25",
     "saveSpec": null,
-    "fetchSpec": "3.0.0-alpha.24.1"
+    "fetchSpec": "3.0.0-alpha.25"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "https://registry.npmjs.org/strapi-plugin-users-permissions/-/strapi-plugin-users-permissions-3.0.0-alpha.24.1.tgz",
-  "_shasum": "a41ae8c6f93af58f0fec2afcd63a49861906d776",
-  "_spec": "strapi-plugin-users-permissions@3.0.0-alpha.24.1",
-  "_where": "/nixstorage/Github/capi/CAPIv2-Strapi",
+  "_resolved": "https://registry.npmjs.org/strapi-plugin-users-permissions/-/strapi-plugin-users-permissions-3.0.0-alpha.25.tgz",
+  "_shasum": "6a2079e494a88d7c295d7c1544ca38dcf8d69d0b",
+  "_spec": "strapi-plugin-users-permissions@3.0.0-alpha.25",
+  "_where": "/media/nixstorage/github/canonn/CAPIv2-Strapi",
   "author": {
     "name": "Strapi team",
     "email": "hi@strapi.io",
@@ -39,13 +39,13 @@
     "koa2-ratelimit": "^0.6.1",
     "purest": "^2.0.1",
     "request": "^2.83.0",
-    "strapi-utils": "3.0.0-alpha.24.1",
+    "strapi-utils": "3.0.0-alpha.25",
     "uuid": "^3.1.0"
   },
   "deprecated": false,
   "description": "Protect your API with a full-authentication process based on JWT",
   "devDependencies": {
-    "strapi-helper-plugin": "3.0.0-alpha.24.1"
+    "strapi-helper-plugin": "3.0.0-alpha.25"
   },
   "engines": {
     "node": ">= 10.0.0",
@@ -77,12 +77,12 @@
     "prepublishOnly": "IS_MONOREPO=true npm run build",
     "prettier": "node ./node_modules/strapi-helper-plugin/node_modules/.bin/prettier --single-quote --trailing-comma es5 --write \"{admin,__{tests,mocks}__}/**/*.js\"",
     "start": "cross-env NODE_ENV=development ./node_modules/strapi-helper-plugin/lib/server",
-    "test": "echo \"Error: no test specified\""
+    "test": "echo \"no tests yet\""
   },
   "strapi": {
     "name": "Roles & Permissions",
     "icon": "users",
     "description": "users-permissions.plugin.description"
   },
-  "version": "3.0.0-alpha.24.1"
+  "version": "3.0.0-alpha.25"
 }

@@ -31,7 +31,7 @@ module.exports = {
 
     return Apreport.query(function(qb) {
       _.forEach(filters.where, (where, key) => {
-        if (_.isArray(where.value) && where.symbol !== 'IN') {
+        if (_.isArray(where.value) && where.symbol !== 'IN' && where.symbol !== 'NOT IN') {
           for (const value in where.value) {
             qb[value ? 'where' : 'orWhere'](key, where.symbol, where.value[value])
           }
@@ -121,7 +121,7 @@ module.exports = {
     const data = _.omit(values, Apreport.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = Apreport.forge(params).save(data);
+    const entry = await Apreport.forge(params).save(data);
 
     // Create relational data and return the entry.
     return Apreport.updateRelations(Object.assign(params, { values: relations }));
@@ -237,7 +237,7 @@ module.exports = {
         qb.limit(_.toNumber(filters.limit));
       }
     }).fetchAll({
-      width: populate
+      withRelated: populate
     });
   }
 };
