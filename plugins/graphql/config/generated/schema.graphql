@@ -46,7 +46,7 @@ type Apreport {
   userType: ENUM_APREPORT_USERTYPE!
   reportType: ENUM_APREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -72,7 +72,7 @@ input ApreportInput {
   userType: ENUM_APREPORT_USERTYPE!
   reportType: ENUM_APREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -147,7 +147,7 @@ type Axczfssreport {
   updated_at: DateTime!
   cmdrName: String
   systemName: String
-  systemAddress: String
+  systemAddress: Int
   signalName: String
   signalNameLocalised: String
   isBeta: Boolean
@@ -159,7 +159,7 @@ type Axczfssreport {
 input AxczfssreportInput {
   cmdrName: String
   systemName: String
-  systemAddress: String
+  systemAddress: Int
   signalName: String
   signalNameLocalised: String
   isBeta: Boolean
@@ -176,7 +176,7 @@ type Bmreport {
   userType: ENUM_BMREPORT_USERTYPE!
   reportType: ENUM_BMREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -202,7 +202,7 @@ input BmreportInput {
   userType: ENUM_BMREPORT_USERTYPE!
   reportType: ENUM_BMREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -277,7 +277,7 @@ type Body {
   updated_at: DateTime!
   system: System
   bodyName: String!
-  id64: String
+  id64: Int
   edsmID: Int
   bodyID: Int
   type: String
@@ -318,7 +318,7 @@ type Body {
 input BodyInput {
   system: ID
   bodyName: String!
-  id64: String
+  id64: Int
   edsmID: Int
   bodyID: Int
   type: String
@@ -364,7 +364,7 @@ type Btreport {
   userType: ENUM_BTREPORT_USERTYPE!
   reportType: ENUM_BTREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -390,7 +390,7 @@ input BtreportInput {
   userType: ENUM_BTREPORT_USERTYPE!
   reportType: ENUM_BTREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -1306,7 +1306,7 @@ type Csreport {
   userType: ENUM_CSREPORT_USERTYPE!
   reportType: ENUM_CSREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -1332,7 +1332,7 @@ input CsreportInput {
   userType: ENUM_CSREPORT_USERTYPE!
   reportType: ENUM_CSREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -2186,7 +2186,7 @@ input editApreportInput {
   userType: ENUM_APREPORT_USERTYPE
   reportType: ENUM_APREPORT_REPORTTYPE
   systemName: String
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -2231,7 +2231,7 @@ input editAptypeInput {
 input editAxczfssreportInput {
   cmdrName: String
   systemName: String
-  systemAddress: String
+  systemAddress: Int
   signalName: String
   signalNameLocalised: String
   isBeta: Boolean
@@ -2244,7 +2244,7 @@ input editBmreportInput {
   userType: ENUM_BMREPORT_USERTYPE
   reportType: ENUM_BMREPORT_REPORTTYPE
   systemName: String
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -2289,7 +2289,7 @@ input editBmtypeInput {
 input editBodyInput {
   system: ID
   bodyName: String
-  id64: String
+  id64: Int
   edsmID: Int
   bodyID: Int
   type: String
@@ -2331,7 +2331,7 @@ input editBtreportInput {
   userType: ENUM_BTREPORT_USERTYPE
   reportType: ENUM_BTREPORT_REPORTTYPE
   systemName: String
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -2410,7 +2410,7 @@ input editCsreportInput {
   userType: ENUM_CSREPORT_USERTYPE
   reportType: ENUM_CSREPORT_REPORTTYPE
   systemName: String
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -2486,7 +2486,7 @@ input editFgreportInput {
   userType: ENUM_FGREPORT_USERTYPE
   reportType: ENUM_FGREPORT_REPORTTYPE
   systemName: String
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -2545,7 +2545,7 @@ input editFmreportInput {
   userType: ENUM_FMREPORT_USERTYPE
   reportType: ENUM_FMREPORT_REPORTTYPE
   systemName: String
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -2599,7 +2599,7 @@ input editGbreportInput {
   userType: ENUM_GBREPORT_USERTYPE
   reportType: ENUM_GBREPORT_REPORTTYPE
   systemName: String
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -2644,7 +2644,7 @@ input editGenreportInput {
   userType: ENUM_GENREPORT_USERTYPE
   reportType: ENUM_GENREPORT_REPORTTYPE
   systemName: String
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -2727,7 +2727,7 @@ input editGrreportInput {
   userType: ENUM_GRREPORT_USERTYPE
   reportType: ENUM_GRREPORT_REPORTTYPE
   systemName: String
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -2821,7 +2821,7 @@ input editGsreportInput {
   userType: ENUM_GSREPORT_USERTYPE
   reportType: ENUM_GSREPORT_REPORTTYPE
   systemName: String
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -2869,7 +2869,7 @@ input editGvreportInput {
   userType: ENUM_GVREPORT_USERTYPE
   reportType: ENUM_GVREPORT_REPORTTYPE
   systemName: String
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -2915,7 +2915,7 @@ input editGyreportInput {
   userType: ENUM_GYREPORT_USERTYPE
   reportType: ENUM_GYREPORT_REPORTTYPE
   systemName: String
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -2994,7 +2994,7 @@ input editKillreportInput {
 input editLcfssreportInput {
   cmdrName: String
   systemName: String
-  systemAddress: String
+  systemAddress: Int
   signalName: String
   signalNameLocalised: String
   isBeta: Boolean
@@ -3007,7 +3007,7 @@ input editLsreportInput {
   userType: ENUM_LSREPORT_USERTYPE
   reportType: ENUM_LSREPORT_REPORTTYPE
   systemName: String
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -3088,7 +3088,7 @@ input editReportcodexInput {
   cmdrName: String
   systemName: String
   bodyName: String
-  systemAddress: String
+  systemAddress: Int
   coordX: Float
   coordY: Float
   coordZ: Float
@@ -3127,7 +3127,7 @@ input editReporteventInput {
 input editReportfssInput {
   cmdrName: String
   systemName: String
-  systemAddress: String
+  systemAddress: Int
   signalName: String
   signalNameLocalised: String
   ussType: String
@@ -3170,7 +3170,7 @@ input editRoleInput {
 
 input editSystemInput {
   systemName: String
-  id64: String
+  id64: Int
   edsmID: Int
   edsmCoordX: Float
   edsmCoordY: Float
@@ -3190,7 +3190,7 @@ input editTbreportInput {
   userType: ENUM_TBREPORT_USERTYPE
   reportType: ENUM_TBREPORT_REPORTTYPE
   systemName: String
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -3238,7 +3238,7 @@ input editTsreportInput {
   userType: ENUM_TSREPORT_USERTYPE
   reportType: ENUM_TSREPORT_REPORTTYPE
   systemName: String
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -3283,7 +3283,7 @@ input editTwreportInput {
   userType: ENUM_TWREPORT_USERTYPE
   reportType: ENUM_TWREPORT_REPORTTYPE
   systemName: String
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -3884,7 +3884,7 @@ type Fgreport {
   userType: ENUM_FGREPORT_USERTYPE!
   reportType: ENUM_FGREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -3910,7 +3910,7 @@ input FgreportInput {
   userType: ENUM_FGREPORT_USERTYPE!
   reportType: ENUM_FGREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -3999,7 +3999,7 @@ type Fmreport {
   userType: ENUM_FMREPORT_USERTYPE!
   reportType: ENUM_FMREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -4025,7 +4025,7 @@ input FmreportInput {
   userType: ENUM_FMREPORT_USERTYPE!
   reportType: ENUM_FMREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -4121,7 +4121,7 @@ type Gbreport {
   userType: ENUM_GBREPORT_USERTYPE!
   reportType: ENUM_GBREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -4147,7 +4147,7 @@ input GbreportInput {
   userType: ENUM_GBREPORT_USERTYPE!
   reportType: ENUM_GBREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -4223,7 +4223,7 @@ type Genreport {
   userType: ENUM_GENREPORT_USERTYPE!
   reportType: ENUM_GENREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -4248,7 +4248,7 @@ input GenreportInput {
   userType: ENUM_GENREPORT_USERTYPE!
   reportType: ENUM_GENREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -4424,7 +4424,7 @@ type Grreport {
   userType: ENUM_GRREPORT_USERTYPE!
   reportType: ENUM_GRREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -4450,7 +4450,7 @@ input GrreportInput {
   userType: ENUM_GRREPORT_USERTYPE!
   reportType: ENUM_GRREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -4649,7 +4649,7 @@ type Gsreport {
   userType: ENUM_GSREPORT_USERTYPE!
   reportType: ENUM_GSREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -4676,7 +4676,7 @@ input GsreportInput {
   userType: ENUM_GSREPORT_USERTYPE!
   reportType: ENUM_GSREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -4755,7 +4755,7 @@ type Gvreport {
   userType: ENUM_GVREPORT_USERTYPE!
   reportType: ENUM_GVREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -4781,7 +4781,7 @@ input GvreportInput {
   userType: ENUM_GVREPORT_USERTYPE!
   reportType: ENUM_GVREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -4857,7 +4857,7 @@ type Gyreport {
   userType: ENUM_GYREPORT_USERTYPE!
   reportType: ENUM_GYREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -4883,7 +4883,7 @@ input GyreportInput {
   userType: ENUM_GYREPORT_USERTYPE!
   reportType: ENUM_GYREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -5044,7 +5044,7 @@ type Lcfssreport {
   updated_at: DateTime!
   cmdrName: String
   systemName: String
-  systemAddress: String
+  systemAddress: Int
   signalName: String
   signalNameLocalised: String
   isBeta: Boolean
@@ -5056,7 +5056,7 @@ type Lcfssreport {
 input LcfssreportInput {
   cmdrName: String
   systemName: String
-  systemAddress: String
+  systemAddress: Int
   signalName: String
   signalNameLocalised: String
   isBeta: Boolean
@@ -5073,7 +5073,7 @@ type Lsreport {
   userType: ENUM_LSREPORT_USERTYPE!
   reportType: ENUM_LSREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -5099,7 +5099,7 @@ input LsreportInput {
   userType: ENUM_LSREPORT_USERTYPE!
   reportType: ENUM_LSREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -5763,7 +5763,7 @@ type Reportcodex {
   cmdrName: String!
   systemName: String!
   bodyName: String
-  systemAddress: String
+  systemAddress: Int
   coordX: Float
   coordY: Float
   coordZ: Float
@@ -5789,7 +5789,7 @@ input ReportcodexInput {
   cmdrName: String!
   systemName: String!
   bodyName: String
-  systemAddress: String
+  systemAddress: Int
   coordX: Float
   coordY: Float
   coordZ: Float
@@ -5850,7 +5850,7 @@ type Reportfss {
   updated_at: DateTime!
   cmdrName: String!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   signalName: String
   signalNameLocalised: String
   ussType: String
@@ -5868,7 +5868,7 @@ type Reportfss {
 input ReportfssInput {
   cmdrName: String!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   signalName: String
   signalNameLocalised: String
   ussType: String
@@ -5939,7 +5939,7 @@ type System {
   created_at: DateTime!
   updated_at: DateTime!
   systemName: String!
-  id64: String
+  id64: Int
   edsmID: Int
   edsmCoordX: Float
   edsmCoordY: Float
@@ -5953,7 +5953,7 @@ type System {
 
 input SystemInput {
   systemName: String!
-  id64: String
+  id64: Int
   edsmID: Int
   edsmCoordX: Float
   edsmCoordY: Float
@@ -5983,7 +5983,7 @@ type Tbreport {
   userType: ENUM_TBREPORT_USERTYPE!
   reportType: ENUM_TBREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -6010,7 +6010,7 @@ input TbreportInput {
   userType: ENUM_TBREPORT_USERTYPE!
   reportType: ENUM_TBREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -6089,7 +6089,7 @@ type Tsreport {
   userType: ENUM_TSREPORT_USERTYPE!
   reportType: ENUM_TSREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -6114,7 +6114,7 @@ input TsreportInput {
   userType: ENUM_TSREPORT_USERTYPE!
   reportType: ENUM_TSREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -6189,7 +6189,7 @@ type Twreport {
   userType: ENUM_TWREPORT_USERTYPE!
   reportType: ENUM_TWREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float
@@ -6215,7 +6215,7 @@ input TwreportInput {
   userType: ENUM_TWREPORT_USERTYPE!
   reportType: ENUM_TWREPORT_REPORTTYPE!
   systemName: String!
-  systemAddress: String
+  systemAddress: Int
   regionID: Int
   coordX: Float
   coordY: Float

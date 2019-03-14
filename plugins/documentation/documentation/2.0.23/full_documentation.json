@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.0.22",
+    "version": "2.0.23",
     "title": "Canonn APIv2",
     "description": "An API for all the Science related information Canonn has in its datastores stored on the Gnosis, built using [Strapi](https://strapi.io) a Nodejs API framework.",
     "contact": {
@@ -13,7 +13,7 @@
       "name": "GNU-GPLv3",
       "url": "https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE"
     },
-    "x-generation-date": "03/08/2019 11:29:47 PM"
+    "x-generation-date": "03/14/2019 5:23:20 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -50349,7 +50349,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -50545,7 +50545,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -50639,7 +50639,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -50689,7 +50689,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -50963,7 +50963,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "signalName": {
             "type": "string"
@@ -51007,7 +51007,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "signalName": {
             "type": "string"
@@ -51077,7 +51077,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -51273,7 +51273,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -51367,7 +51367,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -51417,7 +51417,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -51697,7 +51697,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -51735,7 +51735,7 @@
             "type": "string"
           },
           "id64": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "edsmID": {
             "type": "integer"
@@ -51886,7 +51886,7 @@
             "type": "string"
           },
           "id64": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "edsmID": {
             "type": "integer"
@@ -52037,7 +52037,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -52233,7 +52233,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -52327,7 +52327,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -52377,7 +52377,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -52919,7 +52919,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -53116,7 +53116,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -53211,7 +53211,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -53261,7 +53261,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -53714,7 +53714,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -53910,7 +53910,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -54004,7 +54004,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -54054,7 +54054,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -54350,7 +54350,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -54546,7 +54546,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -54640,7 +54640,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -54690,7 +54690,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -55004,7 +55004,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -55054,7 +55054,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -55240,7 +55240,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -55433,7 +55433,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -55532,7 +55532,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -55582,7 +55582,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -56015,7 +56015,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -56199,7 +56199,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -56289,7 +56289,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -56339,7 +56339,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -56470,7 +56470,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -57118,7 +57118,7 @@
                 "type": "string"
               },
               "systemAddress": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "regionID": {
                 "type": "integer"
@@ -57245,7 +57245,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -57475,7 +57475,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -57577,7 +57577,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -57627,7 +57627,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -58502,7 +58502,7 @@
                 "type": "string"
               },
               "systemAddress": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "regionID": {
                 "type": "integer"
@@ -58632,7 +58632,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -58872,7 +58872,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -58981,7 +58981,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -59031,7 +59031,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -59365,7 +59365,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -59561,7 +59561,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -59655,7 +59655,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -59705,7 +59705,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -59999,7 +59999,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -60195,7 +60195,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -60289,7 +60289,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -60339,7 +60339,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -60794,7 +60794,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -60947,7 +60947,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "signalName": {
             "type": "string"
@@ -60991,7 +60991,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "signalName": {
             "type": "string"
@@ -61061,7 +61061,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -61257,7 +61257,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -61351,7 +61351,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -61401,7 +61401,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -61804,7 +61804,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -61894,7 +61894,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -61944,7 +61944,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -62184,7 +62184,7 @@
             "default": ""
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "coordX": {
             "type": "number",
@@ -62291,7 +62291,7 @@
             "default": ""
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "coordX": {
             "type": "number",
@@ -62522,7 +62522,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger",
+            "type": "integer",
             "default": ""
           },
           "signalName": {
@@ -62598,7 +62598,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger",
+            "type": "integer",
             "default": ""
           },
           "signalName": {
@@ -62767,7 +62767,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -62934,7 +62934,7 @@
             "type": "string"
           },
           "id64": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "edsmID": {
             "type": "integer"
@@ -62973,7 +62973,7 @@
                   "type": "string"
                 },
                 "id64": {
-                  "type": "biginteger"
+                  "type": "integer"
                 },
                 "edsmID": {
                   "type": "integer"
@@ -63121,7 +63121,7 @@
             "type": "string"
           },
           "id64": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "edsmID": {
             "type": "integer"
@@ -63221,7 +63221,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -63445,7 +63445,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -63559,7 +63559,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -63609,7 +63609,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -63916,7 +63916,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -64120,7 +64120,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -64215,7 +64215,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -64265,7 +64265,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -64696,7 +64696,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -64893,7 +64893,7 @@
             "type": "string"
           },
           "systemAddress": {
-            "type": "biginteger"
+            "type": "integer"
           },
           "regionID": {
             "type": "integer"
@@ -64988,7 +64988,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
@@ -65038,7 +65038,7 @@
                 "type": "string"
               },
               "id64": {
-                "type": "biginteger"
+                "type": "integer"
               },
               "edsmID": {
                 "type": "integer"
