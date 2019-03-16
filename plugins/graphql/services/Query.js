@@ -21,11 +21,9 @@ module.exports = {
 
   convertToParams: (params, primaryKey) => {
     return Object.keys(params).reduce((acc, current) => {
-      return Object.assign(acc, {
-        [`${
-          primaryKey === current || "id" === current ? "" : "_"
-        }${current}`]: params[current]
-      });
+      const key = current === 'id' ? primaryKey : `_${current}`;
+      acc[key] = params[current];
+      return acc;
     }, {});
   },
 

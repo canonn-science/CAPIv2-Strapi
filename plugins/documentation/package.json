@@ -1,27 +1,27 @@
 {
-  "_from": "strapi-plugin-documentation@3.0.0-alpha.24.1",
-  "_id": "strapi-plugin-documentation@3.0.0-alpha.24.1",
+  "_from": "strapi-plugin-documentation@3.0.0-alpha.25.2",
+  "_id": "strapi-plugin-documentation@3.0.0-alpha.25.2",
   "_inBundle": false,
-  "_integrity": "sha512-VuALjqg1fjOFh5YHjQKr+mX+WgRmgcUEFnEzs3GinB8YG8Tnl/rUBA70LuvXOyJEMeIETfOteL6QRjWykYJ9FA==",
+  "_integrity": "sha512-XCUVPovAR7v8WSWZpqmwN9mVEXGqlRR1uixkrXZ88c6vkfiTcZuKTmpdtmQed1PyfVfrUOYTQxseGwUq2rxf0w==",
   "_location": "/strapi-plugin-documentation",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "strapi-plugin-documentation@3.0.0-alpha.24.1",
+    "raw": "strapi-plugin-documentation@3.0.0-alpha.25.2",
     "name": "strapi-plugin-documentation",
     "escapedName": "strapi-plugin-documentation",
-    "rawSpec": "3.0.0-alpha.24.1",
+    "rawSpec": "3.0.0-alpha.25.2",
     "saveSpec": null,
-    "fetchSpec": "3.0.0-alpha.24.1"
+    "fetchSpec": "3.0.0-alpha.25.2"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "https://registry.npmjs.org/strapi-plugin-documentation/-/strapi-plugin-documentation-3.0.0-alpha.24.1.tgz",
-  "_shasum": "5ece7defa21a333455b52ed890d668fba61475a4",
-  "_spec": "strapi-plugin-documentation@3.0.0-alpha.24.1",
-  "_where": "/nixstorage/Github/capi/CAPIv2-Strapi",
+  "_resolved": "https://registry.npmjs.org/strapi-plugin-documentation/-/strapi-plugin-documentation-3.0.0-alpha.25.2.tgz",
+  "_shasum": "d4d60b62750cbcdd070522c20455dadc1131b543",
+  "_spec": "strapi-plugin-documentation@3.0.0-alpha.25.2",
+  "_where": "/media/nixstorage/github/canonn/CAPIv2-Strapi",
   "author": {
     "name": "soupette",
     "email": "hi@strapi.io",
@@ -52,7 +52,7 @@
   "devDependencies": {
     "cross-env": "^5.2.0",
     "rimraf": "^2.6.3",
-    "strapi-helper-plugin": "3.0.0-alpha.24.1"
+    "strapi-helper-plugin": "3.0.0-alpha.25.2"
   },
   "engines": {
     "node": ">= 9.0.0",
@@ -82,18 +82,18 @@
     "build:clean": "rimraf admin/build",
     "build:dev": "cross-env NODE_ENV=development ./node_modules/strapi-helper-plugin/node_modules/.bin/webpack --config node_modules/strapi-helper-plugin/lib/internals/webpack/webpack.prod.babel.js --color -p --progress",
     "generate": "node ./node_modules/plop/plop.js --plopfile node_modules/strapi-helper-plugin/lib/internals/generators/index.js",
-    "lint": "node ./node_modules/strapi-helper-plugin/node_modules/.bin/eslint --ignore-path .gitignore --ignore-pattern '/admin/build/' --config ./node_modules/strapi-helper-plugin/lib/internals/eslint/.eslintrc.json admin",
+    "lint": "node ./node_modules/strapi-lint/node_modules/.bin/eslint --ignore-path .gitignore --ignore-pattern '/admin/build/' --config ./node_modules/strapi-lint/lib/internals/eslint/.eslintrc.json admin",
     "preanalyze": "npm run analyze:clean",
     "prebuild": "npm run build:clean",
     "prepublishOnly": "IS_MONOREPO=true npm run build",
     "prettier": "node ./node_modules/strapi-helper-plugin/node_modules/.bin/prettier --single-quote --trailing-comma es5 --write \"{admin,__{tests,mocks}__}/**/*.js\"",
     "start": "cross-env NODE_ENV=development ./node_modules/strapi-helper-plugin/lib/server",
-    "test": "npm run lint"
+    "test": "echo \"no tests yet\""
   },
   "strapi": {
     "name": "Documentation",
     "icon": "book",
     "description": "Create an OpenAPI Document and visualize your API with SWAGGER UI."
   },
-  "version": "3.0.0-alpha.24.1"
+  "version": "3.0.0-alpha.25.2"
 }

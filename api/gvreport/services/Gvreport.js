@@ -121,7 +121,7 @@ module.exports = {
     const data = _.omit(values, Gvreport.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = Gvreport.forge(params).save(data);
+    const entry = await Gvreport.forge(params).save(data);
 
     // Create relational data and return the entry.
     return Gvreport.updateRelations(Object.assign(params, { values: relations }));
@@ -237,7 +237,7 @@ module.exports = {
         qb.limit(_.toNumber(filters.limit));
       }
     }).fetchAll({
-      width: populate
+      withRelated: populate
     });
   }
 };
