@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "a84fa896-2b3d-492f-abf1-fb007518348f",
+		"_postman_id": "dabe102c-39f6-42e9-afe0-3e9a17c27b69",
 		"name": "Canonn APIv2 Postman Test Collection",
 		"description": "An API for all the Science related information Canonn has in its datastores stored on the Gnosis, built using [Strapi](https://strapi.io) a Nodejs API framework. \n\nWe have two different documentation types, our [Redocs](https://api.canonn.tech) or use the [Swagger-UI](https://api.canonn.tech/swaggerui)\n\nWe also have 3 API servers; Live (Production), Beta (Staging), Alpha (Development). You should use the Beta server for testing your application prior to using the Live server. The Alpha server is used by Canonn to test our changes prior to releasing a new version.\n\nData between the Live and Beta servers are replicated as needed, eventually we plan to dynamically replicate the data every night at midnight Phoenix, Arizona USA time (MST-Arizona GMT-7)\n\nHere are the following URLs for each server\n\n* Live - https://api.canonn.tech\n* Beta - https://api.canonn.tech:2053\n* Alpha - https://api.canonn.tech:2083\n\nThank you for your support, and thank you to all the CMDRs who supply us with our data!\n",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -59,6 +59,299 @@
 				}
 			],
 			"description": "Folder for auth"
+		},
+		{
+			"name": "apreport",
+			"item": [
+				{
+					"name": "Post a new AP Report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9bc6c97b-019f-42ec-ad70-ebc9b4322b5d",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"apID\", jsonData.id);",
+									"",
+									"pm.test(\"AP created values match\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
+									"    pm.expect(jsonData.systemName).to.eql(\"PRU AED XO-R D4-50\");",
+									"    pm.expect(jsonData.bodyName).to.eql(\"B 2\");",
+									"    pm.expect(jsonData.latitude).to.eql(1.6085);",
+									"    pm.expect(jsonData.longitude).to.eql(-116.2772);",
+									"    pm.expect(jsonData.cmdrName).to.eql(\"Namix\");",
+									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Amphora Plant Report\");",
+									"    pm.expect(jsonData.reportStatus).to.eql(\"pending\");",
+									"    pm.expect(jsonData.clientVersion).to.eql(\"postman-test\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"PRU AED XO-R D4-50\",\n  \"bodyName\": \"B 2\",\n  \"latitude\": 1.6085,\n  \"longitude\": -116.2772,\n  \"cmdrName\": \"Namix\",\n  \"cmdrComment\": \"TEST - Amphora Plant Report\",\n  \"reportStatus\": \"pending\",\n  \"clientVersion\": \"postman-test\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/apreports",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"apreports"
+							]
+						},
+						"description": "To be used to submit new Reports to Canonn, note that the reportStatus should always be pending"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a count of all AP Reports",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "629f0cc8-d3ef-4609-a825-385443e7b2e3",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/apreports/count",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"apreports",
+								"count"
+							]
+						},
+						"description": "The API will respond with just a number, which is the total amount of reports on this endpoint. This can be used to filter, limit, or page other get requests."
+					},
+					"response": []
+				},
+				{
+					"name": "Get a list of AP Reports",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/apreports",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"apreports"
+							]
+						},
+						"description": "By default limited to the first 100 entries. Use filters, searching, or paging to get specific entries."
+					},
+					"response": []
+				},
+				{
+					"name": "Update a AP Report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "efe58c0c-90bf-4fc8-b897-46c6877e34bd",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"isBeta\": true,\n        \"reportStatus\": \"declined\",\n        \"reportComment\": \"TEST - Update entry\",\n        \"voteCount\": 1\n    }"
+						},
+						"url": {
+							"raw": "{{url}}/apreports/{{apID}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"apreports",
+								"{{apID}}"
+							]
+						},
+						"description": "You do not need to send the entire report again, you can send only changed fields"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Single AP Report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "10f73f4d-f8aa-403a-a675-8eb0857a5212",
+								"exec": [
+									"pm.test(\"AP updated values match\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.userType).to.eql(\"pc\");",
+									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
+									"    pm.expect(jsonData.systemName).to.eql(\"PRU AED XO-R D4-50\");",
+									"    pm.expect(jsonData.bodyName).to.eql(\"B 2\");",
+									"    pm.expect(jsonData.latitude).to.eql(1.6085);",
+									"    pm.expect(jsonData.longitude).to.eql(-116.2772);",
+									"    pm.expect(jsonData.cmdrName).to.eql(\"Namix\");",
+									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Amphora Plant Report\");",
+									"    pm.expect(jsonData.reportStatus).to.eql(\"declined\");",
+									"    pm.expect(jsonData.reportComment).to.eql(\"TEST - Update entry\");",
+									"    pm.expect(jsonData.voteCount).to.eql(1);",
+									"    pm.expect(jsonData.clientVersion).to.eql(\"postman-test\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/apreports/{{apID}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"apreports",
+								"{{apID}}"
+							]
+						},
+						"description": "Provide the ID to get a single report"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a AP Report",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/apreports/{{apID}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"apreports",
+								"{{apID}}"
+							]
+						},
+						"description": "The response is just an empty JSON, deleting a report requires auth"
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for bmreport"
 		},
 		{
 			"name": "bmreport",
