@@ -1,0 +1,66 @@
+{
+  "paths": {
+    "/apreports": {
+      "get": {
+        "description": "Get all AP report entries",
+        "summary": "",
+        "tags": [
+          "Amphora Plant Reports"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new AP report entry",
+        "summary": "",
+        "tags": [
+          "Amphora Plant Reports"
+        ],
+        "security": []
+      }
+    },
+    "/apreports/count": {
+      "get": {
+        "description": "Get a count of all AP report entries",
+        "summary": "",
+        "tags": [
+          "Amphora Plant Reports"
+        ],
+        "security": []
+      }
+    },
+    "/apreports/{id}": {
+      "get": {
+        "description": "Get a AP report by id",
+        "summary": "",
+        "tags": [
+          "Amphora Plant Reports"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a AP report by id",
+        "summary": "",
+        "tags": [
+          "Amphora Plant Reports"
+        ],
+        "security": []
+      },
+      "delete": {
+        "description": "Delete a AP report by id",
+        "summary": "",
+        "tags": [
+          "Amphora Plant Reports"
+        ],
+        "security": [
+          "reportDelete"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Amphora Plant Reports",
+      "description": "Public Reporting of AP"
+    }
+  ]
+}

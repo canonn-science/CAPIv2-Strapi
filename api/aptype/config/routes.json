@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/aptypes",
+      "handler": "Aptype.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/aptypes/count",
+      "handler": "Aptype.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/aptypes/:id",
+      "handler": "Aptype.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/aptypes",
+      "handler": "Aptype.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/aptypes/:id",
+      "handler": "Aptype.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/aptypes/:id",
+      "handler": "Aptype.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
