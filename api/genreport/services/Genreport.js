@@ -121,7 +121,7 @@ module.exports = {
     const data = _.omit(values, Genreport.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = Genreport.forge(params).save(data);
+    const entry = await Genreport.forge(params).save(data);
 
     // Create relational data and return the entry.
     return Genreport.updateRelations(Object.assign(params, { values: relations }));
@@ -237,7 +237,7 @@ module.exports = {
         qb.limit(_.toNumber(filters.limit));
       }
     }).fetchAll({
-      width: populate
+      withRelated: populate
     });
   }
 };

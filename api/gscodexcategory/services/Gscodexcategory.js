@@ -121,7 +121,7 @@ module.exports = {
     const data = _.omit(values, Gscodexcategory.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = Gscodexcategory.forge(params).save(data);
+    const entry = await Gscodexcategory.forge(params).save(data);
 
     // Create relational data and return the entry.
     return Gscodexcategory.updateRelations(Object.assign(params, { values: relations }));
@@ -237,7 +237,7 @@ module.exports = {
         qb.limit(_.toNumber(filters.limit));
       }
     }).fetchAll({
-      width: populate
+      withRelated: populate
     });
   }
 };

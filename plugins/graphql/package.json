@@ -1,27 +1,27 @@
 {
-  "_from": "strapi-plugin-graphql@3.0.0-alpha.24.1",
-  "_id": "strapi-plugin-graphql@3.0.0-alpha.24.1",
+  "_from": "strapi-plugin-graphql@3.0.0-alpha.25.2",
+  "_id": "strapi-plugin-graphql@3.0.0-alpha.25.2",
   "_inBundle": false,
-  "_integrity": "sha512-i7mG1br+u3crhbbexcWlfNSakD5BzrCQ/Rd6kV55nY6DKahrRyXlyMz3EDwHHppytynR3mJKQiN0WTEdTDFb4Q==",
+  "_integrity": "sha512-YKiJpxAzxZA9pNLFDjjeZ7xLqCMBU4LKE9xXvWw7/JsTFxDvTF959MQGDtywHifyXdKf2qMyAXt/cn75pHdz1Q==",
   "_location": "/strapi-plugin-graphql",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "strapi-plugin-graphql@3.0.0-alpha.24.1",
+    "raw": "strapi-plugin-graphql@3.0.0-alpha.25.2",
     "name": "strapi-plugin-graphql",
     "escapedName": "strapi-plugin-graphql",
-    "rawSpec": "3.0.0-alpha.24.1",
+    "rawSpec": "3.0.0-alpha.25.2",
     "saveSpec": null,
-    "fetchSpec": "3.0.0-alpha.24.1"
+    "fetchSpec": "3.0.0-alpha.25.2"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "https://registry.npmjs.org/strapi-plugin-graphql/-/strapi-plugin-graphql-3.0.0-alpha.24.1.tgz",
-  "_shasum": "53e80a1d12090b82a1b28cccdf0c5c6f36b5fd8b",
-  "_spec": "strapi-plugin-graphql@3.0.0-alpha.24.1",
-  "_where": "/nixstorage/Github/capi/CAPIv2-Strapi",
+  "_resolved": "https://registry.npmjs.org/strapi-plugin-graphql/-/strapi-plugin-graphql-3.0.0-alpha.25.2.tgz",
+  "_shasum": "e6c90c68bdeec379e5d3e376f6d5389b50254298",
+  "_spec": "strapi-plugin-graphql@3.0.0-alpha.25.2",
+  "_where": "/media/nixstorage/github/canonn/CAPIv2-Strapi",
   "author": {
     "name": "A Strapi developer"
   },
@@ -30,14 +30,14 @@
     "apollo-server-koa": "^2.0.7",
     "dataloader": "^1.4.0",
     "glob": "^7.1.3",
-    "graphql": "^14.0.2",
+    "graphql": "^14.1.0",
     "graphql-depth-limit": "^1.1.0",
     "graphql-playground-middleware-koa": "^1.6.4",
     "graphql-tools": "^3.1.1",
     "graphql-type-datetime": "^0.2.2",
     "graphql-type-json": "^0.2.1",
     "pluralize": "^7.0.0",
-    "strapi-utils": "3.0.0-alpha.24.1"
+    "strapi-utils": "3.0.0-alpha.25.2"
   },
   "deprecated": false,
   "description": "This is the description of the plugin.",
@@ -67,12 +67,12 @@
     "prebuild": "npm run build:clean && npm run test",
     "prettier": "node ./node_modules/strapi-helper-plugin/node_modules/.bin/prettier --single-quote --trailing-comma es5 --write \"{admin,__{tests,mocks}__}/**/*.js\"",
     "start": "cross-env NODE_ENV=development ./node_modules/strapi-helper-plugin/lib/server",
-    "test": "echo \"Error: no test specified\""
+    "test": "echo \"no tests yet\""
   },
   "strapi": {
     "name": "graphql",
     "icon": "plug",
     "description": "Description of graphql plugin."
   },
-  "version": "3.0.0-alpha.24.1"
+  "version": "3.0.0-alpha.25.2"
 }
