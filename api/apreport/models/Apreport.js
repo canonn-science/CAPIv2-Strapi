@@ -7,7 +7,21 @@
 module.exports = {
   // Before saving a value.
   // Fired before an `insert` or `update` query.
-  // beforeSave: async (model, attrs, options) => {},
+  beforeSave: async (model, attrs, options) => {
+    let result = await strapi.api.excludeclient.services.excludeclient.fetchAll({version: model.attributes.clientVersion})
+
+    let data = Object.setPrototypeOf(result.models[0].attributes, {})
+
+    if (data.version == model.attributes.clientVersion) {
+      console.log("IT MATCHES! FAIL THE REPORT MEOW")
+      console.log('Report: '+ model.attributes.clientVersion)
+      console.log('Version: ' + data.version)
+    } else {
+      console.log("IT DOESN'T MATCH!!!!")
+      console.log('Report: '+ model.attributes.clientVersion)
+      console.log('Version: ' + data.version)
+    }
+  },
 
   // After saving a value.
   // Fired after an `insert` or `update` query.
@@ -20,7 +34,7 @@ module.exports = {
   // After fetching a value.
   // Fired after a `fetch` operation.
   // afterFetch: async (model, response, options) => {},
-  
+
   // Before fetching all values.
   // Fired before a `fetchAll` operation.
   // beforeFetchAll: async (model, columns, options) => {},
