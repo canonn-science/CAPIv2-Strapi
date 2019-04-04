@@ -8,18 +8,43 @@ module.exports = {
   // Before saving a value.
   // Fired before an `insert` or `update` query.
   beforeSave: async (model, attrs, options) => {
-    let result = await strapi.api.excludeclient.services.excludeclient.fetchAll({version: model.attributes.clientVersion})
 
-    let data = Object.setPrototypeOf(result.models[0].attributes, {})
+    // This entire block needs to be moved to beforeCreate when finished
 
-    if (data.version == model.attributes.clientVersion) {
-      console.log("IT MATCHES! FAIL THE REPORT MEOW")
-      console.log('Report: '+ model.attributes.clientVersion)
-      console.log('Version: ' + data.version)
+    let clientVersionResult = await strapi.api.excludeclient.services.excludeclient.fetchAll({version: model.attributes.clientVersion})
+    let clientVersionData = null
+
+    if (clientVersionResult.models.length > 0) {
+      clientVersionData = Object.setPrototypeOf(clientVersionResult.models[0].attributes, {})
     } else {
-      console.log("IT DOESN'T MATCH!!!!")
+      clientVersionData = null
+    }
+
+    if ( clientVersionData == null || clientVersionResult.models == undefined) {
+      console.log("Client not in blacklist")
       console.log('Report: '+ model.attributes.clientVersion)
-      console.log('Version: ' + data.version)
+
+      let cmdrResult = await strapi.api.excludecmdr.services.excludecmdr.fetchAll({cmdrName: model.attributes.cmdrName})
+      let cmdrData = null
+
+      if (cmdrResult.models.length > 0) {
+        cmdrData = Object.setPrototypeOf(cmdrResult.models[0].attributes, {})
+      } else {
+        cmdrData = null
+      }
+
+      if ( cmdrData != null && cmdrData.cmdrName == model.attributes.cmdrName) {
+        // send http code 412 - Precondition failed
+        console.log("CMDR is blacklisted, ignore report")
+      } else {
+        console.log("CMDR is not blacklisted")
+      }
+
+    } else if (clientVersionData.version == model.attributes.clientVersion) {
+      // send http code 412 - Precondition failed
+      console.log("Client is in blacklist, ignore report.")
+      console.log('Report: '+ model.attributes.clientVersion)
+      console.log('Version: ' + clientVersionData.version)
     }
   },
 
