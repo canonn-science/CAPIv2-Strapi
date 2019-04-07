@@ -313,6 +313,22 @@ type Body {
   material: JSON
   missingSkipCount: Int
   rings(sort: String, limit: Int, start: Int, where: JSON): [Ring]
+  apsites(sort: String, limit: Int, start: Int, where: JSON): [Apsite]
+  bmsites(sort: String, limit: Int, start: Int, where: JSON): [Bmsite]
+  btsites(sort: String, limit: Int, start: Int, where: JSON): [Btsite]
+  cssites(sort: String, limit: Int, start: Int, where: JSON): [Cssite]
+  fgsites(sort: String, limit: Int, start: Int, where: JSON): [Fgsite]
+  fmsites(sort: String, limit: Int, start: Int, where: JSON): [Fmsite]
+  gbsites(sort: String, limit: Int, start: Int, where: JSON): [Gbsite]
+  gensites(sort: String, limit: Int, start: Int, where: JSON): [Gensite]
+  grsites(sort: String, limit: Int, start: Int, where: JSON): [Grsite]
+  gssites(sort: String, limit: Int, start: Int, where: JSON): [Gssite]
+  gvsites(sort: String, limit: Int, start: Int, where: JSON): [Gvsite]
+  gysites(sort: String, limit: Int, start: Int, where: JSON): [Gysite]
+  lssites(sort: String, limit: Int, start: Int, where: JSON): [Lssite]
+  tbsites(sort: String, limit: Int, start: Int, where: JSON): [Tbsite]
+  tssites(sort: String, limit: Int, start: Int, where: JSON): [Tssite]
+  twsites(sort: String, limit: Int, start: Int, where: JSON): [Twsite]
 }
 
 input BodyInput {
@@ -354,6 +370,22 @@ input BodyInput {
   material: JSON
   missingSkipCount: Int
   rings: [ID]
+  apsites: [ID]
+  bmsites: [ID]
+  btsites: [ID]
+  cssites: [ID]
+  fgsites: [ID]
+  fmsites: [ID]
+  gbsites: [ID]
+  gensites: [ID]
+  grsites: [ID]
+  gssites: [ID]
+  gvsites: [ID]
+  gysites: [ID]
+  lssites: [ID]
+  tbsites: [ID]
+  tssites: [ID]
+  twsites: [ID]
 }
 
 """Reporting for Brain Trees"""
@@ -2325,6 +2357,22 @@ input editBodyInput {
   material: JSON
   missingSkipCount: Int
   rings: [ID]
+  apsites: [ID]
+  bmsites: [ID]
+  btsites: [ID]
+  cssites: [ID]
+  fgsites: [ID]
+  fmsites: [ID]
+  gbsites: [ID]
+  gensites: [ID]
+  grsites: [ID]
+  gssites: [ID]
+  gvsites: [ID]
+  gysites: [ID]
+  lssites: [ID]
+  tbsites: [ID]
+  tssites: [ID]
+  twsites: [ID]
 }
 
 input editBtreportInput {
@@ -3180,6 +3228,22 @@ input editSystemInput {
   bodies: [ID]
   region: ID
   primaryStar: JSON
+  apsites: [ID]
+  bmsites: [ID]
+  btsites: [ID]
+  cssites: [ID]
+  fgsites: [ID]
+  fmsites: [ID]
+  gbsites: [ID]
+  gensites: [ID]
+  grsites: [ID]
+  gssites: [ID]
+  gvsites: [ID]
+  gysites: [ID]
+  lssites: [ID]
+  tbsites: [ID]
+  tssites: [ID]
+  twsites: [ID]
 }
 
 input editTbcycleInput {
@@ -5949,6 +6013,22 @@ type System {
   region: Region
   primaryStar: JSON
   bodies(sort: String, limit: Int, start: Int, where: JSON): [Body]
+  apsites(sort: String, limit: Int, start: Int, where: JSON): [Apsite]
+  bmsites(sort: String, limit: Int, start: Int, where: JSON): [Bmsite]
+  btsites(sort: String, limit: Int, start: Int, where: JSON): [Btsite]
+  cssites(sort: String, limit: Int, start: Int, where: JSON): [Cssite]
+  fgsites(sort: String, limit: Int, start: Int, where: JSON): [Fgsite]
+  fmsites(sort: String, limit: Int, start: Int, where: JSON): [Fmsite]
+  gbsites(sort: String, limit: Int, start: Int, where: JSON): [Gbsite]
+  gensites(sort: String, limit: Int, start: Int, where: JSON): [Gensite]
+  grsites(sort: String, limit: Int, start: Int, where: JSON): [Grsite]
+  gssites(sort: String, limit: Int, start: Int, where: JSON): [Gssite]
+  gvsites(sort: String, limit: Int, start: Int, where: JSON): [Gvsite]
+  gysites(sort: String, limit: Int, start: Int, where: JSON): [Gysite]
+  lssites(sort: String, limit: Int, start: Int, where: JSON): [Lssite]
+  tbsites(sort: String, limit: Int, start: Int, where: JSON): [Tbsite]
+  tssites(sort: String, limit: Int, start: Int, where: JSON): [Tssite]
+  twsites(sort: String, limit: Int, start: Int, where: JSON): [Twsite]
 }
 
 input SystemInput {
@@ -5963,6 +6043,22 @@ input SystemInput {
   bodies: [ID]
   region: ID
   primaryStar: JSON
+  apsites: [ID]
+  bmsites: [ID]
+  btsites: [ID]
+  cssites: [ID]
+  fgsites: [ID]
+  fmsites: [ID]
+  gbsites: [ID]
+  gensites: [ID]
+  grsites: [ID]
+  gssites: [ID]
+  gvsites: [ID]
+  gysites: [ID]
+  lssites: [ID]
+  tbsites: [ID]
+  tssites: [ID]
+  twsites: [ID]
 }
 
 """Thargoid Barnacle Cycles"""
