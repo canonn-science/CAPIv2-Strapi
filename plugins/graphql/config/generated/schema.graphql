@@ -283,7 +283,7 @@ type Body {
   type: String
   subType: String
   offset: Int
-  distanceToArrival: Float
+  distanceToArrival: Int
   isMainStar: Boolean
   isScoopable: Boolean
   isLandable: Boolean
@@ -324,7 +324,7 @@ input BodyInput {
   type: String
   subType: String
   offset: Int
-  distanceToArrival: Float
+  distanceToArrival: Int
   isMainStar: Boolean
   isScoopable: Boolean
   isLandable: Boolean
@@ -2295,7 +2295,7 @@ input editBodyInput {
   type: String
   subType: String
   offset: Int
-  distanceToArrival: Float
+  distanceToArrival: Int
   isMainStar: Boolean
   isScoopable: Boolean
   isLandable: Boolean
