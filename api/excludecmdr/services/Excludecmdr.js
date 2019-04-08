@@ -23,6 +23,15 @@ module.exports = {
 
   blockCMDR: async (cmdrName) => {
 
+    if (cmdrName == undefined) {
+
+      const err = new Error(`You are missing a CMDR Name, anonymous reporting is supported.`);
+      err.status = 400;
+      err.expose = false;
+      throw err;
+
+    }
+
     let cmdrResult = await strapi.api.excludecmdr.services.excludecmdr.fetchAll({cmdrName: cmdrName})
     let cmdrData = null
 

@@ -23,6 +23,15 @@ module.exports = {
 
   blockClient: async (clientVersion) => {
 
+    if (clientVersion == undefined) {
+
+      const err = new Error(`You are missing a client version, please speak to your client author to ensure a client version is passed.`);
+      err.status = 400;
+      err.expose = false;
+      throw err;
+
+    }
+
     let clientVersionResult = await strapi.api.excludeclient.services.excludeclient.fetchAll({version: clientVersion})
     let clientVersionData = null
 
