@@ -102,6 +102,14 @@ module.exports = {
     const relations = _.pick(values, Apreport.associations.map(ast => ast.alias));
     const data = _.omit(values, Apreport.associations.map(ast => ast.alias));
 
+    // Verify client isn't on blacklist
+
+    await strapi.api.excludeclient.services.excludeclient.blockClient(data.clientVersion);
+
+    // Verify CMDR isn't on blacklist
+
+    await strapi.api.excludecmdr.services.excludecmdr.blockClient(data.cmdrName);
+
     // Create entry with no-relational data.
     const entry = await Apreport.forge(data).save();
 

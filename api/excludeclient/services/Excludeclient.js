@@ -16,6 +16,37 @@ const utils = require('strapi-hook-bookshelf/lib/utils/');
 module.exports = {
 
   /**
+   * Promise to deny blocked clients on reports.
+   *
+   * @return {Promise}
+   */
+
+  blockClient: async (clientVersion) => {
+
+    let clientVersionResult = await strapi.api.excludeclient.services.excludeclient.fetchAll({version: clientVersion})
+    let clientVersionData = null
+
+    if (clientVersionResult.models.length > 0) {
+
+      clientVersionData = Object.setPrototypeOf(clientVersionResult.models[0].attributes, {})
+
+    } else {
+
+      clientVersionData = null
+
+    }
+
+    if ( clientVersionData != null && clientVersionResult.models != undefined && clientVersionData.version == clientVersion) {
+
+      const err = new Error(`Your Client: ${clientVersionData.version} is in our blacklist. You should update your client or talk to the author.`);
+      err.status = 418;
+      err.expose = false;
+      throw err;
+
+    }
+  },
+
+  /**
    * Promise to fetch all excludeclients.
    *
    * @return {Promise}

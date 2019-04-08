@@ -7,46 +7,7 @@
 module.exports = {
   // Before saving a value.
   // Fired before an `insert` or `update` query.
-  beforeSave: async (model, attrs, options) => {
-
-    // This entire block needs to be moved to beforeCreate when finished
-
-    let clientVersionResult = await strapi.api.excludeclient.services.excludeclient.fetchAll({version: model.attributes.clientVersion})
-    let clientVersionData = null
-
-    if (clientVersionResult.models.length > 0) {
-      clientVersionData = Object.setPrototypeOf(clientVersionResult.models[0].attributes, {})
-    } else {
-      clientVersionData = null
-    }
-
-    if ( clientVersionData == null || clientVersionResult.models == undefined) {
-      console.log("Client not in blacklist")
-      console.log('Report: '+ model.attributes.clientVersion)
-
-      let cmdrResult = await strapi.api.excludecmdr.services.excludecmdr.fetchAll({cmdrName: model.attributes.cmdrName})
-      let cmdrData = null
-
-      if (cmdrResult.models.length > 0) {
-        cmdrData = Object.setPrototypeOf(cmdrResult.models[0].attributes, {})
-      } else {
-        cmdrData = null
-      }
-
-      if ( cmdrData != null && cmdrData.cmdrName == model.attributes.cmdrName) {
-        // send http code 412 - Precondition failed
-        console.log("CMDR is blacklisted, ignore report")
-      } else {
-        console.log("CMDR is not blacklisted")
-      }
-
-    } else if (clientVersionData.version == model.attributes.clientVersion) {
-      // send http code 412 - Precondition failed
-      console.log("Client is in blacklist, ignore report.")
-      console.log('Report: '+ model.attributes.clientVersion)
-      console.log('Version: ' + clientVersionData.version)
-    }
-  },
+  //beforeSave: async (model, attrs, options) => {},
 
   // After saving a value.
   // Fired after an `insert` or `update` query.

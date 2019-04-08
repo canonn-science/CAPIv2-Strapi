@@ -16,6 +16,37 @@ const utils = require('strapi-hook-bookshelf/lib/utils/');
 module.exports = {
 
   /**
+   * Promise to deny blocked CMDRs on reports.
+   *
+   * @return {Promise}
+   */
+
+  blockCMDR: async (cmdrName) => {
+
+    let cmdrNameResult = await strapi.api.excludecmdr.services.excludecmdr.fetchAll({cmdrName: cmdrName})
+    let cmdrNameData = null
+
+    if (cmdrNameResult.models.length > 0) {
+
+      cmdrNameData = Object.setPrototypeOf(cmdrNameResult.models[0].attributes, {})
+
+    } else {
+
+      cmdrNameData = null
+
+    }
+
+    if ( cmdrNameData != null && cmdrNameResult.models != undefined && cmdrNameData.version == cmdrName) {
+
+      const err = new Error(`Your CMDR: ${cmdrNameData.cmdrName} is in our blacklist. This is due to your CMDR being flagged for abuse.`);
+      err.status = 418;
+      err.expose = false;
+      throw err;
+
+    }
+  },
+
+  /**
    * Promise to fetch all excludecmdrs.
    *
    * @return {Promise}
