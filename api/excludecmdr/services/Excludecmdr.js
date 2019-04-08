@@ -23,22 +23,22 @@ module.exports = {
 
   blockCMDR: async (cmdrName) => {
 
-    let cmdrNameResult = await strapi.api.excludecmdr.services.excludecmdr.fetchAll({cmdrName: cmdrName})
-    let cmdrNameData = null
+    let cmdrResult = await strapi.api.excludecmdr.services.excludecmdr.fetchAll({cmdrName: cmdrName})
+    let cmdrData = null
 
-    if (cmdrNameResult.models.length > 0) {
+    if (cmdrResult.models.length > 0) {
 
-      cmdrNameData = Object.setPrototypeOf(cmdrNameResult.models[0].attributes, {})
+      cmdrData = Object.setPrototypeOf(cmdrResult.models[0].attributes, {})
 
     } else {
 
-      cmdrNameData = null
+      cmdrData = null
 
     }
 
-    if ( cmdrNameData != null && cmdrNameResult.models != undefined && cmdrNameData.version == cmdrName) {
+    if ( cmdrData != null && cmdrResult.models != undefined && cmdrData.cmdrName == cmdrName) {
 
-      const err = new Error(`Your CMDR: ${cmdrNameData.cmdrName} is in our blacklist. This is due to your CMDR being flagged for abuse.`);
+      const err = new Error(`Your CMDR: ${cmdrData.cmdrName} is in our blacklist. This is due to your CMDR being flagged for abuse.`);
       err.status = 418;
       err.expose = false;
       throw err;

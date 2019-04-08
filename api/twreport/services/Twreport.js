@@ -102,6 +102,10 @@ module.exports = {
     const relations = _.pick(values, Twreport.associations.map(ast => ast.alias));
     const data = _.omit(values, Twreport.associations.map(ast => ast.alias));
 
+    // Check blacklists (Client & CMDR)
+    await strapi.api.excludeclient.services.excludeclient.blockClient(data.clientVersion);
+    await strapi.api.excludecmdr.services.excludecmdr.blockCMDR(data.cmdrName);
+
     // Create entry with no-relational data.
     const entry = await Twreport.forge(data).save();
 
