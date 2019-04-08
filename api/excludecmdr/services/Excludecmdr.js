@@ -23,35 +23,39 @@ module.exports = {
 
   blockCMDR: async (cmdrName) => {
 
-    if (cmdrName == undefined) {
+    if (process.env.BLACKLIST_CMDR == "true") {
+      if (cmdrName == undefined) {
 
-      const err = new Error(`You are missing a CMDR Name, anonymous reporting is supported.`);
-      err.status = 400;
-      err.expose = false;
-      throw err;
+        const err = new Error(`You are missing a CMDR Name, anonymous reporting is supported.`);
+        err.status = 400;
+        err.expose = false;
+        throw err;
 
-    }
+      }
 
-    let cmdrResult = await strapi.api.excludecmdr.services.excludecmdr.fetchAll({cmdrName: cmdrName})
-    let cmdrData = null
+      let cmdrResult = await strapi.api.excludecmdr.services.excludecmdr.fetchAll({
+        cmdrName: cmdrName
+      })
+      let cmdrData = null
 
-    if (cmdrResult.models.length > 0) {
+      if (cmdrResult.models.length > 0) {
 
-      cmdrData = Object.setPrototypeOf(cmdrResult.models[0].attributes, {})
+        cmdrData = Object.setPrototypeOf(cmdrResult.models[0].attributes, {})
 
-    } else {
+      } else {
 
-      cmdrData = null
+        cmdrData = null
 
-    }
+      }
 
-    if ( cmdrData != null && cmdrResult.models != undefined && cmdrData.cmdrName == cmdrName) {
+      if (cmdrData != null && cmdrResult.models != undefined && cmdrData.cmdrName == cmdrName) {
 
-      const err = new Error(`Your CMDR: ${cmdrData.cmdrName} is in our blacklist. This is due to your CMDR being flagged for abuse.`);
-      err.status = 418;
-      err.expose = false;
-      throw err;
+        const err = new Error(`Your CMDR: ${cmdrData.cmdrName} is in our blacklist. This is due to your CMDR being flagged for abuse.`);
+        err.status = 418;
+        err.expose = false;
+        throw err;
 
+      }
     }
   },
 
