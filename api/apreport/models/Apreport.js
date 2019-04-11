@@ -7,7 +7,7 @@
 module.exports = {
   // Before saving a value.
   // Fired before an `insert` or `update` query.
-  // beforeSave: async (model, attrs, options) => {},
+  //beforeSave: async (model, attrs, options) => {},
 
   // After saving a value.
   // Fired after an `insert` or `update` query.
@@ -20,7 +20,7 @@ module.exports = {
   // After fetching a value.
   // Fired after a `fetch` operation.
   // afterFetch: async (model, response, options) => {},
-  
+
   // Before fetching all values.
   // Fired before a `fetchAll` operation.
   // beforeFetchAll: async (model, columns, options) => {},

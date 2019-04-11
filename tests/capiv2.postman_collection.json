@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "dabe102c-39f6-42e9-afe0-3e9a17c27b69",
+		"_postman_id": "f6955126-2b58-4965-92c1-2ed89e34790c",
 		"name": "Canonn APIv2 Postman Test Collection",
 		"description": "An API for all the Science related information Canonn has in its datastores stored on the Gnosis, built using [Strapi](https://strapi.io) a Nodejs API framework. \n\nWe have two different documentation types, our [Redocs](https://api.canonn.tech) or use the [Swagger-UI](https://api.canonn.tech/swaggerui)\n\nWe also have 3 API servers; Live (Production), Beta (Staging), Alpha (Development). You should use the Beta server for testing your application prior to using the Live server. The Alpha server is used by Canonn to test our changes prior to releasing a new version.\n\nData between the Live and Beta servers are replicated as needed, eventually we plan to dynamically replicate the data every night at midnight Phoenix, Arizona USA time (MST-Arizona GMT-7)\n\nHere are the following URLs for each server\n\n* Live - https://api.canonn.tech\n* Beta - https://api.canonn.tech:2053\n* Alpha - https://api.canonn.tech:2083\n\nThank you for your support, and thank you to all the CMDRs who supply us with our data!\n",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -1810,7 +1810,6 @@
 							"listen": "test",
 							"script": {
 								"id": "c080ad96-5b3f-4ad2-bd5a-08aa4e039bb1",
-								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"pm.environment.set(\"gbID\", jsonData.id);",
@@ -1829,7 +1828,8 @@
 									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Guardian Beacon Report\");",
 									"    pm.expect(jsonData.reportStatus).to.eql(\"pending\");",
 									"});"
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -1847,7 +1847,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"SYNUEFE IL-N C23-15\",\n  \"bodyName\": \"2 A\",\n  \"messageSystem\": \"SYNUEFE IL-N C23-19\",\n  \"messageBody\": \"B 2\",\n  \"messageLatitude\": 44.31,\n  \"messageLongitude\": 12.18,\n  \"cmdrName\": \"joulupunikki\",\n  \"cmdrComment\": \"TEST - Guardian Beacon Report\",\n  \"reportStatus\": \"pending\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"SYNUEFE IL-N C23-15\",\n  \"bodyName\": \"2 A\",\n  \"messageSystem\": \"SYNUEFE IL-N C23-19\",\n  \"messageBody\": \"B 2\",\n  \"messageLatitude\": 44.31,\n  \"messageLongitude\": 12.18,\n  \"cmdrName\": \"joulupunikki\",\n  \"cmdrComment\": \"TEST - Guardian Beacon Report\",\n  \"reportStatus\": \"pending\",\n  \"clientVersion\": \"postman-test\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/gbreports",
@@ -2081,7 +2081,6 @@
 							"listen": "test",
 							"script": {
 								"id": "f2a33a70-7de4-4bf9-ab06-25e113861689",
-								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"pm.environment.set(\"genID\", jsonData.id);",
@@ -2099,7 +2098,8 @@
 									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Generation Ship Report\");",
 									"    pm.expect(jsonData.reportStatus).to.eql(\"pending\");",
 									"});"
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -2117,7 +2117,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"Lalande 2966\",\n  \"orbitBody\": \"4\",\n  \"shipName\": \"Generation Ship Hyperion\",\n  \"directionSystem\": \"Yemaki\",\n  \"distance\": 7340,\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Generation Ship Report\",\n  \"reportStatus\": \"pending\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"Lalande 2966\",\n  \"orbitBody\": \"4\",\n  \"shipName\": \"Generation Ship Hyperion\",\n  \"directionSystem\": \"Yemaki\",\n  \"distance\": 7340,\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Generation Ship Report\",\n  \"reportStatus\": \"pending\",\n  \"clientVersion\": \"postman-test\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/genreports",
@@ -2362,7 +2362,6 @@
 							"listen": "test",
 							"script": {
 								"id": "acde5806-3b95-4f9f-afbd-49aad8de9501",
-								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"pm.environment.set(\"grID\", jsonData.id);",
@@ -2380,7 +2379,8 @@
 									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Guardian Ruin Report\");",
 									"    pm.expect(jsonData.reportStatus).to.eql(\"pending\");",
 									"});"
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -2398,7 +2398,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"SYNUEFE XR-H D11-102\",\n  \"bodyName\": \"1 B\",\n  \"latitude\": -31.7347,\n  \"longitude\": -128.9212,\n  \"type\": \"Beta\",\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Guardian Ruin Report\",\n  \"reportStatus\": \"pending\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"SYNUEFE XR-H D11-102\",\n  \"bodyName\": \"1 B\",\n  \"latitude\": -31.7347,\n  \"longitude\": -128.9212,\n  \"type\": \"Beta\",\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Guardian Ruin Report\",\n  \"reportStatus\": \"pending\",\n  \"clientVersion\": \"postman-test\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/grreports",
@@ -2876,7 +2876,6 @@
 							"listen": "test",
 							"script": {
 								"id": "0fb64aa9-5c6e-43b8-bbed-b6552f15e789",
-								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"pm.environment.set(\"gsID\", jsonData.id);",
@@ -2895,7 +2894,8 @@
 									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Guardian Structure Report\");",
 									"    pm.expect(jsonData.reportStatus).to.eql(\"pending\");",
 									"});"
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -2913,7 +2913,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"SYNUEFE LY-I B42-2\",\n  \"bodyName\": \"C 2\",\n  \"latitude\": 52.6791,\n  \"longitude\": 115.2503,\n  \"type\": \"Fistbump\",\n  \"hasDatabank\": false,\n  \"cmdrName\": \"Doom666\",\n  \"cmdrComment\": \"TEST - Guardian Structure Report\",\n  \"reportStatus\": \"pending\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"SYNUEFE LY-I B42-2\",\n  \"bodyName\": \"C 2\",\n  \"latitude\": 52.6791,\n  \"longitude\": 115.2503,\n  \"type\": \"Fistbump\",\n  \"hasDatabank\": false,\n  \"cmdrName\": \"Doom666\",\n  \"cmdrComment\": \"TEST - Guardian Structure Report\",\n  \"reportStatus\": \"pending\",\n  \"clientVersion\": \"postman-test\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/gsreports",
@@ -4327,7 +4327,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"PLEIONE\",\n  \"bodyName\": \"11 A\",\n  \"latitude\": 2.3189,\n  \"longitude\": 177.2434,\n  \"type\": \"Barnacle\",\n  \"cycle\": \"B\",\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Thargoid Barnacle Report\",\n  \"reportStatus\": \"pending\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"PLEIONE\",\n  \"bodyName\": \"11 A\",\n  \"latitude\": 2.3189,\n  \"longitude\": 177.2434,\n  \"type\": \"Barnacle\",\n  \"cycle\": \"B\",\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Thargoid Barnacle Report\",\n  \"reportStatus\": \"pending\",\n  \"clientVersion\": \"postman-test\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/tbreports",
@@ -4572,7 +4572,6 @@
 							"listen": "test",
 							"script": {
 								"id": "2068d924-8c35-4832-9638-9a53548669b0",
-								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"pm.environment.set(\"tsID\", jsonData.id);",
@@ -4590,7 +4589,8 @@
 									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Thargoid Structure Report\");",
 									"    pm.expect(jsonData.reportStatus).to.eql(\"pending\");",
 									"});"
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -4608,7 +4608,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"HIP 19026\",\n  \"bodyName\": \"B 1 C\",\n  \"latitude\": -17.9575,\n  \"longitude\": -152.6994,\n  \"status\": \"Inactive\",\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Thargoid Structure Report\",\n  \"reportStatus\": \"pending\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"HIP 19026\",\n  \"bodyName\": \"B 1 C\",\n  \"latitude\": -17.9575,\n  \"longitude\": -152.6994,\n  \"status\": \"Inactive\",\n  \"cmdrName\": \"Unknown\",\n  \"cmdrComment\": \"TEST - Thargoid Structure Report\",\n  \"reportStatus\": \"pending\",\n  \"clientVersion\": \"postman-test\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/tsreports",

@@ -1,67 +1,67 @@
 
 
 baseMetaData
-exportRegion - Mon Mar 25 09:04:11 MST 2019
-exportGRArtifact - Mon Mar 25 09:04:11 MST 2019
-exportGRCodexCategory - Mon Mar 25 09:04:11 MST 2019
-exportGRCodexData - Mon Mar 25 09:04:11 MST 2019
-exportGRGroup - Mon Mar 25 09:04:11 MST 2019
-exportGRObelisk - Mon Mar 25 09:04:11 MST 2019
-exportGSArtifact - Mon Mar 25 09:04:11 MST 2019
-exportGSCodexCategory - Mon Mar 25 09:04:11 MST 2019
-exportGSCodexData - Mon Mar 25 09:04:11 MST 2019
-exportGSGroup - Mon Mar 25 09:04:11 MST 2019
-exportGSObelisk - Mon Mar 25 09:04:11 MST 2019
-exportTBCycle - Mon Mar 25 09:04:11 MST 2019
-exportTSStatus - Mon Mar 25 09:04:11 MST 2019
+exportRegion - Wed Apr 10 10:48:25 MST 2019
+exportGRArtifact - Wed Apr 10 10:48:25 MST 2019
+exportGRCodexCategory - Wed Apr 10 10:48:25 MST 2019
+exportGRCodexData - Wed Apr 10 10:48:25 MST 2019
+exportGRGroup - Wed Apr 10 10:48:25 MST 2019
+exportGRObelisk - Wed Apr 10 10:48:25 MST 2019
+exportGSArtifact - Wed Apr 10 10:48:25 MST 2019
+exportGSCodexCategory - Wed Apr 10 10:48:25 MST 2019
+exportGSCodexData - Wed Apr 10 10:48:25 MST 2019
+exportGSGroup - Wed Apr 10 10:48:25 MST 2019
+exportGSObelisk - Wed Apr 10 10:48:25 MST 2019
+exportTBCycle - Wed Apr 10 10:48:25 MST 2019
+exportTSStatus - Wed Apr 10 10:48:25 MST 2019
 
 baseTypeData
-exportReportType - Mon Mar 25 09:04:11 MST 2019
-exportAPType - Mon Mar 25 09:04:11 MST 2019
-exportBMType - Mon Mar 25 09:04:11 MST 2019
-exportBTType - Mon Mar 25 09:04:11 MST 2019
-exportCSType - Mon Mar 25 09:04:11 MST 2019
-exportFGType - Mon Mar 25 09:04:11 MST 2019
-exportFMType - Mon Mar 25 09:04:11 MST 2019
-exportGRType - Mon Mar 25 09:04:11 MST 2019
-exportGSType - Mon Mar 25 09:04:11 MST 2019
-exportGVType - Mon Mar 25 09:04:11 MST 2019
-exportGYType - Mon Mar 25 09:04:11 MST 2019
-exportLSType - Mon Mar 25 09:04:11 MST 2019
-exportTBType - Mon Mar 25 09:04:11 MST 2019
-exportTWType - Mon Mar 25 09:04:11 MST 2019
+exportReportType - Wed Apr 10 10:48:25 MST 2019
+exportAPType - Wed Apr 10 10:48:25 MST 2019
+exportBMType - Wed Apr 10 10:48:25 MST 2019
+exportBTType - Wed Apr 10 10:48:25 MST 2019
+exportCSType - Wed Apr 10 10:48:25 MST 2019
+exportFGType - Wed Apr 10 10:48:25 MST 2019
+exportFMType - Wed Apr 10 10:48:25 MST 2019
+exportGRType - Wed Apr 10 10:48:25 MST 2019
+exportGSType - Wed Apr 10 10:48:25 MST 2019
+exportGVType - Wed Apr 10 10:48:25 MST 2019
+exportGYType - Wed Apr 10 10:48:25 MST 2019
+exportLSType - Wed Apr 10 10:48:25 MST 2019
+exportTBType - Wed Apr 10 10:48:25 MST 2019
+exportTWType - Wed Apr 10 10:48:25 MST 2019
 
 baseExcludes
-exportExcludeCodex - Mon Mar 25 09:04:12 MST 2019
-exportExcludeEvent - Mon Mar 25 09:04:12 MST 2019
+exportExcludeCodex - Wed Apr 10 10:48:26 MST 2019
+exportExcludeEvent - Wed Apr 10 10:48:26 MST 2019
 
 exampleCoreData
-exportCMDR - Mon Mar 25 09:04:12 MST 2019
-exportSystem - Mon Mar 25 09:04:12 MST 2019
-exportBody - Mon Mar 25 09:04:12 MST 2019
+exportCMDR - Wed Apr 10 10:48:26 MST 2019
+exportSystem - Wed Apr 10 10:48:26 MST 2019
+exportBody - Wed Apr 10 10:48:26 MST 2019
 
 exampleSiteData
-exportAP - Mon Mar 25 09:04:13 MST 2019
-exportBM - Mon Mar 25 09:04:13 MST 2019
-exportBT - Mon Mar 25 09:04:13 MST 2019
-exportCS - Mon Mar 25 09:04:13 MST 2019
-exportFG - Mon Mar 25 09:04:13 MST 2019
-exportFM - Mon Mar 25 09:04:13 MST 2019
-exportGB - Mon Mar 25 09:04:13 MST 2019
-exportGEN - Mon Mar 25 09:04:13 MST 2019
-exportGR - Mon Mar 25 09:04:13 MST 2019
-exportGS - Mon Mar 25 09:04:13 MST 2019
-exportGV - Mon Mar 25 09:04:13 MST 2019
-exportGY - Mon Mar 25 09:04:13 MST 2019
-exportLS - Mon Mar 25 09:04:13 MST 2019
-exportTB - Mon Mar 25 09:04:13 MST 2019
-exportTS - Mon Mar 25 09:04:13 MST 2019
-exportTW - Mon Mar 25 09:04:13 MST 2019
+exportAP - Wed Apr 10 10:48:27 MST 2019
+exportBM - Wed Apr 10 10:48:27 MST 2019
+exportBT - Wed Apr 10 10:48:27 MST 2019
+exportCS - Wed Apr 10 10:48:27 MST 2019
+exportFG - Wed Apr 10 10:48:27 MST 2019
+exportFM - Wed Apr 10 10:48:27 MST 2019
+exportGB - Wed Apr 10 10:48:27 MST 2019
+exportGEN - Wed Apr 10 10:48:27 MST 2019
+exportGR - Wed Apr 10 10:48:27 MST 2019
+exportGS - Wed Apr 10 10:48:27 MST 2019
+exportGV - Wed Apr 10 10:48:27 MST 2019
+exportGY - Wed Apr 10 10:48:27 MST 2019
+exportLS - Wed Apr 10 10:48:27 MST 2019
+exportTB - Wed Apr 10 10:48:27 MST 2019
+exportTS - Wed Apr 10 10:48:27 MST 2019
+exportTW - Wed Apr 10 10:48:27 MST 2019
 
 exampleMetaData
-exportGBMessage - Mon Mar 25 09:04:14 MST 2019
-exportGENLog - Mon Mar 25 09:04:14 MST 2019
-exportGRActiveGroup - Mon Mar 25 09:04:14 MST 2019
-exportGRActiveObelisk - Mon Mar 25 09:04:14 MST 2019
-exportGSActiveGroup - Mon Mar 25 09:04:14 MST 2019
-exportGSActiveObelisk - Mon Mar 25 09:04:14 MST 2019
+exportGBMessage - Wed Apr 10 10:48:28 MST 2019
+exportGENLog - Wed Apr 10 10:48:28 MST 2019
+exportGRActiveGroup - Wed Apr 10 10:48:28 MST 2019
+exportGRActiveObelisk - Wed Apr 10 10:48:28 MST 2019
+exportGSActiveGroup - Wed Apr 10 10:48:28 MST 2019
+exportGSActiveObelisk - Wed Apr 10 10:48:28 MST 2019
