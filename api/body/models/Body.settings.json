@@ -39,7 +39,7 @@
       "type": "integer"
     },
     "distanceToArrival": {
-      "type": "float"
+      "type": "integer"
     },
     "isMainStar": {
       "type": "boolean"
@@ -130,6 +130,70 @@
       "collection": "ring",
       "via": "body",
       "dominant": true
+    },
+    "apsites": {
+      "collection": "apsite",
+      "via": "body"
+    },
+    "bmsites": {
+      "collection": "bmsite",
+      "via": "body"
+    },
+    "btsites": {
+      "collection": "btsite",
+      "via": "body"
+    },
+    "cssites": {
+      "collection": "cssite",
+      "via": "body"
+    },
+    "fgsites": {
+      "collection": "fgsite",
+      "via": "body"
+    },
+    "fmsites": {
+      "collection": "fmsite",
+      "via": "body"
+    },
+    "gbsites": {
+      "collection": "gbsite",
+      "via": "body"
+    },
+    "gensites": {
+      "collection": "gensite",
+      "via": "body"
+    },
+    "grsites": {
+      "collection": "grsite",
+      "via": "body"
+    },
+    "gssites": {
+      "collection": "gssite",
+      "via": "body"
+    },
+    "gvsites": {
+      "collection": "gvsite",
+      "via": "body"
+    },
+    "gysites": {
+      "collection": "gysite",
+      "via": "body"
+    },
+    "lssites": {
+      "collection": "lssite",
+      "via": "body"
+    },
+    "tbsites": {
+      "collection": "tbsite",
+      "via": "body"
+    },
+    "tssites": {
+      "collection": "tssite",
+      "via": "body"
+    },
+    "twsites": {
+      "collection": "twsite",
+      "via": "body"
     }
   }
 }
