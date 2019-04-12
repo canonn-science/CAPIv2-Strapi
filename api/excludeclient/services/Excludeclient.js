@@ -57,7 +57,6 @@ module.exports = {
 
       }
     }
-    strapi.log.info(typeof(process.env.BLACKLIST_CLIENT))
   },
 
   /**
