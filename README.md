@@ -14,22 +14,22 @@
 - [1. Canonn API v2 - (CAPIv2)](#1-canonn-api-v2---capiv2)
 - [2. Table of Contents](#2-table-of-contents)
 - [3. Intro](#3-intro)
-  - [3.1. Current Version](#31-current-version)
+    - [3.1. Current Version](#31-current-version)
 - [4. API Documentation](#4-api-documentation)
 - [5. Prerequisites](#5-prerequisites)
-  - [5.1. Installing Git, Node v10, and NPM v6](#51-installing-git-node-v10-and-npm-v6)
-  - [5.2. Install PM2 to run as a service](#52-install-pm2-to-run-as-a-service)
-  - [5.3. Install Strapi Alpha Latest](#53-install-strapi-alpha-latest)
-  - [5.4. Setup MariaDB](#54-setup-mariadb)
+    - [5.1. Installing Git, Node v10, and NPM v6](#51-installing-git-node-v10-and-npm-v6)
+    - [5.2. Install PM2 to run as a service](#52-install-pm2-to-run-as-a-service)
+    - [5.3. Install Strapi Alpha Latest](#53-install-strapi-alpha-latest)
+    - [5.4. Setup MariaDB](#54-setup-mariadb)
 - [6. Create Database & User for Strapi](#6-create-database--user-for-strapi)
 - [7. Clone the CAPIv2-Strapi project and Setup](#7-clone-the-capiv2-strapi-project-and-setup)
-  - [7.1. Clone the API](#71-clone-the-api)
-  - [7.2. Enter the directory and install](#72-enter-the-directory-and-install)
-  - [7.3. Setup python3 for scripts](#73-setup-python3-for-scripts)
-  - [7.4. Create the .env file to setup the database access](#74-create-the-env-file-to-setup-the-database-access)
-  - [7.5. Start CAPIv2 for the first time](#75-start-capiv2-for-the-first-time)
-  - [7.6. Create the Admin User](#76-create-the-admin-user)
-  - [7.7. Running CAPIv2 as a service](#77-running-capiv2-as-a-service)
+    - [7.1. Clone the API](#71-clone-the-api)
+    - [7.2. Enter the directory and install](#72-enter-the-directory-and-install)
+    - [7.3. Setup python3 for scripts](#73-setup-python3-for-scripts)
+    - [7.4. Create the .env file to setup the database access](#74-create-the-env-file-to-setup-the-database-access)
+    - [7.5. Start CAPIv2 for the first time](#75-start-capiv2-for-the-first-time)
+    - [7.6. Create the Admin User](#76-create-the-admin-user)
+    - [7.7. Running CAPIv2 as a service](#77-running-capiv2-as-a-service)
 - [8. Seed files for testing](#8-seed-files-for-testing)
 
 <!-- /TOC -->
@@ -38,10 +38,14 @@
 
 The Canonn APIv2 is designed to handle all our current science projects. Currently the following sites are planned to be implemented in the inital version:
 
+- Amphora Plants (AP)
+  - AP Types
 - Bark Mounds (BM)
+  - BM Types
 - Brain Trees (BT)
   - BT Types
 - Crystalline Shards (CS)
+  - CS Types
 - Fungal Gourds (FG)
   - FG Types
 - Fumaroles (FM)
