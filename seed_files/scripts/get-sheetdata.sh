@@ -46,6 +46,7 @@ sleep 1
 echo "" >> ../CSV/updated.md && echo "baseExcludes" >> ../CSV/updated.md
 currentDate=`date` && echo "exportExcludeCodex - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/baseExcludes/excludecodices.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQMUYXMbrIMUzraogZ5C4VQmgympY2Hbt-Zy7LMQ09dgVVEs6Q-HUd_i6NCpS9kesPkd4eRMvBW2dvv/pub?gid=0&single=true&output=csv'
 currentDate=`date` && echo "exportExcludeEvent - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/baseExcludes/excludeevents.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRBUhSHcdDA5WeybEk_XVqyS_0KXQErwZ6NKe40_5zBzNzO5XbfR584ZcIY4u2_GyzEhvN7j0Kkxr4w/pub?gid=0&single=true&output=csv'
+currentDate=`date` && echo "exportExcludeFSS - $currentDate" >> ../CSV/updated.md && wget –no-check-certificate -b -N -q -O ../CSV/baseExcludes/excludefsses.csv 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTIODFUus9-PogrEXxoOS86dhM2XUZrTZP2eQJcqFcmsNkHyXkhC3vvTPBpLXdF-MY0fV1XZ8Pp26Ul/pub?gid=0&single=true&output=csv'
 
 # Example Data
 ## exampleCoreData
