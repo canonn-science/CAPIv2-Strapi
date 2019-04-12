@@ -15,6 +15,7 @@ module.exports = {
    */
 
   find: async (ctx) => {
+    ctx.set('Content-Range', await Hdreport.count());
     if (ctx.query._q) {
       return strapi.services.hdreport.search(ctx.query);
     } else {

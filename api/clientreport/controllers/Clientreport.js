@@ -15,6 +15,7 @@ module.exports = {
    */
 
   find: async (ctx) => {
+    ctx.set('Content-Range', await Clientreport.count());
     if (ctx.query._q) {
       return strapi.services.clientreport.search(ctx.query);
     } else {

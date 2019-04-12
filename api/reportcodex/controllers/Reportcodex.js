@@ -15,6 +15,7 @@ module.exports = {
    */
 
   find: async (ctx) => {
+    ctx.set('Content-Range', await Reportcodex.count());
     if (ctx.query._q) {
       return strapi.services.reportcodex.search(ctx.query);
     } else {

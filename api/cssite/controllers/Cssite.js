@@ -15,6 +15,7 @@ module.exports = {
    */
 
   find: async (ctx) => {
+    ctx.set('Content-Range', await Cssite.count());
     if (ctx.query._q) {
       return strapi.services.cssite.search(ctx.query);
     } else {

@@ -15,6 +15,7 @@ module.exports = {
    */
 
   find: async (ctx) => {
+    ctx.set('Content-Range', await Gysite.count());
     if (ctx.query._q) {
       return strapi.services.gysite.search(ctx.query);
     } else {
