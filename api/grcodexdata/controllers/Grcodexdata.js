@@ -15,6 +15,7 @@ module.exports = {
    */
 
   find: async (ctx) => {
+    ctx.set('Content-Range', await Grcodexdata.count());
     if (ctx.query._q) {
       return strapi.services.grcodexdata.search(ctx.query);
     } else {

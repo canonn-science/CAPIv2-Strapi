@@ -15,6 +15,7 @@ module.exports = {
    */
 
   find: async (ctx) => {
+    ctx.set('Content-Range', await Gsactivegroup.count());
     if (ctx.query._q) {
       return strapi.services.gsactivegroup.search(ctx.query);
     } else {
