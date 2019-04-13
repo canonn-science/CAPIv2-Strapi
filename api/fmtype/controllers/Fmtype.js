@@ -15,6 +15,7 @@ module.exports = {
    */
 
   find: async (ctx) => {
+    ctx.set('Content-Range', await Fmtype.count());
     if (ctx.query._q) {
       return strapi.services.fmtype.search(ctx.query);
     } else {

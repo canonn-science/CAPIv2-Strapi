@@ -15,6 +15,7 @@ module.exports = {
    */
 
   find: async (ctx) => {
+    ctx.set('Content-Range', await Bttype.count());
     if (ctx.query._q) {
       return strapi.services.bttype.search(ctx.query);
     } else {

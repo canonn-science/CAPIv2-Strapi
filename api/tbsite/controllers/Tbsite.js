@@ -15,6 +15,7 @@ module.exports = {
    */
 
   find: async (ctx) => {
+    ctx.set('Content-Range', await Tbsite.count());
     if (ctx.query._q) {
       return strapi.services.tbsite.search(ctx.query);
     } else {

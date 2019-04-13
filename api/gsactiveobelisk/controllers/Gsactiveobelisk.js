@@ -15,6 +15,7 @@ module.exports = {
    */
 
   find: async (ctx) => {
+    ctx.set('Content-Range', await Gsactiveobelisk.count());
     if (ctx.query._q) {
       return strapi.services.gsactiveobelisk.search(ctx.query);
     } else {
