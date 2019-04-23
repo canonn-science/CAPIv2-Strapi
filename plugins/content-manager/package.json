@@ -1,27 +1,27 @@
 {
-  "_from": "strapi-plugin-content-manager@3.0.0-alpha.25.2",
-  "_id": "strapi-plugin-content-manager@3.0.0-alpha.25.2",
+  "_from": "strapi-plugin-content-manager@3.0.0-alpha.26.1",
+  "_id": "strapi-plugin-content-manager@3.0.0-alpha.26.1",
   "_inBundle": false,
-  "_integrity": "sha512-J69XiDepT8mM84ciUtDdifp4pytiKS/yozEsYKhzT9aQWUpL+q98AHz5gO54eksYe/b0jODZlxkafq2mC+ougg==",
+  "_integrity": "sha512-BKQw0aGXwNolpCKuG4Egz86cdiLh2T/6MzP/N15VLo53xkPVcinVDVBHydhKddsJdQX+xqWQuchHlPN/t34rAA==",
   "_location": "/strapi-plugin-content-manager",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "strapi-plugin-content-manager@3.0.0-alpha.25.2",
+    "raw": "strapi-plugin-content-manager@3.0.0-alpha.26.1",
     "name": "strapi-plugin-content-manager",
     "escapedName": "strapi-plugin-content-manager",
-    "rawSpec": "3.0.0-alpha.25.2",
+    "rawSpec": "3.0.0-alpha.26.1",
     "saveSpec": null,
-    "fetchSpec": "3.0.0-alpha.25.2"
+    "fetchSpec": "3.0.0-alpha.26.1"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "https://registry.npmjs.org/strapi-plugin-content-manager/-/strapi-plugin-content-manager-3.0.0-alpha.25.2.tgz",
-  "_shasum": "71409061ad029708302f835982c35a0bc97949c3",
-  "_spec": "strapi-plugin-content-manager@3.0.0-alpha.25.2",
-  "_where": "/media/nixstorage/github/canonn/CAPIv2-Strapi",
+  "_resolved": "https://registry.npmjs.org/strapi-plugin-content-manager/-/strapi-plugin-content-manager-3.0.0-alpha.26.1.tgz",
+  "_shasum": "deb8a92624397b6a368d26a0c5a2dc4b2d2fb7df",
+  "_spec": "strapi-plugin-content-manager@3.0.0-alpha.26.1",
+  "_where": "/nixstorage/Github/capi/CAPIv2-Strapi",
   "author": {
     "name": "Strapi team",
     "email": "hi@strapi.io",
@@ -32,7 +32,8 @@
   },
   "bundleDependencies": false,
   "dependencies": {
-    "pluralize": "^7.0.0"
+    "pluralize": "^7.0.0",
+    "strapi-utils": "3.0.0-alpha.26.1"
   },
   "deprecated": false,
   "description": "A powerful UI to easily manage your data.",
@@ -41,7 +42,7 @@
     "draft-js": "^0.10.5",
     "react-select": "^1.2.1",
     "showdown": "^1.8.6",
-    "strapi-helper-plugin": "3.0.0-alpha.25.2"
+    "strapi-helper-plugin": "3.0.0-alpha.26.1"
   },
   "engines": {
     "node": ">= 10.0.0",
@@ -80,5 +81,5 @@
     "icon": "plug",
     "description": "content-manager.plugin.description"
   },
-  "version": "3.0.0-alpha.25.2"
+  "version": "3.0.0-alpha.26.1"
 }

@@ -14,12 +14,12 @@ module.exports = {
    * @return {Object|Array}
    */
 
-  find: async (ctx) => {
+  find: async (ctx, next, { populate } = {}) => {
     ctx.set('Content-Range', await Gvsite.count());
     if (ctx.query._q) {
       return strapi.services.gvsite.search(ctx.query);
     } else {
-      return strapi.services.gvsite.fetchAll(ctx.query);
+      return strapi.services.gvsite.fetchAll(ctx.query, populate);
     }
   },
 
@@ -39,8 +39,8 @@ module.exports = {
    * @return {Number}
    */
 
-  count: async (ctx) => {
-    return strapi.services.gvsite.count(ctx.query);
+  count: async (ctx, next, { populate } = {}) => {
+    return strapi.services.gvsite.count(ctx.query, populate);
   },
 
   /**
