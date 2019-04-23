@@ -12,6 +12,8 @@ const _ = require('lodash');
 
 // Strapi utilities.
 const utils = require('strapi-hook-bookshelf/lib/utils/');
+const { convertRestQueryParams, buildQuery } = require('strapi-utils');
+
 
 module.exports = {
 
@@ -21,34 +23,17 @@ module.exports = {
    * @return {Promise}
    */
 
-  fetchAll: (params) => {
-    // Convert `params` object to filters compatible with Bookshelf.
-    const filters = strapi.utils.models.convertParams('gensite', params);
+  fetchAll: (params, populate) => {
     // Select field to populate.
-    const populate = Gensite.associations
+    const withRelated = populate || Gensite.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias);
 
-    return Gensite.query(function(qb) {
-      _.forEach(filters.where, (where, key) => {
-        if (_.isArray(where.value) && where.symbol !== 'IN' && where.symbol !== 'NOT IN') {
-          for (const value in where.value) {
-            qb[value ? 'where' : 'orWhere'](key, where.symbol, where.value[value])
-          }
-        } else {
-          qb.where(key, where.symbol, where.value);
-        }
-      });
+    const filters = convertRestQueryParams(params);
 
-      if (filters.sort) {
-        qb.orderBy(filters.sort.key, filters.sort.order);
-      }
-
-      qb.offset(filters.start);
-      qb.limit(filters.limit);
-    }).fetchAll({
-      withRelated: filters.populate || populate
-    });
+    return Gensite.query(buildQuery({ model: Gensite, filters }))
+      .fetchAll({ withRelated })
+      .then(data => data.toJSON());
   },
 
   /**
@@ -76,19 +61,9 @@ module.exports = {
 
   count: (params) => {
     // Convert `params` object to filters compatible with Bookshelf.
-    const filters = strapi.utils.models.convertParams('gensite', params);
+    const filters = convertRestQueryParams(params);
 
-    return Gensite.query(function(qb) {
-      _.forEach(filters.where, (where, key) => {
-        if (_.isArray(where.value)) {
-          for (const value in where.value) {
-            qb[value ? 'where' : 'orWhere'](key, where.symbol, where.value[value]);
-          }
-        } else {
-          qb.where(key, where.symbol, where.value);
-        }
-      });
-    }).count();
+    return Gensite.query(buildQuery({ model: Gensite, filters: _.pick(filters, 'where') })).count();
   },
 
   /**
@@ -176,10 +151,6 @@ module.exports = {
       .filter(attribute => attribute !== Gensite.primaryKey && !associations.includes(attribute))
       .filter(attribute => ['string', 'text'].includes(Gensite._attributes[attribute].type));
 
-    const searchNoText = Object.keys(Gensite._attributes)
-      .filter(attribute => attribute !== Gensite.primaryKey && !associations.includes(attribute))
-      .filter(attribute => !['string', 'text', 'boolean', 'integer', 'decimal', 'float'].includes(Gensite._attributes[attribute].type));
-
     const searchInt = Object.keys(Gensite._attributes)
       .filter(attribute => attribute !== Gensite.primaryKey && !associations.includes(attribute))
       .filter(attribute => ['integer', 'decimal', 'float'].includes(Gensite._attributes[attribute].type));
@@ -191,11 +162,6 @@ module.exports = {
     const query = (params._q || '').replace(/[^a-zA-Z0-9.-\s]+/g, '');
 
     return Gensite.query(qb => {
-      // Search in columns which are not text value.
-      searchNoText.forEach(attribute => {
-        qb.orWhereRaw(`LOWER(${attribute}) LIKE '%${_.toLower(query)}%'`);
-      });
-
       if (!_.isNaN(_.toNumber(query))) {
         searchInt.forEach(attribute => {
           qb.orWhereRaw(`${attribute} = ${_.toNumber(query)}`);

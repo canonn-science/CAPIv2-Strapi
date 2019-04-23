@@ -1,27 +1,27 @@
 {
-  "_from": "strapi-plugin-content-type-builder@3.0.0-alpha.25.2",
-  "_id": "strapi-plugin-content-type-builder@3.0.0-alpha.25.2",
+  "_from": "strapi-plugin-content-type-builder@3.0.0-alpha.26.1",
+  "_id": "strapi-plugin-content-type-builder@3.0.0-alpha.26.1",
   "_inBundle": false,
-  "_integrity": "sha512-LMwf55lPyfd/B3epwLpIZNIdbGEd0uQ9LQxoi4ARXcl8+NqpKlxZ8fAINJXEjhV9zfRqqFkbL0AG3k1XWWCdXQ==",
+  "_integrity": "sha512-pKMgf1it1kUfL2NUsS7l/cHvUp494GiRYNpgc7TS5W3iSY/wf3uJRw6+rR7fzxwdkg0xeXjvm8VDSLxTCMnshQ==",
   "_location": "/strapi-plugin-content-type-builder",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "strapi-plugin-content-type-builder@3.0.0-alpha.25.2",
+    "raw": "strapi-plugin-content-type-builder@3.0.0-alpha.26.1",
     "name": "strapi-plugin-content-type-builder",
     "escapedName": "strapi-plugin-content-type-builder",
-    "rawSpec": "3.0.0-alpha.25.2",
+    "rawSpec": "3.0.0-alpha.26.1",
     "saveSpec": null,
-    "fetchSpec": "3.0.0-alpha.25.2"
+    "fetchSpec": "3.0.0-alpha.26.1"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "https://registry.npmjs.org/strapi-plugin-content-type-builder/-/strapi-plugin-content-type-builder-3.0.0-alpha.25.2.tgz",
-  "_shasum": "b8970496e682ded4d02846971f30cd077d4775b3",
-  "_spec": "strapi-plugin-content-type-builder@3.0.0-alpha.25.2",
-  "_where": "/media/nixstorage/github/canonn/CAPIv2-Strapi",
+  "_resolved": "https://registry.npmjs.org/strapi-plugin-content-type-builder/-/strapi-plugin-content-type-builder-3.0.0-alpha.26.1.tgz",
+  "_shasum": "5ba6e21ef6bfcae1181ce8ae6fde4d67d890d078",
+  "_spec": "strapi-plugin-content-type-builder@3.0.0-alpha.26.1",
+  "_where": "/nixstorage/Github/capi/CAPIv2-Strapi",
   "author": {
     "name": "Strapi team",
     "email": "hi@strapi.io",
@@ -34,13 +34,13 @@
   "dependencies": {
     "immutable": "^3.8.2",
     "pluralize": "^7.0.0",
-    "strapi-generate": "3.0.0-alpha.25.2",
-    "strapi-generate-api": "3.0.0-alpha.25.2"
+    "strapi-generate": "3.0.0-alpha.26.1",
+    "strapi-generate-api": "3.0.0-alpha.26.1"
   },
   "deprecated": false,
   "description": "Strapi plugin to create content type (API).",
   "devDependencies": {
-    "strapi-helper-plugin": "3.0.0-alpha.25.2"
+    "strapi-helper-plugin": "3.0.0-alpha.26.1"
   },
   "engines": {
     "node": ">= 10.0.0",
@@ -66,7 +66,7 @@
     "build": "cross-env NODE_ENV=production node_modules/strapi-helper-plugin/node_modules/.bin/webpack --config node_modules/strapi-helper-plugin/lib/internals/webpack/webpack.prod.babel.js --color -p --progress",
     "build:clean": "cross-env rimraf admin/build",
     "build:dev": "cross-env NODE_ENV=development ./node_modules/strapi-helper-plugin/node_modules/.bin/webpack --config node_modules/strapi-helper-plugin/lib/internals/webpack/webpack.prod.babel.js --color -p --progress",
-    "generate": "node ./node_modules/plop/plop.js --plopfile node_modules/strapi-helper-plugin/lib/internals/generators/index.js",
+    "generate": "node ./node_modules/strapi-helper-plugin/node_modules/plop --plopfile ./node_modules/strapi-helper-plugin/lib/internals/generators/index.js",
     "preanalyze": "npm run analyze:clean",
     "prebuild": "npm run build:clean",
     "prepublishOnly": "IS_MONOREPO=true npm run build",
@@ -79,5 +79,5 @@
     "icon": "paint-brush",
     "description": "content-type-builder.plugin.description"
   },
-  "version": "3.0.0-alpha.25.2"
+  "version": "3.0.0-alpha.26.1"
 }

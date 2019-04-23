@@ -12,6 +12,8 @@ const _ = require('lodash');
 
 // Strapi utilities.
 const utils = require('strapi-hook-bookshelf/lib/utils/');
+const { convertRestQueryParams, buildQuery } = require('strapi-utils');
+
 
 module.exports = {
 
@@ -21,34 +23,17 @@ module.exports = {
    * @return {Promise}
    */
 
-  fetchAll: (params) => {
-    // Convert `params` object to filters compatible with Bookshelf.
-    const filters = strapi.utils.models.convertParams('reportfss', params);
+  fetchAll: (params, populate) => {
     // Select field to populate.
-    const populate = Reportfss.associations
+    const withRelated = populate || Reportfss.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias);
 
-    return Reportfss.query(function(qb) {
-      _.forEach(filters.where, (where, key) => {
-        if (_.isArray(where.value) && where.symbol !== 'IN' && where.symbol !== 'NOT IN') {
-          for (const value in where.value) {
-            qb[value ? 'where' : 'orWhere'](key, where.symbol, where.value[value])
-          }
-        } else {
-          qb.where(key, where.symbol, where.value);
-        }
-      });
+    const filters = convertRestQueryParams(params);
 
-      if (filters.sort) {
-        qb.orderBy(filters.sort.key, filters.sort.order);
-      }
-
-      qb.offset(filters.start);
-      qb.limit(filters.limit);
-    }).fetchAll({
-      withRelated: filters.populate || populate
-    });
+    return Reportfss.query(buildQuery({ model: Reportfss, filters }))
+      .fetchAll({ withRelated })
+      .then(data => data.toJSON());
   },
 
   /**
@@ -76,19 +61,9 @@ module.exports = {
 
   count: (params) => {
     // Convert `params` object to filters compatible with Bookshelf.
-    const filters = strapi.utils.models.convertParams('reportfss', params);
+    const filters = convertRestQueryParams(params);
 
-    return Reportfss.query(function(qb) {
-      _.forEach(filters.where, (where, key) => {
-        if (_.isArray(where.value)) {
-          for (const value in where.value) {
-            qb[value ? 'where' : 'orWhere'](key, where.symbol, where.value[value]);
-          }
-        } else {
-          qb.where(key, where.symbol, where.value);
-        }
-      });
-    }).count();
+    return Reportfss.query(buildQuery({ model: Reportfss, filters: _.pick(filters, 'where') })).count();
   },
 
   /**
@@ -101,6 +76,10 @@ module.exports = {
     // Extract values related to relational data.
     const relations = _.pick(values, Reportfss.associations.map(ast => ast.alias));
     const data = _.omit(values, Reportfss.associations.map(ast => ast.alias));
+
+    // Check blacklists (Client & CMDR)
+    await strapi.api.excludeclient.services.excludeclient.blockClient(data.clientVersion);
+    await strapi.api.excludecmdr.services.excludecmdr.blockCMDR(data.cmdrName);
 
     // Create entry with no-relational data.
     const entry = await Reportfss.forge(data).save();
@@ -176,10 +155,6 @@ module.exports = {
       .filter(attribute => attribute !== Reportfss.primaryKey && !associations.includes(attribute))
       .filter(attribute => ['string', 'text'].includes(Reportfss._attributes[attribute].type));
 
-    const searchNoText = Object.keys(Reportfss._attributes)
-      .filter(attribute => attribute !== Reportfss.primaryKey && !associations.includes(attribute))
-      .filter(attribute => !['string', 'text', 'boolean', 'integer', 'decimal', 'float'].includes(Reportfss._attributes[attribute].type));
-
     const searchInt = Object.keys(Reportfss._attributes)
       .filter(attribute => attribute !== Reportfss.primaryKey && !associations.includes(attribute))
       .filter(attribute => ['integer', 'decimal', 'float'].includes(Reportfss._attributes[attribute].type));
@@ -191,11 +166,6 @@ module.exports = {
     const query = (params._q || '').replace(/[^a-zA-Z0-9.-\s]+/g, '');
 
     return Reportfss.query(qb => {
-      // Search in columns which are not text value.
-      searchNoText.forEach(attribute => {
-        qb.orWhereRaw(`LOWER(${attribute}) LIKE '%${_.toLower(query)}%'`);
-      });
-
       if (!_.isNaN(_.toNumber(query))) {
         searchInt.forEach(attribute => {
           qb.orWhereRaw(`${attribute} = ${_.toNumber(query)}`);
