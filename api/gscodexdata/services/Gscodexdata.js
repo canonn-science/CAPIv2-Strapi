@@ -12,6 +12,8 @@ const _ = require('lodash');
 
 // Strapi utilities.
 const utils = require('strapi-hook-bookshelf/lib/utils/');
+const { convertRestQueryParams, buildQuery } = require('strapi-utils');
+
 
 module.exports = {
 
@@ -21,34 +23,17 @@ module.exports = {
    * @return {Promise}
    */
 
-  fetchAll: (params) => {
-    // Convert `params` object to filters compatible with Bookshelf.
-    const filters = strapi.utils.models.convertParams('gscodexdata', params);
+  fetchAll: (params, populate) => {
     // Select field to populate.
-    const populate = Gscodexdata.associations
+    const withRelated = populate || Gscodexdata.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias);
 
-    return Gscodexdata.query(function(qb) {
-      _.forEach(filters.where, (where, key) => {
-        if (_.isArray(where.value) && where.symbol !== 'IN' && where.symbol !== 'NOT IN') {
-          for (const value in where.value) {
-            qb[value ? 'where' : 'orWhere'](key, where.symbol, where.value[value])
-          }
-        } else {
-          qb.where(key, where.symbol, where.value);
-        }
-      });
+    const filters = convertRestQueryParams(params);
 
-      if (filters.sort) {
-        qb.orderBy(filters.sort.key, filters.sort.order);
-      }
-
-      qb.offset(filters.start);
-      qb.limit(filters.limit);
-    }).fetchAll({
-      withRelated: filters.populate || populate
-    });
+    return Gscodexdata.query(buildQuery({ model: Gscodexdata, filters }))
+      .fetchAll({ withRelated })
+      .then(data => data.toJSON());
   },
 
   /**
@@ -76,19 +61,9 @@ module.exports = {
 
   count: (params) => {
     // Convert `params` object to filters compatible with Bookshelf.
-    const filters = strapi.utils.models.convertParams('gscodexdata', params);
+    const filters = convertRestQueryParams(params);
 
-    return Gscodexdata.query(function(qb) {
-      _.forEach(filters.where, (where, key) => {
-        if (_.isArray(where.value)) {
-          for (const value in where.value) {
-            qb[value ? 'where' : 'orWhere'](key, where.symbol, where.value[value]);
-          }
-        } else {
-          qb.where(key, where.symbol, where.value);
-        }
-      });
-    }).count();
+    return Gscodexdata.query(buildQuery({ model: Gscodexdata, filters: _.pick(filters, 'where') })).count();
   },
 
   /**
@@ -176,10 +151,6 @@ module.exports = {
       .filter(attribute => attribute !== Gscodexdata.primaryKey && !associations.includes(attribute))
       .filter(attribute => ['string', 'text'].includes(Gscodexdata._attributes[attribute].type));
 
-    const searchNoText = Object.keys(Gscodexdata._attributes)
-      .filter(attribute => attribute !== Gscodexdata.primaryKey && !associations.includes(attribute))
-      .filter(attribute => !['string', 'text', 'boolean', 'integer', 'decimal', 'float'].includes(Gscodexdata._attributes[attribute].type));
-
     const searchInt = Object.keys(Gscodexdata._attributes)
       .filter(attribute => attribute !== Gscodexdata.primaryKey && !associations.includes(attribute))
       .filter(attribute => ['integer', 'decimal', 'float'].includes(Gscodexdata._attributes[attribute].type));
@@ -191,11 +162,6 @@ module.exports = {
     const query = (params._q || '').replace(/[^a-zA-Z0-9.-\s]+/g, '');
 
     return Gscodexdata.query(qb => {
-      // Search in columns which are not text value.
-      searchNoText.forEach(attribute => {
-        qb.orWhereRaw(`LOWER(${attribute}) LIKE '%${_.toLower(query)}%'`);
-      });
-
       if (!_.isNaN(_.toNumber(query))) {
         searchInt.forEach(attribute => {
           qb.orWhereRaw(`${attribute} = ${_.toNumber(query)}`);

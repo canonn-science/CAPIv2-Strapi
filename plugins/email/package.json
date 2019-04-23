@@ -1,27 +1,27 @@
 {
-  "_from": "strapi-plugin-email@3.0.0-alpha.25.2",
-  "_id": "strapi-plugin-email@3.0.0-alpha.25.2",
+  "_from": "strapi-plugin-email@3.0.0-alpha.26.1",
+  "_id": "strapi-plugin-email@3.0.0-alpha.26.1",
   "_inBundle": false,
-  "_integrity": "sha512-bvKCnEEpYSdrZW8fCE+3+Bh1KZoAgd9e2+zJxBu02XidAP11qeWEEYyiy810M02hn82XAJ9+gM9O/2uIZdcT1A==",
+  "_integrity": "sha512-Ck5xys65LA0ipvv1njmIQAdxdRwyu2u2cL6FYudJO0iiczZKCkdVKpXb/kmaNDHTJkL12Q6+Adhw0FZ/9bIDkg==",
   "_location": "/strapi-plugin-email",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "strapi-plugin-email@3.0.0-alpha.25.2",
+    "raw": "strapi-plugin-email@3.0.0-alpha.26.1",
     "name": "strapi-plugin-email",
     "escapedName": "strapi-plugin-email",
-    "rawSpec": "3.0.0-alpha.25.2",
+    "rawSpec": "3.0.0-alpha.26.1",
     "saveSpec": null,
-    "fetchSpec": "3.0.0-alpha.25.2"
+    "fetchSpec": "3.0.0-alpha.26.1"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "https://registry.npmjs.org/strapi-plugin-email/-/strapi-plugin-email-3.0.0-alpha.25.2.tgz",
-  "_shasum": "a25bd15df060c929e6989cd19a9bf77d67d777a6",
-  "_spec": "strapi-plugin-email@3.0.0-alpha.25.2",
-  "_where": "/media/nixstorage/github/canonn/CAPIv2-Strapi",
+  "_resolved": "https://registry.npmjs.org/strapi-plugin-email/-/strapi-plugin-email-3.0.0-alpha.26.1.tgz",
+  "_shasum": "090ebf68fdd1196afeb09764157da398727087f0",
+  "_spec": "strapi-plugin-email@3.0.0-alpha.26.1",
+  "_where": "/nixstorage/Github/capi/CAPIv2-Strapi",
   "author": {
     "name": "Strapi team",
     "email": "hi@strapi.io",
@@ -32,14 +32,15 @@
   },
   "bundleDependencies": false,
   "dependencies": {
-    "strapi-provider-email-sendmail": "3.0.0-alpha.25.2"
+    "strapi-provider-email-sendmail": "3.0.0-alpha.26.1",
+    "strapi-utils": "3.0.0-alpha.26.1"
   },
   "deprecated": false,
   "description": "This is the description of the plugin.",
   "devDependencies": {
     "react-copy-to-clipboard": "5.0.1",
     "rimraf": "^2.6.3",
-    "strapi-helper-plugin": "3.0.0-alpha.25.2"
+    "strapi-helper-plugin": "3.0.0-alpha.26.1"
   },
   "engines": {
     "node": ">= 10.0.0",
@@ -78,5 +79,5 @@
     "icon": "paper-plane",
     "description": "email.plugin.description"
   },
-  "version": "3.0.0-alpha.25.2"
+  "version": "3.0.0-alpha.26.1"
 }

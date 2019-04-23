@@ -14,12 +14,12 @@ module.exports = {
    * @return {Object|Array}
    */
 
-  find: async (ctx) => {
+  find: async (ctx, next, { populate } = {}) => {
     ctx.set('Content-Range', await Fgreport.count());
     if (ctx.query._q) {
       return strapi.services.fgreport.search(ctx.query);
     } else {
-      return strapi.services.fgreport.fetchAll(ctx.query);
+      return strapi.services.fgreport.fetchAll(ctx.query, populate);
     }
   },
 
@@ -39,8 +39,8 @@ module.exports = {
    * @return {Number}
    */
 
-  count: async (ctx) => {
-    return strapi.services.fgreport.count(ctx.query);
+  count: async (ctx, next, { populate } = {}) => {
+    return strapi.services.fgreport.count(ctx.query, populate);
   },
 
   /**

@@ -14,12 +14,12 @@ module.exports = {
    * @return {Object|Array}
    */
 
-  find: async (ctx) => {
+  find: async (ctx, next, { populate } = {}) => {
     ctx.set('Content-Range', await Bttype.count());
     if (ctx.query._q) {
       return strapi.services.bttype.search(ctx.query);
     } else {
-      return strapi.services.bttype.fetchAll(ctx.query);
+      return strapi.services.bttype.fetchAll(ctx.query, populate);
     }
   },
 
@@ -39,8 +39,8 @@ module.exports = {
    * @return {Number}
    */
 
-  count: async (ctx) => {
-    return strapi.services.bttype.count(ctx.query);
+  count: async (ctx, next, { populate } = {}) => {
+    return strapi.services.bttype.count(ctx.query, populate);
   },
 
   /**
