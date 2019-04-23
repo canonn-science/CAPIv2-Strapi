@@ -77,7 +77,7 @@ module.exports = {
 
     return Excludeclient.query(buildQuery({ model: Excludeclient, filters }))
       .fetchAll({ withRelated })
-      .then(data => data.toJSON());
+      //.then(data => data.toJSON());
   },
 
   /**

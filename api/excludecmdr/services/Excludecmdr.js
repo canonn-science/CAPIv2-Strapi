@@ -77,7 +77,7 @@ module.exports = {
 
     return Excludecmdr.query(buildQuery({ model: Excludecmdr, filters }))
       .fetchAll({ withRelated })
-      .then(data => data.toJSON());
+      //.then(data => data.toJSON());
   },
 
   /**
