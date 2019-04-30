@@ -2911,6 +2911,7 @@ input editGssiteInput {
 input editGstypeInput {
   type: String
   journalName: String
+  blueprint: String
 }
 
 input editGvreportInput {
@@ -4804,11 +4805,13 @@ type Gstype {
   id: ID!
   type: String!
   journalName: String!
+  blueprint: String
 }
 
 input GstypeInput {
   type: String!
   journalName: String!
+  blueprint: String
 }
 
 """Reporting for Gas Vents"""
