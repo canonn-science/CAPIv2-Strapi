@@ -1,0 +1,30 @@
+{
+  "paths": {
+    "/info": {
+      "get": {
+        "description": "Get core information about the CAPIv2 and version info",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": []
+      }
+    },
+    "/version": {
+      "get": {
+        "description": "Get only the Strapi version and CAPIv2 Version",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": []
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Canonn Use",
+      "description": "Endpoints used by Canonn for updating or maintaining the API"
+    }
+  ]
+}

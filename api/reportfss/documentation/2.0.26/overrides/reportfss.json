@@ -1,0 +1,66 @@
+{
+  "paths": {
+    "/reportfsses": {
+      "get": {
+        "description": "Get all FSS Scan Event Debug entries",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new FSS Scan Event Debug entry",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": []
+      }
+    },
+    "/reportfsses/count": {
+      "get": {
+        "description": "Get a count of all FSS Scan Event Debug entries",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": []
+      }
+    },
+    "/reportfsses/{id}": {
+      "get": {
+        "description": "Get a FSS Scan Event Debug by id",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a FSS Scan Event Debug by id",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": []
+      },
+      "delete": {
+        "description": "Delete a FSS Scan Event Debug by id",
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "security": [
+          "updateLogWrite"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Canonn Use",
+      "description": "Endpoints used by Canonn for updating or maintaining the API"
+    }
+  ]
+}

@@ -1,11 +1,10 @@
 # 1. Canonn API v2 - (CAPIv2)
 
-[![Strapi Version](https://img.shields.io/badge/strapi-v3.0.0--alpha.26.1-blue.svg)](https://github.com/strapi/strapi) 
-[![CAPIv2 Version](https://img.shields.io/badge/capiv2-v2.0.25-orange.svg)](https://api.canonn.tech:2083) 
+[![Strapi Version](https://img.shields.io/badge/strapi-v3.0.0--alpha.26.2-blue.svg)](https://github.com/strapi/strapi)
+[![CAPIv2 Version](https://img.shields.io/badge/capiv2-v2.0.26-orange.svg)](https://api.canonn.tech:2083)
 [![Build Status](https://travis-ci.org/canonn-science/CAPIv2-Strapi.svg?branch=development)](https://travis-ci.org/canonn-science/CAPIv2-Strapi)
 [![EDCD Discord](https://img.shields.io/discord/164411426939600896.svg?logo=discord&label=EDCD%20Discord)](https://discord.gg/fhDWZBH)
 [![Canonn Discord](https://img.shields.io/discord/146714487695605760.svg?logo=discord&label=Canonn%20Discord)](https://discord.gg/HzzmG2f)
-
 
 # 2. Table of Contents
 
@@ -14,22 +13,21 @@
 - [1. Canonn API v2 - (CAPIv2)](#1-canonn-api-v2---capiv2)
 - [2. Table of Contents](#2-table-of-contents)
 - [3. Intro](#3-intro)
-    - [3.1. Current Version](#31-current-version)
+  - [3.1. Current Version](#31-current-version)
 - [4. API Documentation](#4-api-documentation)
 - [5. Prerequisites](#5-prerequisites)
-    - [5.1. Installing Git, Node v10, and NPM v6](#51-installing-git-node-v10-and-npm-v6)
-    - [5.2. Install PM2 to run as a service](#52-install-pm2-to-run-as-a-service)
-    - [5.3. Install Strapi Alpha Latest](#53-install-strapi-alpha-latest)
-    - [5.4. Setup MariaDB](#54-setup-mariadb)
+  - [5.1. Installing Git, Node v10, and NPM v6](#51-installing-git-node-v10-and-npm-v6)
+  - [5.2. Install PM2 to run as a service](#52-install-pm2-to-run-as-a-service)
+  - [5.3. Install Strapi Alpha Latest](#53-install-strapi-alpha-latest)
+  - [5.4. Setup MariaDB](#54-setup-mariadb)
 - [6. Create Database & User for Strapi](#6-create-database--user-for-strapi)
 - [7. Clone the CAPIv2-Strapi project and Setup](#7-clone-the-capiv2-strapi-project-and-setup)
-    - [7.1. Clone the API](#71-clone-the-api)
-    - [7.2. Enter the directory and install](#72-enter-the-directory-and-install)
-    - [7.3. Setup python3 for scripts](#73-setup-python3-for-scripts)
-    - [7.4. Create the .env file to setup the database access](#74-create-the-env-file-to-setup-the-database-access)
-    - [7.5. Start CAPIv2 for the first time](#75-start-capiv2-for-the-first-time)
-    - [7.6. Create the Admin User](#76-create-the-admin-user)
-    - [7.7. Running CAPIv2 as a service](#77-running-capiv2-as-a-service)
+  - [7.1. Clone the API](#71-clone-the-api)
+  - [7.2. Enter the directory and install](#72-enter-the-directory-and-install)
+  - [7.3. Create the .env file to setup the database access](#73-create-the-env-file-to-setup-the-database-access)
+  - [7.4. Start CAPIv2 for the first time](#74-start-capiv2-for-the-first-time)
+  - [7.5. Create the Admin User](#75-create-the-admin-user)
+  - [7.6. Running CAPIv2 as a service](#76-running-capiv2-as-a-service)
 - [8. Seed files for testing](#8-seed-files-for-testing)
 
 <!-- /TOC -->
@@ -118,6 +116,7 @@ We are also working on our actual documentation to help navigate and describe ho
 # 5. Prerequisites
 
 You will need the following:
+
 - Ubuntu 18.04 LTS
   - **Ubuntu 16.04 is no longer supported**
 - Git
@@ -131,23 +130,17 @@ You will need the following:
 
 First add the NodeJS Apt repos:
 
-`
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-`
+`curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -`
 
 Then install Git, Node, and NPM:
 
-`
-sudo apt-get install -y nodejs git build-essential
-`
+`sudo apt-get install -y nodejs git build-essential`
 
 ## 5.2. Install PM2 to run as a service
 
 Run the following to install PM2 globally on your system:
 
-`
-sudo npm install pm2 -g
-`
+`sudo npm install pm2 -g`
 
 **NOTE:** If you get an EACCESS error while trying to install global packages, please see [this](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) node help guide.
 
@@ -157,9 +150,7 @@ Run the following to install Strapi Alpha version from the package.json:
 
 **NOTE:** This is just an example, you should replace the version below with the proper version!
 
-`
-sudo npm i 3.0.0-alpha.24.1 -g
-`
+`sudo npm i 3.0.0-alpha.24.1 -g`
 
 This will install strapi globally and allow you to generate new projects or models/api/ect from the cli
 
@@ -169,9 +160,7 @@ See the following for a more detailed guide: [https://strapi.io/documentation/cl
 
 Install Software Properties Common if its not already installed:
 
-`
-sudo apt-get install -y software-properties-common
-`
+`sudo apt-get install -y software-properties-common`
 
 Then add the MariaDB Apt repos:
 
@@ -211,9 +200,7 @@ exit
 
 Now we need to create the databases that will hold the Strapi data, first enter a mysql shell as root:
 
-`
-mysql -u root -p
-`
+`mysql -u root -p`
 
 You will need two databases, as we split the users data into it's own DB to allow for easy access between production, staging, and development
 
@@ -237,42 +224,27 @@ Now that we have the database we can clone the API and install it, we will use `
 
 Lets create our project directory and clone the CAPIv2 Build
 
-`
-sudo mkdir /srv/CAPIv2 && sudo chown YourUserName:YourUserGroup /srv/CAPIv2
-`
+`sudo mkdir /srv/CAPIv2 && sudo chown YourUserName:YourUserGroup /srv/CAPIv2`
 
-`
-cd /srv/CAPIv2 && git clone https://github.com/canonn-science/CAPIv2-Strapi.git
-`
+`cd /srv/CAPIv2 && git clone https://github.com/canonn-science/CAPIv2-Strapi.git`
 
 **NOTE** Currently you will need to make the uploads directory for screenshots, to do so please run:
 
-`
-mkdir /srv/CAPIv2/CAPIv2-Strapi/public/uploads
-`
+`mkdir /srv/CAPIv2/CAPIv2-Strapi/public/uploads`
 
 ## 7.2. Enter the directory and install
 
-`
-cd /srv/CAPIv2/CAPIv2-Strapi && npm install
-`
+`cd /srv/CAPIv2/CAPIv2-Strapi && npm install`
 
 **Note this may take a while**
 
-## 7.3. Setup python3 for scripts
-
-~~CAPIv2 uses a few python scripts to update data from EDSM to our database. The database information is pulled from the database.json file you will configure in the next step.~~
-
-We no longer use python scripts as all of our updates are done via our external program the [CAPIv2-Updater](https://github.com/canonn-science/CAPIv2-Updater)
-
-## 7.4. Create the .env file to setup the database access
+## 7.3. Create the .env file to setup the database access
 
 In order for strapi to talk to the MariaDB database we setup you will need to copy and modify the following file:
 
 **NOTE:** This may not work on windows, if you are on a windows machine you will need to declare the variables on the commandline!
 
-`cp /srv/CAPIv2/CAPIv2-Strapi/.env.example /srv/CAPIv2/CAPIv2-Strapi/.env
-`
+`cp /srv/CAPIv2/CAPIv2-Strapi/.env.example /srv/CAPIv2/CAPIv2-Strapi/.env`
 
 The example config is also down below, you will just need to modify the Database, User, and password you setup:
 
@@ -280,7 +252,7 @@ You will need to set the Database settings for User and development at a minimum
 
 For the Discord webhook, you will need to create a Discord Server and setup a webhook URL. This webhook is a work in progress but will be used to provide alerts when certain data is added.
 
-## 7.5. Start CAPIv2 for the first time
+## 7.4. Start CAPIv2 for the first time
 
 Once it has finished setting up, you can start it once in order to create your admin user:
 
@@ -305,17 +277,15 @@ cd /srv/CAPIv2/CAPIv2-Strapi && strapi start
 }
 ```
 
-## 7.6. Create the Admin User
+## 7.5. Create the Admin User
 
 After strapi has started you can visit `http://localhost:1337/admin` if you are on the machine, else you can change `localhost` to your servers IP.
 
-## 7.7. Running CAPIv2 as a service
+## 7.6. Running CAPIv2 as a service
 
 To run strapi as a service, a change was made in the package.json, and you have installed PM2 in a previous step. You will need to navigate to the directory the API is cloned into and run the following:
 
-`
-NODE_ENV=development pm2 start --name="capiv2" server.js -i 1
-`
+`NODE_ENV=development pm2 start --name="capiv2" server.js -i 1`
 
 Alternatively you can modify the `NODE_ENV` for staging or production use. Again if you are on a windows machine you may need to define the database and JWT secret environment variables, just like what is being done with `NODE_ENV`.
 
