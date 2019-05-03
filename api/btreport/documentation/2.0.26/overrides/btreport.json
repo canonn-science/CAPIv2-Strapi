@@ -1,0 +1,66 @@
+{
+  "paths": {
+    "/btreports": {
+      "get": {
+        "description": "Get all BT report entries",
+        "summary": "",
+        "tags": [
+          "Brain Tree Reports"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new BT report entry",
+        "summary": "",
+        "tags": [
+          "Brain Tree Reports"
+        ],
+        "security": []
+      }
+    },
+    "/btreports/count": {
+      "get": {
+        "description": "Get a count of all BT report entries",
+        "summary": "",
+        "tags": [
+          "Brain Tree Reports"
+        ],
+        "security": []
+      }
+    },
+    "/btreports/{id}": {
+      "get": {
+        "description": "Get a BT report by id",
+        "summary": "",
+        "tags": [
+          "Brain Tree Reports"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a BT report by id",
+        "summary": "",
+        "tags": [
+          "Brain Tree Reports"
+        ],
+        "security": []
+      },
+      "delete": {
+        "description": "Delete a BT report by id",
+        "summary": "",
+        "tags": [
+          "Brain Tree Reports"
+        ],
+        "security": [
+          "reportDelete"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Brain Tree Reports",
+      "description": "Public Reporting of BT"
+    }
+  ]
+}

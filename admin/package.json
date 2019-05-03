@@ -1,8 +1,8 @@
 {
-  "_from": "strapi-admin@3.0.0-alpha.26.1",
-  "_id": "strapi-admin@3.0.0-alpha.26.1",
+  "_from": "strapi-admin@3.0.0-alpha.26.2",
+  "_id": "strapi-admin@3.0.0-alpha.26.2",
   "_inBundle": false,
-  "_integrity": "sha512-lKDCxkd++vbSCHHblq+WOLxDSligOVqfqVUUTfdEgwGMxYrFEVdFwma9CBpfw3MUApm4lomCynFTdzgYl+OQGg==",
+  "_integrity": "sha512-cmcWaPHgWTkXeHbQJl84ZGwwwGBTgG0SLnZs/XdPQTwhKCuYTbFUldAkSg8Mtzog0TbudLE/I8wlNU6SqIskzg==",
   "_location": "/strapi/strapi-admin",
   "_phantomChildren": {
     "glob": "7.1.3",
@@ -12,19 +12,19 @@
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "strapi-admin@3.0.0-alpha.26.1",
+    "raw": "strapi-admin@3.0.0-alpha.26.2",
     "name": "strapi-admin",
     "escapedName": "strapi-admin",
-    "rawSpec": "3.0.0-alpha.26.1",
+    "rawSpec": "3.0.0-alpha.26.2",
     "saveSpec": null,
-    "fetchSpec": "3.0.0-alpha.26.1"
+    "fetchSpec": "3.0.0-alpha.26.2"
   },
   "_requiredBy": [
     "/strapi/strapi-generate-admin"
   ],
-  "_resolved": "https://registry.npmjs.org/strapi-admin/-/strapi-admin-3.0.0-alpha.26.1.tgz",
-  "_shasum": "807723b06c46bda699eb0f0e63d3f96035bd9979",
-  "_spec": "strapi-admin@3.0.0-alpha.26.1",
+  "_resolved": "https://registry.npmjs.org/strapi-admin/-/strapi-admin-3.0.0-alpha.26.2.tgz",
+  "_shasum": "c122df1a3ec1cebbefbcde7cd2d5f4dc186638fa",
+  "_spec": "strapi-admin@3.0.0-alpha.26.2",
   "_where": "/home/dmehaffy/.npm-global/lib/node_modules/strapi/node_modules/strapi-generate-admin",
   "author": {
     "name": "Strapi"
@@ -46,8 +46,8 @@
   "devDependencies": {
     "cross-env": "^5.0.5",
     "sanitize.css": "^4.1.0",
-    "strapi-helper-plugin": "3.0.0-alpha.26.1",
-    "strapi-utils": "3.0.0-alpha.26.1"
+    "strapi-helper-plugin": "3.0.0-alpha.26.2",
+    "strapi-utils": "3.0.0-alpha.26.2"
   },
   "engines": {
     "node": ">= 10.0.0",
@@ -83,5 +83,5 @@
     "start": "cross-env NODE_ENV=development PORT=4000 IS_ADMIN=true node ./node_modules/strapi-helper-plugin/lib/server",
     "test": "echo \"no tests yet\""
   },
-  "version": "3.0.0-alpha.26.1"
+  "version": "3.0.0-alpha.26.2"
 }

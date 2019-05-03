@@ -1,0 +1,70 @@
+{
+  "paths": {
+    "/bodies": {
+      "get": {
+        "description": "Get all Body entries",
+        "summary": "",
+        "tags": [
+          "Bodies"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new Body entry",
+        "summary": "",
+        "tags": [
+          "Bodies"
+        ],
+        "security": [
+          "locationWrite"
+        ]
+      }
+    },
+    "/bodies/count": {
+      "get": {
+        "description": "Get a count of all Body entries",
+        "summary": "",
+        "tags": [
+          "Bodies"
+        ],
+        "security": []
+      }
+    },
+    "/bodies/{id}": {
+      "get": {
+        "description": "Get a Body by id",
+        "summary": "",
+        "tags": [
+          "Bodies"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a Body by id",
+        "summary": "",
+        "tags": [
+          "Bodies"
+        ],
+        "security": [
+          "locationWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a Body by id",
+        "summary": "",
+        "tags": [
+          "Bodies"
+        ],
+        "security": [
+          "locationDelete"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Bodies",
+      "description": "Bodies stored in our API to use as references for sites"
+    }
+  ]
+}

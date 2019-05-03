@@ -28,6 +28,7 @@ module.exports = {
         return ctx.badRequest(null, 'This provider is disabled.');
       }
 
+      params.identifier = params.identifier ? params.identifier : params.username;
       // The identifier is required.
       if (!params.identifier) {
         return ctx.badRequest(null, ctx.request.admin ? [{ messages: [{ id: 'Auth.form.error.email.provide' }] }] : 'Please provide your username or your e-mail.');
