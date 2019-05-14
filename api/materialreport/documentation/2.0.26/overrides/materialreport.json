@@ -1,0 +1,68 @@
+{
+  "paths": {
+    "/materialreports": {
+      "get": {
+        "description": "Get all Material Report entries",
+        "summary": "",
+        "tags": [
+          "Material Reports"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new Material Report entry",
+        "summary": "",
+        "tags": [
+          "Material Reports"
+        ],
+        "security": []
+      }
+    },
+    "/materialreports/count": {
+      "get": {
+        "description": "Get a count of all Material Report entries",
+        "summary": "",
+        "tags": [
+          "Material Reports"
+        ],
+        "security": []
+      }
+    },
+    "/materialreports/{id}": {
+      "get": {
+        "description": "Get a Material Report by id",
+        "summary": "",
+        "tags": [
+          "Material Reports"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a Material Report by id",
+        "summary": "",
+        "tags": [
+          "Material Reports"
+        ],
+        "security": [
+          "updateLogWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a Material Report by id",
+        "summary": "",
+        "tags": [
+          "Material Reports"
+        ],
+        "security": [
+          "updateLogWrite"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Material Reports",
+      "description": "Material reports for Engineering"
+    }
+  ]
+}
