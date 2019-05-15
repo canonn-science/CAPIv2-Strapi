@@ -1,8 +1,8 @@
--- MySQL dump 10.17  Distrib 10.3.14-MariaDB, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.17  Distrib 10.3.15-MariaDB, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: capiv2_base
 -- ------------------------------------------------------
--- Server version	10.3.14-MariaDB-1:10.3.14+maria~bionic-log
+-- Server version	10.3.15-MariaDB-1:10.3.15+maria~bionic-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -543,7 +543,7 @@ CREATE TABLE `clientroutes` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_CLIENTROUTES` (`clientVersion`,`route`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -552,7 +552,7 @@ CREATE TABLE `clientroutes` (
 
 LOCK TABLES `clientroutes` WRITE;
 /*!40000 ALTER TABLE `clientroutes` DISABLE KEYS */;
-INSERT INTO `clientroutes` VALUES (1,'EDMC-Canonn.1.6.0','http://192.0.2.0/please_upgrade_your_plugin','2019-04-06 22:10:55','2019-04-06 22:10:55');
+INSERT INTO `clientroutes` VALUES (1,'EDMC-Canonn.1.6.0','http://192.0.2.0/please_upgrade_your_plugin','2019-04-06 22:10:55','2019-04-06 22:10:55'),(3,'EDMC-Canonn.1.9.0','http://192.0.2.0/please_upgrade_your_plugin','2019-05-02 03:04:19','2019-05-02 03:04:19'),(4,'EDMC-Canonn.1.9.1','http://192.0.2.0/please_upgrade_your_plugin','2019-05-02 03:10:52','2019-05-02 03:10:52'),(9,'EDMC-Canonn.1.9.2','http://192.0.2.0/please_upgrade_your_plugin','2019-05-02 03:11:03','2019-05-02 03:11:05'),(14,'EDMC-Canonn.1.9.3','http://192.0.2.0/please_upgrade_your_plugin','2019-05-02 03:11:16','2019-05-02 03:11:16'),(18,'EDMC-Canonn.1.9.4','http://192.0.2.0/please_upgrade_your_plugin','2019-05-02 03:11:25','2019-05-02 03:11:25'),(19,'EDMC-Canonn.1.9.5','http://192.0.2.0/please_upgrade_your_plugin','2019-05-02 03:11:42','2019-05-02 03:11:47'),(24,'EDMC-Canonn.1.9.6','http://192.0.2.0/please_upgrade_your_plugin','2019-05-02 03:11:56','2019-05-02 03:11:56'),(29,'EDMC-Canonn.1.9.7','http://192.0.2.0/please_upgrade_your_plugin','2019-05-02 03:12:09','2019-05-02 03:12:28'),(36,'EDMC-Canonn.1.9.8','http://192.0.2.0/please_upgrade_your_plugin','2019-05-02 03:12:39','2019-05-02 03:12:39'),(40,'EDMC-Canonn.1.9.9','http://192.0.2.0/please_upgrade_your_plugin','2019-05-02 03:12:48','2019-05-02 03:12:48');
 /*!40000 ALTER TABLE `clientroutes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -774,7 +774,7 @@ CREATE TABLE `excludeclients` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_EXCLUDECLIENTS` (`version`,`reason`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -783,6 +783,7 @@ CREATE TABLE `excludeclients` (
 
 LOCK TABLES `excludeclients` WRITE;
 /*!40000 ALTER TABLE `excludeclients` DISABLE KEYS */;
+INSERT INTO `excludeclients` VALUES (8,'EDMC-USS-Survey.4.8.1','USS-Survey Deprov','2019-04-13 02:56:10','2019-04-13 03:20:40'),(17,'EDMC-USS-Survey.4.8.0','USS-Survey Deprov','2019-04-13 02:56:28','2019-04-13 03:20:45'),(23,'EDMC-Canonn.1.9.1','ExcludeFSS Typo spam','2019-04-13 02:59:12','2019-04-13 02:59:12'),(33,'EDMC-Canonn.1.9.0','Old Version','2019-04-13 03:18:46','2019-04-13 03:18:46'),(37,'EDMC-Canonn.1.8.4','Old Version','2019-04-13 03:19:15','2019-04-13 03:19:15'),(38,'EDMC-Canonn.1.8.2','Old Version','2019-04-13 03:19:32','2019-04-13 03:19:32'),(42,'EDMC-Canonn.1.6.0','Old Version','2019-04-13 03:19:56','2019-04-13 03:19:56'),(49,'EDMC-Canonn.1.9.8','Old Version Deprov','2019-05-02 03:06:03','2019-05-02 03:06:03'),(54,'EDMC-Canonn.1.9.6','Old Version Deprov','2019-05-02 03:06:17','2019-05-02 03:06:17'),(59,'EDMC-Canonn.1.9.7','Old Version Deprov','2019-05-02 03:06:33','2019-05-02 03:06:33'),(64,'EDMC-Canonn.1.9.5','Old Version Deprov','2019-05-02 03:06:53','2019-05-02 03:06:53'),(69,'EDMC-Canonn.1.9.2','Old Version Deprov','2019-05-02 03:07:16','2019-05-02 03:07:16'),(74,'EDMC-Canonn.1.9.3','Old Version Deprov','2019-05-02 03:07:43','2019-05-02 03:07:43'),(79,'EDMC-Canonn.1.9.4','Old Version Deprov','2019-05-02 03:09:14','2019-05-02 03:09:14');
 /*!40000 ALTER TABLE `excludeclients` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2747,7 +2748,7 @@ CREATE TABLE `reporttypes` (
   `endpoint` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_REPORTTYPES` (`type`,`journalName`,`endpoint`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2756,7 +2757,7 @@ CREATE TABLE `reporttypes` (
 
 LOCK TABLES `reporttypes` WRITE;
 /*!40000 ALTER TABLE `reporttypes` DISABLE KEYS */;
-INSERT INTO `reporttypes` VALUES (1,'Bark Mound','body','codex_ent_cone',2100301,'codex','bmreports'),(2,'Silicate Vapour Fumarole','body','codex_ent_fumarole_silicatevapourgeysers',1400114,'codex','fmreports'),(3,'Sulphur Dioxide Fumarole','body','codex_ent_fumarole_sulphurdioxidemagma',1400102,'codex','fmreports'),(4,'Water Fumarole','body','codex_ent_fumarole_watergeysers',1400108,'codex','fmreports'),(5,'Carbon Dioxide Gas Vent','body','codex_ent_gas_vents_carbondioxidegeysers',1400409,'codex','gvreports'),(6,'Silicate Vapour Gas Vent','body','codex_ent_gas_vents_silicatevapourgeysers',1400414,'codex','gvreports'),(7,'Sulphur Dioxide Gas Vent','body','codex_ent_gas_vents_sulphurdioxidemagma',1400402,'codex','gvreports'),(8,'Water Gas Vent','body','codex_ent_gas_vents_watergeysers',1400408,'codex','gvreports'),(9,'Water Geyser','body','codex_ent_geysers_watergeysers',1400208,'codex','gyreports'),(10,'Crystalline Shards','body','codex_ent_ground_struct_ice',2101500,'event','csreports'),(11,'Ammonia Ice Fumarole','body','codex_ent_icefumarole_ammoniageysers',1400160,'codex','fmreports'),(12,'Carbon Dioxide Ice Fumarole','body','codex_ent_icefumarole_carbondioxidegeysers',1400159,'codex','fmreports'),(13,'Methane Ice Fumarole','body','codex_ent_icefumarole_methanegeysers',1400161,'codex','fmreports'),(14,'Nitrogen Ice Fumarole','body','codex_ent_icefumarole_nitrogengeysers',1400162,'codex','fmreports'),(15,'Silicate Vapour Ice Fumarole','body','codex_ent_icefumarole_silicatevapourgeysers',1400164,'codex','fmreports'),(16,'Sulphur Dioxide Ice Fumarole','body','codex_ent_icefumarole_sulphurdioxidemagma',1400152,'codex','fmreports'),(17,'Water Ice Fumarole','body','codex_ent_icefumarole_watergeysers',1400158,'codex','fmreports'),(18,'Ammonia Ice Geyser','body','codex_ent_icegeysers_ammoniageysers',1400260,'codex','gyreports'),(19,'Carbon Dioxide Ice Geyser','body','codex_ent_icegeysers_carbondioxidegeysers',1400259,'codex','gyreports'),(20,'Methane Ice Geyser','body','codex_ent_icegeysers_methanegeysers',1400261,'codex','gyreports'),(21,'Nitrogen Ice Geyser','body','codex_ent_icegeysers_nitrogengeysers',1400262,'codex','gyreports'),(22,'Water Ice Geyser','body','codex_ent_icegeysers_watergeysers',1400258,'codex','gyreports'),(23,'Iron Magma Lava Spout','body','codex_ent_lava_spouts_ironmagma',1400307,'codex','lsreports'),(24,'Silicate Magma Lava Spout','body','codex_ent_lava_spouts_silicatemagma',1400306,'codex','lsreports'),(25,'Roseum Brain Tree','body','codex_ent_seed',2100201,'codex','btreports'),(26,'Gypseeum Brain Tree','body','codex_ent_seedabcd_01',2100202,'codex','btreports'),(27,'Ostrinum Brain Tree','body','codex_ent_seedabcd_02',2100203,'codex','btreports'),(28,'Viride Brain Tree','body','codex_ent_seedabcd_03',2100204,'codex','btreports'),(29,'Lividum Brain Tree','body','codex_ent_seedefgh',2100205,'codex','btreports'),(30,'Aureum Brain Tree','body','codex_ent_seedefgh_01',2100206,'codex','btreports'),(31,'Puniceum Brain Tree','body','codex_ent_seedefgh_02',2100207,'codex','btreports'),(32,'Lindigoticum Brain Tree','body','codex_ent_seedefgh_03',2100208,'codex','btreports'),(33,'Luteolum Anemone','body','codex_ent_sphere',2100401,'codex','fgreports'),(34,'Croceum Anemone','body','codex_ent_sphereabcd_01',2100402,'codex','fgreports'),(35,'Puniceum Anemone','body','codex_ent_sphereabcd_02',2100403,'codex','fgreports'),(36,'Roseum Anemone','body','codex_ent_sphereabcd_03',2100404,'codex','fgreports'),(37,'Blatteum Bioluminescent Anemone','body','codex_ent_sphereefgh',2100405,'codex','fgreports'),(38,'Rubeum Bioluminescent Anemone','body','codex_ent_sphereefgh_01',2100406,'codex','fgreports'),(39,'Prasinum Bioluminescent Anemone','body','codex_ent_sphereefgh_02',2100407,'codex','fgreports'),(40,'Roseum Bioluminescent Anemone','body','codex_ent_sphereefgh_03',2100408,'codex','fgreports'),(41,'Roseum Sinuous Tubers','body','codex_ent_tube',2100501,'codex','twreports');
+INSERT INTO `reporttypes` VALUES (1,'Bark Mound','body','codex_ent_cone',2100301,'codex','bmreports'),(2,'Silicate Vapour Fumarole','body','codex_ent_fumarole_silicatevapourgeysers',1400114,'codex','fmreports'),(3,'Sulphur Dioxide Fumarole','body','codex_ent_fumarole_sulphurdioxidemagma',1400102,'codex','fmreports'),(4,'Water Fumarole','body','codex_ent_fumarole_watergeysers',1400108,'codex','fmreports'),(5,'Carbon Dioxide Gas Vent','body','codex_ent_gas_vents_carbondioxidegeysers',1400409,'codex','gvreports'),(6,'Silicate Vapour Gas Vent','body','codex_ent_gas_vents_silicatevapourgeysers',1400414,'codex','gvreports'),(7,'Sulphur Dioxide Gas Vent','body','codex_ent_gas_vents_sulphurdioxidemagma',1400402,'codex','gvreports'),(8,'Water Gas Vent','body','codex_ent_gas_vents_watergeysers',1400408,'codex','gvreports'),(9,'Water Geyser','body','codex_ent_geysers_watergeysers',1400208,'codex','gyreports'),(10,'Crystalline Shards','body','codex_ent_ground_struct_ice',2101500,'event','csreports'),(11,'Ammonia Ice Fumarole','body','codex_ent_icefumarole_ammoniageysers',1400160,'codex','fmreports'),(12,'Carbon Dioxide Ice Fumarole','body','codex_ent_icefumarole_carbondioxidegeysers',1400159,'codex','fmreports'),(13,'Methane Ice Fumarole','body','codex_ent_icefumarole_methanegeysers',1400161,'codex','fmreports'),(14,'Nitrogen Ice Fumarole','body','codex_ent_icefumarole_nitrogengeysers',1400162,'codex','fmreports'),(15,'Silicate Vapour Ice Fumarole','body','codex_ent_icefumarole_silicatevapourgeysers',1400164,'codex','fmreports'),(16,'Sulphur Dioxide Ice Fumarole','body','codex_ent_icefumarole_sulphurdioxidemagma',1400152,'codex','fmreports'),(17,'Water Ice Fumarole','body','codex_ent_icefumarole_watergeysers',1400158,'codex','fmreports'),(18,'Ammonia Ice Geyser','body','codex_ent_icegeysers_ammoniageysers',1400260,'codex','gyreports'),(19,'Carbon Dioxide Ice Geyser','body','codex_ent_icegeysers_carbondioxidegeysers',1400259,'codex','gyreports'),(20,'Methane Ice Geyser','body','codex_ent_icegeysers_methanegeysers',1400261,'codex','gyreports'),(21,'Nitrogen Ice Geyser','body','codex_ent_icegeysers_nitrogengeysers',1400262,'codex','gyreports'),(22,'Water Ice Geyser','body','codex_ent_icegeysers_watergeysers',1400258,'codex','gyreports'),(23,'Iron Magma Lava Spout','body','codex_ent_lava_spouts_ironmagma',1400307,'codex','lsreports'),(24,'Silicate Magma Lava Spout','body','codex_ent_lava_spouts_silicatemagma',1400306,'codex','lsreports'),(25,'Roseum Brain Tree','body','codex_ent_seed',2100201,'codex','btreports'),(26,'Gypseeum Brain Tree','body','codex_ent_seedabcd_01',2100202,'codex','btreports'),(27,'Ostrinum Brain Tree','body','codex_ent_seedabcd_02',2100203,'codex','btreports'),(28,'Viride Brain Tree','body','codex_ent_seedabcd_03',2100204,'codex','btreports'),(29,'Lividum Brain Tree','body','codex_ent_seedefgh',2100205,'codex','btreports'),(30,'Aureum Brain Tree','body','codex_ent_seedefgh_01',2100206,'codex','btreports'),(31,'Puniceum Brain Tree','body','codex_ent_seedefgh_02',2100207,'codex','btreports'),(32,'Lindigoticum Brain Tree','body','codex_ent_seedefgh_03',2100208,'codex','btreports'),(33,'Luteolum Anemone','body','codex_ent_sphere',2100401,'codex','fgreports'),(34,'Croceum Anemone','body','codex_ent_sphereabcd_01',2100402,'codex','fgreports'),(35,'Puniceum Anemone','body','codex_ent_sphereabcd_02',2100403,'codex','fgreports'),(36,'Roseum Anemone','body','codex_ent_sphereabcd_03',2100404,'codex','fgreports'),(37,'Blatteum Bioluminescent Anemone','body','codex_ent_sphereefgh',2100405,'codex','fgreports'),(38,'Rubeum Bioluminescent Anemone','body','codex_ent_sphereefgh_01',2100406,'codex','fgreports'),(39,'Prasinum Bioluminescent Anemone','body','codex_ent_sphereefgh_02',2100407,'codex','fgreports'),(40,'Roseum Bioluminescent Anemone','body','codex_ent_sphereefgh_03',2100408,'codex','fgreports'),(41,'Roseum Sinuous Tubers','body','codex_ent_tube',2100501,'codex','twreports'),(42,'Amphora Plant','body','codex_ent_vents',2101400,'codex','apreports');
 /*!40000 ALTER TABLE `reporttypes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3318,4 +3319,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-02 23:26:34
+-- Dump completed on 2019-05-15  6:13:04
