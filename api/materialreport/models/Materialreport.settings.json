@@ -1,0 +1,55 @@
+{
+  "connection": "default",
+  "collectionName": "materialreports",
+  "info": {
+    "name": "materialreport",
+    "description": "Material reporting for engineering"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "system": {
+      "type": "string",
+      "required": true
+    },
+    "body": {
+      "type": "string"
+    },
+    "latitude": {
+      "type": "float"
+    },
+    "longitude": {
+      "type": "float"
+    },
+    "category": {
+      "type": "string"
+    },
+    "journalName": {
+      "type": "string",
+      "required": true
+    },
+    "journalLocalised": {
+      "type": "string"
+    },
+    "count": {
+      "type": "integer"
+    },
+    "distanceFromMainStar": {
+      "type": "integer"
+    },
+    "playMode": {
+      "type": "string"
+    },
+    "isBeta": {
+      "default": false,
+      "type": "boolean"
+    },
+    "clientVersion": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

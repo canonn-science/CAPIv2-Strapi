@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/materialreports",
+      "handler": "Materialreport.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/materialreports/count",
+      "handler": "Materialreport.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/materialreports/:id",
+      "handler": "Materialreport.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/materialreports",
+      "handler": "Materialreport.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/materialreports/:id",
+      "handler": "Materialreport.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/materialreports/:id",
+      "handler": "Materialreport.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
