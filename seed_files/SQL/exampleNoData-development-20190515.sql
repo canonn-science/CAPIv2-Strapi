@@ -1,13 +1,13 @@
--- MySQL dump 10.16  Distrib 10.2.24-MariaDB, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.17  Distrib 10.3.15-MariaDB, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: capiv2_exampleNoData
 -- ------------------------------------------------------
--- Server version	10.2.24-MariaDB-10.2.24+maria~xenial-log
+-- Server version	10.3.15-MariaDB-1:10.3.15+maria~bionic-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -2507,6 +2507,43 @@ INSERT INTO `lstypes` VALUES (1,'Unknown','',NULL),(2,'Silicate Magma Lava Spout
 UNLOCK TABLES;
 
 --
+-- Table structure for table `materialreports`
+--
+
+DROP TABLE IF EXISTS `materialreports`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `materialreports` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `system` varchar(255) NOT NULL,
+  `body` varchar(255) DEFAULT NULL,
+  `latitude` double DEFAULT NULL,
+  `longitude` double DEFAULT NULL,
+  `category` varchar(255) DEFAULT NULL,
+  `journalName` varchar(255) NOT NULL,
+  `journalLocalised` varchar(255) DEFAULT NULL,
+  `count` int(11) DEFAULT NULL,
+  `distanceFromMainStar` int(11) DEFAULT NULL,
+  `playMode` varchar(255) DEFAULT NULL,
+  `isBeta` tinyint(1) DEFAULT NULL,
+  `clientVersion` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  FULLTEXT KEY `SEARCH_MATERIALREPORTS` (`system`,`body`,`category`,`journalName`,`journalLocalised`,`playMode`,`clientVersion`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `materialreports`
+--
+
+LOCK TABLES `materialreports` WRITE;
+/*!40000 ALTER TABLE `materialreports` DISABLE KEYS */;
+/*!40000 ALTER TABLE `materialreports` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `nhssreports`
 --
 
@@ -3347,4 +3384,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-15 18:44:06
+-- Dump completed on 2019-05-15 23:25:34
