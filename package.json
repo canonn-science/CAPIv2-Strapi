@@ -10,7 +10,8 @@
     "start": "node server.js",
     "strapi": "node_modules/strapi/bin/strapi.js",
     "lint": "node_modules/.bin/eslint api/**/*.js config/**/*.js plugins/**/*.js",
-    "postinstall": "node node_modules/strapi/lib/utils/post-install.js"
+    "postinstall": "node node_modules/strapi/lib/utils/post-install.js",
+    "getcsv": "cd seed_files/scripts && ./get-sheetdata.sh"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
