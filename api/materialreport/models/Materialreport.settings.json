@@ -15,8 +15,23 @@
       "type": "string",
       "required": true
     },
+    "coordX": {
+      "type": "float",
+      "required": true
+    },
+    "coordY": {
+      "type": "float",
+      "required": true
+    },
+    "coordZ": {
+      "type": "float",
+      "required": true
+    },
     "body": {
       "type": "string"
+    },
+    "distanceFromMainStar": {
+      "type": "integer"
     },
     "latitude": {
       "type": "float"
@@ -35,9 +50,6 @@
       "type": "string"
     },
     "count": {
-      "type": "integer"
-    },
-    "distanceFromMainStar": {
       "type": "integer"
     },
     "factionState": {
