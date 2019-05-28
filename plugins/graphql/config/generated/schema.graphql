@@ -3116,15 +3116,18 @@ input editLstypeInput {
 
 input editMaterialreportInput {
   system: String
+  coordX: Float
+  coordY: Float
+  coordZ: Float
   body: String
+  distanceFromMainStar: Int
   latitude: Float
   longitude: Float
   category: String
   journalName: String
   journalLocalised: String
   count: Int
-  distanceFromMainStar: Int
-  playMode: String
+  factionState: String
   isBeta: Boolean
   clientVersion: String
 }
@@ -5274,30 +5277,36 @@ type Materialreport {
   created_at: DateTime!
   updated_at: DateTime!
   system: String!
+  coordX: Float!
+  coordY: Float!
+  coordZ: Float!
   body: String
+  distanceFromMainStar: Int
   latitude: Float
   longitude: Float
   category: String
   journalName: String!
   journalLocalised: String
   count: Int
-  distanceFromMainStar: Int
-  playMode: String
+  factionState: String
   isBeta: Boolean
   clientVersion: String!
 }
 
 input MaterialreportInput {
   system: String!
+  coordX: Float!
+  coordY: Float!
+  coordZ: Float!
   body: String
+  distanceFromMainStar: Int
   latitude: Float
   longitude: Float
   category: String
   journalName: String!
   journalLocalised: String
   count: Int
-  distanceFromMainStar: Int
-  playMode: String
+  factionState: String
   isBeta: Boolean
   clientVersion: String!
 }

@@ -512,6 +512,9 @@
         "required": [
           "id",
           "system",
+          "coordX",
+          "coordY",
+          "coordZ",
           "journalName",
           "clientVersion"
         ],
@@ -522,8 +525,20 @@
           "system": {
             "type": "string"
           },
+          "coordX": {
+            "type": "number"
+          },
+          "coordY": {
+            "type": "number"
+          },
+          "coordZ": {
+            "type": "number"
+          },
           "body": {
             "type": "string"
+          },
+          "distanceFromMainStar": {
+            "type": "integer"
           },
           "latitude": {
             "type": "number"
@@ -543,10 +558,7 @@
           "count": {
             "type": "integer"
           },
-          "distanceFromMainStar": {
-            "type": "integer"
-          },
-          "playMode": {
+          "factionState": {
             "type": "string"
           },
           "isBeta": {
@@ -561,6 +573,9 @@
       "NewMaterialreport": {
         "required": [
           "system",
+          "coordX",
+          "coordY",
+          "coordZ",
           "journalName",
           "clientVersion"
         ],
@@ -568,8 +583,20 @@
           "system": {
             "type": "string"
           },
+          "coordX": {
+            "type": "number"
+          },
+          "coordY": {
+            "type": "number"
+          },
+          "coordZ": {
+            "type": "number"
+          },
           "body": {
             "type": "string"
+          },
+          "distanceFromMainStar": {
+            "type": "integer"
           },
           "latitude": {
             "type": "number"
@@ -589,10 +616,7 @@
           "count": {
             "type": "integer"
           },
-          "distanceFromMainStar": {
-            "type": "integer"
-          },
-          "playMode": {
+          "factionState": {
             "type": "string"
           },
           "isBeta": {

@@ -13,7 +13,7 @@
       "name": "GNU-GPLv3",
       "url": "https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE"
     },
-    "x-generation-date": "05/15/2019 6:45:09 PM"
+    "x-generation-date": "05/27/2019 10:16:08 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -66064,6 +66064,9 @@
         "required": [
           "id",
           "system",
+          "coordX",
+          "coordY",
+          "coordZ",
           "journalName",
           "clientVersion"
         ],
@@ -66074,8 +66077,20 @@
           "system": {
             "type": "string"
           },
+          "coordX": {
+            "type": "number"
+          },
+          "coordY": {
+            "type": "number"
+          },
+          "coordZ": {
+            "type": "number"
+          },
           "body": {
             "type": "string"
+          },
+          "distanceFromMainStar": {
+            "type": "integer"
           },
           "latitude": {
             "type": "number"
@@ -66095,10 +66110,7 @@
           "count": {
             "type": "integer"
           },
-          "distanceFromMainStar": {
-            "type": "integer"
-          },
-          "playMode": {
+          "factionState": {
             "type": "string"
           },
           "isBeta": {
@@ -66113,6 +66125,9 @@
       "NewMaterialreport": {
         "required": [
           "system",
+          "coordX",
+          "coordY",
+          "coordZ",
           "journalName",
           "clientVersion"
         ],
@@ -66120,8 +66135,20 @@
           "system": {
             "type": "string"
           },
+          "coordX": {
+            "type": "number"
+          },
+          "coordY": {
+            "type": "number"
+          },
+          "coordZ": {
+            "type": "number"
+          },
           "body": {
             "type": "string"
+          },
+          "distanceFromMainStar": {
+            "type": "integer"
           },
           "latitude": {
             "type": "number"
@@ -66141,10 +66168,7 @@
           "count": {
             "type": "integer"
           },
-          "distanceFromMainStar": {
-            "type": "integer"
-          },
-          "playMode": {
+          "factionState": {
             "type": "string"
           },
           "isBeta": {
