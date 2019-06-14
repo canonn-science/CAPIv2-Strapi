@@ -26,7 +26,7 @@ install:
 
 script:
   - npm run build
-  - NODE_ENV=development pm2 start strapi --name="capiv2" server.js
+  - NODE_ENV=development pm2 start --name="capiv2" server.js
   - sleep 10
   - newman run 'tests/capiv2.postman_collection.json' -e tests/capiv2.postman_environment.json
 
