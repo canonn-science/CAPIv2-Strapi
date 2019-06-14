@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/systems/:id",
-      "handler": "System.destroy",
+      "handler": "System.delete",
       "config": {
         "policies": []
       }

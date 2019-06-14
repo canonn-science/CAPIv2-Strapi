@@ -1,75 +1,8 @@
 'use strict';
 
 /**
- * Tssite.js controller
- *
- * @description: A set of functions called "actions" for managing `Tssite`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
-module.exports = {
-
-  /**
-   * Retrieve tssite records.
-   *
-   * @return {Object|Array}
-   */
-
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Tssite.count());
-    if (ctx.query._q) {
-      return strapi.services.tssite.search(ctx.query);
-    } else {
-      return strapi.services.tssite.fetchAll(ctx.query, populate);
-    }
-  },
-
-  /**
-   * Retrieve a tssite record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.tssite.fetch(ctx.params);
-  },
-
-  /**
-   * Count tssite records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.tssite.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an tssite record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.tssite.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an tssite record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.tssite.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an tssite record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.tssite.remove(ctx.params);
-  }
-};
+module.exports = {};

@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/fgreports/:id",
-      "handler": "Fgreport.destroy",
+      "handler": "Fgreport.delete",
       "config": {
         "policies": []
       }

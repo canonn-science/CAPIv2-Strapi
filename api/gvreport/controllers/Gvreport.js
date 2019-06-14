@@ -1,75 +1,8 @@
 'use strict';
 
 /**
- * Gvreport.js controller
- *
- * @description: A set of functions called "actions" for managing `Gvreport`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
-module.exports = {
-
-  /**
-   * Retrieve gvreport records.
-   *
-   * @return {Object|Array}
-   */
-
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Gvreport.count());
-    if (ctx.query._q) {
-      return strapi.services.gvreport.search(ctx.query);
-    } else {
-      return strapi.services.gvreport.fetchAll(ctx.query, populate);
-    }
-  },
-
-  /**
-   * Retrieve a gvreport record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.gvreport.fetch(ctx.params);
-  },
-
-  /**
-   * Count gvreport records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.gvreport.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an gvreport record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.gvreport.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an gvreport record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.gvreport.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an gvreport record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.gvreport.remove(ctx.params);
-  }
-};
+module.exports = {};

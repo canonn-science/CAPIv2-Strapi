@@ -1,75 +1,8 @@
 'use strict';
 
 /**
- * Apreport.js controller
- *
- * @description: A set of functions called "actions" for managing `Apreport`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
-module.exports = {
-
-  /**
-   * Retrieve apreport records.
-   *
-   * @return {Object|Array}
-   */
-
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Apreport.count());
-    if (ctx.query._q) {
-      return strapi.services.apreport.search(ctx.query);
-    } else {
-      return strapi.services.apreport.fetchAll(ctx.query, populate);
-    }
-  },
-
-  /**
-   * Retrieve a apreport record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.apreport.fetch(ctx.params);
-  },
-
-  /**
-   * Count apreport records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.apreport.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an apreport record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.apreport.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an apreport record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.apreport.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an apreport record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.apreport.remove(ctx.params);
-  }
-};
+module.exports = {};

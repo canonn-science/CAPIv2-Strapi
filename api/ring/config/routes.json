@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/rings/:id",
-      "handler": "Ring.destroy",
+      "handler": "Ring.delete",
       "config": {
         "policies": []
       }

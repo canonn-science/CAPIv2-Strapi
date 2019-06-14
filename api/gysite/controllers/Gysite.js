@@ -1,75 +1,8 @@
 'use strict';
 
 /**
- * Gysite.js controller
- *
- * @description: A set of functions called "actions" for managing `Gysite`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
-module.exports = {
-
-  /**
-   * Retrieve gysite records.
-   *
-   * @return {Object|Array}
-   */
-
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Gysite.count());
-    if (ctx.query._q) {
-      return strapi.services.gysite.search(ctx.query);
-    } else {
-      return strapi.services.gysite.fetchAll(ctx.query, populate);
-    }
-  },
-
-  /**
-   * Retrieve a gysite record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.gysite.fetch(ctx.params);
-  },
-
-  /**
-   * Count gysite records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.gysite.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an gysite record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.gysite.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an gysite record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.gysite.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an gysite record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.gysite.remove(ctx.params);
-  }
-};
+module.exports = {};

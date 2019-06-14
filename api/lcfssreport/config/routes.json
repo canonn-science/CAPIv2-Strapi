@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/lcfssreports/:id",
-      "handler": "Lcfssreport.destroy",
+      "handler": "Lcfssreport.delete",
       "config": {
         "policies": []
       }

@@ -1,75 +1,8 @@
 'use strict';
 
 /**
- * Twsite.js controller
- *
- * @description: A set of functions called "actions" for managing `Twsite`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
-module.exports = {
-
-  /**
-   * Retrieve twsite records.
-   *
-   * @return {Object|Array}
-   */
-
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Twsite.count());
-    if (ctx.query._q) {
-      return strapi.services.twsite.search(ctx.query);
-    } else {
-      return strapi.services.twsite.fetchAll(ctx.query, populate);
-    }
-  },
-
-  /**
-   * Retrieve a twsite record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.twsite.fetch(ctx.params);
-  },
-
-  /**
-   * Count twsite records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.twsite.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an twsite record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.twsite.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an twsite record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.twsite.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an twsite record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.twsite.remove(ctx.params);
-  }
-};
+module.exports = {};

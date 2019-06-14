@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/lsreports/:id",
-      "handler": "Lsreport.destroy",
+      "handler": "Lsreport.delete",
       "config": {
         "policies": []
       }

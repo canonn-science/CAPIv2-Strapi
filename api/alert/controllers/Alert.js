@@ -1,75 +1,8 @@
 'use strict';
 
 /**
- * Alert.js controller
- *
- * @description: A set of functions called "actions" for managing `Alert`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
-module.exports = {
-
-  /**
-   * Retrieve alert records.
-   *
-   * @return {Object|Array}
-   */
-
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Alert.count());
-    if (ctx.query._q) {
-      return strapi.services.alert.search(ctx.query);
-    } else {
-      return strapi.services.alert.fetchAll(ctx.query, populate);
-    }
-  },
-
-  /**
-   * Retrieve a alert record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.alert.fetch(ctx.params);
-  },
-
-  /**
-   * Count alert records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.alert.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an alert record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.alert.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an alert record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.alert.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an alert record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.alert.remove(ctx.params);
-  }
-};
+module.exports = {};

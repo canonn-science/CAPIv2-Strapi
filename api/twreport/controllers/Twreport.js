@@ -1,75 +1,8 @@
 'use strict';
 
 /**
- * Twreport.js controller
- *
- * @description: A set of functions called "actions" for managing `Twreport`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
-module.exports = {
-
-  /**
-   * Retrieve twreport records.
-   *
-   * @return {Object|Array}
-   */
-
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Twreport.count());
-    if (ctx.query._q) {
-      return strapi.services.twreport.search(ctx.query);
-    } else {
-      return strapi.services.twreport.fetchAll(ctx.query, populate);
-    }
-  },
-
-  /**
-   * Retrieve a twreport record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.twreport.fetch(ctx.params);
-  },
-
-  /**
-   * Count twreport records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.twreport.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an twreport record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.twreport.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an twreport record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.twreport.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an twreport record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.twreport.remove(ctx.params);
-  }
-};
+module.exports = {};

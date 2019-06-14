@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/gsreports/:id",
-      "handler": "Gsreport.destroy",
+      "handler": "Gsreport.delete",
       "config": {
         "policies": []
       }

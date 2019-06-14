@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/gvreports/:id",
-      "handler": "Gvreport.destroy",
+      "handler": "Gvreport.delete",
       "config": {
         "policies": []
       }

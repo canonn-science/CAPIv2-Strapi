@@ -1,75 +1,8 @@
 'use strict';
 
 /**
- * Grsite.js controller
- *
- * @description: A set of functions called "actions" for managing `Grsite`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
-module.exports = {
-
-  /**
-   * Retrieve grsite records.
-   *
-   * @return {Object|Array}
-   */
-
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Grsite.count());
-    if (ctx.query._q) {
-      return strapi.services.grsite.search(ctx.query);
-    } else {
-      return strapi.services.grsite.fetchAll(ctx.query, populate);
-    }
-  },
-
-  /**
-   * Retrieve a grsite record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.grsite.fetch(ctx.params);
-  },
-
-  /**
-   * Count grsite records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.grsite.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an grsite record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.grsite.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an grsite record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.grsite.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an grsite record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.grsite.remove(ctx.params);
-  }
-};
+module.exports = {};

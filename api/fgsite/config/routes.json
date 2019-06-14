@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/fgsites/:id",
-      "handler": "Fgsite.destroy",
+      "handler": "Fgsite.delete",
       "config": {
         "policies": []
       }
