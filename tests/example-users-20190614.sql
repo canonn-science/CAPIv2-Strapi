@@ -67,7 +67,7 @@ CREATE TABLE `users-permissions_role` (
 
 LOCK TABLES `users-permissions_role` WRITE;
 /*!40000 ALTER TABLE `users-permissions_role` DISABLE KEYS */;
-INSERT INTO `users-permissions_role` VALUES (1,'Authenticated','Canonn authorized user','authenticated'),(2,'Public','Public non-authenticated users','public');
+INSERT INTO `users-permissions_role` VALUES (1,'Administrator','Canonn Administrator','root'),(2,'Authenticated','Canonn authorized user','authenticated'),(3,'Public','Public non-authenticated users','public');
 /*!40000 ALTER TABLE `users-permissions_role` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,7 +90,7 @@ CREATE TABLE `users-permissions_user` (
   `role` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_USERS_PERMISSIONS_USER` (`username`,`provider`,`resetPasswordToken`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,7 +99,7 @@ CREATE TABLE `users-permissions_user` (
 
 LOCK TABLES `users-permissions_user` WRITE;
 /*!40000 ALTER TABLE `users-permissions_user` DISABLE KEYS */;
-INSERT INTO `users-permissions_user` VALUES (1,'canonnuser','canonn@canonn.technology','local','$2a$10$SiNWMv8YB5wZfDkNu2SEM.Rw1Mk5QimW3e5E56Ks2R6iJ8/BqnNiC','',1,0,1);
+INSERT INTO `users-permissions_user` VALUES (1,'canonntest','rd@canonn.technology','local','$2a$10$OuezItI8UE6156d2i5AFqeSZVpgD6Usqw4u4qjfyBSXAaePSy2F4y',NULL,1,0,1),(2,'canonnuser','canonn@canonn.technology','local','$2a$10$SiNWMv8YB5wZfDkNu2SEM.Rw1Mk5QimW3e5E56Ks2R6iJ8/BqnNiC','',1,0,2);
 /*!40000 ALTER TABLE `users-permissions_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -116,4 +116,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-06-14  4:47:09
+-- Dump completed on 2019-06-14  9:39:13
