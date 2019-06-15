@@ -18,7 +18,7 @@ install:
   - mysql -u root --password="" -e "CREATE DATABASE canonntest_user"
   - mysql -u root --password="" -e "CREATE USER 'canonnuser'@'localhost' IDENTIFIED BY 'canonnpassword'"
   - mysql -u root --password="" -e "GRANT ALL PRIVILEGES ON * . * TO 'canonnuser'@'localhost'"
-  - mysql -u root --password="" canonntest_data < seed_files/SQL/base-development*.sql
+  - mysql -u root --password="" canonntest_data < seed_files/SQL/base-development-*.sql
   - mysql -u root --password="" canonntest_user < tests/example-users-*.sql
   - npm install -g newman
   - npm install -g pm2
