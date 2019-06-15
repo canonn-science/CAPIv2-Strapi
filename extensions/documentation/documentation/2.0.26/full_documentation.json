@@ -1,129 +1,26 @@
 {
-  "functions": {},
-  "policies": {},
-  "routes": [
-    {
-      "method": "GET",
-      "path": "/documentation/",
-      "handler": "Documentation.index",
-      "config": {
-        "policies": [
-          "plugins.documentation.index"
-        ],
-        "prefix": ""
-      }
-    },
-    {
-      "method": "GET",
-      "path": "/documentation/v:major(\\d+).:minor(\\d+).:patch(\\d+)",
-      "handler": "Documentation.index",
-      "config": {
-        "policies": [
-          "plugins.documentation.index"
-        ],
-        "prefix": ""
-      }
-    },
-    {
-      "method": "GET",
-      "path": "/documentation/login",
-      "handler": "Documentation.loginView",
-      "config": {
-        "policies": [],
-        "prefix": ""
-      }
-    },
-    {
-      "method": "POST",
-      "path": "/documentation/login",
-      "handler": "Documentation.login",
-      "config": {
-        "policies": [],
-        "prefix": ""
-      }
-    },
-    {
-      "method": "GET",
-      "path": "/getInfos",
-      "handler": "Documentation.getInfos",
-      "config": {
-        "policies": [
-          "plugins.users-permissions.permissions"
-        ]
-      }
-    },
-    {
-      "method": "POST",
-      "path": "/documentation/regenerateDoc",
-      "handler": "Documentation.regenerateDoc",
-      "config": {
-        "policies": [
-          "plugins.users-permissions.permissions"
-        ],
-        "prefix": ""
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/documentation/updateSettings",
-      "handler": "Documentation.updateSettings",
-      "config": {
-        "policies": [
-          "plugins.users-permissions.permissions"
-        ],
-        "prefix": ""
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/documentation/deleteDoc/:version",
-      "handler": "Documentation.deleteDoc",
-      "config": {
-        "policies": [
-          "plugins.users-permissions.permissions"
-        ],
-        "prefix": ""
-      }
-    }
-  ],
   "openapi": "3.0.0",
   "info": {
     "version": "2.0.26",
-    "title": "Canonn APIv2",
-    "description": "An API for all the Science related information Canonn has in its datastores stored on the Gnosis, built using [Strapi](https://strapi.io) a Nodejs API framework.",
+    "title": "DOCUMENTATION",
+    "description": "",
     "termsOfService": "YOUR_TERMS_OF_SERVICE_URL",
     "contact": {
-      "name": "Canonn R&D Team",
-      "email": "rd@canonn.technology",
-      "url": "https://canonn.science"
+      "name": "TEAM",
+      "email": "contact-email@something.io",
+      "url": "mywebsite.io"
     },
     "license": {
-      "name": "GNU-GPLv3",
-      "url": "https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE"
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "06/14/2019 5:11:28 AM"
+    "x-generation-date": "06/14/2019 10:03:31 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
     "showGeneratedFiles": true
   },
   "servers": [
-    {
-      "url": "https://api.canonn.tech:2053",
-      "description": "Beta Staging Server, should be used to test your application prior to deployment. "
-    },
-    {
-      "url": "https://api.canonn.tech",
-      "description": "Live Production Server, should be used if your application has been tested and deployed."
-    },
-    {
-      "url": "https://api.canonn.tech:2083",
-      "description": "Alpha Development Server, used by Canonn to test development prior to updating Staging and Production. "
-    },
-    {
-      "url": "http://localhost:1337",
-      "description": "If you are running a local server for testing."
-    },
     {
       "url": "http://localhost:1337",
       "description": "Development server"
@@ -138,32 +35,10 @@
     }
   ],
   "externalDocs": {
-    "description": "Canonn API ReDocs",
-    "url": "https://docs.canonn.tech"
+    "description": "Find out more",
+    "url": "https://strapi.io/documentation/3.0.0-beta.x/"
   },
   "security": [
-    {
-      "userAuth": [
-        "cmdrWrite",
-        "uploadWrite"
-      ],
-      "canonnAuth": [
-        "adminOnlyDelete",
-        "reportDelete",
-        "locationDelete",
-        "cmdrDelete",
-        "uploadDelete",
-        "journalDelete",
-        "siteDelete",
-        "updateLogDelete",
-        "adminOnlyWrite",
-        "locationWrite",
-        "siteWrite",
-        "updateLogWrite",
-        "cmdrUpdate",
-        "cmdrKillWrite"
-      ]
-    },
     {
       "bearerAuth": []
     }

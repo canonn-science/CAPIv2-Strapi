@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * Lifecycle callbacks for the `Alert` model.
@@ -20,7 +20,7 @@ module.exports = {
   // After fetching a value.
   // Fired after a `fetch` operation.
   // afterFetch: async (model, response, options) => {},
-  
+
   // Before fetching all values.
   // Fired before a `fetchAll` operation.
   // beforeFetchAll: async (model, columns, options) => {},
@@ -35,7 +35,43 @@ module.exports = {
 
   // After creating a value.
   // Fired after an `insert` query.
-  // afterCreate: async (model, attrs, options) => {},
+  afterCreate: async (model, attrs, options) => {
+    const webhook = require('webhook-discord');
+
+    const Hook = new webhook.Webhook(process.env.CHANNEL_RD);
+
+    if (model.attributes.active === true) {
+      let alertURL = null;
+      let alertColor = null;
+      if (model.attributes.alertLevel >= 9) {
+        alertURL = 'https://canonn.tech/images/Canonn-Red-Alert_25.gif';
+        alertColor = '#F72D01';
+      } else if (model.attributes.alertLevel >= 5) {
+        alertURL = 'https://canonn.tech/images/Canonn-Yellow-Alert_25.gif';
+        alertColor = '#F7E801';
+      } else {
+        alertURL = 'https://canonn.tech/images/Canonn-Green-Alert_25.gif';
+        alertColor = '#39F701';
+      }
+
+      const msg = new webhook.MessageBuilder()
+        .setName('Gnosis Emergency Alert System')
+        .setColor(alertColor)
+        .addField(
+          model.attributes.title +
+          ' - Alert Level: ' +
+          model.attributes.alertLevel,
+          model.attributes.body
+        )
+        .setTime();
+
+      if (model.attributes.alertImage === true) {
+        msg.setImage(alertURL);
+      }
+
+      Hook.send(msg);
+    }
+  },
 
   // Before updating a value.
   // Fired before an `update` query.
@@ -43,7 +79,43 @@ module.exports = {
 
   // After updating a value.
   // Fired after an `update` query.
-  // afterUpdate: async (model, attrs, options) => {},
+  afterUpdate: async (model, attrs, options) => {
+    const webhook = require('webhook-discord');
+
+    const Hook = new webhook.Webhook(process.env.CHANNEL_RD);
+
+    if (model.attributes.active === true) {
+      let alertURL = null;
+      let alertColor = null;
+      if (model.attributes.alertLevel >= 9) {
+        alertURL = 'https://canonn.tech/images/Canonn-Red-Alert_25.gif';
+        alertColor = '#F72D01';
+      } else if (model.attributes.alertLevel >= 5) {
+        alertURL = 'https://canonn.tech/images/Canonn-Yellow-Alert_25.gif';
+        alertColor = '#F7E801';
+      } else {
+        alertURL = 'https://canonn.tech/images/Canonn-Green-Alert_25.gif';
+        alertColor = '#39F701';
+      }
+
+      const msg = new webhook.MessageBuilder()
+        .setName('Gnosis Emergency Alert System')
+        .setColor(alertColor)
+        .addField(
+          model.attributes.title +
+          ' - Alert Level: ' +
+          model.attributes.alertLevel,
+          model.attributes.body
+        )
+        .setTime();
+
+      if (model.attributes.alertImage === true) {
+        msg.setImage(alertURL);
+      }
+
+      Hook.send(msg);
+    }
+  }
 
   // Before destroying a value.
   // Fired before a `delete` query.
