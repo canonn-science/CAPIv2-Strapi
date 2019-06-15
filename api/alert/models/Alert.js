@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 /**
  * Lifecycle callbacks for the `Alert` model.
