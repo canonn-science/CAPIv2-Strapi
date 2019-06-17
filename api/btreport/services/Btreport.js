@@ -7,7 +7,7 @@
 
 module.exports = {
   /**
-   * Promise to add an apreport record
+   * Promise to add an btreport record
    *
    * @return {Promise}
    */
