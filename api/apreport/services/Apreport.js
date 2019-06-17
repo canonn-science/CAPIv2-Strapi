@@ -5,4 +5,17 @@
  * to customize this service
  */
 
-module.exports = {};
+module.exports = {
+  /**
+   * Promise to add an apreport record
+   *
+   * @return {Promise}
+   */
+
+  create(values) {
+
+    strapi.api.excludeclient.services.excludeclient.blockClient(values.clientVersion);
+
+    return strapi.query('Apreport').create(values);
+  },
+};
