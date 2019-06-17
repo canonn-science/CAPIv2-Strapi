@@ -12,10 +12,15 @@ module.exports = {
    * @return {Promise}
    */
 
-  create(values) {
+  create: async (values) => {
 
-    strapi.api.excludeclient.services.excludeclient.blockClient(values.clientVersion);
+    // Check Version
+    await strapi.api.excludeclient.services.excludeclient.blockClient(values.clientVersion);
 
+    // Check CMDR Name
+    await strapi.api.excludecmdr.services.excludecmdr.blockCMDR(values.cmdrName);
+
+    // If checks pass, proceed to create data
     return strapi.query('Apreport').create(values);
   },
 };
