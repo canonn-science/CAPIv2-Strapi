@@ -5,4 +5,18 @@
  * to customize this service
  */
 
-module.exports = {};
+module.exports = {
+  /**
+   * Promise to add an apreport record
+   *
+   * @return {Promise}
+   */
+
+  create: async (values) => {
+
+    // Check Version
+    await strapi.api.excludeclient.services.excludeclient.blockClient(values.clientVersion);
+
+    // If checks pass, proceed to create data
+    return strapi.query('Materialreport').create(values);
+  },};
