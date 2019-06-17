@@ -7,19 +7,17 @@
 
 module.exports = {
   /**
-   * Promise to add an apreport record
+   * Promise to add a reportCodex record
    *
    * @return {Promise}
    */
 
   create: async (values) => {
 
-    // Check Version
-    await strapi.api.excludeclient.services.excludeclient.blockClient(values.clientVersion);
-
-    // Check CMDR Name
-    await strapi.api.excludecmdr.services.excludecmdr.blockCMDR(values.cmdrName);
+    // Check Codex Name
+    await strapi.api.excludecodex.services.excludecodex.blockCodexName(values.codexName);
 
     // If checks pass, proceed to create data
     return strapi.query('Reportcodex').create(values);
-  },};
+  },
+};

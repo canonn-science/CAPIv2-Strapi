@@ -8,6 +8,7 @@
 const boom = require('boom');
 
 module.exports = {
+
   /**
    * Promise to deny blocked CMDRs on reports.
    *

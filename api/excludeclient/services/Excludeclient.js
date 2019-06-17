@@ -35,7 +35,6 @@ module.exports = {
       }
 
       if (clientVersionData != null && clientVersionData != undefined && clientVersionData.version == clientVersion) {
-        console.log('Threw Error');
         throw boom.teapot(`Your Client: ${clientVersionData.version} is in our blacklist. You should update your client or talk to the author.`);
       }
     }
