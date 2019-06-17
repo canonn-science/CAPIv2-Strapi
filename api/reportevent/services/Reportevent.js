@@ -7,7 +7,7 @@
 
 module.exports = {
   /**
-   * Promise to add an apreport record
+   * Promise to add an reportEvent record
    *
    * @return {Promise}
    */
@@ -20,6 +20,10 @@ module.exports = {
     // Check CMDR Name
     await strapi.api.excludecmdr.services.excludecmdr.blockCMDR(values.cmdrName);
 
+    // Check Event Names
+    await strapi.api.excludeevent.services.excludeevent.blockEventName(values.eventName);
+
     // If checks pass, proceed to create data
     return strapi.query('Reportevent').create(values);
-  },};
+  },
+};

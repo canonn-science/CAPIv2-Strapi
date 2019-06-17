@@ -7,7 +7,7 @@
 
 module.exports = {
   /**
-   * Promise to add an apreport record
+   * Promise to add an report FSS record
    *
    * @return {Promise}
    */
@@ -20,6 +20,10 @@ module.exports = {
     // Check CMDR Name
     await strapi.api.excludecmdr.services.excludecmdr.blockCMDR(values.cmdrName);
 
+    // Check FSS Signal Names
+    await strapi.api.excludefss.services.excludefss.blockSignalName(values.signalName);
+
     // If checks pass, proceed to create data
     return strapi.query('Reportfss').create(values);
-  },};
+  },
+};

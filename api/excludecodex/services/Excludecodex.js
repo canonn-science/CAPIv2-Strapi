@@ -17,13 +17,9 @@ module.exports = {
 
   blockCodexName: async (codexName) => {
 
-    // Example: $Codex_Ent_L_Seed_Pln01_V1_Red_Name;
     function cleanName(name) {
       let unclean = name.toLowerCase();
-      let cleaned = null;
-      cleaned = unclean.replace('$', '');
-      cleaned = cleaned.replace('_name', '');
-      cleaned = cleaned.replace(';', '');
+      let cleaned = unclean.replace(/[$]|_name|;/gi, '');
 
       return cleaned;
     }
