@@ -10,7 +10,7 @@
 
 // Load environment variables
 // Pending this PR: https://github.com/strapi/strapi/pull/3453
-//require('dotenv').config({ path: require('find-config')('.env') });
+require('dotenv').config({ path: require('find-config')('.env') });
 
 module.exports = cb => {
   cb();
