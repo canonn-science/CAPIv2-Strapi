@@ -7,7 +7,7 @@
         "client": "mysql",
         "host": "${process.env.DATABASE_HOST_DEV || '127.0.0.1'}",
         "port": "${process.env.DATABASE_PORT_DEV || 3306}",
-        "database": "${process.env.DATABASE_NAME_DEV || 'capiv2_base'}",
+        "database": "${process.env.DATABASE_NAME_DEV || 'capiv2_base1'}",
         "username": "${process.env.DATABASE_USERNAME_DEV || 'capiv2system'}",
         "password": "${process.env.DATABASE_PASSWORD_DEV || 'capiv2password'}"
       },
