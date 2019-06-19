@@ -29,7 +29,8 @@ script:
   - yarn build
   - NODE_ENV=development pm2 start --name="capiv2" server.js
   - sleep 10
-  - newman run 'tests/capiv2.postman_collection.json' -e tests/capiv2.postman_environment.json
+  - pm2 logs capiv2
+  #- newman run 'tests/capiv2.postman_collection.json' -e tests/capiv2.postman_environment.json
 
 after_success:
   - pm2 stop capiv2
@@ -38,4 +39,4 @@ after_failure:
   - pm2 stop capiv2
   - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
   - chmod +x send.sh
-  - ./send.sh failure $WEBHOOK_URL
+  - #./send.sh failure $WEBHOOK_URL
