@@ -23,10 +23,10 @@ install:
   - npm install -g newman
   - npm install -g pm2
   - npm install -g yarn
-  - npm install
+  - yarn install
 
 script:
-  #- npm run build
+  - yarn build
   - NODE_ENV=development pm2 start --name="capiv2" server.js
   - sleep 10
   - newman run 'tests/capiv2.postman_collection.json' -e tests/capiv2.postman_environment.json
