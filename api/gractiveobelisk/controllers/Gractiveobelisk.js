@@ -5,4 +5,20 @@
  * to customize this controller
  */
 
-module.exports = {};
+module.exports = {
+  /**
+   * Retrieve records with count in `Content-Range` header.
+   *
+   * @return {Array}
+   */
+
+  find: async (ctx) => {
+    if (ctx.query._q) {
+      ctx.set('Content-Range', await strapi.services.gractiveobelisk.countSearch(ctx.query));
+      return strapi.services.gractiveobelisk.search(ctx.query);
+    }
+
+    ctx.set('Content-Range', await strapi.services.gractiveobelisk.count(ctx.query));
+    return strapi.services.gractiveobelisk.find(ctx.query);
+  }
+};

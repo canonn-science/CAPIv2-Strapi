@@ -5,4 +5,20 @@
  * to customize this controller
  */
 
-module.exports = {};
+module.exports = {
+  /**
+   * Retrieve records with count in `Content-Range` header.
+   *
+   * @return {Array}
+   */
+
+  find: async (ctx) => {
+    if (ctx.query._q) {
+      ctx.set('Content-Range', await strapi.services.axczfssreport.countSearch(ctx.query));
+      return strapi.services.axczfssreport.search(ctx.query);
+    }
+
+    ctx.set('Content-Range', await strapi.services.axczfssreport.count(ctx.query));
+    return strapi.services.axczfssreport.find(ctx.query);
+  }
+};
