@@ -7,14 +7,14 @@
     "termsOfService": "https://docs.canonn.tech/auth/security.html#reasons-for-being-blacklisted",
     "contact": {
       "name": "Canonn R&D Team",
-      "email": "rd@canonn.technology",
+      "email": "rd@canonn.tech",
       "url": "https://canonn.science"
     },
     "license": {
       "name": "GNU-GPLv3",
       "url": "https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE"
     },
-    "x-generation-date": "06/21/2019 2:22:24 AM"
+    "x-generation-date": "06/21/2019 10:43:03 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -39,7 +39,7 @@
     }
   ],
   "externalDocs": {
-    "description": "Canonn API ReDocs",
+    "description": "Canonn API Reference Documentation",
     "url": "https://docs.canonn.tech"
   },
   "security": [
@@ -50508,7 +50508,7 @@
         "parameters": []
       }
     },
-    "/users/{_id}": {
+    "/users/{id}": {
       "get": {
         "deprecated": false,
         "description": "Retrieve a single user depending on his id",
@@ -50560,7 +50560,7 @@
         ],
         "parameters": [
           {
-            "name": "_id",
+            "name": "id",
             "in": "path",
             "description": "",
             "deprecated": false,
@@ -50622,7 +50622,7 @@
         ],
         "parameters": [
           {
-            "name": "_id",
+            "name": "id",
             "in": "path",
             "description": "",
             "deprecated": false,
@@ -50699,7 +50699,7 @@
         ],
         "parameters": [
           {
-            "name": "_id",
+            "name": "id",
             "in": "path",
             "description": "",
             "deprecated": false,
