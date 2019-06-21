@@ -1,75 +1,24 @@
 'use strict';
 
 /**
- * Bmreport.js controller
- *
- * @description: A set of functions called "actions" for managing `Bmreport`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
 module.exports = {
-
   /**
-   * Retrieve bmreport records.
+   * Retrieve records with count in `Content-Range` header.
    *
-   * @return {Object|Array}
+   * @return {Array}
    */
 
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Bmreport.count());
+  find: async (ctx) => {
     if (ctx.query._q) {
+      ctx.set('Content-Range', await strapi.services.bmreport.countSearch(ctx.query));
       return strapi.services.bmreport.search(ctx.query);
-    } else {
-      return strapi.services.bmreport.fetchAll(ctx.query, populate);
     }
-  },
 
-  /**
-   * Retrieve a bmreport record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.bmreport.fetch(ctx.params);
-  },
-
-  /**
-   * Count bmreport records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.bmreport.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an bmreport record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.bmreport.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an bmreport record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.bmreport.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an bmreport record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.bmreport.remove(ctx.params);
+    ctx.set('Content-Range', await strapi.services.bmreport.count(ctx.query));
+    return strapi.services.bmreport.find(ctx.query);
   }
 };

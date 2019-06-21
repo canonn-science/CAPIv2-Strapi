@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/gensites/:id",
-      "handler": "Gensite.destroy",
+      "handler": "Gensite.delete",
       "config": {
         "policies": []
       }

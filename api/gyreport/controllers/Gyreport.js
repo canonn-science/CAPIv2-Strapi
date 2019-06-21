@@ -1,75 +1,24 @@
 'use strict';
 
 /**
- * Gyreport.js controller
- *
- * @description: A set of functions called "actions" for managing `Gyreport`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
 module.exports = {
-
   /**
-   * Retrieve gyreport records.
+   * Retrieve records with count in `Content-Range` header.
    *
-   * @return {Object|Array}
+   * @return {Array}
    */
 
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Gyreport.count());
+  find: async (ctx) => {
     if (ctx.query._q) {
+      ctx.set('Content-Range', await strapi.services.gyreport.countSearch(ctx.query));
       return strapi.services.gyreport.search(ctx.query);
-    } else {
-      return strapi.services.gyreport.fetchAll(ctx.query, populate);
     }
-  },
 
-  /**
-   * Retrieve a gyreport record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.gyreport.fetch(ctx.params);
-  },
-
-  /**
-   * Count gyreport records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.gyreport.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an gyreport record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.gyreport.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an gyreport record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.gyreport.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an gyreport record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.gyreport.remove(ctx.params);
+    ctx.set('Content-Range', await strapi.services.gyreport.count(ctx.query));
+    return strapi.services.gyreport.find(ctx.query);
   }
 };

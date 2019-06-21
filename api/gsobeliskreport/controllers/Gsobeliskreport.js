@@ -1,75 +1,24 @@
 'use strict';
 
 /**
- * Gsobeliskreport.js controller
- *
- * @description: A set of functions called "actions" for managing `Gsobeliskreport`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
 module.exports = {
-
   /**
-   * Retrieve gsobeliskreport records.
+   * Retrieve records with count in `Content-Range` header.
    *
-   * @return {Object|Array}
+   * @return {Array}
    */
 
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Gsobeliskreport.count());
+  find: async (ctx) => {
     if (ctx.query._q) {
+      ctx.set('Content-Range', await strapi.services.gsobeliskreport.countSearch(ctx.query));
       return strapi.services.gsobeliskreport.search(ctx.query);
-    } else {
-      return strapi.services.gsobeliskreport.fetchAll(ctx.query, populate);
     }
-  },
 
-  /**
-   * Retrieve a gsobeliskreport record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.gsobeliskreport.fetch(ctx.params);
-  },
-
-  /**
-   * Count gsobeliskreport records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.gsobeliskreport.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an gsobeliskreport record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.gsobeliskreport.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an gsobeliskreport record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.gsobeliskreport.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an gsobeliskreport record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.gsobeliskreport.remove(ctx.params);
+    ctx.set('Content-Range', await strapi.services.gsobeliskreport.count(ctx.query));
+    return strapi.services.gsobeliskreport.find(ctx.query);
   }
 };

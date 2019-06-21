@@ -1,75 +1,24 @@
 'use strict';
 
 /**
- * Reportfss.js controller
- *
- * @description: A set of functions called "actions" for managing `Reportfss`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
 module.exports = {
-
   /**
-   * Retrieve reportfss records.
+   * Retrieve records with count in `Content-Range` header.
    *
-   * @return {Object|Array}
+   * @return {Array}
    */
 
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Reportfss.count());
+  find: async (ctx) => {
     if (ctx.query._q) {
+      ctx.set('Content-Range', await strapi.services.reportfss.countSearch(ctx.query));
       return strapi.services.reportfss.search(ctx.query);
-    } else {
-      return strapi.services.reportfss.fetchAll(ctx.query, populate);
     }
-  },
 
-  /**
-   * Retrieve a reportfss record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.reportfss.fetch(ctx.params);
-  },
-
-  /**
-   * Count reportfss records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.reportfss.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an reportfss record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.reportfss.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an reportfss record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.reportfss.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an reportfss record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.reportfss.remove(ctx.params);
+    ctx.set('Content-Range', await strapi.services.reportfss.count(ctx.query));
+    return strapi.services.reportfss.find(ctx.query);
   }
 };

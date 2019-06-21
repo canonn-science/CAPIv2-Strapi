@@ -1,75 +1,24 @@
 'use strict';
 
 /**
- * Excludeevent.js controller
- *
- * @description: A set of functions called "actions" for managing `Excludeevent`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
 module.exports = {
-
   /**
-   * Retrieve excludeevent records.
+   * Retrieve records with count in `Content-Range` header.
    *
-   * @return {Object|Array}
+   * @return {Array}
    */
 
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Excludeevent.count());
+  find: async (ctx) => {
     if (ctx.query._q) {
+      ctx.set('Content-Range', await strapi.services.excludeevent.countSearch(ctx.query));
       return strapi.services.excludeevent.search(ctx.query);
-    } else {
-      return strapi.services.excludeevent.fetchAll(ctx.query, populate);
     }
-  },
 
-  /**
-   * Retrieve a excludeevent record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.excludeevent.fetch(ctx.params);
-  },
-
-  /**
-   * Count excludeevent records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.excludeevent.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an excludeevent record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.excludeevent.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an excludeevent record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.excludeevent.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an excludeevent record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.excludeevent.remove(ctx.params);
+    ctx.set('Content-Range', await strapi.services.excludeevent.count(ctx.query));
+    return strapi.services.excludeevent.find(ctx.query);
   }
 };

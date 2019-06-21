@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/bmsites/:id",
-      "handler": "Bmsite.destroy",
+      "handler": "Bmsite.delete",
       "config": {
         "policies": []
       }

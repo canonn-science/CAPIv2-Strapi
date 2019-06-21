@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/grobeliskreports/:id",
-      "handler": "Grobeliskreport.destroy",
+      "handler": "Grobeliskreport.delete",
       "config": {
         "policies": []
       }

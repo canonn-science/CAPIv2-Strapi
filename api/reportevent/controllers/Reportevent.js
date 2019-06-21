@@ -1,75 +1,24 @@
 'use strict';
 
 /**
- * Reportevent.js controller
- *
- * @description: A set of functions called "actions" for managing `Reportevent`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
 module.exports = {
-
   /**
-   * Retrieve reportevent records.
+   * Retrieve records with count in `Content-Range` header.
    *
-   * @return {Object|Array}
+   * @return {Array}
    */
 
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Reportevent.count());
+  find: async (ctx) => {
     if (ctx.query._q) {
+      ctx.set('Content-Range', await strapi.services.reportevent.countSearch(ctx.query));
       return strapi.services.reportevent.search(ctx.query);
-    } else {
-      return strapi.services.reportevent.fetchAll(ctx.query, populate);
     }
-  },
 
-  /**
-   * Retrieve a reportevent record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.reportevent.fetch(ctx.params);
-  },
-
-  /**
-   * Count reportevent records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.reportevent.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an reportevent record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.reportevent.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an reportevent record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.reportevent.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an reportevent record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.reportevent.remove(ctx.params);
+    ctx.set('Content-Range', await strapi.services.reportevent.count(ctx.query));
+    return strapi.services.reportevent.find(ctx.query);
   }
 };

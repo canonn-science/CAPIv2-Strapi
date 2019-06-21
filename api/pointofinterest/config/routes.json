@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/pointofinterests/:id",
-      "handler": "Pointofinterest.destroy",
+      "handler": "Pointofinterest.delete",
       "config": {
         "policies": []
       }

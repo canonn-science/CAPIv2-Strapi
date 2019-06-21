@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/twreports/:id",
-      "handler": "Twreport.destroy",
+      "handler": "Twreport.delete",
       "config": {
         "policies": []
       }

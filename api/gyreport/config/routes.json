@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/gyreports/:id",
-      "handler": "Gyreport.destroy",
+      "handler": "Gyreport.delete",
       "config": {
         "policies": []
       }

@@ -1,75 +1,24 @@
 'use strict';
 
 /**
- * Genreport.js controller
- *
- * @description: A set of functions called "actions" for managing `Genreport`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
 module.exports = {
-
   /**
-   * Retrieve genreport records.
+   * Retrieve records with count in `Content-Range` header.
    *
-   * @return {Object|Array}
+   * @return {Array}
    */
 
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Genreport.count());
+  find: async (ctx) => {
     if (ctx.query._q) {
+      ctx.set('Content-Range', await strapi.services.genreport.countSearch(ctx.query));
       return strapi.services.genreport.search(ctx.query);
-    } else {
-      return strapi.services.genreport.fetchAll(ctx.query, populate);
     }
-  },
 
-  /**
-   * Retrieve a genreport record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.genreport.fetch(ctx.params);
-  },
-
-  /**
-   * Count genreport records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.genreport.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an genreport record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.genreport.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an genreport record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.genreport.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an genreport record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.genreport.remove(ctx.params);
+    ctx.set('Content-Range', await strapi.services.genreport.count(ctx.query));
+    return strapi.services.genreport.find(ctx.query);
   }
 };

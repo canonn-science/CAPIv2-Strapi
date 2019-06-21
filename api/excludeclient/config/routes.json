@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/excludeclients/:id",
-      "handler": "Excludeclient.destroy",
+      "handler": "Excludeclient.delete",
       "config": {
         "policies": []
       }

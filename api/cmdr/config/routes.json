@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/cmdrs/:id",
-      "handler": "Cmdr.destroy",
+      "handler": "Cmdr.delete",
       "config": {
         "policies": []
       }

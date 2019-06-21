@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/twtypes/:id",
-      "handler": "Twtype.destroy",
+      "handler": "Twtype.delete",
       "config": {
         "policies": []
       }

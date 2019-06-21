@@ -1,75 +1,24 @@
 'use strict';
 
 /**
- * Gscodexdata.js controller
- *
- * @description: A set of functions called "actions" for managing `Gscodexdata`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
 module.exports = {
-
   /**
-   * Retrieve gscodexdata records.
+   * Retrieve records with count in `Content-Range` header.
    *
-   * @return {Object|Array}
+   * @return {Array}
    */
 
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Gscodexdata.count());
+  find: async (ctx) => {
     if (ctx.query._q) {
+      ctx.set('Content-Range', await strapi.services.gscodexdata.countSearch(ctx.query));
       return strapi.services.gscodexdata.search(ctx.query);
-    } else {
-      return strapi.services.gscodexdata.fetchAll(ctx.query, populate);
     }
-  },
 
-  /**
-   * Retrieve a gscodexdata record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.gscodexdata.fetch(ctx.params);
-  },
-
-  /**
-   * Count gscodexdata records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.gscodexdata.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an gscodexdata record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.gscodexdata.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an gscodexdata record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.gscodexdata.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an gscodexdata record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.gscodexdata.remove(ctx.params);
+    ctx.set('Content-Range', await strapi.services.gscodexdata.count(ctx.query));
+    return strapi.services.gscodexdata.find(ctx.query);
   }
 };

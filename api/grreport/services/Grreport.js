@@ -1,213 +1,25 @@
-/* global Grreport */
 'use strict';
 
 /**
- * Grreport.js service
- *
- * @description: A set of functions similar to controller's actions to avoid code duplication.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/services.html#core-services)
+ * to customize this service
  */
 
-// Public dependencies.
-const _ = require('lodash');
-
-// Strapi utilities.
-const utils = require('strapi-hook-bookshelf/lib/utils/');
-const { convertRestQueryParams, buildQuery } = require('strapi-utils');
-
-
 module.exports = {
-
   /**
-   * Promise to fetch all grreports.
+   * Promise to add an grreport record
    *
    * @return {Promise}
    */
 
-  fetchAll: (params, populate) => {
-    // Select field to populate.
-    const withRelated = populate || Grreport.associations
-      .filter(ast => ast.autoPopulate !== false)
-      .map(ast => ast.alias);
+  create: async (values) => {
 
-    const filters = convertRestQueryParams(params);
+    // Check Version
+    await strapi.api.excludeclient.services.excludeclient.blockClient(values.clientVersion);
 
-    return Grreport.query(buildQuery({ model: Grreport, filters }))
-      .fetchAll({ withRelated })
-      .then(data => data.toJSON());
-  },
+    // Check CMDR Name
+    await strapi.api.excludecmdr.services.excludecmdr.blockCMDR(values.cmdrName);
 
-  /**
-   * Promise to fetch a/an grreport.
-   *
-   * @return {Promise}
-   */
-
-  fetch: (params) => {
-    // Select field to populate.
-    const populate = Grreport.associations
-      .filter(ast => ast.autoPopulate !== false)
-      .map(ast => ast.alias);
-
-    return Grreport.forge(_.pick(params, 'id')).fetch({
-      withRelated: populate
-    });
-  },
-
-  /**
-   * Promise to count a/an grreport.
-   *
-   * @return {Promise}
-   */
-
-  count: (params) => {
-    // Convert `params` object to filters compatible with Bookshelf.
-    const filters = convertRestQueryParams(params);
-
-    return Grreport.query(buildQuery({ model: Grreport, filters: _.pick(filters, 'where') })).count();
-  },
-
-  /**
-   * Promise to add a/an grreport.
-   *
-   * @return {Promise}
-   */
-
-  add: async (values) => {
-    // Extract values related to relational data.
-    const relations = _.pick(values, Grreport.associations.map(ast => ast.alias));
-    const data = _.omit(values, Grreport.associations.map(ast => ast.alias));
-
-    // Check blacklists (Client & CMDR)
-    await strapi.api.excludeclient.services.excludeclient.blockClient(data.clientVersion);
-    await strapi.api.excludecmdr.services.excludecmdr.blockCMDR(data.cmdrName);
-
-    // Create entry with no-relational data.
-    const entry = await Grreport.forge(data).save();
-
-    // Create relational data and return the entry.
-    return Grreport.updateRelations({ id: entry.id , values: relations });
-  },
-
-  /**
-   * Promise to edit a/an grreport.
-   *
-   * @return {Promise}
-   */
-
-  edit: async (params, values) => {
-    // Extract values related to relational data.
-    const relations = _.pick(values, Grreport.associations.map(ast => ast.alias));
-    const data = _.omit(values, Grreport.associations.map(ast => ast.alias));
-
-    // Create entry with no-relational data.
-    const entry = await Grreport.forge(params).save(data);
-
-    // Create relational data and return the entry.
-    return Grreport.updateRelations(Object.assign(params, { values: relations }));
-  },
-
-  /**
-   * Promise to remove a/an grreport.
-   *
-   * @return {Promise}
-   */
-
-  remove: async (params) => {
-    params.values = {};
-    Grreport.associations.map(association => {
-      switch (association.nature) {
-        case 'oneWay':
-        case 'oneToOne':
-        case 'manyToOne':
-        case 'oneToManyMorph':
-          params.values[association.alias] = null;
-          break;
-        case 'oneToMany':
-        case 'manyToMany':
-        case 'manyToManyMorph':
-          params.values[association.alias] = [];
-          break;
-        default:
-      }
-    });
-
-    await Grreport.updateRelations(params);
-
-    return Grreport.forge(params).destroy();
-  },
-
-  /**
-   * Promise to search a/an grreport.
-   *
-   * @return {Promise}
-   */
-
-  search: async (params) => {
-    // Convert `params` object to filters compatible with Bookshelf.
-    const filters = strapi.utils.models.convertParams('grreport', params);
-    // Select field to populate.
-    const populate = Grreport.associations
-      .filter(ast => ast.autoPopulate !== false)
-      .map(ast => ast.alias);
-
-    const associations = Grreport.associations.map(x => x.alias);
-    const searchText = Object.keys(Grreport._attributes)
-      .filter(attribute => attribute !== Grreport.primaryKey && !associations.includes(attribute))
-      .filter(attribute => ['string', 'text'].includes(Grreport._attributes[attribute].type));
-
-    const searchInt = Object.keys(Grreport._attributes)
-      .filter(attribute => attribute !== Grreport.primaryKey && !associations.includes(attribute))
-      .filter(attribute => ['integer', 'decimal', 'float'].includes(Grreport._attributes[attribute].type));
-
-    const searchBool = Object.keys(Grreport._attributes)
-      .filter(attribute => attribute !== Grreport.primaryKey && !associations.includes(attribute))
-      .filter(attribute => ['boolean'].includes(Grreport._attributes[attribute].type));
-
-    const query = (params._q || '').replace(/[^a-zA-Z0-9.-\s]+/g, '');
-
-    return Grreport.query(qb => {
-      if (!_.isNaN(_.toNumber(query))) {
-        searchInt.forEach(attribute => {
-          qb.orWhereRaw(`${attribute} = ${_.toNumber(query)}`);
-        });
-      }
-
-      if (query === 'true' || query === 'false') {
-        searchBool.forEach(attribute => {
-          qb.orWhereRaw(`${attribute} = ${_.toNumber(query === 'true')}`);
-        });
-      }
-
-      // Search in columns with text using index.
-      switch (Grreport.client) {
-        case 'mysql':
-          qb.orWhereRaw(`MATCH(${searchText.join(',')}) AGAINST(? IN BOOLEAN MODE)`, `*${query}*`);
-          break;
-        case 'pg': {
-          const searchQuery = searchText.map(attribute =>
-            _.toLower(attribute) === attribute
-              ? `to_tsvector(${attribute})`
-              : `to_tsvector('${attribute}')`
-          );
-
-          qb.orWhereRaw(`${searchQuery.join(' || ')} @@ to_tsquery(?)`, query);
-          break;
-        }
-      }
-
-      if (filters.sort) {
-        qb.orderBy(filters.sort.key, filters.sort.order);
-      }
-
-      if (filters.skip) {
-        qb.offset(_.toNumber(filters.skip));
-      }
-
-      if (filters.limit) {
-        qb.limit(_.toNumber(filters.limit));
-      }
-    }).fetchAll({
-      withRelated: populate
-    });
-  }
-};
+    // If checks pass, proceed to create data
+    return strapi.query('Grreport').create(values);
+  },};
