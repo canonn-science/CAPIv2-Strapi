@@ -1,6 +1,6 @@
 # 1. Canonn API v2 - (CAPIv2)
 
-[![Strapi Version](https://img.shields.io/badge/strapi-v3.0.0--alpha.26.2-blue.svg)](https://github.com/strapi/strapi)
+[![Strapi Version](https://img.shields.io/badge/strapi-v3.0.0--beta.7-blue.svg)](https://github.com/strapi/strapi)
 [![CAPIv2 Version](https://img.shields.io/badge/capiv2-v2.0.26-orange.svg)](https://api.canonn.tech:2083)
 [![Build Status](https://travis-ci.org/canonn-science/CAPIv2-Strapi.svg?branch=development)](https://travis-ci.org/canonn-science/CAPIv2-Strapi)
 [![EDCD Discord](https://img.shields.io/discord/164411426939600896.svg?logo=discord&label=EDCD%20Discord)](https://discord.gg/fhDWZBH)
@@ -122,8 +122,9 @@ You will need the following:
 - Git
 - Node v10
 - NPM v6
+- Yarn
 - Node PM2 (For running API as a service)
-- Strapi Alpha based on the version within the `package.json`
+- Strapi Beta based on the version within the `package.json`
 - MariaDB 10.3
 
 ## 5.1. Installing Git, Node v10, and NPM v6
@@ -140,23 +141,29 @@ Then install Git, Node, and NPM:
 
 Run the following to install PM2 globally on your system:
 
-`sudo npm install pm2 -g`
+`npm install -g pm2 `
 
 **NOTE:** If you get an EACCESS error while trying to install global packages, please see [this](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) node help guide.
 
-## 5.3. Install Strapi Alpha Latest
+## 5.3. Install Yarn for development and building
+
+Run the following to install Yarn globally:
+
+`npm install -g yarn`
+
+## 5.4. Install Strapi Alpha Latest
 
 Run the following to install Strapi Alpha version from the package.json:
 
 **NOTE:** This is just an example, you should replace the version below with the proper version!
 
-`sudo npm i 3.0.0-alpha.24.1 -g`
+`npm i -g strapi@beta`
 
 This will install strapi globally and allow you to generate new projects or models/api/ect from the cli
 
-See the following for a more detailed guide: [https://strapi.io/documentation/cli/CLI.html](https://strapi.io/documentation/3.x.x/getting-started/installation.html#requirements)
+See the following for a more detailed guide: [For requirements](https://strapi.io/documentation/3.0.0-beta.x/getting-started/install-requirements.html#basic-installation-requirements) and [For installing Strapi Globally](https://strapi.io/documentation/3.0.0-beta.x/getting-started/quick-start.html#_1-install-strapi-globally)
 
-## 5.4. Setup MariaDB
+## 5.5. Setup MariaDB
 
 Install Software Properties Common if its not already installed:
 
@@ -234,7 +241,7 @@ Lets create our project directory and clone the CAPIv2 Build
 
 ## 7.2. Enter the directory and install
 
-`cd /srv/CAPIv2/CAPIv2-Strapi && npm install`
+`cd /srv/CAPIv2/CAPIv2-Strapi && yarn install`
 
 **Note this may take a while**
 
@@ -252,7 +259,13 @@ You will need to set the Database settings for User and development at a minimum
 
 For the Discord webhook, you will need to create a Discord Server and setup a webhook URL. This webhook is a work in progress but will be used to provide alerts when certain data is added.
 
-## 7.4. Start CAPIv2 for the first time
+## 7.4. Building the CAPIv2 Admin Panel
+
+With the new Strapi Beta versions, we can now customize and rebuild the AdminUI to our liking as such when you clone the project you will need to build this AdminUI as we do not keep it in git.
+
+To build simply run `yarn build`
+
+## 7.5. Start CAPIv2 for the first time
 
 Once it has finished setting up, you can start it once in order to create your admin user:
 
@@ -277,11 +290,11 @@ cd /srv/CAPIv2/CAPIv2-Strapi && strapi start
 }
 ```
 
-## 7.5. Create the Admin User
+## 7.6. Create the Admin User
 
 After strapi has started you can visit `http://localhost:1337/admin` if you are on the machine, else you can change `localhost` to your servers IP.
 
-## 7.6. Running CAPIv2 as a service
+## 7.7. Running CAPIv2 as a service
 
 To run strapi as a service, a change was made in the package.json, and you have installed PM2 in a previous step. You will need to navigate to the directory the API is cloned into and run the following:
 
