@@ -11,7 +11,8 @@
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
-    "lint": "eslint api/**/*.js config/**/*.js plugins/**/*.js"
+    "lint": "eslint api/**/*.js config/**/*.js plugins/**/*.js",
+    "getcsv": "cd seed_files/scripts && ./get-sheetdata.sh"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
