@@ -7,7 +7,7 @@
         "client": "mysql",
         "host": "${process.env.DATABASE_HOST_PROD || '127.0.0.1'}",
         "port": "${process.env.DATABASE_PORT_PROD || 3306}",
-        "database": "${process.env.DATABASE_NAME_PROD || 'capiv2_production'}",
+        "database": "${process.env.DATABASE_NAME_PROD || 'capiv2_example'}",
         "username": "${process.env.DATABASE_USERNAME_PROD || 'capiv2system'}",
         "password": "${process.env.DATABASE_PASSWORD_PROD || 'capiv2password'}"
       },
@@ -23,7 +23,7 @@
         "client": "mysql",
         "host": "${process.env.DATABASE_HOST_USER || '127.0.0.1'}",
         "port": "${process.env.DATABASE_PORT_USER || 3306}",
-        "database": "${process.env.DATABASE_NAME_USER || 'capiv2_user_example'}",
+        "database": "${process.env.DATABASE_NAME_USER || 'capiv2_user'}",
         "username": "${process.env.DATABASE_USERNAME_USER || 'capiv2system'}",
         "password": "${process.env.DATABASE_PASSWORD_USER || 'capiv2password'}"
       },
