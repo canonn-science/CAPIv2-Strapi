@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/genreports/:id",
-      "handler": "Genreport.delete",
+      "handler": "Genreport.destroy",
       "config": {
         "policies": []
       }

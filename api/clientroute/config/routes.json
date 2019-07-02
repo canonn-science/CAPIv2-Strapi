@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/clientroutes/:id",
-      "handler": "Clientroute.delete",
+      "handler": "Clientroute.destroy",
       "config": {
         "policies": []
       }

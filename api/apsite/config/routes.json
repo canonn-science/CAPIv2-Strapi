@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/apsites/:id",
-      "handler": "Apsite.delete",
+      "handler": "Apsite.destroy",
       "config": {
         "policies": []
       }

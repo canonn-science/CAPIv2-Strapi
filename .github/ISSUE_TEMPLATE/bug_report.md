@@ -1,9 +1,6 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: ''
-labels: 'status: have to reproduce, type: bug'
-assignees: ''
 
 ---
 

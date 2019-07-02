@@ -1,24 +1,75 @@
 'use strict';
 
 /**
- * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
- * to customize this controller
+ * Tsstatus.js controller
+ *
+ * @description: A set of functions called "actions" for managing `Tsstatus`.
  */
 
 module.exports = {
+
   /**
-   * Retrieve records with count in `Content-Range` header.
+   * Retrieve tsstatus records.
    *
-   * @return {Array}
+   * @return {Object|Array}
    */
 
-  find: async (ctx) => {
+  find: async (ctx, next, { populate } = {}) => {
+    ctx.set('Content-Range', await Tsstatus.count());
     if (ctx.query._q) {
-      ctx.set('Content-Range', await strapi.services.tsstatus.countSearch(ctx.query));
       return strapi.services.tsstatus.search(ctx.query);
+    } else {
+      return strapi.services.tsstatus.fetchAll(ctx.query, populate);
     }
+  },
 
-    ctx.set('Content-Range', await strapi.services.tsstatus.count(ctx.query));
-    return strapi.services.tsstatus.find(ctx.query);
+  /**
+   * Retrieve a tsstatus record.
+   *
+   * @return {Object}
+   */
+
+  findOne: async (ctx) => {
+    return strapi.services.tsstatus.fetch(ctx.params);
+  },
+
+  /**
+   * Count tsstatus records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx, next, { populate } = {}) => {
+    return strapi.services.tsstatus.count(ctx.query, populate);
+  },
+
+  /**
+   * Create a/an tsstatus record.
+   *
+   * @return {Object}
+   */
+
+  create: async (ctx) => {
+    return strapi.services.tsstatus.add(ctx.request.body);
+  },
+
+  /**
+   * Update a/an tsstatus record.
+   *
+   * @return {Object}
+   */
+
+  update: async (ctx, next) => {
+    return strapi.services.tsstatus.edit(ctx.params, ctx.request.body) ;
+  },
+
+  /**
+   * Destroy a/an tsstatus record.
+   *
+   * @return {Object}
+   */
+
+  destroy: async (ctx, next) => {
+    return strapi.services.tsstatus.remove(ctx.params);
   }
 };

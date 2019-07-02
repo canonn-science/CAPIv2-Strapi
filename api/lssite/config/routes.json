@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/lssites/:id",
-      "handler": "Lssite.delete",
+      "handler": "Lssite.destroy",
       "config": {
         "policies": []
       }

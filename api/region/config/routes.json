@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/regions/:id",
-      "handler": "Region.delete",
+      "handler": "Region.destroy",
       "config": {
         "policies": []
       }

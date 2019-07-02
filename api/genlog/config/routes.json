@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/genlogs/:id",
-      "handler": "Genlog.delete",
+      "handler": "Genlog.destroy",
       "config": {
         "policies": []
       }

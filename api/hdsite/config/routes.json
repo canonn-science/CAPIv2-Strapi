@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/hdsites/:id",
-      "handler": "Hdsite.delete",
+      "handler": "Hdsite.destroy",
       "config": {
         "policies": []
       }

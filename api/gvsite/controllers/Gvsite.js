@@ -1,24 +1,75 @@
 'use strict';
 
 /**
- * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
- * to customize this controller
+ * Gvsite.js controller
+ *
+ * @description: A set of functions called "actions" for managing `Gvsite`.
  */
 
 module.exports = {
+
   /**
-   * Retrieve records with count in `Content-Range` header.
+   * Retrieve gvsite records.
    *
-   * @return {Array}
+   * @return {Object|Array}
    */
 
-  find: async (ctx) => {
+  find: async (ctx, next, { populate } = {}) => {
+    ctx.set('Content-Range', await Gvsite.count());
     if (ctx.query._q) {
-      ctx.set('Content-Range', await strapi.services.gvsite.countSearch(ctx.query));
       return strapi.services.gvsite.search(ctx.query);
+    } else {
+      return strapi.services.gvsite.fetchAll(ctx.query, populate);
     }
+  },
 
-    ctx.set('Content-Range', await strapi.services.gvsite.count(ctx.query));
-    return strapi.services.gvsite.find(ctx.query);
+  /**
+   * Retrieve a gvsite record.
+   *
+   * @return {Object}
+   */
+
+  findOne: async (ctx) => {
+    return strapi.services.gvsite.fetch(ctx.params);
+  },
+
+  /**
+   * Count gvsite records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx, next, { populate } = {}) => {
+    return strapi.services.gvsite.count(ctx.query, populate);
+  },
+
+  /**
+   * Create a/an gvsite record.
+   *
+   * @return {Object}
+   */
+
+  create: async (ctx) => {
+    return strapi.services.gvsite.add(ctx.request.body);
+  },
+
+  /**
+   * Update a/an gvsite record.
+   *
+   * @return {Object}
+   */
+
+  update: async (ctx, next) => {
+    return strapi.services.gvsite.edit(ctx.params, ctx.request.body) ;
+  },
+
+  /**
+   * Destroy a/an gvsite record.
+   *
+   * @return {Object}
+   */
+
+  destroy: async (ctx, next) => {
+    return strapi.services.gvsite.remove(ctx.params);
   }
 };

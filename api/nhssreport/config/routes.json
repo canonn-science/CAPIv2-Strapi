@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/nhssreports/:id",
-      "handler": "Nhssreport.delete",
+      "handler": "Nhssreport.destroy",
       "config": {
         "policies": []
       }

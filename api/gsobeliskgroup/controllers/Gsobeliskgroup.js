@@ -1,24 +1,75 @@
 'use strict';
 
 /**
- * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
- * to customize this controller
+ * Gsobeliskgroup.js controller
+ *
+ * @description: A set of functions called "actions" for managing `Gsobeliskgroup`.
  */
 
 module.exports = {
+
   /**
-   * Retrieve records with count in `Content-Range` header.
+   * Retrieve gsobeliskgroup records.
    *
-   * @return {Array}
+   * @return {Object|Array}
    */
 
-  find: async (ctx) => {
+  find: async (ctx, next, { populate } = {}) => {
+    ctx.set('Content-Range', await Gsobeliskgroup.count());
     if (ctx.query._q) {
-      ctx.set('Content-Range', await strapi.services.gsobeliskgroup.countSearch(ctx.query));
       return strapi.services.gsobeliskgroup.search(ctx.query);
+    } else {
+      return strapi.services.gsobeliskgroup.fetchAll(ctx.query, populate);
     }
+  },
 
-    ctx.set('Content-Range', await strapi.services.gsobeliskgroup.count(ctx.query));
-    return strapi.services.gsobeliskgroup.find(ctx.query);
+  /**
+   * Retrieve a gsobeliskgroup record.
+   *
+   * @return {Object}
+   */
+
+  findOne: async (ctx) => {
+    return strapi.services.gsobeliskgroup.fetch(ctx.params);
+  },
+
+  /**
+   * Count gsobeliskgroup records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx, next, { populate } = {}) => {
+    return strapi.services.gsobeliskgroup.count(ctx.query, populate);
+  },
+
+  /**
+   * Create a/an gsobeliskgroup record.
+   *
+   * @return {Object}
+   */
+
+  create: async (ctx) => {
+    return strapi.services.gsobeliskgroup.add(ctx.request.body);
+  },
+
+  /**
+   * Update a/an gsobeliskgroup record.
+   *
+   * @return {Object}
+   */
+
+  update: async (ctx, next) => {
+    return strapi.services.gsobeliskgroup.edit(ctx.params, ctx.request.body) ;
+  },
+
+  /**
+   * Destroy a/an gsobeliskgroup record.
+   *
+   * @return {Object}
+   */
+
+  destroy: async (ctx, next) => {
+    return strapi.services.gsobeliskgroup.remove(ctx.params);
   }
 };

@@ -1,24 +1,75 @@
 'use strict';
 
 /**
- * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
- * to customize this controller
+ * Gvtype.js controller
+ *
+ * @description: A set of functions called "actions" for managing `Gvtype`.
  */
 
 module.exports = {
+
   /**
-   * Retrieve records with count in `Content-Range` header.
+   * Retrieve gvtype records.
    *
-   * @return {Array}
+   * @return {Object|Array}
    */
 
-  find: async (ctx) => {
+  find: async (ctx, next, { populate } = {}) => {
+    ctx.set('Content-Range', await Gvtype.count());
     if (ctx.query._q) {
-      ctx.set('Content-Range', await strapi.services.gvtype.countSearch(ctx.query));
       return strapi.services.gvtype.search(ctx.query);
+    } else {
+      return strapi.services.gvtype.fetchAll(ctx.query, populate);
     }
+  },
 
-    ctx.set('Content-Range', await strapi.services.gvtype.count(ctx.query));
-    return strapi.services.gvtype.find(ctx.query);
+  /**
+   * Retrieve a gvtype record.
+   *
+   * @return {Object}
+   */
+
+  findOne: async (ctx) => {
+    return strapi.services.gvtype.fetch(ctx.params);
+  },
+
+  /**
+   * Count gvtype records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx, next, { populate } = {}) => {
+    return strapi.services.gvtype.count(ctx.query, populate);
+  },
+
+  /**
+   * Create a/an gvtype record.
+   *
+   * @return {Object}
+   */
+
+  create: async (ctx) => {
+    return strapi.services.gvtype.add(ctx.request.body);
+  },
+
+  /**
+   * Update a/an gvtype record.
+   *
+   * @return {Object}
+   */
+
+  update: async (ctx, next) => {
+    return strapi.services.gvtype.edit(ctx.params, ctx.request.body) ;
+  },
+
+  /**
+   * Destroy a/an gvtype record.
+   *
+   * @return {Object}
+   */
+
+  destroy: async (ctx, next) => {
+    return strapi.services.gvtype.remove(ctx.params);
   }
 };

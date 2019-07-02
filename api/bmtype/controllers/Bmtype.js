@@ -1,24 +1,75 @@
 'use strict';
 
 /**
- * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
- * to customize this controller
+ * Bmtype.js controller
+ *
+ * @description: A set of functions called "actions" for managing `Bmtype`.
  */
 
 module.exports = {
+
   /**
-   * Retrieve records with count in `Content-Range` header.
+   * Retrieve bmtype records.
    *
-   * @return {Array}
+   * @return {Object|Array}
    */
 
-  find: async (ctx) => {
+  find: async (ctx, next, { populate } = {}) => {
+    ctx.set('Content-Range', await Bmtype.count());
     if (ctx.query._q) {
-      ctx.set('Content-Range', await strapi.services.bmtype.countSearch(ctx.query));
       return strapi.services.bmtype.search(ctx.query);
+    } else {
+      return strapi.services.bmtype.fetchAll(ctx.query, populate);
     }
+  },
 
-    ctx.set('Content-Range', await strapi.services.bmtype.count(ctx.query));
-    return strapi.services.bmtype.find(ctx.query);
+  /**
+   * Retrieve a bmtype record.
+   *
+   * @return {Object}
+   */
+
+  findOne: async (ctx) => {
+    return strapi.services.bmtype.fetch(ctx.params);
+  },
+
+  /**
+   * Count bmtype records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx, next, { populate } = {}) => {
+    return strapi.services.bmtype.count(ctx.query, populate);
+  },
+
+  /**
+   * Create a/an bmtype record.
+   *
+   * @return {Object}
+   */
+
+  create: async (ctx) => {
+    return strapi.services.bmtype.add(ctx.request.body);
+  },
+
+  /**
+   * Update a/an bmtype record.
+   *
+   * @return {Object}
+   */
+
+  update: async (ctx, next) => {
+    return strapi.services.bmtype.edit(ctx.params, ctx.request.body) ;
+  },
+
+  /**
+   * Destroy a/an bmtype record.
+   *
+   * @return {Object}
+   */
+
+  destroy: async (ctx, next) => {
+    return strapi.services.bmtype.remove(ctx.params);
   }
 };

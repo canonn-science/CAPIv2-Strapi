@@ -1,24 +1,75 @@
 'use strict';
 
 /**
- * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
- * to customize this controller
+ * Reporttype.js controller
+ *
+ * @description: A set of functions called "actions" for managing `Reporttype`.
  */
 
 module.exports = {
+
   /**
-   * Retrieve records with count in `Content-Range` header.
+   * Retrieve reporttype records.
    *
-   * @return {Array}
+   * @return {Object|Array}
    */
 
-  find: async (ctx) => {
+  find: async (ctx, next, { populate } = {}) => {
+    ctx.set('Content-Range', await Reporttype.count());
     if (ctx.query._q) {
-      ctx.set('Content-Range', await strapi.services.reporttype.countSearch(ctx.query));
       return strapi.services.reporttype.search(ctx.query);
+    } else {
+      return strapi.services.reporttype.fetchAll(ctx.query, populate);
     }
+  },
 
-    ctx.set('Content-Range', await strapi.services.reporttype.count(ctx.query));
-    return strapi.services.reporttype.find(ctx.query);
+  /**
+   * Retrieve a reporttype record.
+   *
+   * @return {Object}
+   */
+
+  findOne: async (ctx) => {
+    return strapi.services.reporttype.fetch(ctx.params);
+  },
+
+  /**
+   * Count reporttype records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx, next, { populate } = {}) => {
+    return strapi.services.reporttype.count(ctx.query, populate);
+  },
+
+  /**
+   * Create a/an reporttype record.
+   *
+   * @return {Object}
+   */
+
+  create: async (ctx) => {
+    return strapi.services.reporttype.add(ctx.request.body);
+  },
+
+  /**
+   * Update a/an reporttype record.
+   *
+   * @return {Object}
+   */
+
+  update: async (ctx, next) => {
+    return strapi.services.reporttype.edit(ctx.params, ctx.request.body) ;
+  },
+
+  /**
+   * Destroy a/an reporttype record.
+   *
+   * @return {Object}
+   */
+
+  destroy: async (ctx, next) => {
+    return strapi.services.reporttype.remove(ctx.params);
   }
 };

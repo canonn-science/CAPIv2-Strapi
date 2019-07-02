@@ -1,24 +1,75 @@
 'use strict';
 
 /**
- * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
- * to customize this controller
+ * Grreport.js controller
+ *
+ * @description: A set of functions called "actions" for managing `Grreport`.
  */
 
 module.exports = {
+
   /**
-   * Retrieve records with count in `Content-Range` header.
+   * Retrieve grreport records.
    *
-   * @return {Array}
+   * @return {Object|Array}
    */
 
-  find: async (ctx) => {
+  find: async (ctx, next, { populate } = {}) => {
+    ctx.set('Content-Range', await Grreport.count());
     if (ctx.query._q) {
-      ctx.set('Content-Range', await strapi.services.grreport.countSearch(ctx.query));
       return strapi.services.grreport.search(ctx.query);
+    } else {
+      return strapi.services.grreport.fetchAll(ctx.query, populate);
     }
+  },
 
-    ctx.set('Content-Range', await strapi.services.grreport.count(ctx.query));
-    return strapi.services.grreport.find(ctx.query);
+  /**
+   * Retrieve a grreport record.
+   *
+   * @return {Object}
+   */
+
+  findOne: async (ctx) => {
+    return strapi.services.grreport.fetch(ctx.params);
+  },
+
+  /**
+   * Count grreport records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx, next, { populate } = {}) => {
+    return strapi.services.grreport.count(ctx.query, populate);
+  },
+
+  /**
+   * Create a/an grreport record.
+   *
+   * @return {Object}
+   */
+
+  create: async (ctx) => {
+    return strapi.services.grreport.add(ctx.request.body);
+  },
+
+  /**
+   * Update a/an grreport record.
+   *
+   * @return {Object}
+   */
+
+  update: async (ctx, next) => {
+    return strapi.services.grreport.edit(ctx.params, ctx.request.body) ;
+  },
+
+  /**
+   * Destroy a/an grreport record.
+   *
+   * @return {Object}
+   */
+
+  destroy: async (ctx, next) => {
+    return strapi.services.grreport.remove(ctx.params);
   }
 };

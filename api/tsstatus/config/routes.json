@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/tsstatuses/:id",
-      "handler": "Tsstatus.delete",
+      "handler": "Tsstatus.destroy",
       "config": {
         "policies": []
       }

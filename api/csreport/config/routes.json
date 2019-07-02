@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/csreports/:id",
-      "handler": "Csreport.delete",
+      "handler": "Csreport.destroy",
       "config": {
         "policies": []
       }

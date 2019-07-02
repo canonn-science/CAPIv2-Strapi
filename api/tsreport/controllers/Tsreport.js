@@ -1,24 +1,75 @@
 'use strict';
 
 /**
- * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
- * to customize this controller
+ * Tsreport.js controller
+ *
+ * @description: A set of functions called "actions" for managing `Tsreport`.
  */
 
 module.exports = {
+
   /**
-   * Retrieve records with count in `Content-Range` header.
+   * Retrieve tsreport records.
    *
-   * @return {Array}
+   * @return {Object|Array}
    */
 
-  find: async (ctx) => {
+  find: async (ctx, next, { populate } = {}) => {
+    ctx.set('Content-Range', await Tsreport.count());
     if (ctx.query._q) {
-      ctx.set('Content-Range', await strapi.services.tsreport.countSearch(ctx.query));
       return strapi.services.tsreport.search(ctx.query);
+    } else {
+      return strapi.services.tsreport.fetchAll(ctx.query, populate);
     }
+  },
 
-    ctx.set('Content-Range', await strapi.services.tsreport.count(ctx.query));
-    return strapi.services.tsreport.find(ctx.query);
+  /**
+   * Retrieve a tsreport record.
+   *
+   * @return {Object}
+   */
+
+  findOne: async (ctx) => {
+    return strapi.services.tsreport.fetch(ctx.params);
+  },
+
+  /**
+   * Count tsreport records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx, next, { populate } = {}) => {
+    return strapi.services.tsreport.count(ctx.query, populate);
+  },
+
+  /**
+   * Create a/an tsreport record.
+   *
+   * @return {Object}
+   */
+
+  create: async (ctx) => {
+    return strapi.services.tsreport.add(ctx.request.body);
+  },
+
+  /**
+   * Update a/an tsreport record.
+   *
+   * @return {Object}
+   */
+
+  update: async (ctx, next) => {
+    return strapi.services.tsreport.edit(ctx.params, ctx.request.body) ;
+  },
+
+  /**
+   * Destroy a/an tsreport record.
+   *
+   * @return {Object}
+   */
+
+  destroy: async (ctx, next) => {
+    return strapi.services.tsreport.remove(ctx.params);
   }
 };

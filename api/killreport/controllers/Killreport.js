@@ -1,24 +1,75 @@
 'use strict';
 
 /**
- * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
- * to customize this controller
+ * Killreport.js controller
+ *
+ * @description: A set of functions called "actions" for managing `Killreport`.
  */
 
 module.exports = {
+
   /**
-   * Retrieve records with count in `Content-Range` header.
+   * Retrieve killreport records.
    *
-   * @return {Array}
+   * @return {Object|Array}
    */
 
-  find: async (ctx) => {
+  find: async (ctx, next, { populate } = {}) => {
+    ctx.set('Content-Range', await Killreport.count());
     if (ctx.query._q) {
-      ctx.set('Content-Range', await strapi.services.killreport.countSearch(ctx.query));
       return strapi.services.killreport.search(ctx.query);
+    } else {
+      return strapi.services.killreport.fetchAll(ctx.query, populate);
     }
+  },
 
-    ctx.set('Content-Range', await strapi.services.killreport.count(ctx.query));
-    return strapi.services.killreport.find(ctx.query);
+  /**
+   * Retrieve a killreport record.
+   *
+   * @return {Object}
+   */
+
+  findOne: async (ctx) => {
+    return strapi.services.killreport.fetch(ctx.params);
+  },
+
+  /**
+   * Count killreport records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx, next, { populate } = {}) => {
+    return strapi.services.killreport.count(ctx.query, populate);
+  },
+
+  /**
+   * Create a/an killreport record.
+   *
+   * @return {Object}
+   */
+
+  create: async (ctx) => {
+    return strapi.services.killreport.add(ctx.request.body);
+  },
+
+  /**
+   * Update a/an killreport record.
+   *
+   * @return {Object}
+   */
+
+  update: async (ctx, next) => {
+    return strapi.services.killreport.edit(ctx.params, ctx.request.body) ;
+  },
+
+  /**
+   * Destroy a/an killreport record.
+   *
+   * @return {Object}
+   */
+
+  destroy: async (ctx, next) => {
+    return strapi.services.killreport.remove(ctx.params);
   }
 };

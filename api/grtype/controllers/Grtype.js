@@ -1,24 +1,75 @@
 'use strict';
 
 /**
- * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
- * to customize this controller
+ * Grtype.js controller
+ *
+ * @description: A set of functions called "actions" for managing `Grtype`.
  */
 
 module.exports = {
+
   /**
-   * Retrieve records with count in `Content-Range` header.
+   * Retrieve grtype records.
    *
-   * @return {Array}
+   * @return {Object|Array}
    */
 
-  find: async (ctx) => {
+  find: async (ctx, next, { populate } = {}) => {
+    ctx.set('Content-Range', await Grtype.count());
     if (ctx.query._q) {
-      ctx.set('Content-Range', await strapi.services.grtype.countSearch(ctx.query));
       return strapi.services.grtype.search(ctx.query);
+    } else {
+      return strapi.services.grtype.fetchAll(ctx.query, populate);
     }
+  },
 
-    ctx.set('Content-Range', await strapi.services.grtype.count(ctx.query));
-    return strapi.services.grtype.find(ctx.query);
+  /**
+   * Retrieve a grtype record.
+   *
+   * @return {Object}
+   */
+
+  findOne: async (ctx) => {
+    return strapi.services.grtype.fetch(ctx.params);
+  },
+
+  /**
+   * Count grtype records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx, next, { populate } = {}) => {
+    return strapi.services.grtype.count(ctx.query, populate);
+  },
+
+  /**
+   * Create a/an grtype record.
+   *
+   * @return {Object}
+   */
+
+  create: async (ctx) => {
+    return strapi.services.grtype.add(ctx.request.body);
+  },
+
+  /**
+   * Update a/an grtype record.
+   *
+   * @return {Object}
+   */
+
+  update: async (ctx, next) => {
+    return strapi.services.grtype.edit(ctx.params, ctx.request.body) ;
+  },
+
+  /**
+   * Destroy a/an grtype record.
+   *
+   * @return {Object}
+   */
+
+  destroy: async (ctx, next) => {
+    return strapi.services.grtype.remove(ctx.params);
   }
 };

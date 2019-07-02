@@ -1,24 +1,75 @@
 'use strict';
 
 /**
- * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
- * to customize this controller
+ * Apsite.js controller
+ *
+ * @description: A set of functions called "actions" for managing `Apsite`.
  */
 
 module.exports = {
+
   /**
-   * Retrieve records with count in `Content-Range` header.
+   * Retrieve apsite records.
    *
-   * @return {Array}
+   * @return {Object|Array}
    */
 
-  find: async (ctx) => {
+  find: async (ctx, next, { populate } = {}) => {
+    ctx.set('Content-Range', await Apsite.count());
     if (ctx.query._q) {
-      ctx.set('Content-Range', await strapi.services.apsite.countSearch(ctx.query));
       return strapi.services.apsite.search(ctx.query);
+    } else {
+      return strapi.services.apsite.fetchAll(ctx.query, populate);
     }
+  },
 
-    ctx.set('Content-Range', await strapi.services.apsite.count(ctx.query));
-    return strapi.services.apsite.find(ctx.query);
+  /**
+   * Retrieve a apsite record.
+   *
+   * @return {Object}
+   */
+
+  findOne: async (ctx) => {
+    return strapi.services.apsite.fetch(ctx.params);
+  },
+
+  /**
+   * Count apsite records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx, next, { populate } = {}) => {
+    return strapi.services.apsite.count(ctx.query, populate);
+  },
+
+  /**
+   * Create a/an apsite record.
+   *
+   * @return {Object}
+   */
+
+  create: async (ctx) => {
+    return strapi.services.apsite.add(ctx.request.body);
+  },
+
+  /**
+   * Update a/an apsite record.
+   *
+   * @return {Object}
+   */
+
+  update: async (ctx, next) => {
+    return strapi.services.apsite.edit(ctx.params, ctx.request.body) ;
+  },
+
+  /**
+   * Destroy a/an apsite record.
+   *
+   * @return {Object}
+   */
+
+  destroy: async (ctx, next) => {
+    return strapi.services.apsite.remove(ctx.params);
   }
 };

@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/materialreports/:id",
-      "handler": "Materialreport.delete",
+      "handler": "Materialreport.destroy",
       "config": {
         "policies": []
       }

@@ -1,24 +1,75 @@
 'use strict';
 
 /**
- * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
- * to customize this controller
+ * Bmsite.js controller
+ *
+ * @description: A set of functions called "actions" for managing `Bmsite`.
  */
 
 module.exports = {
+
   /**
-   * Retrieve records with count in `Content-Range` header.
+   * Retrieve bmsite records.
    *
-   * @return {Array}
+   * @return {Object|Array}
    */
 
-  find: async (ctx) => {
+  find: async (ctx, next, { populate } = {}) => {
+    ctx.set('Content-Range', await Bmsite.count());
     if (ctx.query._q) {
-      ctx.set('Content-Range', await strapi.services.bmsite.countSearch(ctx.query));
       return strapi.services.bmsite.search(ctx.query);
+    } else {
+      return strapi.services.bmsite.fetchAll(ctx.query, populate);
     }
+  },
 
-    ctx.set('Content-Range', await strapi.services.bmsite.count(ctx.query));
-    return strapi.services.bmsite.find(ctx.query);
+  /**
+   * Retrieve a bmsite record.
+   *
+   * @return {Object}
+   */
+
+  findOne: async (ctx) => {
+    return strapi.services.bmsite.fetch(ctx.params);
+  },
+
+  /**
+   * Count bmsite records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx, next, { populate } = {}) => {
+    return strapi.services.bmsite.count(ctx.query, populate);
+  },
+
+  /**
+   * Create a/an bmsite record.
+   *
+   * @return {Object}
+   */
+
+  create: async (ctx) => {
+    return strapi.services.bmsite.add(ctx.request.body);
+  },
+
+  /**
+   * Update a/an bmsite record.
+   *
+   * @return {Object}
+   */
+
+  update: async (ctx, next) => {
+    return strapi.services.bmsite.edit(ctx.params, ctx.request.body) ;
+  },
+
+  /**
+   * Destroy a/an bmsite record.
+   *
+   * @return {Object}
+   */
+
+  destroy: async (ctx, next) => {
+    return strapi.services.bmsite.remove(ctx.params);
   }
 };

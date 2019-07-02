@@ -1,24 +1,75 @@
 'use strict';
 
 /**
- * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
- * to customize this controller
+ * Tbcycle.js controller
+ *
+ * @description: A set of functions called "actions" for managing `Tbcycle`.
  */
 
 module.exports = {
+
   /**
-   * Retrieve records with count in `Content-Range` header.
+   * Retrieve tbcycle records.
    *
-   * @return {Array}
+   * @return {Object|Array}
    */
 
-  find: async (ctx) => {
+  find: async (ctx, next, { populate } = {}) => {
+    ctx.set('Content-Range', await Tbcycle.count());
     if (ctx.query._q) {
-      ctx.set('Content-Range', await strapi.services.tbcycle.countSearch(ctx.query));
       return strapi.services.tbcycle.search(ctx.query);
+    } else {
+      return strapi.services.tbcycle.fetchAll(ctx.query, populate);
     }
+  },
 
-    ctx.set('Content-Range', await strapi.services.tbcycle.count(ctx.query));
-    return strapi.services.tbcycle.find(ctx.query);
+  /**
+   * Retrieve a tbcycle record.
+   *
+   * @return {Object}
+   */
+
+  findOne: async (ctx) => {
+    return strapi.services.tbcycle.fetch(ctx.params);
+  },
+
+  /**
+   * Count tbcycle records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx, next, { populate } = {}) => {
+    return strapi.services.tbcycle.count(ctx.query, populate);
+  },
+
+  /**
+   * Create a/an tbcycle record.
+   *
+   * @return {Object}
+   */
+
+  create: async (ctx) => {
+    return strapi.services.tbcycle.add(ctx.request.body);
+  },
+
+  /**
+   * Update a/an tbcycle record.
+   *
+   * @return {Object}
+   */
+
+  update: async (ctx, next) => {
+    return strapi.services.tbcycle.edit(ctx.params, ctx.request.body) ;
+  },
+
+  /**
+   * Destroy a/an tbcycle record.
+   *
+   * @return {Object}
+   */
+
+  destroy: async (ctx, next) => {
+    return strapi.services.tbcycle.remove(ctx.params);
   }
 };

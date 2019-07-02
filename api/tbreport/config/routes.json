@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/tbreports/:id",
-      "handler": "Tbreport.delete",
+      "handler": "Tbreport.destroy",
       "config": {
         "policies": []
       }

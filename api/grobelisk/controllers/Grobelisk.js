@@ -1,24 +1,75 @@
 'use strict';
 
 /**
- * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
- * to customize this controller
+ * Grobelisk.js controller
+ *
+ * @description: A set of functions called "actions" for managing `Grobelisk`.
  */
 
 module.exports = {
+
   /**
-   * Retrieve records with count in `Content-Range` header.
+   * Retrieve grobelisk records.
    *
-   * @return {Array}
+   * @return {Object|Array}
    */
 
-  find: async (ctx) => {
+  find: async (ctx, next, { populate } = {}) => {
+    ctx.set('Content-Range', await Grobelisk.count());
     if (ctx.query._q) {
-      ctx.set('Content-Range', await strapi.services.grobelisk.countSearch(ctx.query));
       return strapi.services.grobelisk.search(ctx.query);
+    } else {
+      return strapi.services.grobelisk.fetchAll(ctx.query, populate);
     }
+  },
 
-    ctx.set('Content-Range', await strapi.services.grobelisk.count(ctx.query));
-    return strapi.services.grobelisk.find(ctx.query);
+  /**
+   * Retrieve a grobelisk record.
+   *
+   * @return {Object}
+   */
+
+  findOne: async (ctx) => {
+    return strapi.services.grobelisk.fetch(ctx.params);
+  },
+
+  /**
+   * Count grobelisk records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx, next, { populate } = {}) => {
+    return strapi.services.grobelisk.count(ctx.query, populate);
+  },
+
+  /**
+   * Create a/an grobelisk record.
+   *
+   * @return {Object}
+   */
+
+  create: async (ctx) => {
+    return strapi.services.grobelisk.add(ctx.request.body);
+  },
+
+  /**
+   * Update a/an grobelisk record.
+   *
+   * @return {Object}
+   */
+
+  update: async (ctx, next) => {
+    return strapi.services.grobelisk.edit(ctx.params, ctx.request.body) ;
+  },
+
+  /**
+   * Destroy a/an grobelisk record.
+   *
+   * @return {Object}
+   */
+
+  destroy: async (ctx, next) => {
+    return strapi.services.grobelisk.remove(ctx.params);
   }
 };

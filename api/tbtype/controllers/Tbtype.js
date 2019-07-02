@@ -1,24 +1,75 @@
 'use strict';
 
 /**
- * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
- * to customize this controller
+ * Tbtype.js controller
+ *
+ * @description: A set of functions called "actions" for managing `Tbtype`.
  */
 
 module.exports = {
+
   /**
-   * Retrieve records with count in `Content-Range` header.
+   * Retrieve tbtype records.
    *
-   * @return {Array}
+   * @return {Object|Array}
    */
 
-  find: async (ctx) => {
+  find: async (ctx, next, { populate } = {}) => {
+    ctx.set('Content-Range', await Tbtype.count());
     if (ctx.query._q) {
-      ctx.set('Content-Range', await strapi.services.tbtype.countSearch(ctx.query));
       return strapi.services.tbtype.search(ctx.query);
+    } else {
+      return strapi.services.tbtype.fetchAll(ctx.query, populate);
     }
+  },
 
-    ctx.set('Content-Range', await strapi.services.tbtype.count(ctx.query));
-    return strapi.services.tbtype.find(ctx.query);
+  /**
+   * Retrieve a tbtype record.
+   *
+   * @return {Object}
+   */
+
+  findOne: async (ctx) => {
+    return strapi.services.tbtype.fetch(ctx.params);
+  },
+
+  /**
+   * Count tbtype records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx, next, { populate } = {}) => {
+    return strapi.services.tbtype.count(ctx.query, populate);
+  },
+
+  /**
+   * Create a/an tbtype record.
+   *
+   * @return {Object}
+   */
+
+  create: async (ctx) => {
+    return strapi.services.tbtype.add(ctx.request.body);
+  },
+
+  /**
+   * Update a/an tbtype record.
+   *
+   * @return {Object}
+   */
+
+  update: async (ctx, next) => {
+    return strapi.services.tbtype.edit(ctx.params, ctx.request.body) ;
+  },
+
+  /**
+   * Destroy a/an tbtype record.
+   *
+   * @return {Object}
+   */
+
+  destroy: async (ctx, next) => {
+    return strapi.services.tbtype.remove(ctx.params);
   }
 };

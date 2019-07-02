@@ -86,6 +86,11 @@
       "required": true,
       "type": "string"
     },
+    "screenshot": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
     "reportStatus": {
       "default": "pending",
       "type": "enumeration",

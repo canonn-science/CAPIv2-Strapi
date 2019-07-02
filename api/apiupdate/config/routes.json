@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/apiupdates/:id",
-      "handler": "Apiupdate.delete",
+      "handler": "Apiupdate.destroy",
       "config": {
         "policies": []
       }

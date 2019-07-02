@@ -1,24 +1,75 @@
 'use strict';
 
 /**
- * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
- * to customize this controller
+ * Alert.js controller
+ *
+ * @description: A set of functions called "actions" for managing `Alert`.
  */
 
 module.exports = {
+
   /**
-   * Retrieve records with count in `Content-Range` header.
+   * Retrieve alert records.
    *
-   * @return {Array}
+   * @return {Object|Array}
    */
 
-  find: async (ctx) => {
+  find: async (ctx, next, { populate } = {}) => {
+    ctx.set('Content-Range', await Alert.count());
     if (ctx.query._q) {
-      ctx.set('Content-Range', await strapi.services.alert.countSearch(ctx.query));
       return strapi.services.alert.search(ctx.query);
+    } else {
+      return strapi.services.alert.fetchAll(ctx.query, populate);
     }
+  },
 
-    ctx.set('Content-Range', await strapi.services.alert.count(ctx.query));
-    return strapi.services.alert.find(ctx.query);
+  /**
+   * Retrieve a alert record.
+   *
+   * @return {Object}
+   */
+
+  findOne: async (ctx) => {
+    return strapi.services.alert.fetch(ctx.params);
+  },
+
+  /**
+   * Count alert records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx, next, { populate } = {}) => {
+    return strapi.services.alert.count(ctx.query, populate);
+  },
+
+  /**
+   * Create a/an alert record.
+   *
+   * @return {Object}
+   */
+
+  create: async (ctx) => {
+    return strapi.services.alert.add(ctx.request.body);
+  },
+
+  /**
+   * Update a/an alert record.
+   *
+   * @return {Object}
+   */
+
+  update: async (ctx, next) => {
+    return strapi.services.alert.edit(ctx.params, ctx.request.body) ;
+  },
+
+  /**
+   * Destroy a/an alert record.
+   *
+   * @return {Object}
+   */
+
+  destroy: async (ctx, next) => {
+    return strapi.services.alert.remove(ctx.params);
   }
 };

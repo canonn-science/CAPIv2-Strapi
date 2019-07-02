@@ -1,24 +1,75 @@
 'use strict';
 
 /**
- * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
- * to customize this controller
+ * Grartifact.js controller
+ *
+ * @description: A set of functions called "actions" for managing `Grartifact`.
  */
 
 module.exports = {
+
   /**
-   * Retrieve records with count in `Content-Range` header.
+   * Retrieve grartifact records.
    *
-   * @return {Array}
+   * @return {Object|Array}
    */
 
-  find: async (ctx) => {
+  find: async (ctx, next, { populate } = {}) => {
+    ctx.set('Content-Range', await Grartifact.count());
     if (ctx.query._q) {
-      ctx.set('Content-Range', await strapi.services.grartifact.countSearch(ctx.query));
       return strapi.services.grartifact.search(ctx.query);
+    } else {
+      return strapi.services.grartifact.fetchAll(ctx.query, populate);
     }
+  },
 
-    ctx.set('Content-Range', await strapi.services.grartifact.count(ctx.query));
-    return strapi.services.grartifact.find(ctx.query);
+  /**
+   * Retrieve a grartifact record.
+   *
+   * @return {Object}
+   */
+
+  findOne: async (ctx) => {
+    return strapi.services.grartifact.fetch(ctx.params);
+  },
+
+  /**
+   * Count grartifact records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx, next, { populate } = {}) => {
+    return strapi.services.grartifact.count(ctx.query, populate);
+  },
+
+  /**
+   * Create a/an grartifact record.
+   *
+   * @return {Object}
+   */
+
+  create: async (ctx) => {
+    return strapi.services.grartifact.add(ctx.request.body);
+  },
+
+  /**
+   * Update a/an grartifact record.
+   *
+   * @return {Object}
+   */
+
+  update: async (ctx, next) => {
+    return strapi.services.grartifact.edit(ctx.params, ctx.request.body) ;
+  },
+
+  /**
+   * Destroy a/an grartifact record.
+   *
+   * @return {Object}
+   */
+
+  destroy: async (ctx, next) => {
+    return strapi.services.grartifact.remove(ctx.params);
   }
 };

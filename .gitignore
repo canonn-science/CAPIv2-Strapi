@@ -37,7 +37,7 @@ $RECYCLE.BIN/
 ############################
 
 *.7z
-*.csv
+# *.csv # Removing for seed_files
 *.dat
 *.dmg
 *.gz
@@ -68,7 +68,7 @@ package-lock.json
 
 .tmp
 *.log
-#*.sql
+# *.sql # Removing for seed_files
 *.sqlite
 *.sqlite3
 
@@ -103,14 +103,6 @@ node_modules
 
 testApp
 coverage
-
-############################
-# Strapi
-############################
-
-exports
-.cache
-build
 
 ############################
 # Database

@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/hdreports/:id",
-      "handler": "Hdreport.delete",
+      "handler": "Hdreport.destroy",
       "config": {
         "policies": []
       }

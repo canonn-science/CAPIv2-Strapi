@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/gsactivegroups/:id",
-      "handler": "Gsactivegroup.delete",
+      "handler": "Gsactivegroup.destroy",
       "config": {
         "policies": []
       }

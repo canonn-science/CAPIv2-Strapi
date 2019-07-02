@@ -7,7 +7,7 @@
         "client": "mysql",
         "host": "${process.env.DATABASE_HOST_STAG || '127.0.0.1'}",
         "port": "${process.env.DATABASE_PORT_STAG || 3306}",
-        "database": "${process.env.DATABASE_NAME_STAG || 'capiv2_exampleNoData'}",
+        "database": "${process.env.DATABASE_NAME_STAG || 'capiv2_staging'}",
         "username": "${process.env.DATABASE_USERNAME_STAG || 'capiv2system'}",
         "password": "${process.env.DATABASE_PASSWORD_STAG || 'capiv2password'}"
       },
@@ -17,13 +17,13 @@
         "acquireConnectionTimeout": 100000
       }
     },
-    "users": {
+    "user": {
       "connector": "strapi-hook-bookshelf",
       "settings": {
         "client": "mysql",
         "host": "${process.env.DATABASE_HOST_USER || '127.0.0.1'}",
         "port": "${process.env.DATABASE_PORT_USER || 3306}",
-        "database": "${process.env.DATABASE_NAME_USER || 'capiv2_user'}",
+        "database": "${process.env.DATABASE_NAME_USER || 'capiv2_user_example'}",
         "username": "${process.env.DATABASE_USERNAME_USER || 'capiv2system'}",
         "password": "${process.env.DATABASE_PASSWORD_USER || 'capiv2password'}"
       },

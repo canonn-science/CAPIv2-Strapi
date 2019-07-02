@@ -1,24 +1,75 @@
 'use strict';
 
 /**
- * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
- * to customize this controller
+ * Fmtype.js controller
+ *
+ * @description: A set of functions called "actions" for managing `Fmtype`.
  */
 
 module.exports = {
+
   /**
-   * Retrieve records with count in `Content-Range` header.
+   * Retrieve fmtype records.
    *
-   * @return {Array}
+   * @return {Object|Array}
    */
 
-  find: async (ctx) => {
+  find: async (ctx, next, { populate } = {}) => {
+    ctx.set('Content-Range', await Fmtype.count());
     if (ctx.query._q) {
-      ctx.set('Content-Range', await strapi.services.fmtype.countSearch(ctx.query));
       return strapi.services.fmtype.search(ctx.query);
+    } else {
+      return strapi.services.fmtype.fetchAll(ctx.query, populate);
     }
+  },
 
-    ctx.set('Content-Range', await strapi.services.fmtype.count(ctx.query));
-    return strapi.services.fmtype.find(ctx.query);
+  /**
+   * Retrieve a fmtype record.
+   *
+   * @return {Object}
+   */
+
+  findOne: async (ctx) => {
+    return strapi.services.fmtype.fetch(ctx.params);
+  },
+
+  /**
+   * Count fmtype records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx, next, { populate } = {}) => {
+    return strapi.services.fmtype.count(ctx.query, populate);
+  },
+
+  /**
+   * Create a/an fmtype record.
+   *
+   * @return {Object}
+   */
+
+  create: async (ctx) => {
+    return strapi.services.fmtype.add(ctx.request.body);
+  },
+
+  /**
+   * Update a/an fmtype record.
+   *
+   * @return {Object}
+   */
+
+  update: async (ctx, next) => {
+    return strapi.services.fmtype.edit(ctx.params, ctx.request.body) ;
+  },
+
+  /**
+   * Destroy a/an fmtype record.
+   *
+   * @return {Object}
+   */
+
+  destroy: async (ctx, next) => {
+    return strapi.services.fmtype.remove(ctx.params);
   }
 };

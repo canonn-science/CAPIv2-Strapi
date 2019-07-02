@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/tbsites/:id",
-      "handler": "Tbsite.delete",
+      "handler": "Tbsite.destroy",
       "config": {
         "policies": []
       }

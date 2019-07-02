@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/nhsssites/:id",
-      "handler": "Nhsssite.delete",
+      "handler": "Nhsssite.destroy",
       "config": {
         "policies": []
       }

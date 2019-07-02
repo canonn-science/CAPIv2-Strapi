@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/gbmessages/:id",
-      "handler": "Gbmessage.delete",
+      "handler": "Gbmessage.destroy",
       "config": {
         "policies": []
       }

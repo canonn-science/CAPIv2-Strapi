@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/gsartifacts/:id",
-      "handler": "Gsartifact.delete",
+      "handler": "Gsartifact.destroy",
       "config": {
         "policies": []
       }

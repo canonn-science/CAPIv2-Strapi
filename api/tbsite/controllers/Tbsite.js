@@ -1,24 +1,75 @@
 'use strict';
 
 /**
- * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
- * to customize this controller
+ * Tbsite.js controller
+ *
+ * @description: A set of functions called "actions" for managing `Tbsite`.
  */
 
 module.exports = {
+
   /**
-   * Retrieve records with count in `Content-Range` header.
+   * Retrieve tbsite records.
    *
-   * @return {Array}
+   * @return {Object|Array}
    */
 
-  find: async (ctx) => {
+  find: async (ctx, next, { populate } = {}) => {
+    ctx.set('Content-Range', await Tbsite.count());
     if (ctx.query._q) {
-      ctx.set('Content-Range', await strapi.services.tbsite.countSearch(ctx.query));
       return strapi.services.tbsite.search(ctx.query);
+    } else {
+      return strapi.services.tbsite.fetchAll(ctx.query, populate);
     }
+  },
 
-    ctx.set('Content-Range', await strapi.services.tbsite.count(ctx.query));
-    return strapi.services.tbsite.find(ctx.query);
+  /**
+   * Retrieve a tbsite record.
+   *
+   * @return {Object}
+   */
+
+  findOne: async (ctx) => {
+    return strapi.services.tbsite.fetch(ctx.params);
+  },
+
+  /**
+   * Count tbsite records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx, next, { populate } = {}) => {
+    return strapi.services.tbsite.count(ctx.query, populate);
+  },
+
+  /**
+   * Create a/an tbsite record.
+   *
+   * @return {Object}
+   */
+
+  create: async (ctx) => {
+    return strapi.services.tbsite.add(ctx.request.body);
+  },
+
+  /**
+   * Update a/an tbsite record.
+   *
+   * @return {Object}
+   */
+
+  update: async (ctx, next) => {
+    return strapi.services.tbsite.edit(ctx.params, ctx.request.body) ;
+  },
+
+  /**
+   * Destroy a/an tbsite record.
+   *
+   * @return {Object}
+   */
+
+  destroy: async (ctx, next) => {
+    return strapi.services.tbsite.remove(ctx.params);
   }
 };

@@ -1,24 +1,75 @@
 'use strict';
 
 /**
- * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
- * to customize this controller
+ * Csreport.js controller
+ *
+ * @description: A set of functions called "actions" for managing `Csreport`.
  */
 
 module.exports = {
+
   /**
-   * Retrieve records with count in `Content-Range` header.
+   * Retrieve csreport records.
    *
-   * @return {Array}
+   * @return {Object|Array}
    */
 
-  find: async (ctx) => {
+  find: async (ctx, next, { populate } = {}) => {
+    ctx.set('Content-Range', await Csreport.count());
     if (ctx.query._q) {
-      ctx.set('Content-Range', await strapi.services.csreport.countSearch(ctx.query));
       return strapi.services.csreport.search(ctx.query);
+    } else {
+      return strapi.services.csreport.fetchAll(ctx.query, populate);
     }
+  },
 
-    ctx.set('Content-Range', await strapi.services.csreport.count(ctx.query));
-    return strapi.services.csreport.find(ctx.query);
+  /**
+   * Retrieve a csreport record.
+   *
+   * @return {Object}
+   */
+
+  findOne: async (ctx) => {
+    return strapi.services.csreport.fetch(ctx.params);
+  },
+
+  /**
+   * Count csreport records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx, next, { populate } = {}) => {
+    return strapi.services.csreport.count(ctx.query, populate);
+  },
+
+  /**
+   * Create a/an csreport record.
+   *
+   * @return {Object}
+   */
+
+  create: async (ctx) => {
+    return strapi.services.csreport.add(ctx.request.body);
+  },
+
+  /**
+   * Update a/an csreport record.
+   *
+   * @return {Object}
+   */
+
+  update: async (ctx, next) => {
+    return strapi.services.csreport.edit(ctx.params, ctx.request.body) ;
+  },
+
+  /**
+   * Destroy a/an csreport record.
+   *
+   * @return {Object}
+   */
+
+  destroy: async (ctx, next) => {
+    return strapi.services.csreport.remove(ctx.params);
   }
 };

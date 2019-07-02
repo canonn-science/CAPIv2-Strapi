@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/btreports/:id",
-      "handler": "Btreport.delete",
+      "handler": "Btreport.destroy",
       "config": {
         "policies": []
       }

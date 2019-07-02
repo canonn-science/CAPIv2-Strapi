@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/tsreports/:id",
-      "handler": "Tsreport.delete",
+      "handler": "Tsreport.destroy",
       "config": {
         "policies": []
       }

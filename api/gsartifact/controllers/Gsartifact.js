@@ -1,24 +1,75 @@
 'use strict';
 
 /**
- * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
- * to customize this controller
+ * Gsartifact.js controller
+ *
+ * @description: A set of functions called "actions" for managing `Gsartifact`.
  */
 
 module.exports = {
+
   /**
-   * Retrieve records with count in `Content-Range` header.
+   * Retrieve gsartifact records.
    *
-   * @return {Array}
+   * @return {Object|Array}
    */
 
-  find: async (ctx) => {
+  find: async (ctx, next, { populate } = {}) => {
+    ctx.set('Content-Range', await Gsartifact.count());
     if (ctx.query._q) {
-      ctx.set('Content-Range', await strapi.services.grartifact.countSearch(ctx.query));
-      return strapi.services.grartifact.search(ctx.query);
+      return strapi.services.gsartifact.search(ctx.query);
+    } else {
+      return strapi.services.gsartifact.fetchAll(ctx.query, populate);
     }
+  },
 
-    ctx.set('Content-Range', await strapi.services.grartifact.count(ctx.query));
-    return strapi.services.grartifact.find(ctx.query);
+  /**
+   * Retrieve a gsartifact record.
+   *
+   * @return {Object}
+   */
+
+  findOne: async (ctx) => {
+    return strapi.services.gsartifact.fetch(ctx.params);
+  },
+
+  /**
+   * Count gsartifact records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx, next, { populate } = {}) => {
+    return strapi.services.gsartifact.count(ctx.query, populate);
+  },
+
+  /**
+   * Create a/an gsartifact record.
+   *
+   * @return {Object}
+   */
+
+  create: async (ctx) => {
+    return strapi.services.gsartifact.add(ctx.request.body);
+  },
+
+  /**
+   * Update a/an gsartifact record.
+   *
+   * @return {Object}
+   */
+
+  update: async (ctx, next) => {
+    return strapi.services.gsartifact.edit(ctx.params, ctx.request.body) ;
+  },
+
+  /**
+   * Destroy a/an gsartifact record.
+   *
+   * @return {Object}
+   */
+
+  destroy: async (ctx, next) => {
+    return strapi.services.gsartifact.remove(ctx.params);
   }
 };

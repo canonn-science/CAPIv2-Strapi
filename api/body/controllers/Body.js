@@ -1,24 +1,75 @@
 'use strict';
 
 /**
- * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
- * to customize this controller
+ * Body.js controller
+ *
+ * @description: A set of functions called "actions" for managing `Body`.
  */
 
 module.exports = {
+
   /**
-   * Retrieve records with count in `Content-Range` header.
+   * Retrieve body records.
    *
-   * @return {Array}
+   * @return {Object|Array}
    */
 
-  find: async (ctx) => {
+  find: async (ctx, next, { populate } = {}) => {
+    ctx.set('Content-Range', await Body.count());
     if (ctx.query._q) {
-      ctx.set('Content-Range', await strapi.services.body.countSearch(ctx.query));
       return strapi.services.body.search(ctx.query);
+    } else {
+      return strapi.services.body.fetchAll(ctx.query, populate);
     }
+  },
 
-    ctx.set('Content-Range', await strapi.services.body.count(ctx.query));
-    return strapi.services.body.find(ctx.query);
+  /**
+   * Retrieve a body record.
+   *
+   * @return {Object}
+   */
+
+  findOne: async (ctx) => {
+    return strapi.services.body.fetch(ctx.params);
+  },
+
+  /**
+   * Count body records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx, next, { populate } = {}) => {
+    return strapi.services.body.count(ctx.query, populate);
+  },
+
+  /**
+   * Create a/an body record.
+   *
+   * @return {Object}
+   */
+
+  create: async (ctx) => {
+    return strapi.services.body.add(ctx.request.body);
+  },
+
+  /**
+   * Update a/an body record.
+   *
+   * @return {Object}
+   */
+
+  update: async (ctx, next) => {
+    return strapi.services.body.edit(ctx.params, ctx.request.body) ;
+  },
+
+  /**
+   * Destroy a/an body record.
+   *
+   * @return {Object}
+   */
+
+  destroy: async (ctx, next) => {
+    return strapi.services.body.remove(ctx.params);
   }
 };

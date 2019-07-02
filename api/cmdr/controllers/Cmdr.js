@@ -1,24 +1,75 @@
 'use strict';
 
 /**
- * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
- * to customize this controller
+ * Cmdr.js controller
+ *
+ * @description: A set of functions called "actions" for managing `Cmdr`.
  */
 
 module.exports = {
+
   /**
-   * Retrieve records with count in `Content-Range` header.
+   * Retrieve cmdr records.
    *
-   * @return {Array}
+   * @return {Object|Array}
    */
 
-  find: async (ctx) => {
+  find: async (ctx, next, { populate } = {}) => {
+    ctx.set('Content-Range', await Cmdr.count());
     if (ctx.query._q) {
-      ctx.set('Content-Range', await strapi.services.cmdr.countSearch(ctx.query));
       return strapi.services.cmdr.search(ctx.query);
+    } else {
+      return strapi.services.cmdr.fetchAll(ctx.query, populate);
     }
+  },
 
-    ctx.set('Content-Range', await strapi.services.cmdr.count(ctx.query));
-    return strapi.services.cmdr.find(ctx.query);
+  /**
+   * Retrieve a cmdr record.
+   *
+   * @return {Object}
+   */
+
+  findOne: async (ctx) => {
+    return strapi.services.cmdr.fetch(ctx.params);
+  },
+
+  /**
+   * Count cmdr records.
+   *
+   * @return {Number}
+   */
+
+  count: async (ctx, next, { populate } = {}) => {
+    return strapi.services.cmdr.count(ctx.query, populate);
+  },
+
+  /**
+   * Create a/an cmdr record.
+   *
+   * @return {Object}
+   */
+
+  create: async (ctx) => {
+    return strapi.services.cmdr.add(ctx.request.body);
+  },
+
+  /**
+   * Update a/an cmdr record.
+   *
+   * @return {Object}
+   */
+
+  update: async (ctx, next) => {
+    return strapi.services.cmdr.edit(ctx.params, ctx.request.body) ;
+  },
+
+  /**
+   * Destroy a/an cmdr record.
+   *
+   * @return {Object}
+   */
+
+  destroy: async (ctx, next) => {
+    return strapi.services.cmdr.remove(ctx.params);
   }
 };

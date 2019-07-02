@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/reportevents/:id",
-      "handler": "Reportevent.delete",
+      "handler": "Reportevent.destroy",
       "config": {
         "policies": []
       }
