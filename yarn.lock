@@ -10126,10 +10126,10 @@ stdout-stream@^1.4.0:
   dependencies:
     readable-stream "^2.0.1"
 
-strapi-admin@3.0.0-beta.8:
-  version "3.0.0-beta.8"
-  resolved "https://registry.yarnpkg.com/strapi-admin/-/strapi-admin-3.0.0-beta.8.tgz#2d4f9c8f007a96e58dd8feb6ccbef7cd3915f0c2"
-  integrity sha512-qyPcliRviOoE2ZnxwC2TxcIpoCHC0UOVG5tiJZv3DBxp3UPPYpnknJWHHCGn+nVEBpYBCjqb1fNhANgu13B9Tw==
+strapi-admin@3.0.0-next.11:
+  version "3.0.0-next.11"
+  resolved "https://registry.yarnpkg.com/strapi-admin/-/strapi-admin-3.0.0-next.11.tgz#1ba57d8a00f099d6fe97d7717055a13119a7d436"
+  integrity sha512-JsPTHwbVahl/dnkJCJuWahqV+8M0FjV8kLqS3duMHwwgHh/dacSB+UAuseuAKgDkbtJuJNfOoqxMSvV+Cm+D2Q==
   dependencies:
     "@babel/core" "^7.4.3"
     "@babel/plugin-proposal-async-generator-functions" "^7.2.0"
@@ -10192,8 +10192,8 @@ strapi-admin@3.0.0-beta.8:
     sanitize.css "^4.1.0"
     sass-loader "^7.1.0"
     shelljs "^0.7.8"
-    strapi-helper-plugin "3.0.0-beta.8"
-    strapi-utils "3.0.0-beta.8"
+    strapi-helper-plugin "3.0.0-next.11"
+    strapi-utils "3.0.0-next.11"
     style-loader "^0.23.1"
     styled-components "^4.2.0"
     terser-webpack-plugin "^1.2.3"
@@ -10278,6 +10278,26 @@ strapi-helper-plugin@3.0.0-beta.8:
   version "3.0.0-beta.8"
   resolved "https://registry.yarnpkg.com/strapi-helper-plugin/-/strapi-helper-plugin-3.0.0-beta.8.tgz#2dfcc9b10842570f3656d7430e2b2266aeb1b833"
   integrity sha512-0B3QI/e900Nx4Tv2Yl73JQCTtCC+pDXhPgjjLEy5YpyBreOkW9zOcTEurhngm6s7XSeev7t582aFogWVhBua0A==
+  dependencies:
+    bootstrap "^4.0.0-alpha.6"
+    classnames "^2.2.5"
+    immutable "^3.8.2"
+    invariant "^2.2.1"
+    lodash "^4.17.5"
+    moment "^2.16.0"
+    react "^16.0.0"
+    react-datetime "^2.16.3"
+    react-dom "^16.0.0"
+    react-intl "^2.8.0"
+    react-router "^5.0.0"
+    react-router-dom "^5.0.0"
+    reactstrap "^5.0.0"
+    whatwg-fetch "^2.0.3"
+
+strapi-helper-plugin@3.0.0-next.11:
+  version "3.0.0-next.11"
+  resolved "https://registry.yarnpkg.com/strapi-helper-plugin/-/strapi-helper-plugin-3.0.0-next.11.tgz#54d6c6e30fa985f7ac1c3a4e47f86da6b62435fc"
+  integrity sha512-2zihzjyYuDfwCaa1k59RLkp3RF8r6CDy3SUh1Xj572+HYIyWYSnmdt5k0+YWKh02CYRwcGhfG+vD3Y2IBAfJag==
   dependencies:
     bootstrap "^4.0.0-alpha.6"
     classnames "^2.2.5"
@@ -10518,6 +10538,19 @@ strapi-utils@3.0.0-beta.8:
   version "3.0.0-beta.8"
   resolved "https://registry.yarnpkg.com/strapi-utils/-/strapi-utils-3.0.0-beta.8.tgz#7001b5435ce6cf106089d4a7d01e481a96c2f310"
   integrity sha512-PSe9c9B2b2kDlRWt/+c+wsRYNB++W69IbHyHIUwK8dBoeOeZd9QT9fOROPG6qNSaU/LentUvl/0b2FhQ7VDPbw==
+  dependencies:
+    commander "^2.20.0"
+    joi-json "^2.1.0"
+    knex "^0.16.5"
+    lodash "^4.17.11"
+    pino "^4.7.1"
+    pluralize "^7.0.0"
+    shelljs "^0.8.3"
+
+strapi-utils@3.0.0-next.11:
+  version "3.0.0-next.11"
+  resolved "https://registry.yarnpkg.com/strapi-utils/-/strapi-utils-3.0.0-next.11.tgz#516fada1b3ed764b1ec971ea69e134982aad73d9"
+  integrity sha512-GBmYZWGzh6k65J/e4PUT4i3w+nlKny/QTygjfJLlJ9X6x6odd6Mzc/LGA2I1cYv7MuPNCzHjM2iXgl4X+S1giA==
   dependencies:
     commander "^2.20.0"
     joi-json "^2.1.0"
