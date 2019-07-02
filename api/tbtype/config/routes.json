@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/tbtypes/:id",
-      "handler": "Tbtype.destroy",
+      "handler": "Tbtype.delete",
       "config": {
         "policies": []
       }

@@ -1,75 +1,24 @@
 'use strict';
 
 /**
- * Grcodexdata.js controller
- *
- * @description: A set of functions called "actions" for managing `Grcodexdata`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
 module.exports = {
-
   /**
-   * Retrieve grcodexdata records.
+   * Retrieve records with count in `Content-Range` header.
    *
-   * @return {Object|Array}
+   * @return {Array}
    */
 
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Grcodexdata.count());
+  find: async (ctx) => {
     if (ctx.query._q) {
+      ctx.set('Content-Range', await strapi.services.grcodexdata.countSearch(ctx.query));
       return strapi.services.grcodexdata.search(ctx.query);
-    } else {
-      return strapi.services.grcodexdata.fetchAll(ctx.query, populate);
     }
-  },
 
-  /**
-   * Retrieve a grcodexdata record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.grcodexdata.fetch(ctx.params);
-  },
-
-  /**
-   * Count grcodexdata records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.grcodexdata.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an grcodexdata record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.grcodexdata.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an grcodexdata record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.grcodexdata.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an grcodexdata record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.grcodexdata.remove(ctx.params);
+    ctx.set('Content-Range', await strapi.services.grcodexdata.count(ctx.query));
+    return strapi.services.grcodexdata.find(ctx.query);
   }
 };

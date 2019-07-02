@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/grtypes/:id",
-      "handler": "Grtype.destroy",
+      "handler": "Grtype.delete",
       "config": {
         "policies": []
       }

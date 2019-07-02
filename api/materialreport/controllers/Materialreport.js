@@ -1,74 +1,24 @@
 'use strict';
 
 /**
- * Materialreport.js controller
- *
- * @description: A set of functions called "actions" for managing `Materialreport`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
 module.exports = {
-
   /**
-   * Retrieve materialreport records.
+   * Retrieve records with count in `Content-Range` header.
    *
-   * @return {Object|Array}
+   * @return {Array}
    */
 
-  find: async (ctx, next, { populate } = {}) => {
+  find: async (ctx) => {
     if (ctx.query._q) {
+      ctx.set('Content-Range', await strapi.services.materialreport.countSearch(ctx.query));
       return strapi.services.materialreport.search(ctx.query);
-    } else {
-      return strapi.services.materialreport.fetchAll(ctx.query, populate);
     }
-  },
 
-  /**
-   * Retrieve a materialreport record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.materialreport.fetch(ctx.params);
-  },
-
-  /**
-   * Count materialreport records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.materialreport.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an materialreport record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.materialreport.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an materialreport record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.materialreport.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an materialreport record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.materialreport.remove(ctx.params);
+    ctx.set('Content-Range', await strapi.services.materialreport.count(ctx.query));
+    return strapi.services.materialreport.find(ctx.query);
   }
 };

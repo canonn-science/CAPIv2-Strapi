@@ -1,75 +1,24 @@
 'use strict';
 
 /**
- * Gbreport.js controller
- *
- * @description: A set of functions called "actions" for managing `Gbreport`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
 module.exports = {
-
   /**
-   * Retrieve gbreport records.
+   * Retrieve records with count in `Content-Range` header.
    *
-   * @return {Object|Array}
+   * @return {Array}
    */
 
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Gbreport.count());
+  find: async (ctx) => {
     if (ctx.query._q) {
+      ctx.set('Content-Range', await strapi.services.gbreport.countSearch(ctx.query));
       return strapi.services.gbreport.search(ctx.query);
-    } else {
-      return strapi.services.gbreport.fetchAll(ctx.query, populate);
     }
-  },
 
-  /**
-   * Retrieve a gbreport record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.gbreport.fetch(ctx.params);
-  },
-
-  /**
-   * Count gbreport records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.gbreport.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an gbreport record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.gbreport.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an gbreport record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.gbreport.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an gbreport record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.gbreport.remove(ctx.params);
+    ctx.set('Content-Range', await strapi.services.gbreport.count(ctx.query));
+    return strapi.services.gbreport.find(ctx.query);
   }
 };

@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/apreports/:id",
-      "handler": "Apreport.destroy",
+      "handler": "Apreport.delete",
       "config": {
         "policies": []
       }

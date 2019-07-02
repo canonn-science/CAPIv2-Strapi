@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/reporttypes/:id",
-      "handler": "Reporttype.destroy",
+      "handler": "Reporttype.delete",
       "config": {
         "policies": []
       }

@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/bodies/:id",
-      "handler": "Body.destroy",
+      "handler": "Body.delete",
       "config": {
         "policies": []
       }

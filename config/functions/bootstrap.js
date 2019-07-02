@@ -8,8 +8,9 @@
  * run jobs, or perform some special logic.
  */
 
-// Search and load .env
-require('dotenv').config({ path: require('find-config')('.env') })
+// Load environment variables
+// Pending this PR: https://github.com/strapi/strapi/pull/3485
+require('dotenv').config({ path: require('find-config')('.env') });
 
 module.exports = cb => {
   cb();

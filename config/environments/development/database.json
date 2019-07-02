@@ -7,30 +7,38 @@
         "client": "mysql",
         "host": "${process.env.DATABASE_HOST_DEV || '127.0.0.1'}",
         "port": "${process.env.DATABASE_PORT_DEV || 3306}",
-        "database": "${process.env.DATABASE_NAME_DEV || 'capiv2_development'}",
+        "database": "${process.env.DATABASE_NAME_DEV || 'capiv2_base'}",
         "username": "${process.env.DATABASE_USERNAME_DEV || 'capiv2system'}",
         "password": "${process.env.DATABASE_PASSWORD_DEV || 'capiv2password'}"
       },
       "options": {
         "ssl": false,
         "debug": false,
-        "acquireConnectionTimeout": 100000
+        "acquireConnectionTimeout": 100000,
+        "pool": {
+          "min": 0,
+          "max": 20
+        }
       }
     },
-    "user": {
+    "users": {
       "connector": "strapi-hook-bookshelf",
       "settings": {
         "client": "mysql",
         "host": "${process.env.DATABASE_HOST_USER || '127.0.0.1'}",
         "port": "${process.env.DATABASE_PORT_USER || 3306}",
-        "database": "${process.env.DATABASE_NAME_USER || 'capiv2_user_example'}",
+        "database": "${process.env.DATABASE_NAME_USER || 'capiv2_user'}",
         "username": "${process.env.DATABASE_USERNAME_USER || 'capiv2system'}",
         "password": "${process.env.DATABASE_PASSWORD_USER || 'capiv2password'}"
       },
       "options": {
         "ssl": false,
         "debug": false,
-        "acquireConnectionTimeout": 100000
+        "acquireConnectionTimeout": 100000,
+        "pool": {
+          "min": 0,
+          "max": 10
+        }
       }
     }
   }

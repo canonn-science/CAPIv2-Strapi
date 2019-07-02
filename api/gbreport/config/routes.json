@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/gbreports/:id",
-      "handler": "Gbreport.destroy",
+      "handler": "Gbreport.delete",
       "config": {
         "policies": []
       }

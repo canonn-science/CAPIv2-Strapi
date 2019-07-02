@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/killreports/:id",
-      "handler": "Killreport.destroy",
+      "handler": "Killreport.delete",
       "config": {
         "policies": []
       }

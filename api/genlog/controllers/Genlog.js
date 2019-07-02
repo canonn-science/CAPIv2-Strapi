@@ -1,75 +1,24 @@
 'use strict';
 
 /**
- * Genlog.js controller
- *
- * @description: A set of functions called "actions" for managing `Genlog`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
 module.exports = {
-
   /**
-   * Retrieve genlog records.
+   * Retrieve records with count in `Content-Range` header.
    *
-   * @return {Object|Array}
+   * @return {Array}
    */
 
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Genlog.count());
+  find: async (ctx) => {
     if (ctx.query._q) {
+      ctx.set('Content-Range', await strapi.services.genlog.countSearch(ctx.query));
       return strapi.services.genlog.search(ctx.query);
-    } else {
-      return strapi.services.genlog.fetchAll(ctx.query, populate);
     }
-  },
 
-  /**
-   * Retrieve a genlog record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.genlog.fetch(ctx.params);
-  },
-
-  /**
-   * Count genlog records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.genlog.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an genlog record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.genlog.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an genlog record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.genlog.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an genlog record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.genlog.remove(ctx.params);
+    ctx.set('Content-Range', await strapi.services.genlog.count(ctx.query));
+    return strapi.services.genlog.find(ctx.query);
   }
 };

@@ -1,75 +1,24 @@
 'use strict';
 
 /**
- * Gytype.js controller
- *
- * @description: A set of functions called "actions" for managing `Gytype`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
 module.exports = {
-
   /**
-   * Retrieve gytype records.
+   * Retrieve records with count in `Content-Range` header.
    *
-   * @return {Object|Array}
+   * @return {Array}
    */
 
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Gytype.count());
+  find: async (ctx) => {
     if (ctx.query._q) {
+      ctx.set('Content-Range', await strapi.services.gytype.countSearch(ctx.query));
       return strapi.services.gytype.search(ctx.query);
-    } else {
-      return strapi.services.gytype.fetchAll(ctx.query, populate);
     }
-  },
 
-  /**
-   * Retrieve a gytype record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.gytype.fetch(ctx.params);
-  },
-
-  /**
-   * Count gytype records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.gytype.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an gytype record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.gytype.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an gytype record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.gytype.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an gytype record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.gytype.remove(ctx.params);
+    ctx.set('Content-Range', await strapi.services.gytype.count(ctx.query));
+    return strapi.services.gytype.find(ctx.query);
   }
 };
