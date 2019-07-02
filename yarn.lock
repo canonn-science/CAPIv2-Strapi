@@ -10294,23 +10294,31 @@ strapi-helper-plugin@3.0.0-beta.8:
     reactstrap "^5.0.0"
     whatwg-fetch "^2.0.3"
 
-strapi-hook-bookshelf@3.0.0-beta.8:
-  version "3.0.0-beta.8"
-  resolved "https://registry.yarnpkg.com/strapi-hook-bookshelf/-/strapi-hook-bookshelf-3.0.0-beta.8.tgz#fe68842fc02782b668c7844bafe268401b23c104"
-  integrity sha512-2KyqXy8tcLWvWOqakwA1MOjbmcR/YaPRdjz07wPUlIClmC7F9vxxFNdWRIEEFmtFv4zV+ABB2PTdYGdqZe1YZg==
+strapi-hook-bookshelf@3.0.0-next.11:
+  version "3.0.0-next.11"
+  resolved "https://registry.yarnpkg.com/strapi-hook-bookshelf/-/strapi-hook-bookshelf-3.0.0-next.11.tgz#76c123ab4f2a78fd4f0fc59395d8a3f0d9670ddf"
+  integrity sha512-92Ei3tFr/coA6/tBIhImjiE85dafCB9c3nvnEkVfiU2msVoJO4bJ7WXXM5UUUYOJLj6NdoNdc1rBgEErsuwaRA==
   dependencies:
     bookshelf "^0.14.2"
     inquirer "^6.3.1"
     lodash "^4.17.11"
     pluralize "^7.0.0"
     rimraf "^2.6.3"
-    strapi-hook-knex "3.0.0-beta.8"
-    strapi-utils "3.0.0-beta.8"
+    strapi-hook-knex "3.0.0-next.11"
+    strapi-utils "3.0.0-next.11"
 
 strapi-hook-knex@3.0.0-beta.8:
   version "3.0.0-beta.8"
   resolved "https://registry.yarnpkg.com/strapi-hook-knex/-/strapi-hook-knex-3.0.0-beta.8.tgz#e5e7301343e86978286329d8e3815ffea0220ea5"
   integrity sha512-mCozkqUfdjR5P2D7Wx/gi/kNkMVpM/HnNsOcqGnlXvHrbiD/KbzMyqI18zXm/nvluETg7M5Pl+QxykWMxh/Ugw==
+  dependencies:
+    knex "^0.16.5"
+    lodash "^4.17.11"
+
+strapi-hook-knex@3.0.0-next.11:
+  version "3.0.0-next.11"
+  resolved "https://registry.yarnpkg.com/strapi-hook-knex/-/strapi-hook-knex-3.0.0-next.11.tgz#b8e32f5ab8b5f50adc92496b51ca57880f418962"
+  integrity sha512-BPFO9iz71nm9eako/1NelurhcveO+HcpJO0ex4Xfgya42Q5SjviL4GP1MTTHjMcvdMG6BeqwxHhyDZaUG+K1Uw==
   dependencies:
     knex "^0.16.5"
     lodash "^4.17.11"
@@ -10518,6 +10526,19 @@ strapi-utils@3.0.0-beta.8:
   version "3.0.0-beta.8"
   resolved "https://registry.yarnpkg.com/strapi-utils/-/strapi-utils-3.0.0-beta.8.tgz#7001b5435ce6cf106089d4a7d01e481a96c2f310"
   integrity sha512-PSe9c9B2b2kDlRWt/+c+wsRYNB++W69IbHyHIUwK8dBoeOeZd9QT9fOROPG6qNSaU/LentUvl/0b2FhQ7VDPbw==
+  dependencies:
+    commander "^2.20.0"
+    joi-json "^2.1.0"
+    knex "^0.16.5"
+    lodash "^4.17.11"
+    pino "^4.7.1"
+    pluralize "^7.0.0"
+    shelljs "^0.8.3"
+
+strapi-utils@3.0.0-next.11:
+  version "3.0.0-next.11"
+  resolved "https://registry.yarnpkg.com/strapi-utils/-/strapi-utils-3.0.0-next.11.tgz#516fada1b3ed764b1ec971ea69e134982aad73d9"
+  integrity sha512-GBmYZWGzh6k65J/e4PUT4i3w+nlKny/QTygjfJLlJ9X6x6odd6Mzc/LGA2I1cYv7MuPNCzHjM2iXgl4X+S1giA==
   dependencies:
     commander "^2.20.0"
     joi-json "^2.1.0"
