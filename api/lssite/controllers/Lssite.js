@@ -19,6 +19,6 @@ module.exports = {
     }
 
     ctx.set('Content-Range', await strapi.services.lssite.count(ctx.query));
-    return strapi.services.lssiste.find(ctx.query);
+    return strapi.services.lssite.find(ctx.query);
   }
 };
