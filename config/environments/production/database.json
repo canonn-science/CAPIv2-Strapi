@@ -14,7 +14,11 @@
       "options": {
         "ssl": false,
         "debug": false,
-        "acquireConnectionTimeout": 100000
+        "acquireConnectionTimeout": 100000,
+        "pool": {
+          "min": 0,
+          "max": 40
+        }
       }
     },
     "users": {
@@ -30,7 +34,11 @@
       "options": {
         "ssl": false,
         "debug": false,
-        "acquireConnectionTimeout": 100000
+        "acquireConnectionTimeout": 100000,
+        "pool": {
+          "min": 0,
+          "max": 40
+        }
       }
     }
   }
