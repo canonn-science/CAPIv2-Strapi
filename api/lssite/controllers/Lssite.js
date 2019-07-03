@@ -14,11 +14,11 @@ module.exports = {
 
   find: async (ctx) => {
     if (ctx.query._q) {
-      ctx.set('Content-Range', await strapi.services.lssiste.countSearch(ctx.query));
+      ctx.set('Content-Range', await strapi.services.lssite.countSearch(ctx.query));
       return strapi.services.lssiste.search(ctx.query);
     }
 
-    ctx.set('Content-Range', await strapi.services.lssiste.count(ctx.query));
+    ctx.set('Content-Range', await strapi.services.lssite.count(ctx.query));
     return strapi.services.lssiste.find(ctx.query);
   }
 };
