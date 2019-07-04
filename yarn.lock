@@ -4786,7 +4786,7 @@ graceful-fs@^4.1.10, graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.
   resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
   integrity sha1-TK+tdrxi8C+gObL5Tpo906ORpyU=
 
-grant-koa@^4.6.0:
+grant-koa@^4.2.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/grant-koa/-/grant-koa-4.6.0.tgz#00ae29c66d1ad3b3b284bb9742cdbf934ba25fbf"
   integrity sha512-zzSU+94m5kPN4Yb5gmRoJk34j50OBFCIczaUaB2n+o+NV84hTLXCRESZhp5BtvBDRY4ZTbsIKsgwCzsBHozQog==
@@ -10294,6 +10294,26 @@ strapi-helper-plugin@3.0.0-beta.9:
     reactstrap "^5.0.0"
     whatwg-fetch "^2.0.3"
 
+strapi-helper-plugin@3.0.0-next.11:
+  version "3.0.0-next.11"
+  resolved "https://registry.yarnpkg.com/strapi-helper-plugin/-/strapi-helper-plugin-3.0.0-next.11.tgz#54d6c6e30fa985f7ac1c3a4e47f86da6b62435fc"
+  integrity sha512-2zihzjyYuDfwCaa1k59RLkp3RF8r6CDy3SUh1Xj572+HYIyWYSnmdt5k0+YWKh02CYRwcGhfG+vD3Y2IBAfJag==
+  dependencies:
+    bootstrap "^4.0.0-alpha.6"
+    classnames "^2.2.5"
+    immutable "^3.8.2"
+    invariant "^2.2.1"
+    lodash "^4.17.5"
+    moment "^2.16.0"
+    react "^16.0.0"
+    react-datetime "^2.16.3"
+    react-dom "^16.0.0"
+    react-intl "^2.8.0"
+    react-router "^5.0.0"
+    react-router-dom "^5.0.0"
+    reactstrap "^5.0.0"
+    whatwg-fetch "^2.0.3"
+
 strapi-hook-bookshelf@3.0.0-beta.9:
   version "3.0.0-beta.9"
   resolved "https://registry.yarnpkg.com/strapi-hook-bookshelf/-/strapi-hook-bookshelf-3.0.0-beta.9.tgz#d533334829c34deb2c66ae91b2a8258ea42880e8"
@@ -10473,17 +10493,18 @@ strapi-plugin-upload@3.0.0-beta.9:
     stream-to-array "^2.3.0"
     uuid "^3.2.1"
 
-strapi-plugin-users-permissions@3.0.0-beta.9:
-  version "3.0.0-beta.9"
-  resolved "https://registry.yarnpkg.com/strapi-plugin-users-permissions/-/strapi-plugin-users-permissions-3.0.0-beta.9.tgz#7631b868a0404320b894bac66cf8d5f47a659753"
-  integrity sha512-BpAQLhkb8WDCUiIrVmogE//UI5fYwociinVSH9Osj3ZjmIyDhPy1JnTc1z16JTz0hjcOAPW6QGX+sLF9Q5D+AA==
+strapi-plugin-users-permissions@3.0.0-next.11:
+  version "3.0.0-next.11"
+  resolved "https://registry.yarnpkg.com/strapi-plugin-users-permissions/-/strapi-plugin-users-permissions-3.0.0-next.11.tgz#da580327d87ab8b36a21a38b465fe04c86f0af90"
+  integrity sha512-BoYp+LTcOvzJq63nCaL22/ymEjy+5KHEdFiE6dJhpTDEtR1bDZ4xcYniZz0pcEizT6k8aJ/6aC8Tuau4ufjr+w==
   dependencies:
     bcryptjs "^2.4.3"
     classnames "^2.2.6"
-    grant-koa "^4.6.0"
+    grant-koa "^4.2.0"
     immutable "^3.8.2"
     invariant "^2.2.1"
     jsonwebtoken "^8.1.0"
+    koa-compose "^4.0.0"
     koa2-ratelimit "^0.6.1"
     lodash "^4.17.11"
     purest "^2.0.1"
@@ -10497,8 +10518,8 @@ strapi-plugin-users-permissions@3.0.0-beta.9:
     reactstrap "^5.0.0"
     redux-saga "^0.16.0"
     request "^2.83.0"
-    strapi-helper-plugin "3.0.0-beta.9"
-    strapi-utils "3.0.0-beta.9"
+    strapi-helper-plugin "3.0.0-next.11"
+    strapi-utils "3.0.0-next.11"
     uuid "^3.1.0"
 
 strapi-provider-email-sendmail@3.0.0-beta.9:
@@ -10518,6 +10539,19 @@ strapi-utils@3.0.0-beta.9:
   version "3.0.0-beta.9"
   resolved "https://registry.yarnpkg.com/strapi-utils/-/strapi-utils-3.0.0-beta.9.tgz#7ea4a46e7d377912b7530461aa8ac690c7b7c6bd"
   integrity sha512-rx7rk/7uhZ/WFuePrO15oQ1Gz4O3lIYUW+f7qmw1h7mxctAlNxKKsjVKdZC6uHbwZAtFg8SdVIJa8ej5tAvYwQ==
+  dependencies:
+    commander "^2.20.0"
+    joi-json "^2.1.0"
+    knex "^0.16.5"
+    lodash "^4.17.11"
+    pino "^4.7.1"
+    pluralize "^7.0.0"
+    shelljs "^0.8.3"
+
+strapi-utils@3.0.0-next.11:
+  version "3.0.0-next.11"
+  resolved "https://registry.yarnpkg.com/strapi-utils/-/strapi-utils-3.0.0-next.11.tgz#516fada1b3ed764b1ec971ea69e134982aad73d9"
+  integrity sha512-GBmYZWGzh6k65J/e4PUT4i3w+nlKny/QTygjfJLlJ9X6x6odd6Mzc/LGA2I1cYv7MuPNCzHjM2iXgl4X+S1giA==
   dependencies:
     commander "^2.20.0"
     joi-json "^2.1.0"
