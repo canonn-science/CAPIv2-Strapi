@@ -10262,6 +10262,26 @@ strapi-helper-plugin@3.0.0-beta.9:
     reactstrap "^5.0.0"
     whatwg-fetch "^2.0.3"
 
+strapi-helper-plugin@3.0.0-next.11:
+  version "3.0.0-next.11"
+  resolved "https://registry.yarnpkg.com/strapi-helper-plugin/-/strapi-helper-plugin-3.0.0-next.11.tgz#54d6c6e30fa985f7ac1c3a4e47f86da6b62435fc"
+  integrity sha512-2zihzjyYuDfwCaa1k59RLkp3RF8r6CDy3SUh1Xj572+HYIyWYSnmdt5k0+YWKh02CYRwcGhfG+vD3Y2IBAfJag==
+  dependencies:
+    bootstrap "^4.0.0-alpha.6"
+    classnames "^2.2.5"
+    immutable "^3.8.2"
+    invariant "^2.2.1"
+    lodash "^4.17.5"
+    moment "^2.16.0"
+    react "^16.0.0"
+    react-datetime "^2.16.3"
+    react-dom "^16.0.0"
+    react-intl "^2.8.0"
+    react-router "^5.0.0"
+    react-router-dom "^5.0.0"
+    reactstrap "^5.0.0"
+    whatwg-fetch "^2.0.3"
+
 strapi-hook-bookshelf@3.0.0-beta.9:
   version "3.0.0-beta.9"
   resolved "https://registry.yarnpkg.com/strapi-hook-bookshelf/-/strapi-hook-bookshelf-3.0.0-beta.9.tgz#d533334829c34deb2c66ae91b2a8258ea42880e8"
@@ -10418,10 +10438,10 @@ strapi-plugin-settings-manager@3.0.0-beta.9:
     shelljs "^0.7.8"
     strapi-helper-plugin "3.0.0-beta.9"
 
-strapi-plugin-upload@3.0.0-beta.9:
-  version "3.0.0-beta.9"
-  resolved "https://registry.yarnpkg.com/strapi-plugin-upload/-/strapi-plugin-upload-3.0.0-beta.9.tgz#a724ddb858afb76ff4f37adf6fa1736a51c96955"
-  integrity sha512-LOpuj6YPhkOel9TGjwAajVOAbgQ9F8mcPudv6kAbNmyi6IqM8KzMhHt80dRLDXiNGtjmvdYOtVAtG0QX5OtIgA==
+strapi-plugin-upload@3.0.0-next.11:
+  version "3.0.0-next.11"
+  resolved "https://registry.yarnpkg.com/strapi-plugin-upload/-/strapi-plugin-upload-3.0.0-next.11.tgz#18313b8dcb91524be29cbe7613b11a42d4f9a2d1"
+  integrity sha512-iLsHMqPcjq1BIXZ8o2fhrn1giA9/0nEUVXAMrVOfe3+e2huLoiEn5gfcJwaNg4CH3PcI1XLbVtEsDn4eerVTAA==
   dependencies:
     immutable "^3.8.2"
     invariant "^2.2.1"
@@ -10435,9 +10455,9 @@ strapi-plugin-upload@3.0.0-beta.9:
     react-router-dom "^5.0.0"
     react-transition-group "^2.5.0"
     reactstrap "^5.0.0"
-    strapi-helper-plugin "3.0.0-beta.9"
-    strapi-provider-upload-local "3.0.0-beta.9"
-    strapi-utils "3.0.0-beta.9"
+    strapi-helper-plugin "3.0.0-next.11"
+    strapi-provider-upload-local "3.0.0-next.11"
+    strapi-utils "3.0.0-next.11"
     stream-to-array "^2.3.0"
     uuid "^3.2.1"
 
@@ -10477,15 +10497,28 @@ strapi-provider-email-sendmail@3.0.0-beta.9:
     lodash "^4.17.11"
     sendmail "^1.2.0"
 
-strapi-provider-upload-local@3.0.0-beta.9:
-  version "3.0.0-beta.9"
-  resolved "https://registry.yarnpkg.com/strapi-provider-upload-local/-/strapi-provider-upload-local-3.0.0-beta.9.tgz#2b69cc64617edbdd61cca91dafc625d327336fc2"
-  integrity sha512-u/L33Y3FElKWEV+ffTSM0m0hL/A9peOBLOxRl56BBeh35q3aw3GHHD6fcFSm0EFWQ3xroAMsmq3UhcvyGswAsg==
+strapi-provider-upload-local@3.0.0-next.11:
+  version "3.0.0-next.11"
+  resolved "https://registry.yarnpkg.com/strapi-provider-upload-local/-/strapi-provider-upload-local-3.0.0-next.11.tgz#e07ef14b2c1adc383aeb9795d4abf5dbf8907f3c"
+  integrity sha512-0rnF2rDPOMihzA4CqP5rFVx6t3XneMvSNTmZZKvnWAYDD3Lycqs6Xyezz+oln8R8jsWIoNLMdkyZjfBvlLGxwQ==
 
 strapi-utils@3.0.0-beta.9:
   version "3.0.0-beta.9"
   resolved "https://registry.yarnpkg.com/strapi-utils/-/strapi-utils-3.0.0-beta.9.tgz#7ea4a46e7d377912b7530461aa8ac690c7b7c6bd"
   integrity sha512-rx7rk/7uhZ/WFuePrO15oQ1Gz4O3lIYUW+f7qmw1h7mxctAlNxKKsjVKdZC6uHbwZAtFg8SdVIJa8ej5tAvYwQ==
+  dependencies:
+    commander "^2.20.0"
+    joi-json "^2.1.0"
+    knex "^0.16.5"
+    lodash "^4.17.11"
+    pino "^4.7.1"
+    pluralize "^7.0.0"
+    shelljs "^0.8.3"
+
+strapi-utils@3.0.0-next.11:
+  version "3.0.0-next.11"
+  resolved "https://registry.yarnpkg.com/strapi-utils/-/strapi-utils-3.0.0-next.11.tgz#516fada1b3ed764b1ec971ea69e134982aad73d9"
+  integrity sha512-GBmYZWGzh6k65J/e4PUT4i3w+nlKny/QTygjfJLlJ9X6x6odd6Mzc/LGA2I1cYv7MuPNCzHjM2iXgl4X+S1giA==
   dependencies:
     commander "^2.20.0"
     joi-json "^2.1.0"
