@@ -37,23 +37,39 @@ module.exports = {
       if (values.reportType == undefined) {
         throw boom.notAcceptable('You are missing a reportType, this value should be "new", "update", or "error".');
       } else if (reportModel.reportType.enum.includes(values.reportType) == false) {
-        throw boom.notAcceptable(`The reportType: "${values.reportType}" you sent is not a valid one, your options are "new", "update", or "error"`);
+        throw boom.notAcceptable(`The reportType: "${values.reportType}" you sent is not a valid one, your options are "new", "update", or "error".`);
       }
     }
 
     // Check systemName has a value
     if (values.systemName == undefined) {
-      throw boom.notAcceptable('You are missing a systemName, the system is required and should exist in EDSM');
+      throw boom.notAcceptable('You are missing a systemName, the system is required and should exist in EDSM.');
     }
 
     // Check bodyName has a value if required
     if (reportModel.bodyName.required != undefined && reportModel.bodyName.required == true) {
       if (values.bodyName == undefined) {
-        throw boom.notAcceptable('You are missing a bodyName, the body is required and should exist in EDSM');
+        throw boom.notAcceptable('You are missing a bodyName, the body is required and should exist in EDSM.');
       }
     }
 
-    // Check latitude and longitude have a value if required
+    // Check latitude has a value if required that is between -90 & 90
+    if (reportModel.latitude.required != undefined && reportModel.latitude.required == true) {
+      if (values.latitude == undefined) {
+        throw boom.notAcceptable('You are missing a latitude value, this is a body POI which requires latitude/longitude.');
+      } else if (values.latitude < -90 || values.latitude > 90) {
+        throw boom.notAcceptable('Your latitude value falls outside the possible range of -90 to 90.');
+      }
+    }
+
+    // Check longitude has a value if required that is between -180 & 180
+    if (reportModel.longitude.required != undefined && reportModel.longitude.required == true) {
+      if (values.longitude == undefined) {
+        throw boom.notAcceptable('You are missing a longitude value, this is a body POI which requires longitude/longitude.');
+      } else if (values.longitude < -180 || values.longitude > 180) {
+        throw boom.notAcceptable('Your longitude value falls outside the possible range of -180 to 180.');
+      }
+    }
 
     // Check reportStatus has a value and is in the enum
     // ["pending", "updated", "verified", "accepted", "declined", "issue", "duplicate"]
