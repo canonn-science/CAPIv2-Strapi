@@ -73,5 +73,12 @@ module.exports = {
 
     // Check reportStatus has a value and is in the enum
     // ["pending", "updated", "verified", "accepted", "declined", "issue", "duplicate"]
-  },
+    if (reportModel.reportStatus.required == true) {
+      if (values.reportStatus == undefined) {
+        throw boom.notAcceptable('You are missing a reportStatus, this value should be "pending" for any user besides Canonn personnel.');
+      } else if (reportModel.reportStatus.enum.includes(values.reportStatus) == false) {
+        throw boom.notAcceptable(`The reportStatus: "${values.reportStatus}" you sent is not a valid one, this value should be "pending" for any user besides Canonn personnel.`);
+      }
+    }
+  }
 };
