@@ -27,7 +27,7 @@ module.exports = {
       if (values.userType == undefined) {
         throw boom.notAcceptable('You are missing a userType, this value should be either "pc" or "console".');
       } else if (reportModel.userType.enum.includes(values.userType) == false) {
-        throw boom.notAcceptable(`The userType: "${values.userType}" you sent is not a valid one, your options are either "pc" or "console".`)
+        throw boom.notAcceptable(`The userType: "${values.userType}" you sent is not a valid one, your options are either "pc" or "console".`);
       }
     }
 
@@ -37,13 +37,21 @@ module.exports = {
       if (values.reportType == undefined) {
         throw boom.notAcceptable('You are missing a reportType, this value should be "new", "update", or "error".');
       } else if (reportModel.reportType.enum.includes(values.reportType) == false) {
-        throw boom.notAcceptable(`The reportType: "${values.reportType}" you sent is not a valid one, your options are "new", "update", or "error"`)
+        throw boom.notAcceptable(`The reportType: "${values.reportType}" you sent is not a valid one, your options are "new", "update", or "error"`);
       }
     }
 
     // Check systemName has a value
+    if (values.systemName == undefined) {
+      throw boom.notAcceptable('You are missing a systemName, the system is required and should exist in EDSM');
+    }
 
     // Check bodyName has a value if required
+    if (reportModel.bodyName.required != undefined && reportModel.bodyName.required == true) {
+      if (values.bodyName == undefined) {
+        throw boom.notAcceptable('You are missing a bodyName, the body is required and should exist in EDSM');
+      }
+    }
 
     // Check latitude and longitude have a value if required
 
