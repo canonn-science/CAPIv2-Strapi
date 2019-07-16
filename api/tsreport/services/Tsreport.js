@@ -20,6 +20,9 @@ module.exports = {
     // Check CMDR Name
     await strapi.api.excludecmdr.services.excludecmdr.blockCMDR(values.cmdrName);
 
+    // Check for missing required values
+    await strapi.api.global.services.global.checkReport(values, 'tsreport');
+
     // If checks pass, proceed to create data
     return strapi.query('Tsreport').create(values);
   },};

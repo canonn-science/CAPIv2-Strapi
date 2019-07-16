@@ -3,7 +3,7 @@
     {
       "method": "GET",
       "path": "/info",
-      "handler": "info.info",
+      "handler": "global.info",
       "config": {
         "policies": []
       }
@@ -11,7 +11,7 @@
     {
       "method": "GET",
       "path": "/version",
-      "handler": "info.version",
+      "handler": "global.version",
       "config": {
         "policies": []
       }
