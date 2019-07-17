@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "f6955126-2b58-4965-92c1-2ed89e34790c",
+		"_postman_id": "9f7a1809-9f8a-4639-908b-97a435f8dcf6",
 		"name": "Canonn APIv2 Postman Test Collection",
 		"description": "An API for all the Science related information Canonn has in its datastores stored on the Gnosis, built using [Strapi](https://strapi.io) a Nodejs API framework. \n\nWe have two different documentation types, our [Redocs](https://api.canonn.tech) or use the [Swagger-UI](https://api.canonn.tech/swaggerui)\n\nWe also have 3 API servers; Live (Production), Beta (Staging), Alpha (Development). You should use the Beta server for testing your application prior to using the Live server. The Alpha server is used by Canonn to test our changes prior to releasing a new version.\n\nData between the Live and Beta servers are replicated as needed, eventually we plan to dynamically replicate the data every night at midnight Phoenix, Arizona USA time (MST-Arizona GMT-7)\n\nHere are the following URLs for each server\n\n* Live - https://api.canonn.tech\n* Beta - https://api.canonn.tech:2053\n* Alpha - https://api.canonn.tech:2083\n\nThank you for your support, and thank you to all the CMDRs who supply us with our data!\n",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -41,7 +41,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"identifier\": \"canonntest\",\n\t\"password\": \"canonntest\"\n}"
+							"raw": "{\n\t\"identifier\": \"{{user}}\",\n\t\"password\": \"{{password}}\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/auth/local",
@@ -147,10 +147,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/apreports/count",
 							"host": [
@@ -179,10 +175,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/apreports",
 							"host": [
@@ -290,10 +282,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/apreports/{{apID}}",
 							"host": [
@@ -440,10 +428,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/bmreports/count",
 							"host": [
@@ -472,10 +456,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/bmreports",
 							"host": [
@@ -583,10 +563,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/bmreports/{{bmID}}",
 							"host": [
@@ -722,10 +698,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/btreports/count",
 							"host": [
@@ -754,10 +726,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/btreports",
 							"host": [
@@ -866,10 +834,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/btreports/{{btID}}",
 							"host": [
@@ -1004,10 +968,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/csreports/count",
 							"host": [
@@ -1036,10 +996,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/csreports",
 							"host": [
@@ -1147,10 +1103,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/csreports/{{csID}}",
 							"host": [
@@ -1298,10 +1250,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/fgreports/count",
 							"host": [
@@ -1342,10 +1290,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/fgreports",
 							"host": [
@@ -1454,10 +1398,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/fgreports/{{fgID}}",
 							"host": [
@@ -1593,10 +1533,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/fmreports/count",
 							"host": [
@@ -1625,10 +1561,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/fmreports",
 							"host": [
@@ -1737,10 +1669,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/fmreports/{{fmID}}",
 							"host": [
@@ -1876,10 +1804,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/gbreports/count",
 							"host": [
@@ -1908,10 +1832,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/gbreports",
 							"host": [
@@ -2008,10 +1928,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/gbreports/{{gbID}}",
 							"host": [
@@ -2146,10 +2062,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/genreports/count",
 							"host": [
@@ -2178,10 +2090,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/genreports",
 							"host": [
@@ -2289,10 +2197,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/genreports/{{genID}}",
 							"host": [
@@ -2427,10 +2331,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/grreports/count",
 							"host": [
@@ -2459,10 +2359,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/grreports",
 							"host": [
@@ -2540,10 +2436,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/grobeliskreports/count",
 							"host": [
@@ -2572,10 +2464,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/grobeliskreports",
 							"host": [
@@ -2671,10 +2559,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/grreports/{{grID}}",
 							"host": [
@@ -2761,10 +2645,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/grobeliskreports/{{grOID}}",
 							"host": [
@@ -2942,10 +2822,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/gsreports/count",
 							"host": [
@@ -2974,10 +2850,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/gsreports",
 							"host": [
@@ -3055,10 +2927,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/gsobeliskreports/count",
 							"host": [
@@ -3087,10 +2955,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/gsobeliskreports",
 							"host": [
@@ -3187,10 +3051,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/gsreports/{{gsID}}",
 							"host": [
@@ -3277,10 +3137,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/gsobeliskreports/{{gsOID}}",
 							"host": [
@@ -3472,10 +3328,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/gvreports/count",
 							"host": [
@@ -3504,10 +3356,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/gvreports",
 							"host": [
@@ -3616,10 +3464,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/gvreports/{{gvID}}",
 							"host": [
@@ -3791,10 +3635,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/gyreports/count",
 							"host": [
@@ -3823,10 +3663,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/gyreports",
 							"host": [
@@ -3935,10 +3771,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/gyreports/{{gyID}}",
 							"host": [
@@ -4074,10 +3906,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/lsreports/count",
 							"host": [
@@ -4106,10 +3934,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/lsreports",
 							"host": [
@@ -4218,10 +4042,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/lsreports/{{lsID}}",
 							"host": [
@@ -4356,10 +4176,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/tbreports/count",
 							"host": [
@@ -4388,10 +4204,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/tbreports",
 							"host": [
@@ -4499,10 +4311,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/tbreports/{{tbID}}",
 							"host": [
@@ -4637,10 +4445,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/tsreports/count",
 							"host": [
@@ -4669,10 +4473,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/tsreports",
 							"host": [
@@ -4780,10 +4580,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/tsreports/{{tsID}}",
 							"host": [
@@ -4919,10 +4715,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/twreports/count",
 							"host": [
@@ -4951,10 +4743,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/twreports",
 							"host": [
@@ -5063,10 +4851,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/twreports/{{twID}}",
 							"host": [
