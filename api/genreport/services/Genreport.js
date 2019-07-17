@@ -21,7 +21,7 @@ module.exports = {
     await strapi.api.excludecmdr.services.excludecmdr.blockCMDR(values.cmdrName);
 
     // Check for missing required values
-    await strapi.api.global.services.global.checkReport(values, 'genreport');
+    // await strapi.api.global.services.global.checkReport(values, 'genreport');
 
     // If checks pass, proceed to create data
     return strapi.query('Genreport').create(values);

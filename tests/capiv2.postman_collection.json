@@ -949,7 +949,7 @@
 									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"Test System\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"Test Body\");",
-									"    pm.expect(jsonData.latitude).to.eql(123.1234);",
+									"    pm.expect(jsonData.latitude).to.eql(89.1234);",
 									"    pm.expect(jsonData.longitude).to.eql(-123.4321);",
 									"    pm.expect(jsonData.cmdrName).to.eql(\"Test CMDR\");",
 									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Crystalline Shard Report\");",
@@ -975,7 +975,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"Test System\",\n  \"bodyName\": \"Test Body\",\n  \"latitude\": 123.1234,\n  \"longitude\": -123.4321,\n  \"cmdrName\": \"Test CMDR\",\n  \"cmdrComment\": \"TEST - Crystalline Shard Report\",\n  \"reportStatus\": \"pending\",\n  \"clientVersion\": \"postman-test\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"Test System\",\n  \"bodyName\": \"Test Body\",\n  \"latitude\": 89.1234,\n  \"longitude\": -123.4321,\n  \"cmdrName\": \"Test CMDR\",\n  \"cmdrComment\": \"TEST - Crystalline Shard Report\",\n  \"reportStatus\": \"pending\",\n  \"clientVersion\": \"postman-test\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/csreports",
@@ -1121,7 +1121,7 @@
 									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"Test System\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"Test Body\");",
-									"    pm.expect(jsonData.latitude).to.eql(123.1234);",
+									"    pm.expect(jsonData.latitude).to.eql(89.1234);",
 									"    pm.expect(jsonData.longitude).to.eql(-123.4321);",
 									"    pm.expect(jsonData.cmdrName).to.eql(\"Test CMDR\");",
 									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Crystalline Shard Report\");",
@@ -4863,7 +4863,7 @@
 									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"Test System\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"Test Body\");",
-									"    pm.expect(jsonData.latitude).to.eql(123.1234);",
+									"    pm.expect(jsonData.latitude).to.eql(89.1234);",
 									"    pm.expect(jsonData.longitude).to.eql(-123.4321);",
 									"    pm.expect(jsonData.type).to.eql(\"Test Type\");",
 									"    pm.expect(jsonData.cmdrName).to.eql(\"Test CMDR\");",
@@ -4890,7 +4890,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"Test System\",\n  \"bodyName\": \"Test Body\",\n  \"latitude\": 123.1234,\n  \"longitude\": -123.4321,\n  \"type\": \"Test Type\",\n  \"cmdrName\": \"Test CMDR\",\n  \"cmdrComment\": \"TEST - Tube Worm Report\",\n  \"reportStatus\": \"pending\",\n  \"clientVersion\": \"postman-test\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"Test System\",\n  \"bodyName\": \"Test Body\",\n  \"latitude\": 89.1234,\n  \"longitude\": -123.4321,\n  \"type\": \"Test Type\",\n  \"cmdrName\": \"Test CMDR\",\n  \"cmdrComment\": \"TEST - Tube Worm Report\",\n  \"reportStatus\": \"pending\",\n  \"clientVersion\": \"postman-test\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/twreports",
@@ -5036,7 +5036,7 @@
 									"    pm.expect(jsonData.reportType).to.eql(\"new\");",
 									"    pm.expect(jsonData.systemName).to.eql(\"Test System\");",
 									"    pm.expect(jsonData.bodyName).to.eql(\"Test Body\");",
-									"    pm.expect(jsonData.latitude).to.eql(123.1234);",
+									"    pm.expect(jsonData.latitude).to.eql(89.1234);",
 									"    pm.expect(jsonData.longitude).to.eql(-123.4321);",
 									"    pm.expect(jsonData.type).to.eql(\"Test Type\");",
 									"    pm.expect(jsonData.cmdrName).to.eql(\"Test CMDR\");",
