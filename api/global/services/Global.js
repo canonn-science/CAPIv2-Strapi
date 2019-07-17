@@ -19,7 +19,7 @@ module.exports = {
 
     let reportModel = await strapi.models[model].allAttributes;
 
-    console.log(reportModel);
+    //console.log(reportModel);
 
     // Check userType has a value and is in the enum
     // ["console", "pc"]
@@ -47,27 +47,33 @@ module.exports = {
     }
 
     // Check bodyName has a value if required
-    if (reportModel.bodyName.required != undefined && reportModel.bodyName.required == true) {
-      if (values.bodyName == undefined) {
-        throw boom.notAcceptable('You are missing a bodyName, the body is required and should exist in EDSM.');
+    if (reportModel.bodyName != undefined) {
+      if(reportModel.bodyName.required == true) {
+        if (values.bodyName == undefined) {
+          throw boom.notAcceptable('You are missing a bodyName, the body is required and should exist in EDSM.');
+        }
       }
     }
 
     // Check latitude has a value if required that is between -90 & 90
-    if (reportModel.latitude.required != undefined && reportModel.latitude.required == true) {
-      if (values.latitude == undefined) {
-        throw boom.notAcceptable('You are missing a latitude value, this is a body POI which requires latitude/longitude.');
-      } else if (values.latitude < -90 || values.latitude > 90) {
-        throw boom.notAcceptable('Your latitude value falls outside the possible range of -90 to 90.');
+    if (reportModel.latitude != undefined) {
+      if (reportModel.latitude.required == true) {
+        if (values.latitude == undefined) {
+          throw boom.notAcceptable('You are missing a latitude value, this is a body POI which requires latitude/longitude.');
+        } else if (values.latitude < -90 || values.latitude > 90) {
+          throw boom.notAcceptable('Your latitude value falls outside the possible range of -90 to 90.');
+        }
       }
     }
 
     // Check longitude has a value if required that is between -180 & 180
-    if (reportModel.longitude.required != undefined && reportModel.longitude.required == true) {
-      if (values.longitude == undefined) {
-        throw boom.notAcceptable('You are missing a longitude value, this is a body POI which requires longitude/longitude.');
-      } else if (values.longitude < -180 || values.longitude > 180) {
-        throw boom.notAcceptable('Your longitude value falls outside the possible range of -180 to 180.');
+    if (reportModel.latitude != undefined) {
+      if (reportModel.longitude.required == true) {
+        if (values.longitude == undefined) {
+          throw boom.notAcceptable('You are missing a longitude value, this is a body POI which requires longitude/longitude.');
+        } else if (values.longitude < -180 || values.longitude > 180) {
+          throw boom.notAcceptable('Your longitude value falls outside the possible range of -180 to 180.');
+        }
       }
     }
 
