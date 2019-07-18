@@ -1,75 +1,24 @@
 'use strict';
 
 /**
- * Grcodexcategory.js controller
- *
- * @description: A set of functions called "actions" for managing `Grcodexcategory`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
 module.exports = {
-
   /**
-   * Retrieve grcodexcategory records.
+   * Retrieve records with count in `Content-Range` header.
    *
-   * @return {Object|Array}
+   * @return {Array}
    */
 
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Grcodexcategory.count());
+  find: async (ctx) => {
     if (ctx.query._q) {
+      ctx.set('Content-Range', await strapi.services.grcodexcategory.countSearch(ctx.query));
       return strapi.services.grcodexcategory.search(ctx.query);
-    } else {
-      return strapi.services.grcodexcategory.fetchAll(ctx.query, populate);
     }
-  },
 
-  /**
-   * Retrieve a grcodexcategory record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.grcodexcategory.fetch(ctx.params);
-  },
-
-  /**
-   * Count grcodexcategory records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.grcodexcategory.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an grcodexcategory record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.grcodexcategory.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an grcodexcategory record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.grcodexcategory.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an grcodexcategory record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.grcodexcategory.remove(ctx.params);
+    ctx.set('Content-Range', await strapi.services.grcodexcategory.count(ctx.query));
+    return strapi.services.grcodexcategory.find(ctx.query);
   }
 };

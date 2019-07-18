@@ -1,75 +1,24 @@
 'use strict';
 
 /**
- * Cmdrkill.js controller
- *
- * @description: A set of functions called "actions" for managing `Cmdrkill`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
 module.exports = {
-
   /**
-   * Retrieve cmdrkill records.
+   * Retrieve records with count in `Content-Range` header.
    *
-   * @return {Object|Array}
+   * @return {Array}
    */
 
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Cmdrkill.count());
+  find: async (ctx) => {
     if (ctx.query._q) {
+      ctx.set('Content-Range', await strapi.services.cmdrkill.countSearch(ctx.query));
       return strapi.services.cmdrkill.search(ctx.query);
-    } else {
-      return strapi.services.cmdrkill.fetchAll(ctx.query, populate);
     }
-  },
 
-  /**
-   * Retrieve a cmdrkill record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.cmdrkill.fetch(ctx.params);
-  },
-
-  /**
-   * Count cmdrkill records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.cmdrkill.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an cmdrkill record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.cmdrkill.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an cmdrkill record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.cmdrkill.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an cmdrkill record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.cmdrkill.remove(ctx.params);
+    ctx.set('Content-Range', await strapi.services.cmdrkill.count(ctx.query));
+    return strapi.services.cmdrkill.find(ctx.query);
   }
 };

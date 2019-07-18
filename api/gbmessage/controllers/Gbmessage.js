@@ -1,75 +1,24 @@
 'use strict';
 
 /**
- * Gbmessage.js controller
- *
- * @description: A set of functions called "actions" for managing `Gbmessage`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
 module.exports = {
-
   /**
-   * Retrieve gbmessage records.
+   * Retrieve records with count in `Content-Range` header.
    *
-   * @return {Object|Array}
+   * @return {Array}
    */
 
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Gbmessage.count());
+  find: async (ctx) => {
     if (ctx.query._q) {
+      ctx.set('Content-Range', await strapi.services.gbmessage.countSearch(ctx.query));
       return strapi.services.gbmessage.search(ctx.query);
-    } else {
-      return strapi.services.gbmessage.fetchAll(ctx.query, populate);
     }
-  },
 
-  /**
-   * Retrieve a gbmessage record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.gbmessage.fetch(ctx.params);
-  },
-
-  /**
-   * Count gbmessage records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.gbmessage.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an gbmessage record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.gbmessage.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an gbmessage record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.gbmessage.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an gbmessage record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.gbmessage.remove(ctx.params);
+    ctx.set('Content-Range', await strapi.services.gbmessage.count(ctx.query));
+    return strapi.services.gbmessage.find(ctx.query);
   }
 };

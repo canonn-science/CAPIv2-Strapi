@@ -1,75 +1,24 @@
 'use strict';
 
 /**
- * Twtype.js controller
- *
- * @description: A set of functions called "actions" for managing `Twtype`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
 module.exports = {
-
   /**
-   * Retrieve twtype records.
+   * Retrieve records with count in `Content-Range` header.
    *
-   * @return {Object|Array}
+   * @return {Array}
    */
 
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Twtype.count());
+  find: async (ctx) => {
     if (ctx.query._q) {
+      ctx.set('Content-Range', await strapi.services.twtype.countSearch(ctx.query));
       return strapi.services.twtype.search(ctx.query);
-    } else {
-      return strapi.services.twtype.fetchAll(ctx.query, populate);
     }
-  },
 
-  /**
-   * Retrieve a twtype record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.twtype.fetch(ctx.params);
-  },
-
-  /**
-   * Count twtype records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.twtype.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an twtype record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.twtype.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an twtype record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.twtype.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an twtype record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.twtype.remove(ctx.params);
+    ctx.set('Content-Range', await strapi.services.twtype.count(ctx.query));
+    return strapi.services.twtype.find(ctx.query);
   }
 };

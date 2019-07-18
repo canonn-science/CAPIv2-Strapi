@@ -1,75 +1,24 @@
 'use strict';
 
 /**
- * Fgtype.js controller
- *
- * @description: A set of functions called "actions" for managing `Fgtype`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
 module.exports = {
-
   /**
-   * Retrieve fgtype records.
+   * Retrieve records with count in `Content-Range` header.
    *
-   * @return {Object|Array}
+   * @return {Array}
    */
 
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Fgtype.count());
+  find: async (ctx) => {
     if (ctx.query._q) {
+      ctx.set('Content-Range', await strapi.services.fgtype.countSearch(ctx.query));
       return strapi.services.fgtype.search(ctx.query);
-    } else {
-      return strapi.services.fgtype.fetchAll(ctx.query, populate);
     }
-  },
 
-  /**
-   * Retrieve a fgtype record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.fgtype.fetch(ctx.params);
-  },
-
-  /**
-   * Count fgtype records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.fgtype.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an fgtype record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.fgtype.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an fgtype record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.fgtype.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an fgtype record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.fgtype.remove(ctx.params);
+    ctx.set('Content-Range', await strapi.services.fgtype.count(ctx.query));
+    return strapi.services.fgtype.find(ctx.query);
   }
 };

@@ -1,75 +1,24 @@
 'use strict';
 
 /**
- * Gsactiveobelisk.js controller
- *
- * @description: A set of functions called "actions" for managing `Gsactiveobelisk`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
 module.exports = {
-
   /**
-   * Retrieve gsactiveobelisk records.
+   * Retrieve records with count in `Content-Range` header.
    *
-   * @return {Object|Array}
+   * @return {Array}
    */
 
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Gsactiveobelisk.count());
+  find: async (ctx) => {
     if (ctx.query._q) {
+      ctx.set('Content-Range', await strapi.services.gsactiveobelisk.countSearch(ctx.query));
       return strapi.services.gsactiveobelisk.search(ctx.query);
-    } else {
-      return strapi.services.gsactiveobelisk.fetchAll(ctx.query, populate);
     }
-  },
 
-  /**
-   * Retrieve a gsactiveobelisk record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.gsactiveobelisk.fetch(ctx.params);
-  },
-
-  /**
-   * Count gsactiveobelisk records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.gsactiveobelisk.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an gsactiveobelisk record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.gsactiveobelisk.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an gsactiveobelisk record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.gsactiveobelisk.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an gsactiveobelisk record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.gsactiveobelisk.remove(ctx.params);
+    ctx.set('Content-Range', await strapi.services.gsactiveobelisk.count(ctx.query));
+    return strapi.services.gsactiveobelisk.find(ctx.query);
   }
 };

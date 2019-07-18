@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/aptypes/:id",
-      "handler": "Aptype.destroy",
+      "handler": "Aptype.delete",
       "config": {
         "policies": []
       }

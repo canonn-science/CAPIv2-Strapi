@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/twsites/:id",
-      "handler": "Twsite.destroy",
+      "handler": "Twsite.delete",
       "config": {
         "policies": []
       }

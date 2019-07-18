@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/grsites/:id",
-      "handler": "Grsite.destroy",
+      "handler": "Grsite.delete",
       "config": {
         "policies": []
       }
