@@ -1,0 +1,70 @@
+{
+  "paths": {
+    "/gvsites": {
+      "get": {
+        "description": "Get all GV Site entries",
+        "summary": "",
+        "tags": [
+          "Gas Vents"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new GV Site entry",
+        "summary": "",
+        "tags": [
+          "Gas Vents"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      }
+    },
+    "/gvsites/count": {
+      "get": {
+        "description": "Get a count of all GV Site entries",
+        "summary": "",
+        "tags": [
+          "Gas Vents"
+        ],
+        "security": []
+      }
+    },
+    "/gvsites/{id}": {
+      "get": {
+        "description": "Get a GV Site by id",
+        "summary": "",
+        "tags": [
+          "Gas Vents"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a GV Site by id",
+        "summary": "",
+        "tags": [
+          "Gas Vents"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a GV Site by id",
+        "summary": "",
+        "tags": [
+          "Gas Vents"
+        ],
+        "security": [
+          "siteDelete"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Gas Vents",
+      "description": "Code Name - GV"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "paths": {
+    "/alerts": {
+      "get": {
+        "description": "Get all Canonn Alert entries",
+        "summary": "",
+        "tags": [
+          "Canonn Global"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new Canonn Alert entry",
+        "summary": "",
+        "tags": [
+          "Canonn Global"
+        ],
+        "security": [
+          "adminOnlyWrite"
+        ]
+      }
+    },
+    "/alerts/count": {
+      "get": {
+        "description": "Get a count of all Canonn Alert entries",
+        "summary": "",
+        "tags": [
+          "Canonn Global"
+        ],
+        "security": []
+      }
+    },
+    "/alerts/{id}": {
+      "get": {
+        "description": "Get a Canonn Alert by id",
+        "summary": "",
+        "tags": [
+          "Canonn Global"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a Canonn Alert by id",
+        "summary": "",
+        "tags": [
+          "Canonn Global"
+        ],
+        "security": [
+          "adminOnlyWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a Canonn Alert by id",
+        "summary": "",
+        "tags": [
+          "Canonn Global"
+        ],
+        "security": [
+          "adminOnlyDelete"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Canonn Global",
+      "description": "Endpoints used by Canonn for misc data"
+    }
+  ]
+}

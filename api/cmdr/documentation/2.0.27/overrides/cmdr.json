@@ -1,0 +1,70 @@
+{
+  "paths": {
+    "/cmdrs": {
+      "get": {
+        "description": "Get all CMDR entries",
+        "summary": "",
+        "tags": [
+          "CMDRs"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new CMDR entry",
+        "summary": "",
+        "tags": [
+          "CMDRs"
+        ],
+        "security": [
+          "cmdrWrite"
+        ]
+      }
+    },
+    "/cmdrs/count": {
+      "get": {
+        "description": "Get a count of all CMDR entries",
+        "summary": "",
+        "tags": [
+          "CMDRs"
+        ],
+        "security": []
+      }
+    },
+    "/cmdrs/{id}": {
+      "get": {
+        "description": "Get a CMDR by id",
+        "summary": "",
+        "tags": [
+          "CMDRs"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a CMDR by id",
+        "summary": "",
+        "tags": [
+          "CMDRs"
+        ],
+        "security": [
+          "cmdrUpdate"
+        ]
+      },
+      "delete": {
+        "description": "Delete a CMDR by id",
+        "summary": "",
+        "tags": [
+          "CMDRs"
+        ],
+        "security": [
+          "cmdrDelete"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "CMDRs",
+      "description": "List of commanders credited with finding sites and their kills"
+    }
+  ]
+}
