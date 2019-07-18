@@ -1,75 +1,24 @@
 'use strict';
 
 /**
- * Gractivegroup.js controller
- *
- * @description: A set of functions called "actions" for managing `Gractivegroup`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
 module.exports = {
-
   /**
-   * Retrieve gractivegroup records.
+   * Retrieve records with count in `Content-Range` header.
    *
-   * @return {Object|Array}
+   * @return {Array}
    */
 
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Gractivegroup.count());
+  find: async (ctx) => {
     if (ctx.query._q) {
+      ctx.set('Content-Range', await strapi.services.gractivegroup.countSearch(ctx.query));
       return strapi.services.gractivegroup.search(ctx.query);
-    } else {
-      return strapi.services.gractivegroup.fetchAll(ctx.query, populate);
     }
-  },
 
-  /**
-   * Retrieve a gractivegroup record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.gractivegroup.fetch(ctx.params);
-  },
-
-  /**
-   * Count gractivegroup records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.gractivegroup.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an gractivegroup record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.gractivegroup.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an gractivegroup record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.gractivegroup.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an gractivegroup record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.gractivegroup.remove(ctx.params);
+    ctx.set('Content-Range', await strapi.services.gractivegroup.count(ctx.query));
+    return strapi.services.gractivegroup.find(ctx.query);
   }
 };

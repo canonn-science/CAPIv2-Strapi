@@ -1,75 +1,24 @@
 'use strict';
 
 /**
- * Hdsite.js controller
- *
- * @description: A set of functions called "actions" for managing `Hdsite`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
 module.exports = {
-
   /**
-   * Retrieve hdsite records.
+   * Retrieve records with count in `Content-Range` header.
    *
-   * @return {Object|Array}
+   * @return {Array}
    */
 
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Hdsite.count());
+  find: async (ctx) => {
     if (ctx.query._q) {
+      ctx.set('Content-Range', await strapi.services.hdsite.countSearch(ctx.query));
       return strapi.services.hdsite.search(ctx.query);
-    } else {
-      return strapi.services.hdsite.fetchAll(ctx.query, populate);
     }
-  },
 
-  /**
-   * Retrieve a hdsite record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.hdsite.fetch(ctx.params);
-  },
-
-  /**
-   * Count hdsite records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.hdsite.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an hdsite record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.hdsite.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an hdsite record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.hdsite.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an hdsite record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.hdsite.remove(ctx.params);
+    ctx.set('Content-Range', await strapi.services.hdsite.count(ctx.query));
+    return strapi.services.hdsite.find(ctx.query);
   }
 };

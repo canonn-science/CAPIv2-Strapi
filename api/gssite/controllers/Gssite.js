@@ -1,75 +1,24 @@
 'use strict';
 
 /**
- * Gssite.js controller
- *
- * @description: A set of functions called "actions" for managing `Gssite`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
 module.exports = {
-
   /**
-   * Retrieve gssite records.
+   * Retrieve records with count in `Content-Range` header.
    *
-   * @return {Object|Array}
+   * @return {Array}
    */
 
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Gssite.count());
+  find: async (ctx) => {
     if (ctx.query._q) {
+      ctx.set('Content-Range', await strapi.services.gssite.countSearch(ctx.query));
       return strapi.services.gssite.search(ctx.query);
-    } else {
-      return strapi.services.gssite.fetchAll(ctx.query, populate);
     }
-  },
 
-  /**
-   * Retrieve a gssite record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.gssite.fetch(ctx.params);
-  },
-
-  /**
-   * Count gssite records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.gssite.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an gssite record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.gssite.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an gssite record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.gssite.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an gssite record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.gssite.remove(ctx.params);
+    ctx.set('Content-Range', await strapi.services.gssite.count(ctx.query));
+    return strapi.services.gssite.find(ctx.query);
   }
 };

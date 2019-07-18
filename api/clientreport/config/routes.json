@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/clientreports/:id",
-      "handler": "Clientreport.destroy",
+      "handler": "Clientreport.delete",
       "config": {
         "policies": []
       }

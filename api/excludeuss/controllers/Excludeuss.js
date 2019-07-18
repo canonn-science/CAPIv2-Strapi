@@ -1,75 +1,24 @@
 'use strict';
 
 /**
- * Excludeuss.js controller
- *
- * @description: A set of functions called "actions" for managing `Excludeuss`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
 module.exports = {
-
   /**
-   * Retrieve excludeuss records.
+   * Retrieve records with count in `Content-Range` header.
    *
-   * @return {Object|Array}
+   * @return {Array}
    */
 
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Excludeuss.count());
+  find: async (ctx) => {
     if (ctx.query._q) {
+      ctx.set('Content-Range', await strapi.services.excludeuss.countSearch(ctx.query));
       return strapi.services.excludeuss.search(ctx.query);
-    } else {
-      return strapi.services.excludeuss.fetchAll(ctx.query, populate);
     }
-  },
 
-  /**
-   * Retrieve a excludeuss record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.excludeuss.fetch(ctx.params);
-  },
-
-  /**
-   * Count excludeuss records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.excludeuss.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an excludeuss record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.excludeuss.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an excludeuss record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.excludeuss.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an excludeuss record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.excludeuss.remove(ctx.params);
+    ctx.set('Content-Range', await strapi.services.excludeuss.count(ctx.query));
+    return strapi.services.excludeuss.find(ctx.query);
   }
 };

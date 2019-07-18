@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/lstypes/:id",
-      "handler": "Lstype.destroy",
+      "handler": "Lstype.delete",
       "config": {
         "policies": []
       }

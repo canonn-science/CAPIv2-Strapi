@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/excludeevents/:id",
-      "handler": "Excludeevent.destroy",
+      "handler": "Excludeevent.delete",
       "config": {
         "policies": []
       }

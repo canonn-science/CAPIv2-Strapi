@@ -1,75 +1,24 @@
 'use strict';
 
 /**
- * Btreport.js controller
- *
- * @description: A set of functions called "actions" for managing `Btreport`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
 module.exports = {
-
   /**
-   * Retrieve btreport records.
+   * Retrieve records with count in `Content-Range` header.
    *
-   * @return {Object|Array}
+   * @return {Array}
    */
 
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Btreport.count());
+  find: async (ctx) => {
     if (ctx.query._q) {
+      ctx.set('Content-Range', await strapi.services.btreport.countSearch(ctx.query));
       return strapi.services.btreport.search(ctx.query);
-    } else {
-      return strapi.services.btreport.fetchAll(ctx.query, populate);
     }
-  },
 
-  /**
-   * Retrieve a btreport record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.btreport.fetch(ctx.params);
-  },
-
-  /**
-   * Count btreport records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.btreport.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an btreport record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.btreport.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an btreport record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.btreport.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an btreport record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.btreport.remove(ctx.params);
+    ctx.set('Content-Range', await strapi.services.btreport.count(ctx.query));
+    return strapi.services.btreport.find(ctx.query);
   }
 };

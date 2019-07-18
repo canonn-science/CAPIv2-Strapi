@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/tbcycles/:id",
-      "handler": "Tbcycle.destroy",
+      "handler": "Tbcycle.delete",
       "config": {
         "policies": []
       }

@@ -1,0 +1,20 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/info",
+      "handler": "global.info",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/version",
+      "handler": "global.version",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

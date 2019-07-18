@@ -1,75 +1,24 @@
 'use strict';
 
 /**
- * Pointofinterest.js controller
- *
- * @description: A set of functions called "actions" for managing `Pointofinterest`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
 module.exports = {
-
   /**
-   * Retrieve pointofinterest records.
+   * Retrieve records with count in `Content-Range` header.
    *
-   * @return {Object|Array}
+   * @return {Array}
    */
 
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Pointofinterest.count());
+  find: async (ctx) => {
     if (ctx.query._q) {
+      ctx.set('Content-Range', await strapi.services.pointofinterest.countSearch(ctx.query));
       return strapi.services.pointofinterest.search(ctx.query);
-    } else {
-      return strapi.services.pointofinterest.fetchAll(ctx.query, populate);
     }
-  },
 
-  /**
-   * Retrieve a pointofinterest record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.pointofinterest.fetch(ctx.params);
-  },
-
-  /**
-   * Count pointofinterest records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.pointofinterest.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an pointofinterest record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.pointofinterest.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an pointofinterest record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.pointofinterest.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an pointofinterest record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.pointofinterest.remove(ctx.params);
+    ctx.set('Content-Range', await strapi.services.pointofinterest.count(ctx.query));
+    return strapi.services.pointofinterest.find(ctx.query);
   }
 };

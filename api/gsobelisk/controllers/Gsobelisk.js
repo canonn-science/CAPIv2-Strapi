@@ -1,75 +1,24 @@
 'use strict';
 
 /**
- * Gsobelisk.js controller
- *
- * @description: A set of functions called "actions" for managing `Gsobelisk`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
 module.exports = {
-
   /**
-   * Retrieve gsobelisk records.
+   * Retrieve records with count in `Content-Range` header.
    *
-   * @return {Object|Array}
+   * @return {Array}
    */
 
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Gsobelisk.count());
+  find: async (ctx) => {
     if (ctx.query._q) {
+      ctx.set('Content-Range', await strapi.services.gsobelisk.countSearch(ctx.query));
       return strapi.services.gsobelisk.search(ctx.query);
-    } else {
-      return strapi.services.gsobelisk.fetchAll(ctx.query, populate);
     }
-  },
 
-  /**
-   * Retrieve a gsobelisk record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.gsobelisk.fetch(ctx.params);
-  },
-
-  /**
-   * Count gsobelisk records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.gsobelisk.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an gsobelisk record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.gsobelisk.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an gsobelisk record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.gsobelisk.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an gsobelisk record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.gsobelisk.remove(ctx.params);
+    ctx.set('Content-Range', await strapi.services.gsobelisk.count(ctx.query));
+    return strapi.services.gsobelisk.find(ctx.query);
   }
 };

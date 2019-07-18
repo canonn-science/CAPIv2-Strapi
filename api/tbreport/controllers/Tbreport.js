@@ -1,75 +1,24 @@
 'use strict';
 
 /**
- * Tbreport.js controller
- *
- * @description: A set of functions called "actions" for managing `Tbreport`.
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
  */
 
 module.exports = {
-
   /**
-   * Retrieve tbreport records.
+   * Retrieve records with count in `Content-Range` header.
    *
-   * @return {Object|Array}
+   * @return {Array}
    */
 
-  find: async (ctx, next, { populate } = {}) => {
-    ctx.set('Content-Range', await Tbreport.count());
+  find: async (ctx) => {
     if (ctx.query._q) {
+      ctx.set('Content-Range', await strapi.services.tbreport.countSearch(ctx.query));
       return strapi.services.tbreport.search(ctx.query);
-    } else {
-      return strapi.services.tbreport.fetchAll(ctx.query, populate);
     }
-  },
 
-  /**
-   * Retrieve a tbreport record.
-   *
-   * @return {Object}
-   */
-
-  findOne: async (ctx) => {
-    return strapi.services.tbreport.fetch(ctx.params);
-  },
-
-  /**
-   * Count tbreport records.
-   *
-   * @return {Number}
-   */
-
-  count: async (ctx, next, { populate } = {}) => {
-    return strapi.services.tbreport.count(ctx.query, populate);
-  },
-
-  /**
-   * Create a/an tbreport record.
-   *
-   * @return {Object}
-   */
-
-  create: async (ctx) => {
-    return strapi.services.tbreport.add(ctx.request.body);
-  },
-
-  /**
-   * Update a/an tbreport record.
-   *
-   * @return {Object}
-   */
-
-  update: async (ctx, next) => {
-    return strapi.services.tbreport.edit(ctx.params, ctx.request.body) ;
-  },
-
-  /**
-   * Destroy a/an tbreport record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.tbreport.remove(ctx.params);
+    ctx.set('Content-Range', await strapi.services.tbreport.count(ctx.query));
+    return strapi.services.tbreport.find(ctx.query);
   }
 };

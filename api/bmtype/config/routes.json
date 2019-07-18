@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/bmtypes/:id",
-      "handler": "Bmtype.destroy",
+      "handler": "Bmtype.delete",
       "config": {
         "policies": []
       }
