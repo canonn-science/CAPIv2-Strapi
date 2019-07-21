@@ -46,8 +46,14 @@ module.exports = {
     }
 
     // Check systemName has a value
-    if (values.systemName == undefined) {
-      throw boom.notAcceptable('You are missing a systemName, the system is required and should exist in EDSM.');
+    if (reportModel.systemName != undefined) {
+      if (values.systemName == undefined) {
+        throw boom.notAcceptable('You are missing a systemName, the system is required and should exist in EDSM.');
+      }
+    } else if (reportModel.system != undefined) {
+      if (values.system == undefined) {
+        throw boom.notAcceptable('You are missing a system, the system is required and should exist in EDSM.');
+      }
     }
 
     // Check bodyName has a value if required
