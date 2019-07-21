@@ -23,21 +23,25 @@ module.exports = {
 
     // Check userType has a value and is in the enum
     // ["console", "pc"]
-    if (reportModel.userType.required == true) {
-      if (values.userType == undefined) {
-        throw boom.notAcceptable('You are missing a userType, this value should be either "pc" or "console".');
-      } else if (reportModel.userType.enum.includes(values.userType) == false) {
-        throw boom.notAcceptable(`The userType: "${values.userType}" you sent is not a valid one, your options are either "pc" or "console".`);
+    if (reportModel.userType != undefined) {
+      if (reportModel.userType.required == true) {
+        if (values.userType == undefined) {
+          throw boom.notAcceptable('You are missing a userType, this value should be either "pc" or "console".');
+        } else if (reportModel.userType.enum.includes(values.userType) == false) {
+          throw boom.notAcceptable(`The userType: "${values.userType}" you sent is not a valid one, your options are either "pc" or "console".`);
+        }
       }
     }
 
     // Check reportType has a value and is in the enum
     // ["new", "update", "error"]
-    if (reportModel.reportType.required == true) {
-      if (values.reportType == undefined) {
-        throw boom.notAcceptable('You are missing a reportType, this value should be "new", "update", or "error".');
-      } else if (reportModel.reportType.enum.includes(values.reportType) == false) {
-        throw boom.notAcceptable(`The reportType: "${values.reportType}" you sent is not a valid one, your options are "new", "update", or "error".`);
+    if (reportModel.reportType != undefined) {
+      if (reportModel.reportType.required == true) {
+        if (values.reportType == undefined) {
+          throw boom.notAcceptable('You are missing a reportType, this value should be "new", "update", or "error".');
+        } else if (reportModel.reportType.enum.includes(values.reportType) == false) {
+          throw boom.notAcceptable(`The reportType: "${values.reportType}" you sent is not a valid one, your options are "new", "update", or "error".`);
+        }
       }
     }
 
@@ -79,11 +83,25 @@ module.exports = {
 
     // Check reportStatus has a value and is in the enum
     // ["pending", "updated", "verified", "accepted", "declined", "issue", "duplicate"]
-    if (reportModel.reportStatus.required == true) {
-      if (values.reportStatus == undefined) {
-        throw boom.notAcceptable('You are missing a reportStatus, this value should be "pending" for any user besides Canonn personnel.');
-      } else if (reportModel.reportStatus.enum.includes(values.reportStatus) == false) {
-        throw boom.notAcceptable(`The reportStatus: "${values.reportStatus}" you sent is not a valid one, this value should be "pending" for any user besides Canonn personnel.`);
+    if (reportModel.reportStatus != undefined) {
+      if (reportModel.reportStatus.required == true) {
+        if (values.reportStatus == undefined) {
+          throw boom.notAcceptable('You are missing a reportStatus, this value should be "pending" for any user besides Canonn personnel.');
+        } else if (reportModel.reportStatus.enum.includes(values.reportStatus) == false) {
+          throw boom.notAcceptable(`The reportStatus: "${values.reportStatus}" you sent is not a valid one, this value should be "pending" for any user besides Canonn personnel.`);
+        }
+      }
+    }
+
+    // Check material reports for a proper response to collectedFrom
+    // ["missionReward", "collected", "scanned"]
+    if (reportModel.collectedFrom != undefined) {
+      if (reportModel.collectedFrom.required == true) {
+        if (values.collectedFrom == undefined) {
+          throw boom.notAcceptable('You are missing a collectedFrom, this value should be either "missionReward", "collected", or "scanned".');
+        } else if (reportModel.collectedFrom.enum.includes(values.collectedFrom) == false) {
+          throw boom.notAcceptable(`The collectedFrom: "${values.collectedFrom}" you sent is not a valid one, this value should be either "missionReward", "collected", or "scanned".`);
+        }
       }
     }
   }
