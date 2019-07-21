@@ -106,6 +106,7 @@ module.exports = {
         if (values.collectedFrom == undefined) {
           throw boom.notAcceptable('You are missing a collectedFrom, this value should be either "missionReward", "collected", or "scanned".');
         } else if (reportModel.collectedFrom.enum.includes(values.collectedFrom) == false) {
+          // additional validation should occur here to ensure the category matches the enumeration value
           throw boom.notAcceptable(`The collectedFrom: "${values.collectedFrom}" you sent is not a valid one, this value should be either "missionReward", "collected", or "scanned".`);
         }
       }
