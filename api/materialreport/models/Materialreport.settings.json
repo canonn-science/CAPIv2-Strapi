@@ -55,6 +55,16 @@
     "factionState": {
       "type": "string"
     },
+    "collectedFrom": {
+      "default": "new",
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "missionReward",
+        "collected",
+        "scanned"
+      ]
+    },
     "isBeta": {
       "default": false,
       "type": "boolean"
