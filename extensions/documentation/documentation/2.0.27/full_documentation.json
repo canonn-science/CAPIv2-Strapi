@@ -14,7 +14,7 @@
       "name": "GNU-GPLv3",
       "url": "https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE"
     },
-    "x-generation-date": "07/17/2019 11:34:21 PM"
+    "x-generation-date": "08/03/2019 2:59:50 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -50458,7 +50458,7 @@
     "/users/me": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the logged in user information",
+        "description": "Retrieve the logged in user informations",
         "responses": {
           "200": {
             "description": "response",
@@ -54668,9 +54668,6 @@
               "id": {
                 "type": "string"
               },
-              "cmdr": {
-                "type": "string"
-              },
               "scoutKills": {
                 "type": "integer"
               },
@@ -54706,6 +54703,9 @@
               },
               "totalKills": {
                 "type": "integer"
+              },
+              "cmdr": {
+                "type": "string"
               }
             }
           }
@@ -54732,6 +54732,42 @@
           "id": {
             "type": "string"
           },
+          "scoutKills": {
+            "type": "integer"
+          },
+          "cyclopsKills": {
+            "type": "integer"
+          },
+          "basiliskKills": {
+            "type": "integer"
+          },
+          "medusaKills": {
+            "type": "integer"
+          },
+          "unknownKills": {
+            "type": "integer"
+          },
+          "scoutRewards": {
+            "type": "integer"
+          },
+          "cyclopsRewards": {
+            "type": "integer"
+          },
+          "basiliskRewards": {
+            "type": "integer"
+          },
+          "medusaRewards": {
+            "type": "integer"
+          },
+          "unknownRewards": {
+            "type": "integer"
+          },
+          "totalRewards": {
+            "type": "integer"
+          },
+          "totalKills": {
+            "type": "integer"
+          },
           "cmdr": {
             "required": [
               "id",
@@ -54748,50 +54784,11 @@
                 "type": "string"
               }
             }
-          },
-          "scoutKills": {
-            "type": "integer"
-          },
-          "cyclopsKills": {
-            "type": "integer"
-          },
-          "basiliskKills": {
-            "type": "integer"
-          },
-          "medusaKills": {
-            "type": "integer"
-          },
-          "unknownKills": {
-            "type": "integer"
-          },
-          "scoutRewards": {
-            "type": "integer"
-          },
-          "cyclopsRewards": {
-            "type": "integer"
-          },
-          "basiliskRewards": {
-            "type": "integer"
-          },
-          "medusaRewards": {
-            "type": "integer"
-          },
-          "unknownRewards": {
-            "type": "integer"
-          },
-          "totalRewards": {
-            "type": "integer"
-          },
-          "totalKills": {
-            "type": "integer"
           }
         }
       },
       "NewCmdrkill": {
         "properties": {
-          "cmdr": {
-            "type": "string"
-          },
           "scoutKills": {
             "type": "integer"
           },
@@ -54827,6 +54824,9 @@
           },
           "totalKills": {
             "type": "integer"
+          },
+          "cmdr": {
+            "type": "string"
           }
         }
       },
@@ -65684,6 +65684,15 @@
           "factionState": {
             "type": "string"
           },
+          "collectedFrom": {
+            "type": "string",
+            "default": "new",
+            "enum": [
+              "missionReward",
+              "collected",
+              "scanned"
+            ]
+          },
           "isBeta": {
             "type": "boolean",
             "default": false
@@ -65741,6 +65750,15 @@
           },
           "factionState": {
             "type": "string"
+          },
+          "collectedFrom": {
+            "type": "string",
+            "default": "new",
+            "enum": [
+              "missionReward",
+              "collected",
+              "scanned"
+            ]
           },
           "isBeta": {
             "type": "boolean",

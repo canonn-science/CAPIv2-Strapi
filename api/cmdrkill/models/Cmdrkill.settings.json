@@ -11,10 +11,6 @@
     "comment": ""
   },
   "attributes": {
-    "cmdr": {
-      "model": "cmdr",
-      "via": "cmdrkill"
-    },
     "scoutKills": {
       "type": "integer"
     },
@@ -50,6 +46,10 @@
     },
     "totalKills": {
       "type": "integer"
+    },
+    "cmdr": {
+      "model": "cmdr",
+      "via": "cmdrkill"
     }
   }
 }
