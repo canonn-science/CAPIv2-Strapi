@@ -1161,29 +1161,6 @@
                 }
               }
             }
-          },
-          "cmdrs": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "cmdrName"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "cmdrName": {
-                  "type": "string"
-                },
-                "cmdrkill": {
-                  "type": "string"
-                },
-                "user": {
-                  "type": "string"
-                }
-              }
-            }
           }
         }
       },
@@ -1221,12 +1198,6 @@
           },
           "role": {
             "type": "string"
-          },
-          "cmdrs": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
           }
         }
       }

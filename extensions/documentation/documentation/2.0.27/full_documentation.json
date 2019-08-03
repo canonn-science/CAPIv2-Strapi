@@ -14,7 +14,7 @@
       "name": "GNU-GPLv3",
       "url": "https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE"
     },
-    "x-generation-date": "07/27/2019 2:59:28 PM"
+    "x-generation-date": "08/03/2019 2:59:50 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -51527,9 +51527,6 @@
               },
               "cmdrkill": {
                 "type": "string"
-              },
-              "user": {
-                "type": "string"
               }
             }
           }
@@ -52400,9 +52397,6 @@
                 "type": "string"
               },
               "cmdrkill": {
-                "type": "string"
-              },
-              "user": {
                 "type": "string"
               }
             }
@@ -54500,9 +54494,6 @@
               },
               "cmdrkill": {
                 "type": "string"
-              },
-              "user": {
-                "type": "string"
               }
             }
           }
@@ -54717,48 +54708,6 @@
                 "type": "string"
               }
             }
-          },
-          "user": {
-            "required": [
-              "id",
-              "username",
-              "email"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "username": {
-                "type": "string"
-              },
-              "email": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "password": {
-                "type": "string"
-              },
-              "resetPasswordToken": {
-                "type": "string"
-              },
-              "confirmed": {
-                "type": "boolean"
-              },
-              "blocked": {
-                "type": "boolean"
-              },
-              "role": {
-                "type": "string"
-              },
-              "cmdrs": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            }
           }
         }
       },
@@ -54771,9 +54720,6 @@
             "type": "string"
           },
           "cmdrkill": {
-            "type": "string"
-          },
-          "user": {
             "type": "string"
           }
         }
@@ -54835,9 +54781,6 @@
                 "type": "string"
               },
               "cmdrkill": {
-                "type": "string"
-              },
-              "user": {
                 "type": "string"
               }
             }
@@ -55577,9 +55520,6 @@
                 "type": "string"
               },
               "cmdrkill": {
-                "type": "string"
-              },
-              "user": {
                 "type": "string"
               }
             }
@@ -56517,9 +56457,6 @@
               },
               "cmdrkill": {
                 "type": "string"
-              },
-              "user": {
-                "type": "string"
               }
             }
           }
@@ -57298,9 +57235,6 @@
                 "type": "string"
               },
               "cmdrkill": {
-                "type": "string"
-              },
-              "user": {
                 "type": "string"
               }
             }
@@ -58606,9 +58540,6 @@
               },
               "cmdrkill": {
                 "type": "string"
-              },
-              "user": {
-                "type": "string"
               }
             }
           },
@@ -59639,9 +59570,6 @@
                 "type": "string"
               },
               "cmdrkill": {
-                "type": "string"
-              },
-              "user": {
                 "type": "string"
               }
             }
@@ -61140,9 +61068,6 @@
                 "type": "string"
               },
               "cmdrkill": {
-                "type": "string"
-              },
-              "user": {
                 "type": "string"
               }
             }
@@ -62753,9 +62678,6 @@
               },
               "cmdrkill": {
                 "type": "string"
-              },
-              "user": {
-                "type": "string"
               }
             }
           }
@@ -63543,9 +63465,6 @@
               },
               "cmdrkill": {
                 "type": "string"
-              },
-              "user": {
-                "type": "string"
               }
             }
           }
@@ -64322,9 +64241,6 @@
                 "type": "string"
               },
               "cmdrkill": {
-                "type": "string"
-              },
-              "user": {
                 "type": "string"
               }
             }
@@ -65627,9 +65543,6 @@
               },
               "cmdrkill": {
                 "type": "string"
-              },
-              "user": {
-                "type": "string"
               }
             }
           }
@@ -65726,7 +65639,6 @@
           "coordY",
           "coordZ",
           "journalName",
-          "collectedFrom",
           "clientVersion"
         ],
         "properties": {
@@ -65797,7 +65709,6 @@
           "coordY",
           "coordZ",
           "journalName",
-          "collectedFrom",
           "clientVersion"
         ],
         "properties": {
@@ -66151,9 +66062,6 @@
                 "type": "string"
               },
               "cmdrkill": {
-                "type": "string"
-              },
-              "user": {
                 "type": "string"
               }
             }
@@ -69564,9 +69472,6 @@
               },
               "cmdrkill": {
                 "type": "string"
-              },
-              "user": {
-                "type": "string"
               }
             }
           }
@@ -70548,9 +70453,6 @@
               },
               "cmdrkill": {
                 "type": "string"
-              },
-              "user": {
-                "type": "string"
               }
             }
           }
@@ -71320,9 +71222,6 @@
               },
               "cmdrkill": {
                 "type": "string"
-              },
-              "user": {
-                "type": "string"
               }
             }
           }
@@ -71501,12 +71400,6 @@
                 },
                 "role": {
                   "type": "string"
-                },
-                "cmdrs": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
                 }
               }
             }
@@ -71602,29 +71495,6 @@
                 }
               }
             }
-          },
-          "cmdrs": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "cmdrName"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "cmdrName": {
-                  "type": "string"
-                },
-                "cmdrkill": {
-                  "type": "string"
-                },
-                "user": {
-                  "type": "string"
-                }
-              }
-            }
           }
         }
       },
@@ -71662,12 +71532,6 @@
           },
           "role": {
             "type": "string"
-          },
-          "cmdrs": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
           }
         }
       },
