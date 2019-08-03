@@ -17,6 +17,9 @@ module.exports = {
     // Check Version
     await strapi.api.excludeclient.services.excludeclient.blockClient(values.clientVersion);
 
+    // Check for missing required values
+    await strapi.api.global.services.global.checkReport(values, 'materialreport');
+
     // If checks pass, proceed to create data
     return strapi.query('Materialreport').create(values);
   },};

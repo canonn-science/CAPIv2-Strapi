@@ -561,6 +561,15 @@
           "factionState": {
             "type": "string"
           },
+          "collectedFrom": {
+            "type": "string",
+            "default": "new",
+            "enum": [
+              "missionReward",
+              "collected",
+              "scanned"
+            ]
+          },
           "isBeta": {
             "type": "boolean",
             "default": false
@@ -618,6 +627,15 @@
           },
           "factionState": {
             "type": "string"
+          },
+          "collectedFrom": {
+            "type": "string",
+            "default": "new",
+            "enum": [
+              "missionReward",
+              "collected",
+              "scanned"
+            ]
           },
           "isBeta": {
             "type": "boolean",
