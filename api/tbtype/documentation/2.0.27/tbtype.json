@@ -520,7 +520,11 @@
           "type": {
             "type": "string"
           },
-          "metaAlloyCount": {
+          "journalName": {
+            "type": "string",
+            "default": ""
+          },
+          "journalID": {
             "type": "integer",
             "default": ""
           }
@@ -534,7 +538,11 @@
           "type": {
             "type": "string"
           },
-          "metaAlloyCount": {
+          "journalName": {
+            "type": "string",
+            "default": ""
+          },
+          "journalID": {
             "type": "integer",
             "default": ""
           }

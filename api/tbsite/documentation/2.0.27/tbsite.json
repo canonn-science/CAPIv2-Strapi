@@ -910,6 +910,26 @@
               "type": {
                 "type": "string"
               },
+              "journalName": {
+                "type": "string"
+              },
+              "journalID": {
+                "type": "integer"
+              }
+            }
+          },
+          "subtype": {
+            "required": [
+              "id",
+              "type"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
               "metaAlloyCount": {
                 "type": "integer"
               }
@@ -987,6 +1007,9 @@
             "type": "number"
           },
           "type": {
+            "type": "string"
+          },
+          "subtype": {
             "type": "string"
           },
           "frontierID": {
