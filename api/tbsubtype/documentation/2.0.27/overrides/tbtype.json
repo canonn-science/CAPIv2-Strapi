@@ -1,0 +1,70 @@
+{
+  "paths": {
+    "/tbsubtypes": {
+      "get": {
+        "description": "Get all TB Subtype entries",
+        "summary": "",
+        "tags": [
+          "Thargoid Barnacles"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new TB Subtype entry",
+        "summary": "",
+        "tags": [
+          "Thargoid Barnacles"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      }
+    },
+    "/tbsubtypes/count": {
+      "get": {
+        "description": "Get a count of all TB Subtype entries",
+        "summary": "",
+        "tags": [
+          "Thargoid Barnacles"
+        ],
+        "security": []
+      }
+    },
+    "/tbsubtypes/{id}": {
+      "get": {
+        "description": "Get a TB Subtype by id",
+        "summary": "",
+        "tags": [
+          "Thargoid Barnacles"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a TB Subtype by id",
+        "summary": "",
+        "tags": [
+          "Thargoid Barnacles"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a TB Subtype by id",
+        "summary": "",
+        "tags": [
+          "Thargoid Barnacles"
+        ],
+        "security": [
+          "siteDelete"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Thargoid Barnacles",
+      "description": "Code Name - TB"
+    }
+  ]
+}
