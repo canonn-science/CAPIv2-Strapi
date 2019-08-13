@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/tbreports": {
+    "/tbsubtypes": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Tbreport"
+                    "$ref": "#/components/schemas/Tbsubtype"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Tbreport"
+          "Tbsubtype"
         ],
         "parameters": [
           {
@@ -195,7 +195,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Tbreport"
+                  "$ref": "#/components/schemas/Tbsubtype"
                 }
               }
             }
@@ -233,7 +233,7 @@
         },
         "summary": "",
         "tags": [
-          "Tbreport"
+          "Tbsubtype"
         ],
         "requestBody": {
           "description": "",
@@ -241,14 +241,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewTbreport"
+                "$ref": "#/components/schemas/NewTbsubtype"
               }
             }
           }
         }
       }
     },
-    "/tbreports/count": {
+    "/tbsubtypes/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -300,12 +300,12 @@
         },
         "summary": "",
         "tags": [
-          "Tbreport"
+          "Tbsubtype"
         ],
         "parameters": []
       }
     },
-    "/tbreports/{id}": {
+    "/tbsubtypes/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -315,7 +315,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Tbreport"
+                  "$ref": "#/components/schemas/Tbsubtype"
                 }
               }
             }
@@ -353,7 +353,7 @@
         },
         "summary": "",
         "tags": [
-          "Tbreport"
+          "Tbsubtype"
         ],
         "parameters": [
           {
@@ -377,7 +377,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Tbreport"
+                  "$ref": "#/components/schemas/Tbsubtype"
                 }
               }
             }
@@ -415,7 +415,7 @@
         },
         "summary": "",
         "tags": [
-          "Tbreport"
+          "Tbsubtype"
         ],
         "requestBody": {
           "description": "",
@@ -423,7 +423,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewTbreport"
+                "$ref": "#/components/schemas/NewTbsubtype"
               }
             }
           }
@@ -489,7 +489,7 @@
         },
         "summary": "",
         "tags": [
-          "Tbreport"
+          "Tbsubtype"
         ],
         "parameters": [
           {
@@ -508,360 +508,35 @@
   },
   "components": {
     "schemas": {
-      "Tbreport": {
+      "Tbsubtype": {
         "required": [
           "id",
-          "userType",
-          "reportType",
-          "systemName",
-          "bodyName",
-          "latitude",
-          "longitude",
-          "type",
-          "cycle",
-          "cmdrName",
-          "clientVersion",
-          "reportStatus"
+          "type"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "userType": {
-            "type": "string",
-            "default": "console",
-            "enum": [
-              "console",
-              "pc"
-            ]
-          },
-          "reportType": {
-            "type": "string",
-            "default": "new",
-            "enum": [
-              "new",
-              "update",
-              "error"
-            ]
-          },
-          "systemName": {
-            "type": "string"
-          },
-          "systemAddress": {
-            "type": "integer"
-          },
-          "regionID": {
-            "type": "integer"
-          },
-          "coordX": {
-            "type": "number"
-          },
-          "coordY": {
-            "type": "number"
-          },
-          "coordZ": {
-            "type": "number"
-          },
-          "bodyName": {
-            "type": "string"
-          },
-          "latitude": {
-            "type": "number"
-          },
-          "longitude": {
-            "type": "number"
-          },
           "type": {
-            "type": "string",
-            "enum": [
-              "Mega",
-              "Alpha",
-              "Beta",
-              "Gamma",
-              "Delta",
-              "Epsilon",
-              "Zeta",
-              "Unknown"
-            ]
-          },
-          "cycle": {
-            "type": "string",
-            "enum": [
-              "Unknown",
-              "A",
-              "B",
-              "C",
-              "ABC"
-            ]
-          },
-          "frontierID": {
-            "type": "integer"
-          },
-          "cmdrName": {
             "type": "string"
           },
-          "cmdrComment": {
-            "type": "string"
-          },
-          "isBeta": {
-            "type": "boolean",
-            "default": false
-          },
-          "clientVersion": {
-            "type": "string"
-          },
-          "screenshot": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "name",
-                "hash",
-                "mime",
-                "size",
-                "url",
-                "provider"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "hash": {
-                  "type": "string"
-                },
-                "sha256": {
-                  "type": "string"
-                },
-                "ext": {
-                  "type": "string"
-                },
-                "mime": {
-                  "type": "string"
-                },
-                "size": {
-                  "type": "string"
-                },
-                "url": {
-                  "type": "string"
-                },
-                "provider": {
-                  "type": "string"
-                },
-                "public_id": {
-                  "type": "string"
-                },
-                "related": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "reportStatus": {
-            "type": "string",
-            "default": "pending",
-            "enum": [
-              "pending",
-              "updated",
-              "verified",
-              "accepted",
-              "declined",
-              "issue",
-              "duplicate"
-            ]
-          },
-          "reportComment": {
-            "type": "string"
-          },
-          "voteCount": {
-            "type": "integer"
-          },
-          "added": {
-            "type": "boolean",
-            "default": false
-          },
-          "site": {
-            "required": [
-              "id",
-              "siteID",
-              "latitude",
-              "longitude"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "system": {
-                "type": "string"
-              },
-              "body": {
-                "type": "string"
-              },
-              "siteID": {
-                "type": "integer"
-              },
-              "extoolID": {
-                "type": "integer"
-              },
-              "latitude": {
-                "type": "number"
-              },
-              "longitude": {
-                "type": "number"
-              },
-              "type": {
-                "type": "string"
-              },
-              "subtype": {
-                "type": "string"
-              },
-              "frontierID": {
-                "type": "integer"
-              },
-              "cycle": {
-                "type": "string"
-              },
-              "comment": {
-                "type": "string"
-              },
-              "verified": {
-                "type": "boolean"
-              },
-              "visible": {
-                "type": "boolean"
-              },
-              "discoveredBy": {
-                "type": "string"
-              }
-            }
+          "metaAlloyCount": {
+            "type": "integer",
+            "default": ""
           }
         }
       },
-      "NewTbreport": {
+      "NewTbsubtype": {
         "required": [
-          "userType",
-          "reportType",
-          "systemName",
-          "bodyName",
-          "latitude",
-          "longitude",
-          "type",
-          "cycle",
-          "cmdrName",
-          "clientVersion",
-          "reportStatus"
+          "type"
         ],
         "properties": {
-          "userType": {
-            "type": "string",
-            "default": "console",
-            "enum": [
-              "console",
-              "pc"
-            ]
-          },
-          "reportType": {
-            "type": "string",
-            "default": "new",
-            "enum": [
-              "new",
-              "update",
-              "error"
-            ]
-          },
-          "systemName": {
-            "type": "string"
-          },
-          "systemAddress": {
-            "type": "integer"
-          },
-          "regionID": {
-            "type": "integer"
-          },
-          "coordX": {
-            "type": "number"
-          },
-          "coordY": {
-            "type": "number"
-          },
-          "coordZ": {
-            "type": "number"
-          },
-          "bodyName": {
-            "type": "string"
-          },
-          "latitude": {
-            "type": "number"
-          },
-          "longitude": {
-            "type": "number"
-          },
           "type": {
-            "type": "string",
-            "enum": [
-              "Mega",
-              "Alpha",
-              "Beta",
-              "Gamma",
-              "Delta",
-              "Epsilon",
-              "Zeta",
-              "Unknown"
-            ]
-          },
-          "cycle": {
-            "type": "string",
-            "enum": [
-              "Unknown",
-              "A",
-              "B",
-              "C",
-              "ABC"
-            ]
-          },
-          "frontierID": {
-            "type": "integer"
-          },
-          "cmdrName": {
             "type": "string"
           },
-          "cmdrComment": {
-            "type": "string"
-          },
-          "isBeta": {
-            "type": "boolean",
-            "default": false
-          },
-          "clientVersion": {
-            "type": "string"
-          },
-          "reportStatus": {
-            "type": "string",
-            "default": "pending",
-            "enum": [
-              "pending",
-              "updated",
-              "verified",
-              "accepted",
-              "declined",
-              "issue",
-              "duplicate"
-            ]
-          },
-          "reportComment": {
-            "type": "string"
-          },
-          "voteCount": {
-            "type": "integer"
-          },
-          "added": {
-            "type": "boolean",
-            "default": false
-          },
-          "site": {
-            "type": "string"
+          "metaAlloyCount": {
+            "type": "integer",
+            "default": ""
           }
         }
       }
@@ -869,7 +544,7 @@
   },
   "tags": [
     {
-      "name": "Tbreport"
+      "name": "Tbsubtype"
     }
   ]
 }

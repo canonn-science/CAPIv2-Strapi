@@ -1,9 +1,9 @@
 {
   "connection": "default",
-  "collectionName": "tbtypes",
+  "collectionName": "tbsubtypes",
   "info": {
-    "name": "tbtype",
-    "description": "Type of a Thargoid Barnacle"
+    "name": "tbsubtype",
+    "description": "Subtype of a Thargoid Barnacle"
   },
   "options": {
     "increments": true,
@@ -16,11 +16,7 @@
       "type": "string",
       "required": true
     },
-    "journalName": {
-      "default": "",
-      "type": "string"
-    },
-    "journalID": {
+    "metaAlloyCount": {
       "default": "",
       "type": "integer"
     }
