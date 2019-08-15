@@ -561,6 +561,9 @@
           "factionState": {
             "type": "string"
           },
+          "factionAllegiance": {
+            "type": "string"
+          },
           "collectedFrom": {
             "type": "string",
             "enum": [
@@ -625,6 +628,9 @@
             "type": "integer"
           },
           "factionState": {
+            "type": "string"
+          },
+          "factionAllegiance": {
             "type": "string"
           },
           "collectedFrom": {

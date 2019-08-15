@@ -14,7 +14,7 @@
       "name": "GNU-GPLv3",
       "url": "https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE"
     },
-    "x-generation-date": "08/13/2019 1:45:52 AM"
+    "x-generation-date": "08/15/2019 3:55:27 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -66192,6 +66192,9 @@
           "factionState": {
             "type": "string"
           },
+          "factionAllegiance": {
+            "type": "string"
+          },
           "collectedFrom": {
             "type": "string",
             "enum": [
@@ -66256,6 +66259,9 @@
             "type": "integer"
           },
           "factionState": {
+            "type": "string"
+          },
+          "factionAllegiance": {
             "type": "string"
           },
           "collectedFrom": {
