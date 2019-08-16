@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/tbsubtypes",
+      "handler": "Tbsubtype.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tbsubtypes/count",
+      "handler": "Tbsubtype.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tbsubtypes/:id",
+      "handler": "Tbsubtype.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tbsubtypes",
+      "handler": "Tbsubtype.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tbsubtypes/:id",
+      "handler": "Tbsubtype.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tbsubtypes/:id",
+      "handler": "Tbsubtype.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "connection": "default",
+  "collectionName": "tbsubtypes",
+  "info": {
+    "name": "tbsubtype",
+    "description": "Subtype of a Thargoid Barnacle"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": false,
+    "comment": ""
+  },
+  "attributes": {
+    "type": {
+      "unique": true,
+      "type": "string",
+      "required": true
+    },
+    "metaAlloyCount": {
+      "default": "",
+      "type": "integer"
+    }
+  }
+}
