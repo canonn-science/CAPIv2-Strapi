@@ -17,7 +17,13 @@
         "acquireConnectionTimeout": 100000,
         "pool": {
           "min": 0,
-          "max": 40
+          "max": 40,
+          "createTimeoutMillis": 30000,
+          "acquireTimeoutMillis": 30000,
+          "idleTimeoutMillis": 30000,
+          "reapIntervalMillis": 1000,
+          "createRetryIntervalMillis": 100,
+          "propagateCreateError": false
         }
       }
     },
@@ -37,7 +43,13 @@
         "acquireConnectionTimeout": 100000,
         "pool": {
           "min": 0,
-          "max": 40
+          "max": 40,
+          "createTimeoutMillis": 30000,
+          "acquireTimeoutMillis": 30000,
+          "idleTimeoutMillis": 30000,
+          "reapIntervalMillis": 1000,
+          "createRetryIntervalMillis": 100,
+          "propagateCreateError": false
         }
       }
     }
