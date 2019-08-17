@@ -1,0 +1,70 @@
+{
+  "paths": {
+    "/pointofinterests": {
+      "get": {
+        "description": "Get all Canonn POI entries",
+        "summary": "",
+        "tags": [
+          "Canonn Global"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new Canonn POI entry",
+        "summary": "",
+        "tags": [
+          "Canonn Global"
+        ],
+        "security": [
+          "adminOnlyWrite"
+        ]
+      }
+    },
+    "/pointofinterests/count": {
+      "get": {
+        "description": "Get a count of all Canonn POI entries",
+        "summary": "",
+        "tags": [
+          "Canonn Global"
+        ],
+        "security": []
+      }
+    },
+    "/pointofinterests/{id}": {
+      "get": {
+        "description": "Get a Canonn POI by id",
+        "summary": "",
+        "tags": [
+          "Canonn Global"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a Canonn POI by id",
+        "summary": "",
+        "tags": [
+          "Canonn Global"
+        ],
+        "security": [
+          "adminOnlyWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a Canonn POI by id",
+        "summary": "",
+        "tags": [
+          "Canonn Global"
+        ],
+        "security": [
+          "adminOnlyDelete"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Canonn Global",
+      "description": "Endpoints used by Canonn for misc data"
+    }
+  ]
+}

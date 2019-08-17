@@ -1,0 +1,66 @@
+{
+  "paths": {
+    "/genreports": {
+      "get": {
+        "description": "Get all GEN report entries",
+        "summary": "",
+        "tags": [
+          "Generation Ship Reports"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new GEN report entry",
+        "summary": "",
+        "tags": [
+          "Generation Ship Reports"
+        ],
+        "security": []
+      }
+    },
+    "/genreports/count": {
+      "get": {
+        "description": "Get a count of all GEN report entries",
+        "summary": "",
+        "tags": [
+          "Generation Ship Reports"
+        ],
+        "security": []
+      }
+    },
+    "/genreports/{id}": {
+      "get": {
+        "description": "Get a GEN report by id",
+        "summary": "",
+        "tags": [
+          "Generation Ship Reports"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a GEN report by id",
+        "summary": "",
+        "tags": [
+          "Generation Ship Reports"
+        ],
+        "security": []
+      },
+      "delete": {
+        "description": "Delete a GEN report by id",
+        "summary": "",
+        "tags": [
+          "Generation Ship Reports"
+        ],
+        "security": [
+          "reportDelete"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Generation Ship Reports",
+      "description": "Public Reporting of GEN"
+    }
+  ]
+}

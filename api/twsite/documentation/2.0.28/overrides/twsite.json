@@ -1,0 +1,70 @@
+{
+  "paths": {
+    "/twsites": {
+      "get": {
+        "description": "Get all TW Site entries",
+        "summary": "",
+        "tags": [
+          "Tube Worms"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new TW Site entry",
+        "summary": "",
+        "tags": [
+          "Tube Worms"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      }
+    },
+    "/twsites/count": {
+      "get": {
+        "description": "Get a count of all TW Site entries",
+        "summary": "",
+        "tags": [
+          "Tube Worms"
+        ],
+        "security": []
+      }
+    },
+    "/twsites/{id}": {
+      "get": {
+        "description": "Get a TW Site by id",
+        "summary": "",
+        "tags": [
+          "Tube Worms"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a TW Site by id",
+        "summary": "",
+        "tags": [
+          "Tube Worms"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a TW Site by id",
+        "summary": "",
+        "tags": [
+          "Tube Worms"
+        ],
+        "security": [
+          "siteDelete"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Tube Worms",
+      "description": "Code Name - TW"
+    }
+  ]
+}
