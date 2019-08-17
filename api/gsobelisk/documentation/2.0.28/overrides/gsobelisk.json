@@ -1,0 +1,70 @@
+{
+  "paths": {
+    "/gsobelisks": {
+      "get": {
+        "description": "Get all GS Obelisk entries",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ],
+        "security": []
+      },
+      "post": {
+        "description": "Create a new GS Obelisk entry",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      }
+    },
+    "/gsobelisks/count": {
+      "get": {
+        "description": "Get a count of all GS Obelisk entries",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ],
+        "security": []
+      }
+    },
+    "/gsobelisks/{id}": {
+      "get": {
+        "description": "Get a GS Obelisk by id",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ],
+        "security": []
+      },
+      "put": {
+        "description": "Update a GS Obelisk by id",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ],
+        "security": [
+          "siteWrite"
+        ]
+      },
+      "delete": {
+        "description": "Delete a GS Obelisk by id",
+        "summary": "",
+        "tags": [
+          "Guardian Structures"
+        ],
+        "security": [
+          "siteDelete"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Guardian Structures",
+      "description": "Code Name - GS"
+    }
+  ]
+}
