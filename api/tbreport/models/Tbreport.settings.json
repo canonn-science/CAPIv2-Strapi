@@ -66,6 +66,10 @@
       "max": 180
     },
     "type": {
+      "type": "string",
+      "required": true
+    },
+    "subtype": {
       "enum": [
         "Mega",
         "Alpha",
