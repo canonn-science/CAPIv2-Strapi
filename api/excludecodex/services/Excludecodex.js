@@ -35,7 +35,7 @@ module.exports = {
         codexName: codexNameCleaned
       });
       let codexNameData = null;
-      let codexNameResult = codexNameQuery.toJSON();
+      let codexNameResult = codexNameQuery;
 
       if (codexNameResult[0] != undefined) {
         codexNameData = codexNameResult[0];

@@ -36,7 +36,7 @@ module.exports = {
         fssName_contains: signalNameCleaned
       });
       let signalNameData = null;
-      let signalNameResult = signalNameQuery.toJSON();
+      let signalNameResult = signalNameQuery;
 
       if (signalNameResult[0] != undefined) {
         signalNameData = signalNameResult[0];

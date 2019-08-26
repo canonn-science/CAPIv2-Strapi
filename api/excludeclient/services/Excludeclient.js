@@ -26,7 +26,7 @@ module.exports = {
         version: clientVersion
       });
       let clientVersionData = null;
-      let clientVersionResult = clientVersionQuery.toJSON();
+      let clientVersionResult = clientVersionQuery;
 
       if (clientVersionResult[0] != undefined) {
         clientVersionData = clientVersionResult[0];
