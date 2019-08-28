@@ -17,13 +17,12 @@
         "acquireConnectionTimeout": 100000,
         "pool": {
           "min": 0,
-          "max": 40,
-          "createTimeoutMillis": 30000,
-          "acquireTimeoutMillis": 30000,
+          "max": 50,
+          "createTimeoutMillis": 20000,
+          "acquireTimeoutMillis": 20000,
           "idleTimeoutMillis": 3000,
           "reapIntervalMillis": 1000,
-          "createRetryIntervalMillis": 100,
-          "propagateCreateError": false
+          "createRetryIntervalMillis": 100
         }
       }
     },
@@ -43,13 +42,12 @@
         "acquireConnectionTimeout": 100000,
         "pool": {
           "min": 0,
-          "max": 40,
-          "createTimeoutMillis": 30000,
-          "acquireTimeoutMillis": 30000,
-          "idleTimeoutMillis": 30000,
+          "max": 50,
+          "createTimeoutMillis": 20000,
+          "acquireTimeoutMillis": 20000,
+          "idleTimeoutMillis": 3000,
           "reapIntervalMillis": 1000,
-          "createRetryIntervalMillis": 100,
-          "propagateCreateError": false
+          "createRetryIntervalMillis": 100
         }
       }
     }
