@@ -23,6 +23,15 @@ module.exports = {
     // Check for missing required values
     await strapi.api.global.services.global.checkReport(values, 'tbreport');
 
+    if (values.subtype == undefined) {
+      values.subtype = 'Unknown';
+    }
+
+    if (values.cycle == undefined) {
+      values.cycle = 'Unknown';
+    }
+
     // If checks pass, proceed to create data
     return strapi.query('Tbreport').create(values);
-  },};
+  },
+};

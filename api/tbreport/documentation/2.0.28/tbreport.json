@@ -518,6 +518,7 @@
           "latitude",
           "longitude",
           "type",
+          "subtype",
           "cycle",
           "cmdrName",
           "clientVersion",
@@ -572,6 +573,9 @@
             "type": "number"
           },
           "type": {
+            "type": "string"
+          },
+          "subtype": {
             "type": "string",
             "enum": [
               "Mega",
@@ -748,6 +752,7 @@
           "latitude",
           "longitude",
           "type",
+          "subtype",
           "cycle",
           "cmdrName",
           "clientVersion",
@@ -799,6 +804,9 @@
             "type": "number"
           },
           "type": {
+            "type": "string"
+          },
+          "subtype": {
             "type": "string",
             "enum": [
               "Mega",
