@@ -28,18 +28,20 @@ module.exports = {
 
   update: async (params, values) => {
 
-    let oldData = await strapi.services.system.findOne({id: params.id});
-    oldData = oldData.toJSON();
+    if (!values.edsmCoordLocked){
+      let oldData = await strapi.services.system.findOne({id: params.id});
+      oldData = oldData.toJSON();
 
-    if (oldData.edsmCoordLocked == false || oldData.edsmCoordLocked == undefined) {
-      if (values.systemName == undefined) {
-        values.systemName = oldData.systemName;
+      if (oldData.edsmCoordLocked == false || oldData.edsmCoordLocked == undefined) {
+        if (values.systemName == undefined) {
+          values.systemName = oldData.systemName;
+        }
+        values.missingSkipCount = oldData.missingSkipCount;
+
+        let edsmData = await strapi.services.system.edsmUpdate(values);
+
+        return strapi.query('System').update(params, edsmData);
       }
-      values.missingSkipCount = oldData.missingSkipCount;
-
-      let edsmData = await strapi.services.system.edsmUpdate(values);
-
-      return strapi.query('System').update(params, edsmData);
     }
 
     return strapi.query('System').update(params, values);
