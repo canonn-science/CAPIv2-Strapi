@@ -9,13 +9,9 @@
  */
 
 module.exports = {
-
-  /**
-   * Simple example.
-   * Every monday at 1am.
-   */
-
-  // '0 1 * * 1': () => {
-  //
-  // }
+  '*/5 * * * *': async () => {
+    if (process.env.CRON_TASK == 'true'){
+      await strapi.services.materialreport.deleteOldReports();
+    }
+  }
 };
