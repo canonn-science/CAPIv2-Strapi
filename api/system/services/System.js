@@ -9,7 +9,6 @@ module.exports = {
    */
 
   create: async values => {
-
     // Query EDSM for systems data when a new system is added
     // This should be moved to lifecycle callbacks to prevent blocking code
     try {
@@ -27,17 +26,17 @@ module.exports = {
    */
 
   update: async (params, values) => {
-
     // If there is no edsmCoordLocked in values, try to grab data from EDSM
     try {
       // This is used to allow the CAPIv2-Updater to bypass this as it already grabs data from EDSM
-      if (!values.edsmCoordLocked) {
+      if (typeof values.edsmCoordLocked === 'undefined') {
         // Grabbing old data in case we need something that wasn't provided like missingSkipCount
         let oldData = await strapi.services.system.findOne({ id: params.id });
         oldData = oldData.toJSON();
 
         // Confirm that we actually need to ask EDSM for an update, if coords locked no reason to
         if (oldData.edsmCoordLocked === false || typeof oldData.edsmCoordLocked === 'undefined') {
+          console.log('break1');
           // Grabbing old System Name if not provided
           if (typeof values.systemName === 'undefined') {
             values.systemName = oldData.systemName;
@@ -48,9 +47,8 @@ module.exports = {
 
           return strapi.query('System').update(params, edsmData);
         }
-      } else {
-        return strapi.query('System').update(params, values);
       }
+      return strapi.query('System').update(params, values);
     } catch (error) {
       console.log(error);
     }
@@ -79,7 +77,7 @@ module.exports = {
     // Copying object values into a temporary object as to not mess with values
     let newValues = {
       systemName: values.systemName,
-      missingSkipCount: values.missingSkipCount
+      missingSkipCount: values.missingSkipCount,
     };
 
     // Init edsmData
@@ -116,9 +114,7 @@ module.exports = {
       }
       newValues.missingSkipCount = 0;
       return newValues;
-
     } else {
-
       // If EDSM doesn't have the data, increase the skip count and proceed
       newValues.missingSkipCount = newValues.missingSkipCount + 1 || 1;
       newValues.systemName = newValues.systemName.toUpperCase();
