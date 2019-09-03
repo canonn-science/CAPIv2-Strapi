@@ -1,12 +1,6 @@
 'use strict';
 const fetch = require('node-fetch');
 
-
-/**
- * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/services.html#core-services)
- * to customize this service
- */
-
 module.exports = {
   /**
    * Promise to add record
@@ -14,10 +8,13 @@ module.exports = {
    * @return {Promise}
    */
 
-  create: async (values) => {
-    let edsmData = await strapi.services.system.edsmUpdate(values);
-
-    return strapi.query('System').create(edsmData);
+  create: async values => {
+    try {
+      let edsmData = await strapi.services.system.edsmUpdate(values);
+      return strapi.query('System').create(edsmData);
+    } catch (error) {
+      console.log(error);
+    }
   },
 
   /**
@@ -27,24 +24,27 @@ module.exports = {
    */
 
   update: async (params, values) => {
+    try {
+      if (!values.edsmCoordLocked) {
+        let oldData = await strapi.services.system.findOne({ id: params.id });
+        oldData = oldData.toJSON();
 
-    if (!values.edsmCoordLocked){
-      let oldData = await strapi.services.system.findOne({id: params.id});
-      oldData = oldData.toJSON();
+        if (oldData.edsmCoordLocked == false || oldData.edsmCoordLocked == undefined) {
+          if (values.systemName == undefined) {
+            values.systemName = oldData.systemName;
+          }
+          values.missingSkipCount = oldData.missingSkipCount;
 
-      if (oldData.edsmCoordLocked == false || oldData.edsmCoordLocked == undefined) {
-        if (values.systemName == undefined) {
-          values.systemName = oldData.systemName;
+          let edsmData = await strapi.services.system.edsmUpdate(values);
+
+          return strapi.query('System').update(params, edsmData);
         }
-        values.missingSkipCount = oldData.missingSkipCount;
-
-        let edsmData = await strapi.services.system.edsmUpdate(values);
-
-        return strapi.query('System').update(params, edsmData);
       }
-    }
 
-    return strapi.query('System').update(params, values);
+      return strapi.query('System').update(params, values);
+    } catch (error) {
+      console.log(error);
+    }
   },
 
   /**
@@ -52,7 +52,7 @@ module.exports = {
    *
    * @return {Promise}
    */
-  edsmUpdate: async (values) => {
+  edsmUpdate: async values => {
     const edsmAPISystem = 'https://www.edsm.net/api-v1/system?showId=1&showCoordinates=1&showPrimaryStar=1';
 
     const getData = async system => {
@@ -67,7 +67,7 @@ module.exports = {
 
     let newValues = values;
     let newData = {};
-    if (newValues.missingSkipCount >= 10 ) {
+    if (newValues.missingSkipCount >= 10) {
       newValues.systemName = newValues.systemName.toUpperCase();
       return newValues;
     } else {
@@ -75,7 +75,6 @@ module.exports = {
     }
 
     if (newData != undefined) {
-
       newValues.systemName = newData.name.toUpperCase();
 
       if (newData.id) {
@@ -98,7 +97,7 @@ module.exports = {
       newValues.missingSkipCount = 0;
       return newValues;
     } else {
-      newValues.missingSkipCount = (newValues.missingSkipCount + 1) || 1;
+      newValues.missingSkipCount = newValues.missingSkipCount + 1 || 1;
       newValues.systemName = newValues.systemName.toUpperCase();
       return newValues;
     }
