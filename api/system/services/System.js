@@ -9,13 +9,17 @@ module.exports = {
    */
 
   create: async values => {
-    // Query EDSM for systems data when a new system is added
+    // Query EDSM for systems data when a new system is added if no edsmID is present
     // This should be moved to lifecycle callbacks to prevent blocking code
-    try {
-      let edsmData = await strapi.services.system.edsmUpdate(values);
-      return strapi.query('System').create(edsmData);
-    } catch (error) {
-      console.log(error);
+    if (typeof values.edsmID === 'undefined') {
+      try {
+        let edsmData = await strapi.services.system.edsmUpdate(values);
+        return strapi.query('System').create(edsmData);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      return strapi.query('System').create(values);
     }
   },
 
@@ -26,9 +30,9 @@ module.exports = {
    */
 
   update: async (params, values) => {
-    // If there is no edsmCoordLocked in values, try to grab data from EDSM
+    // If there is no edsmID in values, try to grab data from EDSM
     // This is used to allow the CAPIv2-Updater to bypass this as it already grabs data from EDSM
-    if (typeof values.edsmCoordLocked === 'undefined') {
+    if (typeof values.edsmID === 'undefined') {
       // Grabbing old data in case we need something that wasn't provided like missingSkipCount
       let oldData = await strapi.services.system.findOne({ id: params.id });
       oldData = oldData.toJSON();
