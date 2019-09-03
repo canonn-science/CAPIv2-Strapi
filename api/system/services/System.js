@@ -9,6 +9,9 @@ module.exports = {
    */
 
   create: async values => {
+
+    // Query EDSM for systems data when a new system is added
+    // This should be moved to lifecycle callbacks to prevent blocking code
     try {
       let edsmData = await strapi.services.system.edsmUpdate(values);
       return strapi.query('System').create(edsmData);
@@ -24,12 +27,18 @@ module.exports = {
    */
 
   update: async (params, values) => {
+
+    // If there is no edsmCoordLocked in values, try to grab data from EDSM
     try {
+      // This is used to allow the CAPIv2-Updater to bypass this as it already grabs data from EDSM
       if (!values.edsmCoordLocked) {
+        // Grabbing old data in case we need something that wasn't provided like missingSkipCount
         let oldData = await strapi.services.system.findOne({ id: params.id });
         oldData = oldData.toJSON();
 
+        // Confirm that we actually need to ask EDSM for an update, if coords locked no reason to
         if (oldData.edsmCoordLocked === false || typeof oldData.edsmCoordLocked === 'undefined') {
+          // Grabbing old System Name if not provided
           if (typeof values.systemName === 'undefined') {
             values.systemName = oldData.systemName;
           }
@@ -53,8 +62,10 @@ module.exports = {
    * @return {Promise}
    */
   edsmUpdate: async values => {
+    // Setting EDSM's API URL
     const edsmAPISystem = 'https://www.edsm.net/api-v1/system?showId=1&showCoordinates=1&showPrimaryStar=1';
 
+    // Function to fetch data from EDSM's API
     const getData = async system => {
       try {
         const response = await fetch(edsmAPISystem + '&systemName=' + encodeURIComponent(system));
@@ -65,11 +76,16 @@ module.exports = {
       }
     };
 
+    // Copying object values into a temporary object as to not mess with values
     let newValues = {
       systemName: values.systemName,
       missingSkipCount: values.missingSkipCount
     };
+
+    // Init edsmData
     let edsmData = {};
+
+    // If missing skip count is above 10 it means we shouldn't ask EDSM again to prevent spam with bad system
     if (newValues.missingSkipCount >= 10) {
       newValues.systemName = newValues.systemName.toUpperCase();
       return newValues;
@@ -77,6 +93,7 @@ module.exports = {
       edsmData = await getData(values.systemName);
     }
 
+    // Checking if EDSM has the proper data
     if (typeof edsmData !== 'undefined') {
       newValues.systemName = edsmData.name.toUpperCase();
 
@@ -99,7 +116,10 @@ module.exports = {
       }
       newValues.missingSkipCount = 0;
       return newValues;
+
     } else {
+
+      // If EDSM doesn't have the data, increase the skip count and proceed
       newValues.missingSkipCount = newValues.missingSkipCount + 1 || 1;
       newValues.systemName = newValues.systemName.toUpperCase();
       return newValues;
