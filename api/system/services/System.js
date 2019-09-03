@@ -51,6 +51,17 @@ module.exports = {
         }
       }
     }
+
+    // Forcefully remove created_at
+    if (values.created_at) {
+      delete values.created_at;
+    }
+
+    // Forcefully remove updated_at
+    if (values.updated_at) {
+      delete values.updated_at;
+    }
+
     return strapi.query('System').update(params, values);
   },
 
