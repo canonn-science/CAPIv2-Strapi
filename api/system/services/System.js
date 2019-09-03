@@ -29,8 +29,8 @@ module.exports = {
         let oldData = await strapi.services.system.findOne({ id: params.id });
         oldData = oldData.toJSON();
 
-        if (oldData.edsmCoordLocked == false || oldData.edsmCoordLocked == undefined) {
-          if (values.systemName == undefined) {
+        if (oldData.edsmCoordLocked === false || typeof oldData.edsmCoordLocked === 'undefined') {
+          if (typeof values.systemName === 'undefined') {
             values.systemName = oldData.systemName;
           }
           values.missingSkipCount = oldData.missingSkipCount;
@@ -39,9 +39,9 @@ module.exports = {
 
           return strapi.query('System').update(params, edsmData);
         }
+      } else {
+        return strapi.query('System').update(params, values);
       }
-
-      return strapi.query('System').update(params, values);
     } catch (error) {
       console.log(error);
     }
@@ -65,34 +65,37 @@ module.exports = {
       }
     };
 
-    let newValues = values;
-    let newData = {};
+    let newValues = {
+      systemName: values.systemName,
+      missingSkipCount: values.missingSkipCount
+    };
+    let edsmData = {};
     if (newValues.missingSkipCount >= 10) {
       newValues.systemName = newValues.systemName.toUpperCase();
       return newValues;
     } else {
-      newData = await getData(values.systemName);
+      edsmData = await getData(values.systemName);
     }
 
-    if (newData != undefined) {
-      newValues.systemName = newData.name.toUpperCase();
+    if (typeof edsmData !== 'undefined') {
+      newValues.systemName = edsmData.name.toUpperCase();
 
-      if (newData.id) {
-        newValues.edsmID = newData.id;
+      if (edsmData.id) {
+        newValues.edsmID = edsmData.id;
       }
-      if (newData.id64) {
-        newValues.ID64 = newData.id64;
+      if (edsmData.id64) {
+        newValues.ID64 = edsmData.id64;
       }
-      if (newData.coords) {
-        newValues.edsmCoordX = newData.coords.x;
-        newValues.edsmCoordY = newData.coords.y;
-        newValues.edsmCoordZ = newData.coords.z;
+      if (edsmData.coords) {
+        newValues.edsmCoordX = edsmData.coords.x;
+        newValues.edsmCoordY = edsmData.coords.y;
+        newValues.edsmCoordZ = edsmData.coords.z;
       }
-      if (newData.coordsLocked) {
-        newValues.edsmCoordLocked = newData.coordsLocked;
+      if (edsmData.coordsLocked) {
+        newValues.edsmCoordLocked = edsmData.coordsLocked;
       }
-      if (newData.primaryStar) {
-        newValues.primaryStar = newData.primaryStar;
+      if (edsmData.primaryStar) {
+        newValues.primaryStar = edsmData.primaryStar;
       }
       newValues.missingSkipCount = 0;
       return newValues;
