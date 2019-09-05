@@ -39,7 +39,6 @@ module.exports = {
 
       // Confirm that we actually need to ask EDSM for an update, if coords locked no reason to
       if (oldData.edsmCoordLocked === false || typeof oldData.edsmCoordLocked === 'undefined') {
-        console.log('break1');
         // Grabbing old System Name if not provided
         if (typeof values.systemName === 'undefined') {
           values.systemName = oldData.systemName;
