@@ -35,7 +35,6 @@ module.exports = {
     if (typeof values.edsmID === 'undefined') {
       // Grabbing old data in case we need something that wasn't provided like missingSkipCount
       let oldData = await strapi.services.system.findOne({ id: params.id });
-      oldData = oldData.toJSON();
 
       // Confirm that we actually need to ask EDSM for an update, if coords locked no reason to
       if (oldData.edsmCoordLocked === false || typeof oldData.edsmCoordLocked === 'undefined') {

@@ -41,13 +41,10 @@ module.exports = {
     // this should be a looping function to get all reports but I'm lazy so
     // you get only 1000 per call
     async function deleteReports (limit = 1000) {
-      let data = await strapi.services.materialreport.find({
+      let reports = await strapi.services.materialreport.find({
         _limit: limit,
         created_at_lte: now.subtract(1, 'months').utc().format('YYYY-MM-DD hh:mm:ss')
       });
-
-      // This should be removed in strapi beta.16 .toJSON() won't be required
-      let reports = data.toJSON();
 
       // Looping through response and deleting old reports
       if (reports.length > 0) {
