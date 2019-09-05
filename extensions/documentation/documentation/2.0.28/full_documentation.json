@@ -14,7 +14,7 @@
       "name": "GNU-GPLv3",
       "url": "https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE"
     },
-    "x-generation-date": "09/04/2019 12:21:08 AM"
+    "x-generation-date": "09/05/2019 1:06:35 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -67100,13 +67100,21 @@
       "Permitlock": {
         "required": [
           "id",
-          "system"
+          "system",
+          "region",
+          "sector"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
           "system": {
+            "type": "string"
+          },
+          "region": {
+            "type": "string"
+          },
+          "sector": {
             "type": "string"
           },
           "coordX": {
@@ -67122,10 +67130,18 @@
       },
       "NewPermitlock": {
         "required": [
-          "system"
+          "system",
+          "region",
+          "sector"
         ],
         "properties": {
           "system": {
+            "type": "string"
+          },
+          "region": {
+            "type": "string"
+          },
+          "sector": {
             "type": "string"
           },
           "coordX": {

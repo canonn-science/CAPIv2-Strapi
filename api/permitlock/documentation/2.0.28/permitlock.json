@@ -511,13 +511,21 @@
       "Permitlock": {
         "required": [
           "id",
-          "system"
+          "system",
+          "region",
+          "sector"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
           "system": {
+            "type": "string"
+          },
+          "region": {
+            "type": "string"
+          },
+          "sector": {
             "type": "string"
           },
           "coordX": {
@@ -533,10 +541,18 @@
       },
       "NewPermitlock": {
         "required": [
-          "system"
+          "system",
+          "region",
+          "sector"
         ],
         "properties": {
           "system": {
+            "type": "string"
+          },
+          "region": {
+            "type": "string"
+          },
+          "sector": {
             "type": "string"
           },
           "coordX": {
