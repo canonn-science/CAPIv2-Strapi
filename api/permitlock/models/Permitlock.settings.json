@@ -1,0 +1,34 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "permitlock",
+    "description": "Permit Locked Sectors"
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "system": {
+      "type": "string",
+      "required": true
+    },
+    "region": {
+      "type": "string",
+      "required": true
+    },
+    "sector": {
+      "type": "string",
+      "required": true
+    },
+    "coordX": {
+      "type": "float"
+    },
+    "coordY": {
+      "type": "float"
+    },
+    "coordZ": {
+      "type": "float"
+    }
+  }
+}

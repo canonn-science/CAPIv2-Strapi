@@ -5,7 +5,7 @@
  * to customize this service
  */
 
-const boom = require('boom');
+const boom = require('@hapi/boom');
 
 module.exports = {
 
@@ -26,7 +26,7 @@ module.exports = {
         cmdrName: cmdrName
       });
       let cmdrData = null;
-      let cmdrResult = cmdrQuery.toJSON();
+      let cmdrResult = cmdrQuery;
 
       if (cmdrResult[0] != undefined) {
         cmdrData = cmdrResult[0];

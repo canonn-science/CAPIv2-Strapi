@@ -1117,10 +1117,10 @@
                 "visible": {
                   "type": "boolean"
                 },
-                "discoveredBy": {
+                "gbmessage": {
                   "type": "string"
                 },
-                "gbmessage": {
+                "discoveredBy": {
                   "type": "string"
                 }
               }
@@ -1156,14 +1156,14 @@
                 "distance": {
                   "type": "number"
                 },
-                "discoveredBy": {
-                  "type": "string"
-                },
                 "genlogs": {
                   "type": "array",
                   "items": {
                     "type": "string"
                   }
+                },
+                "discoveredBy": {
+                  "type": "string"
                 }
               }
             }

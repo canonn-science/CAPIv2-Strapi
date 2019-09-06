@@ -6,7 +6,10 @@
     "description": ""
   },
   "options": {
-    "timestamps": true
+    "timestamps": [
+      "created_at",
+      "updated_at"
+    ]
   },
   "attributes": {
     "username": {
@@ -52,6 +55,9 @@
       "via": "users",
       "plugin": "users-permissions",
       "configurable": false
+    },
+    "cmdrs": {
+      "collection": "cmdr"
     }
   }
 }

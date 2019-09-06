@@ -954,23 +954,6 @@
             "type": "boolean",
             "default": true
           },
-          "discoveredBy": {
-            "required": [
-              "id",
-              "cmdrName"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "cmdrName": {
-                "type": "string"
-              },
-              "cmdrkill": {
-                "type": "string"
-              }
-            }
-          },
           "gbmessage": {
             "required": [
               "id",
@@ -995,6 +978,23 @@
               },
               "longitude": {
                 "type": "number"
+              }
+            }
+          },
+          "discoveredBy": {
+            "required": [
+              "id",
+              "cmdrName"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "cmdrName": {
+                "type": "string"
+              },
+              "cmdrkill": {
+                "type": "string"
               }
             }
           }
@@ -1026,10 +1026,10 @@
             "type": "boolean",
             "default": true
           },
-          "discoveredBy": {
+          "gbmessage": {
             "type": "string"
           },
-          "gbmessage": {
+          "discoveredBy": {
             "type": "string"
           }
         }

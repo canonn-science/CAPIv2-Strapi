@@ -14,7 +14,7 @@
       "name": "GNU-GPLv3",
       "url": "https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE"
     },
-    "x-generation-date": "08/21/2019 12:30:55 AM"
+    "x-generation-date": "09/05/2019 8:24:56 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -12893,523 +12893,6 @@
       "delete": {
         "deprecated": false,
         "description": "Delete a FSS Scan Blacklist by id",
-        "responses": {
-          "200": {
-            "description": "deletes a single record based on the ID supplied",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Canonn Use"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": [
-          "updateLogWrite"
-        ]
-      }
-    },
-    "/excludeusses": {
-      "get": {
-        "deprecated": false,
-        "description": "Get all USS Type Blacklist entries",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Excludeuss"
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Canonn Use"
-        ],
-        "parameters": [
-          {
-            "name": "_limit",
-            "in": "query",
-            "required": false,
-            "description": "Maximum number of results possible",
-            "schema": {
-              "type": "integer"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_sort",
-            "in": "query",
-            "required": false,
-            "description": "Sort according to a specific field.",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_start",
-            "in": "query",
-            "required": false,
-            "description": "Skip a specific number of entries (especially useful for pagination)",
-            "schema": {
-              "type": "integer"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "=",
-            "in": "query",
-            "required": false,
-            "description": "Get entries that matches exactly your input",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_ne",
-            "in": "query",
-            "required": false,
-            "description": "Get records that are not equals to something",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_lt",
-            "in": "query",
-            "required": false,
-            "description": "Get record that are lower than a value",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_lte",
-            "in": "query",
-            "required": false,
-            "description": "Get records that are lower than or equal to a value",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_gt",
-            "in": "query",
-            "required": false,
-            "description": "Get records that are greater than a value",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_gte",
-            "in": "query",
-            "required": false,
-            "description": "Get records that are greater than  or equal a value",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_contains",
-            "in": "query",
-            "required": false,
-            "description": "Get records that contains a value",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_containss",
-            "in": "query",
-            "required": false,
-            "description": "Get records that contains (case sensitive) a value",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_in",
-            "in": "query",
-            "required": false,
-            "description": "Get records that matches any value in the array of values",
-            "schema": {
-              "type": "array"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_nin",
-            "in": "query",
-            "required": false,
-            "description": "Get records that doesn't match any value in the array of values",
-            "schema": {
-              "type": "array"
-            },
-            "deprecated": false
-          }
-        ],
-        "security": []
-      },
-      "post": {
-        "deprecated": false,
-        "description": "Create a new USS Type Blacklist entry",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Excludeuss"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Canonn Use"
-        ],
-        "requestBody": {
-          "description": "",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewExcludeuss"
-              }
-            }
-          }
-        },
-        "security": [
-          "updateLogWrite"
-        ]
-      }
-    },
-    "/excludeusses/count": {
-      "get": {
-        "deprecated": false,
-        "description": "Get a count of all USS Type Blacklist entries",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "count": {
-                      "type": "integer"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Canonn Use"
-        ],
-        "parameters": [],
-        "security": []
-      }
-    },
-    "/excludeusses/{id}": {
-      "get": {
-        "deprecated": false,
-        "description": "Get a USS Type Blacklist by id",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Excludeuss"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Canonn Use"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": []
-      },
-      "put": {
-        "deprecated": false,
-        "description": "Update a USS Type Blacklist by id",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Excludeuss"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Canonn Use"
-        ],
-        "requestBody": {
-          "description": "",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewExcludeuss"
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": [
-          "updateLogWrite"
-        ]
-      },
-      "delete": {
-        "deprecated": false,
-        "description": "Delete a USS Type Blacklist by id",
         "responses": {
           "200": {
             "description": "deletes a single record based on the ID supplied",
@@ -39363,6 +38846,516 @@
         ]
       }
     },
+    "/permitlocks": {
+      "get": {
+        "deprecated": false,
+        "description": "Get all Permit Lock entries",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Permitlock"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Permit Locks"
+        ],
+        "parameters": [
+          {
+            "name": "_limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of results possible",
+            "schema": {
+              "type": "integer"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_sort",
+            "in": "query",
+            "required": false,
+            "description": "Sort according to a specific field.",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_start",
+            "in": "query",
+            "required": false,
+            "description": "Skip a specific number of entries (especially useful for pagination)",
+            "schema": {
+              "type": "integer"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "=",
+            "in": "query",
+            "required": false,
+            "description": "Get entries that matches exactly your input",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_ne",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are not equals to something",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_lt",
+            "in": "query",
+            "required": false,
+            "description": "Get record that are lower than a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_lte",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are lower than or equal to a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_gt",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are greater than a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_gte",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are greater than  or equal a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_contains",
+            "in": "query",
+            "required": false,
+            "description": "Get records that contains a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_containss",
+            "in": "query",
+            "required": false,
+            "description": "Get records that contains (case sensitive) a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_in",
+            "in": "query",
+            "required": false,
+            "description": "Get records that matches any value in the array of values",
+            "schema": {
+              "type": "array"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_nin",
+            "in": "query",
+            "required": false,
+            "description": "Get records that doesn't match any value in the array of values",
+            "schema": {
+              "type": "array"
+            },
+            "deprecated": false
+          }
+        ],
+        "security": []
+      },
+      "post": {
+        "deprecated": false,
+        "description": "Create a new Permit Lock entry",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Permitlock"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Permit Locks"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewPermitlock"
+              }
+            }
+          }
+        },
+        "security": [
+          "updateLogWrite"
+        ]
+      }
+    },
+    "/permitlocks/count": {
+      "get": {
+        "deprecated": false,
+        "description": "Get a count of all Permit Lock entries",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "count": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Permit Locks"
+        ],
+        "parameters": [],
+        "security": []
+      }
+    },
+    "/permitlocks/{_id}": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Permitlock"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Permitlock"
+        ],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "put": {
+        "deprecated": false,
+        "description": "Update a record",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Permitlock"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Permitlock"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewPermitlock"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "delete": {
+        "deprecated": false,
+        "description": "Delete a record",
+        "responses": {
+          "200": {
+            "description": "deletes a single record based on the ID supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Permitlock"
+        ],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
     "/pointofinterests": {
       "get": {
         "deprecated": false,
@@ -49406,7 +49399,7 @@
         "parameters": []
       }
     },
-    "/upload/files/{_id}": {
+    "/upload/files/{id}": {
       "get": {
         "deprecated": false,
         "description": "Retrieve a single file depending on its id",
@@ -49462,7 +49455,7 @@
         ],
         "parameters": [
           {
-            "name": "_id",
+            "name": "id",
             "in": "path",
             "description": "",
             "deprecated": false,
@@ -49528,7 +49521,7 @@
         ],
         "parameters": [
           {
-            "name": "_id",
+            "name": "id",
             "in": "path",
             "description": "",
             "deprecated": false,
@@ -53610,10 +53603,10 @@
                 "visible": {
                   "type": "boolean"
                 },
-                "discoveredBy": {
+                "gbmessage": {
                   "type": "string"
                 },
-                "gbmessage": {
+                "discoveredBy": {
                   "type": "string"
                 }
               }
@@ -53649,14 +53642,14 @@
                 "distance": {
                   "type": "number"
                 },
-                "discoveredBy": {
-                  "type": "string"
-                },
                 "genlogs": {
                   "type": "array",
                   "items": {
                     "type": "string"
                   }
+                },
+                "discoveredBy": {
+                  "type": "string"
                 }
               }
             }
@@ -56250,32 +56243,6 @@
           }
         }
       },
-      "Excludeuss": {
-        "required": [
-          "id"
-        ],
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "ussType": {
-            "type": "string"
-          },
-          "reason": {
-            "type": "string"
-          }
-        }
-      },
-      "NewExcludeuss": {
-        "properties": {
-          "ussType": {
-            "type": "string"
-          },
-          "reason": {
-            "type": "string"
-          }
-        }
-      },
       "Fgreport": {
         "required": [
           "id",
@@ -57869,10 +57836,10 @@
               "visible": {
                 "type": "boolean"
               },
-              "discoveredBy": {
+              "gbmessage": {
                 "type": "string"
               },
-              "gbmessage": {
+              "discoveredBy": {
                 "type": "string"
               }
             }
@@ -58466,10 +58433,10 @@
               "visible": {
                 "type": "boolean"
               },
-              "discoveredBy": {
+              "gbmessage": {
                 "type": "string"
               },
-              "gbmessage": {
+              "discoveredBy": {
                 "type": "string"
               }
             }
@@ -59034,23 +59001,6 @@
             "type": "boolean",
             "default": true
           },
-          "discoveredBy": {
-            "required": [
-              "id",
-              "cmdrName"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "cmdrName": {
-                "type": "string"
-              },
-              "cmdrkill": {
-                "type": "string"
-              }
-            }
-          },
           "gbmessage": {
             "required": [
               "id",
@@ -59075,6 +59025,23 @@
               },
               "longitude": {
                 "type": "number"
+              }
+            }
+          },
+          "discoveredBy": {
+            "required": [
+              "id",
+              "cmdrName"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "cmdrName": {
+                "type": "string"
+              },
+              "cmdrkill": {
+                "type": "string"
               }
             }
           }
@@ -59106,10 +59073,10 @@
             "type": "boolean",
             "default": true
           },
-          "discoveredBy": {
+          "gbmessage": {
             "type": "string"
           },
-          "gbmessage": {
+          "discoveredBy": {
             "type": "string"
           }
         }
@@ -59152,14 +59119,14 @@
               "distance": {
                 "type": "number"
               },
-              "discoveredBy": {
-                "type": "string"
-              },
               "genlogs": {
                 "type": "array",
                 "items": {
                   "type": "string"
                 }
+              },
+              "discoveredBy": {
+                "type": "string"
               }
             }
           },
@@ -59424,14 +59391,14 @@
               "distance": {
                 "type": "number"
               },
-              "discoveredBy": {
-                "type": "string"
-              },
               "genlogs": {
                 "type": "array",
                 "items": {
                   "type": "string"
                 }
+              },
+              "discoveredBy": {
+                "type": "string"
               }
             }
           }
@@ -60065,23 +60032,6 @@
           "distance": {
             "type": "number"
           },
-          "discoveredBy": {
-            "required": [
-              "id",
-              "cmdrName"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "cmdrName": {
-                "type": "string"
-              },
-              "cmdrkill": {
-                "type": "string"
-              }
-            }
-          },
           "genlogs": {
             "type": "array",
             "items": {
@@ -60114,6 +60064,23 @@
                 }
               }
             }
+          },
+          "discoveredBy": {
+            "required": [
+              "id",
+              "cmdrName"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "cmdrName": {
+                "type": "string"
+              },
+              "cmdrkill": {
+                "type": "string"
+              }
+            }
           }
         }
       },
@@ -60141,14 +60108,14 @@
           "distance": {
             "type": "number"
           },
-          "discoveredBy": {
-            "type": "string"
-          },
           "genlogs": {
             "type": "array",
             "items": {
               "type": "string"
             }
+          },
+          "discoveredBy": {
+            "type": "string"
           }
         }
       },
@@ -66587,6 +66554,64 @@
           }
         }
       },
+      "Permitlock": {
+        "required": [
+          "id",
+          "system",
+          "region",
+          "sector"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "system": {
+            "type": "string"
+          },
+          "region": {
+            "type": "string"
+          },
+          "sector": {
+            "type": "string"
+          },
+          "coordX": {
+            "type": "number"
+          },
+          "coordY": {
+            "type": "number"
+          },
+          "coordZ": {
+            "type": "number"
+          }
+        }
+      },
+      "NewPermitlock": {
+        "required": [
+          "system",
+          "region",
+          "sector"
+        ],
+        "properties": {
+          "system": {
+            "type": "string"
+          },
+          "region": {
+            "type": "string"
+          },
+          "sector": {
+            "type": "string"
+          },
+          "coordX": {
+            "type": "number"
+          },
+          "coordY": {
+            "type": "number"
+          },
+          "coordZ": {
+            "type": "number"
+          }
+        }
+      },
       "Pointofinterest": {
         "required": [
           "id"
@@ -68538,10 +68563,10 @@
                 "visible": {
                   "type": "boolean"
                 },
-                "discoveredBy": {
+                "gbmessage": {
                   "type": "string"
                 },
-                "gbmessage": {
+                "discoveredBy": {
                   "type": "string"
                 }
               }
@@ -68577,14 +68602,14 @@
                 "distance": {
                   "type": "number"
                 },
-                "discoveredBy": {
-                  "type": "string"
-                },
                 "genlogs": {
                   "type": "array",
                   "items": {
                     "type": "string"
                   }
+                },
+                "discoveredBy": {
+                  "type": "string"
                 }
               }
             }
@@ -71989,6 +72014,9 @@
                 },
                 "role": {
                   "type": "string"
+                },
+                "cmdrs": {
+                  "type": "string"
                 }
               }
             }
@@ -72084,6 +72112,23 @@
                 }
               }
             }
+          },
+          "cmdrs": {
+            "required": [
+              "id",
+              "cmdrName"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "cmdrName": {
+                "type": "string"
+              },
+              "cmdrkill": {
+                "type": "string"
+              }
+            }
           }
         }
       },
@@ -72120,6 +72165,9 @@
             "default": false
           },
           "role": {
+            "type": "string"
+          },
+          "cmdrs": {
             "type": "string"
           }
         }
@@ -72296,6 +72344,10 @@
     {
       "name": "Non-Human Signal Sources",
       "description": "Code Name - NHSS"
+    },
+    {
+      "name": "Permit Locks",
+      "description": "Permit locked regions"
     },
     {
       "name": "Regions",

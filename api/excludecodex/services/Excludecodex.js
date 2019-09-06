@@ -5,7 +5,7 @@
  * to customize this service
  */
 
-const boom = require('boom');
+const boom = require('@hapi/boom');
 
 module.exports = {
 
@@ -35,7 +35,7 @@ module.exports = {
         codexName: codexNameCleaned
       });
       let codexNameData = null;
-      let codexNameResult = codexNameQuery.toJSON();
+      let codexNameResult = codexNameQuery;
 
       if (codexNameResult[0] != undefined) {
         codexNameData = codexNameResult[0];
