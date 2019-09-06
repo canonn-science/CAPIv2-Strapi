@@ -33,23 +33,25 @@ module.exports = {
     // If there is no edsmID in values, try to grab data from EDSM
     // This is used to allow the CAPIv2-Updater to bypass this as it already grabs data from EDSM
     if (typeof values.edsmID === 'undefined') {
-      // Grabbing old data in case we need something that wasn't provided like missingSkipCount
-      let oldData = await strapi.services.system.findOne({ id: params.id });
+      if (typeof values.primaryStar === 'undefined') {
+        // Grabbing old data in case we need something that wasn't provided like missingSkipCount
+        let oldData = await strapi.services.system.findOne({ id: params.id });
 
-      // Confirm that we actually need to ask EDSM for an update, if coords locked no reason to
-      if (oldData.edsmCoordLocked === false || typeof oldData.edsmCoordLocked === 'undefined') {
-        // Grabbing old System Name if not provided
-        if (typeof values.systemName === 'undefined') {
-          values.systemName = oldData.systemName;
-        }
-        values.missingSkipCount = oldData.missingSkipCount;
+        // Confirm that we actually need to ask EDSM for an update, if coords locked no reason to
+        if (oldData.edsmCoordLocked === false || typeof oldData.edsmCoordLocked === 'undefined') {
+          // Grabbing old System Name if not provided
+          if (typeof values.systemName === 'undefined') {
+            values.systemName = oldData.systemName;
+          }
+          values.missingSkipCount = oldData.missingSkipCount;
 
-        // Grabbing EDSM data and pushing it into the values to save
-        try {
-          let edsmData = await strapi.services.system.edsmUpdate(values);
-          return strapi.query('System').update(params, edsmData);
-        } catch (error) {
-          console.log(error);
+          // Grabbing EDSM data and pushing it into the values to save
+          try {
+            let edsmData = await strapi.services.system.edsmUpdate(values);
+            return strapi.query('System').update(params, edsmData);
+          } catch (error) {
+            console.log(error);
+          }
         }
       }
     }
