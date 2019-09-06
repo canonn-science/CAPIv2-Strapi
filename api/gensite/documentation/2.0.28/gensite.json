@@ -1037,23 +1037,6 @@
           "distance": {
             "type": "number"
           },
-          "discoveredBy": {
-            "required": [
-              "id",
-              "cmdrName"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "cmdrName": {
-                "type": "string"
-              },
-              "cmdrkill": {
-                "type": "string"
-              }
-            }
-          },
           "genlogs": {
             "type": "array",
             "items": {
@@ -1086,6 +1069,23 @@
                 }
               }
             }
+          },
+          "discoveredBy": {
+            "required": [
+              "id",
+              "cmdrName"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "cmdrName": {
+                "type": "string"
+              },
+              "cmdrkill": {
+                "type": "string"
+              }
+            }
           }
         }
       },
@@ -1113,14 +1113,14 @@
           "distance": {
             "type": "number"
           },
-          "discoveredBy": {
-            "type": "string"
-          },
           "genlogs": {
             "type": "array",
             "items": {
               "type": "string"
             }
+          },
+          "discoveredBy": {
+            "type": "string"
           }
         }
       }

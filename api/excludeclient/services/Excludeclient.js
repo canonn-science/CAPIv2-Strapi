@@ -5,7 +5,7 @@
  * to customize this service
  */
 
-const boom = require('boom');
+const boom = require('@hapi/boom');
 
 module.exports = {
 
@@ -26,7 +26,7 @@ module.exports = {
         version: clientVersion
       });
       let clientVersionData = null;
-      let clientVersionResult = clientVersionQuery.toJSON();
+      let clientVersionResult = clientVersionQuery;
 
       if (clientVersionResult[0] != undefined) {
         clientVersionData = clientVersionResult[0];

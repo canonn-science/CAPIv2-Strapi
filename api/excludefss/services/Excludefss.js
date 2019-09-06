@@ -5,7 +5,7 @@
  * to customize this service
  */
 
-const boom = require('boom');
+const boom = require('@hapi/boom');
 
 module.exports = {
 
@@ -36,7 +36,7 @@ module.exports = {
         fssName_contains: signalNameCleaned
       });
       let signalNameData = null;
-      let signalNameResult = signalNameQuery.toJSON();
+      let signalNameResult = signalNameQuery;
 
       if (signalNameResult[0] != undefined) {
         signalNameData = signalNameResult[0];

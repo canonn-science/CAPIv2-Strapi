@@ -5,7 +5,7 @@
  * to customize this service
  */
 
-const boom = require('boom');
+const boom = require('@hapi/boom');
 
 module.exports = {
 
@@ -28,7 +28,7 @@ module.exports = {
         eventName: eventNameCleaned
       });
       let eventNameData = null;
-      let eventNameResult = eventNameQuery.toJSON();
+      let eventNameResult = eventNameQuery;
 
       if (eventNameResult[0] != undefined) {
         eventNameData = eventNameResult[0];
