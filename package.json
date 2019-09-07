@@ -9,10 +9,10 @@
     "localdev": "node server.js",
     "develop": "strapi develop",
     "start": "strapi start",
+    "clean": "rm -Rf node_modules build .cache",
     "build": "strapi build",
     "strapi": "strapi",
-    "lint": "eslint api/**/*.js config/**/*.js plugins/**/*.js",
-    "getcsv": "cd seed_files/scripts && ./get-sheetdata.sh"
+    "lint": "eslint api/**/*.js config/**/*.js plugins/**/*.js"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.2",
@@ -27,7 +27,6 @@
     "find-config": "^1.0.0",
     "knex": "^0.19.3",
     "lodash": "^4.17.15",
-    "moment": "^2.24.0",
     "mysql": "2.17.1",
     "node-fetch": "^2.6.0",
     "strapi": "3.0.0-next.23",
