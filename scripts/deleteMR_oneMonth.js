@@ -94,7 +94,7 @@ const deleteRecords = async () => {
         });
 
         // Hard coded delay to not overload the CAPIv2
-        await delay(5);
+        await delay(10);
 
       } catch (error) {
         console.log(error);
