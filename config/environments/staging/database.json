@@ -16,13 +16,13 @@
         "debug": false,
         "acquireConnectionTimeout": 100000,
         "pool": {
-          "min": 0,
-          "max": 50,
-          "createTimeoutMillis": 20000,
-          "acquireTimeoutMillis": 20000,
-          "idleTimeoutMillis": 3000,
-          "reapIntervalMillis": 1000,
-          "createRetryIntervalMillis": 100
+          "min": 5,
+          "max": 10,
+          "createTimeoutMillis": 30000,
+          "acquireTimeoutMillis": 600000,
+          "idleTimeoutMillis": 600000,
+          "reapIntervalMillis": 20000,
+          "createRetryIntervalMillis": 200
         }
       }
     },
@@ -41,13 +41,13 @@
         "debug": false,
         "acquireConnectionTimeout": 100000,
         "pool": {
-          "min": 0,
-          "max": 50,
-          "createTimeoutMillis": 20000,
-          "acquireTimeoutMillis": 20000,
-          "idleTimeoutMillis": 3000,
-          "reapIntervalMillis": 1000,
-          "createRetryIntervalMillis": 100
+          "min": 5,
+          "max": 10,
+          "createTimeoutMillis": 30000,
+          "acquireTimeoutMillis": 600000,
+          "idleTimeoutMillis": 600000,
+          "reapIntervalMillis": 20000,
+          "createRetryIntervalMillis": 200
         }
       }
     }
