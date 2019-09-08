@@ -1,59 +1,59 @@
 {
   "paths": {
-    "/excludeusses": {
+    "/permitlocks": {
       "get": {
-        "description": "Get all USS Type Blacklist entries",
+        "description": "Get all Permit Lock entries",
         "summary": "",
         "tags": [
-          "Canonn Use"
+          "Permit Locks"
         ],
         "security": []
       },
       "post": {
-        "description": "Create a new USS Type Blacklist entry",
+        "description": "Create a new Permit Lock entry",
         "summary": "",
         "tags": [
-          "Canonn Use"
+          "Permit Locks"
         ],
         "security": [
           "updateLogWrite"
         ]
       }
     },
-    "/excludeusses/count": {
+    "/permitlocks/count": {
       "get": {
-        "description": "Get a count of all USS Type Blacklist entries",
+        "description": "Get a count of all Permit Lock entries",
         "summary": "",
         "tags": [
-          "Canonn Use"
+          "Permit Locks"
         ],
         "security": []
       }
     },
-    "/excludeusses/{id}": {
+    "/permitlocks/{id}": {
       "get": {
-        "description": "Get a USS Type Blacklist by id",
+        "description": "Get a Permit Lock by id",
         "summary": "",
         "tags": [
-          "Canonn Use"
+          "Permit Locks"
         ],
         "security": []
       },
       "put": {
-        "description": "Update a USS Type Blacklist by id",
+        "description": "Update a Permit Lock by id",
         "summary": "",
         "tags": [
-          "Canonn Use"
+          "Permit Locks"
         ],
         "security": [
           "updateLogWrite"
         ]
       },
       "delete": {
-        "description": "Delete a USS Type Blacklist by id",
+        "description": "Delete a Permit Lock by id",
         "summary": "",
         "tags": [
-          "Canonn Use"
+          "Permit Locks"
         ],
         "security": [
           "updateLogWrite"
@@ -63,8 +63,8 @@
   },
   "tags": [
     {
-      "name": "Canonn Use",
-      "description": "Endpoints used by Canonn for updating or maintaining the API"
+      "name": "Permit Locks",
+      "description": "Permit locked regions"
     }
   ]
 }

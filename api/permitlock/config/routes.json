@@ -2,48 +2,48 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/excludeusses",
-      "handler": "Excludeuss.find",
+      "path": "/permitlocks",
+      "handler": "Permitlock.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/excludeusses/count",
-      "handler": "Excludeuss.count",
+      "path": "/permitlocks/count",
+      "handler": "Permitlock.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/excludeusses/:id",
-      "handler": "Excludeuss.findOne",
+      "path": "/permitlocks/:_id",
+      "handler": "Permitlock.findOne",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/excludeusses",
-      "handler": "Excludeuss.create",
+      "path": "/permitlocks",
+      "handler": "Permitlock.create",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/excludeusses/:id",
-      "handler": "Excludeuss.update",
+      "path": "/permitlocks/:_id",
+      "handler": "Permitlock.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/excludeusses/:id",
-      "handler": "Excludeuss.delete",
+      "path": "/permitlocks/:_id",
+      "handler": "Permitlock.delete",
       "config": {
         "policies": []
       }

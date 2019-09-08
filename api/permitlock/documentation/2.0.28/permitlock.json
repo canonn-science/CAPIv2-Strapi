@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/excludeusses": {
+    "/permitlocks": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Excludeuss"
+                    "$ref": "#/components/schemas/Permitlock"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Excludeuss"
+          "Permitlock"
         ],
         "parameters": [
           {
@@ -195,7 +195,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Excludeuss"
+                  "$ref": "#/components/schemas/Permitlock"
                 }
               }
             }
@@ -233,7 +233,7 @@
         },
         "summary": "",
         "tags": [
-          "Excludeuss"
+          "Permitlock"
         ],
         "requestBody": {
           "description": "",
@@ -241,14 +241,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewExcludeuss"
+                "$ref": "#/components/schemas/NewPermitlock"
               }
             }
           }
         }
       }
     },
-    "/excludeusses/count": {
+    "/permitlocks/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -300,12 +300,12 @@
         },
         "summary": "",
         "tags": [
-          "Excludeuss"
+          "Permitlock"
         ],
         "parameters": []
       }
     },
-    "/excludeusses/{id}": {
+    "/permitlocks/{_id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -315,7 +315,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Excludeuss"
+                  "$ref": "#/components/schemas/Permitlock"
                 }
               }
             }
@@ -353,11 +353,11 @@
         },
         "summary": "",
         "tags": [
-          "Excludeuss"
+          "Permitlock"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "_id",
             "in": "path",
             "description": "",
             "deprecated": false,
@@ -377,7 +377,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Excludeuss"
+                  "$ref": "#/components/schemas/Permitlock"
                 }
               }
             }
@@ -415,7 +415,7 @@
         },
         "summary": "",
         "tags": [
-          "Excludeuss"
+          "Permitlock"
         ],
         "requestBody": {
           "description": "",
@@ -423,14 +423,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewExcludeuss"
+                "$ref": "#/components/schemas/NewPermitlock"
               }
             }
           }
         },
         "parameters": [
           {
-            "name": "id",
+            "name": "_id",
             "in": "path",
             "description": "",
             "deprecated": false,
@@ -489,11 +489,11 @@
         },
         "summary": "",
         "tags": [
-          "Excludeuss"
+          "Permitlock"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "_id",
             "in": "path",
             "description": "",
             "deprecated": false,
@@ -508,29 +508,61 @@
   },
   "components": {
     "schemas": {
-      "Excludeuss": {
+      "Permitlock": {
         "required": [
-          "id"
+          "id",
+          "system",
+          "region",
+          "sector"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "ussType": {
+          "system": {
             "type": "string"
           },
-          "reason": {
+          "region": {
             "type": "string"
+          },
+          "sector": {
+            "type": "string"
+          },
+          "coordX": {
+            "type": "number"
+          },
+          "coordY": {
+            "type": "number"
+          },
+          "coordZ": {
+            "type": "number"
           }
         }
       },
-      "NewExcludeuss": {
+      "NewPermitlock": {
+        "required": [
+          "system",
+          "region",
+          "sector"
+        ],
         "properties": {
-          "ussType": {
+          "system": {
             "type": "string"
           },
-          "reason": {
+          "region": {
             "type": "string"
+          },
+          "sector": {
+            "type": "string"
+          },
+          "coordX": {
+            "type": "number"
+          },
+          "coordY": {
+            "type": "number"
+          },
+          "coordZ": {
+            "type": "number"
           }
         }
       }
@@ -538,7 +570,7 @@
   },
   "tags": [
     {
-      "name": "Excludeuss"
+      "name": "Permitlock"
     }
   ]
 }

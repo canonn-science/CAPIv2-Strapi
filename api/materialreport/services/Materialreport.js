@@ -22,4 +22,5 @@ module.exports = {
 
     // If checks pass, proceed to create data
     return strapi.query('Materialreport').create(values);
-  },};
+  },
+};
