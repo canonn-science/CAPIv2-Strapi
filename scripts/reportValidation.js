@@ -45,4 +45,81 @@ const login = async () => {
   }
 };
 
+let reportTypes = [
+  'ap', 'bm', 'bt', 'cs', 'fg', 'fm', 'gv', 'gy', 'ls', 'tb', 'tw'
+];
 
+let reportStatus = [
+  'pending', 'accepted', 'duplicate', 'declined', 'issue'
+];
+
+let getCount = async (reportType) => {
+  console.log(reportType);
+  const response = await fetch(url + `/${reportType}reports/count?reportStatus=pending`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  });
+
+  const count = await response.text();
+  return count;
+};
+
+let getSystem = async (system) => {
+  const response = await fetch(url + `/systems?systemName=${system}`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  });
+
+  const systemData = await response.JSON();
+  return systemData;
+};
+
+let createSystem = async (system) => {
+
+};
+
+let getBody = async (body) => {
+  const response = await fetch(url + `/bodies?bodyName=${body}`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  });
+
+  const bodyData = await response.JSON();
+  return bodyData;
+};
+
+let createBody = (body) => {
+
+};
+
+let getTypes = async (reportType, type) => {
+  const response = await fetch(url + `/${reportType}types?type=` + encodeURIComponent(type), {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  });
+
+  const typeData = await response.JSON();
+  return typeData;
+};
+
+let validateReports = async () => {
+  for (let i = 0; i < reportTypes.length; i++) {
+    if (await getCount(reportTypes[i]) > 0) {
+      console.log('running validation');
+    }
+  }
+};
+
+validateReports();

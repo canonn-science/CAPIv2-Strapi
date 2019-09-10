@@ -155,8 +155,7 @@ module.exports = {
 
     const setCount = async (sites) => {
       let keys = Object.keys(sites);
-      var i;
-      for (i = 0; i < keys.length; i++) {
+      for (let i = 0; i < keys.length; i++) {
         let count = await getCount(keys[i]);
         sites[`${keys[i]}`] = count;
       }
