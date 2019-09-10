@@ -14,8 +14,8 @@ if (process.env.NODE_ENV == 'production') {
 }
 
 // Setting EDSM URLs
-let edsmSystem = 'https://www.edsm.net/en/api-v1/system?showId=1&showCoordinates=1&showPrimaryStar=1&systemName=';
-let edsmBody = 'https://www.edsm.net/en/api-system-v1/bodies?systemName=';
+let edsmSystemURL = process.env.SCRIPT_RV_EDSMSYSTEM;
+let edsmBodyURL = process.env.SCRIPT_RV_EDSMBODY;
 
 // Declaring jwt as a variable and forming login function
 let jwt = null;
@@ -61,12 +61,42 @@ let reportStatus = [
 
 // Fetch EDSM to verify it exists and sync data to CAPIv2
 let getSystemEDSM = async (system) => {
+  let edsmSystem = null;
+  try {
+    const response = await fetch(edsmSystemURL + encodeURIComponent(system), {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    });
 
+    edsmSystem = await response.text();
+
+  } catch (error) {
+    console.log(error);
+  }
+  return edsmSystem;
 };
 
 // Fetch EDSM to verify it exists and sync data to CAPIv2
 let getBodyEDSM = async (system) => {
+  let edsmBody = null;
+  try {
+    const response = await fetch(edsmBodyURL + encodeURIComponent(system), {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    });
 
+    edsmBody = await response.text();
+
+  } catch (error) {
+    console.log(error);
+  }
+  return edsmBody;
 };
 
 // Get count of reports to see if we need to validate them
@@ -87,6 +117,26 @@ let getCount = async (reportType) => {
     console.log(error);
   }
   return count;
+};
+
+// Check blacklists for CMDR Name
+let checkCMDRBlacklist = async (cmdr) => {
+
+};
+
+// Check blacklists for Client Version
+let checkClientBlacklist = async (clientVersion) => {
+
+};
+
+// Grab CMDR data to see if they exist
+let getCMDR = async (cmdr) => {
+
+};
+
+// Create a CMDR who doesn't exist
+let createCMDR = async (cmdr) => {
+
 };
 
 // Fetch System from CAPIv2
@@ -244,6 +294,7 @@ let createBody = async (system, body, data) => {
   return newBody;
 };
 
+// Get types to validate against
 let getTypes = async (reportType, type) => {
   let typeData = null;
   try {
@@ -265,6 +316,7 @@ let getTypes = async (reportType, type) => {
   return typeData;
 };
 
+// Get a list of reports to check
 let getReports = async (reportType) => {
   let reports = [];
   let keepGoing = true;
@@ -298,6 +350,7 @@ let getReports = async (reportType) => {
   }
 };
 
+// Get sites to check for duplicates and look for data to update
 let getSites = async (reportType, body) => {
   let sites = [];
   let keepGoing = true;
@@ -332,7 +385,69 @@ let getSites = async (reportType, body) => {
 
 };
 
+// Validate reports to ensure they have all the needed data
 let validateReports = async () => {
+
+};
+
+// Create site if report is valid
+let createSite = async (reportType, data) => {
+
+  //TODO Plan out what data is sent to this function..
+  let siteData = {
+    system: data.systemID,
+    body: data.bodyID,
+    siteID: data.siteID,
+    latitude: data.latitude,
+    longitude: data.longitude,
+    type: data.typeID,
+    frontierID: data.frontierID,
+    verified: false,
+    visible: true,
+    discoveredBy: data.cmdrID
+  };
+
+  let newSite = null;
+  try {
+    await login();
+
+    const response = await fetch(url + `/${reportType}sites`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${jwt}`
+      },
+      body: siteData
+    });
+
+    newSite = await response.json();
+  } catch (error) {
+    console.log(error);
+  }
+
+  console.log(newSite);
+  return newSite;
+
+};
+
+// Update site if new data exists in a report
+let updateSite = async (data) => {
+
+};
+
+// Update report if it passes or fails validation
+let updateReport = async (reportID) => {
+
+};
+
+// Update log with changes made
+let updateAPILog = async (data) => {
+
+};
+
+// Core function that calls all others for validation
+let processReports = async () => {
   for (let i = 0; i < reportTypes.length; i++) {
     let count = await getCount(reportTypes[i]);
     if (count > 0) {
@@ -340,22 +455,6 @@ let validateReports = async () => {
       console.log('Count: ' + count);
     }
   }
-};
-
-let createSite = async (data) => {
-
-};
-
-let updateSite = async (data) => {
-
-};
-
-let updateReport = async (reportID) => {
-
-};
-
-let updateAPILog = async (data) => {
-
 };
 
 // if (process.env.SCRIPT_RV === 'true') {
@@ -367,4 +466,4 @@ let updateAPILog = async (data) => {
 //   process.exit(0);
 // }
 
-validateReports();
+processReports();
