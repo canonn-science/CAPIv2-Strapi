@@ -266,22 +266,69 @@ let getTypes = async (reportType, type) => {
 };
 
 let getReports = async (reportType) => {
+  let reports = [];
+  let keepGoing = true;
+  let API_START = 0;
+  let API_LIMIT = 1000;
 
+  let reportData = null;
+  while (keepGoing) {
+    try {
+      const response = await fetch(url + `/${reportType}reports?reportStatus=pending`, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      });
+
+      reportData = await response.json();
+      reports.push.apply(reports, reportData);
+      API_START += API_LIMIT;
+
+      if (reportData.length < API_LIMIT) {
+        keepGoing = false;
+
+        console.log(reports);
+        return reports;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 };
 
-let updateReport = async (reportID) => {
+let getSites = async (reportType, body) => {
+  let sites = [];
+  let keepGoing = true;
+  let API_START = 0;
+  let API_LIMIT = 1000;
 
-};
+  let siteData = null;
+  while (keepGoing) {
+    try {
+      const response = await fetch(url + `/${reportType}sites?bodyName=` + encodeURIComponent(body), {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      });
 
-let getSites = async (body) => {
+      siteData = await response.json();
+      sites.push.apply(sites, siteData);
+      API_START += API_LIMIT;
 
-};
+      if (siteData.length < API_LIMIT) {
+        keepGoing = false;
 
-let createSite = async (data) => {
-
-};
-
-let updateSite = async (data) => {
+        console.log(sites);
+        return sites;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
 };
 
@@ -293,6 +340,22 @@ let validateReports = async () => {
       console.log('Count: ' + count);
     }
   }
+};
+
+let createSite = async (data) => {
+
+};
+
+let updateSite = async (data) => {
+
+};
+
+let updateReport = async (reportID) => {
+
+};
+
+let updateAPILog = async (data) => {
+
 };
 
 // if (process.env.SCRIPT_RV === 'true') {
