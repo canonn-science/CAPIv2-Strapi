@@ -442,6 +442,7 @@ let updateReport = async (reportID) => {
 };
 
 // Update log with changes made
+let updateLog = {};
 let updateAPILog = async (data) => {
 
 };
