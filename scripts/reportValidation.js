@@ -13,6 +13,9 @@ if (process.env.NODE_ENV == 'production') {
   url = process.env.SCRIPT_DEV;
 }
 
+let edsmSystem = 'https://www.edsm.net/en/api-v1/system?showId=1&showCoordinates=1&showPrimaryStar=1&systemName=';
+let edsmBody = 'https://www.edsm.net/en/api-system-v1/bodies?systemName=';
+
 // Declaring jwt as a variable and forming login function
 let jwt = null;
 const login = async () => {
@@ -53,8 +56,15 @@ let reportStatus = [
   'pending', 'accepted', 'duplicate', 'declined', 'issue'
 ];
 
+let getSystemEDSM = async (system) => {
+
+};
+
+let getBodyEDSM = async (system) => {
+
+};
+
 let getCount = async (reportType) => {
-  console.log(reportType);
   const response = await fetch(url + `/${reportType}reports/count?reportStatus=pending`, {
     method: 'GET',
     headers: {
@@ -76,7 +86,8 @@ let getSystem = async (system) => {
     }
   });
 
-  const systemData = await response.JSON();
+  const systemData = await response.json();
+  console.log(systemData);
   return systemData;
 };
 
@@ -93,11 +104,12 @@ let getBody = async (body) => {
     }
   });
 
-  const bodyData = await response.JSON();
+  const bodyData = await response.json();
+  console.log(bodyData);
   return bodyData;
 };
 
-let createBody = (body) => {
+let createBody = async (body) => {
 
 };
 
@@ -110,16 +122,48 @@ let getTypes = async (reportType, type) => {
     }
   });
 
-  const typeData = await response.JSON();
+  const typeData = await response.json();
+  console.log(typeData);
   return typeData;
+};
+
+let getReports = async (reportType) => {
+
+};
+
+let updateReport = async (reportID) => {
+
+};
+
+let getSites = async (body) => {
+
+};
+
+let createSite = async (data) => {
+
+};
+
+let updateSite = async (data) => {
+
 };
 
 let validateReports = async () => {
   for (let i = 0; i < reportTypes.length; i++) {
-    if (await getCount(reportTypes[i]) > 0) {
-      console.log('running validation');
+    let count = await getCount(reportTypes[i]);
+    if (count > 0) {
+      console.log(`Running Validation on ${reportTypes[i]}`);
+      console.log('Count: ' + count);
     }
   }
 };
 
+// if (process.env.SCRIPT_RV === 'true') {
+//   cron.schedule(process.env.SCRIPT_RV_CRON, () => {
+//     validateReports();
+//   });
+// } else {
+//   console.log('This script has been disabled');
+//   process.exit(0);
+// }
+console.log(login());
 validateReports();

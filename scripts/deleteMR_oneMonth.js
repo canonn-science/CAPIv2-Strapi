@@ -83,6 +83,7 @@ const deleteRecords = async () => {
   if (mrRecords.length > 0) {
     for (let i=0; i < mrRecords.length; i++) {
       try {
+        console.log('Deleting MR: ' + mrRecords[i].id);
         await fetch(url + '/materialreports' + `/${mrRecords[i].id}`, {
           method: 'DELETE',
           headers: {
@@ -103,6 +104,7 @@ const deleteRecords = async () => {
 
 if (process.env.SCRIPT_MR_DELETE === 'true') {
   cron.schedule(process.env.SCRIPT_MR_CRON, () => {
+    console.log(moment.utc().format() + ' - Running Delete Script');
     deleteRecords();
   });
 } else {
