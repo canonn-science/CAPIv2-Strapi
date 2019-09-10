@@ -111,5 +111,59 @@ module.exports = {
         }
       }
     }
+  },
+
+  /**
+   * Promise to count all sites and reports and return an object.
+   *
+   * @return {Promise}
+   */
+
+  totalCount: async () => {
+    let sites = {
+      ap: {},
+      bm: {},
+      bt: {},
+      cs: {},
+      fg: {},
+      fm: {},
+      gen: {},
+      gb: {},
+      gr: {},
+      gs: {},
+      gv: {},
+      gy: {},
+      ls: {},
+      tb: {},
+      ts: {},
+      tw: {},
+    };
+
+    const getCount = async (key) => {
+      let data = {
+        sites: await strapi.services[`${key}site`].count(),
+        reports: {
+          pending: await strapi.services[`${key}report`].count({reportStatus: 'pending'}),
+          accepted: await strapi.services[`${key}report`].count({reportStatus: 'accepted'}),
+          duplicate: await strapi.services[`${key}report`].count({reportStatus: 'duplicate'}),
+          declined: await strapi.services[`${key}report`].count({reportStatus: 'declined'})
+        }
+      };
+
+      return data;
+    };
+
+    const setCount = async (sites) => {
+      let keys = Object.keys(sites);
+      var i;
+      for (i = 0; i < keys.length; i++) {
+        let count = await getCount(keys[i]);
+        sites[`${keys[i]}`] = count;
+      }
+    };
+
+    await setCount(sites);
+
+    return sites;
   }
 };

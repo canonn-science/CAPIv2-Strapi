@@ -14,7 +14,7 @@
       "name": "GNU-GPLv3",
       "url": "https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE"
     },
-    "x-generation-date": "09/05/2019 8:24:56 AM"
+    "x-generation-date": "09/10/2019 4:57:34 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -19195,6 +19195,64 @@
       "get": {
         "deprecated": false,
         "description": "Get only the Strapi version and CAPIv2 Version",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Canonn Use"
+        ],
+        "parameters": [],
+        "security": []
+      }
+    },
+    "/totalcount": {
+      "get": {
+        "deprecated": false,
+        "description": "Get total counts of sites and count of reports by tag",
         "responses": {
           "200": {
             "description": "response",

@@ -74,9 +74,7 @@ const deleteRecords = async () => {
   await delay(timeout);
 
   // Login and get JWT
-  if (jwt === null) {
-    login();
-  }
+  login();
 
   // Grab Records
   await getRecords();
@@ -85,7 +83,7 @@ const deleteRecords = async () => {
   if (mrRecords.length > 0) {
     for (let i=0; i < mrRecords.length; i++) {
       try {
-        let response = await fetch(url + '/materialreports' + `/${mrRecords[i].id}`, {
+        await fetch(url + '/materialreports' + `/${mrRecords[i].id}`, {
           method: 'DELETE',
           headers: {
             'Accept': 'application/json',
