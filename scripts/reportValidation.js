@@ -61,7 +61,6 @@ let reportStatus = [
 
 // Fetch EDSM to verify it exists and sync data to CAPIv2
 let getSystemEDSM = async (system) => {
-  let edsmSystem = null;
   try {
     const response = await fetch(edsmSystemURL + encodeURIComponent(system), {
       method: 'GET',
@@ -71,17 +70,16 @@ let getSystemEDSM = async (system) => {
       }
     });
 
-    edsmSystem = await response.text();
+    let edsmSystem = await response.text();
+    return edsmSystem;
 
   } catch (error) {
     console.log(error);
   }
-  return edsmSystem;
 };
 
 // Fetch EDSM to verify it exists and sync data to CAPIv2
 let getBodyEDSM = async (system) => {
-  let edsmBody = null;
   try {
     const response = await fetch(edsmBodyURL + encodeURIComponent(system), {
       method: 'GET',
@@ -91,17 +89,16 @@ let getBodyEDSM = async (system) => {
       }
     });
 
-    edsmBody = await response.text();
+    let edsmBody = await response.text();
+    return edsmBody;
 
   } catch (error) {
     console.log(error);
   }
-  return edsmBody;
 };
 
 // Get count of reports to see if we need to validate them
 let getCount = async (reportType) => {
-  let count = null;
   try {
     const response = await fetch(url + `/${reportType}reports/count?reportStatus=pending`, {
       method: 'GET',
@@ -111,37 +108,106 @@ let getCount = async (reportType) => {
       }
     });
 
-    count = await response.text();
+    let count = await response.text();
+    return count;
 
   } catch (error) {
     console.log(error);
   }
-  return count;
 };
 
 // Check blacklists for CMDR Name
 let checkCMDRBlacklist = async (cmdr) => {
+  try {
+    const response = await fetch(url + '/excludecmdrs?cmdrName=' + encodeURIComponent(cmdr), {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    });
 
+    let cmdrBlacklistData = await response.json();
+    console.log(cmdrBlacklistData);
+    return cmdrBlacklistData;
+
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 // Check blacklists for Client Version
 let checkClientBlacklist = async (clientVersion) => {
+  try {
+    const response = await fetch(url + '/excludeclients?version=' + encodeURIComponent(clientVersion), {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    });
 
+    let clientBlacklistData = await response.json();
+    console.log(clientBlacklistData);
+    return clientBlacklistData;
+
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 // Grab CMDR data to see if they exist
 let getCMDR = async (cmdr) => {
+  let cmdrData = null;
+  try {
+    const response = await fetch(url + '/cmdrs?cmdrName=' + encodeURIComponent(cmdr), {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    });
 
+    cmdrData = await response.json();
+    console.log(cmdrData);
+    return cmdrData;
+
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 // Create a CMDR who doesn't exist
 let createCMDR = async (cmdr) => {
+  let cmdrData = {
+    cmdrName: cmdr
+  };
+
+  try {
+    await login();
+
+    const response = await fetch(url + '/systems', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${jwt}`
+      },
+      body: cmdrData
+    });
+
+    let newCMDR = await response.json();
+    console.log(newCMDR);
+    return newCMDR;
+
+  } catch (error) {
+    console.log(error);
+  }
 
 };
 
 // Fetch System from CAPIv2
 let getSystem = async (system) => {
-  let systemData = null;
   try {
     const response = await fetch(url + '/systems?systemName=' + encodeURIComponent(system), {
       method: 'GET',
@@ -151,14 +217,13 @@ let getSystem = async (system) => {
       }
     });
 
-    systemData = await response.json();
+    let systemData = await response.json();
+    console.log(systemData);
+    return systemData;
 
   } catch (error) {
     console.log(error);
   }
-
-  console.log(systemData);
-  return systemData;
 };
 
 // Create System in CAPIv2 and if applicable use EDSM data
@@ -181,7 +246,6 @@ let createSystem = async (system, data) => {
     systemData.missingSkipCount = 1;
   }
 
-  let newSystem = null;
   try {
     await login();
 
@@ -195,17 +259,16 @@ let createSystem = async (system, data) => {
       body: systemData
     });
 
-    newSystem = await response.json();
+    let newSystem = await response.json();
+    console.log(newSystem);
+    return newSystem;
+
   } catch (error) {
     console.log(error);
   }
-
-  console.log(newSystem);
-  return newSystem;
 };
 
 let getBody = async (body) => {
-  let bodyData = null;
   try {
     const response = await fetch(url + `/bodies?bodyName=${body}`, {
       method: 'GET',
@@ -215,14 +278,14 @@ let getBody = async (body) => {
       }
     });
 
-    bodyData = await response.json();
+    let bodyData = await response.json();
+    console.log(bodyData);
+    return bodyData;
 
   } catch (error) {
     console.log(error);
   }
 
-  console.log(bodyData);
-  return bodyData;
 };
 
 // Create Body in CAPIv2 and if applicable use EDSM data
@@ -271,7 +334,6 @@ let createBody = async (system, body, data) => {
     bodyData.missingSkipCount = 1;
   }
 
-  let newBody = null;
   try {
     await login();
 
@@ -285,18 +347,17 @@ let createBody = async (system, body, data) => {
       body: bodyData
     });
 
-    newBody = await response.json();
+    let newBody = await response.json();
+    console.log(newBody);
+    return newBody;
+
   } catch (error) {
     console.log(error);
   }
-
-  console.log(newBody);
-  return newBody;
 };
 
 // Get types to validate against
 let getTypes = async (reportType, type) => {
-  let typeData = null;
   try {
     const response = await fetch(url + `/${reportType}types?type=` + encodeURIComponent(type), {
       method: 'GET',
@@ -306,14 +367,13 @@ let getTypes = async (reportType, type) => {
       }
     });
 
-    typeData = await response.json();
+    let typeData = await response.json();
+    console.log(typeData);
+    return typeData;
 
   } catch (error) {
     console.log(error);
   }
-
-  console.log(typeData);
-  return typeData;
 };
 
 // Get a list of reports to check
@@ -382,12 +442,39 @@ let getSites = async (reportType, body) => {
       console.log(error);
     }
   }
-
 };
 
 // Validate reports to ensure they have all the needed data
-let validateReports = async () => {
+let validateReport = async (report) => {
 
+  // Define all checks as failing until proven otherwise
+  let validReportData = {
+    valid: false,
+    blacklists: {
+      cmdrBlacklisted: true,
+      clientBlacklisted: true
+    },
+    capiv2: {
+      systemExists: false,
+      bodyExists: false,
+      cmdrExists: false,
+      duplicate: true
+    },
+    edsm: {
+      systemData: false,
+      bodyData: false
+    }
+  };
+
+  // check blacklists
+
+  // check capiv2
+
+  // check edsm
+
+  // return checks and data
+
+  return validReportData;
 };
 
 // Create site if report is valid
@@ -407,7 +494,6 @@ let createSite = async (reportType, data) => {
     discoveredBy: data.cmdrID
   };
 
-  let newSite = null;
   try {
     await login();
 
@@ -421,14 +507,13 @@ let createSite = async (reportType, data) => {
       body: siteData
     });
 
-    newSite = await response.json();
+    let newSite = await response.json();
+    console.log(newSite);
+    return newSite;
+
   } catch (error) {
     console.log(error);
   }
-
-  console.log(newSite);
-  return newSite;
-
 };
 
 // Update site if new data exists in a report
@@ -452,15 +537,41 @@ let processReports = async () => {
   for (let i = 0; i < reportTypes.length; i++) {
     let count = await getCount(reportTypes[i]);
     if (count > 0) {
+
       console.log(`Running Validation on ${reportTypes[i]}`);
-      console.log('Count: ' + count);
+      updateLog[`${reportTypes[i]}reports`] = { count: count };
+
+      let reportsToProcess = await getReports(reportTypes[i]);
+
+      for (let i = 0; i < reportsToProcess.length; i++) {
+        let reportChecked = await validateReport(reportsToProcess[i]);
+
+        if (reportChecked === false) {
+          // Update Log
+        } else {
+          // create system
+
+          // create body and assign system
+
+          // create cmdr
+
+          // create/update site and assign system, body, cmdr
+
+          // update report
+
+          // Update log
+        }
+      }
+    } else {
+      updateLog[`${reportTypes[i]}reports`] = { count: count };
     }
   }
+  console.log(updateLog);
 };
 
 // if (process.env.SCRIPT_RV === 'true') {
 //   cron.schedule(process.env.SCRIPT_RV_CRON, () => {
-//     validateReports();
+//     processReports();
 //   });
 // } else {
 //   console.log('This script has been disabled');
