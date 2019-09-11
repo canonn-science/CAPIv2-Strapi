@@ -111,7 +111,13 @@ let getSystemEDSM = async system => {
     5
   );
 
-  let edsmData = await edsmResponse.json();
+  let edsmData = null;
+  try {
+    edsmData = await edsmResponse.json();
+  } catch (error) {
+    edsmData = {};
+    console.log(error);
+  }
 
   return edsmData;
 };
@@ -130,7 +136,13 @@ let getBodyEDSM = async system => {
     5
   );
 
-  let edsmData = await edsmResponse.json();
+  let edsmData = null;
+  try {
+    edsmData = await edsmResponse.json();
+  } catch (error) {
+    edsmData = {};
+    console.log(error);
+  }
 
   return edsmData;
 };
@@ -500,16 +512,23 @@ let getReports = async reportType => {
 };
 
 // Get sites to check for duplicates and look for data to update
-let getSites = async (reportType, body) => {
+let getSites = async (reportType, bodyID, body) => {
   let sites = [];
   let keepGoing = true;
   let API_START = 0;
   let API_LIMIT = 1000;
+  let params = null;
+
+  if (bodyID) {
+    params = `/${reportType}sites?body=` + encodeURIComponent(bodyID.id);
+  } else {
+    params = `/${reportType}sites?body.bodyName=` + encodeURIComponent(body);
+  }
 
   let siteData = null;
   while (keepGoing) {
     try {
-      const response = await fetch(url + `/${reportType}sites?body.bodyName=` + encodeURIComponent(body), {
+      const response = await fetch(url + params, {
         method: 'GET',
         headers: {
           Accept: 'application/json',
@@ -740,7 +759,7 @@ let validateReport = async (reportType, report) => {
   }
 
   // check capiv2 for duplicate
-  let checkCAPISite = await getSites(reportType, report.bodyName);
+  let checkCAPISite = await getSites(reportType, reportChecks.capiv2.body.data, report.bodyName);
 
   if (!Array.isArray(checkCAPISite) || !checkCAPISite.length) {
     reportChecks.capiv2.duplicate.createSite = true;
@@ -753,12 +772,11 @@ let validateReport = async (reportType, report) => {
         reportChecks.capiv2.duplicate.isDuplicate = false;
         return reportChecks;
       } else if (
-        (report.systemName.toUpperCase() === checkCAPISite[i].system.systemName.toUpperCase() &&
-          report.bodyName.toUpperCase() === checkCAPISite[i].body.bodyName.toUpperCase() &&
-          report.latitude &&
-          report.longitude &&
-          checkCAPISite[i].body.radius) ||
-        reportChecks.edsm.body.data.radius
+        report.systemName.toUpperCase() === checkCAPISite[i].system.systemName.toUpperCase() &&
+        report.bodyName.toUpperCase() === checkCAPISite[i].body.bodyName.toUpperCase() &&
+        report.latitude &&
+        report.longitude &&
+        (checkCAPISite[i].body.radius || reportChecks.edsm.body.data.radius)
         // Pending Frontier Update
         //report.frontierID === checkCAPISite[i].frontierID
       ) {
@@ -880,12 +898,13 @@ let processReports = async () => {
           reportChecked.valid.reason = 'Client is blacklisted';
           reportChecked.valid.reportStatus = reportStatus.blacklisted;
         }
-        // if (reportChecked.capiv2.system.checked === false) {
-        //   //
-        // }
-        // if (reportChecked.capiv2.body.checked === false) {
-        //   //
-        // }
+        // Continue further checks
+
+
+
+
+
+
         console.log(reportChecked);
 
         if (reportChecked.valid === false) {
@@ -904,7 +923,7 @@ let processReports = async () => {
           // Update log
         }
 
-        await delay(5000);
+        await delay(500);
       }
     } else {
       updateLog[`${reportTypes[i]}reports`] = { reportCount: count };
