@@ -128,7 +128,6 @@ let checkCMDRBlacklist = async (cmdr) => {
     });
 
     let cmdrBlacklistData = await response.json();
-    console.log(cmdrBlacklistData);
     return cmdrBlacklistData;
 
   } catch (error) {
@@ -148,7 +147,6 @@ let checkClientBlacklist = async (clientVersion) => {
     });
 
     let clientBlacklistData = await response.json();
-    console.log(clientBlacklistData);
     return clientBlacklistData;
 
   } catch (error) {
@@ -169,7 +167,6 @@ let getCMDR = async (cmdr) => {
     });
 
     cmdrData = await response.json();
-    console.log(cmdrData);
     return cmdrData;
 
   } catch (error) {
@@ -197,7 +194,6 @@ let createCMDR = async (cmdr) => {
     });
 
     let newCMDR = await response.json();
-    console.log(newCMDR);
     return newCMDR;
 
   } catch (error) {
@@ -218,7 +214,6 @@ let getSystem = async (system) => {
     });
 
     let systemData = await response.json();
-    console.log(systemData);
     return systemData;
 
   } catch (error) {
@@ -260,7 +255,6 @@ let createSystem = async (system, data) => {
     });
 
     let newSystem = await response.json();
-    console.log(newSystem);
     return newSystem;
 
   } catch (error) {
@@ -279,7 +273,6 @@ let getBody = async (body) => {
     });
 
     let bodyData = await response.json();
-    console.log(bodyData);
     return bodyData;
 
   } catch (error) {
@@ -348,7 +341,6 @@ let createBody = async (system, body, data) => {
     });
 
     let newBody = await response.json();
-    console.log(newBody);
     return newBody;
 
   } catch (error) {
@@ -368,7 +360,6 @@ let getTypes = async (reportType, type) => {
     });
 
     let typeData = await response.json();
-    console.log(typeData);
     return typeData;
 
   } catch (error) {
@@ -400,8 +391,6 @@ let getReports = async (reportType) => {
 
       if (reportData.length < API_LIMIT) {
         keepGoing = false;
-
-        console.log(reports);
         return reports;
       }
     } catch (error) {
@@ -434,8 +423,6 @@ let getSites = async (reportType, body) => {
 
       if (siteData.length < API_LIMIT) {
         keepGoing = false;
-
-        console.log(sites);
         return sites;
       }
     } catch (error) {
@@ -445,28 +432,102 @@ let getSites = async (reportType, body) => {
 };
 
 // Validate reports to ensure they have all the needed data
-let validateReport = async (report) => {
+let validateReport = async (reportType, report) => {
 
   // Define all checks as failing until proven otherwise
-  let validReportData = {
+  let reportChecks = {
+    reportType: reportType + 'reports',
+    reportID: report.id,
     valid: false,
     blacklists: {
-      cmdrBlacklisted: true,
-      clientBlacklisted: true
+      cmdr: {
+        checked: false,
+        blacklisted: true,
+      },
+      client: {
+        checked: false,
+        blacklisted: true
+      }
     },
     capiv2: {
-      systemExists: false,
-      bodyExists: false,
-      cmdrExists: false,
-      duplicate: true
+      system: {
+        checked: false,
+        systemExists: false,
+        systemData: null
+      },
+      body: {
+        checked: false,
+        bodyExists: false,
+        bodyData: null
+      },
+      cmdr: {
+        checked: false,
+        cmdrExists: false,
+        cmdrData: null
+      },
+      duplicate: {
+        checkedHaversine: false,
+        // Pending new Frontier update
+        //checkedFrontierID: false
+        duplicate: true,
+        sites: []
+      }
     },
     edsm: {
-      systemData: false,
-      bodyData: false
+      system: {
+        checked: false,
+        systemExists: false,
+        systemData: null
+      },
+      body: {
+        checked: false,
+        bodyExists: false,
+        bodyData: null
+      }
     }
   };
 
-  // check blacklists
+  // check cmdr blacklist
+  let checkCMDR = await checkCMDRBlacklist(report.cmdrName);
+
+  if (!Array.isArray(checkCMDR) || !checkCMDR.length) {
+    reportChecks.blacklists.cmdr.checked = true;
+    reportChecks.blacklists.cmdr.cmdrBlacklisted = false;
+    return reportChecks;
+
+  } else if (checkCMDR.length >= 1){
+    for (let i = 0; i < checkCMDR.length; i ++) {
+      if (report.cmdrName == checkCMDR[i].cmdrName) {
+        reportChecks.blacklists.cmdr.checked = true;
+        reportChecks.blacklists.cmdr.cmdrBlacklisted = true;
+        return reportChecks;
+      }
+    }
+  } else {
+    reportChecks.blacklists.cmdr.checked = true;
+    reportChecks.blacklists.cmdr.cmdrBlacklisted = false;
+  }
+
+  // check client blacklist
+  let checkClient = await checkClientBlacklist(report.clientVersion);
+
+  if (!Array.isArray(checkClient) || !checkClient.length) {
+    reportChecks.blacklists.client.checked = true;
+    reportChecks.blacklists.client.blacklisted = false;
+    return reportChecks;
+
+  } else if (checkClient.length >= 1){
+    for (let i = 0; i < checkClient.length; i ++) {
+      if (report.clientVersion == checkClient[i].clientVersion) {
+        reportChecks.blacklists.client.checked = true;
+        reportChecks.blacklists.client.blacklisted = true;
+        return reportChecks;
+      }
+    }
+  } else {
+    reportChecks.blacklists.cmdr.checked = true;
+    reportChecks.blacklists.cmdr.cmdrBlacklisted = false;
+  }
 
   // check capiv2
 
@@ -474,7 +535,7 @@ let validateReport = async (report) => {
 
   // return checks and data
 
-  return validReportData;
+  return reportChecks;
 };
 
 // Create site if report is valid
@@ -543,27 +604,30 @@ let processReports = async () => {
 
       let reportsToProcess = await getReports(reportTypes[i]);
 
-      for (let i = 0; i < reportsToProcess.length; i++) {
-        let reportChecked = await validateReport(reportsToProcess[i]);
+      for (let r = 0; r < reportsToProcess.length; r++) {
+        let reportChecked = await validateReport(reportTypes[i], reportsToProcess[r]);
 
-        if (reportChecked === false) {
+        if (reportChecked.valid === false) {
+          // Update report
+
+          console.log(reportChecked);
           // Update Log
         } else {
-          // create system
+          // create system and Update Log
 
-          // create body and assign system
+          // create body, assign system, and Update Log
 
-          // create cmdr
+          // create cmdr and Update Log
 
-          // create/update site and assign system, body, cmdr
+          // create/update site, assign system, body, and cmdr; Update Log
 
-          // update report
+          // Update report
 
           // Update log
         }
       }
     } else {
-      updateLog[`${reportTypes[i]}reports`] = { count: count };
+      updateLog[`${reportTypes[i]}reports`] = { reportCount: count };
     }
   }
   console.log(updateLog);
