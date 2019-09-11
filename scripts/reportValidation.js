@@ -2,6 +2,7 @@ const fetch = require('node-fetch');
 const moment = require('moment');
 const cron = require('node-cron');
 require('dotenv').config({ path: require('find-config')('.env') });
+const delay = ms => new Promise(res => setTimeout(res, ms));
 
 // Setting URL for each server
 let url = null;
@@ -48,10 +49,19 @@ const login = async () => {
 };
 
 // Set report types that will be verified and converted to sites
-let reportTypes = ['ap', 'bm', 'bt', 'cs', 'fg', 'fm', 'gv', 'gy', 'ls', 'tb', 'tw'];
+let reportTypes = ['ap', 'bt', 'cs', 'fg', 'fm', 'gv', 'gy', 'ls', 'tb', 'tw'];
 
 // List of possible status options for report
-let reportStatus = ['pending', 'accepted', 'duplicate', 'declined', 'issue'];
+let reportStatus = {
+  beta: 'declined',
+  blacklisted: 'declined',
+  capiv2Type: 'issue',
+  duplicate: 'duplicate',
+  missingCoords: 'issue',
+  edsmSystem: 'issue',
+  edsmBody: 'issue',
+  accepted: 'accepted',
+};
 
 let haversine = async (p1, p2, radius) => {
   const phi_a = (p1.latitude * Math.PI) / 180;
@@ -68,9 +78,7 @@ let haversine = async (p1, p2, radius) => {
 
   if (phi_a != phi_b || lambda_b != lambda_a) {
     d_lambda = lambda_b - lambda_a;
-    S_ab = Math.acos(
-      Math.sin(phi_a) * Math.sin(phi_b) + Math.cos(phi_a) * Math.cos(phi_b) * Math.cos(d_lambda)
-    );
+    S_ab = Math.acos(Math.sin(phi_a) * Math.sin(phi_b) + Math.cos(phi_a) * Math.cos(phi_b) * Math.cos(d_lambda));
     D_ab = S_ab * radius_planet;
   } else {
     D_ab = 0;
@@ -90,8 +98,11 @@ let getSystemEDSM = async system => {
       },
     });
 
-    let edsmSystem = await response.text();
-    return edsmSystem;
+    let edsmResponse = {
+      edsmSystem: await response.text(),
+      edsmHTTPCode: await response.text()
+    };
+    return edsmResponse;
   } catch (error) {
     console.log(error);
   }
@@ -517,9 +528,12 @@ let validateReport = async (reportType, report) => {
   let reportChecks = {
     reportType: reportType + 'reports',
     reportID: report.id,
-    valid: false,
+    valid: {
+      isValid: false,
+      reason: null,
+      reportStatus: null,
+    },
     isBeta: false,
-    added: false,
     blacklists: {
       cmdr: {
         checked: false,
@@ -552,10 +566,11 @@ let validateReport = async (reportType, report) => {
         data: null,
       },
       duplicate: {
+        createSite: false,
         checkedHaversine: false,
         // Pending new Frontier update
         //checkedFrontierID: false
-        duplicate: true,
+        isDuplicate: true,
         distance: null,
         site: null,
       },
@@ -620,7 +635,7 @@ let validateReport = async (reportType, report) => {
     reportChecks.capiv2.system.exists = false;
   } else {
     for (let i = 0; i < checkCAPISystem.length; i++) {
-      if (report.systemName == checkCAPISystem[i].systemName) {
+      if (report.systemName.toUpperCase() == checkCAPISystem[i].systemName.toUpperCase()) {
         reportChecks.capiv2.system.checked = true;
         reportChecks.capiv2.system.exists = true;
         reportChecks.capiv2.system.data = checkCAPISystem[i];
@@ -636,7 +651,7 @@ let validateReport = async (reportType, report) => {
     reportChecks.capiv2.body.exists = false;
   } else {
     for (let i = 0; i < checkCAPIBody.length; i++) {
-      if (report.bodyName == checkCAPIBody[i].bodyName) {
+      if (report.bodyName.toUpperCase() == checkCAPIBody[i].bodyName.toUpperCase()) {
         reportChecks.capiv2.body.checked = true;
         reportChecks.capiv2.body.exists = true;
         reportChecks.capiv2.body.data = checkCAPIBody[i];
@@ -691,29 +706,33 @@ let validateReport = async (reportType, report) => {
   let checkCAPISite = await getSites(reportType, report.bodyName);
 
   if (!Array.isArray(checkCAPISite) || !checkCAPISite.length) {
-    reportChecks.capiv2.site.checked = true;
-    reportChecks.capiv2.site.exists = false;
+    reportChecks.capiv2.duplicate.createSite = true;
+    reportChecks.capiv2.duplicate.checkedHaversine = false;
+    reportChecks.capiv2.duplicate.isDuplicate = false;
   } else {
     for (let i = 0; i < checkCAPISite.length; i++) {
-      if (
-        report.systemName.toUpperCase() === checkCAPISite[i].system.systemName.toUpperCase() &&
-        report.bodyName.toUpperCase() === checkCAPISite[i].body.bodyName.toUpperCase() &&
-        report.latitude &&
-        report.longitude &&
-        checkCAPISite[i].body.radius ||
+      if (!report.latitude || !report.longitude || (report.latitude == 0 && report.longitude == 0)) {
+        reportChecks.capiv2.duplicate.checkedHaversine = false;
+        reportChecks.capiv2.duplicate.isDuplicate = false;
+        return reportChecks;
+      } else if (
+        (report.systemName.toUpperCase() === checkCAPISite[i].system.systemName.toUpperCase() &&
+          report.bodyName.toUpperCase() === checkCAPISite[i].body.bodyName.toUpperCase() &&
+          report.latitude &&
+          report.longitude &&
+          checkCAPISite[i].body.radius) ||
         reportChecks.edsm.body.data.radius
         // Pending Frontier Update
         //report.frontierID === checkCAPISite[i].frontierID
       ) {
-
         let tempRadius = null;
         if (checkCAPISite[i].body.radius) {
           tempRadius = checkCAPISite[i].body.radius;
         } else if (reportChecks.edsm.body.data.radius) {
           tempRadius = reportChecks.edsm.body.data.radius;
         } else {
-          reportChecks.capiv2.site.duplicate.checkedHaversine = false;
-          reportChecks.capiv2.site.duplicate.duplicate = true;
+          reportChecks.capiv2.duplicate.checkedHaversine = false;
+          reportChecks.capiv2.duplicate.isDuplicate = true;
           return reportChecks;
         }
 
@@ -731,25 +750,20 @@ let validateReport = async (reportType, report) => {
             tempRadius
           );
 
-          if (distance <= process.env.SCRIPT_RV_DUPRANGE) {
-            reportChecks.capiv2.site.duplicate.checkedHaversine = true;
-            reportChecks.capiv2.site.duplicate.duplicate = false;
-            reportChecks.capiv2.site.duplicate.duplicate.distance = distance;
+          if (distance > process.env.SCRIPT_RV_DUPRANGE) {
+            reportChecks.capiv2.duplicate.checkedHaversine = true;
+            reportChecks.capiv2.duplicate.isDuplicate = false;
           } else {
-            reportChecks.capiv2.site.duplicate.checkedHaversine = true;
-            reportChecks.capiv2.site.duplicate.duplicate = true;
-            reportChecks.capiv2.site.duplicate.duplicate.distance = distance;
-            reportChecks.capiv2.site.duplicate.site = checkCAPISite[i];
+            reportChecks.capiv2.duplicate.checkedHaversine = true;
+            reportChecks.capiv2.duplicate.isDuplicate = true;
+            reportChecks.capiv2.duplicate.distance = distance;
+            reportChecks.capiv2.duplicate.site = checkCAPISite[i];
+            return reportChecks;
           }
         }
-      } else if (!report.latitude || !report.longitude || (report.latitude == 0 && report.longitude == 0)) {
-        //
       }
     }
   }
-
-  // return checks and data
-
   return reportChecks;
 };
 
@@ -813,10 +827,36 @@ let processReports = async () => {
       for (let r = 0; r < reportsToProcess.length; r++) {
         let reportChecked = await validateReport(reportTypes[i], reportsToProcess[r]);
 
+        // Validate report based on prevbious updates to reportChecks
+        if (reportChecked.isBeta === true) {
+          reportChecked.valid.isValid = false;
+          reportChecked.valid.reason = 'Report was from a Beta version';
+          reportChecked.valid.reportStatus = reportStatus.beta;
+        }
+        if (reportChecked.blacklists.cmdr.blacklisted === true) {
+          reportChecked.valid.isValid = false;
+          reportChecked.valid.reason = 'CMDR is blacklisted';
+          reportChecked.valid.reportStatus = reportStatus.blacklisted;
+        }
+        if (reportChecked.blacklists.client.blacklisted === true) {
+          reportChecked.valid.isValid = false;
+          reportChecked.valid.reason = 'Client is blacklisted';
+          reportChecked.valid.reportStatus = reportStatus.blacklisted;
+        }
+        if (reportChecked.capiv2.system.checked === false) {
+          //
+        }
+        if (reportChecked.capiv2.body.checked === false) {
+          //
+        }
+
         if (reportChecked.valid === false) {
           // Update report
 
           console.log(reportChecked);
+          // if (reportChecked.capiv2.duplicate.isDuplicate == true) {
+          //   console.log(reportChecked.capiv2.duplicate.site);
+          // }
           // Update Log
         } else {
           // create system and Update Log
@@ -826,6 +866,8 @@ let processReports = async () => {
           // Update report
           // Update log
         }
+
+        await delay(5000);
       }
     } else {
       updateLog[`${reportTypes[i]}reports`] = { reportCount: count };
