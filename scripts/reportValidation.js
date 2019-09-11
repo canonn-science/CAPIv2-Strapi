@@ -59,9 +59,10 @@ let haversine = async (p1, p2, radius) => {
 
 const fetch_retry = async (url, options, n) => {
   try {
-    return await fetch(url, options)
-  } catch(err) {
-    if (n === 1) throw err;
+    return await fetch(url, options);
+  } catch (error) {
+    if (n === 1) console.log(error);
+    delay(5000);
     return await fetch_retry(url, options, n - 1);
   }
 };
@@ -98,14 +99,17 @@ const login = async () => {
 
 // Fetch EDSM to verify it exists and sync data to CAPIv2
 let getSystemEDSM = async system => {
-
-  let edsmResponse = await fetch_retry(edsmSystemURL + encodeURIComponent(system), {
-    method: 'GET',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
+  let edsmResponse = await fetch_retry(
+    edsmSystemURL + encodeURIComponent(system),
+    {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
     },
-  });
+    5
+  );
 
   let edsmData = await edsmResponse.json();
 
@@ -114,20 +118,21 @@ let getSystemEDSM = async system => {
 
 // Fetch EDSM to verify it exists and sync data to CAPIv2
 let getBodyEDSM = async system => {
-  try {
-    const response = await fetch(edsmBodyURL + encodeURIComponent(system), {
+  let edsmResponse = await fetch_retry(
+    edsmBodyURL + encodeURIComponent(system),
+    {
       method: 'GET',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-    });
+    },
+    5
+  );
 
-    let edsmBody = await response.text();
-    return edsmBody;
-  } catch (error) {
-    console.log(error);
-  }
+  let edsmData = await edsmResponse.json();
+
+  return edsmData;
 };
 
 // Get count of reports to see if we need to validate them
@@ -582,13 +587,14 @@ let validateReport = async (reportType, report) => {
     edsm: {
       system: {
         checked: false,
-        systemExists: false,
-        systemData: null,
+        exists: false,
+        hasCoords: false,
+        data: null,
       },
       body: {
         checked: false,
-        bodyExists: false,
-        bodyData: null,
+        exists: false,
+        data: null,
       },
     },
   };
@@ -701,10 +707,37 @@ let validateReport = async (reportType, report) => {
   }
 
   // check edsm for system
-  //let checkEDSMSystem = await getSystemEDSM(report.systemName);
+  let checkEDSMSystem = await getSystemEDSM(report.systemName);
+
+  if (Object.keys(checkEDSMSystem).length < 1) {
+    reportChecks.edsm.system.checked = true;
+    reportChecks.edsm.system.exists = false;
+  } else {
+    if (report.systemName.toUpperCase() == checkEDSMSystem.name.toUpperCase()) {
+      reportChecks.edsm.system.checked = true;
+      reportChecks.edsm.system.exists = true;
+      reportChecks.edsm.system.data = checkEDSMSystem;
+      if (checkEDSMSystem.coords) {
+        reportChecks.edsm.system.hasCoords = true;
+      }
+    }
+  }
 
   // check edsm for body
-  //let checkEDSMBody = await getBodyEDSM(report.systemName);
+  let checkEDSMBody = await getBodyEDSM(report.systemName);
+
+  if (!Array.isArray(checkEDSMBody.bodies) || !checkEDSMBody.bodies.length) {
+    reportChecks.edsm.body.checked = true;
+    reportChecks.edsm.body.exists = false;
+  } else {
+    for (let i = 0; i < checkEDSMBody.bodies.length; i++) {
+      if (report.bodyName.toUpperCase() == checkEDSMBody.bodies[i].name.toUpperCase()) {
+        reportChecks.edsm.body.checked = true;
+        reportChecks.edsm.body.exists = true;
+        reportChecks.edsm.body.data = checkEDSMBody.bodies[i];
+      }
+    }
+  }
 
   // check capiv2 for duplicate
   let checkCAPISite = await getSites(reportType, report.bodyName);
@@ -847,17 +880,17 @@ let processReports = async () => {
           reportChecked.valid.reason = 'Client is blacklisted';
           reportChecked.valid.reportStatus = reportStatus.blacklisted;
         }
-        if (reportChecked.capiv2.system.checked === false) {
-          //
-        }
-        if (reportChecked.capiv2.body.checked === false) {
-          //
-        }
+        // if (reportChecked.capiv2.system.checked === false) {
+        //   //
+        // }
+        // if (reportChecked.capiv2.body.checked === false) {
+        //   //
+        // }
+        console.log(reportChecked);
 
         if (reportChecked.valid === false) {
           // Update report
 
-          console.log(reportChecked);
           // if (reportChecked.capiv2.duplicate.isDuplicate == true) {
           //   console.log(reportChecked.capiv2.duplicate.site);
           // }
