@@ -18,38 +18,8 @@ if (process.env.NODE_ENV == 'production') {
 let edsmSystemURL = process.env.SCRIPT_RV_EDSMSYSTEM;
 let edsmBodyURL = process.env.SCRIPT_RV_EDSMBODY;
 
-// Declaring jwt as a variable and forming login function
-let jwt = null;
-const login = async () => {
-  // set body information to .env options
-  let body = {
-    identifier: process.env.SCRIPT_USER,
-    password: process.env.SCRIPT_PASS,
-  };
-
-  // try logging in or log the error
-  try {
-    const response = await fetch(url + '/auth/local', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(body),
-    });
-
-    // waiting for login response
-    const json = await response.json();
-
-    // set jwt after response is received
-    jwt = json.jwt;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 // Set report types that will be verified and converted to sites
-let reportTypes = ['ap', 'bt', 'cs', 'fg', 'fm', 'gv', 'gy', 'ls', 'tb', 'tw'];
+let reportTypes = ['ap', 'bm', 'bt', 'cs', 'fg', 'fm', 'gv', 'gy', 'ls', 'tb', 'tw'];
 
 // List of possible status options for report
 let reportStatus = {
@@ -87,25 +57,59 @@ let haversine = async (p1, p2, radius) => {
   return D_ab;
 };
 
-// Fetch EDSM to verify it exists and sync data to CAPIv2
-let getSystemEDSM = async system => {
+const fetch_retry = async (url, options, n) => {
   try {
-    const response = await fetch(edsmSystemURL + encodeURIComponent(system), {
-      method: 'GET',
+    return await fetch(url, options)
+  } catch(err) {
+    if (n === 1) throw err;
+    return await fetch_retry(url, options, n - 1);
+  }
+};
+
+// Declaring jwt as a variable and forming login function
+let jwt = null;
+const login = async () => {
+  // set body information to .env options
+  let body = {
+    identifier: process.env.SCRIPT_USER,
+    password: process.env.SCRIPT_PASS,
+  };
+
+  // try logging in or log the error
+  try {
+    const response = await fetch(url + '/auth/local', {
+      method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
+      body: JSON.stringify(body),
     });
 
-    let edsmResponse = {
-      edsmSystem: await response.text(),
-      edsmHTTPCode: await response.text()
-    };
-    return edsmResponse;
+    // waiting for login response
+    const json = await response.json();
+
+    // set jwt after response is received
+    jwt = json.jwt;
   } catch (error) {
     console.log(error);
   }
+};
+
+// Fetch EDSM to verify it exists and sync data to CAPIv2
+let getSystemEDSM = async system => {
+
+  let edsmResponse = await fetch_retry(edsmSystemURL + encodeURIComponent(system), {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  });
+
+  let edsmData = await edsmResponse.json();
+
+  return edsmData;
 };
 
 // Fetch EDSM to verify it exists and sync data to CAPIv2
