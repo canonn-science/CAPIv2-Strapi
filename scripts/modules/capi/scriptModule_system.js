@@ -1,7 +1,7 @@
-import { fetch_retry } from '../script_fetchRetry';
+const fetchTools = require('../scriptModule_fetchRetry');
 
 // Fetch System from CAPIv2
-export const getSystem = async (url, system, systemID) => {
+const getSystem = async (url, system, systemID) => {
   var systemURL;
   if (systemID && (!system || system === null || typeof system === 'undefined')) {
     systemURL = url + `/systems/${systemID}`;
@@ -9,7 +9,7 @@ export const getSystem = async (url, system, systemID) => {
     systemURL = url + '/systems?systemName=' + encodeURIComponent(system);
   }
 
-  let response = await fetch_retry(5, systemURL, {
+  let response = await fetchTools.fetch_retry(5, systemURL, {
     method: 'GET',
     headers: {
       Accept: 'application/json',
@@ -22,13 +22,13 @@ export const getSystem = async (url, system, systemID) => {
 };
 
 // Create System in CAPIv2
-export const createSystem = async (url, systemData, jwt) => {
+const createSystem = async (url, systemData, jwt) => {
   let systemURL = url + '/systems';
 
   if (systemData.systemName === null || typeof systemData.systemName === 'undefined') {
     return {};
   } else {
-    let response = await fetch_retry(5, systemURL, {
+    let response = await fetchTools.fetch_retry(5, systemURL, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -42,3 +42,5 @@ export const createSystem = async (url, systemData, jwt) => {
     return newSystem;
   }
 };
+
+module.exports = { getSystem, createSystem };

@@ -1,7 +1,7 @@
-import { fetch_retry } from '../script_fetchRetry';
+const fetchTools = require('../scriptModule_fetchRetry');
 
 // Fetch CMDR from CAPIv2
-export const getCMDR = async (url, cmdr, cmdrID) => {
+const getCMDR = async (url, cmdr, cmdrID) => {
   var cmdrURL;
   if (cmdrID && (!cmdr || cmdr === null || typeof cmdr === 'undefined')) {
     cmdrURL = url + `/cmdrs/${cmdrID}`;
@@ -9,7 +9,7 @@ export const getCMDR = async (url, cmdr, cmdrID) => {
     cmdrURL = url + '/cmdrs?cmdrName=' + encodeURIComponent(cmdr);
   }
 
-  let response = await fetch_retry(5, cmdrURL, {
+  let response = await fetchTools.fetch_retry(5, cmdrURL, {
     method: 'GET',
     headers: {
       Accept: 'application/json',
@@ -22,13 +22,13 @@ export const getCMDR = async (url, cmdr, cmdrID) => {
 };
 
 // Create a CMDR who doesn't exist
-let createCMDR = async (url, cmdrData, jwt) => {
+const createCMDR = async (url, cmdrData, jwt) => {
   let cmdrURL = url + '/cmdrs';
 
   if (cmdrData.cmdrName === null || typeof cmdrData.cmdrName === 'undefined') {
     return {};
   } else {
-    let response = await fetch_retry(5, cmdrURL, {
+    let response = await fetchTools.fetch_retry(5, cmdrURL, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -42,3 +42,5 @@ let createCMDR = async (url, cmdrData, jwt) => {
     return newCMDR;
   }
 };
+
+module.exports = { getCMDR, createCMDR };

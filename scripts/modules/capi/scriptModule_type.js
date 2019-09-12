@@ -1,10 +1,10 @@
-import { fetch_retry } from '../script_fetchRetry';
+const fetchTools = require('../scriptModule_fetchRetry');
 
 // Get type to validate against
-export const getType = async (url, reportType, type) => {
+const getType = async (url, reportType, type) => {
   let typeURL = url + `/${reportType}types?type=` + encodeURIComponent(type);
 
-  let response = await fetch_retry(5, typeURL, {
+  let response = await fetchTools.fetch_retry(5, typeURL, {
     method: 'GET',
     headers: {
       Accept: 'application/json',
@@ -15,3 +15,5 @@ export const getType = async (url, reportType, type) => {
   let typeData = await response.json();
   return typeData;
 };
+
+module.exports = { getType };

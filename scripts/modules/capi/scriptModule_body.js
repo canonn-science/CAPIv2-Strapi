@@ -1,7 +1,7 @@
-import { fetch_retry } from '../script_fetchRetry';
+const fetchTools = require('../scriptModule_fetchRetry');
 
 // Fetch System from CAPIv2
-export const getBody = async (url, body, bodyID) => {
+const getBody = async (url, body, bodyID) => {
   var bodyURL;
   if (bodyID && (!body || body === null || typeof body === 'undefined')) {
     bodyURL = url + `/bodies/${bodyID}`;
@@ -9,7 +9,7 @@ export const getBody = async (url, body, bodyID) => {
     bodyURL = url + '/bodies?bodyName=' + encodeURIComponent(body);
   }
 
-  let response = await fetch_retry(5, bodyURL, {
+  let response = await fetchTools.fetch_retry(5, bodyURL, {
     method: 'GET',
     headers: {
       Accept: 'application/json',
@@ -22,13 +22,13 @@ export const getBody = async (url, body, bodyID) => {
 };
 
 // Create Body in CAPIv2
-export const createBody = async (url, bodyData, jwt) => {
+const createBody = async (url, bodyData, jwt) => {
   let bodyURL = url + '/bodies';
 
   if (bodyData.bodyName === null || typeof bodyData.bodyName === 'undefined') {
     return {};
   } else {
-    let response = await fetch_retry(5, bodyURL, {
+    let response = await fetchTools.fetch_retry(5, bodyURL, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -42,3 +42,5 @@ export const createBody = async (url, bodyData, jwt) => {
     return newBody;
   }
 };
+
+module.exports = { getBody, createBody };

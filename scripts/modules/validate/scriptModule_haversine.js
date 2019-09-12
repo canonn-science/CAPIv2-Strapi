@@ -1,6 +1,5 @@
 // Script Function to get distance between two latitude and longitude
-
-export const haversine = async (p1, p2, radius) => {
+const haversine = async (p1, p2, radius) => {
   const phi_a = (p1.latitude * Math.PI) / 180;
   const lambda_a = (p1.longitude * Math.PI) / 180;
 
@@ -23,3 +22,5 @@ export const haversine = async (p1, p2, radius) => {
 
   return D_ab;
 };
+
+module.exports = { haversine };

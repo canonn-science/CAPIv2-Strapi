@@ -1,8 +1,6 @@
 const fetch = require('node-fetch');
 
-// Script Function to login to CAPIv2
-
-export const login = async (url, username, password) => {
+const login = async (url, username, password) => {
   // set body information to .env options
   let body = {
     identifier: username,
@@ -30,3 +28,5 @@ export const login = async (url, username, password) => {
     console.log(error);
   }
 };
+
+module.exports = {login};
