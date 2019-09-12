@@ -25,6 +25,7 @@ let reportTypes = ['ap', 'bm', 'bt', 'cs', 'fg', 'fm', 'gv', 'gy', 'ls', 'tb', '
 let reportStatus = {
   beta: 'declined',
   blacklisted: 'declined',
+  network: 'issue',
   capiv2Type: 'issue',
   duplicate: 'duplicate',
   missingCoords: 'issue',
@@ -227,8 +228,6 @@ let createCMDR = async cmdr => {
   };
 
   try {
-    await login();
-
     const response = await fetch(url + '/systems', {
       method: 'POST',
       headers: {
@@ -236,7 +235,7 @@ let createCMDR = async cmdr => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${jwt}`,
       },
-      body: cmdrData,
+      body: JSON.stringify(cmdrData),
     });
 
     let newCMDR = await response.json();
@@ -265,36 +264,10 @@ let getSystem = async system => {
 };
 
 // Create System in CAPIv2 and if applicable use EDSM data
-let createSystem = async (system, data) => {
-  let systemData = {
-    systemName: system.toUpperCase(),
-  };
-
-  if (data) {
-    if (data.id) {
-      systemData.edsmID = data.id;
-    }
-    if (data.id64) {
-      systemData.id64 = data.id64;
-    }
-    if (data.coords) {
-      systemData.edsmCoordX = data.coords.x;
-      systemData.edsmCoordY = data.coords.y;
-      systemData.edsmCoordZ = data.coords.z;
-    }
-    if (data.coordsLocked) {
-      systemData.edsmCoordLocked = data.coordsLocked;
-    }
-    if (data.primaryStar) {
-      systemData.primaryStar = data.primaryStar;
-    }
-  } else {
-    systemData.missingSkipCount = 1;
-  }
-
+let createSystem = async data => {
+  console.log('SYSTEM');
+  console.log(data);
   try {
-    await login();
-
     const response = await fetch(url + '/systems', {
       method: 'POST',
       headers: {
@@ -302,7 +275,7 @@ let createSystem = async (system, data) => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${jwt}`,
       },
-      body: systemData,
+      body: JSON.stringify(data),
     });
 
     let newSystem = await response.json();
@@ -330,10 +303,10 @@ let getBody = async body => {
 };
 
 // Create Body in CAPIv2 and if applicable use EDSM data
-let createBody = async (system, body, data) => {
+let createBody = async (systemID, body, data) => {
   let bodyData = {
     bodyName: body.toUpperCase(),
-    system: system.id,
+    system: systemID,
   };
 
   if (data) {
@@ -441,9 +414,9 @@ let createBody = async (system, body, data) => {
     bodyData.missingSkipCount = 1;
   }
 
+  console.log('BODY');
+  console.log(bodyData);
   try {
-    await login();
-
     const response = await fetch(url + '/systems', {
       method: 'POST',
       headers: {
@@ -451,7 +424,7 @@ let createBody = async (system, body, data) => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${jwt}`,
       },
-      body: bodyData,
+      body: JSON.stringify(bodyData),
     });
 
     let newBody = await response.json();
@@ -822,25 +795,47 @@ let validateReport = async (reportType, report) => {
   return reportChecks;
 };
 
+// Used to fetch the highest siteID to create a new site
+let getSiteID = async reportType => {
+  try {
+    const response = await fetch(url + `/${reportType}sites?_limit=1&_sort=siteID:desc`, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    });
+
+    let site = await response.json();
+
+    if (!Array.isArray(site) || !site.length) {
+      return 1;
+    } else {
+      let newSiteID = site[0].siteID + 1;
+      return newSiteID;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // Create site if report is valid
 let createSite = async (reportType, data) => {
-  //TODO Plan out what data is sent to this function..
+  let newSiteID = await getSiteID(reportType);
   let siteData = {
-    system: data.systemID,
-    body: data.bodyID,
-    siteID: data.siteID,
+    system: data.system,
+    body: data.body,
+    siteID: newSiteID,
     latitude: data.latitude,
     longitude: data.longitude,
-    type: data.typeID,
+    type: data.type,
     frontierID: data.frontierID,
     verified: false,
     visible: true,
-    discoveredBy: data.cmdrID,
+    discoveredBy: data.discoveredBy,
   };
 
   try {
-    await login();
-
     const response = await fetch(url + `/${reportType}sites`, {
       method: 'POST',
       headers: {
@@ -848,7 +843,7 @@ let createSite = async (reportType, data) => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${jwt}`,
       },
-      body: siteData,
+      body: JSON.stringify(siteData),
     });
 
     let newSite = await response.json();
@@ -860,10 +855,29 @@ let createSite = async (reportType, data) => {
 };
 
 // Update site if new data exists in a report
-let updateSite = async data => {};
+let updateSite = async data => {
+  let updatedSiteData = {};
+};
 
 // Update report if it passes or fails validation
-let updateReport = async reportID => {};
+let updateReport = async (reportType, reportID, data) => {
+  try {
+    const response = await fetch(url + `/${reportType}reports/${reportID}`, {
+      method: 'PUT',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${jwt}`,
+      },
+      body: JSON.stringify(data),
+    });
+
+    let newReport = await response.json();
+    return newReport;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 // Update log with changes made
 let updateLog = {};
@@ -871,64 +885,266 @@ let updateAPILog = async data => {};
 
 // Core function that calls all others for validation
 let processReports = async () => {
+  console.log(
+    moment()
+      .utc()
+      .format() + ' - Logging into CAPIv2'
+  );
+  await login();
+  if (!jwt){
+    console.log('LOGIN FAILED');
+  } else {
+    console.log('Successfully Logged in!');
+  }
+  // Start processing
+  console.log(
+    moment()
+      .utc()
+      .format() + ' - Starting to process reports'
+  );
+
+  // Get counts to check if we need to process reports for that site type
   for (let i = 0; i < reportTypes.length; i++) {
     let count = await getCount(reportTypes[i]);
+
+    // If count is more than zero, fetch reports and start processing them
     if (count > 0) {
-      console.log(`Running Validation on ${reportTypes[i]}`);
-      updateLog[`${reportTypes[i]}reports`] = { count: count };
+      // Start report processing
+      console.log(
+        moment()
+          .utc()
+          .format() + ` - Running Validation on ${reportTypes[i]}reports`
+      );
+      updateLog[`${reportTypes[i]}reports`] = { reportCount: count };
 
       let reportsToProcess = await getReports(reportTypes[i]);
 
+      // Loop through reports and process one by one
       for (let r = 0; r < reportsToProcess.length; r++) {
+        console.log(
+          moment()
+            .utc()
+            .format() + ` - Processing ${reportTypes[i]}report ID: ${reportsToProcess[r].id}`
+        );
+
+        // Validate the report with multiple checks
         let reportChecked = await validateReport(reportTypes[i], reportsToProcess[r]);
 
-        // Validate report based on prevbious updates to reportChecks
+        // Validate report based on previous updates to reportChecks
+        // isBeta
         if (reportChecked.isBeta === true) {
           reportChecked.valid.isValid = false;
           reportChecked.valid.reason = 'Report was from a Beta version';
           reportChecked.valid.reportStatus = reportStatus.beta;
         }
+
+        // blacklists
         if (reportChecked.blacklists.cmdr.blacklisted === true) {
           reportChecked.valid.isValid = false;
           reportChecked.valid.reason = 'CMDR is blacklisted';
           reportChecked.valid.reportStatus = reportStatus.blacklisted;
-        }
-        if (reportChecked.blacklists.client.blacklisted === true) {
+        } else if (reportChecked.blacklists.cmdr.checked === false) {
+          reportChecked.valid.isValid = false;
+          reportChecked.valid.reason = 'Issue with checking blacklist';
+          reportChecked.valid.reportStatus = reportStatus.network;
+        } else if (reportChecked.blacklists.client.blacklisted === true) {
           reportChecked.valid.isValid = false;
           reportChecked.valid.reason = 'Client is blacklisted';
           reportChecked.valid.reportStatus = reportStatus.blacklisted;
+        } else if (reportChecked.blacklists.cmdr.checked === false) {
+          reportChecked.valid.isValid = false;
+          reportChecked.valid.reason = 'Issue with checking blacklist';
+          reportChecked.valid.reportStatus = reportStatus.network;
         }
-        // Continue further checks
 
+        // CAPIv2
+        if (
+          reportChecked.capiv2.system.checked === false ||
+          reportChecked.capiv2.body.checked === false ||
+          reportChecked.capiv2.type.checked === false ||
+          reportChecked.capiv2.cmdr.checked === false
+        ) {
+          reportChecked.valid.isValid = false;
+          reportChecked.valid.reason = 'Issue with checking CAPIv2 API Data';
+          reportChecked.valid.reportStatus = reportStatus.network;
+        } else if (reportChecked.capiv2.type.exists === false) {
+          reportChecked.valid.isValid = false;
+          reportChecked.valid.reason = 'Type does not match approved types';
+          reportChecked.valid.reportStatus = reportStatus.capiv2Type;
+        } else if (
+          reportChecked.capiv2.duplicate.createSite === false &&
+          reportChecked.capiv2.duplicate.checkedHaversine === false
+        ) {
+          reportChecked.valid.isValid = false;
+          reportChecked.valid.reason = 'Unable to check duplicate based on haversine, missing radius or lat/lon';
+          reportChecked.valid.reportStatus = reportStatus.network;
+        } else if (reportChecked.capiv2.duplicate.isDuplicate === true) {
+          reportChecked.valid.isValid = false;
+          reportChecked.valid.reason = `Site is a duplicate of Site: ${
+            reportChecked.capiv2.duplicate.site.id
+          } at a distance of ${reportChecked.capiv2.duplicate.distance.toFixed(2)} Km`;
+          reportChecked.valid.reportStatus = reportStatus.duplicate;
+        }
 
+        // EDSM
+        if (reportChecked.edsm.system.checked === false || reportChecked.edsm.body.checked === false) {
+          reportChecked.valid.isValid = false;
+          reportChecked.valid.reason = 'Unable to check EDSM due to a network error';
+          reportChecked.valid.reportStatus = reportStatus.network;
+        } else if (reportChecked.edsm.system.exists === true && reportChecked.edsm.system.hasCoords === false) {
+          reportChecked.valid.isValid = false;
+          reportChecked.valid.reason = 'System exists in EDSM but has no Coords (Console user?)';
+          reportChecked.valid.reportStatus = reportStatus.missingCoords;
+        } else if (reportChecked.capiv2.system.exists === false && reportChecked.edsm.system.exists === false) {
+          reportChecked.valid.isValid = false;
+          reportChecked.valid.reason = 'System does not exist in CAPIv2 or EDSM';
+          reportChecked.valid.reportStatus = reportStatus.edsmSystem;
+        } else if (reportChecked.capiv2.body.exists === false && reportChecked.edsm.body.exists === false) {
+          reportChecked.valid.isValid = false;
+          reportChecked.valid.reason = 'Body does not exist in CAPIv2 or EDSM';
+          reportChecked.valid.reportStatus = reportStatus.edsmBody;
+        }
 
+        // Set Valid if no reason or reportStatus
+        if (reportChecked.valid.reason === null || reportChecked.valid.reportStatus === null) {
+          reportChecked.valid.isValid = true;
+          reportChecked.valid.reason = 'Report has been accepted';
+          reportChecked.valid.reportStatus = reportStatus.accepted;
+        }
 
+        // Push reportLog into UpdateLog
+        (updateLog[`${reportTypes[i]}reports`].reports = updateLog[`${reportTypes[i]}reports`].reports || []).push(
+          reportChecked
+        );
 
-
-        console.log(reportChecked);
-
-        if (reportChecked.valid === false) {
+        if (reportChecked.valid.isValid === false) {
           // Update report
+          let newReportComment = `[${reportChecked.valid.reportStatus.toUpperCase()}] - ${
+            reportChecked.valid.reportComment
+          }`;
 
-          // if (reportChecked.capiv2.duplicate.isDuplicate == true) {
-          //   console.log(reportChecked.capiv2.duplicate.site);
-          // }
-          // Update Log
+          let dupSiteID = null;
+          if (reportChecked.capiv2.duplicate.isDuplicate === true && reportChecked.capiv2.duplicate.site !== null) {
+            dupSiteID = reportChecked.capiv2.duplicate.site.id;
+          } else {
+            dupSiteID = null;
+          }
+
+          let reportData = {
+            reportStatus: reportChecked.valid.reportStatus,
+            reportComment: newReportComment,
+            added: false,
+            site: dupSiteID,
+          };
+
+          await updateReport(reportTypes[i], reportChecked.reportID, reportData);
+          console.log(
+            moment()
+              .utc()
+              .format() + ` - Updated invalid ${reportTypes[i]}report ID: ${reportsToProcess[r].id}`
+          );
         } else {
-          // create system and Update Log
-          // create body, assign system, and Update Log
-          // create cmdr and Update Log
-          // create/update site, assign system, body, type, and cmdr; Update Log
-          // Update report
-          // Update log
-        }
+          // create system or use existing
+          let newSystem = {};
+          if (reportChecked.capiv2.system.exists === false && reportChecked.capiv2.system.checked === true) {
+            let systemData = {};
+            if (
+              reportChecked.edsm.system.checked === true &&
+              reportChecked.edsm.system.exists === true &&
+              reportChecked.edsm.system.hasCoords === true
+            ) {
+              systemData = {
+                systemName: reportChecked.edsm.system.data.name.toUpperCase(),
+                id64: reportChecked.edsm.system.data.id64,
+                edsmID: reportChecked.edsm.system.data.id,
+                edsmCoordX: reportChecked.edsm.system.data.coords.x,
+                edsmCoordY: reportChecked.edsm.system.data.coords.y,
+                edsmCoordZ: reportChecked.edsm.system.data.coords.z,
+                edsmCoordLocked: reportChecked.edsm.system.data.coordsLocked,
+                primaryStar: reportChecked.edsm.system.data.primaryStar,
+              };
+            } else {
+              systemData = {
+                systemName: reportsToProcess[r].systemName.toUpperCase(),
+              };
+            }
+            newSystem = await createSystem(systemData);
+            // Push new system into log
+            (updateLog.systems = updateLog.systems || []).push(newSystem);
+          } else {
+            newSystem = reportChecked.capiv2.system.data;
+          }
 
-        await delay(500);
+          // create body, assign system, or use existing
+          let newBody = {};
+          if (reportChecked.capiv2.body.exists === false && reportChecked.capiv2.body.checked === true) {
+            let bodyData = {};
+            if (reportChecked.edsm.body.checked === true && reportChecked.edsm.body.exists === true) {
+              bodyData = reportChecked.edsm.body.data;
+              newBody = await createBody(newSystem.id, reportChecked.edsm.body.data.name, bodyData);
+              // Push new system into log
+              (updateLog.bodies = updateLog.bodies || []).push(newBody);
+            }
+          } else {
+            newBody = reportChecked.capiv2.body.data;
+          }
+
+          // create cmdr or use existing
+          let newCMDR = {};
+          if (reportChecked.capiv2.cmdr.exists === false && reportChecked.capiv2.cmdr.checked === true) {
+            newCMDR = await createCMDR(reportsToProcess[r].cmdrName);
+          } else {
+            newCMDR = reportChecked.capiv2.cmdr.data;
+          }
+
+          // create/update site, assign system, body, type, and cmdr
+          let newSite = {};
+          if (
+            reportChecked.capiv2.duplicate.isDuplicate === false &&
+            reportChecked.capiv2.duplicate.createSite === true
+          ) {
+            let siteData = {
+              system: newSystem.id,
+              body: newBody.id,
+              latitude: reportsToProcess[r].latitude,
+              longitude: reportsToProcess[r].longitude,
+              type: reportChecked.capiv2.type.data.id,
+              frontierID: reportsToProcess[r].frontierID,
+              verified: false,
+              visible: true,
+              discoveredBy: newCMDR.id,
+            };
+
+            newSite = await createSite(reportTypes[i], siteData);
+          }
+
+          // Update report
+          let newReportComment = `[${reportChecked.valid.reportStatus.toUpperCase()}] - ${
+            reportChecked.valid.reportComment
+          }`;
+
+          let reportData = {
+            reportStatus: reportChecked.valid.reportStatus,
+            reportComment: newReportComment,
+            added: true,
+            site: newSite.id,
+          };
+
+          await updateReport(reportTypes[i], reportChecked.reportID, reportData);
+          console.log(
+            moment()
+              .utc()
+              .format() + ` - Updated invalid ${reportTypes[i]}report ID: ${reportsToProcess[r].id}`
+          );
+        }
+        // Delay between processing each report
+        await delay(process.env.SCRIPT_RV_DELAY);
       }
     } else {
       updateLog[`${reportTypes[i]}reports`] = { reportCount: count };
     }
   }
+  // Push update log to CAPIv2
   console.log(updateLog);
 };
 
