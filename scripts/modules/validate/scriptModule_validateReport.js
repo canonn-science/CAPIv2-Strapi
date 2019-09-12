@@ -82,7 +82,6 @@ const validateReport = async (url, reportType, report) => {
   // make sure the report isn't from beta
   if (report.isBeta === true) {
     reportChecks.isBeta = true;
-    return reportChecks;
   } else {
     reportChecks.isBeta = false;
   }
@@ -98,7 +97,6 @@ const validateReport = async (url, reportType, report) => {
       if (report.cmdrName == checkCMDR[i].cmdrName) {
         reportChecks.blacklists.cmdr.checked = true;
         reportChecks.blacklists.cmdr.blacklisted = true;
-        return reportChecks;
       }
     }
   }
@@ -114,7 +112,6 @@ const validateReport = async (url, reportType, report) => {
       if (report.clientVersion == checkClient[i].clientVersion) {
         reportChecks.blacklists.client.checked = true;
         reportChecks.blacklists.client.blacklisted = true;
-        return reportChecks;
       }
     }
   }
@@ -159,7 +156,6 @@ const validateReport = async (url, reportType, report) => {
   if (!Array.isArray(checkCAPIType) || !checkCAPIType.length) {
     reportChecks.capiv2.type.checked = true;
     reportChecks.capiv2.type.exists = false;
-    return reportChecks;
   } else {
     for (let i = 0; i < checkCAPIType.length; i++) {
       if (report.type == checkCAPIType[i].type) {
@@ -236,7 +232,6 @@ const validateReport = async (url, reportType, report) => {
       if (!report.latitude || !report.longitude || (report.latitude == 0 && report.longitude == 0)) {
         reportChecks.capiv2.duplicate.checkedHaversine = false;
         reportChecks.capiv2.duplicate.isDuplicate = false;
-        return reportChecks;
       } else if (
         report.systemName.toUpperCase() === checkCAPISite[i].system.systemName.toUpperCase() &&
         report.bodyName.toUpperCase() === checkCAPISite[i].body.bodyName.toUpperCase() &&
@@ -269,7 +264,6 @@ const validateReport = async (url, reportType, report) => {
         } else {
           reportChecks.capiv2.duplicate.checkedHaversine = false;
           reportChecks.capiv2.duplicate.isDuplicate = true;
-          return reportChecks;
         }
 
         // Haversine Check
@@ -294,7 +288,6 @@ const validateReport = async (url, reportType, report) => {
             reportChecks.capiv2.duplicate.isDuplicate = true;
             reportChecks.capiv2.duplicate.distance = distance;
             reportChecks.capiv2.duplicate.site = checkCAPISite[i];
-            return reportChecks;
           }
         }
       }

@@ -46,6 +46,7 @@ const preprocessReport = async (reportChecked, report) => {
     reportChecked.valid.isValid = true;
     reportChecked.valid.reason = `Report was accepted on [${moment().utc().format('YYYY-MM-DD hh:mm:ss')}]`;
     reportChecked.valid.reportStatus = reportStatus.accepted;
+    return reportChecked;
   }
 
   // Update Checks
@@ -63,18 +64,19 @@ const preprocessReport = async (reportChecked, report) => {
     reportChecked.capiv2.duplicate.updateSite === true &&
     (
       reportChecked.capiv2.system.exists === true ||
-      reportChecked.edsm.system.exists === true
-    ) && (
-      reportChecked.capiv2.system.data.edsmCoordX !== null ||
-      reportChecked.edsm.system.hasCoords === true
+      (
+        reportChecked.edsm.system.exists === true &&
+        reportChecked.edsm.system.hasCoords === true
+      )
     ) && (
       reportChecked.capiv2.body.exists === true ||
       reportChecked.edsm.body.exists === true
     )
   ) {
     reportChecked.valid.isValid = true;
-    reportChecked.valid.reason = `Report was updated to update site on [${moment().utc().format('YYYY-MM-DD hh:mm:ss')}]`;
+    reportChecked.valid.reason = `Report was used to update site on [${moment().utc().format('YYYY-MM-DD hh:mm:ss')}]`;
     reportChecked.valid.reportStatus = reportStatus.updated;
+    return reportChecked;
   }
 
   // isBeta
@@ -82,6 +84,7 @@ const preprocessReport = async (reportChecked, report) => {
     reportChecked.valid.isValid = false;
     reportChecked.valid.reason = 'Report was from a Beta version';
     reportChecked.valid.reportStatus = reportStatus.beta;
+    return reportChecked;
   }
 
   // blacklists
@@ -101,6 +104,7 @@ const preprocessReport = async (reportChecked, report) => {
     reportChecked.valid.isValid = false;
     reportChecked.valid.reason = 'Issue with checking blacklist';
     reportChecked.valid.reportStatus = reportStatus.network;
+    return reportChecked;
   }
 
   // CAPIv2
@@ -133,6 +137,7 @@ const preprocessReport = async (reportChecked, report) => {
       reportChecked.capiv2.duplicate.site.id
     } at a distance of ${reportChecked.capiv2.duplicate.distance.toFixed(2)} Km`;
     reportChecked.valid.reportStatus = reportStatus.duplicate;
+    return reportChecked;
   }
 
   // EDSM
@@ -152,9 +157,9 @@ const preprocessReport = async (reportChecked, report) => {
     reportChecked.valid.isValid = false;
     reportChecked.valid.reason = 'Body does not exist in CAPIv2 or EDSM';
     reportChecked.valid.reportStatus = reportStatus.edsmBody;
+    return reportChecked;
   }
 
-  return reportChecked;
 };
 
 module.exports = { preprocessReport };

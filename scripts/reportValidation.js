@@ -23,7 +23,7 @@ if (process.env.NODE_ENV == 'production') {
 }
 
 // Set report types that will be verified and converted to sites
-let reportTypes = ['ap', 'bm', 'bt', 'cs', 'fg', 'fm', 'gv', 'gy', 'ls', 'tb', 'tw'];
+let reportTypes = ['ap', 'bt', 'cs', 'fg', 'fm', 'gv', 'gy', 'ls', 'tb', 'tw'];
 
 // Update log with changes made
 const updateAPILog = async data => {};
