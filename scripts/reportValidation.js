@@ -141,7 +141,6 @@ const processReports = async () => {
           console.log(logTime + ' - Report Marked for Site Update');
           await reportTools.updateReport(url, reportTypes[i], reportsToProcess[r].id, updatedReport, jwt);
         } else if (reportChecked.valid.isValid === true && reportChecked.capiv2.duplicate.createSite === true) {
-
           // Create System if needed
           var systemID;
           if (reportChecked.capiv2.system.exists === true) {
@@ -151,9 +150,7 @@ const processReports = async () => {
             let newSystem = await systemTools.createSystem(url, systemData, jwt);
 
             // Push newSystem into UpdateLog
-            (updateLog.systems = updateLog.systems || []).push(
-              newSystem
-            );
+            (updateLog.systems = updateLog.systems || []).push(newSystem);
 
             if (newSystem.systemName === reportsToProcess[r].systemName.toUpperCase()) {
               systemID = newSystem.id;
@@ -179,9 +176,7 @@ const processReports = async () => {
             let newBody = await bodyTools.createBody(url, bodyData, jwt);
 
             // Push newBody into UpdateLog
-            (updateLog.bodies = updateLog.bodies || []).push(
-              newBody
-            );
+            (updateLog.bodies = updateLog.bodies || []).push(newBody);
 
             if (newBody.bodyName === reportsToProcess[r].bodyName.toUpperCase() && newBody.system.id === systemID) {
               bodyID = newBody.id;
@@ -205,9 +200,7 @@ const processReports = async () => {
             let newCMDR = await cmdrTools.createCMDR(url, cmdrData, jwt);
 
             // Push newCMDR into UpdateLog
-            (updateLog.cmdrs = updateLog.cmdrs || []).push(
-              newCMDR
-            );
+            (updateLog.cmdrs = updateLog.cmdrs || []).push(newCMDR);
 
             if (newCMDR.cmdrName === reportsToProcess[r].cmdrName) {
               cmdrID = newCMDR.id;
@@ -220,7 +213,9 @@ const processReports = async () => {
           // Create Site
           var siteID;
           if (
-            systemID && bodyID && cmdrID &&
+            systemID &&
+            bodyID &&
+            cmdrID &&
             systemID !== 'FAILED' &&
             bodyID !== 'FAILED' &&
             cmdrID !== 'FAILED' &&
@@ -235,15 +230,13 @@ const processReports = async () => {
               longitude: reportsToProcess[r].longitude,
               frontierID: reportsToProcess[r].frontierID,
               verified: false,
-              visible: true
+              visible: true,
             };
 
             let newSite = await siteTools.createSite(url, reportTypes[i], siteData, jwt);
 
             // Push newSite into UpdateLog
-            (updateLog.sites = updateLog.sites || []).push(
-              newSite
-            );
+            (updateLog.sites = updateLog.sites || []).push(newSite);
 
             if (
               newSite.system.id === systemID &&
@@ -256,7 +249,7 @@ const processReports = async () => {
             ) {
               siteID = newSite.id;
             } else {
-              console.log('ERROR WITH NEW SITE! Error Code: 1')
+              console.log('ERROR WITH NEW SITE! Error Code: 1');
               siteID = 'FAILED';
             }
           }
@@ -264,13 +257,18 @@ const processReports = async () => {
           // Update Report
           console.log(logTime + ' - Report approved and site created');
           if (
-            systemID && bodyID && cmdrID && siteID &&
+            systemID &&
+            bodyID &&
+            cmdrID &&
+            siteID &&
             systemID !== 'FAILED' &&
             bodyID !== 'FAILED' &&
             cmdrID !== 'FAILED' &&
             siteID !== 'FAILED'
           ) {
-            let newReportComment = `[${reportChecked.valid.reportStatus.toUpperCase()}] - ${reportChecked.valid.reason}`;
+            let newReportComment = `[${reportChecked.valid.reportStatus.toUpperCase()}] - ${
+              reportChecked.valid.reason
+            }`;
             let updatedReport = {
               reportStatus: reportChecked.valid.reportStatus,
               reportComment: newReportComment,
