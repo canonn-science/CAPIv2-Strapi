@@ -7,6 +7,7 @@ const logTime = moment()
   .utc()
   .format();
 
+// Module Imports
 const capiLogin = require('./modules/capi/scriptModule_login');
 const reportTools = require('./modules/capi/scriptModule_report');
 const reportValid = require('./modules/validate/scriptModule_validateReport');
@@ -15,6 +16,7 @@ const bodyTools = require('./modules/capi/scriptModule_body');
 const siteTools = require('./modules/capi/scriptModule_site');
 const systemproTools = require('./modules/data_processing/scriptModule_system');
 const bodyproTools = require('./modules/data_processing/scriptModule_body');
+const cmdrTools = require('./modules/capi/scriptModule_cmdr');
 
 // Defining global JWT
 let jwt = null;
@@ -72,17 +74,13 @@ const processReports = async () => {
         // Validate Reports
         let reportChecked = await reportValid.validateReport(url, reportTypes[i], reportsToProcess[r]);
 
-
         // Push reportLog into UpdateLog
         (updateLog[`${reportTypes[i]}reports`].reports = updateLog[`${reportTypes[i]}reports`].reports || []).push(
           reportChecked
         );
 
         // Checking for createSite or updateSite
-        if (
-          reportChecked.valid.isValid === true &&
-          reportChecked.capiv2.duplicate.updateSite === true
-        ) {
+        if (reportChecked.valid.isValid === true && reportChecked.capiv2.duplicate.updateSite === true) {
           // perform update logic
           // Check if System needs to be updated
           if (
@@ -105,7 +103,7 @@ const processReports = async () => {
           let toUpdate = false;
           let siteData = {
             type: reportChecked.capiv2.duplicate.site.type,
-            frontierID: reportChecked.capiv2.duplicate.site.frontierID
+            frontierID: reportChecked.capiv2.duplicate.site.frontierID,
           };
 
           if (reportChecked.capiv2.duplicate.site.type.type !== reportsToProcess[r].type) {
@@ -131,9 +129,7 @@ const processReports = async () => {
           }
 
           // Update the report
-          let newReportComment = `[${reportChecked.valid.reportStatus.toUpperCase()}] - ${
-            reportChecked.valid.reason
-          }`;
+          let newReportComment = `[${reportChecked.valid.reportStatus.toUpperCase()}] - ${reportChecked.valid.reason}`;
           let updatedReport = {
             reportStatus: reportChecked.valid.reportStatus,
             reportComment: newReportComment,
@@ -153,15 +149,12 @@ const processReports = async () => {
           // Create System if needed
           var systemID;
           if (reportChecked.capiv2.system.exists === true) {
-            systemID = reportChecked.capiv2.system.id;
-          } else if (
-            reportChecked.capiv2.system.exists === false &&
-            reportChecked.edsm.system.exists === true
-          ) {
+            systemID = reportChecked.capiv2.system.data.id;
+          } else if (reportChecked.capiv2.system.exists === false && reportChecked.edsm.system.exists === true) {
             let systemData = await systemproTools.processSystem(url, 'edsm', reportChecked.edsm.system.data);
             let newSystem = await systemTools.createSystem(url, systemData, jwt);
             console.log(newSystem);
-            if (newSystem.systemName === reportsToProcess[i].systemName.toUpperCase()) {
+            if (newSystem.systemName === reportsToProcess[r].systemName.toUpperCase()) {
               systemID = newSystem.id;
             } else {
               console.log('ERROR WITH NEW SYSTEM! Error Code: 1');
@@ -175,18 +168,16 @@ const processReports = async () => {
           // Create Body if needed
           var bodyID;
           if (reportChecked.capiv2.body.exists === true) {
-            bodyID = reportChecked.capiv2.body.id;
+            bodyID = reportChecked.capiv2.body.data.id;
           } else if (
             reportChecked.capiv2.body.exists === false &&
-            reportChecked.edsm.body.exists === true
-          ) {
-            let bodyData = await bodyproTools.processBody(url, 'edsm', reportChecked.edsm.body.data, systemID);
+            reportChecked.edsm.body.exists === true &&
+            systemID !== 'FAILED'
+            ) {
+            let bodyData = await bodyproTools.processBody('edsm', reportChecked.edsm.body.data, await systemID);
             let newBody = await bodyTools.createBody(url, bodyData, jwt);
             console.log(newBody);
-            if (
-              newBody.bodyName === reportsToProcess[i].bodyName.toUpperCase() &&
-              newBody.system === systemID
-            ) {
+            if (newBody.bodyName === reportsToProcess[r].bodyName.toUpperCase() && newBody.system.id === systemID) {
               bodyID = newBody.id;
             } else {
               console.log('ERROR WITH NEW BODY! Error Code: 1');
@@ -198,12 +189,60 @@ const processReports = async () => {
           }
 
           // Create CMDR if needed
+          var cmdrID;
+          if (reportChecked.capiv2.cmdr.exists === true) {
+            cmdrID = reportChecked.capiv2.cmdr.data.id;
+          } else {
+            let cmdrData = {
+              cmdrName: reportsToProcess[r].cmdrName,
+            };
+            let newCMDR = await cmdrTools.createCMDR(url, cmdrData, jwt);
+            console.log(newCMDR);
+            if (newCMDR.cmdrName === reportsToProcess[r].cmdrName) {
+              cmdrID = newCMDR.id;
+            } else {
+              console.log('ERROR WITH NEW CMDR! Error Code: 1');
+              cmdrID = 'FAILED';
+            }
+          }
 
           // Create Site
+          var siteID;
+          if (
+            systemID && bodyID && cmdrID &&
+            systemID !== 'FAILED' &&
+            bodyID !== 'FAILED' &&
+            cmdrID !== 'FAILED' &&
+            reportChecked.capiv2.type.exists === true
+          ) {
+            let siteData = {
+              system: systemID,
+              body: bodyID,
+              discoveredBy: cmdrID,
+              type: reportChecked.capiv2.type.data.id,
+              latitude: reportsToProcess[r].latitude,
+              longitude: reportsToProcess[r].longitude,
+              frontierID: reportsToProcess[r].frontierID,
+              verified: false,
+              visible: true
+            };
+
+            let newSite = await siteTools.createSite(url, reportTypes[i], siteData, jwt);
+            console.log(newSite);
+            if (
+              newSite.system.id === systemID &&
+              newSite.body.id === bodyID &&
+              newSite.discoveredBy.id === cmdrID &&
+              newSite.type.id === reportChecked.capiv2.type.data.id &&
+              newSite.latitude === reportsToProcess[r].latitude &&
+              newSite.longitude === reportsToProcess[r].longitude &&
+              newSite.verified === false
+            ) {
+              siteID = newSite.id;
+            }
+          }
 
           // Update Report
-
-
         } else if (reportChecked.valid.isValid === false) {
           // perform failure logic
           console.log(reportChecked);

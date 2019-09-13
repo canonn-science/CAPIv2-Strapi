@@ -2,7 +2,7 @@ const regionTools = require('../capi/scriptModule_region');
 
 // Processing system data from CAPIv2 or EDSM
 const processSystem = async (url, source, data) => {
-  var newData;
+  let newData = {};
 
   if (data.regionID) {
     let regionRequest = await regionTools.getRegion(url, null, data.regionID);

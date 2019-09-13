@@ -1,6 +1,6 @@
 // Processing system data from CAPIv2 or EDSM
 const processBody = async (source, data, systemID) => {
-  var newData;
+  let newData = {};
 
   newData.system = systemID;
 
@@ -43,7 +43,7 @@ const processBody = async (source, data, systemID) => {
     newData.atmosphere = data.atmosphere || {};
     newData.material = data.material || {};
   } else if (source === 'edsm') {
-    newData.bodyName = data.bodyName.toUpperCase();
+    newData.bodyName = data.name.toUpperCase();
     newData.id64 = data.id64 || null;
     newData.edsmID = data.id || null;
     newData.bodyID = data.bodyId || null;
