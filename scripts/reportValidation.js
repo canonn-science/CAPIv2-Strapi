@@ -151,10 +151,57 @@ const processReports = async () => {
           console.log('CREATE LOGIC');
 
           // Create System if needed
+          var systemID;
+          if (reportChecked.capiv2.system.exists === true) {
+            systemID = reportChecked.capiv2.system.id;
+          } else if (
+            reportChecked.capiv2.system.exists === false &&
+            reportChecked.edsm.system.exists === true
+          ) {
+            let systemData = await systemproTools.processSystem(url, 'edsm', reportChecked.edsm.system.data);
+            let newSystem = await systemTools.createSystem(url, systemData, jwt);
+            console.log(newSystem);
+            if (newSystem.systemName === reportsToProcess[i].systemName.toUpperCase()) {
+              systemID = newSystem.id;
+            } else {
+              console.log('ERROR WITH NEW SYSTEM! Error Code: 1');
+              systemID = 'FAILED';
+            }
+          } else {
+            console.log('ERROR WITH NEW SYSTEM! Error Code: 2');
+            bodyID = 'FAILED';
+          }
 
           // Create Body if needed
+          var bodyID;
+          if (reportChecked.capiv2.body.exists === true) {
+            bodyID = reportChecked.capiv2.body.id;
+          } else if (
+            reportChecked.capiv2.body.exists === false &&
+            reportChecked.edsm.body.exists === true
+          ) {
+            let bodyData = await bodyproTools.processBody(url, 'edsm', reportChecked.edsm.body.data, systemID);
+            let newBody = await bodyTools.createBody(url, bodyData, jwt);
+            console.log(newBody);
+            if (
+              newBody.bodyName === reportsToProcess[i].bodyName.toUpperCase() &&
+              newBody.system === systemID
+            ) {
+              bodyID = newBody.id;
+            } else {
+              console.log('ERROR WITH NEW BODY! Error Code: 1');
+              bodyID = 'FAILED';
+            }
+          } else {
+            console.log('ERROR WITH NEW BODY! Error Code: 2');
+            bodyID = 'FAILED';
+          }
 
           // Create CMDR if needed
+
+          // Create Site
+
+          // Update Report
 
 
         } else if (reportChecked.valid.isValid === false) {

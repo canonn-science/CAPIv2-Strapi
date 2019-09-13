@@ -1,6 +1,8 @@
 // Processing system data from CAPIv2 or EDSM
-const processBody = async (source, data) => {
+const processBody = async (source, data, systemID) => {
   var newData;
+
+  newData.system = systemID;
 
   if (source === 'report') {
     newData.bodyName = data.bodyName.toUpperCase();
