@@ -48,7 +48,7 @@ const getReports = async (url, reportType, reportStatus) => {
 const updateReport = async (url, reportType, reportID, reportData, jwt) => {
   let reportURL = url + `/${reportType}reports/${reportID}`;
   let response = await fetchTools.fetch_retry(5, reportURL, {
-    method: 'POST',
+    method: 'PUT',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',

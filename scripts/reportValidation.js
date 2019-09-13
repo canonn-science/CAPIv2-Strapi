@@ -3,11 +3,18 @@ const cron = require('node-cron');
 require('node-json-color-stringify');
 require('dotenv').config({ path: require('find-config')('.env') });
 const delay = ms => new Promise(res => setTimeout(res, ms));
-const logTime = moment().utc().format();
+const logTime = moment()
+  .utc()
+  .format();
 
 const capiLogin = require('./modules/capi/scriptModule_login');
 const reportTools = require('./modules/capi/scriptModule_report');
 const reportValid = require('./modules/validate/scriptModule_validateReport');
+const systemTools = require('./modules/capi/scriptModule_system');
+const bodyTools = require('./modules/capi/scriptModule_body');
+const siteTools = require('./modules/capi/scriptModule_site');
+const systemproTools = require('./modules/data_processing/scriptModule_system');
+const bodyproTools = require('./modules/data_processing/scriptModule_body');
 
 // Defining global JWT
 let jwt = null;
@@ -23,7 +30,7 @@ if (process.env.NODE_ENV == 'production') {
 }
 
 // Set report types that will be verified and converted to sites
-let reportTypes = ['ap', 'bt', 'cs', 'fg', 'fm', 'gv', 'gy', 'ls', 'tb', 'tw'];
+let reportTypes = ['ap', 'bm', 'bt', 'cs', 'fg', 'fm', 'gv', 'gy', 'ls', 'tb', 'tw'];
 
 // Update log with changes made
 const updateAPILog = async data => {};
@@ -36,7 +43,7 @@ const processReports = async () => {
   console.log(logTime + ' - Logging into CAPIv2');
   jwt = await capiLogin.login(url, process.env.SCRIPT_USER, process.env.SCRIPT_PASS);
 
-  if (!jwt){
+  if (!jwt) {
     console.log('LOGIN FAILED!');
     process.exit(1);
   } else {
@@ -60,140 +67,104 @@ const processReports = async () => {
 
       // Loop through reports and process one by one
       for (let r = 0; r < reportsToProcess.length; r++) {
-        console.log(logTime +  ` - Processing ${reportTypes[i]}report ID: ${reportsToProcess[r].id}`);
+        console.log(logTime + ` - Processing ${reportTypes[i]}report ID: ${reportsToProcess[r].id}`);
 
         // Validate Reports
         let reportChecked = await reportValid.validateReport(url, reportTypes[i], reportsToProcess[r]);
 
-        console.log(reportChecked);
 
         // Push reportLog into UpdateLog
         (updateLog[`${reportTypes[i]}reports`].reports = updateLog[`${reportTypes[i]}reports`].reports || []).push(
           reportChecked
         );
-        //console.log(updateLog);
 
-        // if (reportChecked.valid.isValid === false) {
-        //   // Update report
-        //   let newReportComment = `[${reportChecked.valid.reportStatus.toUpperCase()}] - ${
-        //     reportChecked.valid.reportComment
-        //   }`;
+        // Checking for createSite or updateSite
+        if (
+          reportChecked.valid.isValid === true &&
+          reportChecked.capiv2.duplicate.updateSite === true
+        ) {
+          // perform update logic
+          // Check if System needs to be updated
+          if (
+            (reportChecked.capiv2.system.data.edsmCoordLocked === false &&
+              reportChecked.edsm.system.data.coordsLocked === true) ||
+            (!reportChecked.capiv2.system.data.edsmID && reportChecked.edsm.system.data.id)
+          ) {
+            let systemData = await systemproTools.processSystem(url, 'edsm', reportChecked.edsm.system.data);
+            await systemTools.updateSystem(url, reportChecked.capiv2.system.data.id, systemData, jwt);
+          }
 
-        //   let dupSiteID = null;
-        //   if (reportChecked.capiv2.duplicate.isDuplicate === true && reportChecked.capiv2.duplicate.site !== null) {
-        //     dupSiteID = reportChecked.capiv2.duplicate.site.id;
-        //   } else {
-        //     dupSiteID = null;
-        //   }
+          // Check if Body needs to be updated
+          if (!reportChecked.capiv2.body.data.edsmID && reportChecked.edsm.body.data.id) {
+            let bodyData = await bodyproTools.processBody(url, 'edsm', reportChecked.edsm.body.data);
+            await bodyTools.updateBody(url, reportChecked.capiv2.body.data.id, bodyData, jwt);
+          }
 
-        //   let reportData = {
-        //     reportStatus: reportChecked.valid.reportStatus,
-        //     reportComment: newReportComment,
-        //     added: false,
-        //     site: dupSiteID,
-        //   };
+          // Update site by ID
+          var updatedSite;
+          let toUpdate = false;
+          let siteData = {
+            type: reportChecked.capiv2.duplicate.site.type,
+            frontierID: reportChecked.capiv2.duplicate.site.frontierID
+          };
 
-        //   await updateReport(reportTypes[i], reportChecked.reportID, reportData);
-        //   console.log(
-        //     moment()
-        //       .utc()
-        //       .format() + ` - Updated invalid ${reportTypes[i]}report ID: ${reportsToProcess[r].id}`
-        //   );
-        // } else {
-        //   // create system or use existing
-        //   let newSystem = {};
-        //   if (reportChecked.capiv2.system.exists === false && reportChecked.capiv2.system.checked === true) {
-        //     let systemData = {};
-        //     if (
-        //       reportChecked.edsm.system.checked === true &&
-        //       reportChecked.edsm.system.exists === true &&
-        //       reportChecked.edsm.system.hasCoords === true
-        //     ) {
-        //       systemData = {
-        //         systemName: reportChecked.edsm.system.data.name.toUpperCase(),
-        //         id64: reportChecked.edsm.system.data.id64,
-        //         edsmID: reportChecked.edsm.system.data.id,
-        //         edsmCoordX: reportChecked.edsm.system.data.coords.x,
-        //         edsmCoordY: reportChecked.edsm.system.data.coords.y,
-        //         edsmCoordZ: reportChecked.edsm.system.data.coords.z,
-        //         edsmCoordLocked: reportChecked.edsm.system.data.coordsLocked,
-        //         primaryStar: reportChecked.edsm.system.data.primaryStar,
-        //       };
-        //     } else {
-        //       systemData = {
-        //         systemName: reportsToProcess[r].systemName.toUpperCase(),
-        //       };
-        //     }
-        //     newSystem = await createSystem(systemData);
-        //     // Push new system into log
-        //     (updateLog.systems = updateLog.systems || []).push(newSystem);
-        //   } else {
-        //     newSystem = reportChecked.capiv2.system.data;
-        //   }
+          if (reportChecked.capiv2.duplicate.site.type.type !== reportsToProcess[r].type) {
+            siteData.type = reportChecked.capiv2.type.data.id;
+            toUpdate = true;
+          }
 
-        //   // create body, assign system, or use existing
-        //   let newBody = {};
-        //   if (reportChecked.capiv2.body.exists === false && reportChecked.capiv2.body.checked === true) {
-        //     let bodyData = {};
-        //     if (reportChecked.edsm.body.checked === true && reportChecked.edsm.body.exists === true) {
-        //       bodyData = reportChecked.edsm.body.data;
-        //       newBody = await createBody(newSystem.id, reportChecked.edsm.body.data.name, bodyData);
-        //       // Push new system into log
-        //       (updateLog.bodies = updateLog.bodies || []).push(newBody);
-        //     }
-        //   } else {
-        //     newBody = reportChecked.capiv2.body.data;
-        //   }
+          if (reportChecked.capiv2.duplicate.site.frontierID !== reportsToProcess[r].frontierID) {
+            siteData.frontierID = reportsToProcess[r].frontierID;
+            toUpdate = true;
+          }
 
-        //   // create cmdr or use existing
-        //   let newCMDR = {};
-        //   if (reportChecked.capiv2.cmdr.exists === false && reportChecked.capiv2.cmdr.checked === true) {
-        //     newCMDR = await createCMDR(reportsToProcess[r].cmdrName);
-        //   } else {
-        //     newCMDR = reportChecked.capiv2.cmdr.data;
-        //   }
+          if (toUpdate === false) {
+            updatedSite = reportChecked.capiv2.duplicate.site.data;
+          } else {
+            updatedSite = await siteTools.updateSite(
+              url,
+              reportTypes[i],
+              reportChecked.capiv2.duplicate.site.id,
+              siteData,
+              jwt
+            );
+          }
 
-        //   // create/update site, assign system, body, type, and cmdr
-        //   let newSite = {};
-        //   if (
-        //     reportChecked.capiv2.duplicate.isDuplicate === false &&
-        //     reportChecked.capiv2.duplicate.createSite === true
-        //   ) {
-        //     let siteData = {
-        //       system: newSystem.id,
-        //       body: newBody.id,
-        //       latitude: reportsToProcess[r].latitude,
-        //       longitude: reportsToProcess[r].longitude,
-        //       type: reportChecked.capiv2.type.data.id,
-        //       frontierID: reportsToProcess[r].frontierID,
-        //       verified: false,
-        //       visible: true,
-        //       discoveredBy: newCMDR.id,
-        //     };
+          // Update the report
+          let newReportComment = `[${reportChecked.valid.reportStatus.toUpperCase()}] - ${
+            reportChecked.valid.reason
+          }`;
+          let updatedReport = {
+            reportStatus: reportChecked.valid.reportStatus,
+            reportComment: newReportComment,
+            added: false,
+            site: reportChecked.capiv2.duplicate.site.id,
+          };
 
-        //     newSite = await createSite(reportTypes[i], siteData);
-        //   }
+          // Push updated report
 
-        //   // Update report
-        //   let newReportComment = `[${reportChecked.valid.reportStatus.toUpperCase()}] - ${
-        //     reportChecked.valid.reportComment
-        //   }`;
+          console.log(logTime + ' - Report Marked for Site Update');
+          await reportTools.updateReport(url, reportTypes[i], reportsToProcess[r].id, updatedReport, jwt);
+        } else if (reportChecked.valid.isValid === true && reportChecked.capiv2.duplicate.createSite === true) {
+          //perform create logic
+          console.log(reportChecked);
+          console.log('CREATE LOGIC');
 
-        //   let reportData = {
-        //     reportStatus: reportChecked.valid.reportStatus,
-        //     reportComment: newReportComment,
-        //     added: true,
-        //     site: newSite.id,
-        //   };
+          // Create System if needed
 
-        //   await updateReport(reportTypes[i], reportChecked.reportID, reportData);
-        //   console.log(
-        //     moment()
-        //       .utc()
-        //       .format() + ` - Updated invalid ${reportTypes[i]}report ID: ${reportsToProcess[r].id}`
-        //   );
-        // }
-        // // Delay between processing each report
+          // Create Body if needed
+
+          // Create CMDR if needed
+
+
+        } else if (reportChecked.valid.isValid === false) {
+          // perform failure logic
+          console.log(reportChecked);
+          console.log('FAIL LOGIC');
+          console.log(reportChecked.valid.reason);
+          console.log(reportChecked.valid.reportStatus);
+        }
+        // Delay between processing each report
         await delay(process.env.SCRIPT_RV_DELAY);
       }
     } else {

@@ -82,6 +82,11 @@ const validateReport = async (url, reportType, report) => {
   // make sure the report isn't from beta
   if (report.isBeta === true) {
     reportChecks.isBeta = true;
+    // Preprocess Report Validation
+    let processedReportChecks = await processTools.preprocessReport(reportChecks, report);
+
+    // Return data to reportValidator to execute tasks
+    return processedReportChecks;
   } else {
     reportChecks.isBeta = false;
   }
@@ -97,6 +102,11 @@ const validateReport = async (url, reportType, report) => {
       if (report.cmdrName == checkCMDR[i].cmdrName) {
         reportChecks.blacklists.cmdr.checked = true;
         reportChecks.blacklists.cmdr.blacklisted = true;
+        // Preprocess Report Validation
+        let processedReportChecks = await processTools.preprocessReport(reportChecks, report);
+
+        // Return data to reportValidator to execute tasks
+        return processedReportChecks;
       }
     }
   }
@@ -112,6 +122,11 @@ const validateReport = async (url, reportType, report) => {
       if (report.clientVersion == checkClient[i].clientVersion) {
         reportChecks.blacklists.client.checked = true;
         reportChecks.blacklists.client.blacklisted = true;
+        // Preprocess Report Validation
+        let processedReportChecks = await processTools.preprocessReport(reportChecks, report);
+
+        // Return data to reportValidator to execute tasks
+        return processedReportChecks;
       }
     }
   }
@@ -156,6 +171,11 @@ const validateReport = async (url, reportType, report) => {
   if (!Array.isArray(checkCAPIType) || !checkCAPIType.length) {
     reportChecks.capiv2.type.checked = true;
     reportChecks.capiv2.type.exists = false;
+    // Preprocess Report Validation
+    let processedReportChecks = await processTools.preprocessReport(reportChecks, report);
+
+    // Return data to reportValidator to execute tasks
+    return processedReportChecks;
   } else {
     for (let i = 0; i < checkCAPIType.length; i++) {
       if (report.type == checkCAPIType[i].type) {
@@ -193,6 +213,11 @@ const validateReport = async (url, reportType, report) => {
   if (Object.keys(checkEDSMSystem).length < 1) {
     reportChecks.edsm.system.checked = true;
     reportChecks.edsm.system.exists = false;
+    // Preprocess Report Validation
+    let processedReportChecks = await processTools.preprocessReport(reportChecks, report);
+
+    // Return data to reportValidator to execute tasks
+    return processedReportChecks;
   } else {
     if (report.systemName.toUpperCase() == checkEDSMSystem.name.toUpperCase()) {
       reportChecks.edsm.system.checked = true;
@@ -210,6 +235,11 @@ const validateReport = async (url, reportType, report) => {
   if (!Array.isArray(checkEDSMBody.bodies) || !checkEDSMBody.bodies.length) {
     reportChecks.edsm.body.checked = true;
     reportChecks.edsm.body.exists = false;
+    // Preprocess Report Validation
+    let processedReportChecks = await processTools.preprocessReport(reportChecks, report);
+
+    // Return data to reportValidator to execute tasks
+    return processedReportChecks;
   } else {
     for (let i = 0; i < checkEDSMBody.bodies.length; i++) {
       if (report.bodyName.toUpperCase() == checkEDSMBody.bodies[i].name.toUpperCase()) {
@@ -232,29 +262,20 @@ const validateReport = async (url, reportType, report) => {
       if (!report.latitude || !report.longitude || (report.latitude == 0 && report.longitude == 0)) {
         reportChecks.capiv2.duplicate.checkedHaversine = false;
         reportChecks.capiv2.duplicate.isDuplicate = false;
+        // Preprocess Report Validation
+        let processedReportChecks = await processTools.preprocessReport(reportChecks, report);
+
+        // Return data to reportValidator to execute tasks
+        return processedReportChecks;
       } else if (
         report.systemName.toUpperCase() === checkCAPISite[i].system.systemName.toUpperCase() &&
         report.bodyName.toUpperCase() === checkCAPISite[i].body.bodyName.toUpperCase() &&
         report.latitude &&
         report.longitude &&
-        (
-          checkCAPISite[i].body.radius ||
+        (checkCAPISite[i].body.radius ||
           reportChecks.edsm.body.data.radius ||
-          (
-            report.frontierID !== null &&
-            report.frontierID === checkCAPISite[i].frontierID
-          )
-        )
+          (report.frontierID !== null && report.frontierID === checkCAPISite[i].frontierID))
       ) {
-
-        // Check if Site can be updated
-        if (report.type !== checkCAPISite[i].type.type) {
-          reportChecks.capiv2.duplicate.updateSite = true;
-        }
-        if (report.FrontierID !== checkCAPISite[i].frontierID) {
-          reportChecks.capiv2.duplicate.updateSite = true;
-        }
-
         // Pulling Radius from CAPIv2 or EDSM
         let tempRadius = null;
         if (checkCAPISite[i].body.radius) {
@@ -264,6 +285,11 @@ const validateReport = async (url, reportType, report) => {
         } else {
           reportChecks.capiv2.duplicate.checkedHaversine = false;
           reportChecks.capiv2.duplicate.isDuplicate = true;
+          // Preprocess Report Validation
+          let processedReportChecks = await processTools.preprocessReport(reportChecks, report);
+
+          // Return data to reportValidator to execute tasks
+          return processedReportChecks;
         }
 
         // Haversine Check
@@ -283,12 +309,28 @@ const validateReport = async (url, reportType, report) => {
           if (distance > process.env.SCRIPT_RV_DUPRANGE) {
             reportChecks.capiv2.duplicate.checkedHaversine = true;
             reportChecks.capiv2.duplicate.isDuplicate = false;
+            reportChecks.capiv2.duplicate.createSite = true;
           } else {
             reportChecks.capiv2.duplicate.checkedHaversine = true;
             reportChecks.capiv2.duplicate.isDuplicate = true;
             reportChecks.capiv2.duplicate.distance = distance;
             reportChecks.capiv2.duplicate.site = checkCAPISite[i];
           }
+        }
+
+        // Check if Site can be updated
+        if (checkCAPISite[i] && report.type !== checkCAPISite[i].type.type) {
+          reportChecks.capiv2.duplicate.updateSite = true;
+          reportChecks.capiv2.duplicate.site = checkCAPISite[i];
+        }
+        if (
+          checkCAPISite[i] &&
+          report.frontierID !== checkCAPISite[i].frontierID &&
+          checkCAPISite[i].frontierID === null &&
+          report.frontierID
+        ) {
+          reportChecks.capiv2.duplicate.updateSite = true;
+          reportChecks.capiv2.duplicate.site = checkCAPISite[i];
         }
       }
     }

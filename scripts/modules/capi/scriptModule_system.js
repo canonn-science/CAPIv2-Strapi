@@ -43,4 +43,22 @@ const createSystem = async (url, systemData, jwt) => {
   }
 };
 
-module.exports = { getSystem, createSystem };
+// Create System in CAPIv2
+const updateSystem = async (url, systemID, systemData, jwt) => {
+  let systemURL = url + `/systems/${systemID}`;
+
+  let response = await fetchTools.fetch_retry(5, systemURL, {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${jwt}`,
+    },
+    body: JSON.stringify(systemData),
+  });
+
+  let updatedSystem = await response.json();
+  return updatedSystem;
+};
+
+module.exports = { getSystem, createSystem, updateSystem };

@@ -18,6 +18,21 @@ const preprocessReport = async (reportChecked, report) => {
 
   // Validate report based on previous updates to reportChecks
 
+  // invalid for missing data
+  if (
+    !report.systemName ||
+    !report.bodyName ||
+    !report.latitude ||
+    !report.longitude ||
+    !report.type ||
+    !report.cmdrName
+  ) {
+    reportChecked.valid.isValid = false;
+    reportChecked.valid.reason = 'Report is missing key required information';
+    reportChecked.valid.reportStatus = reportStatus.network;
+    return reportChecked;
+  }
+
   // Accept Checks
   if (
     reportChecked.isBeta === false &&
@@ -62,6 +77,7 @@ const preprocessReport = async (reportChecked, report) => {
     reportChecked.capiv2.type.exists === true &&
     reportChecked.capiv2.cmdr.checked === true &&
     reportChecked.capiv2.duplicate.updateSite === true &&
+    reportChecked.capiv2.duplicate.isDuplicate === true &&
     (
       reportChecked.capiv2.system.exists === true ||
       (
@@ -159,6 +175,8 @@ const preprocessReport = async (reportChecked, report) => {
     reportChecked.valid.reportStatus = reportStatus.edsmBody;
     return reportChecked;
   }
+
+  return reportChecked;
 
 };
 

@@ -75,7 +75,6 @@ const createSite = async (url, reportType, siteData, jwt) => {
   });
 
   let newSite = await response.json();
-  console.log(newSite);
   return newSite;
 };
 
@@ -83,7 +82,7 @@ const createSite = async (url, reportType, siteData, jwt) => {
 const updateSite = async (url, reportType, siteID, siteData, jwt) => {
   let siteURL = url + `/${reportType}sites/${siteID}`;
   let response = await fetchTools.fetch_retry(5, siteURL, {
-    method: 'POST',
+    method: 'PUT',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
