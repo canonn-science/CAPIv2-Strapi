@@ -138,13 +138,9 @@ const processReports = async () => {
           };
 
           // Push updated report
-
           console.log(logTime + ' - Report Marked for Site Update');
           await reportTools.updateReport(url, reportTypes[i], reportsToProcess[r].id, updatedReport, jwt);
         } else if (reportChecked.valid.isValid === true && reportChecked.capiv2.duplicate.createSite === true) {
-          //perform create logic
-          console.log(reportChecked);
-          console.log('CREATE LOGIC');
 
           // Create System if needed
           var systemID;
@@ -153,7 +149,12 @@ const processReports = async () => {
           } else if (reportChecked.capiv2.system.exists === false && reportChecked.edsm.system.exists === true) {
             let systemData = await systemproTools.processSystem(url, 'edsm', reportChecked.edsm.system.data);
             let newSystem = await systemTools.createSystem(url, systemData, jwt);
-            console.log(newSystem);
+
+            // Push newSystem into UpdateLog
+            (updateLog.systems = updateLog.systems || []).push(
+              newSystem
+            );
+
             if (newSystem.systemName === reportsToProcess[r].systemName.toUpperCase()) {
               systemID = newSystem.id;
             } else {
@@ -162,7 +163,7 @@ const processReports = async () => {
             }
           } else {
             console.log('ERROR WITH NEW SYSTEM! Error Code: 2');
-            bodyID = 'FAILED';
+            systemID = 'FAILED';
           }
 
           // Create Body if needed
@@ -173,10 +174,15 @@ const processReports = async () => {
             reportChecked.capiv2.body.exists === false &&
             reportChecked.edsm.body.exists === true &&
             systemID !== 'FAILED'
-            ) {
+          ) {
             let bodyData = await bodyproTools.processBody('edsm', reportChecked.edsm.body.data, await systemID);
             let newBody = await bodyTools.createBody(url, bodyData, jwt);
-            console.log(newBody);
+
+            // Push newBody into UpdateLog
+            (updateLog.bodies = updateLog.bodies || []).push(
+              newBody
+            );
+
             if (newBody.bodyName === reportsToProcess[r].bodyName.toUpperCase() && newBody.system.id === systemID) {
               bodyID = newBody.id;
             } else {
@@ -197,7 +203,12 @@ const processReports = async () => {
               cmdrName: reportsToProcess[r].cmdrName,
             };
             let newCMDR = await cmdrTools.createCMDR(url, cmdrData, jwt);
-            console.log(newCMDR);
+
+            // Push newCMDR into UpdateLog
+            (updateLog.cmdrs = updateLog.cmdrs || []).push(
+              newCMDR
+            );
+
             if (newCMDR.cmdrName === reportsToProcess[r].cmdrName) {
               cmdrID = newCMDR.id;
             } else {
@@ -228,7 +239,12 @@ const processReports = async () => {
             };
 
             let newSite = await siteTools.createSite(url, reportTypes[i], siteData, jwt);
-            console.log(newSite);
+
+            // Push newSite into UpdateLog
+            (updateLog.sites = updateLog.sites || []).push(
+              newSite
+            );
+
             if (
               newSite.system.id === systemID &&
               newSite.body.id === bodyID &&
@@ -239,13 +255,41 @@ const processReports = async () => {
               newSite.verified === false
             ) {
               siteID = newSite.id;
+            } else {
+              console.log('ERROR WITH NEW SITE! Error Code: 1')
+              siteID = 'FAILED';
             }
           }
 
           // Update Report
+          console.log(logTime + ' - Report approved and site created');
+          if (
+            systemID && bodyID && cmdrID && siteID &&
+            systemID !== 'FAILED' &&
+            bodyID !== 'FAILED' &&
+            cmdrID !== 'FAILED' &&
+            siteID !== 'FAILED'
+          ) {
+            let newReportComment = `[${reportChecked.valid.reportStatus.toUpperCase()}] - ${reportChecked.valid.reason}`;
+            let updatedReport = {
+              reportStatus: reportChecked.valid.reportStatus,
+              reportComment: newReportComment,
+              added: true,
+              site: siteID,
+            };
+
+            let finalReport = await reportTools.updateReport();
+
+            if (
+              finalReport.reportStatus !== reportChecked.valid.reportStatus ||
+              finalReport.reportComment !== newReportComment ||
+              finalReport.site.id !== siteID
+            ) {
+              console.log('ERROR WITH UPDATED REPORT! Error Code: 1');
+            }
+          }
         } else if (reportChecked.valid.isValid === false) {
           // perform failure logic
-          console.log(reportChecked);
           console.log('FAIL LOGIC');
           console.log(reportChecked.valid.reason);
           console.log(reportChecked.valid.reportStatus);
