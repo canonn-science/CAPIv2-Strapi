@@ -3,11 +3,9 @@ const cron = require('node-cron');
 require('node-json-color-stringify');
 require('dotenv').config({ path: require('find-config')('.env') });
 const delay = ms => new Promise(res => setTimeout(res, ms));
-const logTime = moment()
-  .utc()
-  .format();
 
 // Module Imports
+const fetchTools = require('./modules/scriptModule_fetchRetry');
 const capiLogin = require('./modules/capi/scriptModule_login');
 const reportTools = require('./modules/capi/scriptModule_report');
 const reportValid = require('./modules/validate/scriptModule_validateReport');
@@ -35,14 +33,29 @@ if (process.env.NODE_ENV == 'production') {
 let reportTypes = ['ap', 'bm', 'bt', 'cs', 'fg', 'fm', 'gv', 'gy', 'ls', 'tb', 'tw'];
 
 // Update log with changes made
-const updateAPILog = async data => {};
+const updateAPILog = async (url, logdata, jwt) => {
+  let logURL = url + '/apiupdates';
+
+  let response = await fetchTools.fetch_retry(5, logURL, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${jwt}`,
+    },
+    body: JSON.stringify(logdata),
+  });
+  let newLog = await response.json();
+
+  return newLog;
+};
 
 // Core function that calls all others for validation
 const processReports = async () => {
   // Clean update log
   let updateLog = {};
 
-  console.log(logTime + ' - Logging into CAPIv2');
+  console.log(moment().utc().format() + ' - Logging into CAPIv2');
   jwt = await capiLogin.login(url, process.env.SCRIPT_USER, process.env.SCRIPT_PASS);
 
   if (!jwt) {
@@ -53,7 +66,9 @@ const processReports = async () => {
   }
 
   // Start processing
-  console.log(logTime + ' - Starting to process reports');
+  console.log('<---------------->');
+  console.log(moment().utc().format() + ' - Starting to process reports');
+  console.log('<---------------->');
 
   // Get counts to check if we need to process reports for that site type
   for (let i = 0; i < reportTypes.length; i++) {
@@ -62,14 +77,16 @@ const processReports = async () => {
     // If count is more than zero, fetch reports and start processing them
     if (count > 0) {
       // Start report processing
-      console.log(logTime + ` - Running Validation on ${reportTypes[i]}reports`);
+      console.log('<---------------->');
+      console.log(moment().utc().format() + ` - Running Validation on ${reportTypes[i]}reports`);
+      console.log('<---------------->');
       updateLog[`${reportTypes[i]}reports`] = { reportCount: count };
 
       let reportsToProcess = await reportTools.getReports(url, reportTypes[i], 'pending');
 
       // Loop through reports and process one by one
       for (let r = 0; r < reportsToProcess.length; r++) {
-        console.log(logTime + ` - Processing ${reportTypes[i]}report ID: ${reportsToProcess[r].id}`);
+        console.log(moment().utc().format() + ` - Processing ${reportTypes[i]}report ID: ${reportsToProcess[r].id}`);
 
         // Validate Reports
         let reportChecked = await reportValid.validateReport(url, reportTypes[i], reportsToProcess[r]);
@@ -138,7 +155,7 @@ const processReports = async () => {
           };
 
           // Push updated report
-          console.log(logTime + ' - Report Marked for Site Update');
+          console.log(moment().utc().format() + ' -   => Report Marked for Site Update');
           await reportTools.updateReport(url, reportTypes[i], reportsToProcess[r].id, updatedReport, jwt);
         } else if (reportChecked.valid.isValid === true && reportChecked.capiv2.duplicate.createSite === true) {
           // Create System if needed
@@ -235,13 +252,14 @@ const processReports = async () => {
 
             let newSite = await siteTools.createSite(url, reportTypes[i], siteData, jwt);
 
+            delay(100);
             // Push newSite into UpdateLog
             (updateLog.sites = updateLog.sites || []).push(newSite);
 
             if (
-              newSite.system.id === systemID &&
-              newSite.body.id === bodyID &&
-              newSite.discoveredBy.id === cmdrID &&
+              newSite.system.id === (await systemID) &&
+              newSite.body.id === (await bodyID) &&
+              //newSite.discoveredBy.id === await cmdrID &&
               newSite.type.id === reportChecked.capiv2.type.data.id &&
               newSite.latitude === reportsToProcess[r].latitude &&
               newSite.longitude === reportsToProcess[r].longitude &&
@@ -255,11 +273,10 @@ const processReports = async () => {
           }
 
           // Update Report
-          console.log(logTime + ' - Report approved and site created');
+          console.log(moment().utc().format() + ' -   => Report approved and site created');
           if (
             systemID &&
             bodyID &&
-            cmdrID &&
             siteID &&
             systemID !== 'FAILED' &&
             bodyID !== 'FAILED' &&
@@ -269,28 +286,47 @@ const processReports = async () => {
             let newReportComment = `[${reportChecked.valid.reportStatus.toUpperCase()}] - ${
               reportChecked.valid.reason
             }`;
-            let updatedReport = {
+            let reportData = {
               reportStatus: reportChecked.valid.reportStatus,
               reportComment: newReportComment,
               added: true,
               site: siteID,
             };
 
-            let finalReport = await reportTools.updateReport();
+            let finalReport = await reportTools.updateReport(
+              url,
+              reportTypes[i],
+              reportsToProcess[r].id,
+              reportData,
+              jwt
+            );
 
             if (
               finalReport.reportStatus !== reportChecked.valid.reportStatus ||
               finalReport.reportComment !== newReportComment ||
-              finalReport.site.id !== siteID
+              finalReport.site.id === null
             ) {
               console.log('ERROR WITH UPDATED REPORT! Error Code: 1');
             }
           }
         } else if (reportChecked.valid.isValid === false) {
           // perform failure logic
-          console.log('FAIL LOGIC');
-          console.log(reportChecked.valid.reason);
-          console.log(reportChecked.valid.reportStatus);
+          if (reportChecked.capiv2.duplicate.isDuplicate === true) {
+            console.log(moment().utc().format() + ' -   => Report marked as duplicate');
+          } else {
+            console.log(moment().utc().format() + ' -   => Report failed for unknown reason');
+          }
+
+          let newReportComment = `[${reportChecked.valid.reportStatus.toUpperCase()}] - ${reportChecked.valid.reason}`;
+
+          let reportData = {
+            reportStatus: reportChecked.valid.reportStatus,
+            reportComment: newReportComment,
+            added: true,
+            site: siteID,
+          };
+
+          await reportTools.updateReport(url, reportTypes[i], reportsToProcess[r].id, reportData, jwt);
         }
         // Delay between processing each report
         await delay(process.env.SCRIPT_RV_DELAY);
@@ -300,7 +336,33 @@ const processReports = async () => {
     }
   }
   // Push update log to CAPIv2
-  console.log(updateLog);
+  let updateCount = true;
+  let updateKeys = Object.keys(updateLog);
+
+  for (let u = 0; u < updateKeys.length; u ++) {
+    if (updateKeys[u].includes('reports') === true){
+      if (updateLog[updateKeys[u]].reportCount === '0') {
+        updateCount = false;
+      } else {
+        updateCount = true;
+      }
+    }
+  }
+  if (updateCount === false) {
+    console.log(moment().utc().format() + ' - No Reports to process');
+  } else {
+    console.log(moment().utc().format() + ' - Sending update log to CAPIv2');
+    console.log(moment().utc().format() + ' - Logging Disabled');
+
+    // let updateLogData = {
+    //   updateTime: moment().utc().format(),
+    //   updateLog: updateLog
+    // };
+
+    // await updateAPILog(url, updateLogData, jwt);
+    // console.log(moment().utc().format() + ' - Log sent');
+  }
+  console.log('>-------- End Script --------<');
 };
 
 // if (process.env.SCRIPT_RV === 'true') {
