@@ -74,9 +74,7 @@ const deleteRecords = async () => {
   await delay(timeout);
 
   // Login and get JWT
-  if (jwt === null) {
-    login();
-  }
+  login();
 
   // Grab Records
   await getRecords();
@@ -85,7 +83,8 @@ const deleteRecords = async () => {
   if (mrRecords.length > 0) {
     for (let i=0; i < mrRecords.length; i++) {
       try {
-        let response = await fetch(url + '/materialreports' + `/${mrRecords[i].id}`, {
+        console.log('Deleting MR: ' + mrRecords[i].id);
+        await fetch(url + '/materialreports' + `/${mrRecords[i].id}`, {
           method: 'DELETE',
           headers: {
             'Accept': 'application/json',
@@ -105,6 +104,7 @@ const deleteRecords = async () => {
 
 if (process.env.SCRIPT_MR_DELETE === 'true') {
   cron.schedule(process.env.SCRIPT_MR_CRON, () => {
+    console.log(moment.utc().format() + ' - Running Delete Script');
     deleteRecords();
   });
 } else {

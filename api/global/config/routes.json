@@ -15,6 +15,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/totalcount",
+      "handler": "global.totalCount",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }

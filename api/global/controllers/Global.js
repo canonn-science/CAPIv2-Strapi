@@ -35,5 +35,15 @@ module.exports = {
       strapiVersion: strapi.config.info.strapi,
       capiVersion: strapi.config.info.version
     });
+  },
+
+  /**
+   * Get count of all Sites and Reports.
+   *
+   * @return {Object}
+   */
+
+  totalCount: () => {
+    return strapi.services.global.totalCount();
   }
 };
