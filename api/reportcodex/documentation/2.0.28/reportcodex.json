@@ -554,6 +554,9 @@
             "type": "number",
             "default": ""
           },
+          "frontierID": {
+            "type": "integer"
+          },
           "entryId": {
             "type": "integer",
             "default": ""
@@ -615,7 +618,7 @@
             ]
           },
           "rawJson": {
-            "type": "json"
+            "type": "object"
           }
         }
       },
@@ -661,6 +664,9 @@
             "type": "number",
             "default": ""
           },
+          "frontierID": {
+            "type": "integer"
+          },
           "entryId": {
             "type": "integer",
             "default": ""
@@ -722,7 +728,7 @@
             ]
           },
           "rawJson": {
-            "type": "json"
+            "type": "object"
           }
         }
       }
