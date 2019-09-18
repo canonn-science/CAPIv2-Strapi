@@ -16,8 +16,8 @@
         "debug": false,
         "acquireConnectionTimeout": 100000,
         "pool": {
-          "min": 5,
-          "max": 15,
+          "min": 0,
+          "max": 50,
           "createTimeoutMillis": 30000,
           "acquireTimeoutMillis": 600000,
           "idleTimeoutMillis": 20000,
@@ -41,8 +41,8 @@
         "debug": false,
         "acquireConnectionTimeout": 100000,
         "pool": {
-          "min": 5,
-          "max": 15,
+          "min": 0,
+          "max": 20,
           "createTimeoutMillis": 30000,
           "acquireTimeoutMillis": 600000,
           "idleTimeoutMillis": 20000,
