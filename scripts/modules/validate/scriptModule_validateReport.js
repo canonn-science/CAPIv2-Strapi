@@ -332,6 +332,16 @@ const validateReport = async (url, reportType, report) => {
           reportChecks.capiv2.duplicate.updateSite = true;
           reportChecks.capiv2.duplicate.site = checkCAPISite[i];
         }
+        if (
+          (
+            checkCAPISite[i].discoveredBy === null ||
+            checkCAPISite[i].discoveredBy === 618
+          ) &&
+          report.cmdrName
+        ) {
+          reportChecks.capiv2.duplicate.updateSite = true;
+          reportChecks.capiv2.duplicate.site = checkCAPISite[i];
+        }
       }
     }
   }

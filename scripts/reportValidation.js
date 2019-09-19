@@ -121,6 +121,7 @@ const processReports = async () => {
           let siteData = {
             type: reportChecked.capiv2.duplicate.site.type,
             frontierID: reportChecked.capiv2.duplicate.site.frontierID,
+            discoveredBy: reportChecked.capiv2.duplicate.site.discoveredBy
           };
 
           if (reportChecked.capiv2.duplicate.site.type.type !== reportsToProcess[r].type) {
@@ -131,6 +132,37 @@ const processReports = async () => {
           if (reportChecked.capiv2.duplicate.site.frontierID !== reportsToProcess[r].frontierID) {
             siteData.frontierID = reportsToProcess[r].frontierID;
             toUpdate = true;
+          }
+
+          if (
+            reportChecked.capiv2.duplicate.site.discoveredBy === null ||
+            reportChecked.capiv2.duplicate.site.discoveredBy.cmdrName === 'zzz_Unknown'
+          ) {
+            // Create CMDR if needed
+            var cmdrID;
+            if (
+              reportChecked.capiv2.cmdr.exists === true &&
+              reportChecked.capiv2.duplicate.site.discoveredBy !== 618
+            ) {
+              cmdrID = reportChecked.capiv2.cmdr.data.id;
+            } else {
+              let cmdrData = {
+                cmdrName: reportsToProcess[r].cmdrName,
+              };
+              let newCMDR = await cmdrTools.createCMDR(url, cmdrData, jwt);
+              console.log(newCMDR);
+
+              // Push newCMDR into UpdateLog
+              (updateLog.cmdrs = updateLog.cmdrs || []).push(newCMDR);
+
+              if (newCMDR.cmdrName === reportsToProcess[r].cmdrName) {
+                cmdrID = newCMDR.id;
+              } else {
+                console.log('ERROR WITH NEW CMDR! Error Code: 1');
+                cmdrID = 'FAILED';
+              }
+            }
+            siteData.discoveredBy = cmdrID;
           }
 
           if (toUpdate === false) {
@@ -207,9 +239,9 @@ const processReports = async () => {
           }
 
           // Create CMDR if needed
-          var cmdrID;
+          var updateCmdrID;
           if (reportChecked.capiv2.cmdr.exists === true) {
-            cmdrID = reportChecked.capiv2.cmdr.data.id;
+            updateCmdrID = reportChecked.capiv2.cmdr.data.id;
           } else {
             let cmdrData = {
               cmdrName: reportsToProcess[r].cmdrName,
@@ -220,10 +252,10 @@ const processReports = async () => {
             (updateLog.cmdrs = updateLog.cmdrs || []).push(newCMDR);
 
             if (newCMDR.cmdrName === reportsToProcess[r].cmdrName) {
-              cmdrID = newCMDR.id;
+              updateCmdrID = newCMDR.id;
             } else {
               console.log('ERROR WITH NEW CMDR! Error Code: 1');
-              cmdrID = 'FAILED';
+              updateCmdrID = 'FAILED';
             }
           }
 

@@ -108,14 +108,17 @@ const preprocessReport = async (reportChecked, report) => {
     reportChecked.valid.isValid = false;
     reportChecked.valid.reason = 'CMDR is blacklisted';
     reportChecked.valid.reportStatus = reportStatus.blacklisted;
+    return reportChecked;
   } else if (reportChecked.blacklists.cmdr.checked === false) {
     reportChecked.valid.isValid = false;
     reportChecked.valid.reason = 'Issue with checking blacklist';
     reportChecked.valid.reportStatus = reportStatus.network;
+    return reportChecked;
   } else if (reportChecked.blacklists.client.blacklisted === true) {
     reportChecked.valid.isValid = false;
     reportChecked.valid.reason = 'Client is blacklisted';
     reportChecked.valid.reportStatus = reportStatus.blacklisted;
+    return reportChecked;
   } else if (reportChecked.blacklists.cmdr.checked === false) {
     reportChecked.valid.isValid = false;
     reportChecked.valid.reason = 'Issue with checking blacklist';
@@ -133,10 +136,12 @@ const preprocessReport = async (reportChecked, report) => {
     reportChecked.valid.isValid = false;
     reportChecked.valid.reason = 'Issue with checking CAPIv2 API Data';
     reportChecked.valid.reportStatus = reportStatus.network;
+    return reportChecked;
   } else if (reportChecked.capiv2.type.exists === false) {
     reportChecked.valid.isValid = false;
     reportChecked.valid.reason = 'Type does not match approved types';
     reportChecked.valid.reportStatus = reportStatus.capiv2Type;
+    return reportChecked;
   } else if (
     reportChecked.capiv2.duplicate.createSite === false &&
     reportChecked.capiv2.duplicate.checkedHaversine === false
@@ -144,6 +149,7 @@ const preprocessReport = async (reportChecked, report) => {
     reportChecked.valid.isValid = false;
     reportChecked.valid.reason = 'Unable to check duplicate based on haversine, missing radius or lat/lon';
     reportChecked.valid.reportStatus = reportStatus.network;
+    return reportChecked;
   } else if (
     reportChecked.capiv2.duplicate.isDuplicate === true &&
     reportChecked.capiv2.duplicate.updateSite === false
@@ -161,14 +167,17 @@ const preprocessReport = async (reportChecked, report) => {
     reportChecked.valid.isValid = false;
     reportChecked.valid.reason = 'Unable to check EDSM due to a network error';
     reportChecked.valid.reportStatus = reportStatus.network;
+    return reportChecked;
   } else if (reportChecked.edsm.system.exists === true && reportChecked.edsm.system.hasCoords === false) {
     reportChecked.valid.isValid = false;
     reportChecked.valid.reason = 'System exists in EDSM but has no Coords (Console user?)';
     reportChecked.valid.reportStatus = reportStatus.missingCoords;
+    return reportChecked;
   } else if (reportChecked.capiv2.system.exists === false && reportChecked.edsm.system.exists === false) {
     reportChecked.valid.isValid = false;
     reportChecked.valid.reason = 'System does not exist in CAPIv2 or EDSM';
     reportChecked.valid.reportStatus = reportStatus.edsmSystem;
+    return reportChecked;
   } else if (reportChecked.capiv2.body.exists === false && reportChecked.edsm.body.exists === false) {
     reportChecked.valid.isValid = false;
     reportChecked.valid.reason = 'Body does not exist in CAPIv2 or EDSM';
