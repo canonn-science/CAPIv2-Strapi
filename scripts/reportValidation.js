@@ -29,7 +29,20 @@ let reportTypes = ['ap', 'bm', 'bt', 'cs', 'fg', 'fm', 'gv', 'gy', 'ls', 'tb', '
 // Core function that calls all others for validation
 const processReports = async () => {
   // Clean update log
-  let updateLog = {};
+  let updateLog = {
+    systems: {
+      count: 0
+    },
+    bodies: {
+      count: 0
+    },
+    cmdrs: {
+      count: 0
+    },
+    sites: {
+      count: 0
+    }
+  };
 
   console.log(
     moment()
@@ -68,12 +81,13 @@ const processReports = async () => {
           .format() + ` - Running Validation on ${reportTypes[i]}reports`
       );
       console.log('<---------------->');
-      updateLog[`${reportTypes[i]}reports`] = { reportCount: count };
+      updateLog[`${reportTypes[i]}reports`] = { count: count };
 
       let reportsToProcess = await reportTools.getReports(url, reportTypes[i], 'pending');
 
       // Loop through reports and process one by one
       for (let r = 0; r < reportsToProcess.length; r++) {
+        console.log(updateLog);
         console.log(
           moment()
             .utc()
@@ -82,11 +96,6 @@ const processReports = async () => {
 
         // Validate Reports
         let reportChecked = await reportValid.validateReport(url, reportTypes[i], reportsToProcess[r]);
-
-        // Push reportLog into UpdateLog
-        (updateLog[`${reportTypes[i]}reports`].reports = updateLog[`${reportTypes[i]}reports`].reports || []).push(
-          reportChecked
-        );
 
         // Process report for Create, Update, Duplicate, or Failure
         if (
@@ -106,6 +115,45 @@ const processReports = async () => {
 
           // Push updated IDs into updateLog
           console.log(updatedData);
+
+          // create structure if needed
+          //report
+          if (!updateLog[`${reportTypes[i]}reports`].reports) {
+            updateLog[`${reportTypes[i]}reports`].reports = {};
+          }
+
+          // Push System if updated
+          if (updatedData.system) {
+            (updateLog.systems.updated = updateLog.systems.updated || []).push(
+              updatedData.system
+            );
+          }
+
+          // Push Body if updated
+          if (updatedData.body) {
+            (updateLog.bodies.updated = updateLog.bodies.updated || []).push(
+              updatedData.body
+            );
+          }
+
+          // Push CMDR if created
+          if (updatedData.cmdr) {
+            (updateLog.cmdrs.created = updateLog.cmdrs.created || []).push(
+              updatedData.cmdr
+            );
+          }
+
+          // Push Site if updated
+          if (updatedData.site) {
+            (updateLog.sites.updated = updateLog.sites.updated || []).push(
+              updatedData.site
+            );
+          }
+
+          // Push report id
+          (updateLog[`${reportTypes[i]}reports`].reports.updated = updateLog[`${reportTypes[i]}reports`].reports.updated || []).push(
+            updatedData.report
+          );
 
           console.log(
             moment()
@@ -130,6 +178,44 @@ const processReports = async () => {
           // Push created IDs into updateLog
           console.log(createdData);
 
+          // create structure if needed
+          if (!updateLog[`${reportTypes[i]}reports`].reports) {
+            updateLog[`${reportTypes[i]}reports`].reports = {};
+          }
+
+          // Push System if created
+          if (createdData.system) {
+            (updateLog.systems.created = updateLog.systems.created || []).push(
+              createdData.system
+            );
+          }
+
+          // Push Body if created
+          if (createdData.body) {
+            (updateLog.bodies.created = updateLog.bodies.created || []).push(
+              createdData.body
+            );
+          }
+
+          // Push CMDR if created
+          if (createdData.cmdr) {
+            (updateLog.cmdrs.created = updateLog.cmdrs.created || []).push(
+              createdData.cmdr
+            );
+          }
+
+          // Push Site if created
+          if (createdData.site) {
+            (updateLog.sites.created = updateLog.sites.created || []).push(
+              createdData.site
+            );
+          }
+
+          // Push report id
+          (updateLog[`${reportTypes[i]}reports`].reports.created = updateLog[`${reportTypes[i]}reports`].reports.created || []).push(
+            createdData.report
+          );
+
           console.log(
             moment()
               .utc()
@@ -141,6 +227,17 @@ const processReports = async () => {
           reportChecked.capiv2.duplicate.createSite === false &&
           reportChecked.capiv2.duplicate.updateSite === false
         ) {
+
+          // create structure if needed
+          if (!updateLog[`${reportTypes[i]}reports`].reports) {
+            updateLog[`${reportTypes[i]}reports`].reports = {};
+          }
+
+          // Push report id
+          (updateLog[`${reportTypes[i]}reports`].reports.duplicate = updateLog[`${reportTypes[i]}reports`].reports.duplicate || []).push(
+            reportsToProcess[r].id
+          );
+
           // perform duplicate logic
           console.log(
             moment()
@@ -160,30 +257,38 @@ const processReports = async () => {
           await reportTools.updateReport(url, reportTypes[i], reportsToProcess[r].id, reportData, jwt);
         } else {
           // perform failure logic
+
+          // create structure if needed
+          if (!updateLog[`${reportTypes[i]}reports`].reports) {
+            updateLog[`${reportTypes[i]}reports`].reports = {};
+          }
+
+          // Push report id
+          (updateLog[`${reportTypes[i]}reports`].reports.failed = updateLog[`${reportTypes[i]}reports`].reports.failed || []).push(
+            reportsToProcess[r].id
+          );
+
           console.log(
             moment()
               .utc()
               .format() + ' -   => Report failed for unknown reason'
           );
-          console.log(reportChecked);
-          console.log(reportChecked.capiv2.duplicate.site);
-          delay(2000);
 
-          let newReportComment = `[${reportChecked.valid.reportStatus.toUpperCase()}] - ${reportChecked.valid.reason}`;
+          // let newReportComment = `[${reportChecked.valid.reportStatus.toUpperCase()}] - ${reportChecked.valid.reason}`;
 
-          let reportData = {
-            reportStatus: reportChecked.valid.reportStatus,
-            reportComment: newReportComment,
-            added: false,
-          };
+          // let reportData = {
+          //   reportStatus: reportChecked.valid.reportStatus,
+          //   reportComment: newReportComment,
+          //   added: false,
+          // };
 
-          await reportTools.updateReport(url, reportTypes[i], reportsToProcess[r].id, reportData, jwt);
+          // await reportTools.updateReport(url, reportTypes[i], reportsToProcess[r].id, reportData, jwt);
         }
         // Delay between processing each report
         await delay(process.env.SCRIPT_RV_DELAY);
       }
     } else {
-      updateLog[`${reportTypes[i]}reports`] = { reportCount: count };
+      updateLog[`${reportTypes[i]}reports`] = { count: count };
     }
   }
   // Push update log to CAPIv2
@@ -192,7 +297,7 @@ const processReports = async () => {
 
   for (let u = 0; u < updateKeys.length; u++) {
     if (updateKeys[u].includes('reports') === true) {
-      if (updateLog[updateKeys[u]].reportCount === '0') {
+      if (updateLog[updateKeys[u]].count === '0') {
         updateCount = false;
       } else {
         updateCount = true;
@@ -226,6 +331,7 @@ const processReports = async () => {
     // console.log(moment().utc().format() + ' - Log sent');
   }
   console.log('>-------- End Script --------<');
+  console.log(JSON.colorStringify(updateLog, null, 2));
 };
 
 // if (process.env.SCRIPT_RV === 'true') {

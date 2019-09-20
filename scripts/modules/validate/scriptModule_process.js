@@ -108,7 +108,7 @@ const create = async (url, jwt, reportType, reportChecked, reportToProcess) => {
 
     let newSite = await siteTools.createSite(url, reportType, siteData, jwt);
 
-    delay(100);
+    await delay(100);
 
     if (
       newSite.system.id === (await systemID) &&
@@ -137,8 +137,6 @@ const create = async (url, jwt, reportType, reportChecked, reportToProcess) => {
     };
 
     let finalReport = await reportTools.updateReport(url, reportType, reportToProcess.id, reportData, jwt);
-
-    console.log(finalReport);
 
     if (
       finalReport.reportStatus !== reportChecked.valid.reportStatus ||
@@ -197,7 +195,7 @@ const update = async (url, jwt, reportType, reportChecked, reportToProcess) => {
       jwt
     );
     updateBodyID = updateBody.id;
-    // Push updateSystem into UpdateLog
+    // Push updateBody into UpdateLog
     updateLog.body = updateBodyID;
   }
 
@@ -249,9 +247,9 @@ const update = async (url, jwt, reportType, reportChecked, reportToProcess) => {
       siteData,
       jwt
     );
-    updateBodyID = updateSite.id;
-    // Push updateSystem into UpdateLog
-    updateLog.site = updateBodyID;
+    updateSiteID = updateSite.id;
+    // Push updateSite into UpdateLog
+    updateLog.site = updateSiteID;
   }
 
   // Update the report
@@ -272,11 +270,11 @@ const update = async (url, jwt, reportType, reportChecked, reportToProcess) => {
     jwt
   );
 
-  console.log(updatedReport);
-
   updatedReportID = updatedReport.id;
-  // Push updateSystem into UpdateLog
+  // Push updateReport into UpdateLog
   updateLog.report = updatedReportID;
+
+  return updateLog;
 };
 
 module.exports = { create, update };

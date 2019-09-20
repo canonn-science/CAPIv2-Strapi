@@ -13,14 +13,14 @@ const fetch_retry = async (retryCount, url, options) => {
           .utc()
           .format() + ' - EDSM API Limit Reached, waiting 5 minutes'
       );
-      delay(300000);
+      await delay(300000);
       console.log(
         moment()
           .utc()
           .format() + ' - Waited 5 minutes, retrying'
       );
       return await fetch_retry(url, options, (retryCount - 1));
-    } else if (data.status === 429 && retryCount <= 1) {
+    } else if (data.status === 429 && retryCount < 1) {
       console.log(
         moment()
           .utc()
@@ -32,7 +32,7 @@ const fetch_retry = async (retryCount, url, options) => {
     }
   } catch (error) {
     if (retryCount <= 1) console.log(error);
-    delay(5000);
+    await delay(5000);
     return await fetch_retry(url, options, (retryCount - 1));
   }
 };
