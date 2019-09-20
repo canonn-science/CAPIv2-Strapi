@@ -1,7 +1,9 @@
 const moment = require('moment');
 const cron = require('node-cron');
 require('node-json-color-stringify');
-require('dotenv').config({ path: require('find-config')('.env') });
+require('dotenv').config({
+  path: require('find-config')('.env'),
+});
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
 // Module Imports
@@ -82,7 +84,9 @@ const processReports = async () => {
           .format() + ` - Running Validation on ${reportTypes[i]}reports`
       );
       console.log('<---------------->');
-      updateLog[`${reportTypes[i]}reports`] = { count: count };
+      updateLog[`${reportTypes[i]}reports`] = {
+        count: count,
+      };
 
       var reportsToProcess;
       try {
@@ -235,7 +239,7 @@ const processReports = async () => {
           console.log(
             moment()
               .utc()
-              .format() + ' -   => Report marked as duplicate'
+              .format() + ' -   => Report failed - ' + reportChecked.valid.reason
           );
 
           let newReportComment = `[${reportChecked.valid.reportStatus.toUpperCase()}] - ${reportChecked.valid.reason}`;
@@ -252,7 +256,6 @@ const processReports = async () => {
           } catch (error) {
             console.log(error);
           }
-
         } else {
           // perform failure logic
 
@@ -271,7 +274,7 @@ const processReports = async () => {
           console.log(
             moment()
               .utc()
-              .format() + ' -   => Report failed for unknown reason'
+              .format() + ' -   => Report failed - ' + reportChecked.valid.reason
           );
 
           let newReportComment = `[${reportChecked.valid.reportStatus.toUpperCase()}] - ${reportChecked.valid.reason}`;
@@ -292,7 +295,9 @@ const processReports = async () => {
         await delay(process.env.SCRIPT_RV_DELAY);
       }
     } else {
-      updateLog[`${reportTypes[i]}reports`] = { count: count };
+      updateLog[`${reportTypes[i]}reports`] = {
+        count: count,
+      };
     }
   }
   // Push update log to CAPIv2

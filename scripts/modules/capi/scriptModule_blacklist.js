@@ -3,9 +3,9 @@ const fetchTools = require('../scriptModule_fetchRetry');
 // Check blacklists for CMDR or Client Version
 const checkBlacklist = async (url, blacklistType, query) => {
   var blacklistURL;
-  if (blacklistType === 'client') {
+  if (blacklistType === 'cmdr') {
     blacklistURL = url + '/excludecmdrs?cmdrName=' + encodeURIComponent(query);
-  } else if (blacklistType === 'cmdr') {
+  } else if (blacklistType === 'client') {
     blacklistURL = url + '/excludeclients?version=' + encodeURIComponent(query);
   }
 
