@@ -17,8 +17,7 @@ const checkBlacklist = async (url, blacklistType, query) => {
     },
   });
 
-  let blacklistData = await response.json();
-  return blacklistData;
+  return await response.json();
 };
 
 module.exports = { checkBlacklist };

@@ -33,68 +33,6 @@ const preprocessReport = async (reportChecked, report) => {
     return reportChecked;
   }
 
-  // Accept Checks
-  if (
-    reportChecked.isBeta === false &&
-    reportChecked.blacklists.cmdr.checked === true &&
-    reportChecked.blacklists.cmdr.blacklisted === false &&
-    reportChecked.blacklists.client.checked === true &&
-    reportChecked.blacklists.client.blacklisted === false &&
-    reportChecked.capiv2.system.checked === true &&
-    reportChecked.capiv2.body.checked === true &&
-    reportChecked.capiv2.type.checked === true &&
-    reportChecked.capiv2.type.exists === true &&
-    reportChecked.capiv2.cmdr.checked === true &&
-    reportChecked.capiv2.duplicate.isDuplicate === false &&
-    reportChecked.capiv2.duplicate.createSite === true &&
-    (
-      reportChecked.capiv2.system.exists === true ||
-      (
-        reportChecked.edsm.system.exists === true &&
-        reportChecked.edsm.system.hasCoords === true
-      )
-    ) && (
-      reportChecked.capiv2.body.exists === true ||
-      reportChecked.edsm.body.exists === true
-    )
-  ) {
-    reportChecked.valid.isValid = true;
-    reportChecked.valid.reason = `Report was accepted on [${moment().utc().format('YYYY-MM-DD hh:mm:ss')}]`;
-    reportChecked.valid.reportStatus = reportStatus.accepted;
-    return reportChecked;
-  }
-
-  // Update Checks
-  if (
-    reportChecked.isBeta === false &&
-    reportChecked.blacklists.cmdr.checked === true &&
-    reportChecked.blacklists.cmdr.blacklisted === false &&
-    reportChecked.blacklists.client.checked === true &&
-    reportChecked.blacklists.client.blacklisted === false &&
-    reportChecked.capiv2.system.checked === true &&
-    reportChecked.capiv2.body.checked === true &&
-    reportChecked.capiv2.type.checked === true &&
-    reportChecked.capiv2.type.exists === true &&
-    reportChecked.capiv2.cmdr.checked === true &&
-    reportChecked.capiv2.duplicate.updateSite === true &&
-    reportChecked.capiv2.duplicate.isDuplicate === true &&
-    (
-      reportChecked.capiv2.system.exists === true ||
-      (
-        reportChecked.edsm.system.exists === true &&
-        reportChecked.edsm.system.hasCoords === true
-      )
-    ) && (
-      reportChecked.capiv2.body.exists === true ||
-      reportChecked.edsm.body.exists === true
-    )
-  ) {
-    reportChecked.valid.isValid = true;
-    reportChecked.valid.reason = `Report was used to update site on [${moment().utc().format('YYYY-MM-DD hh:mm:ss')}]`;
-    reportChecked.valid.reportStatus = reportStatus.updated;
-    return reportChecked;
-  }
-
   // isBeta
   if (reportChecked.isBeta === true) {
     reportChecked.valid.isValid = false;
@@ -182,6 +120,68 @@ const preprocessReport = async (reportChecked, report) => {
     reportChecked.valid.isValid = false;
     reportChecked.valid.reason = 'Body does not exist in CAPIv2 or EDSM';
     reportChecked.valid.reportStatus = reportStatus.edsmBody;
+    return reportChecked;
+  }
+
+  // Accept Checks
+  if (
+    reportChecked.isBeta === false &&
+    reportChecked.blacklists.cmdr.checked === true &&
+    reportChecked.blacklists.cmdr.blacklisted === false &&
+    reportChecked.blacklists.client.checked === true &&
+    reportChecked.blacklists.client.blacklisted === false &&
+    reportChecked.capiv2.system.checked === true &&
+    reportChecked.capiv2.body.checked === true &&
+    reportChecked.capiv2.type.checked === true &&
+    reportChecked.capiv2.type.exists === true &&
+    reportChecked.capiv2.cmdr.checked === true &&
+    reportChecked.capiv2.duplicate.isDuplicate === false &&
+    reportChecked.capiv2.duplicate.createSite === true &&
+    (
+      reportChecked.capiv2.system.exists === true ||
+      (
+        reportChecked.edsm.system.exists === true &&
+        reportChecked.edsm.system.hasCoords === true
+      )
+    ) && (
+      reportChecked.capiv2.body.exists === true ||
+      reportChecked.edsm.body.exists === true
+    )
+  ) {
+    reportChecked.valid.isValid = true;
+    reportChecked.valid.reason = `Report was accepted on [${moment().utc().format('YYYY-MM-DD hh:mm:ss')}]`;
+    reportChecked.valid.reportStatus = reportStatus.accepted;
+    return reportChecked;
+  }
+
+  // Update Checks
+  if (
+    reportChecked.isBeta === false &&
+    reportChecked.blacklists.cmdr.checked === true &&
+    reportChecked.blacklists.cmdr.blacklisted === false &&
+    reportChecked.blacklists.client.checked === true &&
+    reportChecked.blacklists.client.blacklisted === false &&
+    reportChecked.capiv2.system.checked === true &&
+    reportChecked.capiv2.body.checked === true &&
+    reportChecked.capiv2.type.checked === true &&
+    reportChecked.capiv2.type.exists === true &&
+    reportChecked.capiv2.cmdr.checked === true &&
+    reportChecked.capiv2.duplicate.updateSite === true &&
+    reportChecked.capiv2.duplicate.isDuplicate === true &&
+    (
+      reportChecked.capiv2.system.exists === true ||
+      (
+        reportChecked.edsm.system.exists === true &&
+        reportChecked.edsm.system.hasCoords === true
+      )
+    ) && (
+      reportChecked.capiv2.body.exists === true ||
+      reportChecked.edsm.body.exists === true
+    )
+  ) {
+    reportChecked.valid.isValid = true;
+    reportChecked.valid.reason = `Report was used to update site on [${moment().utc().format('YYYY-MM-DD hh:mm:ss')}]`;
+    reportChecked.valid.reportStatus = reportStatus.updated;
     return reportChecked;
   }
 

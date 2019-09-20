@@ -17,8 +17,7 @@ const getCMDR = async (url, cmdr, cmdrID) => {
     },
   });
 
-  let cmdrData = await response.json();
-  return cmdrData;
+  return await response.json();
 };
 
 // Create a CMDR who doesn't exist
@@ -38,8 +37,7 @@ const createCMDR = async (url, cmdrData, jwt) => {
       body: JSON.stringify(cmdrData),
     });
 
-    let newCMDR = await response.json();
-    return newCMDR;
+    return await response.json();
   }
 };
 
