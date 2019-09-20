@@ -81,7 +81,7 @@ const preprocessReport = async (reportChecked, report) => {
     reportChecked.valid.reason = 'System does not exist in CAPIv2 or EDSM';
     reportChecked.valid.reportStatus = reportStatus.edsmSystem;
     return reportChecked;
-  } else if (reportChecked.capiv2.body.exists === false || reportChecked.edsm.body.exists === false) {
+  } else if (reportChecked.capiv2.body.exists === false && reportChecked.edsm.body.exists === false) {
     reportChecked.valid.isValid = false;
     reportChecked.valid.reason = 'Body does not exist in CAPIv2 or EDSM';
     reportChecked.valid.reportStatus = reportStatus.edsmBody;

@@ -246,16 +246,17 @@ const validateReport = async (url, reportType, report) => {
         reportChecks.edsm.body.checked = true;
         reportChecks.edsm.body.exists = true;
         reportChecks.edsm.body.data = checkEDSMBody.bodies[i];
-      } else {
-        reportChecks.capiv2.duplicate.isDuplicate = false;
-        reportChecks.edsm.body.checked = true;
-        reportChecks.edsm.body.exists = false;
-        // Preprocess Report Validation
-        let processedReportChecks = await processTools.preprocessReport(reportChecks, report);
-
-        // Return data to reportValidator to execute tasks
-        return processedReportChecks;
       }
+    }
+    if (reportChecks.edsm.body.exists === false) {
+      reportChecks.capiv2.duplicate.isDuplicate = false;
+      reportChecks.edsm.body.checked = true;
+      reportChecks.edsm.body.exists = false;
+      // Preprocess Report Validation
+      let processedReportChecks = await processTools.preprocessReport(reportChecks, report);
+
+      // Return data to reportValidator to execute tasks
+      return processedReportChecks;
     }
   }
 

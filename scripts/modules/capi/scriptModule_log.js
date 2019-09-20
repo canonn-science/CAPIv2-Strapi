@@ -1,4 +1,4 @@
-const fetchTools = require('./modules/scriptModule_fetchRetry');
+const fetchTools = require('../scriptModule_fetchRetry');
 
 const updateAPILog = async (url, logdata, jwt) => {
   let logURL = url + '/apiupdates';
@@ -16,3 +16,5 @@ const updateAPILog = async (url, logdata, jwt) => {
 
   return newLog;
 };
+
+module.exports = { updateAPILog };
