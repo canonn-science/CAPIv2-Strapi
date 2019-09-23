@@ -74,8 +74,7 @@ const createSite = async (url, reportType, siteData, jwt) => {
     body: JSON.stringify(siteData),
   });
 
-  let newSite = await response.json();
-  return newSite;
+  return await response.json();
 };
 
 // Update site if new data exists in a report
@@ -91,8 +90,7 @@ const updateSite = async (url, reportType, siteID, siteData, jwt) => {
     body: JSON.stringify(siteData),
   });
 
-  let updatedSite = await response.json();
-  return updatedSite;
+  return await response.json();
 };
 
 module.exports = { getSites, createSite, updateSite};

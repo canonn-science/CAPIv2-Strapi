@@ -248,6 +248,16 @@ const validateReport = async (url, reportType, report) => {
         reportChecks.edsm.body.data = checkEDSMBody.bodies[i];
       }
     }
+    if (reportChecks.edsm.body.exists === false) {
+      reportChecks.capiv2.duplicate.isDuplicate = false;
+      reportChecks.edsm.body.checked = true;
+      reportChecks.edsm.body.exists = false;
+      // Preprocess Report Validation
+      let processedReportChecks = await processTools.preprocessReport(reportChecks, report);
+
+      // Return data to reportValidator to execute tasks
+      return processedReportChecks;
+    }
   }
 
   // check capiv2 for duplicate
@@ -310,6 +320,7 @@ const validateReport = async (url, reportType, report) => {
             reportChecks.capiv2.duplicate.checkedHaversine = true;
             reportChecks.capiv2.duplicate.isDuplicate = false;
             reportChecks.capiv2.duplicate.createSite = true;
+            reportChecks.capiv2.duplicate.site = null;
           } else {
             reportChecks.capiv2.duplicate.checkedHaversine = true;
             reportChecks.capiv2.duplicate.isDuplicate = true;
@@ -319,7 +330,11 @@ const validateReport = async (url, reportType, report) => {
         }
 
         // Check if Site can be updated
-        if (checkCAPISite[i] && report.type !== checkCAPISite[i].type.type) {
+        if (
+          checkCAPISite[i] &&
+          report.type !== checkCAPISite[i].type.type &&
+          reportChecks.capiv2.duplicate.createSite !== true
+        ) {
           reportChecks.capiv2.duplicate.updateSite = true;
           reportChecks.capiv2.duplicate.site = checkCAPISite[i];
         }
@@ -327,7 +342,19 @@ const validateReport = async (url, reportType, report) => {
           checkCAPISite[i] &&
           report.frontierID !== checkCAPISite[i].frontierID &&
           checkCAPISite[i].frontierID === null &&
-          report.frontierID
+          report.frontierID &&
+          reportChecks.capiv2.duplicate.createSite !== true
+        ) {
+          reportChecks.capiv2.duplicate.updateSite = true;
+          reportChecks.capiv2.duplicate.site = checkCAPISite[i];
+        }
+        if (
+          (
+            checkCAPISite[i].discoveredBy === null ||
+            checkCAPISite[i].discoveredBy === 618
+          ) &&
+          report.cmdrName &&
+          reportChecks.capiv2.duplicate.createSite !== true
         ) {
           reportChecks.capiv2.duplicate.updateSite = true;
           reportChecks.capiv2.duplicate.site = checkCAPISite[i];
@@ -335,6 +362,19 @@ const validateReport = async (url, reportType, report) => {
       }
     }
   }
+
+  if (reportChecks.capiv2.duplicate.isDuplicate === true) {
+    reportChecks.capiv2.duplicate.createSite = false;
+  }
+
+  if (!reportChecks.capiv2.duplicate.site) {
+    reportChecks.capiv2.duplicate.createSite === true;
+  }
+
+  if (reportChecks.capiv2.duplicate.createSite === true) {
+    reportChecks.capiv2.duplicate.updateSite = false;
+  }
+
   // Preprocess Report Validation
   let processedReportChecks = await processTools.preprocessReport(reportChecks, report);
 

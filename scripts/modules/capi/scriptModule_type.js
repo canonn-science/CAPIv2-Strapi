@@ -12,8 +12,7 @@ const getType = async (url, reportType, type) => {
     },
   });
 
-  let typeData = await response.json();
-  return typeData;
+  return await response.json();
 };
 
 module.exports = { getType };
