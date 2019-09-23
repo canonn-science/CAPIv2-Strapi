@@ -17,8 +17,7 @@ const getSystem = async (url, system, systemID) => {
     },
   });
 
-  let systemData = await response.json();
-  return systemData;
+  return await response.json();
 };
 
 // Create System in CAPIv2
@@ -38,8 +37,7 @@ const createSystem = async (url, systemData, jwt) => {
       body: JSON.stringify(systemData),
     });
 
-    let newSystem = await response.json();
-    return newSystem;
+    return await response.json();
   }
 };
 
@@ -57,8 +55,7 @@ const updateSystem = async (url, systemID, systemData, jwt) => {
     body: JSON.stringify(systemData),
   });
 
-  let updatedSystem = await response.json();
-  return updatedSystem;
+  return await response.json();
 };
 
 module.exports = { getSystem, createSystem, updateSystem };

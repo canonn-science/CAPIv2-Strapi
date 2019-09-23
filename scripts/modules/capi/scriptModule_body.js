@@ -17,8 +17,7 @@ const getBody = async (url, body, bodyID) => {
     },
   });
 
-  let bodyData = await response.json();
-  return bodyData;
+  return await response.json();
 };
 
 // Create Body in CAPIv2
@@ -38,8 +37,7 @@ const createBody = async (url, bodyData, jwt) => {
       body: JSON.stringify(bodyData),
     });
 
-    let newBody = await response.json();
-    return newBody;
+    return await response.json();
   }
 };
 

@@ -17,8 +17,7 @@ const getRegion = async (url, journalName, regionID) => {
     },
   });
 
-  let regionData = await response.json();
-  return regionData;
+  return await response.json();
 };
 
 module.exports = { getRegion };

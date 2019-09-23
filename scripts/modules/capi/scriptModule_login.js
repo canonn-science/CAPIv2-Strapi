@@ -21,9 +21,7 @@ const login = async (url, username, password) => {
     // waiting for login response
     const json = await response.json();
 
-    // set jwt after response is received
-    let jwt = json.jwt;
-    return jwt;
+    return json.jwt;
   } catch (error) {
     console.log(error);
   }

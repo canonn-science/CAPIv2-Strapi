@@ -11,8 +11,7 @@ const getCount = async (url, reportType, reportStatus) => {
     },
   });
 
-  let count = await response.text();
-  return count;
+  return await response.text();
 };
 
 // Fetch all Reports based on type
@@ -57,8 +56,7 @@ const updateReport = async (url, reportType, reportID, reportData, jwt) => {
     body: JSON.stringify(reportData),
   });
 
-  let newReport = await response.json();
-  return newReport;
+  return await response.json();
 };
 
 module.exports = { getCount, getReports, updateReport };
