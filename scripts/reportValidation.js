@@ -301,14 +301,12 @@ const processReports = async () => {
     }
   }
   // Push update log to CAPIv2
-  let updateCount = true;
+  let updateCount = false;
   let updateKeys = Object.keys(updateLog);
 
   for (let u = 0; u < updateKeys.length; u++) {
     if (updateKeys[u].includes('reports') === true) {
-      if (updateLog[updateKeys[u]].count === '0') {
-        updateCount = false;
-      } else {
+      if (updateLog[updateKeys[u]].count !== '0') {
         updateCount = true;
       }
     }
@@ -360,13 +358,14 @@ const processReports = async () => {
   console.log('>-------- End Script --------<');
 };
 
-// if (process.env.SCRIPT_RV === 'true') {
-//   cron.schedule(process.env.SCRIPT_RV_CRON, () => {
-//     processReports();
-//   });
-// } else {
-//   console.log('This script has been disabled');
-//   process.exit(0);
-// }
+//processReports();
 
-processReports();
+if (process.env.SCRIPT_RV === 'true') {
+  cron.schedule(process.env.SCRIPT_RV_CRON, () => {
+    processReports();
+  });
+} else {
+  console.log('This script has been disabled');
+  process.exit(0);
+}
+
