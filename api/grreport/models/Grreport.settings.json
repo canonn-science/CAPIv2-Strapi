@@ -66,13 +66,11 @@
       "max": 180
     },
     "type": {
-      "enum": [
-        "Alpha",
-        "Beta",
-        "Gamma"
-      ],
-      "type": "enumeration",
+      "type": "string",
       "required": true
+    },
+    "frontierID": {
+      "type": "integer"
     },
     "cmdrName": {
       "type": "string",
