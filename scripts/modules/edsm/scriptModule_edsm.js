@@ -1,5 +1,6 @@
 // Fetch EDSM Body
 const fetchTools = require('../scriptModule_fetchRetry');
+const delay = ms => new Promise(res => setTimeout(res, ms));
 
 // Fetch EDSM System
 const getSystemEDSM = async (system) => {
@@ -22,6 +23,7 @@ const getSystemEDSM = async (system) => {
     edsmSystemData = {};
     console.log(error);
   }
+  delay(200);
   return edsmSystemData;
 };
 
@@ -46,6 +48,7 @@ const getBodyEDSM = async (system) => {
     edsmBodyData = {};
     console.log(error);
   }
+  delay(200);
   return edsmBodyData;
 };
 
