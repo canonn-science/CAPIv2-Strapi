@@ -66,20 +66,14 @@
       "max": 180
     },
     "type": {
-      "enum": [
-        "Lacrosse",
-        "Crossroads",
-        "Fistbump",
-        "Hammerbot",
-        "Bear",
-        "Bowl",
-        "Turtle"
-      ],
-      "type": "enumeration",
+      "type": "string",
       "required": true
     },
     "hasDatabank": {
       "type": "boolean"
+    },
+    "frontierID": {
+      "type": "integer"
     },
     "cmdrName": {
       "type": "string",
