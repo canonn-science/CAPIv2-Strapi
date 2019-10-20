@@ -226,7 +226,8 @@ const processReports = async () => {
           reportChecked.capiv2.duplicate.createSite === false &&
           reportChecked.capiv2.duplicate.updateSite === false &&
           reportChecked.blacklists.cmdr.blacklisted === false &&
-          reportChecked.blacklists.client.blacklisted === false
+          reportChecked.blacklists.client.blacklisted === false &&
+          reportChecked.capiv2.duplicate.site
         ) {
           // create structure if needed
           if (!updateLog[`${reportTypes[i]}reports`].reports) {
