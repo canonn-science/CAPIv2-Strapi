@@ -366,14 +366,14 @@ const processReports = async () => {
   console.log('>-------- End Script --------<');
 };
 
-processReports();
+//processReports();
 
-// if (process.env.SCRIPT_RV === 'true') {
-//   cron.schedule(process.env.SCRIPT_RV_CRON, () => {
-//     processReports();
-//   });
-// } else {
-//   console.log('This script has been disabled');
-//   process.exit(0);
-// }
+if (process.env.SCRIPT_RV === 'true') {
+  cron.schedule(process.env.SCRIPT_RV_CRON, () => {
+    processReports();
+  });
+} else {
+  console.log('This script has been disabled');
+  process.exit(0);
+}
 
