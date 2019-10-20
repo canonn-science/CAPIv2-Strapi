@@ -226,7 +226,8 @@ const processReports = async () => {
           reportChecked.capiv2.duplicate.createSite === false &&
           reportChecked.capiv2.duplicate.updateSite === false &&
           reportChecked.blacklists.cmdr.blacklisted === false &&
-          reportChecked.blacklists.client.blacklisted === false
+          reportChecked.blacklists.client.blacklisted === false &&
+          reportChecked.capiv2.duplicate.site
         ) {
           // create structure if needed
           if (!updateLog[`${reportTypes[i]}reports`].reports) {
@@ -246,11 +247,16 @@ const processReports = async () => {
 
           let newReportComment = `[${reportChecked.valid.reportStatus.toUpperCase()}] - ${reportChecked.valid.reason}`;
 
+          let reportSiteID = null;
+          if (reportChecked.capiv2.duplicate.site) {
+            reportSiteID = reportChecked.capiv2.duplicate.site.id;
+          }
+
           let reportData = {
             reportStatus: reportChecked.valid.reportStatus,
             reportComment: newReportComment,
             added: false,
-            site: reportChecked.capiv2.duplicate.site.id,
+            site: reportSiteID,
           };
 
           try {
