@@ -199,7 +199,7 @@ const validateReport = async (url, reportType, report) => {
     reportChecks.capiv2.cmdr.add = true;
   } else {
     for (let i = 0; i < checkCAPICMDR.length; i++) {
-      if (report.cmdrName == checkCAPICMDR[i].cmdrName) {
+      if (report.cmdrName.toLowerCase() == checkCAPICMDR[i].cmdrName.toLowerCase()) {
         reportChecks.capiv2.cmdr.checked = true;
         reportChecks.capiv2.cmdr.exists = true;
         reportChecks.capiv2.cmdr.data = checkCAPICMDR[i];
