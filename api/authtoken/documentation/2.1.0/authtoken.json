@@ -521,6 +521,9 @@
             "type": "string",
             "minLength": 24
           },
+          "comment": {
+            "type": "string"
+          },
           "user": {
             "required": [
               "id",
@@ -565,9 +568,6 @@
                 }
               }
             }
-          },
-          "comment": {
-            "type": "string"
           }
         }
       },
@@ -580,10 +580,10 @@
             "type": "string",
             "minLength": 24
           },
-          "user": {
+          "comment": {
             "type": "string"
           },
-          "comment": {
+          "user": {
             "type": "string"
           }
         }

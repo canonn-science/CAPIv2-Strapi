@@ -14,7 +14,7 @@
       "name": "GNU-GPLv3",
       "url": "https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE"
     },
-    "x-generation-date": "11/25/2019 11:01:54 AM"
+    "x-generation-date": "11/25/2019 11:10:47 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -52703,6 +52703,9 @@
             "type": "string",
             "minLength": 24
           },
+          "comment": {
+            "type": "string"
+          },
           "user": {
             "required": [
               "id",
@@ -52747,9 +52750,6 @@
                 }
               }
             }
-          },
-          "comment": {
-            "type": "string"
           }
         }
       },
@@ -52762,10 +52762,10 @@
             "type": "string",
             "minLength": 24
           },
-          "user": {
+          "comment": {
             "type": "string"
           },
-          "comment": {
+          "user": {
             "type": "string"
           }
         }
@@ -72846,10 +72846,10 @@
                 "token": {
                   "type": "string"
                 },
-                "user": {
+                "comment": {
                   "type": "string"
                 },
-                "comment": {
+                "user": {
                   "type": "string"
                 }
               }
