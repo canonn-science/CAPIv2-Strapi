@@ -565,6 +565,9 @@
                 }
               }
             }
+          },
+          "comment": {
+            "type": "string"
           }
         }
       },
@@ -578,6 +581,9 @@
             "minLength": 24
           },
           "user": {
+            "type": "string"
+          },
+          "comment": {
             "type": "string"
           }
         }

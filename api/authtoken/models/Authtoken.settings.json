@@ -7,7 +7,10 @@
   },
   "options": {
     "increments": true,
-    "timestamps": true,
+    "timestamps": [
+      "created_at",
+      "updated_at"
+    ],
     "comment": ""
   },
   "attributes": {
@@ -15,6 +18,9 @@
       "minLength": 24,
       "required": true,
       "unique": true,
+      "type": "string"
+    },
+    "comment": {
       "type": "string"
     },
     "user": {
