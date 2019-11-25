@@ -3,8 +3,6 @@ const _ = require('lodash');
 module.exports = async (ctx, next) => {
   let role;
 
-  console.log('BLAH');
-
   if (
     (ctx.request && ctx.request.header && ctx.request.header.authorization) ||
     (ctx.request.query && ctx.request.query.token)
@@ -14,26 +12,26 @@ module.exports = async (ctx, next) => {
       let id;
       let isAdmin;
 
-      // Allow for static token in leu of a bearer authorization token
       if (ctx.request.query && ctx.request.query.token) {
-        const [ token ] = await strapi.query('authtoken').find({ token: ctx.request.query.token });
+        const [token] = await strapi.query('authtoken').find({token: ctx.request.query.token});
 
-        console.log(token);
-
-        id = token.user.id;
-        isAdmin = false;
+        if (!token) {
+          return handleErrors(ctx, 'Your token is not valid', 'unauthorized');
+        } else {
+          if (token.user && typeof token.token === 'string') {
+            id = token.user.id;
+          }
+          isAdmin = false;
+        }
 
         delete ctx.request.query.token;
       } else if (ctx.request && ctx.request.header && ctx.request.header.authorization) {
-
-        console.log('test2');
-
-        const decryptedJWT = await strapi.plugins[
+        const decrypted = await strapi.plugins[
           'users-permissions'
         ].services.jwt.getToken(ctx);
 
-        id = decryptedJWT.id;
-        isAdmin = decryptedJWT.isAdmin || false;
+        id = decrypted.id;
+        isAdmin = decrypted.isAdmin || false;
       }
 
       if (id === undefined) {
