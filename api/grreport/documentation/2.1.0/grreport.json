@@ -629,8 +629,8 @@
                 "provider": {
                   "type": "string"
                 },
-                "public_id": {
-                  "type": "string"
+                "provider_metadata": {
+                  "type": "object"
                 },
                 "related": {
                   "type": "string"
@@ -733,10 +733,10 @@
                   "type": "string"
                 },
                 "groups": {
-                  "type": "json"
+                  "type": "object"
                 },
                 "obelisks": {
-                  "type": "json"
+                  "type": "object"
                 }
               }
             }
