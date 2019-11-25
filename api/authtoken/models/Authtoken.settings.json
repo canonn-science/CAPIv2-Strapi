@@ -1,0 +1,26 @@
+{
+  "connection": "users",
+  "collectionName": "authtokens",
+  "info": {
+    "name": "authtoken",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "token": {
+      "minLength": 24,
+      "required": true,
+      "unique": true,
+      "type": "string"
+    },
+    "user": {
+      "model": "user",
+      "via": "authtokens",
+      "plugin": "users-permissions"
+    }
+  }
+}

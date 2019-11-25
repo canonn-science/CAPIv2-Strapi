@@ -1178,6 +1178,26 @@
                 "type": "string"
               }
             }
+          },
+          "authtokens": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "token"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "token": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -1218,6 +1238,12 @@
           },
           "cmdrs": {
             "type": "string"
+          },
+          "authtokens": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       }

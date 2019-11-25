@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/authtokens",
+      "handler": "Authtoken.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/authtokens/count",
+      "handler": "Authtoken.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/authtokens/:id",
+      "handler": "Authtoken.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/authtokens",
+      "handler": "Authtoken.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/authtokens/:id",
+      "handler": "Authtoken.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/authtokens/:id",
+      "handler": "Authtoken.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
