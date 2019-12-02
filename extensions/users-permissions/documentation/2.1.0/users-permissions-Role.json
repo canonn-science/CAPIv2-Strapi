@@ -605,6 +605,12 @@
                 },
                 "cmdrs": {
                   "type": "string"
+                },
+                "authtokens": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 }
               }
             }
