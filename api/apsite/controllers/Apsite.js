@@ -34,10 +34,6 @@ module.exports = {
     let sitecount = await strapi.query('apsite').count();
     let typeData = await strapi.query('aptype').find({ _limit: -1 });
 
-    let compareStar = async (common, data) => {
-      // Lookup most/least common star type with count
-    };
-
     let compareBodyMath = async (metric, data) => {
       // Get Min, Max, Average values
       let dataToParse;
@@ -47,7 +43,7 @@ module.exports = {
       } else if (metric === 'longitude') {
         dataToParse = data.map(i => i.longitude);
       } else {
-        //
+        dataToParse = data.map(i => i.body[metric]);
       }
 
       if (dataToParse) {
@@ -63,8 +59,18 @@ module.exports = {
       }
     };
 
-    let compareBodyType = async (metric, data) => {
-      // Get Min, Max, Average values
+    let compareText = async (metric, data) => {
+      let dataToParse;
+
+      if (metric === 'star') {
+        dataToParse = data.map(i => i.system.primaryStar.type);
+      } else {
+        //
+      }
+
+      if (dataToParse) {
+        // Do common/uncommon lookups
+      }
     };
 
     let typeCount = async (typeData, data) => {
@@ -73,32 +79,29 @@ module.exports = {
 
     // Construct stats
     let stats = {
-      system: {
-        mostCommonStar: compareStar(true, siteData),
-        leastCommonStar: compareStar(false, siteData)
-      },
+      siteCount: parseInt(sitecount),
+      system: await compareText('star', siteData),
       body: {
         latitude: await compareBodyMath('latitude', siteData),
         longitude: await compareBodyMath('longitude', siteData),
-        subType: compareBodyType('subType', siteData),
-        distanceToArrival: compareBodyMath('distanceToArrival', siteData),
-        gravity: compareBodyMath('gravity', siteData),
-        earthMasses: compareBodyMath('earthMasses', siteData),
-        radius: compareBodyMath('radius', siteData),
-        surfaceTemperature: compareBodyMath('surfaceTemperature', siteData),
-        volcanismType: compareBodyType('volcanismType', siteData),
-        atmosphereType: compareBodyType('atmosphereType', siteData),
-        terraformingState: compareBodyType('terraformingState', siteData),
-        orbitalPeriod: compareBodyMath('orbitalPeriod', siteData),
-        semiMajorAxis: compareBodyMath('semiMajorAxis', siteData),
-        orbitalEccentricity: compareBodyMath('orbitalEccentricity', siteData),
-        orbitalInclination: compareBodyMath('orbitalInclination', siteData),
-        argOfPeriapsis: compareBodyMath('argOfPeriapsis', siteData),
-        rotationalPeriod: compareBodyMath('rotationalPeriod', siteData),
+        subType: compareText('subType', siteData),
+        distanceToArrival: await compareBodyMath('distanceToArrival', siteData),
+        gravity: await compareBodyMath('gravity', siteData),
+        earthMasses: await compareBodyMath('earthMasses', siteData),
+        radius: await compareBodyMath('radius', siteData),
+        surfaceTemperature: await compareBodyMath('surfaceTemperature', siteData),
+        volcanismType: compareText('volcanismType', siteData),
+        atmosphereType: compareText('atmosphereType', siteData),
+        terraformingState: compareText('terraformingState', siteData),
+        orbitalPeriod: await compareBodyMath('orbitalPeriod', siteData),
+        semiMajorAxis: await compareBodyMath('semiMajorAxis', siteData),
+        orbitalEccentricity: await compareBodyMath('orbitalEccentricity', siteData),
+        orbitalInclination: await compareBodyMath('orbitalInclination', siteData),
+        argOfPeriapsis: await compareBodyMath('argOfPeriapsis', siteData),
+        rotationalPeriod: await compareBodyMath('rotationalPeriod', siteData),
         rotationalPeriodTidallyLocked: '',
-        axialTilt: compareBodyMath('axialTilt', siteData)
+        axialTilt: await compareBodyMath('axialTilt', siteData)
       },
-      siteCount: parseInt(sitecount),
       type: typeCount(typeData)
     };
 
