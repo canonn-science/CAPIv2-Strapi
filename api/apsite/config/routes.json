@@ -47,6 +47,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/apstats",
+      "handler": "Apsite.stats",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
