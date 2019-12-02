@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/grreports": {
+    "/authtokens": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Grreport"
+                    "$ref": "#/components/schemas/Authtoken"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Grreport"
+          "Authtoken"
         ],
         "parameters": [
           {
@@ -195,7 +195,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Grreport"
+                  "$ref": "#/components/schemas/Authtoken"
                 }
               }
             }
@@ -233,7 +233,7 @@
         },
         "summary": "",
         "tags": [
-          "Grreport"
+          "Authtoken"
         ],
         "requestBody": {
           "description": "",
@@ -241,14 +241,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewGrreport"
+                "$ref": "#/components/schemas/NewAuthtoken"
               }
             }
           }
         }
       }
     },
-    "/grreports/count": {
+    "/authtokens/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -300,12 +300,12 @@
         },
         "summary": "",
         "tags": [
-          "Grreport"
+          "Authtoken"
         ],
         "parameters": []
       }
     },
-    "/grreports/{id}": {
+    "/authtokens/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -315,7 +315,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Grreport"
+                  "$ref": "#/components/schemas/Authtoken"
                 }
               }
             }
@@ -353,7 +353,7 @@
         },
         "summary": "",
         "tags": [
-          "Grreport"
+          "Authtoken"
         ],
         "parameters": [
           {
@@ -377,7 +377,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Grreport"
+                  "$ref": "#/components/schemas/Authtoken"
                 }
               }
             }
@@ -415,7 +415,7 @@
         },
         "summary": "",
         "tags": [
-          "Grreport"
+          "Authtoken"
         ],
         "requestBody": {
           "description": "",
@@ -423,7 +423,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewGrreport"
+                "$ref": "#/components/schemas/NewAuthtoken"
               }
             }
           }
@@ -489,7 +489,7 @@
         },
         "summary": "",
         "tags": [
-          "Grreport"
+          "Authtoken"
         ],
         "parameters": [
           {
@@ -508,349 +508,83 @@
   },
   "components": {
     "schemas": {
-      "Grreport": {
+      "Authtoken": {
         "required": [
           "id",
-          "userType",
-          "reportType",
-          "systemName",
-          "bodyName",
-          "latitude",
-          "longitude",
-          "type",
-          "cmdrName",
-          "clientVersion",
-          "reportStatus"
+          "token"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "userType": {
+          "token": {
             "type": "string",
-            "default": "console",
-            "enum": [
-              "console",
-              "pc"
-            ]
+            "minLength": 24
           },
-          "reportType": {
-            "type": "string",
-            "default": "new",
-            "enum": [
-              "new",
-              "update",
-              "error"
-            ]
-          },
-          "systemName": {
+          "comment": {
             "type": "string"
           },
-          "systemAddress": {
-            "type": "integer"
-          },
-          "regionID": {
-            "type": "integer"
-          },
-          "coordX": {
-            "type": "number"
-          },
-          "coordY": {
-            "type": "number"
-          },
-          "coordZ": {
-            "type": "number"
-          },
-          "bodyName": {
-            "type": "string"
-          },
-          "latitude": {
-            "type": "number"
-          },
-          "longitude": {
-            "type": "number"
-          },
-          "type": {
-            "type": "string"
-          },
-          "frontierID": {
-            "type": "integer"
-          },
-          "cmdrName": {
-            "type": "string"
-          },
-          "cmdrComment": {
-            "type": "string"
-          },
-          "isBeta": {
-            "type": "boolean",
-            "default": false
-          },
-          "clientVersion": {
-            "type": "string"
-          },
-          "screenshot": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "name",
-                "hash",
-                "mime",
-                "size",
-                "url",
-                "provider"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "hash": {
-                  "type": "string"
-                },
-                "sha256": {
-                  "type": "string"
-                },
-                "ext": {
-                  "type": "string"
-                },
-                "mime": {
-                  "type": "string"
-                },
-                "size": {
-                  "type": "string"
-                },
-                "url": {
-                  "type": "string"
-                },
-                "provider": {
-                  "type": "string"
-                },
-                "provider_metadata": {
-                  "type": "object"
-                },
-                "related": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "reportStatus": {
-            "type": "string",
-            "default": "pending",
-            "enum": [
-              "pending",
-              "updated",
-              "verified",
-              "accepted",
-              "declined",
-              "issue",
-              "duplicate"
-            ]
-          },
-          "reportComment": {
-            "type": "string"
-          },
-          "voteCount": {
-            "type": "integer"
-          },
-          "added": {
-            "type": "boolean",
-            "default": false
-          },
-          "site": {
+          "user": {
             "required": [
               "id",
-              "siteID",
-              "latitude",
-              "longitude"
+              "username",
+              "email"
             ],
             "properties": {
               "id": {
                 "type": "string"
               },
-              "system": {
+              "username": {
                 "type": "string"
               },
-              "body": {
+              "email": {
                 "type": "string"
               },
-              "siteID": {
-                "type": "integer"
-              },
-              "extoolID": {
-                "type": "integer"
-              },
-              "latitude": {
-                "type": "number"
-              },
-              "longitude": {
-                "type": "number"
-              },
-              "type": {
+              "provider": {
                 "type": "string"
               },
-              "frontierID": {
-                "type": "integer"
+              "password": {
+                "type": "string"
               },
-              "verified": {
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "confirmed": {
                 "type": "boolean"
               },
-              "visible": {
+              "blocked": {
                 "type": "boolean"
               },
-              "activeGroups": {
+              "role": {
+                "type": "string"
+              },
+              "cmdrs": {
+                "type": "string"
+              },
+              "authtokens": {
                 "type": "array",
                 "items": {
                   "type": "string"
-                }
-              },
-              "activeObelisks": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "discoveredBy": {
-                "type": "string"
-              }
-            }
-          },
-          "grobeliskreport": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "grreport": {
-                  "type": "string"
-                },
-                "groups": {
-                  "type": "object"
-                },
-                "obelisks": {
-                  "type": "object"
                 }
               }
             }
           }
         }
       },
-      "NewGrreport": {
+      "NewAuthtoken": {
         "required": [
-          "userType",
-          "reportType",
-          "systemName",
-          "bodyName",
-          "latitude",
-          "longitude",
-          "type",
-          "cmdrName",
-          "clientVersion",
-          "reportStatus"
+          "token"
         ],
         "properties": {
-          "userType": {
+          "token": {
             "type": "string",
-            "default": "console",
-            "enum": [
-              "console",
-              "pc"
-            ]
+            "minLength": 24
           },
-          "reportType": {
-            "type": "string",
-            "default": "new",
-            "enum": [
-              "new",
-              "update",
-              "error"
-            ]
-          },
-          "systemName": {
+          "comment": {
             "type": "string"
           },
-          "systemAddress": {
-            "type": "integer"
-          },
-          "regionID": {
-            "type": "integer"
-          },
-          "coordX": {
-            "type": "number"
-          },
-          "coordY": {
-            "type": "number"
-          },
-          "coordZ": {
-            "type": "number"
-          },
-          "bodyName": {
+          "user": {
             "type": "string"
-          },
-          "latitude": {
-            "type": "number"
-          },
-          "longitude": {
-            "type": "number"
-          },
-          "type": {
-            "type": "string"
-          },
-          "frontierID": {
-            "type": "integer"
-          },
-          "cmdrName": {
-            "type": "string"
-          },
-          "cmdrComment": {
-            "type": "string"
-          },
-          "isBeta": {
-            "type": "boolean",
-            "default": false
-          },
-          "clientVersion": {
-            "type": "string"
-          },
-          "reportStatus": {
-            "type": "string",
-            "default": "pending",
-            "enum": [
-              "pending",
-              "updated",
-              "verified",
-              "accepted",
-              "declined",
-              "issue",
-              "duplicate"
-            ]
-          },
-          "reportComment": {
-            "type": "string"
-          },
-          "voteCount": {
-            "type": "integer"
-          },
-          "added": {
-            "type": "boolean",
-            "default": false
-          },
-          "site": {
-            "type": "string"
-          },
-          "grobeliskreport": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
           }
         }
       }
@@ -858,7 +592,7 @@
   },
   "tags": [
     {
-      "name": "Grreport"
+      "name": "Authtoken"
     }
   ]
 }

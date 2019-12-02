@@ -1,0 +1,156 @@
+'use strict';
+
+const { sanitizeEntity } = require('strapi-utils');
+
+/**
+ * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
+ * to customize this controller
+ */
+
+module.exports = {
+  /**
+   * Retrieve all Auth Token records (only the users tokens).
+   *
+   * @return {Array}
+   */
+
+  async find(ctx) {
+    let entities;
+
+    if (ctx.state.user.id) {
+      ctx.query.user = ctx.state.user.id;
+    } else {
+      return ctx.unauthorized();
+    }
+
+
+    if (ctx.query._q) {
+      entities = await strapi.services.authtoken.search(ctx.query);
+    } else {
+      entities = await strapi.services.authtoken.find(ctx.query);
+    }
+
+    return entities.map(entity =>
+      sanitizeEntity(entity, { model: strapi.models.authtoken })
+    );
+  },
+
+  /**
+   * Retrieve an Auth Token record.
+   *
+   * @return {Object}
+   */
+
+  async findOne(ctx) {
+    const entity = await strapi.services.authtoken.findOne(ctx.params);
+
+    if (entity) {
+      if (ctx.state.user.id === entity.user.id) {
+        return sanitizeEntity(entity, { model: strapi.models.authtoken });
+      } else {
+        return ctx.unauthorized();
+      }
+    } else {
+      return ctx.notFound('This token doesn\'t exist');
+    }
+  },
+
+  /**
+   * Count user's Auth Token records.
+   *
+   * @return {Number}
+   */
+
+  count(ctx) {
+    if (ctx.state.user.id) {
+      ctx.query.user = ctx.state.user.id;
+    } else {
+      return ctx.unauthorized();
+    }
+
+    if (ctx.query._q) {
+      return strapi.services.authtoken.countSearch(ctx.query);
+    }
+    return strapi.services.authtoken.count(ctx.query);
+  },
+
+  /**
+   * Create an Auth Token record and assign user.
+   *
+   * @return {Object}
+   */
+
+  async create(ctx) {
+    if (ctx.state.user.id) {
+      if (
+        (ctx.state.user.id !== ctx.request.body.user) ||
+        (!ctx.request.body.user)
+      ) {
+        ctx.request.body.user = ctx.state.user.id;
+      }
+
+      if (
+        (!ctx.request.body.token) ||
+        (ctx.request.body.token.length < strapi.models.authtoken.attributes.token.minLength)
+      ) {
+        return ctx.badRequest('Token is missing or does not meet length requirements');
+      } else {
+        let entity = await strapi.services.authtoken.create(ctx.request.body);
+        return sanitizeEntity(entity, { model: strapi.models.authtoken });
+      }
+    } else {
+      return ctx.unauthorized();
+    }
+  },
+
+  /**
+   * Update an Auth Token record.
+   *
+   * @return {Object}
+   */
+
+  async update(ctx) {
+    let preUpdate = await strapi.services.authtoken.findOne(ctx.params);
+
+    if (preUpdate && ctx.state.user.id) {
+      if (ctx.state.user.id === preUpdate.user.id) {
+        if (ctx.request.body.user) {
+          if (ctx.state.user.id !== ctx.request.body.user) {
+            return ctx.unauthorized();
+          }
+        }
+        let entity = await strapi.services.authtoken.update(
+          ctx.params,
+          ctx.request.body
+        );
+
+        return sanitizeEntity(entity, { model: strapi.models.authtoken });
+      } else {
+        return ctx.unauthorized();
+      }
+    } else {
+      return ctx.notFound('This token doesn\'t exist');
+    }
+  },
+
+  /**
+   * delete a record.
+   *
+   * @return {Object}
+   */
+
+  async delete(ctx) {
+    let preDelete = await strapi.services.authtoken.findOne(ctx.params);
+
+    if (preDelete && ctx.state.user.id) {
+      if (ctx.state.user.id === preDelete.user.id) {
+        const entity = await strapi.services.authtoken.delete(ctx.params);
+        return sanitizeEntity(entity, { model: strapi.models.authtoken });
+      } else {
+        return ctx.unauthorized();
+      }
+    } else {
+      return ctx.notFound('This token doesn\'t exist');
+    }
+  },
+};

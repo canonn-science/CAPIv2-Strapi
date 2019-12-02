@@ -14,7 +14,7 @@
       "name": "GNU-GPLv3",
       "url": "https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE"
     },
-    "x-generation-date": "10/10/2019 7:07:24 AM"
+    "x-generation-date": "11/29/2019 1:35:04 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -2631,6 +2631,511 @@
         "summary": "",
         "tags": [
           "Amphora Plants"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/authtokens": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Authtoken"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Authtoken"
+        ],
+        "parameters": [
+          {
+            "name": "_limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of results possible",
+            "schema": {
+              "type": "integer"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_sort",
+            "in": "query",
+            "required": false,
+            "description": "Sort according to a specific field.",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_start",
+            "in": "query",
+            "required": false,
+            "description": "Skip a specific number of entries (especially useful for pagination)",
+            "schema": {
+              "type": "integer"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "=",
+            "in": "query",
+            "required": false,
+            "description": "Get entries that matches exactly your input",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_ne",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are not equals to something",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_lt",
+            "in": "query",
+            "required": false,
+            "description": "Get record that are lower than a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_lte",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are lower than or equal to a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_gt",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are greater than a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_gte",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are greater than  or equal a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_contains",
+            "in": "query",
+            "required": false,
+            "description": "Get records that contains a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_containss",
+            "in": "query",
+            "required": false,
+            "description": "Get records that contains (case sensitive) a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_in",
+            "in": "query",
+            "required": false,
+            "description": "Get records that matches any value in the array of values",
+            "schema": {
+              "type": "array"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_nin",
+            "in": "query",
+            "required": false,
+            "description": "Get records that doesn't match any value in the array of values",
+            "schema": {
+              "type": "array"
+            },
+            "deprecated": false
+          }
+        ]
+      },
+      "post": {
+        "deprecated": false,
+        "description": "Create a new record",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Authtoken"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Authtoken"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewAuthtoken"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/authtokens/count": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "count": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Authtoken"
+        ],
+        "parameters": []
+      }
+    },
+    "/authtokens/{id}": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Authtoken"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Authtoken"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "put": {
+        "deprecated": false,
+        "description": "Update a record",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Authtoken"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Authtoken"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewAuthtoken"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "delete": {
+        "deprecated": false,
+        "description": "Delete a record",
+        "responses": {
+          "200": {
+            "description": "deletes a single record based on the ID supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Authtoken"
         ],
         "parameters": [
           {
@@ -50836,6 +51341,77 @@
         "parameters": []
       }
     },
+    "/auth/send-email-confirmation": {
+      "post": {
+        "deprecated": false,
+        "description": "Send a confirmation email to user",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Users-Permissions - User"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "foo": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/users": {
       "get": {
         "deprecated": false,
@@ -51381,7 +51957,7 @@
             "default": ""
           },
           "updateLog": {
-            "type": "json",
+            "type": "object",
             "default": ""
           }
         }
@@ -51401,7 +51977,7 @@
             "default": ""
           },
           "updateLog": {
-            "type": "json",
+            "type": "object",
             "default": ""
           }
         }
@@ -51715,7 +52291,7 @@
                 "type": "string"
               },
               "primaryStar": {
-                "type": "json"
+                "type": "object"
               },
               "apsites": {
                 "type": "array",
@@ -51924,13 +52500,13 @@
                 "type": "number"
               },
               "solidComposition": {
-                "type": "json"
+                "type": "object"
               },
               "atmosphere": {
-                "type": "json"
+                "type": "object"
               },
               "material": {
-                "type": "json"
+                "type": "object"
               },
               "missingSkipCount": {
                 "type": "integer"
@@ -52185,6 +52761,86 @@
           }
         }
       },
+      "Authtoken": {
+        "required": [
+          "id",
+          "token"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "token": {
+            "type": "string",
+            "minLength": 24
+          },
+          "comment": {
+            "type": "string"
+          },
+          "user": {
+            "required": [
+              "id",
+              "username",
+              "email"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "confirmed": {
+                "type": "boolean"
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "cmdrs": {
+                "type": "string"
+              },
+              "authtokens": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "NewAuthtoken": {
+        "required": [
+          "token"
+        ],
+        "properties": {
+          "token": {
+            "type": "string",
+            "minLength": 24
+          },
+          "comment": {
+            "type": "string"
+          },
+          "user": {
+            "type": "string"
+          }
+        }
+      },
       "Axczfssreport": {
         "required": [
           "id",
@@ -52229,7 +52885,7 @@
             ]
           },
           "rawJson": {
-            "type": "json"
+            "type": "object"
           }
         }
       },
@@ -52273,7 +52929,7 @@
             ]
           },
           "rawJson": {
-            "type": "json"
+            "type": "object"
           }
         }
       },
@@ -52586,7 +53242,7 @@
                 "type": "string"
               },
               "primaryStar": {
-                "type": "json"
+                "type": "object"
               },
               "apsites": {
                 "type": "array",
@@ -52795,13 +53451,13 @@
                 "type": "number"
               },
               "solidComposition": {
-                "type": "json"
+                "type": "object"
               },
               "atmosphere": {
-                "type": "json"
+                "type": "object"
               },
               "material": {
-                "type": "json"
+                "type": "object"
               },
               "missingSkipCount": {
                 "type": "integer"
@@ -53108,7 +53764,7 @@
                 "type": "string"
               },
               "primaryStar": {
-                "type": "json"
+                "type": "object"
               },
               "apsites": {
                 "type": "array",
@@ -53305,13 +53961,13 @@
             "type": "number"
           },
           "solidComposition": {
-            "type": "json"
+            "type": "object"
           },
           "atmosphere": {
-            "type": "json"
+            "type": "object"
           },
           "material": {
-            "type": "json"
+            "type": "object"
           },
           "missingSkipCount": {
             "type": "integer",
@@ -54266,13 +54922,13 @@
             "type": "number"
           },
           "solidComposition": {
-            "type": "json"
+            "type": "object"
           },
           "atmosphere": {
-            "type": "json"
+            "type": "object"
           },
           "material": {
-            "type": "json"
+            "type": "object"
           },
           "missingSkipCount": {
             "type": "integer",
@@ -54691,7 +55347,7 @@
                 "type": "string"
               },
               "primaryStar": {
-                "type": "json"
+                "type": "object"
               },
               "apsites": {
                 "type": "array",
@@ -54900,13 +55556,13 @@
                 "type": "number"
               },
               "solidComposition": {
-                "type": "json"
+                "type": "object"
               },
               "atmosphere": {
-                "type": "json"
+                "type": "object"
               },
               "material": {
-                "type": "json"
+                "type": "object"
               },
               "missingSkipCount": {
                 "type": "integer"
@@ -55718,7 +56374,7 @@
                 "type": "string"
               },
               "primaryStar": {
-                "type": "json"
+                "type": "object"
               },
               "apsites": {
                 "type": "array",
@@ -55927,13 +56583,13 @@
                 "type": "number"
               },
               "solidComposition": {
-                "type": "json"
+                "type": "object"
               },
               "atmosphere": {
-                "type": "json"
+                "type": "object"
               },
               "material": {
-                "type": "json"
+                "type": "object"
               },
               "missingSkipCount": {
                 "type": "integer"
@@ -56628,7 +57284,7 @@
                 "type": "string"
               },
               "primaryStar": {
-                "type": "json"
+                "type": "object"
               },
               "apsites": {
                 "type": "array",
@@ -56837,13 +57493,13 @@
                 "type": "number"
               },
               "solidComposition": {
-                "type": "json"
+                "type": "object"
               },
               "atmosphere": {
-                "type": "json"
+                "type": "object"
               },
               "material": {
-                "type": "json"
+                "type": "object"
               },
               "missingSkipCount": {
                 "type": "integer"
@@ -57407,7 +58063,7 @@
                 "type": "string"
               },
               "primaryStar": {
-                "type": "json"
+                "type": "object"
               },
               "apsites": {
                 "type": "array",
@@ -57616,13 +58272,13 @@
                 "type": "number"
               },
               "solidComposition": {
-                "type": "json"
+                "type": "object"
               },
               "atmosphere": {
-                "type": "json"
+                "type": "object"
               },
               "material": {
-                "type": "json"
+                "type": "object"
               },
               "missingSkipCount": {
                 "type": "integer"
@@ -57963,7 +58619,7 @@
                 "type": "string"
               },
               "primaryStar": {
-                "type": "json"
+                "type": "object"
               },
               "apsites": {
                 "type": "array",
@@ -58172,13 +58828,13 @@
                 "type": "number"
               },
               "solidComposition": {
-                "type": "json"
+                "type": "object"
               },
               "atmosphere": {
-                "type": "json"
+                "type": "object"
               },
               "material": {
-                "type": "json"
+                "type": "object"
               },
               "missingSkipCount": {
                 "type": "integer"
@@ -58448,8 +59104,8 @@
                 "provider": {
                   "type": "string"
                 },
-                "public_id": {
-                  "type": "string"
+                "provider_metadata": {
+                  "type": "object"
                 },
                 "related": {
                   "type": "string"
@@ -58683,7 +59339,7 @@
                 "type": "string"
               },
               "primaryStar": {
-                "type": "json"
+                "type": "object"
               },
               "apsites": {
                 "type": "array",
@@ -58892,13 +59548,13 @@
                 "type": "number"
               },
               "solidComposition": {
-                "type": "json"
+                "type": "object"
               },
               "atmosphere": {
-                "type": "json"
+                "type": "object"
               },
               "material": {
-                "type": "json"
+                "type": "object"
               },
               "missingSkipCount": {
                 "type": "integer"
@@ -59261,8 +59917,8 @@
                 "provider": {
                   "type": "string"
                 },
-                "public_id": {
-                  "type": "string"
+                "provider_metadata": {
+                  "type": "object"
                 },
                 "related": {
                   "type": "string"
@@ -59410,8 +60066,8 @@
                 "provider": {
                   "type": "string"
                 },
-                "public_id": {
-                  "type": "string"
+                "provider_metadata": {
+                  "type": "object"
                 },
                 "related": {
                   "type": "string"
@@ -59635,7 +60291,7 @@
                 "type": "string"
               },
               "primaryStar": {
-                "type": "json"
+                "type": "object"
               },
               "apsites": {
                 "type": "array",
@@ -59844,13 +60500,13 @@
                 "type": "number"
               },
               "solidComposition": {
-                "type": "json"
+                "type": "object"
               },
               "atmosphere": {
-                "type": "json"
+                "type": "object"
               },
               "material": {
-                "type": "json"
+                "type": "object"
               },
               "missingSkipCount": {
                 "type": "integer"
@@ -60008,7 +60664,7 @@
                 "type": "string"
               },
               "primaryStar": {
-                "type": "json"
+                "type": "object"
               },
               "apsites": {
                 "type": "array",
@@ -60799,10 +61455,10 @@
             }
           },
           "groups": {
-            "type": "json"
+            "type": "object"
           },
           "obelisks": {
-            "type": "json"
+            "type": "object"
           }
         }
       },
@@ -60812,10 +61468,10 @@
             "type": "string"
           },
           "groups": {
-            "type": "json"
+            "type": "object"
           },
           "obelisks": {
-            "type": "json"
+            "type": "object"
           }
         }
       },
@@ -60940,8 +61596,8 @@
                 "provider": {
                   "type": "string"
                 },
-                "public_id": {
-                  "type": "string"
+                "provider_metadata": {
+                  "type": "object"
                 },
                 "related": {
                   "type": "string"
@@ -61044,10 +61700,10 @@
                   "type": "string"
                 },
                 "groups": {
-                  "type": "json"
+                  "type": "object"
                 },
                 "obelisks": {
-                  "type": "json"
+                  "type": "object"
                 }
               }
             }
@@ -61219,7 +61875,7 @@
                 "type": "string"
               },
               "primaryStar": {
-                "type": "json"
+                "type": "object"
               },
               "apsites": {
                 "type": "array",
@@ -61428,13 +62084,13 @@
                 "type": "number"
               },
               "solidComposition": {
-                "type": "json"
+                "type": "object"
               },
               "atmosphere": {
-                "type": "json"
+                "type": "object"
               },
               "material": {
-                "type": "json"
+                "type": "object"
               },
               "missingSkipCount": {
                 "type": "integer"
@@ -62082,8 +62738,8 @@
               "provider": {
                 "type": "string"
               },
-              "public_id": {
-                "type": "string"
+              "provider_metadata": {
+                "type": "object"
               },
               "related": {
                 "type": "string"
@@ -62398,10 +63054,10 @@
             }
           },
           "groups": {
-            "type": "json"
+            "type": "object"
           },
           "obelisks": {
-            "type": "json"
+            "type": "object"
           }
         }
       },
@@ -62411,10 +63067,10 @@
             "type": "string"
           },
           "groups": {
-            "type": "json"
+            "type": "object"
           },
           "obelisks": {
-            "type": "json"
+            "type": "object"
           }
         }
       },
@@ -62542,8 +63198,8 @@
                 "provider": {
                   "type": "string"
                 },
-                "public_id": {
-                  "type": "string"
+                "provider_metadata": {
+                  "type": "object"
                 },
                 "related": {
                   "type": "string"
@@ -62649,10 +63305,10 @@
                   "type": "string"
                 },
                 "groups": {
-                  "type": "json"
+                  "type": "object"
                 },
                 "obelisks": {
-                  "type": "json"
+                  "type": "object"
                 }
               }
             }
@@ -62827,7 +63483,7 @@
                 "type": "string"
               },
               "primaryStar": {
-                "type": "json"
+                "type": "object"
               },
               "apsites": {
                 "type": "array",
@@ -63036,13 +63692,13 @@
                 "type": "number"
               },
               "solidComposition": {
-                "type": "json"
+                "type": "object"
               },
               "atmosphere": {
-                "type": "json"
+                "type": "object"
               },
               "material": {
-                "type": "json"
+                "type": "object"
               },
               "missingSkipCount": {
                 "type": "integer"
@@ -63659,7 +64315,7 @@
                 "type": "string"
               },
               "primaryStar": {
-                "type": "json"
+                "type": "object"
               },
               "apsites": {
                 "type": "array",
@@ -63868,13 +64524,13 @@
                 "type": "number"
               },
               "solidComposition": {
-                "type": "json"
+                "type": "object"
               },
               "atmosphere": {
-                "type": "json"
+                "type": "object"
               },
               "material": {
-                "type": "json"
+                "type": "object"
               },
               "missingSkipCount": {
                 "type": "integer"
@@ -64436,7 +65092,7 @@
                 "type": "string"
               },
               "primaryStar": {
-                "type": "json"
+                "type": "object"
               },
               "apsites": {
                 "type": "array",
@@ -64645,13 +65301,13 @@
                 "type": "number"
               },
               "solidComposition": {
-                "type": "json"
+                "type": "object"
               },
               "atmosphere": {
-                "type": "json"
+                "type": "object"
               },
               "material": {
-                "type": "json"
+                "type": "object"
               },
               "missingSkipCount": {
                 "type": "integer"
@@ -64967,8 +65623,8 @@
               "provider": {
                 "type": "string"
               },
-              "public_id": {
-                "type": "string"
+              "provider_metadata": {
+                "type": "object"
               },
               "related": {
                 "type": "string"
@@ -65022,7 +65678,7 @@
             }
           },
           "hdRawJson": {
-            "type": "json"
+            "type": "object"
           }
         }
       },
@@ -65078,7 +65734,7 @@
             "type": "string"
           },
           "hdRawJson": {
-            "type": "json"
+            "type": "object"
           }
         }
       },
@@ -65133,7 +65789,7 @@
                 "type": "string"
               },
               "primaryStar": {
-                "type": "json"
+                "type": "object"
               },
               "apsites": {
                 "type": "array",
@@ -65286,7 +65942,7 @@
             "type": "string"
           },
           "rawEvent": {
-            "type": "json"
+            "type": "object"
           },
           "isBeta": {
             "type": "boolean"
@@ -65323,7 +65979,7 @@
             "type": "string"
           },
           "rawEvent": {
-            "type": "json"
+            "type": "object"
           },
           "isBeta": {
             "type": "boolean"
@@ -65380,7 +66036,7 @@
             ]
           },
           "rawJson": {
-            "type": "json"
+            "type": "object"
           }
         }
       },
@@ -65424,7 +66080,7 @@
             ]
           },
           "rawJson": {
-            "type": "json"
+            "type": "object"
           }
         }
       },
@@ -65737,7 +66393,7 @@
                 "type": "string"
               },
               "primaryStar": {
-                "type": "json"
+                "type": "object"
               },
               "apsites": {
                 "type": "array",
@@ -65946,13 +66602,13 @@
                 "type": "number"
               },
               "solidComposition": {
-                "type": "json"
+                "type": "object"
               },
               "atmosphere": {
-                "type": "json"
+                "type": "object"
               },
               "material": {
-                "type": "json"
+                "type": "object"
               },
               "missingSkipCount": {
                 "type": "integer"
@@ -66410,7 +67066,7 @@
             }
           },
           "nhssRawJson": {
-            "type": "json"
+            "type": "object"
           }
         }
       },
@@ -66463,7 +67119,7 @@
             "type": "string"
           },
           "nhssRawJson": {
-            "type": "json"
+            "type": "object"
           }
         }
       },
@@ -66518,7 +67174,7 @@
                 "type": "string"
               },
               "primaryStar": {
-                "type": "json"
+                "type": "object"
               },
               "apsites": {
                 "type": "array",
@@ -66762,7 +67418,7 @@
                 "type": "string"
               },
               "primaryStar": {
-                "type": "json"
+                "type": "object"
               },
               "apsites": {
                 "type": "array",
@@ -66971,13 +67627,13 @@
                 "type": "number"
               },
               "solidComposition": {
-                "type": "json"
+                "type": "object"
               },
               "atmosphere": {
-                "type": "json"
+                "type": "object"
               },
               "material": {
-                "type": "json"
+                "type": "object"
               },
               "missingSkipCount": {
                 "type": "integer"
@@ -67300,7 +67956,7 @@
             ]
           },
           "rawJson": {
-            "type": "json"
+            "type": "object"
           }
         }
       },
@@ -67410,7 +68066,7 @@
             ]
           },
           "rawJson": {
-            "type": "json"
+            "type": "object"
           }
         }
       },
@@ -67477,7 +68133,7 @@
             ]
           },
           "rawJson": {
-            "type": "json"
+            "type": "object"
           }
         }
       },
@@ -67540,7 +68196,7 @@
             ]
           },
           "rawJson": {
-            "type": "json"
+            "type": "object"
           }
         }
       },
@@ -67620,7 +68276,7 @@
             ]
           },
           "rawJson": {
-            "type": "json"
+            "type": "object"
           }
         }
       },
@@ -67696,7 +68352,7 @@
             ]
           },
           "rawJson": {
-            "type": "json"
+            "type": "object"
           }
         }
       },
@@ -67902,13 +68558,13 @@
                 "type": "number"
               },
               "solidComposition": {
-                "type": "json"
+                "type": "object"
               },
               "atmosphere": {
-                "type": "json"
+                "type": "object"
               },
               "material": {
-                "type": "json"
+                "type": "object"
               },
               "missingSkipCount": {
                 "type": "integer"
@@ -68204,13 +68860,13 @@
                   "type": "number"
                 },
                 "solidComposition": {
-                  "type": "json"
+                  "type": "object"
                 },
                 "atmosphere": {
-                  "type": "json"
+                  "type": "object"
                 },
                 "material": {
-                  "type": "json"
+                  "type": "object"
                 },
                 "missingSkipCount": {
                   "type": "integer"
@@ -68341,7 +68997,7 @@
             }
           },
           "primaryStar": {
-            "type": "json",
+            "type": "object",
             "default": ""
           },
           "apsites": {
@@ -69196,7 +69852,7 @@
             "type": "string"
           },
           "primaryStar": {
-            "type": "json",
+            "type": "object",
             "default": ""
           },
           "apsites": {
@@ -69467,8 +70123,8 @@
                 "provider": {
                   "type": "string"
                 },
-                "public_id": {
-                  "type": "string"
+                "provider_metadata": {
+                  "type": "object"
                 },
                 "related": {
                   "type": "string"
@@ -69740,7 +70396,7 @@
                 "type": "string"
               },
               "primaryStar": {
-                "type": "json"
+                "type": "object"
               },
               "apsites": {
                 "type": "array",
@@ -69949,13 +70605,13 @@
                 "type": "number"
               },
               "solidComposition": {
-                "type": "json"
+                "type": "object"
               },
               "atmosphere": {
-                "type": "json"
+                "type": "object"
               },
               "material": {
-                "type": "json"
+                "type": "object"
               },
               "missingSkipCount": {
                 "type": "integer"
@@ -70405,8 +71061,8 @@
                 "provider": {
                   "type": "string"
                 },
-                "public_id": {
-                  "type": "string"
+                "provider_metadata": {
+                  "type": "object"
                 },
                 "related": {
                   "type": "string"
@@ -70651,7 +71307,7 @@
                 "type": "string"
               },
               "primaryStar": {
-                "type": "json"
+                "type": "object"
               },
               "apsites": {
                 "type": "array",
@@ -70860,13 +71516,13 @@
                 "type": "number"
               },
               "solidComposition": {
-                "type": "json"
+                "type": "object"
               },
               "atmosphere": {
-                "type": "json"
+                "type": "object"
               },
               "material": {
-                "type": "json"
+                "type": "object"
               },
               "missingSkipCount": {
                 "type": "integer"
@@ -71567,7 +72223,7 @@
                 "type": "string"
               },
               "primaryStar": {
-                "type": "json"
+                "type": "object"
               },
               "apsites": {
                 "type": "array",
@@ -71776,13 +72432,13 @@
                 "type": "number"
               },
               "solidComposition": {
-                "type": "json"
+                "type": "object"
               },
               "atmosphere": {
-                "type": "json"
+                "type": "object"
               },
               "material": {
-                "type": "json"
+                "type": "object"
               },
               "missingSkipCount": {
                 "type": "integer"
@@ -72128,6 +72784,12 @@
                 },
                 "cmdrs": {
                   "type": "string"
+                },
+                "authtokens": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 }
               }
             }
@@ -72240,6 +72902,29 @@
                 "type": "string"
               }
             }
+          },
+          "authtokens": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "token"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "token": {
+                  "type": "string"
+                },
+                "comment": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -72280,6 +72965,12 @@
           },
           "cmdrs": {
             "type": "string"
+          },
+          "authtokens": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       },
@@ -72323,6 +73014,9 @@
     {
       "name": "Amphora Plants",
       "description": "Code Name - AP"
+    },
+    {
+      "name": "Authtoken"
     },
     {
       "name": "AX Combat Zone Reports",
