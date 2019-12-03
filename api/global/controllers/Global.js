@@ -3,18 +3,17 @@
 /**
  * Info.js controller
  *
- * @description: A set of functions called "actions" for managing `Info`.
+ * @description: A set of functions called 'actions' for managing `Info`.
  */
 
 module.exports = {
-
   /**
    * Retrieve CAPI Info.
    *
    * @return {Object}
    */
 
-  info: (ctx) => {
+  info: ctx => {
     ctx.send({
       name: strapi.config.info.name,
       description: strapi.config.info.description,
@@ -30,7 +29,7 @@ module.exports = {
    * @return {Object}
    */
 
-  version: (ctx) => {
+  version: ctx => {
     ctx.send({
       strapiVersion: strapi.config.info.strapi,
       capiVersion: strapi.config.info.version
@@ -53,8 +52,8 @@ module.exports = {
    * @return {Array}
    */
 
-  stats: async (ctx) => {
-    let approvedList = [
+  stats: async ctx => {
+    const approvedList = [
       'ap',
       'bm',
       'bt',
@@ -71,13 +70,54 @@ module.exports = {
       'tw'
     ];
 
+    const fields = [
+      'system',
+
+      'primaryStar',
+      'primaryStar.type',
+      'primaryStar.isScoopable',
+
+      'body',
+      'body.subType',
+      'body.distanceToArrival',
+      'body.gravity',
+      'body.earthMasses',
+      'body.radius',
+      'body.surfaceTemperature',
+      'body.volcanismType',
+      'body.atmosphereType',
+      'body.terraformingState',
+      'body.orbitalPeriod',
+      'body.semiMajorAxis',
+      'body.orbitalEccentricity',
+      'body.orbitalInclination',
+      'body.argOfPeriapsis',
+      'body.rotationalPeriod',
+      'body.axialTilt',
+
+      'latitude',
+      'longitude',
+
+      'type',
+      'type.type',
+
+      'status',
+      'status.status'
+    ];
+
     let siteData;
-    let siteCount;
 
     if (ctx.query.type && approvedList.includes(ctx.query.type.toLowerCase())) {
       // Fetch all data
-      siteData = await strapi.query(ctx.query.type.toLowerCase() + 'site').find({ _limit: -1 });
-      siteCount = await strapi.query(ctx.query.type.toLowerCase() + 'site').count();
+      siteData = await strapi
+        .query(ctx.query.type.toLowerCase() + 'site')
+        .find({ _limit: -1 });
+
+      // You don't have to do it. siteCount should be equal to siteData.length, no?
+      // You are making another strapi query here, which probably takes way more time than the calculations below.
+      // Unless I'm wrong?
+
+      //siteCount = await strapi.query(ctx.query.type.toLowerCase() + 'site').count();
     } else {
       ctx.status = 400;
       ctx.message = `The type ${ctx.query.type.toLowerCase()} either doesn't exist or does not allow stat lookups`;
@@ -89,94 +129,92 @@ module.exports = {
       };
     }
 
-    let compareBodyMath = async (metric, data) => {
-      // Get Min, Max, Average values
-      let dataToParse;
+    // See above
+    let siteCount = siteData.length;
 
-      if (metric === 'latitude'){
-        dataToParse = data.map(i => i.latitude);
-      } else if (metric === 'longitude') {
-        dataToParse = data.map(i => i.longitude);
-      } else {
-        dataToParse = data.map(i => i.body[metric]);
-      }
+    // This is your final object, magic happens below.
+    let stats = {};
 
-      if (dataToParse) {
-        let stats = {
-          min: Math.min.apply(null, dataToParse),
-          max: Math.max.apply(null, dataToParse),
-          average: dataToParse.reduce((a,b) => a + b, 0) / dataToParse.length
-        };
+    // This function loops over keys of an object (site) and updates the 'stats' object
+    // This is a recursive function, meaning if a value of a key is an object (not string, number, boolean) it fires up again
 
-        return stats;
-      } else {
-        return {};
-      }
-    };
+    function loopOverKeys(parent, object) {
+      let keys = Object.keys(object);
 
-    let compareText = async (metric, data) => {
-      let dataToParse;
-      let stats = {};
+      keys.forEach(key => {
+        if (fields.indexOf(key) !== -1) {
+          let value = object[key];
 
-      // Map the Data
-      if (metric === 'star') {
-        dataToParse = data.map(i => i.system.primaryStar.type);
-      } else if (metric === 'type') {
-        dataToParse = data.map(i => i.type.type);
-      } else if (metric === 'status') {
-        dataToParse = data.map(i => i.status.status);
-      } else {
-        dataToParse = data.map(i => i.body[metric]);
-      }
+          // If the value is an object
+          if (typeof value === 'object' && value) {
+            // If it's not yet in stats, create a new stats[key] with an empty object
+            if (typeof parent[key] === 'undefined') {
+              parent[key] = {};
+            }
 
-      // Make sure data is there and add them to an object with a count
-      if (dataToParse) {
-        let uniqueValues = dataToParse.filter((x, i, a) => a.indexOf(x) === i);
+            // Fire up recursion
+            loopOverKeys(parent[key], value);
 
-        // Populate the object with a count of each unique
-        uniqueValues.forEach((item) => {
-          if (item) {
-            stats[item] = dataToParse.filter(x => { return x === item; }).length;
+            // For strings and booleans we make a histogram
+          } else if (typeof value === 'string' || typeof value === 'boolean') {
+            // Just checking if we have a key for histogram, if not we create one
+            if (typeof parent[key] === 'undefined') {
+              parent[key] = {};
+            }
+
+            // If the value isn't in histogram yet, create a new one and set count to 1
+            if (typeof parent[key][value] === 'undefined') {
+              parent[key][value] = 1;
+
+              // If the value is already in histogram, increase the count by 1
+            } else {
+              parent[key][value] += 1;
+            }
+
+            // For numbers we're going to count max, min and average
+          } else if (typeof value === 'number') {
+            // Check if the key is already there. If not create one.
+            if (typeof parent[key] === 'undefined') {
+              parent[key] = {
+                min: Number.POSITIVE_INFINITY,
+                max: Number.NEGATIVE_INFINITY,
+                avgSum: 0,
+                avgCount: 0
+              };
+            }
+
+            // Check max
+            if (value > parent[key].max) {
+              parent[key].max = value;
+            }
+
+            // Check min
+            if (value < parent[key].min) {
+              parent[key].min = value;
+            }
+
+            // This is for average, we got sum and count, so we can count all averages after the loop.
+            // I'll come back to this after we establish it's working.
+            parent[key].avgSum += value;
+            parent[key].avgCount += 1;
           }
-        });
-      }
-
-      return stats;
-    };
-
-    // Construct stats
-    let stats = {
-      siteCount: parseInt(siteCount),
-      system: {
-        primaryStar: await compareText('star', siteData)
-      },
-      body: {
-        latitude: await compareBodyMath('latitude', siteData),
-        longitude: await compareBodyMath('longitude', siteData),
-        subType: await compareText('subType', siteData),
-        distanceToArrival: await compareBodyMath('distanceToArrival', siteData),
-        gravity: await compareBodyMath('gravity', siteData),
-        earthMasses: await compareBodyMath('earthMasses', siteData),
-        radius: await compareBodyMath('radius', siteData),
-        surfaceTemperature: await compareBodyMath('surfaceTemperature', siteData),
-        volcanismType: await compareText('volcanismType', siteData),
-        atmosphereType: await compareText('atmosphereType', siteData),
-        terraformingState: await compareText('terraformingState', siteData),
-        orbitalPeriod: await compareBodyMath('orbitalPeriod', siteData),
-        semiMajorAxis: await compareBodyMath('semiMajorAxis', siteData),
-        orbitalEccentricity: await compareBodyMath('orbitalEccentricity', siteData),
-        orbitalInclination: await compareBodyMath('orbitalInclination', siteData),
-        argOfPeriapsis: await compareBodyMath('argOfPeriapsis', siteData),
-        rotationalPeriod: await compareBodyMath('rotationalPeriod', siteData),
-        axialTilt: await compareBodyMath('axialTilt', siteData)
-      },
-    };
-
-    if (ctx.query.type === 'ts') {
-      stats.status = await compareText('status', siteData);
-    } else {
-      stats.type = await compareText('type', siteData);
+        }
+      });
     }
+
+    // One loop to rule them all
+    siteData.forEach(site => {
+      loopOverKeys(stats, site);
+    });
+
+    // Console log stats here, or something, just check the data
+    console.log('STATS', stats);
+
+    // if (ctx.query.type === 'ts') {
+    //   stats.status = await compareText('status', siteData);
+    // } else {
+    //   stats.type = await compareText('type', siteData);
+    // }
 
     return stats;
   }
