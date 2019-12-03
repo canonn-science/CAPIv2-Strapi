@@ -23,6 +23,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/stats",
+      "handler": "global.stats",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
