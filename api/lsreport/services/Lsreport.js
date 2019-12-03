@@ -5,24 +5,4 @@
  * to customize this service
  */
 
-module.exports = {
-  /**
-   * Promise to add an lsreport record
-   *
-   * @return {Promise}
-   */
-
-  create: async (values) => {
-
-    // Check Version
-    await strapi.api.excludeclient.services.excludeclient.blockClient(values.clientVersion);
-
-    // Check CMDR Name
-    await strapi.api.excludecmdr.services.excludecmdr.blockCMDR(values.cmdrName);
-
-    // Check for missing required values
-    await strapi.api.global.services.global.checkReport(values, 'lsreport');
-
-    // If checks pass, proceed to create data
-    return strapi.query('Lsreport').create(values);
-  },};
+module.exports = {};
