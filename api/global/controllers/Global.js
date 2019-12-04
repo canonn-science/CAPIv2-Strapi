@@ -70,41 +70,6 @@ module.exports = {
       'tw'
     ];
 
-    const fields = [
-      'system',
-
-      'primaryStar',
-      'primaryStar.type',
-      'primaryStar.isScoopable',
-
-      'body',
-      'body.subType',
-      'body.distanceToArrival',
-      'body.gravity',
-      'body.earthMasses',
-      'body.radius',
-      'body.surfaceTemperature',
-      'body.volcanismType',
-      'body.atmosphereType',
-      'body.terraformingState',
-      'body.orbitalPeriod',
-      'body.semiMajorAxis',
-      'body.orbitalEccentricity',
-      'body.orbitalInclination',
-      'body.argOfPeriapsis',
-      'body.rotationalPeriod',
-      'body.axialTilt',
-
-      'latitude',
-      'longitude',
-
-      'type',
-      'type.type',
-
-      'status',
-      'status.status'
-    ];
-
     let siteData;
 
     if (ctx.query.type && approvedList.includes(ctx.query.type.toLowerCase())) {
@@ -112,12 +77,6 @@ module.exports = {
       siteData = await strapi
         .query(ctx.query.type.toLowerCase() + 'site')
         .find({ _limit: -1 });
-
-      // You don't have to do it. siteCount should be equal to siteData.length, no?
-      // You are making another strapi query here, which probably takes way more time than the calculations below.
-      // Unless I'm wrong?
-
-      //siteCount = await strapi.query(ctx.query.type.toLowerCase() + 'site').count();
     } else {
       ctx.status = 400;
       ctx.message = `The type ${ctx.query.type.toLowerCase()} either doesn't exist or does not allow stat lookups`;
@@ -129,92 +88,91 @@ module.exports = {
       };
     }
 
-    // See above
-    let siteCount = siteData.length;
-
-    // This is your final object, magic happens below.
-    let stats = {};
-
-    // This function loops over keys of an object (site) and updates the 'stats' object
-    // This is a recursive function, meaning if a value of a key is an object (not string, number, boolean) it fires up again
-
-    function loopOverKeys(parent, object) {
-      let keys = Object.keys(object);
-
-      keys.forEach(key => {
-        if (fields.indexOf(key) !== -1) {
-          let value = object[key];
-
-          // If the value is an object
-          if (typeof value === 'object' && value) {
-            // If it's not yet in stats, create a new stats[key] with an empty object
-            if (typeof parent[key] === 'undefined') {
-              parent[key] = {};
-            }
-
-            // Fire up recursion
-            loopOverKeys(parent[key], value);
-
-            // For strings and booleans we make a histogram
-          } else if (typeof value === 'string' || typeof value === 'boolean') {
-            // Just checking if we have a key for histogram, if not we create one
-            if (typeof parent[key] === 'undefined') {
-              parent[key] = {};
-            }
-
-            // If the value isn't in histogram yet, create a new one and set count to 1
-            if (typeof parent[key][value] === 'undefined') {
-              parent[key][value] = 1;
-
-              // If the value is already in histogram, increase the count by 1
-            } else {
-              parent[key][value] += 1;
-            }
-
-            // For numbers we're going to count max, min and average
-          } else if (typeof value === 'number') {
-            // Check if the key is already there. If not create one.
-            if (typeof parent[key] === 'undefined') {
-              parent[key] = {
-                min: Number.POSITIVE_INFINITY,
-                max: Number.NEGATIVE_INFINITY,
-                avgSum: 0,
-                avgCount: 0
-              };
-            }
-
-            // Check max
-            if (value > parent[key].max) {
-              parent[key].max = value;
-            }
-
-            // Check min
-            if (value < parent[key].min) {
-              parent[key].min = value;
-            }
-
-            // This is for average, we got sum and count, so we can count all averages after the loop.
-            // I'll come back to this after we establish it's working.
-            parent[key].avgSum += value;
-            parent[key].avgCount += 1;
-          }
+    function updateKeyObject(object, value) {
+      if (value) {
+        if (!object[value]) {
+          object[value] = 1;
+        } else {
+          object[value] += 1;
         }
-      });
+      }
     }
 
-    // One loop to rule them all
+    function updateKeyMath(object, value) {
+      if (value || value === 0) {
+        if (!object.avgCount) {
+          object.min = value;
+          object.max = value;
+          object.avgSum = value;
+          object.avgCount = 1;
+        } else {
+          object.min = object.min > value ? (object.min = value) : object.min;
+          object.max = object.max < value ? (object.max = value) : object.max;
+          object.avgSum += value;
+          object.avgCount += 1;
+        }
+      }
+    }
+
+    let stats = {
+      siteCount: siteData.length,
+      system: {
+        primaryStar: {}
+      },
+
+      body: {
+        latitude: {},
+        longitude: {},
+        subType: {},
+        distanceToArrival: {},
+        gravity: {},
+        earthMasses: {},
+        radius: {},
+        surfaceTemperature: {},
+        volcanismType: {},
+        //atmosphereType: {}, // You probably don't need this?
+        terraformingState: {},
+        orbitalPeriod: {},
+        semiMajorAxis: {},
+        orbitalEccentricity: {},
+        orbitalInclination: {},
+        argOfPeriapsis: {},
+        rotationalPeriod: {},
+        axialTilt: {}
+      },
+
+      type: {
+        type: {}
+      }
+    };
+
     siteData.forEach(site => {
-      loopOverKeys(stats, site);
+      // System
+      updateKeyObject(stats.system.primaryStar, site.system.primaryStar.type);
+
+      // Body
+      updateKeyMath(stats.body.latitude, site.latitude);
+      updateKeyMath(stats.body.longitude, site.longitude);
+      updateKeyMath(stats.body.distanceToArrival, site.body.distanceToArrival);
+      updateKeyMath(stats.body.gravity, site.body.gravity);
+      updateKeyMath(stats.body.earthMasses, site.body.earthMasses);
+      updateKeyMath(stats.body.radius, site.body.radius);
+      updateKeyMath(stats.body.surfaceTemperature, site.body.surfaceTemperature);
+      updateKeyMath(stats.body.orbitalPeriod, site.body.orbitalPeriod);
+      updateKeyMath(stats.body.semiMajorAxis, site.body.semiMajorAxis);
+      updateKeyMath(stats.body.orbitalEccentricity, site.body.orbitalEccentricity);
+      updateKeyMath(stats.body.orbitalInclination, site.body.orbitalInclination);
+      updateKeyMath(stats.body.argOfPeriapsis, site.body.argOfPeriapsis);
+      updateKeyMath(stats.body.rotationalPeriod, site.body.rotationalPeriod);
+      updateKeyMath(stats.body.axialTilt, site.body.axialTilt);
+
+      updateKeyObject(stats.body.subType, site.body.subType);
+      updateKeyObject(stats.body.volcanismType, site.body.volcanismType);
+      updateKeyObject(stats.body.terraformingState, site.body.terraformingState);
+
+      // Type
+      updateKeyObject(stats.type.type, site.type.type);
     });
-
-    // Console log stats here, or something, just check the data
-    console.log('STATS', stats);
-
-    // if (ctx.query.type === 'ts') {
-    //   stats.status = await compareText('status', siteData);
-    // } else {
-    //   stats.type = await compareText('type', siteData);
-    // }
 
     return stats;
   }
