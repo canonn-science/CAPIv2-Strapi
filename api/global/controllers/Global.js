@@ -175,8 +175,6 @@ module.exports = {
       updateKeyObject(stats.type.type, site.type.type);
     });
 
-    console.log(stats)
-
     return stats;
   }
 };
