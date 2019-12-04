@@ -5,24 +5,4 @@
  * to customize this service
  */
 
-module.exports = {
-  /**
-   * Promise to add an tsreport record
-   *
-   * @return {Promise}
-   */
-
-  create: async (values) => {
-
-    // Check Version
-    await strapi.api.excludeclient.services.excludeclient.blockClient(values.clientVersion);
-
-    // Check CMDR Name
-    await strapi.api.excludecmdr.services.excludecmdr.blockCMDR(values.cmdrName);
-
-    // Check for missing required values
-    await strapi.api.global.services.global.checkReport(values, 'tsreport');
-
-    // If checks pass, proceed to create data
-    return strapi.query('Tsreport').create(values);
-  },};
+module.exports = {};
