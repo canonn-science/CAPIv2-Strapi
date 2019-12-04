@@ -108,8 +108,9 @@ module.exports = {
         } else {
           object.min = object.min > value ? (object.min = value) : object.min;
           object.max = object.max < value ? (object.max = value) : object.max;
-          object.avgSum += value;
-          object.avgCount += 1;
+          object.averageSum += value;
+          object.averageCount += 1;
+          object.average = object.avgSum / object.avgCount;
         }
       }
     }
@@ -173,6 +174,8 @@ module.exports = {
       // Type
       updateKeyObject(stats.type.type, site.type.type);
     });
+
+    console.log(stats)
 
     return stats;
   }
