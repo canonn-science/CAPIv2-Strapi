@@ -20,10 +20,10 @@ module.exports = {
 
     if (ctx.query._q) {
       entitiesCount = await strapi.services.apreport.countSearch(ctx.query);
-      entities = strapi.services.apreport.search(ctx.query);
+      entities = await strapi.services.apreport.search(ctx.query);
     } else {
       entitiesCount = await strapi.services.apreport.count(ctx.query);
-      entities = strapi.services.apreport.find(ctx.query);
+      entities = await strapi.services.apreport.find(ctx.query);
     }
 
     ctx.set('Content-Range', entitiesCount);
