@@ -5,10 +5,8 @@
     "secret": "_csrfSecret"
   },
   "csp": {
-    "enabled": false,
-    "policy": {
-      "default-src": "'self'"
-    }
+    "enabled": true,
+    "policy": ["block-all-mixed-content"]
   },
   "p3p": {
     "enabled": false,

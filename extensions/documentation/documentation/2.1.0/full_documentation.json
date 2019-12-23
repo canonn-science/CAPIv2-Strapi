@@ -14,7 +14,7 @@
       "name": "GNU-GPLv3",
       "url": "https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE"
     },
-    "x-generation-date": "12/02/2019 11:20:49 PM"
+    "x-generation-date": "12/23/2019 1:15:36 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -238,7 +238,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -248,7 +251,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -755,7 +761,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -765,7 +774,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -1272,7 +1284,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -1282,7 +1297,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -1785,7 +1803,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -1795,7 +1816,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -2302,7 +2326,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -2312,7 +2339,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -2816,7 +2846,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -2826,7 +2859,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -3321,7 +3357,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -3331,7 +3370,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -3834,7 +3876,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -3844,7 +3889,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -4347,7 +4395,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -4357,7 +4408,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -4864,7 +4918,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -4874,7 +4931,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -5378,7 +5438,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -5388,7 +5451,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -5895,7 +5961,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -5905,7 +5974,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -6408,7 +6480,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -6418,7 +6493,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -6925,7 +7003,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -6935,7 +7016,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -7439,7 +7523,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -7449,7 +7536,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -7954,7 +8044,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -7964,7 +8057,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -8469,7 +8565,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -8479,7 +8578,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -8986,7 +9088,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -8996,7 +9101,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -9503,7 +9611,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -9513,7 +9624,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -10016,7 +10130,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -10026,7 +10143,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -10533,7 +10653,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -10543,7 +10666,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -11047,7 +11173,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -11057,7 +11186,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -11564,7 +11696,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -11574,7 +11709,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -12081,7 +12219,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -12091,7 +12232,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -12598,7 +12742,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -12608,7 +12755,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -13115,7 +13265,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -13125,7 +13278,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -13632,7 +13788,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -13642,7 +13801,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -14145,7 +14307,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -14155,7 +14320,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -14662,7 +14830,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -14672,7 +14843,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -15176,7 +15350,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -15186,7 +15363,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -15689,7 +15869,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -15699,7 +15882,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -16206,7 +16392,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -16216,7 +16405,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -16720,7 +16912,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -16730,7 +16925,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -17234,7 +17432,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -17244,7 +17445,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -17747,7 +17951,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -17757,7 +17964,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -18264,7 +18474,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -18274,7 +18487,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -18778,7 +18994,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -18788,7 +19007,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -19291,7 +19513,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -19301,7 +19526,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -20039,7 +20267,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -20049,7 +20280,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -20553,7 +20787,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -20563,7 +20800,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -21070,7 +21310,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -21080,7 +21323,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -21587,7 +21833,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -21597,7 +21846,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -22104,7 +22356,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -22114,7 +22369,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -22621,7 +22879,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -22631,7 +22892,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -23138,7 +23402,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -23148,7 +23415,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -23655,7 +23925,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -23665,7 +23938,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -24168,7 +24444,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -24178,7 +24457,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -24681,7 +24963,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -24691,7 +24976,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -25198,7 +25486,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -25208,7 +25499,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -25715,7 +26009,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -25725,7 +26022,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -26232,7 +26532,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -26242,7 +26545,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -26749,7 +27055,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -26759,7 +27068,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -27266,7 +27578,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -27276,7 +27591,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -27783,7 +28101,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -27793,7 +28114,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -28300,7 +28624,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -28310,7 +28637,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -28817,7 +29147,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -28827,7 +29160,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -29334,7 +29670,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -29344,7 +29683,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -29847,7 +30189,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -29857,7 +30202,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -30360,7 +30708,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -30370,7 +30721,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -30877,7 +31231,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -30887,7 +31244,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -31394,7 +31754,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -31404,7 +31767,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -31907,7 +32273,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -31917,7 +32286,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -32424,7 +32796,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -32434,7 +32809,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -32941,7 +33319,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -32951,7 +33332,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -33454,7 +33838,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -33464,7 +33851,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -33971,7 +34361,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -33981,7 +34374,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -34488,7 +34884,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -34498,7 +34897,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -35001,7 +35403,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -35011,7 +35416,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -35518,7 +35926,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -35528,7 +35939,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -36031,7 +36445,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -36041,7 +36458,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -36544,7 +36964,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -36554,7 +36977,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -37057,7 +37483,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -37067,7 +37496,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -37574,7 +38006,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -37584,7 +38019,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -38091,7 +38529,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -38101,7 +38542,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -38606,7 +39050,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -38616,7 +39063,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -39119,7 +39569,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -39129,7 +39582,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -39636,7 +40092,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -39646,7 +40105,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -40146,7 +40608,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -40156,7 +40621,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -40663,7 +41131,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -40673,7 +41144,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -41180,7 +41654,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -41190,7 +41667,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -41693,7 +42173,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -41703,7 +42186,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -42206,7 +42692,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -42216,7 +42705,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -42719,7 +43211,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -42729,7 +43224,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -43236,7 +43734,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -43246,7 +43747,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -43753,7 +44257,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -43763,7 +44270,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -44270,7 +44780,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -44280,7 +44793,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -44787,7 +45303,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -44797,7 +45316,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -45300,7 +45822,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -45310,7 +45835,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -45817,7 +46345,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -45827,7 +46358,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -46334,7 +46868,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -46344,7 +46881,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -46851,7 +47391,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -46861,7 +47404,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -47364,7 +47910,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -47374,7 +47923,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -47881,7 +48433,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -47891,7 +48446,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -48398,7 +48956,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -48408,7 +48969,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -48911,7 +49475,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -48921,7 +49488,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -49428,7 +49998,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -49438,7 +50011,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -50524,7 +51100,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -50534,7 +51113,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -50923,7 +51505,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -50933,7 +51518,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -51639,7 +52227,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -51649,7 +52240,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -52002,7 +52596,7 @@
             "type": "string"
           },
           "updateTime": {
-            "type": "string",
+            "type": "datetime",
             "default": ""
           },
           "error": {
@@ -52022,7 +52616,7 @@
       "NewApiupdate": {
         "properties": {
           "updateTime": {
-            "type": "string",
+            "type": "datetime",
             "default": ""
           },
           "error": {
@@ -59153,7 +59747,7 @@
                   "type": "string"
                 },
                 "size": {
-                  "type": "string"
+                  "type": "number"
                 },
                 "url": {
                   "type": "string"
@@ -59966,7 +60560,7 @@
                   "type": "string"
                 },
                 "size": {
-                  "type": "string"
+                  "type": "number"
                 },
                 "url": {
                   "type": "string"
@@ -60115,7 +60709,7 @@
                   "type": "string"
                 },
                 "size": {
-                  "type": "string"
+                  "type": "number"
                 },
                 "url": {
                   "type": "string"
@@ -61645,7 +62239,7 @@
                   "type": "string"
                 },
                 "size": {
-                  "type": "string"
+                  "type": "number"
                 },
                 "url": {
                   "type": "string"
@@ -62787,7 +63381,7 @@
                 "type": "string"
               },
               "size": {
-                "type": "string"
+                "type": "number"
               },
               "url": {
                 "type": "string"
@@ -63247,7 +63841,7 @@
                   "type": "string"
                 },
                 "size": {
-                  "type": "string"
+                  "type": "number"
                 },
                 "url": {
                   "type": "string"
@@ -65672,7 +66266,7 @@
                 "type": "string"
               },
               "size": {
-                "type": "string"
+                "type": "number"
               },
               "url": {
                 "type": "string"
@@ -65984,7 +66578,7 @@
             "type": "string"
           },
           "edTimestamp": {
-            "type": "string"
+            "type": "datetime"
           },
           "cmdrName": {
             "type": "string"
@@ -66021,7 +66615,7 @@
             "type": "string"
           },
           "edTimestamp": {
-            "type": "string"
+            "type": "datetime"
           },
           "cmdrName": {
             "type": "string"
@@ -70172,7 +70766,7 @@
                   "type": "string"
                 },
                 "size": {
-                  "type": "string"
+                  "type": "number"
                 },
                 "url": {
                   "type": "string"
@@ -71110,7 +71704,7 @@
                   "type": "string"
                 },
                 "size": {
-                  "type": "string"
+                  "type": "number"
                 },
                 "url": {
                   "type": "string"

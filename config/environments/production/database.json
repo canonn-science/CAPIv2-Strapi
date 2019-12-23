@@ -2,7 +2,7 @@
   "defaultConnection": "default",
   "connections": {
     "default": {
-      "connector": "strapi-hook-bookshelf",
+      "connector": "bookshelf",
       "settings": {
         "client": "mysql",
         "host": "${process.env.DATABASE_HOST_PROD || '127.0.0.1'}",
@@ -27,7 +27,7 @@
       }
     },
     "users": {
-      "connector": "strapi-hook-bookshelf",
+      "connector": "bookshelf",
       "settings": {
         "client": "mysql",
         "host": "${process.env.DATABASE_HOST_USER || '127.0.0.1'}",
