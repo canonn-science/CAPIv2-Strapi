@@ -1,5 +1,4 @@
 sudo: required
-dist: xenial
 language: node_js
 node_js:
   - '10'
@@ -7,7 +6,7 @@ node_js:
 services:
   - mysql
 addons:
-  mariadb: '10.3'
+  mariadb: '10.4'
   apt:
     packages:
       - software-properties-common
@@ -28,7 +27,7 @@ install:
 
 script:
   - yarn build
-  - NODE_ENV=development pm2 start --name="capiv2" server.js
+  - NODE_ENV=development pm2 start --name="capiv2" server.js && pm2 logs capiv2
   - sleep 10
   - newman run 'tests/capiv2.postman_collection.json' -e tests/capiv2.postman_environment.json
 
