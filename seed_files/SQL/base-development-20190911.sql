@@ -2907,7 +2907,7 @@ CREATE TABLE `tbreports` (
   `site` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `subtype` varchar(255) NOT NULL DEFAULT `Unknown`,
+  `subtype` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_TBREPORTS` (`systemName`,`bodyName`,`cmdrName`,`cmdrComment`,`clientVersion`,`reportComment`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
