@@ -54,7 +54,11 @@ module.exports = {
     // Check for missing required data
     await strapi.api.global.services.global.checkReport(data, 'tbreport');
 
-    entity = await strapi.services.tbreport.create(ctx.request.body);
+    if (!data.subtype) {
+      data.subtype = "Unknown";
+    }
+
+    entity = await strapi.services.tbreport.create(data);
     return sanitizeEntity(entity, { model: strapi.models.tbreport });
   }
 };
