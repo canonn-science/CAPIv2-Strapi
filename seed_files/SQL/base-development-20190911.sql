@@ -16,6 +16,35 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `strapi_administrator`
+--
+
+DROP TABLE IF EXISTS `strapi_administrator`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `strapi_administrator` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `resetPasswordToken` varchar(255) DEFAULT NULL,
+  `blocked` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FULLTEXT KEY `SEARCH_STRAPI_ADMINISTRATOR` (`username`,`resetPasswordToken`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `strapi_administrator`
+--
+
+LOCK TABLES `strapi_administrator` WRITE;
+/*!40000 ALTER TABLE `strapi_administrator` DISABLE KEYS */;
+INSERT INTO `strapi_administrator` VALUES (1,'canonntest','rd@canonn.technology','$2a$10$OuezItI8UE6156d2i5AFqeSZVpgD6Usqw4u4qjfyBSXAaePSy2F4y',NULL,NULL);
+/*!40000 ALTER TABLE `strapi_administrator` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `alerts`
 --
 
@@ -2907,7 +2936,7 @@ CREATE TABLE `tbreports` (
   `site` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `subtype` varchar(255) NOT NULL DEFAULT `Unknown`,
+  `subtype` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   FULLTEXT KEY `SEARCH_TBREPORTS` (`systemName`,`bodyName`,`cmdrName`,`cmdrComment`,`clientVersion`,`reportComment`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -3258,7 +3287,7 @@ CREATE TABLE `upload_file` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
-  FULLTEXT KEY `SEARCH_UPLOAD_FILE` (`name`,`hash`,`sha256`,`ext`,`mime`,`size`,`url`,`provider`,`public_id`)
+  FULLTEXT KEY `SEARCH_UPLOAD_FILE` (`name`,`hash`,`sha256`,`ext`,`mime`,`url`,`provider`,`public_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
