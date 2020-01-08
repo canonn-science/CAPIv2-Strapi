@@ -1,24 +1,29 @@
 'use strict';
-
-/**
- * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
- * to customize this controller
- */
+const { sanitizeEntity } = require('strapi-utils');
 
 module.exports = {
   /**
    * Retrieve records with count in `Content-Range` header.
    *
-   * @return {Array}
+   * @return {Object|Array}
    */
 
-  find: async (ctx) => {
+  find: async ctx => {
+    let entities;
+    let entitiesCount;
+
     if (ctx.query._q) {
-      ctx.set('Content-Range', await strapi.services.nhsssite.countSearch(ctx.query));
-      return strapi.services.nhsssite.search(ctx.query);
+      entitiesCount = await strapi.services.nhsssite.countSearch(ctx.query);
+      entities = await strapi.services.nhsssite.search(ctx.query);
+    } else {
+      entitiesCount = await strapi.services.nhsssite.count(ctx.query);
+      entities = await strapi.services.nhsssite.find(ctx.query);
     }
 
-    ctx.set('Content-Range', await strapi.services.nhsssite.count(ctx.query));
-    return strapi.services.nhsssite.find(ctx.query);
-  }
+    ctx.set('Content-Range', entitiesCount);
+
+    return entities.map(entity =>
+      sanitizeEntity(entity, { model: strapi.models.nhsssite })
+    );
+  },
 };
