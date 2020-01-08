@@ -608,29 +608,6 @@
           "reportComment": {
             "type": "string"
           },
-          "added": {
-            "type": "boolean",
-            "default": false
-          },
-          "site": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "system": {
-                "type": "string"
-              },
-              "solDistance": {
-                "type": "number"
-              },
-              "meropeDistance": {
-                "type": "number"
-              }
-            }
-          },
           "hdRawJson": {
             "type": "object"
           }
@@ -678,13 +655,6 @@
             ]
           },
           "reportComment": {
-            "type": "string"
-          },
-          "added": {
-            "type": "boolean",
-            "default": false
-          },
-          "site": {
             "type": "string"
           },
           "hdRawJson": {
