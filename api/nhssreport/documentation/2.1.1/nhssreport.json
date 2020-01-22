@@ -563,25 +563,6 @@
             "type": "boolean",
             "default": false
           },
-          "site": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "system": {
-                "type": "string"
-              },
-              "threatLevel": {
-                "type": "integer"
-              },
-              "discoveredBy": {
-                "type": "string"
-              }
-            }
-          },
           "nhssRawJson": {
             "type": "object"
           }
@@ -631,9 +612,6 @@
           "added": {
             "type": "boolean",
             "default": false
-          },
-          "site": {
-            "type": "string"
           },
           "nhssRawJson": {
             "type": "object"

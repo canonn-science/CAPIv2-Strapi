@@ -14,7 +14,7 @@
       "name": "GNU-GPLv3",
       "url": "https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE"
     },
-    "x-generation-date": "01/08/2020 1:00:35 AM"
+    "x-generation-date": "01/21/2020 10:44:18 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -38353,529 +38353,6 @@
         ]
       }
     },
-    "/nhsssites": {
-      "get": {
-        "deprecated": false,
-        "description": "Get all NHSS Site entries",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Nhsssite"
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Non-Human Signal Sources"
-        ],
-        "parameters": [
-          {
-            "name": "_limit",
-            "in": "query",
-            "required": false,
-            "description": "Maximum number of results possible",
-            "schema": {
-              "type": "integer"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_sort",
-            "in": "query",
-            "required": false,
-            "description": "Sort according to a specific field.",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_start",
-            "in": "query",
-            "required": false,
-            "description": "Skip a specific number of entries (especially useful for pagination)",
-            "schema": {
-              "type": "integer"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "=",
-            "in": "query",
-            "required": false,
-            "description": "Get entries that matches exactly your input",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_ne",
-            "in": "query",
-            "required": false,
-            "description": "Get records that are not equals to something",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_lt",
-            "in": "query",
-            "required": false,
-            "description": "Get record that are lower than a value",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_lte",
-            "in": "query",
-            "required": false,
-            "description": "Get records that are lower than or equal to a value",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_gt",
-            "in": "query",
-            "required": false,
-            "description": "Get records that are greater than a value",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_gte",
-            "in": "query",
-            "required": false,
-            "description": "Get records that are greater than  or equal a value",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_contains",
-            "in": "query",
-            "required": false,
-            "description": "Get records that contains a value",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_containss",
-            "in": "query",
-            "required": false,
-            "description": "Get records that contains (case sensitive) a value",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_in",
-            "in": "query",
-            "required": false,
-            "description": "Get records that matches any value in the array of values",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_nin",
-            "in": "query",
-            "required": false,
-            "description": "Get records that doesn't match any value in the array of values",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "deprecated": false
-          }
-        ],
-        "security": []
-      },
-      "post": {
-        "deprecated": false,
-        "description": "Create a new NHSS Site entry",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Nhsssite"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Non-Human Signal Sources"
-        ],
-        "requestBody": {
-          "description": "",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewNhsssite"
-              }
-            }
-          }
-        },
-        "security": [
-          "siteWrite"
-        ]
-      }
-    },
-    "/nhsssites/count": {
-      "get": {
-        "deprecated": false,
-        "description": "Get a count of all NHSS Site entries",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "count": {
-                      "type": "integer"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Non-Human Signal Sources"
-        ],
-        "parameters": [],
-        "security": []
-      }
-    },
-    "/nhsssites/{id}": {
-      "get": {
-        "deprecated": false,
-        "description": "Get a NHSS Site by id",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Nhsssite"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Non-Human Signal Sources"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": []
-      },
-      "put": {
-        "deprecated": false,
-        "description": "Update a NHSS Site by id",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Nhsssite"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Non-Human Signal Sources"
-        ],
-        "requestBody": {
-          "description": "",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewNhsssite"
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": [
-          "siteWrite"
-        ]
-      },
-      "delete": {
-        "deprecated": false,
-        "description": "Delete a NHSS Site by id",
-        "responses": {
-          "200": {
-            "description": "deletes a single record based on the ID supplied",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Non-Human Signal Sources"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": [
-          "siteDelete"
-        ]
-      }
-    },
     "/permitlocks": {
       "get": {
         "deprecated": false,
@@ -48785,7 +48262,7 @@
     "/email/": {
       "post": {
         "deprecated": false,
-        "description": "Send an email",
+        "description": "Send an email using the provider defined through the dashboard",
         "responses": {
           "200": {
             "description": "response",
@@ -48834,7 +48311,7 @@
         },
         "summary": "",
         "tags": [
-          "Email - Email"
+          "Strapi Usage Only"
         ],
         "requestBody": {
           "description": "",
@@ -48842,30 +48319,90 @@
           "content": {
             "application/json": {
               "schema": {
+                "type": "object",
                 "properties": {
-                  "foo": {
-                    "type": "string"
+                  "from": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "to": {
+                    "type": "string",
+                    "format": "email",
+                    "example": "user@example.com"
+                  },
+                  "reply_to": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "subject": {
+                    "type": "string",
+                    "example": "Lorem ipsum title"
+                  },
+                  "text": {
+                    "type": "string",
+                    "example": "Lorem ipsum"
+                  },
+                  "html": {
+                    "type": "string",
+                    "format": "html",
+                    "example": "<h1>Lorem ipsum</h1>"
                   }
                 }
               }
             }
           }
-        }
+        },
+        "security": [
+          "adminUsage"
+        ]
       }
     },
     "/upload/": {
       "post": {
         "deprecated": false,
-        "description": "Upload a file",
+        "description": "Upload one or multiple files",
         "responses": {
           "200": {
             "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "hash": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "sha256": {
+                        "type": "string"
+                      },
+                      "ext": {
+                        "type": "string"
+                      },
+                      "mime": {
+                        "type": "string"
+                      },
+                      "size": {
+                        "type": "integer"
+                      },
+                      "url": {
+                        "type": "string",
+                        "format": "uri"
+                      },
+                      "provider": {
+                        "type": "string"
+                      },
+                      "related": {
+                        "type": "array",
+                        "items": {
+                          "type": "object"
+                        }
+                      }
                     }
                   }
                 }
@@ -48911,11 +48448,38 @@
           "description": "",
           "required": true,
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
+                "required": [
+                  "files"
+                ],
                 "properties": {
-                  "foo": {
-                    "type": "string"
+                  "files": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    }
+                  },
+                  "path": {
+                    "type": "string",
+                    "example": "/public/upload"
+                  },
+                  "refId": {
+                    "type": "string",
+                    "example": "5a993616b8e66660e8baf45c"
+                  },
+                  "ref": {
+                    "type": "string",
+                    "example": "user"
+                  },
+                  "source": {
+                    "type": "string",
+                    "example": "users-permissions"
+                  },
+                  "field": {
+                    "type": "string",
+                    "example": "avatar"
                   }
                 }
               }
@@ -48930,13 +48494,13 @@
         "description": "Retrieve the total number of uploaded files",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
                   "properties": {
-                    "foo": {
-                      "type": "string"
+                    "count": {
+                      "type": "integer"
                     }
                   }
                 }
@@ -48987,14 +48551,13 @@
         "description": "Retrieve all file documents",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UploadFile"
                   }
                 }
               }
@@ -49178,14 +48741,13 @@
         "description": "Search for an uploaded file",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UploadFile"
                   }
                 }
               }
@@ -49246,13 +48808,13 @@
         "description": "Check if the first admin user has already been registered",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Response",
             "content": {
               "application/json": {
                 "schema": {
                   "properties": {
-                    "foo": {
-                      "type": "string"
+                    "hasAdmin": {
+                      "type": "boolean"
                     }
                   }
                 }
@@ -49292,7 +48854,7 @@
         },
         "summary": "",
         "tags": [
-          "Users-Permissions - Role"
+          "Strapi Usage Only"
         ],
         "parameters": []
       }
@@ -49345,7 +48907,7 @@
         },
         "summary": "",
         "tags": [
-          "Users-Permissions - Role"
+          "Strapi Usage Only"
         ],
         "parameters": [
           {
@@ -49412,7 +48974,7 @@
         },
         "summary": "",
         "tags": [
-          "Users-Permissions - Role"
+          "Strapi Usage Only"
         ],
         "parameters": [
           {
@@ -49600,7 +49162,7 @@
         },
         "summary": "",
         "tags": [
-          "Users-Permissions - Role"
+          "Strapi Usage Only"
         ],
         "requestBody": {
           "description": "",
@@ -49663,7 +49225,7 @@
         },
         "summary": "",
         "tags": [
-          "Users-Permissions - Role"
+          "Strapi Usage Only"
         ],
         "parameters": [
           {
@@ -49740,7 +49302,7 @@
         },
         "summary": "",
         "tags": [
-          "Users-Permissions - Role"
+          "Strapi Usage Only"
         ],
         "parameters": [
           {
@@ -49805,156 +49367,20 @@
             }
           }
         },
-        "summary": "",
+        "summary": "Retrieve a list of users by searching for their username or email",
         "tags": [
-          "Users-Permissions - User"
+          "Strapi Usage Only"
         ],
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "",
+            "description": "A string matching a user's email or username",
             "deprecated": false,
             "required": true,
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "_limit",
-            "in": "query",
-            "required": false,
-            "description": "Maximum number of results possible",
-            "schema": {
-              "type": "integer"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_sort",
-            "in": "query",
-            "required": false,
-            "description": "Sort according to a specific field.",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_start",
-            "in": "query",
-            "required": false,
-            "description": "Skip a specific number of entries (especially useful for pagination)",
-            "schema": {
-              "type": "integer"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "=",
-            "in": "query",
-            "required": false,
-            "description": "Get entries that matches exactly your input",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_ne",
-            "in": "query",
-            "required": false,
-            "description": "Get records that are not equals to something",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_lt",
-            "in": "query",
-            "required": false,
-            "description": "Get record that are lower than a value",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_lte",
-            "in": "query",
-            "required": false,
-            "description": "Get records that are lower than or equal to a value",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_gt",
-            "in": "query",
-            "required": false,
-            "description": "Get records that are greater than a value",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_gte",
-            "in": "query",
-            "required": false,
-            "description": "Get records that are greater than  or equal a value",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_contains",
-            "in": "query",
-            "required": false,
-            "description": "Get records that contains a value",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_containss",
-            "in": "query",
-            "required": false,
-            "description": "Get records that contains (case sensitive) a value",
-            "schema": {
-              "type": "string"
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_in",
-            "in": "query",
-            "required": false,
-            "description": "Get records that matches any value in the array of values",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "deprecated": false
-          },
-          {
-            "name": "_nin",
-            "in": "query",
-            "required": false,
-            "description": "Get records that doesn't match any value in the array of values",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "deprecated": false
           }
         ]
       }
@@ -49965,18 +49391,7 @@
         "description": "Connect a provider",
         "responses": {
           "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
+            "description": "Your user is redirected"
           },
           "403": {
             "description": "Forbidden",
@@ -50009,11 +49424,27 @@
             }
           }
         },
-        "summary": "",
+        "summary": "Authenticate your user with a custom provider",
         "tags": [
-          "Users-Permissions - User"
+          "Authentication"
         ],
-        "parameters": []
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "description": "The name of the provider you want to use",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [],
+        "externalDocs": {
+          "description": "Find out more about the authentication flow in the strapi documentation",
+          "url": "https://strapi.io/documentation/guides/authentication.html#providers"
+        }
       }
     },
     "/auth/local": {
@@ -50022,15 +49453,11 @@
         "description": "Login a user using the identifiers email and password",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Response",
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
+                  "$ref": "#/components/schemas/Users-PermissionsRegisterResponse"
                 }
               }
             }
@@ -50068,23 +49495,39 @@
         },
         "summary": "",
         "tags": [
-          "Users-Permissions - User"
+          "Authentication"
         ],
         "requestBody": {
-          "description": "",
+          "description": "The identifier param can either be an email or a username",
           "required": true,
           "content": {
             "application/json": {
               "schema": {
+                "required": [
+                  "identifier",
+                  "password"
+                ],
                 "properties": {
-                  "foo": {
+                  "identifier": {
+                    "type": "string"
+                  },
+                  "password": {
                     "type": "string"
                   }
                 }
+              },
+              "example": {
+                "identifier": "hi@strapi.io",
+                "password": "superSecure123"
               }
             }
           }
-        }
+        },
+        "externalDocs": {
+          "description": "Find out more in the strapi's documentation",
+          "url": "https://strapi.io/documentation/guides/authentication.html#login"
+        },
+        "security": []
       }
     },
     "/auth/local/register": {
@@ -50093,11 +49536,11 @@
         "description": "Register a new user with the default role",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Successfully register a user",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Users-PermissionsUser"
+                  "$ref": "#/components/schemas/Users-PermissionsRegisterResponse"
                 }
               }
             }
@@ -50135,7 +49578,7 @@
         },
         "summary": "",
         "tags": [
-          "Users-Permissions - User"
+          "Authentication"
         ],
         "requestBody": {
           "description": "",
@@ -50143,10 +49586,33 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewUsers-PermissionsUser"
+                "required": [
+                  "username",
+                  "email",
+                  "password"
+                ],
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "minLength": 3
+                  },
+                  "email": {
+                    "type": "string",
+                    "minLength": 6
+                  },
+                  "password": {
+                    "type": "string",
+                    "minLength": 6
+                  }
+                }
               }
             }
           }
+        },
+        "security": [],
+        "externalDocs": {
+          "description": "Find out more in the strapi's documentation",
+          "url": "https://strapi.io/documentation/guides/authentication.html#usage"
         }
       }
     },
@@ -50156,15 +49622,11 @@
         "description": "Successfull redirection after approving a provider",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Successfull redirection after approving a provider",
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
+                  "$ref": "#/components/schemas/Users-PermissionsRegisterResponse"
                 }
               }
             }
@@ -50202,20 +49664,24 @@
         },
         "summary": "",
         "tags": [
-          "Users-Permissions - User"
+          "Authentication"
         ],
         "parameters": [
           {
             "name": "provider",
             "in": "path",
-            "description": "",
+            "description": "The provider used to authenticate your user",
             "deprecated": false,
             "required": true,
             "schema": {
               "type": "string"
             }
           }
-        ]
+        ],
+        "externalDocs": {
+          "description": "Find out more in the strapi's documentation",
+          "url": "https://strapi.io/documentation/guides/authentication.html#providers"
+        }
       }
     },
     "/auth/forgot-password": {
@@ -50224,18 +49690,7 @@
         "description": "Send the reset password email link",
         "responses": {
           "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
+            "description": "Email sent"
           },
           "403": {
             "description": "Forbidden",
@@ -50268,9 +49723,9 @@
             }
           }
         },
-        "summary": "",
+        "summary": "Send an email to reset your password",
         "tags": [
-          "Users-Permissions - User"
+          "Authentication"
         ],
         "requestBody": {
           "description": "",
@@ -50279,13 +49734,25 @@
             "application/json": {
               "schema": {
                 "properties": {
-                  "foo": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "url": {
                     "type": "string"
                   }
                 }
+              },
+              "example": {
+                "email": "hi@strapi.io",
+                "url": "http://mon-site.com/rest-password"
               }
             }
           }
+        },
+        "security": [],
+        "externalDocs": {
+          "description": "Find out more in the strapi's documentation",
+          "url": "https://strapi.io/documentation/guides/authentication.html#send-forgot-password-request"
         }
       }
     },
@@ -50299,11 +49766,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
+                  "$ref": "#/components/schemas/Users-PermissionsRegisterResponse"
                 }
               }
             }
@@ -50341,7 +49804,7 @@
         },
         "summary": "",
         "tags": [
-          "Users-Permissions - User"
+          "Authentication"
         ],
         "requestBody": {
           "description": "",
@@ -50349,15 +49812,27 @@
           "content": {
             "application/json": {
               "schema": {
+                "required": [
+                  "code",
+                  "password",
+                  "passwordConfirmation"
+                ],
                 "properties": {
-                  "foo": {
+                  "code": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "passwordConfirmation": {
                     "type": "string"
                   }
                 }
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/auth/email-confirmation": {
@@ -50412,9 +49887,10 @@
         },
         "summary": "",
         "tags": [
-          "Users-Permissions - User"
+          "Authentication"
         ],
-        "parameters": []
+        "parameters": [],
+        "security": []
       }
     },
     "/auth/send-email-confirmation": {
@@ -50539,7 +50015,7 @@
         },
         "summary": "",
         "tags": [
-          "Users-Permissions - User"
+          "Strapi Usage Only"
         ],
         "parameters": [
           {
@@ -50729,7 +50205,7 @@
         },
         "summary": "",
         "tags": [
-          "Users-Permissions - User"
+          "Strapi Usage Only"
         ],
         "parameters": []
       }
@@ -65844,25 +65320,6 @@
             "type": "boolean",
             "default": false
           },
-          "site": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "system": {
-                "type": "string"
-              },
-              "threatLevel": {
-                "type": "integer"
-              },
-              "discoveredBy": {
-                "type": "string"
-              }
-            }
-          },
           "nhssRawJson": {
             "type": "object"
           }
@@ -65913,197 +65370,8 @@
             "type": "boolean",
             "default": false
           },
-          "site": {
-            "type": "string"
-          },
           "nhssRawJson": {
             "type": "object"
-          }
-        }
-      },
-      "Nhsssite": {
-        "required": [
-          "id"
-        ],
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "system": {
-            "required": [
-              "id",
-              "systemName"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "systemName": {
-                "type": "string"
-              },
-              "id64": {
-                "type": "integer"
-              },
-              "edsmID": {
-                "type": "integer"
-              },
-              "edsmCoordX": {
-                "type": "number"
-              },
-              "edsmCoordY": {
-                "type": "number"
-              },
-              "edsmCoordZ": {
-                "type": "number"
-              },
-              "edsmCoordLocked": {
-                "type": "boolean"
-              },
-              "missingSkipCount": {
-                "type": "integer"
-              },
-              "bodies": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "region": {
-                "type": "string"
-              },
-              "primaryStar": {
-                "type": "object"
-              },
-              "apsites": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "bmsites": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "btsites": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "cssites": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "fgsites": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "fmsites": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "gbsites": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "gensites": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "grsites": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "gssites": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "gvsites": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "gysites": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "lssites": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "tbsites": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "tssites": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "twsites": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "threatLevel": {
-            "type": "integer"
-          },
-          "discoveredBy": {
-            "required": [
-              "id",
-              "cmdrName"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "cmdrName": {
-                "type": "string"
-              },
-              "cmdrkill": {
-                "type": "string"
-              }
-            }
-          }
-        }
-      },
-      "NewNhsssite": {
-        "properties": {
-          "system": {
-            "type": "string"
-          },
-          "threatLevel": {
-            "type": "integer"
-          },
-          "discoveredBy": {
-            "type": "string"
           }
         }
       },
@@ -71047,6 +70315,46 @@
           }
         }
       },
+      "UploadFile": {
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string"
+          },
+          "hash": {
+            "type": "string"
+          },
+          "ext": {
+            "type": "string"
+          },
+          "size": {
+            "type": "string"
+          },
+          "mime": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "provider": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "related": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
       "Users-PermissionsRole": {
         "required": [
           "id",
@@ -71329,6 +70637,16 @@
           }
         }
       },
+      "Users-PermissionsRegisterResponse": {
+        "properties": {
+          "jwt": {
+            "type": "string"
+          },
+          "user": {
+            "$ref": "#/components/schemas/Users-PermissionsUser"
+          }
+        }
+      },
       "Error": {
         "required": [
           "code",
@@ -71494,10 +70812,6 @@
       "description": "Public Reporting of NHSS"
     },
     {
-      "name": "Non-Human Signal Sources",
-      "description": "Code Name - NHSS"
-    },
-    {
       "name": "Permit Locks",
       "description": "Permit locked regions"
     },
@@ -71538,16 +70852,19 @@
       "description": "Code Name - TW"
     },
     {
-      "name": "Email - Email"
+      "name": "Strapi Usage Only",
+      "description": "Models for use by Canonn Admins"
     },
     {
       "name": "Upload - File"
     },
     {
-      "name": "Users-Permissions - Role"
-    },
-    {
-      "name": "Users-Permissions - User"
+      "name": "Authentication",
+      "description": "All the routes related to the authentication",
+      "externalDocs": {
+        "description": "Find out more in strapi's documentation",
+        "url": "https://strapi.io/documentation/guides/authentication.html"
+      }
     }
   ]
 }
