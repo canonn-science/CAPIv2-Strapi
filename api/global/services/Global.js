@@ -58,7 +58,7 @@ module.exports = {
 
     // Check bodyName has a value if required
     if (reportModel.bodyName != undefined) {
-      if(reportModel.bodyName.required == true) {
+      if (reportModel.bodyName.required == true) {
         if (values.bodyName == undefined) {
           throw boom.notAcceptable('You are missing a bodyName, the body is required and should exist in EDSM.');
         }
@@ -111,79 +111,5 @@ module.exports = {
         }
       }
     }
-  },
-
-  /**
-   * Promise to count all sites and reports and return an object.
-   *
-   * @return {Promise}
-   */
-
-  totalCount: async () => {
-    let sites = {
-      ap: {},
-      bm: {},
-      bt: {},
-      cs: {},
-      fg: {},
-      fm: {},
-      gen: {},
-      gb: {},
-      gr: {},
-      gs: {},
-      gv: {},
-      gy: {},
-      ls: {},
-      tb: {},
-      ts: {},
-      tw: {},
-    };
-
-    let totals = {
-      sites: 0,
-      reports: {
-        pending: 0,
-        accepted: 0,
-        duplicate: 0,
-        declined: 0,
-        total: 0
-      }
-    };
-
-    const getCount = async (key) => {
-      let data = {
-        sites: await strapi.services[`${key}site`].count(),
-        reports: {
-          pending: await strapi.services[`${key}report`].count({reportStatus: 'pending'}),
-          accepted: await strapi.services[`${key}report`].count({reportStatus: 'accepted'}),
-          duplicate: await strapi.services[`${key}report`].count({reportStatus: 'duplicate'}),
-          declined: await strapi.services[`${key}report`].count({reportStatus: 'declined'}),
-          total: await strapi.services[`${key}report`].count({})
-        }
-      };
-
-      return data;
-    };
-
-    const setCount = async (sites) => {
-      let keys = Object.keys(sites);
-      for (let i = 0; i < keys.length; i++) {
-        let count = await getCount(keys[i]);
-        sites[`${keys[i]}`] = count;
-        totals.sites = (parseInt(totals.sites) + parseInt(count.sites));
-        totals.reports.pending = (parseInt(totals.reports.pending) + parseInt(count.reports.pending));
-        totals.reports.accepted = (parseInt(totals.reports.accepted) + parseInt(count.reports.accepted));
-        totals.reports.duplicate = (parseInt(totals.reports.duplicate) + parseInt(count.reports.duplicate));
-        totals.reports.declined = (parseInt(totals.reports.declined) + parseInt(count.reports.declined));
-        totals.reports.total = (parseInt(totals.reports.total) + parseInt(count.reports.total));
-      }
-    };
-
-    await setCount(sites);
-
-    return {
-      total: totals,
-      data: sites
-    };
   }
 };
