@@ -42,7 +42,7 @@ module.exports = {
    * @return {Object}
    */
 
-  totalCount: () => {
+  totalCount: (ctx) => {
     return strapi.services.global.totalCount();
   },
 
