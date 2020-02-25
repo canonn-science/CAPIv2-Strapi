@@ -75,6 +75,7 @@ module.exports = {
     };
 
     const getCount = async (key) => {
+
       let data = {
         sites: await strapi.services[`${key}site`].count(),
         reports: {
@@ -86,6 +87,23 @@ module.exports = {
           total: await strapi.services[`${key}report`].count({})
         }
       };
+
+      let noType = ['gen', 'gb', 'ts'];
+      if (noType.indexOf(key) == -1) {
+        data.types = {};
+        let getTypes = await strapi.services[`${key}type`].find();
+
+        for (let i = 0; i < getTypes.length; i++) {
+          data.types[getTypes[i].type] = await strapi.services[`${key}site`].count({ type: getTypes[i].id });
+        }
+      } else if (key === 'ts') {
+        data.status = {
+          'Unknown': await strapi.services.tssite.count({ status: 1 }),
+          'Active': await strapi.services.tssite.count({ status: 2 }),
+          'Inactive': await strapi.services.tssite.count({ status: 3 }),
+        };
+
+      }
 
       return data;
     };
