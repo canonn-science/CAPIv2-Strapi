@@ -42,8 +42,93 @@ module.exports = {
    * @return {Object}
    */
 
-  totalCount: (ctx) => {
-    return strapi.services.global.totalCount();
+  totalCount: async (ctx) => {
+    let sites = {
+      ap: {},
+      bm: {},
+      bt: {},
+      cs: {},
+      fg: {},
+      fm: {},
+      gen: {},
+      gb: {},
+      gr: {},
+      gs: {},
+      gv: {},
+      gy: {},
+      ls: {},
+      tb: {},
+      ts: {},
+      tw: {},
+    };
+
+    let totals = {
+      sites: 0,
+      reports: {
+        pending: 0,
+        accepted: 0,
+        duplicate: 0,
+        declined: 0,
+        issue: 0,
+        total: 0
+      }
+    };
+
+    const getCount = async (key) => {
+
+      let data = {
+        sites: await strapi.services[`${key}site`].count(),
+        reports: {
+          pending: await strapi.services[`${key}report`].count({ reportStatus: 'pending' }),
+          accepted: await strapi.services[`${key}report`].count({ reportStatus: 'accepted' }),
+          duplicate: await strapi.services[`${key}report`].count({ reportStatus: 'duplicate' }),
+          declined: await strapi.services[`${key}report`].count({ reportStatus: 'declined' }),
+          issue: await strapi.services[`${key}report`].count({ reportStatus: 'issue' }),
+          total: await strapi.services[`${key}report`].count({})
+        }
+      };
+
+      let noType = ['gen', 'gb', 'ts'];
+      if (noType.indexOf(key) == -1) {
+        data.types = {};
+        let getTypes = await strapi.services[`${key}type`].find();
+
+        for (let i = 0; i < getTypes.length; i++) {
+          data.types[getTypes[i].type] = await strapi.services[`${key}site`].count({ type: getTypes[i].id });
+        }
+      } else if (key === 'ts') {
+        data.status = {
+          'Unknown': await strapi.services.tssite.count({ status: 1 }),
+          'Active': await strapi.services.tssite.count({ status: 2 }),
+          'Inactive': await strapi.services.tssite.count({ status: 3 }),
+        };
+
+      }
+
+      return data;
+    };
+
+    const setCount = async (sites) => {
+      let keys = Object.keys(sites);
+      for (let i = 0; i < keys.length; i++) {
+        let count = await getCount(keys[i]);
+        sites[`${keys[i]}`] = count;
+        totals.sites = (parseInt(totals.sites) + parseInt(count.sites));
+        totals.reports.pending = (parseInt(totals.reports.pending) + parseInt(count.reports.pending));
+        totals.reports.accepted = (parseInt(totals.reports.accepted) + parseInt(count.reports.accepted));
+        totals.reports.duplicate = (parseInt(totals.reports.duplicate) + parseInt(count.reports.duplicate));
+        totals.reports.declined = (parseInt(totals.reports.declined) + parseInt(count.reports.declined));
+        totals.reports.issue = (parseInt(totals.reports.issue) + parseInt(count.reports.issue));
+        totals.reports.total = (parseInt(totals.reports.total) + parseInt(count.reports.total));
+      }
+    };
+
+    await setCount(sites);
+
+    return {
+      total: totals,
+      data: sites
+    };
   },
 
   /**
@@ -108,8 +193,8 @@ module.exports = {
         } else {
           object.min = object.min > value ? (object.min = value) : object.min;
           object.max = object.max < value ? (object.max = value) : object.max;
-          object.averageSum += value;
-          object.averageCount += 1;
+          object.avgSum += value;
+          object.avgCount += 1;
           object.average = object.avgSum / object.avgCount;
         }
       }

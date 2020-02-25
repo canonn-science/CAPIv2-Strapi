@@ -17,5 +17,5 @@ COLLATE=latin1_swedish_ci
 COMMENT='';
 CREATE FULLTEXT INDEX SEARCH_STRAPI_ADMINISTRATOR ON REPLACEME.strapi_administrator (username DESC,resetPasswordToken DESC);
 
-INSERT into OLDDB.strapi_administrator select * from REPLACEME.strapi_administrator;
+INSERT into REPLACEME.strapi_administrator select * from OLDDB.strapi_administrator;
 
