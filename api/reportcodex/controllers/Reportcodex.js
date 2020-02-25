@@ -1,24 +1,29 @@
 'use strict';
-
-/**
- * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
- * to customize this controller
- */
+const { sanitizeEntity } = require('strapi-utils');
 
 module.exports = {
   /**
    * Retrieve records with count in `Content-Range` header.
    *
-   * @return {Array}
+   * @return {Object|Array}
    */
 
-  find: async (ctx) => {
+  find: async ctx => {
+    let entities;
+    let entitiesCount;
+
     if (ctx.query._q) {
-      ctx.set('Content-Range', await strapi.services.reportcodex.countSearch(ctx.query));
-      return strapi.services.reportcodex.search(ctx.query);
+      entitiesCount = await strapi.services.reportcodex.countSearch(ctx.query);
+      entities = await strapi.services.reportcodex.search(ctx.query);
+    } else {
+      entitiesCount = await strapi.services.reportcodex.count(ctx.query);
+      entities = await strapi.services.reportcodex.find(ctx.query);
     }
 
-    ctx.set('Content-Range', await strapi.services.reportcodex.count(ctx.query));
-    return strapi.services.reportcodex.find(ctx.query);
-  }
+    ctx.set('Content-Range', entitiesCount);
+
+    return entities.map(entity =>
+      sanitizeEntity(entity, { model: strapi.models.reportcodex })
+    );
+  },
 };

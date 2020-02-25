@@ -139,6 +139,17 @@ module.exports = {
       tw: {},
     };
 
+    let totals = {
+      sites: 0,
+      reports: {
+        pending: 0,
+        accepted: 0,
+        duplicate: 0,
+        declined: 0,
+        total: 0
+      }
+    };
+
     const getCount = async (key) => {
       let data = {
         sites: await strapi.services[`${key}site`].count(),
@@ -146,7 +157,8 @@ module.exports = {
           pending: await strapi.services[`${key}report`].count({reportStatus: 'pending'}),
           accepted: await strapi.services[`${key}report`].count({reportStatus: 'accepted'}),
           duplicate: await strapi.services[`${key}report`].count({reportStatus: 'duplicate'}),
-          declined: await strapi.services[`${key}report`].count({reportStatus: 'declined'})
+          declined: await strapi.services[`${key}report`].count({reportStatus: 'declined'}),
+          total: await strapi.services[`${key}report`].count({})
         }
       };
 
@@ -158,11 +170,20 @@ module.exports = {
       for (let i = 0; i < keys.length; i++) {
         let count = await getCount(keys[i]);
         sites[`${keys[i]}`] = count;
+        totals.sites = (parseInt(totals.sites) + parseInt(count.sites));
+        totals.reports.pending = (parseInt(totals.reports.pending) + parseInt(count.reports.pending));
+        totals.reports.accepted = (parseInt(totals.reports.accepted) + parseInt(count.reports.accepted));
+        totals.reports.duplicate = (parseInt(totals.reports.duplicate) + parseInt(count.reports.duplicate));
+        totals.reports.declined = (parseInt(totals.reports.declined) + parseInt(count.reports.declined));
+        totals.reports.total = (parseInt(totals.reports.total) + parseInt(count.reports.total));
       }
     };
 
     await setCount(sites);
 
-    return sites;
+    return {
+      total: totals,
+      data: sites
+    };
   }
 };
