@@ -175,8 +175,8 @@ module.exports = {
         } else {
           object.min = object.min > value ? (object.min = value) : object.min;
           object.max = object.max < value ? (object.max = value) : object.max;
-          object.averageSum += value;
-          object.averageCount += 1;
+          object.avgSum += value;
+          object.avgCount += 1;
           object.average = object.avgSum / object.avgCount;
         }
       }
