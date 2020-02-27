@@ -43,19 +43,8 @@ module.exports = {
     let entity;
     let data = ctx.request.body;
 
-    // Check Version
-    await strapi.api.excludeclient.services.excludeclient.blockClient(
-      data.clientVersion
-    );
-
-    // Check CMDR Name
-    await strapi.api.excludecmdr.services.excludecmdr.blockCMDR(data.cmdrName);
-
-    // Check for missing required data
-    await strapi.api.global.services.global.checkReport(data, 'tbreport');
-
     if (!data.subtype) {
-      data.subtype = "Unknown";
+      data.subtype = 'Unknown';
     }
 
     entity = await strapi.services.tbreport.create(data);

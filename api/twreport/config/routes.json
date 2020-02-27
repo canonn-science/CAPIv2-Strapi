@@ -29,7 +29,11 @@
       "path": "/twreports",
       "handler": "Twreport.create",
       "config": {
-        "policies": []
+        "policies": [
+          "global.blockClient",
+          "global.blockCMDR",
+          "global.reportValidation"
+        ]
       }
     },
     {

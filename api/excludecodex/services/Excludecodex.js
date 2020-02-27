@@ -5,47 +5,4 @@
  * to customize this service
  */
 
-const boom = require('@hapi/boom');
-
-module.exports = {
-
-  /**
-   * Promise to deny blocked codex types on reports.
-   *
-   * @return {Promise}
-   */
-
-  blockCodexName: async (codexName) => {
-
-    function cleanName(name) {
-      let unclean = name.toLowerCase();
-      let cleaned = unclean.replace(/[$]|_name|;/gi, '');
-
-      return cleaned;
-    }
-
-    let codexNameCleaned = cleanName(codexName);
-
-    if (process.env.BLACKLIST_CODEX == 'true') {
-      if (codexName == undefined) {
-        throw boom.teapot('You are missing a codex name, please speak to your client author to ensure a codex name is passed.');
-      }
-
-      let codexNameQuery = await strapi.api.excludecodex.services.excludecodex.find({
-        codexName: codexNameCleaned
-      });
-      let codexNameData = null;
-      let codexNameResult = codexNameQuery;
-
-      if (codexNameResult[0] != undefined) {
-        codexNameData = codexNameResult[0];
-      } else {
-        codexNameData = null;
-      }
-
-      if (codexNameData != null && codexNameData != undefined && codexNameData.codexName == codexNameCleaned) {
-        throw boom.teapot(`The Codex Name: ${codexName} is in our blacklist. You should update your client or talk to the author.`);
-      }
-    }
-  },
-};
+module.exports = {};

@@ -29,7 +29,11 @@
       "path": "/fgreports",
       "handler": "Fgreport.create",
       "config": {
-        "policies": []
+        "policies": [
+          "global.blockClient",
+          "global.blockCMDR",
+          "global.reportValidation"
+        ]
       }
     },
     {

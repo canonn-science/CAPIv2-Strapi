@@ -31,30 +31,5 @@ module.exports = {
     return entities.map(entity =>
       sanitizeEntity(entity, { model: strapi.models.lsreport })
     );
-  },
-
-  /**
-   * Create a record.
-   *
-   * @return {Object}
-   */
-
-  create: async ctx => {
-    let entity;
-    let data = ctx.request.body;
-
-    // Check Version
-    await strapi.api.excludeclient.services.excludeclient.blockClient(
-      data.clientVersion
-    );
-
-    // Check CMDR Name
-    await strapi.api.excludecmdr.services.excludecmdr.blockCMDR(data.cmdrName);
-
-    // Check for missing required data
-    await strapi.api.global.services.global.checkReport(data, 'lsreport');
-
-    entity = await strapi.services.lsreport.create(ctx.request.body);
-    return sanitizeEntity(entity, { model: strapi.models.lsreport });
   }
 };

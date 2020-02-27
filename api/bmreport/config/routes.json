@@ -29,7 +29,11 @@
       "path": "/bmreports",
       "handler": "Bmreport.create",
       "config": {
-        "policies": []
+        "policies": [
+          "global.blockClient",
+          "global.blockCMDR",
+          "global.reportValidation"
+        ]
       }
     },
     {

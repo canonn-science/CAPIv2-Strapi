@@ -29,7 +29,11 @@
       "path": "/grreports",
       "handler": "Grreport.create",
       "config": {
-        "policies": []
+        "policies": [
+          "global.blockClient",
+          "global.blockCMDR",
+          "global.reportValidation"
+        ]
       }
     },
     {

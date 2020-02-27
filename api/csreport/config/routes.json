@@ -29,7 +29,11 @@
       "path": "/csreports",
       "handler": "Csreport.create",
       "config": {
-        "policies": []
+        "policies": [
+          "global.blockClient",
+          "global.blockCMDR",
+          "global.reportValidation"
+        ]
       }
     },
     {

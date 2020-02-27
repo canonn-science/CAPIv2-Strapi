@@ -29,7 +29,11 @@
       "path": "/genreports",
       "handler": "Genreport.create",
       "config": {
-        "policies": []
+        "policies": [
+          "global.blockClient",
+          "global.blockCMDR",
+          "global.reportValidation"
+        ]
       }
     },
     {

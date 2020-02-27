@@ -29,7 +29,11 @@
       "path": "/reportevents",
       "handler": "Reportevent.create",
       "config": {
-        "policies": []
+        "policies": [
+          "global.blockClient",
+          "global.blockCMDR",
+          "global.blockEvent"
+        ]
       }
     },
     {

@@ -29,7 +29,7 @@
       "path": "/hdreports",
       "handler": "Hdreport.create",
       "config": {
-        "policies": []
+        "policies": ["global.blockClient", "global.blockCMDR"]
       }
     },
     {

@@ -29,7 +29,11 @@
       "path": "/tbreports",
       "handler": "Tbreport.create",
       "config": {
-        "policies": []
+        "policies": [
+          "global.blockClient",
+          "global.blockCMDR",
+          "global.reportValidation"
+        ]
       }
     },
     {
