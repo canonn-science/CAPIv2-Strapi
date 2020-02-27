@@ -1,8 +1,5 @@
-var pluralize = require('pluralize');
-
 module.exports = async (ctx, next) => {
-  let path = ctx.path.split('/');
-  let model = pluralize.singular(path[1]);
+  let model = ctx.request.route.controller;
   let reportModel = strapi.models[model].allAttributes;
   let values = ctx.request.body;
 
