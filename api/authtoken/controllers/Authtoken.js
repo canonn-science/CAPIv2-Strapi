@@ -75,35 +75,6 @@ module.exports = {
   },
 
   /**
-   * Create an Auth Token record and assign user.
-   *
-   * @return {Object}
-   */
-
-  async create(ctx) {
-    if (ctx.state.user.id) {
-      if (
-        (ctx.state.user.id !== ctx.request.body.user) ||
-        (!ctx.request.body.user)
-      ) {
-        ctx.request.body.user = ctx.state.user.id;
-      }
-
-      if (
-        (!ctx.request.body.token) ||
-        (ctx.request.body.token.length < strapi.models.authtoken.attributes.token.minLength)
-      ) {
-        return ctx.badRequest('Token is missing or does not meet length requirements');
-      } else {
-        let entity = await strapi.services.authtoken.create(ctx.request.body);
-        return sanitizeEntity(entity, { model: strapi.models.authtoken });
-      }
-    } else {
-      return ctx.unauthorized();
-    }
-  },
-
-  /**
    * Update an Auth Token record.
    *
    * @return {Object}
