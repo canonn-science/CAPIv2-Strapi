@@ -257,8 +257,6 @@ The example config is also down below, you will just need to modify the Database
 
 You will need to set the Database settings for User and development at a minimum, you can leave the JWT Secret the same as we provide exports of some sample users.
 
-For the Discord webhook, you will need to create a Discord Server and setup a webhook URL. This webhook is a work in progress but will be used to provide alerts when certain data is added.
-
 ## 7.4. Building the CAPIv2 Admin Panel
 
 With the new Strapi Beta versions, we can now customize and rebuild the AdminUI to our liking as such when you clone the project you will need to build this AdminUI as we do not keep it in git.

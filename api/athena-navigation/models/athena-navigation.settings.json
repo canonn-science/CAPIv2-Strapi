@@ -1,0 +1,36 @@
+{
+  "info": {
+    "name": "Athena Navigation"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": false
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "endpoint": {
+      "type": "string",
+      "required": true
+    },
+    "enabled": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "order": {
+      "type": "integer",
+      "required": true,
+      "private": true
+    },
+    "tabs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "athena.tabs"
+    }
+  },
+  "connection": "default",
+  "collectionName": "athena_navigations"
+}

@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/athena-navigations",
+      "handler": "athena-navigation.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/athena-navigations/count",
+      "handler": "athena-navigation.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/athena-navigations/:id",
+      "handler": "athena-navigation.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/athena-navigations",
+      "handler": "athena-navigation.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/athena-navigations/:id",
+      "handler": "athena-navigation.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/athena-navigations/:id",
+      "handler": "athena-navigation.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
