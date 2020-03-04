@@ -29,7 +29,7 @@
       "path": "/killreports",
       "handler": "Killreport.create",
       "config": {
-        "policies": ["global.blockClient", "global.blockCMDR"]
+        "policies": ["global::blockClient", "global::blockCMDR"]
       }
     },
     {

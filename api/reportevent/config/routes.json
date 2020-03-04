@@ -30,9 +30,9 @@
       "handler": "Reportevent.create",
       "config": {
         "policies": [
-          "global.blockClient",
-          "global.blockCMDR",
-          "global.blockEvent"
+          "global::blockClient",
+          "global::blockCMDR",
+          "global::blockEvent"
         ]
       }
     },

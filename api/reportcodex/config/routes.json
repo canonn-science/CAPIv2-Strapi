@@ -30,9 +30,9 @@
       "handler": "Reportcodex.create",
       "config": {
         "policies": [
-          "global.blockClient",
-          "global.blockCMDR",
-          "global.blockCodex"
+          "global::blockClient",
+          "global::blockCMDR",
+          "global::blockCodex"
         ]
       }
     },

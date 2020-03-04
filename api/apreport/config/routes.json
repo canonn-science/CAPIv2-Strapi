@@ -30,9 +30,9 @@
       "handler": "Apreport.create",
       "config": {
         "policies": [
-          "global.blockClient",
-          "global.blockCMDR",
-          "global.reportValidation"
+          "global::blockClient",
+          "global::blockCMDR",
+          "global::reportValidation"
         ]
       }
     },
