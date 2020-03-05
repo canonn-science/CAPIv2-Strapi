@@ -1,10 +1,15 @@
 'use strict';
+let fetch = require('node-fetch');
 
 /**
  * Info.js controller
  *
  * @description: A set of functions called 'actions' for managing `Info`.
  */
+
+const formatError = error => [
+  { messages: [{ id: error.id, message: error.message, field: error.field }] }
+];
 
 module.exports = {
   /**
@@ -37,12 +42,61 @@ module.exports = {
   },
 
   /**
+   * Search for nearby systems.
+   *
+   * @return {Object}
+   */
+
+  nearby: async ctx => {
+    let query = ctx.request.query;
+
+    if (query.systemName && query.distance) {
+      // need to add error handling to edsm Fetch
+      let edsmFetch = await fetch(
+        'https://www.edsm.net/api-v1/system?showCoordinates=1&systemName=' +
+          encodeURIComponent(query.systemName)
+      );
+      let data = await edsmFetch.json();
+      let systemFetch = await strapi.query('system').find({
+        edsmCoordX_gte: data.coords.x - query.distance / 2,
+        edsmCoordX_lte: data.coords.x + query.distance / 2,
+        edsmCoordY_gte: data.coords.y - query.distance / 2,
+        edsmCoordY_lte: data.coords.y + query.distance / 2,
+        edsmCoordZ_gte: data.coords.z - query.distance / 2,
+        edsmCoordZ_lte: data.coords.z + query.distance / 2
+      });
+      return systemFetch;
+    } else {
+      let missing = [];
+      if (!query.systemName || typeof query.systemName !== 'string') {
+        missing.push({ systemName: 'systemName must be defined and a string' });
+      }
+
+      if (
+        !query.distance ||
+        isNaN(query.distance) === true ||
+        query.distance > 100
+      ) {
+        missing.push({
+          distance: 'distance must be defined, an integer, and less than 100'
+        });
+      }
+
+      if (missing.length > 0) {
+        return ctx.badRequest('MissingQueryParameters', { errors: missing });
+      }
+
+      return ctx.badRequest('Unknown Error');
+    }
+  },
+
+  /**
    * Get count of all Sites and Reports.
    *
    * @return {Object}
    */
 
-  totalCount: async (ctx) => {
+  totalCount: async ctx => {
     let sites = {
       ap: {},
       bm: {},
@@ -59,7 +113,7 @@ module.exports = {
       ls: {},
       tb: {},
       ts: {},
-      tw: {},
+      tw: {}
     };
 
     let totals = {
@@ -74,16 +128,25 @@ module.exports = {
       }
     };
 
-    const getCount = async (key) => {
-
+    const getCount = async key => {
       let data = {
         sites: await strapi.services[`${key}site`].count(),
         reports: {
-          pending: await strapi.services[`${key}report`].count({ reportStatus: 'pending' }),
-          accepted: await strapi.services[`${key}report`].count({ reportStatus: 'accepted' }),
-          duplicate: await strapi.services[`${key}report`].count({ reportStatus: 'duplicate' }),
-          declined: await strapi.services[`${key}report`].count({ reportStatus: 'declined' }),
-          issue: await strapi.services[`${key}report`].count({ reportStatus: 'issue' }),
+          pending: await strapi.services[`${key}report`].count({
+            reportStatus: 'pending'
+          }),
+          accepted: await strapi.services[`${key}report`].count({
+            reportStatus: 'accepted'
+          }),
+          duplicate: await strapi.services[`${key}report`].count({
+            reportStatus: 'duplicate'
+          }),
+          declined: await strapi.services[`${key}report`].count({
+            reportStatus: 'declined'
+          }),
+          issue: await strapi.services[`${key}report`].count({
+            reportStatus: 'issue'
+          }),
           total: await strapi.services[`${key}report`].count({})
         }
       };
@@ -94,32 +157,40 @@ module.exports = {
         let getTypes = await strapi.services[`${key}type`].find();
 
         for (let i = 0; i < getTypes.length; i++) {
-          data.types[getTypes[i].type] = await strapi.services[`${key}site`].count({ type: getTypes[i].id });
+          data.types[getTypes[i].type] = await strapi.services[
+            `${key}site`
+          ].count({ type: getTypes[i].id });
         }
       } else if (key === 'ts') {
         data.status = {
-          'Unknown': await strapi.services.tssite.count({ status: 1 }),
-          'Active': await strapi.services.tssite.count({ status: 2 }),
-          'Inactive': await strapi.services.tssite.count({ status: 3 }),
+          Unknown: await strapi.services.tssite.count({ status: 1 }),
+          Active: await strapi.services.tssite.count({ status: 2 }),
+          Inactive: await strapi.services.tssite.count({ status: 3 })
         };
-
       }
 
       return data;
     };
 
-    const setCount = async (sites) => {
+    const setCount = async sites => {
       let keys = Object.keys(sites);
       for (let i = 0; i < keys.length; i++) {
         let count = await getCount(keys[i]);
         sites[`${keys[i]}`] = count;
-        totals.sites = (parseInt(totals.sites) + parseInt(count.sites));
-        totals.reports.pending = (parseInt(totals.reports.pending) + parseInt(count.reports.pending));
-        totals.reports.accepted = (parseInt(totals.reports.accepted) + parseInt(count.reports.accepted));
-        totals.reports.duplicate = (parseInt(totals.reports.duplicate) + parseInt(count.reports.duplicate));
-        totals.reports.declined = (parseInt(totals.reports.declined) + parseInt(count.reports.declined));
-        totals.reports.issue = (parseInt(totals.reports.issue) + parseInt(count.reports.issue));
-        totals.reports.total = (parseInt(totals.reports.total) + parseInt(count.reports.total));
+        totals.sites = parseInt(totals.sites) + parseInt(count.sites);
+        totals.reports.pending =
+          parseInt(totals.reports.pending) + parseInt(count.reports.pending);
+        totals.reports.accepted =
+          parseInt(totals.reports.accepted) + parseInt(count.reports.accepted);
+        totals.reports.duplicate =
+          parseInt(totals.reports.duplicate) +
+          parseInt(count.reports.duplicate);
+        totals.reports.declined =
+          parseInt(totals.reports.declined) + parseInt(count.reports.declined);
+        totals.reports.issue =
+          parseInt(totals.reports.issue) + parseInt(count.reports.issue);
+        totals.reports.total =
+          parseInt(totals.reports.total) + parseInt(count.reports.total);
       }
     };
 
@@ -243,18 +314,30 @@ module.exports = {
       updateKeyMath(stats.body.gravity, site.body.gravity);
       updateKeyMath(stats.body.earthMasses, site.body.earthMasses);
       updateKeyMath(stats.body.radius, site.body.radius);
-      updateKeyMath(stats.body.surfaceTemperature, site.body.surfaceTemperature);
+      updateKeyMath(
+        stats.body.surfaceTemperature,
+        site.body.surfaceTemperature
+      );
       updateKeyMath(stats.body.orbitalPeriod, site.body.orbitalPeriod);
       updateKeyMath(stats.body.semiMajorAxis, site.body.semiMajorAxis);
-      updateKeyMath(stats.body.orbitalEccentricity, site.body.orbitalEccentricity);
-      updateKeyMath(stats.body.orbitalInclination, site.body.orbitalInclination);
+      updateKeyMath(
+        stats.body.orbitalEccentricity,
+        site.body.orbitalEccentricity
+      );
+      updateKeyMath(
+        stats.body.orbitalInclination,
+        site.body.orbitalInclination
+      );
       updateKeyMath(stats.body.argOfPeriapsis, site.body.argOfPeriapsis);
       updateKeyMath(stats.body.rotationalPeriod, site.body.rotationalPeriod);
       updateKeyMath(stats.body.axialTilt, site.body.axialTilt);
 
       updateKeyObject(stats.body.subType, site.body.subType);
       updateKeyObject(stats.body.volcanismType, site.body.volcanismType);
-      updateKeyObject(stats.body.terraformingState, site.body.terraformingState);
+      updateKeyObject(
+        stats.body.terraformingState,
+        site.body.terraformingState
+      );
 
       // Type
       updateKeyObject(stats.type.type, site.type.type);
