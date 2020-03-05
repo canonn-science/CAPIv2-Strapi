@@ -27,7 +27,7 @@ module.exports = {
     if (ctx.query._q) {
       entities = await strapi.services.authtoken.search(ctx.query);
     } else {
-      entities = await strapi.services.authtoken.find(ctx.query);
+      entities = await strapi.services.authtoken.find(ctx.query, ['user', 'user.role']);
     }
 
     return entities.map(entity =>
@@ -42,7 +42,7 @@ module.exports = {
    */
 
   async findOne(ctx) {
-    const entity = await strapi.services.authtoken.findOne(ctx.params);
+    const entity = await strapi.services.authtoken.findOne(ctx.params, ['user', 'user.role']);
 
     if (entity) {
       if (ctx.state.user.id === entity.user.id) {
