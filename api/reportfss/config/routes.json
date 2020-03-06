@@ -5,7 +5,7 @@
       "path": "/reportfsses",
       "handler": "Reportfss.find",
       "config": {
-        "policies": []
+        "policies": ["global::contentRange"]
       }
     },
     {

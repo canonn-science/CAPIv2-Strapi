@@ -5,7 +5,7 @@
       "path": "/lsreports",
       "handler": "Lsreport.find",
       "config": {
-        "policies": []
+        "policies": ["global::contentRange"]
       }
     },
     {

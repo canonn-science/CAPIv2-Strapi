@@ -5,7 +5,7 @@
       "path": "/gsactivegroups",
       "handler": "Gsactivegroup.find",
       "config": {
-        "policies": []
+        "policies": ["global::contentRange"]
       }
     },
     {

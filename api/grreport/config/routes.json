@@ -5,7 +5,7 @@
       "path": "/grreports",
       "handler": "Grreport.find",
       "config": {
-        "policies": []
+        "policies": ["global::contentRange"]
       }
     },
     {

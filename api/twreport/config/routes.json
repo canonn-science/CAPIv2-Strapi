@@ -5,7 +5,7 @@
       "path": "/twreports",
       "handler": "Twreport.find",
       "config": {
-        "policies": []
+        "policies": ["global::contentRange"]
       }
     },
     {

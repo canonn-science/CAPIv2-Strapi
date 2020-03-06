@@ -5,7 +5,7 @@
       "path": "/gvreports",
       "handler": "Gvreport.find",
       "config": {
-        "policies": []
+        "policies": ["global::contentRange"]
       }
     },
     {
