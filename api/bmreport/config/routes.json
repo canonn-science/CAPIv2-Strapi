@@ -5,7 +5,7 @@
       "path": "/bmreports",
       "handler": "Bmreport.find",
       "config": {
-        "policies": []
+        "policies": ["global::contentRange"]
       }
     },
     {

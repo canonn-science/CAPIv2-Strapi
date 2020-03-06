@@ -5,7 +5,7 @@
       "path": "/apreports",
       "handler": "Apreport.find",
       "config": {
-        "policies": []
+        "policies": ["global::contentRange"]
       }
     },
     {

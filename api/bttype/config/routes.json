@@ -5,7 +5,7 @@
       "path": "/bttypes",
       "handler": "Bttype.find",
       "config": {
-        "policies": []
+        "policies": ["global::contentRange"]
       }
     },
     {
