@@ -9,31 +9,6 @@ const { sanitizeEntity } = require('strapi-utils');
 
 module.exports = {
   /**
-   * Retrieve records with count in `Content-Range` header.
-   *
-   * @return {Object|Array}
-   */
-
-  find: async ctx => {
-    let entities;
-    let entitiesCount;
-
-    if (ctx.query._q) {
-      entitiesCount = await strapi.services.tbreport.countSearch(ctx.query);
-      entities = await strapi.services.tbreport.search(ctx.query);
-    } else {
-      entitiesCount = await strapi.services.tbreport.count(ctx.query);
-      entities = await strapi.services.tbreport.find(ctx.query);
-    }
-
-    ctx.set('Content-Range', entitiesCount);
-
-    return entities.map(entity =>
-      sanitizeEntity(entity, { model: strapi.models.tbreport })
-    );
-  },
-
-  /**
    * Create a record.
    *
    * @return {Object}
@@ -43,6 +18,7 @@ module.exports = {
     let entity;
     let data = ctx.request.body;
 
+    // Need to convert this to a policy
     if (!data.subtype) {
       data.subtype = 'Unknown';
     }
