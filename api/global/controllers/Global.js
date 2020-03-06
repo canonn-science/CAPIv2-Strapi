@@ -48,24 +48,62 @@ module.exports = {
    */
 
   nearby: async ctx => {
+    // Making code easier to read
     let query = ctx.request.query;
 
+    // Checking for required query params
     if (query.systemName && query.distance) {
-      // need to add error handling to edsm Fetch
-      let edsmFetch = await fetch(
-        'https://www.edsm.net/api-v1/system?showCoordinates=1&systemName=' +
+      // Ask CAPI first if we have the system so we don't spam EDSM
+      let system = await strapi.query('system').find({ systemName: query.systemName });
+
+      // Not in CAPI, Ask EDSM
+      if (!system || system.length === 0) {
+        let edsmFetch = await fetch(
+          'https://www.edsm.net/api-v1/system?showCoordinates=1&systemName=' +
           encodeURIComponent(query.systemName)
-      );
-      let data = await edsmFetch.json();
-      let systemFetch = await strapi.query('system').find({
-        edsmCoordX_gte: data.coords.x - query.distance / 2,
-        edsmCoordX_lte: data.coords.x + query.distance / 2,
-        edsmCoordY_gte: data.coords.y - query.distance / 2,
-        edsmCoordY_lte: data.coords.y + query.distance / 2,
-        edsmCoordZ_gte: data.coords.z - query.distance / 2,
-        edsmCoordZ_lte: data.coords.z + query.distance / 2
-      });
-      return systemFetch;
+        );
+
+        system = await edsmFetch.json();
+      }
+
+      // Check if both CAPI and EDSM don't have the system
+      // TO_DO: Add a way to send direct x/y/z instead of system lookup
+      if (!system.coords && (!system[0].edsmCoordX || !system[0].edsmCoordY || !system[0].edsmCoordZ)) {
+        return ctx.badRequest('System cannot be found, are you sending data to EDSM?');
+      } else {
+        let coords;
+
+        // Switch coords based on if CAPI/EDSM is being used
+        if (system.coords) {
+          coords = {
+            x: system.coords.x,
+            y: system.coords.y,
+            z: system.coords.z
+          };
+        } else {
+          coords = {
+            x: system[0].edsmCoordX,
+            y: system[0].edsmCoordY,
+            z: system[0].edsmCoordZ
+          };
+        }
+
+        // Fetch systems in a boundry box and return them
+        let params = {
+          edsmCoordX_gte: coords.x - query.distance / 2,
+          edsmCoordX_lte: coords.x + query.distance / 2,
+          edsmCoordY_gte: coords.y - query.distance / 2,
+          edsmCoordY_lte: coords.y + query.distance / 2,
+          edsmCoordZ_gte: coords.z - query.distance / 2,
+          edsmCoordZ_lte: coords.z + query.distance / 2,
+          _start: parseInt(query._start) || 0
+        };
+
+        let systemFetch = await strapi.query('system').find(params);
+        ctx.set('Content-Range', await strapi.query('system').count(params));
+        return systemFetch;
+      }
+
     } else {
       let missing = [];
       if (!query.systemName || typeof query.systemName !== 'string') {
