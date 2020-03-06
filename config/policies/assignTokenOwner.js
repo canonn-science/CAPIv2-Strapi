@@ -17,7 +17,6 @@ module.exports = async (ctx, next) => {
     } else {
       await next();
     }
-    return ctx.unauthorized();
   }
   return ctx.unauthorized();
 };
