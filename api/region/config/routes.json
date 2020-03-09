@@ -5,7 +5,7 @@
       "path": "/regions",
       "handler": "Region.find",
       "config": {
-        "policies": []
+        "policies": ["global::contentRange"]
       }
     },
     {

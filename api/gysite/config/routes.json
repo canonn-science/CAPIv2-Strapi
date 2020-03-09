@@ -5,7 +5,7 @@
       "path": "/gysites",
       "handler": "Gysite.find",
       "config": {
-        "policies": []
+        "policies": ["global::contentRange"]
       }
     },
     {

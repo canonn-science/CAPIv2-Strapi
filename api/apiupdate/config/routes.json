@@ -5,7 +5,7 @@
       "path": "/apiupdates",
       "handler": "Apiupdate.find",
       "config": {
-        "policies": []
+        "policies": ["global::contentRange"]
       }
     },
     {

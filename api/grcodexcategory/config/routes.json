@@ -5,7 +5,7 @@
       "path": "/grcodexcategories",
       "handler": "Grcodexcategory.find",
       "config": {
-        "policies": []
+        "policies": ["global::contentRange"]
       }
     },
     {
