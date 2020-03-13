@@ -5,7 +5,7 @@
       "path": "/reportfsses",
       "handler": "Reportfss.find",
       "config": {
-        "policies": []
+        "policies": ["global::contentRange"]
       }
     },
     {
@@ -29,7 +29,11 @@
       "path": "/reportfsses",
       "handler": "Reportfss.create",
       "config": {
-        "policies": []
+        "policies": [
+          "global::blockClient",
+          "global::blockCMDR",
+          "global::blockFSS"
+        ]
       }
     },
     {

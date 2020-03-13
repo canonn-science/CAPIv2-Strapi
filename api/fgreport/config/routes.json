@@ -5,7 +5,7 @@
       "path": "/fgreports",
       "handler": "Fgreport.find",
       "config": {
-        "policies": []
+        "policies": ["global::contentRange"]
       }
     },
     {
@@ -29,7 +29,11 @@
       "path": "/fgreports",
       "handler": "Fgreport.create",
       "config": {
-        "policies": []
+        "policies": [
+          "global::blockClient",
+          "global::blockCMDR",
+          "global::reportValidation"
+        ]
       }
     },
     {

@@ -5,7 +5,7 @@
       "path": "/gensites",
       "handler": "Gensite.find",
       "config": {
-        "policies": []
+        "policies": ["global::contentRange"]
       }
     },
     {

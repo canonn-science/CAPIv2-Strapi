@@ -8,15 +8,15 @@ module.exports = async (ctx, next) => {
     (ctx.request.query && ctx.request.query.token)
   ) {
     try {
-
       let id;
       let isAdmin;
 
       if (ctx.request.query && ctx.request.query.token) {
-        const [token] = await strapi.query('authtoken').find({token: ctx.request.query.token});
+        // find the token entry that match the token from the request
+        const [token] = await strapi.query('authtoken').find({ token: ctx.request.query.token });
 
         if (!token) {
-          return handleErrors(ctx, 'Your token is not valid', 'unauthorized');
+          return handleErrors(ctx, 'Invalid token: This token doesn\'t exist', 'unauthorized');
         } else {
           if (token.user && typeof token.token === 'string') {
             id = token.user.id;
@@ -26,6 +26,7 @@ module.exports = async (ctx, next) => {
 
         delete ctx.request.query.token;
       } else if (ctx.request && ctx.request.header && ctx.request.header.authorization) {
+        // use the current system with JWT in the header
         const decrypted = await strapi.plugins[
           'users-permissions'
         ].services.jwt.getToken(ctx);
@@ -35,7 +36,7 @@ module.exports = async (ctx, next) => {
       }
 
       if (id === undefined) {
-        throw new Error('Invalid token: Token did not contain required fields');
+        return handleErrors(ctx, 'Invalid token: Token did not contain required fields', 'unauthorized');
       }
 
       if (isAdmin) {
@@ -138,9 +139,5 @@ module.exports = async (ctx, next) => {
 };
 
 const handleErrors = (ctx, err = undefined, type) => {
-  if (ctx.request.graphql === null) {
-    return (ctx.request.graphql = strapi.errors[type](err));
-  }
-
-  return ctx[type](err);
+  throw strapi.errors[type](err);
 };

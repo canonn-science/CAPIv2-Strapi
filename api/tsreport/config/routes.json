@@ -5,7 +5,7 @@
       "path": "/tsreports",
       "handler": "Tsreport.find",
       "config": {
-        "policies": []
+        "policies": ["global::contentRange"]
       }
     },
     {
@@ -29,7 +29,11 @@
       "path": "/tsreports",
       "handler": "Tsreport.create",
       "config": {
-        "policies": []
+        "policies": [
+          "global::blockClient",
+          "global::blockCMDR",
+          "global::reportValidation"
+        ]
       }
     },
     {
