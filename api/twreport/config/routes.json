@@ -5,7 +5,7 @@
       "path": "/twreports",
       "handler": "Twreport.find",
       "config": {
-        "policies": []
+        "policies": ["global::contentRange"]
       }
     },
     {
@@ -29,7 +29,11 @@
       "path": "/twreports",
       "handler": "Twreport.create",
       "config": {
-        "policies": []
+        "policies": [
+          "global::blockClient",
+          "global::blockCMDR",
+          "global::reportValidation"
+        ]
       }
     },
     {

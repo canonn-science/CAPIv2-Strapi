@@ -5,7 +5,7 @@
       "path": "/fmreports",
       "handler": "Fmreport.find",
       "config": {
-        "policies": []
+        "policies": ["global::contentRange"]
       }
     },
     {
@@ -29,7 +29,11 @@
       "path": "/fmreports",
       "handler": "Fmreport.create",
       "config": {
-        "policies": []
+        "policies": [
+          "global::blockClient",
+          "global::blockCMDR",
+          "global::reportValidation"
+        ]
       }
     },
     {

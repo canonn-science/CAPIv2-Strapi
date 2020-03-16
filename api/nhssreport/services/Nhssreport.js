@@ -5,21 +5,4 @@
  * to customize this service
  */
 
-module.exports = {
-  /**
-   * Promise to add an nhssreport record
-   *
-   * @return {Promise}
-   */
-
-  create: async (values) => {
-
-    // Check Version
-    await strapi.api.excludeclient.services.excludeclient.blockClient(values.clientVersion);
-
-    // Check CMDR Name
-    await strapi.api.excludecmdr.services.excludecmdr.blockCMDR(values.cmdrName);
-
-    // If checks pass, proceed to create data
-    return strapi.query('Nhssreport').create(values);
-  },};
+module.exports = {};

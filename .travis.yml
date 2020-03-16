@@ -1,5 +1,4 @@
 sudo: required
-dist: xenial
 language: node_js
 node_js:
   - '10'
@@ -29,7 +28,7 @@ install:
 script:
   - yarn build
   - NODE_ENV=development pm2 start --name="capiv2" server.js
-  - sleep 10
+  - sleep 30
   - newman run 'tests/capiv2.postman_collection.json' -e tests/capiv2.postman_environment.json
 
 after_success:
@@ -40,4 +39,4 @@ after_failure:
   - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
   - chmod +x send.sh
   - ./send.sh failure $WEBHOOK_URL
-  - cat ~/.pm2/logs/*error*
+  - cat ~/.pm2/logs/*

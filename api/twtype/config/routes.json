@@ -5,7 +5,7 @@
       "path": "/twtypes",
       "handler": "Twtype.find",
       "config": {
-        "policies": []
+        "policies": ["global::contentRange"]
       }
     },
     {

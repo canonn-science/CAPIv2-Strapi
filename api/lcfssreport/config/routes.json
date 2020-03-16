@@ -5,7 +5,7 @@
       "path": "/lcfssreports",
       "handler": "Lcfssreport.find",
       "config": {
-        "policies": []
+        "policies": ["global::contentRange"]
       }
     },
     {
@@ -29,7 +29,7 @@
       "path": "/lcfssreports",
       "handler": "Lcfssreport.create",
       "config": {
-        "policies": []
+        "policies": ["global::blockClient", "global::blockCMDR"]
       }
     },
     {

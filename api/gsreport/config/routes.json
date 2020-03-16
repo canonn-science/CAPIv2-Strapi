@@ -5,7 +5,7 @@
       "path": "/gsreports",
       "handler": "Gsreport.find",
       "config": {
-        "policies": []
+        "policies": ["global::contentRange"]
       }
     },
     {
@@ -29,7 +29,11 @@
       "path": "/gsreports",
       "handler": "Gsreport.create",
       "config": {
-        "policies": []
+        "policies": [
+          "global::blockClient",
+          "global::blockCMDR",
+          "global::reportValidation"
+        ]
       }
     },
     {

@@ -7,7 +7,7 @@
   },
   "options": {
     "increments": true,
-    "timestamps": false,
+    "timestamps": true,
     "comment": ""
   },
   "attributes": {
@@ -15,7 +15,7 @@
       "type": "string"
     },
     "edTimestamp": {
-      "type": "date"
+      "type": "datetime"
     },
     "cmdrName": {
       "type": "string"

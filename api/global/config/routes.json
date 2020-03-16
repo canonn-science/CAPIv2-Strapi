@@ -23,6 +23,22 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/stats",
+      "handler": "global.stats",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/nearby",
+      "handler": "global.nearby",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
