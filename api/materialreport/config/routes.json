@@ -29,7 +29,7 @@
       "path": "/materialreports",
       "handler": "Materialreport.create",
       "config": {
-        "policies": ["global::blockClient", "global::blockCMDR"]
+        "policies": ["global::blockClient"]
       }
     },
     {
