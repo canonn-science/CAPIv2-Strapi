@@ -1,19 +1,14 @@
 {
-  "csrf": {
-    "enabled": false,
-    "key": "_csrf",
-    "secret": "_csrfSecret"
-  },
   "csp": {
     "enabled": true,
     "policy": ["block-all-mixed-content"]
   },
   "p3p": {
-    "enabled": true,
+    "enabled": false,
     "value": ""
   },
   "hsts": {
-    "enabled": true,
+    "enabled": false,
     "maxAge": 31536000,
     "includeSubDomains": true
   },
@@ -28,27 +23,16 @@
   "cors": {
     "enabled": true,
     "origin": "*",
-    "expose": [
-      "WWW-Authenticate",
-      "Server-Authorization",
-      "Content-Range"
-    ],
+    "expose": ["WWW-Authenticate", "Server-Authorization", "Content-Range"],
     "maxAge": 31536000,
     "credentials": true,
-    "methods": [
-      "GET",
-      "POST",
-      "PUT",
-      "PATCH",
-      "DELETE",
-      "OPTIONS",
-      "HEAD"
-    ],
+    "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS", "HEAD"],
     "headers": [
       "Content-Type",
       "Authorization",
       "X-Frame-Options",
-      "Origin"
+      "Origin",
+      "Accept"
     ]
   },
   "ip": {

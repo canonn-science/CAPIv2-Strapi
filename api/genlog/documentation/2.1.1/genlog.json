@@ -594,10 +594,22 @@
                 "name": {
                   "type": "string"
                 },
-                "hash": {
+                "alternativeText": {
                   "type": "string"
                 },
-                "sha256": {
+                "caption": {
+                  "type": "string"
+                },
+                "width": {
+                  "type": "integer"
+                },
+                "height": {
+                  "type": "integer"
+                },
+                "formats": {
+                  "type": "object"
+                },
+                "hash": {
                   "type": "string"
                 },
                 "ext": {
@@ -610,6 +622,9 @@
                   "type": "number"
                 },
                 "url": {
+                  "type": "string"
+                },
+                "previewUrl": {
                   "type": "string"
                 },
                 "provider": {
