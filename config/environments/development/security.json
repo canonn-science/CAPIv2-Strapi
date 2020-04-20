@@ -1,9 +1,4 @@
 {
-  "csrf": {
-    "enabled": false,
-    "key": "_csrf",
-    "secret": "_csrfSecret"
-  },
   "csp": {
     "enabled": true,
     "policy": ["block-all-mixed-content"]
@@ -22,34 +17,17 @@
     "value": "SAMEORIGIN"
   },
   "xss": {
-    "enabled": false,
+    "enabled": true,
     "mode": "block"
   },
   "cors": {
     "enabled": true,
     "origin": "*",
-    "expose": [
-      "WWW-Authenticate",
-      "Server-Authorization",
-      "Content-Range"
-    ],
+    "expose": ["WWW-Authenticate", "Server-Authorization", "Content-Range"],
     "maxAge": 31536000,
     "credentials": true,
-    "methods": [
-      "GET",
-      "POST",
-      "PUT",
-      "PATCH",
-      "DELETE",
-      "OPTIONS",
-      "HEAD"
-    ],
-    "headers": [
-      "Content-Type",
-      "Authorization",
-      "X-Frame-Options",
-      "Origin"
-    ]
+    "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS", "HEAD"],
+    "headers": ["Content-Type", "Authorization", "X-Frame-Options", "Origin", "Accept"]
   },
   "ip": {
     "enabled": false,
