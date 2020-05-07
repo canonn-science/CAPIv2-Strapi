@@ -15,20 +15,13 @@
       "default": "console",
       "type": "enumeration",
       "required": true,
-      "enum": [
-        "console",
-        "pc"
-      ]
+      "enum": ["console", "pc"]
     },
     "reportType": {
       "default": "new",
       "type": "enumeration",
       "required": true,
-      "enum": [
-        "new",
-        "update",
-        "error"
-      ]
+      "enum": ["new", "update", "error"]
     },
     "systemName": {
       "type": "string",
@@ -56,26 +49,26 @@
     "messageSystem": {
       "default": "",
       "type": "string",
-      "required": true
+      "required": false
     },
     "messageBody": {
       "default": "",
       "type": "string",
-      "required": true
+      "required": false
     },
     "messageLatitude": {
       "default": "",
       "max": 90,
       "min": -90,
       "type": "float",
-      "required": true
+      "required": false
     },
     "messageLongitude": {
       "default": "",
       "max": 180,
       "min": -180,
       "type": "float",
-      "required": true
+      "required": false
     },
     "cmdrName": {
       "type": "string",
