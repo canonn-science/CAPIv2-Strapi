@@ -1,8 +1,7 @@
 sudo: required
 language: node_js
 node_js:
-  - '10'
-  #- '12'
+  - '12'
 services:
   - mysql
 addons:
@@ -28,7 +27,7 @@ install:
 script:
   - yarn build
   - NODE_ENV=development pm2 start --name="capiv2" server.js
-  - sleep 30
+  - sleep 90
   - newman run 'tests/capiv2.postman_collection.json' -e tests/capiv2.postman_environment.json
 
 after_success:
