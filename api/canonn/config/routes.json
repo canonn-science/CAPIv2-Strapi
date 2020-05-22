@@ -3,7 +3,7 @@
     {
       "method": "GET",
       "path": "/info",
-      "handler": "global.info",
+      "handler": "canonn.info",
       "config": {
         "policies": []
       }
@@ -11,7 +11,7 @@
     {
       "method": "GET",
       "path": "/version",
-      "handler": "global.version",
+      "handler": "canonn.version",
       "config": {
         "policies": []
       }
@@ -19,7 +19,7 @@
     {
       "method": "GET",
       "path": "/totalcount",
-      "handler": "global.totalCount",
+      "handler": "canonn.totalCount",
       "config": {
         "policies": []
       }
@@ -27,7 +27,7 @@
     {
       "method": "GET",
       "path": "/stats",
-      "handler": "global.stats",
+      "handler": "canonn.stats",
       "config": {
         "policies": []
       }
@@ -35,7 +35,7 @@
     {
       "method": "GET",
       "path": "/nearby",
-      "handler": "global.nearby",
+      "handler": "canonn.nearby",
       "config": {
         "policies": []
       }

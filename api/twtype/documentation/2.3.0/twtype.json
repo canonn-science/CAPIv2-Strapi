@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/tbreports": {
+    "/twtypes": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Tbreport"
+                    "$ref": "#/components/schemas/Twtype"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Tbreport"
+          "Twtype"
         ],
         "parameters": [
           {
@@ -201,7 +201,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Tbreport"
+                  "$ref": "#/components/schemas/Twtype"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Tbreport"
+          "Twtype"
         ],
         "requestBody": {
           "description": "",
@@ -247,14 +247,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewTbreport"
+                "$ref": "#/components/schemas/NewTwtype"
               }
             }
           }
         }
       }
     },
-    "/tbreports/count": {
+    "/twtypes/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -306,12 +306,12 @@
         },
         "summary": "",
         "tags": [
-          "Tbreport"
+          "Twtype"
         ],
         "parameters": []
       }
     },
-    "/tbreports/{id}": {
+    "/twtypes/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -321,7 +321,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Tbreport"
+                  "$ref": "#/components/schemas/Twtype"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Tbreport"
+          "Twtype"
         ],
         "parameters": [
           {
@@ -383,7 +383,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Tbreport"
+                  "$ref": "#/components/schemas/Twtype"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Tbreport"
+          "Twtype"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewTbreport"
+                "$ref": "#/components/schemas/NewTwtype"
               }
             }
           }
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Tbreport"
+          "Twtype"
         ],
         "parameters": [
           {
@@ -514,383 +514,43 @@
   },
   "components": {
     "schemas": {
-      "Tbreport": {
+      "Twtype": {
         "required": [
           "id",
-          "userType",
-          "reportType",
-          "systemName",
-          "bodyName",
-          "latitude",
-          "longitude",
-          "type",
-          "subtype",
-          "cycle",
-          "cmdrName",
-          "clientVersion",
-          "reportStatus"
+          "type"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "userType": {
-            "type": "string",
-            "default": "console",
-            "enum": [
-              "console",
-              "pc"
-            ]
-          },
-          "reportType": {
-            "type": "string",
-            "default": "new",
-            "enum": [
-              "new",
-              "update",
-              "error"
-            ]
-          },
-          "systemName": {
-            "type": "string"
-          },
-          "systemAddress": {
-            "type": "integer"
-          },
-          "regionID": {
-            "type": "integer"
-          },
-          "coordX": {
-            "type": "number"
-          },
-          "coordY": {
-            "type": "number"
-          },
-          "coordZ": {
-            "type": "number"
-          },
-          "bodyName": {
-            "type": "string"
-          },
-          "latitude": {
-            "type": "number"
-          },
-          "longitude": {
-            "type": "number"
-          },
           "type": {
             "type": "string"
           },
-          "subtype": {
+          "journalName": {
             "type": "string",
-            "enum": [
-              "Mega",
-              "Alpha",
-              "Beta",
-              "Gamma",
-              "Delta",
-              "Epsilon",
-              "Zeta",
-              "Unknown"
-            ]
+            "default": ""
           },
-          "cycle": {
-            "type": "string",
-            "enum": [
-              "Unknown",
-              "A",
-              "B",
-              "C",
-              "ABC"
-            ]
-          },
-          "frontierID": {
-            "type": "integer"
-          },
-          "cmdrName": {
-            "type": "string"
-          },
-          "cmdrComment": {
-            "type": "string"
-          },
-          "isBeta": {
-            "type": "boolean",
-            "default": false
-          },
-          "clientVersion": {
-            "type": "string"
-          },
-          "screenshot": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "name",
-                "hash",
-                "mime",
-                "size",
-                "url",
-                "provider"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "alternativeText": {
-                  "type": "string"
-                },
-                "caption": {
-                  "type": "string"
-                },
-                "width": {
-                  "type": "integer"
-                },
-                "height": {
-                  "type": "integer"
-                },
-                "formats": {
-                  "type": "object"
-                },
-                "hash": {
-                  "type": "string"
-                },
-                "ext": {
-                  "type": "string"
-                },
-                "mime": {
-                  "type": "string"
-                },
-                "size": {
-                  "type": "number"
-                },
-                "url": {
-                  "type": "string"
-                },
-                "previewUrl": {
-                  "type": "string"
-                },
-                "provider": {
-                  "type": "string"
-                },
-                "provider_metadata": {
-                  "type": "object"
-                },
-                "related": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "reportStatus": {
-            "type": "string",
-            "default": "pending",
-            "enum": [
-              "pending",
-              "updated",
-              "verified",
-              "accepted",
-              "declined",
-              "issue",
-              "duplicate"
-            ]
-          },
-          "reportComment": {
-            "type": "string"
-          },
-          "voteCount": {
-            "type": "integer"
-          },
-          "added": {
-            "type": "boolean",
-            "default": false
-          },
-          "site": {
-            "required": [
-              "id",
-              "siteID",
-              "latitude",
-              "longitude"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "system": {
-                "type": "string"
-              },
-              "body": {
-                "type": "string"
-              },
-              "siteID": {
-                "type": "integer"
-              },
-              "extoolID": {
-                "type": "integer"
-              },
-              "latitude": {
-                "type": "number"
-              },
-              "longitude": {
-                "type": "number"
-              },
-              "type": {
-                "type": "string"
-              },
-              "subtype": {
-                "type": "string"
-              },
-              "frontierID": {
-                "type": "integer"
-              },
-              "cycle": {
-                "type": "string"
-              },
-              "comment": {
-                "type": "string"
-              },
-              "verified": {
-                "type": "boolean"
-              },
-              "visible": {
-                "type": "boolean"
-              },
-              "discoveredBy": {
-                "type": "string"
-              }
-            }
+          "journalID": {
+            "type": "integer",
+            "default": ""
           }
         }
       },
-      "NewTbreport": {
+      "NewTwtype": {
         "required": [
-          "userType",
-          "reportType",
-          "systemName",
-          "bodyName",
-          "latitude",
-          "longitude",
-          "type",
-          "subtype",
-          "cycle",
-          "cmdrName",
-          "clientVersion",
-          "reportStatus"
+          "type"
         ],
         "properties": {
-          "userType": {
-            "type": "string",
-            "default": "console",
-            "enum": [
-              "console",
-              "pc"
-            ]
-          },
-          "reportType": {
-            "type": "string",
-            "default": "new",
-            "enum": [
-              "new",
-              "update",
-              "error"
-            ]
-          },
-          "systemName": {
-            "type": "string"
-          },
-          "systemAddress": {
-            "type": "integer"
-          },
-          "regionID": {
-            "type": "integer"
-          },
-          "coordX": {
-            "type": "number"
-          },
-          "coordY": {
-            "type": "number"
-          },
-          "coordZ": {
-            "type": "number"
-          },
-          "bodyName": {
-            "type": "string"
-          },
-          "latitude": {
-            "type": "number"
-          },
-          "longitude": {
-            "type": "number"
-          },
           "type": {
             "type": "string"
           },
-          "subtype": {
+          "journalName": {
             "type": "string",
-            "enum": [
-              "Mega",
-              "Alpha",
-              "Beta",
-              "Gamma",
-              "Delta",
-              "Epsilon",
-              "Zeta",
-              "Unknown"
-            ]
+            "default": ""
           },
-          "cycle": {
-            "type": "string",
-            "enum": [
-              "Unknown",
-              "A",
-              "B",
-              "C",
-              "ABC"
-            ]
-          },
-          "frontierID": {
-            "type": "integer"
-          },
-          "cmdrName": {
-            "type": "string"
-          },
-          "cmdrComment": {
-            "type": "string"
-          },
-          "isBeta": {
-            "type": "boolean",
-            "default": false
-          },
-          "clientVersion": {
-            "type": "string"
-          },
-          "reportStatus": {
-            "type": "string",
-            "default": "pending",
-            "enum": [
-              "pending",
-              "updated",
-              "verified",
-              "accepted",
-              "declined",
-              "issue",
-              "duplicate"
-            ]
-          },
-          "reportComment": {
-            "type": "string"
-          },
-          "voteCount": {
-            "type": "integer"
-          },
-          "added": {
-            "type": "boolean",
-            "default": false
-          },
-          "site": {
-            "type": "string"
+          "journalID": {
+            "type": "integer",
+            "default": ""
           }
         }
       }
@@ -898,7 +558,7 @@
   },
   "tags": [
     {
-      "name": "Tbreport"
+      "name": "Twtype"
     }
   ]
 }
