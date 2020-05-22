@@ -1,11 +1,12 @@
-module.exports = {
+module.exports = ({ env }) => ({
   settings: {
     sentry: {
-      enabled: true,
+      enabled: env.bool('SENTRY_ENABLED', false),
     },
     cache: {
-      enabled: false,
+      enabled: env.bool('CACHE_ENABLED', false),
       type: 'redis',
+      redisConfig: env.json('CACHE_RCONFIG', {}),
       maxAge: 3600000,
       models: [
         { model: 'bodies', maxAge: 60000 },
@@ -17,22 +18,22 @@ module.exports = {
         { model: 'excludeevents', maxAge: 30000 },
         { model: 'excludefsses', maxAge: 30000 },
         { model: 'permitlocks', maxAge: 3600000 },
-        { model: 'apsites', maxAge: 60000 },
-        { model: 'bmsites', maxAge: 60000 },
-        { model: 'btsites', maxAge: 60000 },
-        { model: 'cssites', maxAge: 60000 },
-        { model: 'fgsites', maxAge: 60000 },
-        { model: 'fmsites', maxAge: 60000 },
-        { model: 'gbsites', maxAge: 60000 },
-        { model: 'gensites', maxAge: 60000 },
-        { model: 'grsites', maxAge: 60000 },
-        { model: 'gssites', maxAge: 60000 },
-        { model: 'gvsites', maxAge: 60000 },
-        { model: 'gysites', maxAge: 60000 },
-        { model: 'lssites', maxAge: 60000 },
-        { model: 'tbsites', maxAge: 60000 },
-        { model: 'tssites', maxAge: 60000 },
-        { model: 'twsites', maxAge: 60000 },
+        { model: 'apsites', maxAge: 900000 },
+        { model: 'bmsites', maxAge: 900000 },
+        { model: 'btsites', maxAge: 900000 },
+        { model: 'cssites', maxAge: 900000 },
+        { model: 'fgsites', maxAge: 900000 },
+        { model: 'fmsites', maxAge: 900000 },
+        { model: 'gbsites', maxAge: 900000 },
+        { model: 'gensites', maxAge: 900000 },
+        { model: 'grsites', maxAge: 900000 },
+        { model: 'gssites', maxAge: 900000 },
+        { model: 'gvsites', maxAge: 900000 },
+        { model: 'gysites', maxAge: 900000 },
+        { model: 'lssites', maxAge: 900000 },
+        { model: 'tbsites', maxAge: 900000 },
+        { model: 'tssites', maxAge: 900000 },
+        { model: 'twsites', maxAge: 900000 },
         { model: 'aptypes', maxAge: 3600000 },
         { model: 'bmtypes', maxAge: 3600000 },
         { model: 'bttypes', maxAge: 3600000 },
@@ -48,8 +49,8 @@ module.exports = {
         { model: 'tbsubtypes', maxAge: 3600000 },
         { model: 'tbcycles', maxAge: 3600000 },
         { model: 'tsstatuses', maxAge: 3600000 },
-        { model: 'twtypes', maxAge: 3600000 }
-      ]
+        { model: 'twtypes', maxAge: 3600000 },
+      ],
     },
     parser: {
       enabled: true,
@@ -73,13 +74,7 @@ module.exports = {
       expose: ['WWW-Authenticate', 'Server-Authorization', 'Content-Range'],
       credentials: true,
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS', 'HEAD'],
-      headers: [
-        'Content-Type',
-        'Authorization',
-        'X-Frame-Options',
-        'Origin',
-        'Accept',
-      ],
+      headers: ['Content-Type', 'Authorization', 'X-Frame-Options', 'Origin', 'Accept'],
     },
   },
-};
+});
