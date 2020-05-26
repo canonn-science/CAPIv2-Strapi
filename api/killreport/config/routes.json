@@ -5,7 +5,7 @@
       "path": "/killreports",
       "handler": "Killreport.find",
       "config": {
-        "policies": ["global::contentRange"]
+        "policies": ["global::content-range"]
       }
     },
     {
@@ -29,7 +29,7 @@
       "path": "/killreports",
       "handler": "Killreport.create",
       "config": {
-        "policies": ["global::blockClient", "global::blockCMDR"]
+        "policies": ["global::block-client", "global::block-cmdr"]
       }
     },
     {
