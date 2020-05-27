@@ -14,7 +14,7 @@
       "name": "GNU-GPLv3",
       "url": "https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE"
     },
-    "x-generation-date": "05/22/2020 3:38:27 AM"
+    "x-generation-date": "05/27/2020 1:51:16 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -49294,7 +49294,7 @@
     "/auth/reset-password": {
       "post": {
         "deprecated": false,
-        "description": "Change a user's password",
+        "description": "Reset user password with a code (resetToken)",
         "responses": {
           "200": {
             "description": "response",
