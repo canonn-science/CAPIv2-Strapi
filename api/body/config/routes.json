@@ -5,7 +5,7 @@
       "path": "/bodies",
       "handler": "Body.find",
       "config": {
-        "policies": ["global::contentRange"]
+        "policies": ["global::content-range"]
       }
     },
     {

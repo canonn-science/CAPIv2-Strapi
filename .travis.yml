@@ -1,8 +1,7 @@
 sudo: required
 language: node_js
 node_js:
-  - '10'
-  #- '12'
+  - '12'
 services:
   - mysql
 addons:
@@ -18,8 +17,8 @@ install:
   - mysql -u root --password="" -e "CREATE DATABASE canonntest_user"
   - mysql -u root --password="" -e "CREATE USER 'canonnuser'@'localhost' IDENTIFIED BY 'canonnpassword'"
   - mysql -u root --password="" -e "GRANT ALL PRIVILEGES ON * . * TO 'canonnuser'@'localhost'"
-  - mysql -u root --password="" canonntest_data < seed_files/SQL/base-development-*.sql
-  - mysql -u root --password="" canonntest_user < tests/example-users-*.sql
+  - mysql -u root --password="" canonntest_data < tests/example-base.sql
+  - mysql -u root --password="" canonntest_user < tests/example-user.sql
   - npm install -g newman
   - npm install -g pm2
   - npm install -g yarn
@@ -28,7 +27,7 @@ install:
 script:
   - yarn build
   - NODE_ENV=development pm2 start --name="capiv2" server.js
-  - sleep 30
+  - sleep 90
   - newman run 'tests/capiv2.postman_collection.json' -e tests/capiv2.postman_environment.json
 
 after_success:
@@ -39,4 +38,4 @@ after_failure:
   - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
   - chmod +x send.sh
   - ./send.sh failure $WEBHOOK_URL
-  - cat ~/.pm2/logs/*
+  - pm2 logs --nostream
