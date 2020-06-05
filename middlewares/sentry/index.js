@@ -1,7 +1,10 @@
 const Sentry = require('@sentry/node');
+
+const settings = strapi.config.middleware.settings.sentry;
+
 Sentry.init({
-  dsn: process.env.SENTRY_URL,
-  environment: strapi.config.environment,
+  dsn: settings.url,
+  environment: settings.sentryEnv,
 });
 
 module.exports = strapi => {
