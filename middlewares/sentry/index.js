@@ -14,7 +14,19 @@ module.exports = strapi => {
         try {
           await next();
         } catch (error) {
-          Sentry.captureException(error);
+          Sentry.withScope(scope => {
+            scope.setTags({
+              'strapi-env': ctx.app.env
+            });
+            scope.setExtras({
+              request: ctx.request,
+              app: ctx.app,
+              params: ctx.params,
+              query: ctx.query,
+              headers: ctx.headers
+            });
+            Sentry.captureException(error);
+          });
           throw error;
         }
       });
