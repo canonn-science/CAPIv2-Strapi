@@ -5,7 +5,7 @@
       "path": "/materialreports",
       "handler": "Materialreport.find",
       "config": {
-        "policies": ["global::contentRange"]
+        "policies": []
       }
     },
     {
@@ -29,7 +29,7 @@
       "path": "/materialreports",
       "handler": "Materialreport.create",
       "config": {
-        "policies": ["global::blockClient"]
+        "policies": ["global::block-client"]
       }
     },
     {

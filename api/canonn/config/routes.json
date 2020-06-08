@@ -1,0 +1,44 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/info",
+      "handler": "canonn.info",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/version",
+      "handler": "canonn.version",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/totalcount",
+      "handler": "canonn.totalCount",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/stats",
+      "handler": "canonn.stats",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/nearby",
+      "handler": "canonn.nearby",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

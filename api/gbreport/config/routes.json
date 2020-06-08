@@ -5,7 +5,7 @@
       "path": "/gbreports",
       "handler": "Gbreport.find",
       "config": {
-        "policies": ["global::contentRange"]
+        "policies": []
       }
     },
     {
@@ -30,9 +30,9 @@
       "handler": "Gbreport.create",
       "config": {
         "policies": [
-          "global::blockClient",
-          "global::blockCMDR",
-          "global::reportValidation"
+          "global::block-client",
+          "global::block-cmdr",
+          "global::report-validation"
         ]
       }
     },
