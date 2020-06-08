@@ -10,13 +10,17 @@ module.exports = strapi => {
         let args = ctx.request.url.split(/\/|\?/);
 
         // Convert plural to singular
-        let model = pluralize.singular(args[1]);
+        let model;
+        if (args) {
+          model = pluralize.singular(args[1]);
+        }
 
         // Only match find queries not findOne/count or any other method
         if(
           ctx.request.method === 'GET' &&
           ctx.params['id'] === undefined &&
           ctx.params['id'] !== 'count' &&
+          model &&
           model in strapi.models
         ){
           if (ctx.request.query._q) {
