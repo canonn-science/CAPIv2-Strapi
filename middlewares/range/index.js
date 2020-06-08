@@ -11,7 +11,7 @@ module.exports = strapi => {
 
         // Convert plural to singular
         let model;
-        if (args) {
+        if (args.length >= 2) {
           model = pluralize.singular(args[1]);
         }
 
