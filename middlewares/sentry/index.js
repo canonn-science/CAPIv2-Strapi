@@ -19,10 +19,11 @@ module.exports = strapi => {
               'strapi-env': ctx.app.env
             });
             scope.setExtras({
-              request: ctx.request,
               app: ctx.app,
               params: ctx.params,
               query: ctx.query,
+              request: ctx.request,
+              body: ctx.request.body,
               headers: ctx.headers
             });
             Sentry.captureException(error);
