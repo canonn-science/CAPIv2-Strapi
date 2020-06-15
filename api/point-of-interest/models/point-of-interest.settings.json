@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "point_of_interests",
+  "info": {
+    "name": "point of interest"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "systemName": {
+      "type": "string",
+      "required": true
+    },
+    "bodyName": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "text"
+    },
+    "edsmCoordX": {
+      "type": "float",
+      "required": true
+    },
+    "edsmCoordY": {
+      "type": "float",
+      "required": true
+    },
+    "edsmCoordZ": {
+      "type": "float",
+      "required": true
+    },
+    "poiType": {
+      "type": "enumeration",
+      "enum": [
+        "reference",
+        "guardian",
+        "thargoid",
+        "unique"
+      ],
+      "required": true,
+      "default": "reference"
+    }
+  }
+}
