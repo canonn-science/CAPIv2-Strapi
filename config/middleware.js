@@ -13,6 +13,30 @@ module.exports = ({ env }) => ({
       url: env('SENTRY_URL', ''),
       sentryEnv: env('SENTRY_ENV', 'development')
     },
+    parser: {
+      enabled: true,
+      multipart: true,
+      formLimit: '128mb',
+      jsonLimit: '256mb',
+    },
+    gzip: {
+      enabled: true,
+    },
+    responseTime: {
+      enabled: true,
+    },
+    poweredBy: {
+      enabled: true,
+      value: 'Canonn APIv2 <docs.canonn.tech>',
+    },
+    cors: {
+      enabled: true,
+      origin: '*',
+      expose: ['WWW-Authenticate', 'Server-Authorization', 'Content-Range'],
+      credentials: true,
+      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS', 'HEAD'],
+      headers: ['Content-Type', 'Authorization', 'X-Frame-Options', 'X-Powered-By', 'Origin', 'Accept'],
+    },
     cache: {
       enabled: env.bool('CACHE_ENABLED', false),
       logs: false,
@@ -62,30 +86,6 @@ module.exports = ({ env }) => ({
         { model: 'tsstatuses' },
         { model: 'twtypes' },
       ],
-    },
-    parser: {
-      enabled: true,
-      multipart: true,
-      formLimit: '128mb',
-      jsonLimit: '256mb',
-    },
-    gzip: {
-      enabled: true,
-    },
-    responseTime: {
-      enabled: true,
-    },
-    poweredBy: {
-      enabled: true,
-      value: 'Canonn APIv2 <docs.canonn.tech>',
-    },
-    cors: {
-      enabled: true,
-      origin: '*',
-      expose: ['WWW-Authenticate', 'Server-Authorization', 'Content-Range'],
-      credentials: true,
-      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS', 'HEAD'],
-      headers: ['Content-Type', 'Authorization', 'X-Frame-Options', 'X-Powered-By', 'Origin', 'Accept'],
     },
   },
 });
