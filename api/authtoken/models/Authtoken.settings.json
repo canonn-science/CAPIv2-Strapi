@@ -2,15 +2,11 @@
   "connection": "users",
   "collectionName": "authtokens",
   "info": {
-    "name": "authtoken",
-    "description": ""
+    "name": "Auth Token"
   },
   "options": {
     "increments": true,
-    "timestamps": [
-      "created_at",
-      "updated_at"
-    ],
+    "timestamps": true,
     "comment": ""
   },
   "attributes": {
