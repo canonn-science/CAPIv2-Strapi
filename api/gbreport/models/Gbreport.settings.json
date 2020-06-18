@@ -42,28 +42,23 @@
       "type": "float"
     },
     "bodyName": {
-      "default": "",
       "type": "string"
     },
     "messageSystem": {
-      "default": "",
       "type": "string",
       "required": false
     },
     "messageBody": {
-      "default": "",
       "type": "string",
       "required": false
     },
     "messageLatitude": {
-      "default": "",
       "max": 90,
       "min": -90,
       "type": "float",
       "required": false
     },
     "messageLongitude": {
-      "default": "",
       "max": 180,
       "min": -180,
       "type": "float",
@@ -93,18 +88,9 @@
       "default": "pending",
       "type": "enumeration",
       "required": true,
-      "enum": [
-        "pending",
-        "updated",
-        "verified",
-        "accepted",
-        "declined",
-        "issue",
-        "duplicate"
-      ]
+      "enum": ["pending", "updated", "verified", "accepted", "declined", "issue", "duplicate"]
     },
     "reportComment": {
-      "default": "",
       "type": "text"
     },
     "voteCount": {

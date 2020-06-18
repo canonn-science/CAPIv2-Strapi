@@ -19,39 +19,30 @@
       "type": "string"
     },
     "systemAddress": {
-      "default": "",
       "type": "biginteger"
     },
     "signalName": {
-      "default": "",
       "type": "string"
     },
     "signalNameLocalised": {
-      "default": "",
       "type": "string"
     },
     "ussType": {
-      "default": "",
       "type": "string"
     },
     "ussTypeLocalised": {
-      "default": "",
       "type": "string"
     },
     "spawningState": {
-      "default": "",
       "type": "string"
     },
     "spawningStateLocalised": {
-      "default": "",
       "type": "string"
     },
     "spawningFaction": {
-      "default": "",
       "type": "string"
     },
     "threatLevel": {
-      "default": "",
       "type": "integer"
     },
     "isBeta": {
@@ -66,15 +57,7 @@
       "default": "pending",
       "type": "enumeration",
       "required": true,
-      "enum": [
-        "pending",
-        "updated",
-        "verified",
-        "accepted",
-        "declined",
-        "issue",
-        "duplicate"
-      ]
+      "enum": ["pending", "updated", "verified", "accepted", "declined", "issue", "duplicate"]
     },
     "rawJson": {
       "type": "json",
@@ -82,4 +65,3 @@
     }
   }
 }
-

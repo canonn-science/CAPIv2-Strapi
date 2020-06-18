@@ -17,31 +17,21 @@
     },
     "location": {
       "default": "body",
-      "enum": [
-        "body",
-        "orbital"
-      ],
+      "enum": ["body", "orbital"],
       "type": "enumeration"
     },
     "journalName": {
-      "default": "",
       "type": "string"
     },
     "journalID": {
-      "default": "",
       "type": "integer"
     },
     "journalType": {
       "default": "codex",
       "type": "enumeration",
-      "enum": [
-        "codex",
-        "event",
-        "fss"
-      ]
+      "enum": ["codex", "event", "fss"]
     },
     "endpoint": {
-      "default": "",
       "type": "string",
       "required": true
     }
