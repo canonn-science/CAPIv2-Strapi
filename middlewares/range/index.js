@@ -18,9 +18,10 @@ module.exports = strapi => {
         // Only match find queries not findOne/count or any other method
         if(
           ctx.request.method === 'GET' &&
+          model &&
+          model !== 'graphql' &&
           ctx.params['id'] === undefined &&
           ctx.params['id'] !== 'count' &&
-          model &&
           model in strapi.models
         ){
           if (ctx.request.query._q) {
