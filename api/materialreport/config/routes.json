@@ -9,6 +9,14 @@
       }
     },
     {
+      "method": "DELETE",
+      "path": "/materialreports/oldbulk",
+      "handler": "Materialreport.deleteOldBulk",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "GET",
       "path": "/materialreports/count",
       "handler": "Materialreport.count",
