@@ -1,0 +1,14 @@
+ALTER TABLE capiv2_dev.apsites DROP COLUMN extoolID;
+ALTER TABLE capiv2_dev.bmsites DROP COLUMN extoolID;
+ALTER TABLE capiv2_dev.btsites DROP COLUMN extoolID;
+ALTER TABLE capiv2_dev.cssites DROP COLUMN extoolID;
+ALTER TABLE capiv2_dev.fgsites DROP COLUMN extoolID;
+ALTER TABLE capiv2_dev.fmsites DROP COLUMN extoolID;
+ALTER TABLE capiv2_dev.grsites DROP COLUMN extoolID;
+ALTER TABLE capiv2_dev.gssites DROP COLUMN extoolID;
+ALTER TABLE capiv2_dev.gvsites DROP COLUMN extoolID;
+ALTER TABLE capiv2_dev.gysites DROP COLUMN extoolID;
+ALTER TABLE capiv2_dev.lssites DROP COLUMN extoolID;
+ALTER TABLE capiv2_dev.tbsites DROP COLUMN extoolID;
+ALTER TABLE capiv2_dev.tssites DROP COLUMN extoolID;
+ALTER TABLE capiv2_dev.twsites DROP COLUMN extoolID;
