@@ -2769,7 +2769,6 @@
 									"    pm.expect(jsonData.latitude).to.eql(52.6791);",
 									"    pm.expect(jsonData.longitude).to.eql(115.2503);",
 									"    pm.expect(jsonData.type).to.eql(\"Fistbump\");",
-									"    pm.expect(jsonData.hasDatabank).to.eql(false);",
 									"    pm.expect(jsonData.cmdrName).to.eql(\"Doom666\");",
 									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Guardian Structure Report\");",
 									"    pm.expect(jsonData.reportStatus).to.eql(\"pending\");",
@@ -2793,7 +2792,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"SYNUEFE LY-I B42-2\",\n  \"bodyName\": \"C 2\",\n  \"latitude\": 52.6791,\n  \"longitude\": 115.2503,\n  \"type\": \"Fistbump\",\n  \"hasDatabank\": false,\n  \"cmdrName\": \"Doom666\",\n  \"cmdrComment\": \"TEST - Guardian Structure Report\",\n  \"reportStatus\": \"pending\",\n  \"clientVersion\": \"postman-test\"\n}"
+							"raw": "{\n  \"userType\": \"pc\",\n  \"reportType\": \"new\",\n  \"systemName\": \"SYNUEFE LY-I B42-2\",\n  \"bodyName\": \"C 2\",\n  \"latitude\": 52.6791,\n  \"longitude\": 115.2503,\n  \"type\": \"Fistbump\",\n  \"cmdrName\": \"Doom666\",\n  \"cmdrComment\": \"TEST - Guardian Structure Report\",\n  \"reportStatus\": \"pending\",\n  \"clientVersion\": \"postman-test\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/gsreports",
@@ -3028,7 +3027,6 @@
 									"    pm.expect(jsonData.latitude).to.eql(52.6791);",
 									"    pm.expect(jsonData.longitude).to.eql(115.2503);",
 									"    pm.expect(jsonData.type).to.eql(\"Fistbump\");",
-									"    pm.expect(jsonData.hasDatabank).to.eql(false);",
 									"    pm.expect(jsonData.cmdrName).to.eql(\"Doom666\");",
 									"    pm.expect(jsonData.cmdrComment).to.eql(\"TEST - Guardian Structure Report\");",
 									"    pm.expect(jsonData.reportStatus).to.eql(\"declined\");",
