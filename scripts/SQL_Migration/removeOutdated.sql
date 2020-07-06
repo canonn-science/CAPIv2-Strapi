@@ -12,3 +12,5 @@ ALTER TABLE capiv2_dev.lssites DROP COLUMN extoolID;
 ALTER TABLE capiv2_dev.tbsites DROP COLUMN extoolID;
 ALTER TABLE capiv2_dev.tssites DROP COLUMN extoolID;
 ALTER TABLE capiv2_dev.twsites DROP COLUMN extoolID;
+ALTER TABLE capiv2_dev.gsreports DROP COLUMN hasDatabank;
+ALTER TABLE capiv2_dev.gssites DROP COLUMN hasDatabank;
