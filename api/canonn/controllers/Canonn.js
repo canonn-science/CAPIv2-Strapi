@@ -1,5 +1,6 @@
 'use strict';
-let fetch = require('node-fetch');
+const fetch = require('node-fetch');
+const pluralize = require('pluralize');
 
 /**
  * Info.js controller
@@ -47,9 +48,25 @@ module.exports = {
    * @return {Object}
    */
 
-  submitReport: ctx => {
-    console.log(ctx);
-    return { ok: true };
+  // WIP Will NOT support non-standard models such as GR/GS/TB/TS/GEN/GB
+  // TODO: Maybe support bulk? Map an array and create multiple reports
+  // TODO: Duplication checking?
+
+  submitReport: async ctx => {
+    let requestBody = ctx.request.body;
+    let type = await strapi.query('reporttype').findOne({type: requestBody.type});
+    let model = undefined;
+
+    if (type.endpoint) {
+      model = pluralize.singular(type.endpoint);
+    }
+
+    if (model) {
+      let sentData = await strapi.query(model).create(requestBody);
+      sentData.model = model;
+      return sentData;
+    }
+    return ctx.badRequest('Type doesn\'t have a model map');
   },
 
   /**
