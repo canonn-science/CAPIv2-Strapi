@@ -42,6 +42,17 @@ module.exports = {
   },
 
   /**
+   * Submit basic report and pass report to correct report model.
+   *
+   * @return {Object}
+   */
+
+  submitReport: ctx => {
+    console.log(ctx);
+    return { ok: true };
+  },
+
+  /**
    * Search for nearby systems.
    *
    * @return {Object}

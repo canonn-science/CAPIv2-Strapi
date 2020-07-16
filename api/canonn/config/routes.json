@@ -1,6 +1,14 @@
 {
   "routes": [
     {
+      "method": "POST",
+      "path": "/submit-report",
+      "handler": "canonn.submitReport",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "GET",
       "path": "/info",
       "handler": "canonn.info",
