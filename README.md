@@ -1,7 +1,7 @@
 # 1. Canonn API v2 - (CAPIv2)
 
-[![Strapi Version](https://img.shields.io/badge/strapi-v3.0.0--beta.19.3-blue.svg)](https://github.com/strapi/strapi)
-[![CAPIv2 Version](https://img.shields.io/badge/capiv2-v2.2.0-orange.svg)](https://api.canonn.tech:2083)
+[![Strapi Version](https://img.shields.io/badge/strapi-v3.2.4-blue.svg)](https://github.com/strapi/strapi)
+[![CAPIv2 Version](https://img.shields.io/badge/capiv2-v2.4.0-orange.svg)](https://api.canonn.tech:2083)
 [![Build Status](https://travis-ci.org/canonn-science/CAPIv2-Strapi.svg?branch=development)](https://travis-ci.org/canonn-science/CAPIv2-Strapi)
 [![EDCD Discord](https://img.shields.io/discord/164411426939600896.svg?logo=discord&label=EDCD%20Discord)](https://discord.gg/fhDWZBH)
 [![Canonn Discord](https://img.shields.io/discord/146714487695605760.svg?logo=discord&label=Canonn%20Discord)](https://discord.gg/HzzmG2f)
@@ -74,10 +74,8 @@ The Canonn APIv2 is designed to handle all our current science projects. Current
   - GV Types
 - Geysers (GY)
   - GY Types
-- Hyperdictions (HD) - **WIP**
 - Lava Spouts (LS)
   - LS types
-- Non-Human Signal Sources (NHSS)
 - Thargoid Barnacles (TB)
   - TB Cycles
   - TB Types
@@ -88,7 +86,7 @@ The Canonn APIv2 is designed to handle all our current science projects. Current
 
 Also we are tracking the following:
 
-- Regions - **WIP**
+- Regions
 - Systems
   - X/Y/Z and Locked status pulled from EDSM
 - Bodies
@@ -97,7 +95,6 @@ Also we are tracking the following:
   - All other body metrics (From EDSM)
 - Rings (Currently don't have any use, but in case future data is needed)
 - CMDRs
-  - CMDR Kills
 
 ## 3.1. Current Version
 
@@ -117,15 +114,13 @@ We are also working on our actual documentation to help navigate and describe ho
 
 You will need the following:
 
-- Ubuntu 18.04 LTS
-  - **Ubuntu 16.04 is no longer supported**
+- Ubuntu 20.04 LTS
 - Git
-- Node v10
+- Node v12
 - NPM v6
 - Yarn
 - Node PM2 (For running API as a service)
-- Strapi Beta based on the version within the `package.json`
-- MariaDB 10.3
+- MariaDB 10.5
 
 ## 5.1. Installing Git, Node v10, and NPM v6
 
@@ -151,19 +146,7 @@ Run the following to install Yarn globally:
 
 `npm install -g yarn`
 
-## 5.4. Install Strapi Alpha Latest
-
-Run the following to install Strapi Alpha version from the package.json:
-
-**NOTE:** This is just an example, you should replace the version below with the proper version!
-
-`npm i -g strapi@beta`
-
-This will install strapi globally and allow you to generate new projects or models/api/ect from the cli
-
-See the following for a more detailed guide: [For requirements](https://strapi.io/documentation/3.0.0-beta.x/getting-started/install-requirements.html#basic-installation-requirements) and [For installing Strapi Globally](https://strapi.io/documentation/3.0.0-beta.x/getting-started/quick-start.html#_1-install-strapi-globally)
-
-## 5.5. Setup MariaDB
+## 5.4. Setup MariaDB
 
 Install Software Properties Common if its not already installed:
 
@@ -261,7 +244,7 @@ For the Discord webhook, you will need to create a Discord Server and setup a we
 
 ## 7.4. Building the CAPIv2 Admin Panel
 
-With the new Strapi Beta versions, we can now customize and rebuild the AdminUI to our liking as such when you clone the project you will need to build this AdminUI as we do not keep it in git.
+With the new Strapi versions, we can now customize and rebuild the AdminUI to our liking as such when you clone the project you will need to build this AdminUI as we do not keep it in git.
 
 To build simply run `yarn build`
 
@@ -298,7 +281,7 @@ After strapi has started you can visit `http://localhost:1337/admin` if you are 
 
 To run strapi as a service, a change was made in the package.json, and you have installed PM2 in a previous step. You will need to navigate to the directory the API is cloned into and run the following:
 
-`NODE_ENV=development pm2 start --name="capiv2" server.js -i 1`
+`NODE_ENV=development pm2 start npm --name="capiv2" -i 1 -- run develop`
 
 Alternatively you can modify the `NODE_ENV` for staging or production use. Again if you are on a windows machine you may need to define the database and JWT secret environment variables, just like what is being done with `NODE_ENV`.
 
