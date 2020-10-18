@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/user-plugin-settings",
+      "handler": "user-plugin-setting.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/user-plugin-settings/count",
+      "handler": "user-plugin-setting.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/user-plugin-settings/:id",
+      "handler": "user-plugin-setting.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/user-plugin-settings",
+      "handler": "user-plugin-setting.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/user-plugin-settings/:id",
+      "handler": "user-plugin-setting.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/user-plugin-settings/:id",
+      "handler": "user-plugin-setting.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/authtokens": {
+    "/user-plugin-settings": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -10,9 +10,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Authtoken"
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
                   }
                 }
               }
@@ -51,7 +52,7 @@
         },
         "summary": "",
         "tags": [
-          "Authtoken"
+          "User-plugin-setting"
         ],
         "parameters": [
           {
@@ -201,72 +202,9 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Authtoken"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Authtoken"
-        ],
-        "requestBody": {
-          "description": "",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewAuthtoken"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/authtokens/count": {
-      "get": {
-        "deprecated": false,
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
                   "properties": {
-                    "count": {
-                      "type": "integer"
+                    "foo": {
+                      "type": "string"
                     }
                   }
                 }
@@ -306,12 +244,22 @@
         },
         "summary": "",
         "tags": [
-          "Authtoken"
+          "User-plugin-setting"
         ],
-        "parameters": []
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewUser-plugin-setting"
+              }
+            }
+          }
+        }
       }
     },
-    "/authtokens/{id}": {
+    "/user-plugin-settings/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -321,7 +269,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Authtoken"
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -359,7 +311,64 @@
         },
         "summary": "",
         "tags": [
-          "Authtoken"
+          "User-plugin-setting"
+        ],
+        "parameters": []
+      }
+    },
+    "/user-plugin-settings/{id}": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "User-plugin-setting"
         ],
         "parameters": [
           {
@@ -383,7 +392,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Authtoken"
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -421,7 +434,7 @@
         },
         "summary": "",
         "tags": [
-          "Authtoken"
+          "User-plugin-setting"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +442,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewAuthtoken"
+                "$ref": "#/components/schemas/NewUser-plugin-setting"
               }
             }
           }
@@ -495,7 +508,7 @@
         },
         "summary": "",
         "tags": [
-          "Authtoken"
+          "User-plugin-setting"
         ],
         "parameters": [
           {
@@ -514,20 +527,14 @@
   },
   "components": {
     "schemas": {
-      "Authtoken": {
+      "User-plugin-setting": {
         "required": [
           "id",
-          "token"
+          "user_version",
+          "auto_update_enabled"
         ],
         "properties": {
           "id": {
-            "type": "string"
-          },
-          "token": {
-            "type": "string",
-            "minLength": 24
-          },
-          "comment": {
             "type": "string"
           },
           "user": {
@@ -586,23 +593,37 @@
                 "type": "string"
               }
             }
+          },
+          "user_version": {
+            "type": "string"
+          },
+          "auto_update_enabled": {
+            "type": "boolean",
+            "default": true
+          },
+          "settings": {
+            "type": "object"
           }
         }
       },
-      "NewAuthtoken": {
+      "NewUser-plugin-setting": {
         "required": [
-          "token"
+          "user_version",
+          "auto_update_enabled"
         ],
         "properties": {
-          "token": {
-            "type": "string",
-            "minLength": 24
-          },
-          "comment": {
-            "type": "string"
-          },
           "user": {
             "type": "string"
+          },
+          "user_version": {
+            "type": "string"
+          },
+          "auto_update_enabled": {
+            "type": "boolean",
+            "default": true
+          },
+          "settings": {
+            "type": "object"
           },
           "created_by": {
             "type": "string"
@@ -614,9 +635,5 @@
       }
     }
   },
-  "tags": [
-    {
-      "name": "Authtoken"
-    }
-  ]
+  "tags": []
 }

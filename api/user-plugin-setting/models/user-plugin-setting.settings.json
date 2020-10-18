@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_plugin_settings",
+  "info": {
+    "name": "User Plugin Setting"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "user_plugin_settings"
+    },
+    "user_version": {
+      "type": "string",
+      "required": true
+    },
+    "auto_update_enabled": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "settings": {
+      "type": "json"
+    }
+  }
+}

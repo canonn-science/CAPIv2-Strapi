@@ -1302,6 +1302,36 @@
                 }
               }
             }
+          },
+          "user_plugin_settings": {
+            "required": [
+              "id",
+              "user_version",
+              "auto_update_enabled"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "user": {
+                "type": "string"
+              },
+              "user_version": {
+                "type": "string"
+              },
+              "auto_update_enabled": {
+                "type": "boolean"
+              },
+              "settings": {
+                "type": "object"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
           }
         }
       },
@@ -1352,6 +1382,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "user_plugin_settings": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"
