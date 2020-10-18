@@ -1,5 +1,4 @@
 {
-  "kind": "collectionType",
   "connection": "users",
   "collectionName": "users-permissions_user",
   "info": {
@@ -68,10 +67,6 @@
     "authtokens": {
       "collection": "authtoken",
       "via": "user"
-    },
-    "user_plugin_settings": {
-      "via": "user",
-      "model": "user-plugin-setting"
     }
   }
 }
