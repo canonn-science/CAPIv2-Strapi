@@ -9,8 +9,9 @@
     "localdev": "node server.js",
     "develop": "strapi develop",
     "start": "strapi start",
-    "clean": "rm -Rf node_modules build .cache",
+    "clean": "rm -Rf node_modules build .cache yarn.lock",
     "build": "strapi build",
+    "build:clean": "strapi build --clean",
     "strapi": "strapi",
     "lint": "eslint api/**/*.js config/**/*.js plugins/**/*.js"
   },
@@ -22,21 +23,21 @@
     "eslint-plugin-react": "^7.7.0"
   },
   "dependencies": {
-    "@sentry/node": "^5.26.0",
-    "knex": "^0.21.6",
-    "mysql": "2.18.1",
-    "strapi": "3.2.5",
-    "strapi-admin": "3.2.5",
-    "strapi-connector-bookshelf": "3.2.5",
-    "strapi-middleware-cache": "^1.0.7",
-    "strapi-plugin-content-manager": "3.2.5",
-    "strapi-plugin-content-type-builder": "3.2.5",
-    "strapi-plugin-documentation": "3.2.5",
-    "strapi-plugin-email": "3.2.5",
-    "strapi-plugin-graphql": "3.2.5",
-    "strapi-plugin-upload": "3.2.5",
-    "strapi-plugin-users-permissions": "3.2.5",
-    "strapi-utils": "3.2.5"
+    "@sentry/node": "^5.27.4",
+    "knex": "^0.21.12",
+    "mysql": "latest",
+    "strapi": "3.3.3",
+    "strapi-admin": "3.3.3",
+    "strapi-connector-bookshelf": "3.3.3",
+    "strapi-middleware-cache": "^1.0.11",
+    "strapi-plugin-content-manager": "3.3.3",
+    "strapi-plugin-content-type-builder": "3.3.3",
+    "strapi-plugin-documentation": "3.3.3",
+    "strapi-plugin-email": "3.3.3",
+    "strapi-plugin-graphql": "3.3.3",
+    "strapi-plugin-upload": "3.3.3",
+    "strapi-plugin-users-permissions": "3.3.3",
+    "strapi-utils": "3.3.3"
   },
   "author": {
     "name": "Canonn R&D",
@@ -67,7 +68,7 @@
     "uuid": "487b0283-ba92-4503-96ef-8f62b4293b36"
   },
   "engines": {
-    "node": ">=10.16.0 <=14.x.x",
+    "node": ">=10.16.0 <=15.x.x",
     "npm": ">= 6.0.0"
   },
   "license": "GPL-3.0"
