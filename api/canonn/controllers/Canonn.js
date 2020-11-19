@@ -81,6 +81,8 @@ module.exports = {
       cleanData.model = model;
       return cleanData;
     }
+
+    // TODO: If model can't be determined, forward to debug model
     return ctx.badRequest('Type doesn\'t have a model map');
   },
 
