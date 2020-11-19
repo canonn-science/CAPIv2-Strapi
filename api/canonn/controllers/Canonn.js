@@ -1,6 +1,7 @@
 'use strict';
 const fetch = require('node-fetch');
 const pluralize = require('pluralize');
+const { sanitizeEntity } = require('strapi-utils');
 
 /**
  * Info.js controller
@@ -48,15 +49,15 @@ module.exports = {
    * @return {Object}
    */
 
-  // WIP Will NOT support non-standard models such as GR/GS/TB/TS/GEN/GB
+  // WIP Will NOT support non-standard models such as TS/GEN/GB
   // TODO: Maybe support bulk? Map an array and create multiple reports
-  // TODO: Duplication checking?
 
   submitReport: async (ctx) => {
     let requestBody = ctx.request.body;
     let model;
     let type;
 
+    // Find type for model lookup
     if (requestBody.type) {
       type = await strapi.query('reporttype').findOne({ type: requestBody.type });
     } else if (requestBody.raw_json.EntryID) {
@@ -65,14 +66,20 @@ module.exports = {
       return ctx.badRequest('Cannot determine report type');
     }
 
+    // Set model based on type
     if (type && type.endpoint) {
       model = pluralize.singular(type.endpoint);
     }
 
+    // TODO: Validate incoming data base on model & type (TB/GR/GS) using yup
+
+    // Send report to correct model, sanitize input
     if (model) {
+      console.log(model);
       let sentData = await strapi.query(model).create(requestBody);
-      sentData.model = model;
-      return sentData;
+      let cleanData = sanitizeEntity(sentData, { model: strapi.models[model]});
+      cleanData.model = model;
+      return cleanData;
     }
     return ctx.badRequest('Type doesn\'t have a model map');
   },
