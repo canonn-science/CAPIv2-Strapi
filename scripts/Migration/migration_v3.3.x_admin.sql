@@ -19,8 +19,6 @@
 -- Table structure for table `strapi_role`
 --
 
-use capiv2_dev;
-
 DROP TABLE IF EXISTS `strapi_role`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
