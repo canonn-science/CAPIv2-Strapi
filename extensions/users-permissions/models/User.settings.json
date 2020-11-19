@@ -56,12 +56,13 @@
       "plugin": "users-permissions",
       "configurable": false
     },
+    "confirmationToken": {
+      "type": "string",
+      "configurable": false,
+      "private": true
+    },
     "cmdrs": {
       "collection": "cmdr"
-    },
-    "authtokens": {
-      "collection": "authtoken",
-      "via": "user"
     }
   }
 }
