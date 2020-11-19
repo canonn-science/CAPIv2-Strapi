@@ -1263,43 +1263,11 @@
               "cmdrName": {
                 "type": "string"
               },
-              "cmdrkill": {
-                "type": "string"
-              },
               "created_by": {
                 "type": "string"
               },
               "updated_by": {
                 "type": "string"
-              }
-            }
-          },
-          "authtokens": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "token"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "token": {
-                  "type": "string"
-                },
-                "comment": {
-                  "type": "string"
-                },
-                "user": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
               }
             }
           }
@@ -1346,12 +1314,6 @@
           },
           "cmdrs": {
             "type": "string"
-          },
-          "authtokens": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
           },
           "created_by": {
             "type": "string"

@@ -150,3 +150,9 @@ ALTER TABLE capiv2_dev.twsites MODIFY COLUMN latitude double NOT NULL;
 ALTER TABLE capiv2_dev.twsites MODIFY COLUMN longitude double NOT NULL;
 ALTER TABLE capiv2_dev.twsites MODIFY COLUMN verified tinyint(1) DEFAULT 0 NOT NULL;
 ALTER TABLE capiv2_dev.twsites MODIFY COLUMN visible tinyint(1) DEFAULT 1 NOT NULL;
+/* Cleanup */
+DELETE TABLE if exists capiv2_dev.apiupdates;
+DELETE TABLE if exists capiv2_dev.cmdrkills;
+DELETE TABLE if exists capiv2_dev.cmdrs;
+DELETE TABLE if exists capiv2_users.authtokens;
+DELETE TABLE if exists capiv2_users.strapi_administrator;
