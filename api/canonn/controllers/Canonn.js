@@ -51,6 +51,7 @@ module.exports = {
 
   // WIP Will NOT support non-standard models such as TS/GEN/GB
   // TODO: Maybe support bulk? Map an array and create multiple reports
+  // TODO: Blacklist checking (CMDR/Client/Type)
 
   submitReport: async (ctx) => {
     let requestBody = ctx.request.body;
