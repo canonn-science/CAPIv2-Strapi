@@ -6,21 +6,23 @@ module.exports = async (ctx, next) => {
       return ctx.forbidden('You are missing a CMDR Name, anonymous reporting is supported.');
     }
 
-    let cmdrQuery = await strapi.api.excludecmdr.services.excludecmdr.find({
-      cmdrName: cmdrName
+    let query = await strapi.query('excludecmdr').find({
+      cmdrName: cmdrName,
     });
-    let cmdrData = null;
-    let cmdrResult = cmdrQuery;
+    let cmdrData;
+    let result = query;
 
-    if (cmdrResult[0] != undefined) {
-      cmdrData = cmdrResult[0];
+    if (result[0] != undefined) {
+      cmdrData = result[0];
     } else {
-      cmdrData = null;
+      cmdrData = undefined;
     }
 
-    if (cmdrData != null && cmdrData != undefined && cmdrData.cmdrName == cmdrName) {
-      return ctx.forbidden(`Your CMDR: ${cmdrData.cmdrName} is in our blacklist. This is due to your CMDR being flagged for abuse.`);
+    if (cmdrData && cmdrData.cmdrName == cmdrName) {
+      return ctx.forbidden(
+        `Your CMDR: ${cmdrData.cmdrName} is in our blacklist. This is due to your CMDR being flagged for abuse.`
+      );
     }
   }
-  return await next();
+  await next();
 };
