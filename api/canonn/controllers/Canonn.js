@@ -2,6 +2,7 @@
 const fetch = require('node-fetch');
 const pluralize = require('pluralize');
 const { sanitizeEntity } = require('strapi-utils');
+const yup = require('yup');
 
 /**
  * Info.js controller
@@ -51,7 +52,6 @@ module.exports = {
 
   // WIP Will NOT support non-standard models such as TS/GEN/GB
   // TODO: Maybe support bulk? Map an array and create multiple reports
-  // TODO: Blacklist checking (CMDR/Client/Type)
 
   submitReport: async (ctx) => {
     let requestBody = ctx.request.body;
@@ -73,18 +73,71 @@ module.exports = {
     }
 
     // TODO: Validate incoming data base on model & type (TB/GR/GS) using yup
+    let reportSchema = yup.object().shape({
+      cmdrName: yup.string().required(),
+      clientVersion: yup.string.required(),
+      isBeta: yup.boolean().required(),
+    });
 
     // Send report to correct model, sanitize input
     if (model) {
       console.log(model);
       let sentData = await strapi.query(model).create(requestBody);
-      let cleanData = sanitizeEntity(sentData, { model: strapi.models[model]});
+      let cleanData = sanitizeEntity(sentData, { model: strapi.models[model] });
       cleanData.model = model;
       return cleanData;
     }
 
-    // TODO: If model can't be determined, forward to debug model
-    return ctx.badRequest('Type doesn\'t have a model map');
+    // If data doesn't match a model, forward data to debug model 'reportcodex'
+    let rawJson = requestBody.rawJson;
+
+    async function getFrontierID(dest) {
+      if (dest) {
+        return dest
+          .match(/index=\d/g)
+          .replace(/index=/g)
+          .parseInt();
+      } else {
+        return undefined;
+      }
+    }
+
+    let debugData = {
+      // Data sent outside of rawJson
+      cmdrName: requestBody.cmdrName,
+      clientVersion: requestBody.clientVersion,
+      isBeta: requestBody.isBeta,
+      reportStatus: 'pending',
+      rawJson,
+      // Extracted and cleaned values from rawJson
+      systemName: rawJson.System.toUpperCase(),
+      bodyName: undefined, // TODO: Ask LCU if he is going to send this
+      systemAddress: rawJson.SystemAddress,
+      latitude: undefined, // TODO: Ask LCU if he is going to send this
+      longitude: undefined, // TODO: Ask LCU if he is going to send this
+      frontierID: getFrontierID(rawJson.NearestDestination),
+      entryId: rawJson.EntryID,
+      codexName: rawJson.Name,
+      codexNameLocalised: rawJson.Name_Localised,
+      subCategory: rawJson.SubCategory,
+      subCategoryLocalised: rawJson.SubCategory_Localised,
+      category: rawJson.Category,
+      categoryLocalised: rawJson.Category_Localised,
+      regionName: rawJson.Region,
+      regionLocalised: rawJson.Region_Localised,
+      voucherAmount: rawJson.VoucherAmount,
+    };
+
+    let sentDebug = await strapi.query('reportcodex').create(debugData);
+    let cleanDebug = sanitizeEntity(sentDebug, { model: strapi.models.reportcodex });
+    if (cleanDebug) {
+      cleanDebug.model = 'reportcodex';
+      cleanDebug.isDebug = true;
+      return cleanDebug;
+    }
+    return ctx.badRequest(
+      "An error occurred posting your data to our debug model, and your data doesn't match any type map" // eslint-disable-line
+    );
   },
 
   /**
