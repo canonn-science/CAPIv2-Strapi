@@ -39,22 +39,16 @@ module.exports = (strapi) => {
 
         let payload = {
           app: ctx.app,
-          request: {
-            method: ctx.request.method,
-            url: ctx.request.url,
-            path: ctx.request.path,
-            model,
-            query: ctx.query,
-            params: ctx.params,
-            ip: ctx.ip,
-          },
-          response: {
-            status: ctx.response.status,
-          },
-          user: {
-            uid,
-            userData,
-          },
+          method: ctx.request.method,
+          url: ctx.request.url,
+          path: ctx.request.path,
+          model,
+          query: ctx.query,
+          params: ctx.params,
+          ip: ctx.ip,
+          responseStatus: ctx.response.status,
+          uid,
+          userData,
         };
 
         if (settings.send === true) {
