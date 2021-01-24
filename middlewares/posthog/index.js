@@ -37,35 +37,39 @@ module.exports = (strapi) => {
           userData = { userType: 'anon' };
         }
 
+        // Construct the analytics payload
         let payload = {
-          app: ctx.app,
-          method: ctx.request.method,
-          url: ctx.request.url,
-          path: ctx.request.path,
-          model,
-          query: ctx.query,
-          params: ctx.params,
-          ip: ctx.ip,
-          responseStatus: ctx.response.status,
-          uid,
-          userData,
+          distinctId: uid,
+          event: ctx.request.method + ' ' + ctx.request.path,
+          properties: {
+            $current_url: strapi.config.server.url + ctx.request.path,
+            method: ctx.request.method,
+            path: ctx.request.path,
+            status: ctx.response.status,
+            model,
+            query: ctx.query,
+            params: ctx.params,
+            ip: ctx.ip,
+            userData,
+            requestHeaders: ctx.request.headers,
+            responseHeaders: ctx.response.headers,
+          },
         };
 
+        // If sending is true, else debug log
         if (settings.send === true) {
           try {
             const client = new PostHog(settings.key, { host: settings.host });
 
+            // Only send model analytics, skip admin and graphql
             if (model && model in strapi.models) {
-              console.log('I Ran!');
-              client.capture({
-                distinctId: uid,
-                event: payload.request.method + ' ' + payload.request.model,
-                properties: payload,
-              });
+              await client.capture(payload);
             }
           } catch (error) {
-            //
+            // Do nothing
           }
+        } else {
+          console.log(payload);
         }
       });
     },
