@@ -1,17 +1,17 @@
 module.exports = ({ env }) => ({
   load: {
     before: ['responseTime', 'logger', 'cors', 'responses', 'gzip'],
-    order: [],
-    after: ['parser', 'router', 'sentry', 'range', 'cache'],
+    order: ['users-permissions', 'range', 'posthog', 'cache'],
+    after: ['parser', 'router', 'sentry', 'users-permissions', 'range', 'posthog', 'cache'],
   },
   settings: {
     range: {
-      enabled: true
+      enabled: true,
     },
     sentry: {
       enabled: env.bool('SENTRY_ENABLED', false),
       url: env('SENTRY_URL', ''),
-      sentryEnv: env('SENTRY_ENV', 'development')
+      sentryEnv: env('SENTRY_ENV', 'development'),
     },
     parser: {
       enabled: true,
@@ -22,8 +22,8 @@ module.exports = ({ env }) => ({
     gzip: {
       enabled: true,
       options: {
-        br: false
-      }
+        br: false,
+      },
     },
     responseTime: {
       enabled: true,
@@ -38,7 +38,20 @@ module.exports = ({ env }) => ({
       expose: ['WWW-Authenticate', 'Server-Authorization', 'Content-Range'],
       credentials: true,
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS', 'HEAD'],
-      headers: ['Content-Type', 'Authorization', 'X-Frame-Options', 'X-Powered-By', 'Origin', 'Accept'],
+      headers: [
+        'Content-Type',
+        'Authorization',
+        'X-Frame-Options',
+        'X-Powered-By',
+        'Origin',
+        'Accept',
+      ],
+    },
+    posthog: {
+      enabled: env.bool('POSTHOG_ENABLED', false),
+      send: env.bool('POSTHOG_SEND', false),
+      key: env('POSTHOG_KEY'),
+      host: env('POSTHOG_HOST'),
     },
     cache: {
       enabled: env.bool('CACHE_ENABLED', false),
