@@ -51,7 +51,7 @@ module.exports = (strapi) => {
             params: ctx.params,
             ip: ctx.ip,
             userData,
-            requestBody: ctx.body,
+            requestBody: ctx.request.body,
             requestHeaders: ctx.request.headers,
             responseHeaders: ctx.response.headers,
           },
