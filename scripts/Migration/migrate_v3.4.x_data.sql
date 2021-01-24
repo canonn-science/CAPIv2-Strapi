@@ -151,6 +151,6 @@ ALTER TABLE twsites MODIFY COLUMN longitude double NOT NULL;
 ALTER TABLE twsites MODIFY COLUMN verified tinyint(1) DEFAULT 0 NOT NULL;
 ALTER TABLE twsites MODIFY COLUMN visible tinyint(1) DEFAULT 1 NOT NULL;
 /* Cleanup */
-DELETE TABLE if exists apiupdates;
-DELETE TABLE if exists cmdrkills;
-DELETE TABLE if exists cmdrs;
+DROP TABLE if exists apiupdates;
+DROP TABLE if exists cmdrkills;
+DROP TABLE if exists cmdrs;
