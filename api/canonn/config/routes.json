@@ -26,6 +26,14 @@
     },
     {
       "method": "GET",
+      "path": "/modelinfo",
+      "handler": "canonn.modelInfo",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/totalcount",
       "handler": "canonn.totalCount",
       "config": {

@@ -45,6 +45,29 @@ module.exports = {
   },
 
   /**
+   * Retrieve Model Attributes.
+   *
+   * @return {Object}
+   */
+
+  modelInfo: async (ctx) => {
+    if (!ctx.query.model) {
+      return ctx.badRequest('Model is required');
+    } else if (!(ctx.query.model in strapi.models)) {
+      return ctx.badRequest("Model doesn't exist");
+    }
+    let perm = await strapi
+      .query('permission', 'users-permissions')
+      .find({ controller: ctx.query.model, role: 3, action: 'find' });
+
+    if (!perm || !perm[0].id) {
+      return ctx.unauthorized('You are not authorized to see this model structure');
+    }
+
+    return strapi.models[ctx.query.model].allAttributes;
+  },
+
+  /**
    * Submit basic report and pass report to correct report model.
    *
    * @return {Object}
