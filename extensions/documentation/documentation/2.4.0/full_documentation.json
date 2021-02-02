@@ -14,7 +14,7 @@
       "name": "GNU-GPLv3",
       "url": "https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE"
     },
-    "x-generation-date": "11/18/2020 6:51:01 PM"
+    "x-generation-date": "02/01/2021 7:09:58 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -5795,6 +5795,77 @@
             }
           }
         ]
+      }
+    },
+    "/submit-report": {
+      "post": {
+        "deprecated": false,
+        "description": "Create a new record",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Canonn"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "foo": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/info": {
@@ -49445,8 +49516,6 @@
           "reportType",
           "systemName",
           "bodyName",
-          "latitude",
-          "longitude",
           "cmdrName",
           "clientVersion",
           "reportStatus"
@@ -49544,9 +49613,7 @@
           "site": {
             "required": [
               "id",
-              "siteID",
-              "latitude",
-              "longitude"
+              "siteID"
             ],
             "properties": {
               "id": {
@@ -49598,8 +49665,6 @@
           "reportType",
           "systemName",
           "bodyName",
-          "latitude",
-          "longitude",
           "cmdrName",
           "clientVersion",
           "reportStatus"
@@ -49705,9 +49770,7 @@
       "Apsite": {
         "required": [
           "id",
-          "siteID",
-          "latitude",
-          "longitude"
+          "siteID"
         ],
         "properties": {
           "id": {
@@ -50161,9 +50224,7 @@
       },
       "NewApsite": {
         "required": [
-          "siteID",
-          "latitude",
-          "longitude"
+          "siteID"
         ],
         "properties": {
           "system": {
@@ -50352,8 +50413,6 @@
           "reportType",
           "systemName",
           "bodyName",
-          "latitude",
-          "longitude",
           "cmdrName",
           "clientVersion",
           "reportStatus"
@@ -50451,9 +50510,7 @@
           "site": {
             "required": [
               "id",
-              "siteID",
-              "latitude",
-              "longitude"
+              "siteID"
             ],
             "properties": {
               "id": {
@@ -50505,8 +50562,6 @@
           "reportType",
           "systemName",
           "bodyName",
-          "latitude",
-          "longitude",
           "cmdrName",
           "clientVersion",
           "reportStatus"
@@ -50612,9 +50667,7 @@
       "Bmsite": {
         "required": [
           "id",
-          "siteID",
-          "latitude",
-          "longitude"
+          "siteID"
         ],
         "properties": {
           "id": {
@@ -51068,9 +51121,7 @@
       },
       "NewBmsite": {
         "required": [
-          "siteID",
-          "latitude",
-          "longitude"
+          "siteID"
         ],
         "properties": {
           "system": {
@@ -51464,9 +51515,7 @@
             "items": {
               "required": [
                 "id",
-                "siteID",
-                "latitude",
-                "longitude"
+                "siteID"
               ],
               "properties": {
                 "id": {
@@ -51516,9 +51565,7 @@
             "items": {
               "required": [
                 "id",
-                "siteID",
-                "latitude",
-                "longitude"
+                "siteID"
               ],
               "properties": {
                 "id": {
@@ -51568,9 +51615,7 @@
             "items": {
               "required": [
                 "id",
-                "siteID",
-                "latitude",
-                "longitude"
+                "siteID"
               ],
               "properties": {
                 "id": {
@@ -51621,8 +51666,6 @@
               "required": [
                 "id",
                 "siteID",
-                "latitude",
-                "longitude",
                 "verified"
               ],
               "properties": {
@@ -51673,9 +51716,7 @@
             "items": {
               "required": [
                 "id",
-                "siteID",
-                "latitude",
-                "longitude"
+                "siteID"
               ],
               "properties": {
                 "id": {
@@ -51725,9 +51766,7 @@
             "items": {
               "required": [
                 "id",
-                "siteID",
-                "latitude",
-                "longitude"
+                "siteID"
               ],
               "properties": {
                 "id": {
@@ -51869,9 +51908,7 @@
             "items": {
               "required": [
                 "id",
-                "siteID",
-                "latitude",
-                "longitude"
+                "siteID"
               ],
               "properties": {
                 "id": {
@@ -51933,9 +51970,7 @@
             "items": {
               "required": [
                 "id",
-                "siteID",
-                "latitude",
-                "longitude"
+                "siteID"
               ],
               "properties": {
                 "id": {
@@ -51997,9 +52032,7 @@
             "items": {
               "required": [
                 "id",
-                "siteID",
-                "latitude",
-                "longitude"
+                "siteID"
               ],
               "properties": {
                 "id": {
@@ -52049,9 +52082,7 @@
             "items": {
               "required": [
                 "id",
-                "siteID",
-                "latitude",
-                "longitude"
+                "siteID"
               ],
               "properties": {
                 "id": {
@@ -52101,9 +52132,7 @@
             "items": {
               "required": [
                 "id",
-                "siteID",
-                "latitude",
-                "longitude"
+                "siteID"
               ],
               "properties": {
                 "id": {
@@ -52273,8 +52302,6 @@
               "required": [
                 "id",
                 "siteID",
-                "latitude",
-                "longitude",
                 "verified"
               ],
               "properties": {
@@ -52556,8 +52583,6 @@
           "reportType",
           "systemName",
           "bodyName",
-          "latitude",
-          "longitude",
           "cmdrName",
           "clientVersion",
           "reportStatus"
@@ -52655,9 +52680,7 @@
           "site": {
             "required": [
               "id",
-              "siteID",
-              "latitude",
-              "longitude"
+              "siteID"
             ],
             "properties": {
               "id": {
@@ -52709,8 +52732,6 @@
           "reportType",
           "systemName",
           "bodyName",
-          "latitude",
-          "longitude",
           "cmdrName",
           "clientVersion",
           "reportStatus"
@@ -52816,9 +52837,7 @@
       "Btsite": {
         "required": [
           "id",
-          "siteID",
-          "latitude",
-          "longitude"
+          "siteID"
         ],
         "properties": {
           "id": {
@@ -53272,9 +53291,7 @@
       },
       "NewBtsite": {
         "required": [
-          "siteID",
-          "latitude",
-          "longitude"
+          "siteID"
         ],
         "properties": {
           "system": {
@@ -53471,8 +53488,6 @@
           "reportType",
           "systemName",
           "bodyName",
-          "latitude",
-          "longitude",
           "cmdrName",
           "clientVersion",
           "reportStatus"
@@ -53571,8 +53586,6 @@
             "required": [
               "id",
               "siteID",
-              "latitude",
-              "longitude",
               "verified"
             ],
             "properties": {
@@ -53625,8 +53638,6 @@
           "reportType",
           "systemName",
           "bodyName",
-          "latitude",
-          "longitude",
           "cmdrName",
           "clientVersion",
           "reportStatus"
@@ -53733,8 +53744,6 @@
         "required": [
           "id",
           "siteID",
-          "latitude",
-          "longitude",
           "verified"
         ],
         "properties": {
@@ -54190,8 +54199,6 @@
       "NewCssite": {
         "required": [
           "siteID",
-          "latitude",
-          "longitude",
           "verified"
         ],
         "properties": {
@@ -54443,8 +54450,6 @@
           "reportType",
           "systemName",
           "bodyName",
-          "latitude",
-          "longitude",
           "cmdrName",
           "clientVersion",
           "reportStatus"
@@ -54542,9 +54547,7 @@
           "site": {
             "required": [
               "id",
-              "siteID",
-              "latitude",
-              "longitude"
+              "siteID"
             ],
             "properties": {
               "id": {
@@ -54596,8 +54599,6 @@
           "reportType",
           "systemName",
           "bodyName",
-          "latitude",
-          "longitude",
           "cmdrName",
           "clientVersion",
           "reportStatus"
@@ -54703,9 +54704,7 @@
       "Fgsite": {
         "required": [
           "id",
-          "siteID",
-          "latitude",
-          "longitude"
+          "siteID"
         ],
         "properties": {
           "id": {
@@ -55159,9 +55158,7 @@
       },
       "NewFgsite": {
         "required": [
-          "siteID",
-          "latitude",
-          "longitude"
+          "siteID"
         ],
         "properties": {
           "system": {
@@ -55252,8 +55249,6 @@
           "reportType",
           "systemName",
           "bodyName",
-          "latitude",
-          "longitude",
           "cmdrName",
           "clientVersion",
           "reportStatus"
@@ -55351,9 +55346,7 @@
           "site": {
             "required": [
               "id",
-              "siteID",
-              "latitude",
-              "longitude"
+              "siteID"
             ],
             "properties": {
               "id": {
@@ -55405,8 +55398,6 @@
           "reportType",
           "systemName",
           "bodyName",
-          "latitude",
-          "longitude",
           "cmdrName",
           "clientVersion",
           "reportStatus"
@@ -55512,9 +55503,7 @@
       "Fmsite": {
         "required": [
           "id",
-          "siteID",
-          "latitude",
-          "longitude"
+          "siteID"
         ],
         "properties": {
           "id": {
@@ -55968,9 +55957,7 @@
       },
       "NewFmsite": {
         "required": [
-          "siteID",
-          "latitude",
-          "longitude"
+          "siteID"
         ],
         "properties": {
           "system": {
@@ -57235,9 +57222,7 @@
           "gssite": {
             "required": [
               "id",
-              "siteID",
-              "latitude",
-              "longitude"
+              "siteID"
             ],
             "properties": {
               "id": {
@@ -58537,9 +58522,7 @@
           "grSite": {
             "required": [
               "id",
-              "siteID",
-              "latitude",
-              "longitude"
+              "siteID"
             ],
             "properties": {
               "id": {
@@ -58651,9 +58634,7 @@
           "grSite": {
             "required": [
               "id",
-              "siteID",
-              "latitude",
-              "longitude"
+              "siteID"
             ],
             "properties": {
               "id": {
@@ -59137,8 +59118,6 @@
               "reportType",
               "systemName",
               "bodyName",
-              "latitude",
-              "longitude",
               "type",
               "cmdrName",
               "clientVersion",
@@ -59268,8 +59247,6 @@
           "reportType",
           "systemName",
           "bodyName",
-          "latitude",
-          "longitude",
           "type",
           "cmdrName",
           "clientVersion",
@@ -59438,9 +59415,7 @@
           "site": {
             "required": [
               "id",
-              "siteID",
-              "latitude",
-              "longitude"
+              "siteID"
             ],
             "properties": {
               "id": {
@@ -59532,8 +59507,6 @@
           "reportType",
           "systemName",
           "bodyName",
-          "latitude",
-          "longitude",
           "type",
           "cmdrName",
           "clientVersion",
@@ -59646,9 +59619,7 @@
       "Grsite": {
         "required": [
           "id",
-          "siteID",
-          "latitude",
-          "longitude"
+          "siteID"
         ],
         "properties": {
           "id": {
@@ -60149,9 +60120,7 @@
       },
       "NewGrsite": {
         "required": [
-          "siteID",
-          "latitude",
-          "longitude"
+          "siteID"
         ],
         "properties": {
           "system": {
@@ -60252,9 +60221,7 @@
           "gsSite": {
             "required": [
               "id",
-              "siteID",
-              "latitude",
-              "longitude"
+              "siteID"
             ],
             "properties": {
               "id": {
@@ -60366,9 +60333,7 @@
           "gsSite": {
             "required": [
               "id",
-              "siteID",
-              "latitude",
-              "longitude"
+              "siteID"
             ],
             "properties": {
               "id": {
@@ -60935,8 +60900,6 @@
               "reportType",
               "systemName",
               "bodyName",
-              "latitude",
-              "longitude",
               "type",
               "cmdrName",
               "clientVersion",
@@ -61066,8 +61029,6 @@
           "reportType",
           "systemName",
           "bodyName",
-          "latitude",
-          "longitude",
           "type",
           "cmdrName",
           "clientVersion",
@@ -61236,9 +61197,7 @@
           "site": {
             "required": [
               "id",
-              "siteID",
-              "latitude",
-              "longitude"
+              "siteID"
             ],
             "properties": {
               "id": {
@@ -61330,8 +61289,6 @@
           "reportType",
           "systemName",
           "bodyName",
-          "latitude",
-          "longitude",
           "type",
           "cmdrName",
           "clientVersion",
@@ -61444,9 +61401,7 @@
       "Gssite": {
         "required": [
           "id",
-          "siteID",
-          "latitude",
-          "longitude"
+          "siteID"
         ],
         "properties": {
           "id": {
@@ -61951,9 +61906,7 @@
       },
       "NewGssite": {
         "required": [
-          "siteID",
-          "latitude",
-          "longitude"
+          "siteID"
         ],
         "properties": {
           "system": {
@@ -62058,8 +62011,6 @@
           "reportType",
           "systemName",
           "bodyName",
-          "latitude",
-          "longitude",
           "cmdrName",
           "clientVersion",
           "reportStatus"
@@ -62157,9 +62108,7 @@
           "site": {
             "required": [
               "id",
-              "siteID",
-              "latitude",
-              "longitude"
+              "siteID"
             ],
             "properties": {
               "id": {
@@ -62211,8 +62160,6 @@
           "reportType",
           "systemName",
           "bodyName",
-          "latitude",
-          "longitude",
           "cmdrName",
           "clientVersion",
           "reportStatus"
@@ -62318,9 +62265,7 @@
       "Gvsite": {
         "required": [
           "id",
-          "siteID",
-          "latitude",
-          "longitude"
+          "siteID"
         ],
         "properties": {
           "id": {
@@ -62774,9 +62719,7 @@
       },
       "NewGvsite": {
         "required": [
-          "siteID",
-          "latitude",
-          "longitude"
+          "siteID"
         ],
         "properties": {
           "system": {
@@ -62867,8 +62810,6 @@
           "reportType",
           "systemName",
           "bodyName",
-          "latitude",
-          "longitude",
           "cmdrName",
           "clientVersion",
           "reportStatus"
@@ -62966,9 +62907,7 @@
           "site": {
             "required": [
               "id",
-              "siteID",
-              "latitude",
-              "longitude"
+              "siteID"
             ],
             "properties": {
               "id": {
@@ -63020,8 +62959,6 @@
           "reportType",
           "systemName",
           "bodyName",
-          "latitude",
-          "longitude",
           "cmdrName",
           "clientVersion",
           "reportStatus"
@@ -63127,9 +63064,7 @@
       "Gysite": {
         "required": [
           "id",
-          "siteID",
-          "latitude",
-          "longitude"
+          "siteID"
         ],
         "properties": {
           "id": {
@@ -63583,9 +63518,7 @@
       },
       "NewGysite": {
         "required": [
-          "siteID",
-          "latitude",
-          "longitude"
+          "siteID"
         ],
         "properties": {
           "system": {
@@ -64033,8 +63966,6 @@
           "reportType",
           "systemName",
           "bodyName",
-          "latitude",
-          "longitude",
           "cmdrName",
           "clientVersion",
           "reportStatus"
@@ -64132,9 +64063,7 @@
           "site": {
             "required": [
               "id",
-              "siteID",
-              "latitude",
-              "longitude"
+              "siteID"
             ],
             "properties": {
               "id": {
@@ -64186,8 +64115,6 @@
           "reportType",
           "systemName",
           "bodyName",
-          "latitude",
-          "longitude",
           "cmdrName",
           "clientVersion",
           "reportStatus"
@@ -64293,9 +64220,7 @@
       "Lssite": {
         "required": [
           "id",
-          "siteID",
-          "latitude",
-          "longitude"
+          "siteID"
         ],
         "properties": {
           "id": {
@@ -64749,9 +64674,7 @@
       },
       "NewLssite": {
         "required": [
-          "siteID",
-          "latitude",
-          "longitude"
+          "siteID"
         ],
         "properties": {
           "system": {
@@ -66423,9 +66346,7 @@
             "items": {
               "required": [
                 "id",
-                "siteID",
-                "latitude",
-                "longitude"
+                "siteID"
               ],
               "properties": {
                 "id": {
@@ -66475,9 +66396,7 @@
             "items": {
               "required": [
                 "id",
-                "siteID",
-                "latitude",
-                "longitude"
+                "siteID"
               ],
               "properties": {
                 "id": {
@@ -66527,9 +66446,7 @@
             "items": {
               "required": [
                 "id",
-                "siteID",
-                "latitude",
-                "longitude"
+                "siteID"
               ],
               "properties": {
                 "id": {
@@ -66580,8 +66497,6 @@
               "required": [
                 "id",
                 "siteID",
-                "latitude",
-                "longitude",
                 "verified"
               ],
               "properties": {
@@ -66632,9 +66547,7 @@
             "items": {
               "required": [
                 "id",
-                "siteID",
-                "latitude",
-                "longitude"
+                "siteID"
               ],
               "properties": {
                 "id": {
@@ -66684,9 +66597,7 @@
             "items": {
               "required": [
                 "id",
-                "siteID",
-                "latitude",
-                "longitude"
+                "siteID"
               ],
               "properties": {
                 "id": {
@@ -66828,9 +66739,7 @@
             "items": {
               "required": [
                 "id",
-                "siteID",
-                "latitude",
-                "longitude"
+                "siteID"
               ],
               "properties": {
                 "id": {
@@ -66892,9 +66801,7 @@
             "items": {
               "required": [
                 "id",
-                "siteID",
-                "latitude",
-                "longitude"
+                "siteID"
               ],
               "properties": {
                 "id": {
@@ -66956,9 +66863,7 @@
             "items": {
               "required": [
                 "id",
-                "siteID",
-                "latitude",
-                "longitude"
+                "siteID"
               ],
               "properties": {
                 "id": {
@@ -67008,9 +66913,7 @@
             "items": {
               "required": [
                 "id",
-                "siteID",
-                "latitude",
-                "longitude"
+                "siteID"
               ],
               "properties": {
                 "id": {
@@ -67060,9 +66963,7 @@
             "items": {
               "required": [
                 "id",
-                "siteID",
-                "latitude",
-                "longitude"
+                "siteID"
               ],
               "properties": {
                 "id": {
@@ -67232,8 +67133,6 @@
               "required": [
                 "id",
                 "siteID",
-                "latitude",
-                "longitude",
                 "verified"
               ],
               "properties": {
@@ -69536,8 +69435,6 @@
           "reportType",
           "systemName",
           "bodyName",
-          "latitude",
-          "longitude",
           "cmdrName",
           "clientVersion",
           "reportStatus"
@@ -69636,8 +69533,6 @@
             "required": [
               "id",
               "siteID",
-              "latitude",
-              "longitude",
               "verified"
             ],
             "properties": {
@@ -69690,8 +69585,6 @@
           "reportType",
           "systemName",
           "bodyName",
-          "latitude",
-          "longitude",
           "cmdrName",
           "clientVersion",
           "reportStatus"
@@ -69798,8 +69691,6 @@
         "required": [
           "id",
           "siteID",
-          "latitude",
-          "longitude",
           "verified"
         ],
         "properties": {
@@ -70255,8 +70146,6 @@
       "NewTwsite": {
         "required": [
           "siteID",
-          "latitude",
-          "longitude",
           "verified"
         ],
         "properties": {

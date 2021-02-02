@@ -63,68 +63,68 @@ UPDATE tssites set visible = 1 where visible IS NULL;
 UPDATE twsites set visible = 1 where visible IS NULL;
 /* AP Sites */
 ALTER TABLE apsites MODIFY COLUMN siteID int(11) NOT NULL;
-ALTER TABLE apsites MODIFY COLUMN latitude double NOT NULL;
-ALTER TABLE apsites MODIFY COLUMN longitude double NOT NULL;
+ALTER TABLE apsites MODIFY COLUMN latitude double NULL;
+ALTER TABLE apsites MODIFY COLUMN longitude double NULL;
 ALTER TABLE apsites MODIFY COLUMN verified tinyint(1) DEFAULT 0 NOT NULL;
 ALTER TABLE apsites MODIFY COLUMN visible tinyint(1) DEFAULT 1 NOT NULL;
 /* BM Sites */
 ALTER TABLE bmsites MODIFY COLUMN siteID int(11) NOT NULL;
-ALTER TABLE bmsites MODIFY COLUMN latitude double NOT NULL;
-ALTER TABLE bmsites MODIFY COLUMN longitude double NOT NULL;
+ALTER TABLE bmsites MODIFY COLUMN latitude double NULL;
+ALTER TABLE bmsites MODIFY COLUMN longitude double NULL;
 ALTER TABLE bmsites MODIFY COLUMN verified tinyint(1) DEFAULT 0 NOT NULL;
 ALTER TABLE bmsites MODIFY COLUMN visible tinyint(1) DEFAULT 1 NOT NULL;
 /* BT Sites */
 ALTER TABLE btsites MODIFY COLUMN siteID int(11) NOT NULL;
-ALTER TABLE btsites MODIFY COLUMN latitude double NOT NULL;
-ALTER TABLE btsites MODIFY COLUMN longitude double NOT NULL;
+ALTER TABLE btsites MODIFY COLUMN latitude double NULL;
+ALTER TABLE btsites MODIFY COLUMN longitude double NULL;
 ALTER TABLE btsites MODIFY COLUMN verified tinyint(1) DEFAULT 0 NOT NULL;
 ALTER TABLE btsites MODIFY COLUMN visible tinyint(1) DEFAULT 1 NOT NULL;
 /* CS Sites */
 ALTER TABLE cssites MODIFY COLUMN siteID int(11) NOT NULL;
-ALTER TABLE cssites MODIFY COLUMN latitude double NOT NULL;
-ALTER TABLE cssites MODIFY COLUMN longitude double NOT NULL;
+ALTER TABLE cssites MODIFY COLUMN latitude double NULL;
+ALTER TABLE cssites MODIFY COLUMN longitude double NULL;
 ALTER TABLE cssites MODIFY COLUMN verified tinyint(1) DEFAULT 0 NOT NULL;
 ALTER TABLE cssites MODIFY COLUMN visible tinyint(1) DEFAULT 1 NOT NULL;
 /* FG Sites */
 ALTER TABLE fgsites MODIFY COLUMN siteID int(11) NOT NULL;
-ALTER TABLE fgsites MODIFY COLUMN latitude double NOT NULL;
-ALTER TABLE fgsites MODIFY COLUMN longitude double NOT NULL;
+ALTER TABLE fgsites MODIFY COLUMN latitude double NULL;
+ALTER TABLE fgsites MODIFY COLUMN longitude double NULL;
 ALTER TABLE fgsites MODIFY COLUMN verified tinyint(1) DEFAULT 0 NOT NULL;
 ALTER TABLE fgsites MODIFY COLUMN visible tinyint(1) DEFAULT 1 NOT NULL;
 /* FM Sites */
 ALTER TABLE fmsites MODIFY COLUMN siteID int(11) NOT NULL;
-ALTER TABLE fmsites MODIFY COLUMN latitude double NOT NULL;
-ALTER TABLE fmsites MODIFY COLUMN longitude double NOT NULL;
+ALTER TABLE fmsites MODIFY COLUMN latitude double NULL;
+ALTER TABLE fmsites MODIFY COLUMN longitude double NULL;
 ALTER TABLE fmsites MODIFY COLUMN verified tinyint(1) DEFAULT 0 NOT NULL;
 ALTER TABLE fmsites MODIFY COLUMN visible tinyint(1) DEFAULT 1 NOT NULL;
 /* GR Sites */
 ALTER TABLE grsites MODIFY COLUMN siteID int(11) NOT NULL;
-ALTER TABLE grsites MODIFY COLUMN latitude double NOT NULL;
-ALTER TABLE grsites MODIFY COLUMN longitude double NOT NULL;
+ALTER TABLE grsites MODIFY COLUMN latitude double NULL;
+ALTER TABLE grsites MODIFY COLUMN longitude double NULL;
 ALTER TABLE grsites MODIFY COLUMN verified tinyint(1) DEFAULT 0 NOT NULL;
 ALTER TABLE grsites MODIFY COLUMN visible tinyint(1) DEFAULT 1 NOT NULL;
 /* GS Sites */
 ALTER TABLE gssites MODIFY COLUMN siteID int(11) NOT NULL;
-ALTER TABLE gssites MODIFY COLUMN latitude double NOT NULL;
-ALTER TABLE gssites MODIFY COLUMN longitude double NOT NULL;
+ALTER TABLE gssites MODIFY COLUMN latitude double NULL;
+ALTER TABLE gssites MODIFY COLUMN longitude double NULL;
 ALTER TABLE gssites MODIFY COLUMN verified tinyint(1) DEFAULT 0 NOT NULL;
 ALTER TABLE gssites MODIFY COLUMN visible tinyint(1) DEFAULT 1 NOT NULL;
 /* GY Sites */
 ALTER TABLE gysites MODIFY COLUMN siteID int(11) NOT NULL;
-ALTER TABLE gysites MODIFY COLUMN latitude double NOT NULL;
-ALTER TABLE gysites MODIFY COLUMN longitude double NOT NULL;
+ALTER TABLE gysites MODIFY COLUMN latitude double NULL;
+ALTER TABLE gysites MODIFY COLUMN longitude double NULL;
 ALTER TABLE gysites MODIFY COLUMN verified tinyint(1) DEFAULT 0 NOT NULL;
 ALTER TABLE gysites MODIFY COLUMN visible tinyint(1) DEFAULT 1 NOT NULL;
 /* GV Sites */
 ALTER TABLE gvsites MODIFY COLUMN siteID int(11) NOT NULL;
-ALTER TABLE gvsites MODIFY COLUMN latitude double NOT NULL;
-ALTER TABLE gvsites MODIFY COLUMN longitude double NOT NULL;
+ALTER TABLE gvsites MODIFY COLUMN latitude double NULL;
+ALTER TABLE gvsites MODIFY COLUMN longitude double NULL;
 ALTER TABLE gvsites MODIFY COLUMN verified tinyint(1) DEFAULT 0 NOT NULL;
 ALTER TABLE gvsites MODIFY COLUMN visible tinyint(1) DEFAULT 1 NOT NULL;
 /* LS Sites */
 ALTER TABLE lssites MODIFY COLUMN siteID int(11) NOT NULL;
-ALTER TABLE lssites MODIFY COLUMN latitude double NOT NULL;
-ALTER TABLE lssites MODIFY COLUMN longitude double NOT NULL;
+ALTER TABLE lssites MODIFY COLUMN latitude double NULL;
+ALTER TABLE lssites MODIFY COLUMN longitude double NULL;
 ALTER TABLE lssites MODIFY COLUMN verified tinyint(1) DEFAULT 0 NOT NULL;
 ALTER TABLE lssites MODIFY COLUMN visible tinyint(1) DEFAULT 1 NOT NULL;
 /* TB Sites */
@@ -146,11 +146,15 @@ ALTER TABLE tssites MODIFY COLUMN verified tinyint(1) DEFAULT 0 NOT NULL;
 ALTER TABLE tssites MODIFY COLUMN visible tinyint(1) DEFAULT 1 NOT NULL;
 /* TW Sites */
 ALTER TABLE twsites MODIFY COLUMN siteID int(11) NOT NULL;
-ALTER TABLE twsites MODIFY COLUMN latitude double NOT NULL;
-ALTER TABLE twsites MODIFY COLUMN longitude double NOT NULL;
+ALTER TABLE twsites MODIFY COLUMN latitude double NULL;
+ALTER TABLE twsites MODIFY COLUMN longitude double NULL;
 ALTER TABLE twsites MODIFY COLUMN verified tinyint(1) DEFAULT 0 NOT NULL;
 ALTER TABLE twsites MODIFY COLUMN visible tinyint(1) DEFAULT 1 NOT NULL;
 /* Cleanup */
-DELETE TABLE if exists apiupdates;
-DELETE TABLE if exists cmdrkills;
-DELETE TABLE if exists cmdrs;
+DROP TABLE if exists apiupdates;
+DROP TABLE if exists cmdrkills;
+DROP TABLE if exists cmdrs;
+/* Restrict Admins */
+UPDATE strapi_administrator SET blocked = 0 where blocked IS NULL;
+UPDATE strapi_administrator SET isActive = 1 where id = 1;
+UPDATE strapi_administrator SET isActive = 0 where isActive IS NULL;

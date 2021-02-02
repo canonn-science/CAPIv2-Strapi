@@ -1,5 +1,4 @@
 module.exports = async (ctx, next) => {
-
   // Example: $ListeningPost:#index=1;
   function cleanName(name) {
     let unclean = name.toLowerCase();
@@ -13,25 +12,29 @@ module.exports = async (ctx, next) => {
 
   if (process.env.BLACKLIST_FSS == 'true') {
     if (signalName == undefined) {
-      return ctx.badRequest('You are missing an FSS signal name, please speak to your client author to ensure an FSS signal name is passed.');
+      return ctx.badRequest(
+        'You are missing an FSS signal name, please speak to your client author to ensure an FSS signal name is passed.'
+      );
     }
 
-    let signalNameQuery = await strapi.api.excludefss.services.excludefss.find({
-      fssName_contains: signalNameCleaned
+    let query = await strapi.query('excludefss').find({
+      fssName_contains: signalNameCleaned,
     });
-    let signalNameData = null;
-    let signalNameResult = signalNameQuery;
+    let signalNameData;
+    let result = query;
 
-    if (signalNameResult[0] != undefined) {
-      signalNameData = signalNameResult[0];
+    if (result[0] != undefined) {
+      signalNameData = result[0];
     } else {
-      signalNameData = null;
+      signalNameData = undefined;
     }
 
-    if (signalNameData != null && signalNameData != undefined && cleanName(signalNameData.fssName) == signalNameCleaned) {
-      return ctx.badRequest(`The FSS Signal Name: ${signalName} is in our blacklist. You should update your client or talk to the author.`);
+    if (signalNameData && cleanName(signalNameData.fssName) == signalNameCleaned) {
+      return ctx.badRequest(
+        `The FSS Signal Name: ${signalName} is in our blacklist. You should update your client or talk to the author.`
+      );
     }
   }
 
-  return await next();
+  await next();
 };

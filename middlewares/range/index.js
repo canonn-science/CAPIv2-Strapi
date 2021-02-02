@@ -32,7 +32,7 @@ module.exports = strapi => {
                 await strapi.query(model).countSearch(ctx.request.query)
               );
             } catch (error) {
-              throw new Error('Failed to set countSearch header on model:' + model);
+              //throw new Error('Failed to set countSearch header on model:' + model);
             }
           } else {
             // Do count and set header
@@ -42,7 +42,7 @@ module.exports = strapi => {
                 await strapi.query(model).count(ctx.request.query)
               );
             } catch (error) {
-              throw new Error('Failed to set count header on model:' + model);
+              //throw new Error('Failed to set count header on model:' + model);
             }
           }
         }

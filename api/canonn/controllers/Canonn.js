@@ -1,5 +1,8 @@
 'use strict';
-let fetch = require('node-fetch');
+const fetch = require('node-fetch');
+const pluralize = require('pluralize');
+const { sanitizeEntity } = require('strapi-utils');
+const yup = require('yup');
 
 /**
  * Info.js controller
@@ -7,8 +10,8 @@ let fetch = require('node-fetch');
  * @description: A set of functions called 'actions' for managing `Info`.
  */
 
-const formatError = error => [
-  { messages: [{ id: error.id, message: error.message, field: error.field }] }
+const formatError = (error) => [
+  { messages: [{ id: error.id, message: error.message, field: error.field }] },
 ];
 
 module.exports = {
@@ -18,13 +21,13 @@ module.exports = {
    * @return {Object}
    */
 
-  info: ctx => {
+  info: (ctx) => {
     ctx.send({
       name: strapi.config.info.name,
       description: strapi.config.info.description,
       email: strapi.config.info.author.email,
       strapiVersion: strapi.config.info.strapi,
-      capiVersion: strapi.config.info.version
+      capiVersion: strapi.config.info.version,
     });
   },
 
@@ -34,11 +37,107 @@ module.exports = {
    * @return {Object}
    */
 
-  version: ctx => {
+  version: (ctx) => {
     ctx.send({
       strapiVersion: strapi.config.info.strapi,
-      capiVersion: strapi.config.info.version
+      capiVersion: strapi.config.info.version,
     });
+  },
+
+  /**
+   * Submit basic report and pass report to correct report model.
+   *
+   * @return {Object}
+   */
+
+  // WIP Will NOT support non-standard models such as TS/GEN/GB
+  // TODO: Maybe support bulk? Map an array and create multiple reports
+
+  submitReport: async (ctx) => {
+    let requestBody = ctx.request.body;
+    let model;
+    let type;
+
+    // Find type for model lookup
+    if (requestBody.type) {
+      type = await strapi.query('reporttype').findOne({ type: requestBody.type });
+    } else if (requestBody.raw_json.EntryID) {
+      type = await strapi.query('reporttype').findOne({ journalID: requestBody.raw_json.EntryID });
+    } else {
+      return ctx.badRequest('Cannot determine report type');
+    }
+
+    // Set model based on type
+    if (type && type.endpoint) {
+      model = pluralize.singular(type.endpoint);
+    }
+
+    // TODO: Validate incoming data base on model & type (TB/GR/GS) using yup
+    let reportSchema = yup.object().shape({
+      cmdrName: yup.string().required(),
+      clientVersion: yup.string.required(),
+      isBeta: yup.boolean().required(),
+    });
+
+    // Send report to correct model, sanitize input
+    if (model) {
+      console.log(model);
+      let sentData = await strapi.query(model).create(requestBody);
+      let cleanData = sanitizeEntity(sentData, { model: strapi.models[model] });
+      cleanData.model = model;
+      return cleanData;
+    }
+
+    // If data doesn't match a model, forward data to debug model 'reportcodex'
+    let rawJson = requestBody.rawJson;
+
+    async function getFrontierID(dest) {
+      if (dest) {
+        return dest
+          .match(/index=\d/g)
+          .replace(/index=/g)
+          .parseInt();
+      } else {
+        return undefined;
+      }
+    }
+
+    let debugData = {
+      // Data sent outside of rawJson
+      cmdrName: requestBody.cmdrName,
+      clientVersion: requestBody.clientVersion,
+      isBeta: requestBody.isBeta,
+      reportStatus: 'pending',
+      rawJson,
+      // Extracted and cleaned values from rawJson
+      systemName: rawJson.System.toUpperCase(),
+      bodyName: undefined, // TODO: Ask LCU if he is going to send this
+      systemAddress: rawJson.SystemAddress,
+      latitude: undefined, // TODO: Ask LCU if he is going to send this
+      longitude: undefined, // TODO: Ask LCU if he is going to send this
+      frontierID: getFrontierID(rawJson.NearestDestination),
+      entryId: rawJson.EntryID,
+      codexName: rawJson.Name,
+      codexNameLocalised: rawJson.Name_Localised,
+      subCategory: rawJson.SubCategory,
+      subCategoryLocalised: rawJson.SubCategory_Localised,
+      category: rawJson.Category,
+      categoryLocalised: rawJson.Category_Localised,
+      regionName: rawJson.Region,
+      regionLocalised: rawJson.Region_Localised,
+      voucherAmount: rawJson.VoucherAmount,
+    };
+
+    let sentDebug = await strapi.query('reportcodex').create(debugData);
+    let cleanDebug = sanitizeEntity(sentDebug, { model: strapi.models.reportcodex });
+    if (cleanDebug) {
+      cleanDebug.model = 'reportcodex';
+      cleanDebug.isDebug = true;
+      return cleanDebug;
+    }
+    return ctx.badRequest(
+      "An error occurred posting your data to our debug model, and your data doesn't match any type map" // eslint-disable-line
+    );
   },
 
   /**
@@ -47,7 +146,7 @@ module.exports = {
    * @return {Object}
    */
 
-  nearby: async ctx => {
+  nearby: async (ctx) => {
     // Making code easier to read
     let query = ctx.request.query;
 
@@ -60,7 +159,7 @@ module.exports = {
       if (!system || system.length === 0) {
         let edsmFetch = await fetch(
           'https://www.edsm.net/api-v1/system?showCoordinates=1&systemName=' +
-          encodeURIComponent(query.systemName)
+            encodeURIComponent(query.systemName)
         );
 
         system = await edsmFetch.json();
@@ -68,7 +167,10 @@ module.exports = {
 
       // Check if both CAPI and EDSM don't have the system
       // TO_DO: Add a way to send direct x/y/z instead of system lookup
-      if (!system.coords && (!system[0].edsmCoordX || !system[0].edsmCoordY || !system[0].edsmCoordZ)) {
+      if (
+        !system.coords &&
+        (!system[0].edsmCoordX || !system[0].edsmCoordY || !system[0].edsmCoordZ)
+      ) {
         return ctx.badRequest('System cannot be found, are you sending data to EDSM?');
       } else {
         let coords;
@@ -78,13 +180,13 @@ module.exports = {
           coords = {
             x: system.coords.x,
             y: system.coords.y,
-            z: system.coords.z
+            z: system.coords.z,
           };
         } else {
           coords = {
             x: system[0].edsmCoordX,
             y: system[0].edsmCoordY,
-            z: system[0].edsmCoordZ
+            z: system[0].edsmCoordZ,
           };
         }
 
@@ -96,27 +198,22 @@ module.exports = {
           edsmCoordY_lte: coords.y + query.distance / 2,
           edsmCoordZ_gte: coords.z - query.distance / 2,
           edsmCoordZ_lte: coords.z + query.distance / 2,
-          _start: parseInt(query._start) || 0
+          _start: parseInt(query._start) || 0,
         };
 
         let systemFetch = await strapi.query('system').find(params);
         ctx.set('Content-Range', await strapi.query('system').count(params));
         return systemFetch;
       }
-
     } else {
       let missing = [];
       if (!query.systemName || typeof query.systemName !== 'string') {
         missing.push({ systemName: 'systemName must be defined and a string' });
       }
 
-      if (
-        !query.distance ||
-        isNaN(query.distance) === true ||
-        query.distance > 100
-      ) {
+      if (!query.distance || isNaN(query.distance) === true || query.distance > 100) {
         missing.push({
-          distance: 'distance must be defined, an integer, and less than 100'
+          distance: 'distance must be defined, an integer, and less than 100',
         });
       }
 
@@ -134,7 +231,7 @@ module.exports = {
    * @return {Object}
    */
 
-  totalCount: async ctx => {
+  totalCount: async (ctx) => {
     let sites = {
       ap: {},
       bm: {},
@@ -151,7 +248,7 @@ module.exports = {
       ls: {},
       tb: {},
       ts: {},
-      tw: {}
+      tw: {},
     };
 
     let totals = {
@@ -162,31 +259,31 @@ module.exports = {
         duplicate: 0,
         declined: 0,
         issue: 0,
-        total: 0
-      }
+        total: 0,
+      },
     };
 
-    const getCount = async key => {
+    const getCount = async (key) => {
       let data = {
         sites: await strapi.services[`${key}site`].count(),
         reports: {
           pending: await strapi.services[`${key}report`].count({
-            reportStatus: 'pending'
+            reportStatus: 'pending',
           }),
           accepted: await strapi.services[`${key}report`].count({
-            reportStatus: 'accepted'
+            reportStatus: 'accepted',
           }),
           duplicate: await strapi.services[`${key}report`].count({
-            reportStatus: 'duplicate'
+            reportStatus: 'duplicate',
           }),
           declined: await strapi.services[`${key}report`].count({
-            reportStatus: 'declined'
+            reportStatus: 'declined',
           }),
           issue: await strapi.services[`${key}report`].count({
-            reportStatus: 'issue'
+            reportStatus: 'issue',
           }),
-          total: await strapi.services[`${key}report`].count({})
-        }
+          total: await strapi.services[`${key}report`].count({}),
+        },
       };
 
       let noType = ['gen', 'gb', 'ts'];
@@ -195,40 +292,36 @@ module.exports = {
         let getTypes = await strapi.services[`${key}type`].find();
 
         for (let i = 0; i < getTypes.length; i++) {
-          data.types[getTypes[i].type] = await strapi.services[
-            `${key}site`
-          ].count({ type: getTypes[i].id });
+          data.types[getTypes[i].type] = await strapi.services[`${key}site`].count({
+            type: getTypes[i].id,
+          });
         }
       } else if (key === 'ts') {
         data.status = {
           Unknown: await strapi.services.tssite.count({ status: 1 }),
           Active: await strapi.services.tssite.count({ status: 2 }),
-          Inactive: await strapi.services.tssite.count({ status: 3 })
+          Inactive: await strapi.services.tssite.count({ status: 3 }),
         };
       }
 
       return data;
     };
 
-    const setCount = async sites => {
+    const setCount = async (sites) => {
       let keys = Object.keys(sites);
       for (let i = 0; i < keys.length; i++) {
         let count = await getCount(keys[i]);
         sites[`${keys[i]}`] = count;
         totals.sites = parseInt(totals.sites) + parseInt(count.sites);
-        totals.reports.pending =
-          parseInt(totals.reports.pending) + parseInt(count.reports.pending);
+        totals.reports.pending = parseInt(totals.reports.pending) + parseInt(count.reports.pending);
         totals.reports.accepted =
           parseInt(totals.reports.accepted) + parseInt(count.reports.accepted);
         totals.reports.duplicate =
-          parseInt(totals.reports.duplicate) +
-          parseInt(count.reports.duplicate);
+          parseInt(totals.reports.duplicate) + parseInt(count.reports.duplicate);
         totals.reports.declined =
           parseInt(totals.reports.declined) + parseInt(count.reports.declined);
-        totals.reports.issue =
-          parseInt(totals.reports.issue) + parseInt(count.reports.issue);
-        totals.reports.total =
-          parseInt(totals.reports.total) + parseInt(count.reports.total);
+        totals.reports.issue = parseInt(totals.reports.issue) + parseInt(count.reports.issue);
+        totals.reports.total = parseInt(totals.reports.total) + parseInt(count.reports.total);
       }
     };
 
@@ -236,7 +329,7 @@ module.exports = {
 
     return {
       total: totals,
-      data: sites
+      data: sites,
     };
   },
 
@@ -246,7 +339,7 @@ module.exports = {
    * @return {Array}
    */
 
-  stats: async ctx => {
+  stats: async (ctx) => {
     const approvedList = [
       'ap',
       'bm',
@@ -261,16 +354,14 @@ module.exports = {
       'ls',
       'tb',
       'ts',
-      'tw'
+      'tw',
     ];
 
     let siteData;
 
     if (ctx.query.type && approvedList.includes(ctx.query.type.toLowerCase())) {
       // Fetch all data
-      siteData = await strapi
-        .query(ctx.query.type.toLowerCase() + 'site')
-        .find({ _limit: -1 });
+      siteData = await strapi.query(ctx.query.type.toLowerCase() + 'site').find({ _limit: -1 });
     } else {
       ctx.status = 400;
       ctx.message = `The type ${ctx.query.type.toLowerCase()} either doesn't exist or does not allow stat lookups`;
@@ -278,7 +369,7 @@ module.exports = {
       return {
         statusCode: ctx.status,
         error: 'Type is not supported',
-        message: ctx.message
+        message: ctx.message,
       };
     }
 
@@ -312,7 +403,7 @@ module.exports = {
     let stats = {
       siteCount: siteData.length,
       system: {
-        primaryStar: {}
+        primaryStar: {},
       },
 
       body: {
@@ -333,15 +424,15 @@ module.exports = {
         orbitalInclination: {},
         argOfPeriapsis: {},
         rotationalPeriod: {},
-        axialTilt: {}
+        axialTilt: {},
       },
 
       type: {
-        type: {}
-      }
+        type: {},
+      },
     };
 
-    siteData.forEach(site => {
+    siteData.forEach((site) => {
       // System
       updateKeyObject(stats.system.primaryStar, site.system.primaryStar.type);
 
@@ -352,35 +443,23 @@ module.exports = {
       updateKeyMath(stats.body.gravity, site.body.gravity);
       updateKeyMath(stats.body.earthMasses, site.body.earthMasses);
       updateKeyMath(stats.body.radius, site.body.radius);
-      updateKeyMath(
-        stats.body.surfaceTemperature,
-        site.body.surfaceTemperature
-      );
+      updateKeyMath(stats.body.surfaceTemperature, site.body.surfaceTemperature);
       updateKeyMath(stats.body.orbitalPeriod, site.body.orbitalPeriod);
       updateKeyMath(stats.body.semiMajorAxis, site.body.semiMajorAxis);
-      updateKeyMath(
-        stats.body.orbitalEccentricity,
-        site.body.orbitalEccentricity
-      );
-      updateKeyMath(
-        stats.body.orbitalInclination,
-        site.body.orbitalInclination
-      );
+      updateKeyMath(stats.body.orbitalEccentricity, site.body.orbitalEccentricity);
+      updateKeyMath(stats.body.orbitalInclination, site.body.orbitalInclination);
       updateKeyMath(stats.body.argOfPeriapsis, site.body.argOfPeriapsis);
       updateKeyMath(stats.body.rotationalPeriod, site.body.rotationalPeriod);
       updateKeyMath(stats.body.axialTilt, site.body.axialTilt);
 
       updateKeyObject(stats.body.subType, site.body.subType);
       updateKeyObject(stats.body.volcanismType, site.body.volcanismType);
-      updateKeyObject(
-        stats.body.terraformingState,
-        site.body.terraformingState
-      );
+      updateKeyObject(stats.body.terraformingState, site.body.terraformingState);
 
       // Type
       updateKeyObject(stats.type.type, site.type.type);
     });
 
     return stats;
-  }
+  },
 };

@@ -1,6 +1,14 @@
 {
   "routes": [
     {
+      "method": "POST",
+      "path": "/submit-report",
+      "handler": "canonn.submitReport",
+      "config": {
+        "policies": ["global::block-client", "global::block-cmdr"]
+      }
+    },
+    {
       "method": "GET",
       "path": "/info",
       "handler": "canonn.info",

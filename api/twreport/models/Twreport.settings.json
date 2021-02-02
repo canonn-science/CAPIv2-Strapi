@@ -14,20 +14,13 @@
       "default": "console",
       "type": "enumeration",
       "required": true,
-      "enum": [
-        "console",
-        "pc"
-      ]
+      "enum": ["console", "pc"]
     },
     "reportType": {
       "default": "new",
       "type": "enumeration",
       "required": true,
-      "enum": [
-        "new",
-        "update",
-        "error"
-      ]
+      "enum": ["new", "update", "error"]
     },
     "systemName": {
       "type": "string",
@@ -54,13 +47,13 @@
     },
     "latitude": {
       "type": "float",
-      "required": true,
+      "required": false,
       "min": -90,
       "max": 90
     },
     "longitude": {
       "type": "float",
-      "required": true,
+      "required": false,
       "min": -180,
       "max": 180
     },
@@ -89,15 +82,7 @@
       "default": "pending",
       "type": "enumeration",
       "required": true,
-      "enum": [
-        "pending",
-        "updated",
-        "verified",
-        "accepted",
-        "declined",
-        "issue",
-        "duplicate"
-      ]
+      "enum": ["pending", "updated", "verified", "accepted", "declined", "issue", "duplicate"]
     },
     "reportComment": {
       "type": "text"
