@@ -62,32 +62,32 @@ module.exports = async (ctx, next) => {
   }
 
   // Check latitude has a value if required that is between -90 & 90
-  if (reportModel.latitude != undefined) {
-    if (reportModel.latitude.required == true) {
-      if (values.latitude == undefined) {
-        return ctx.badRequest(
-          'You are missing a latitude value, this is a body POI which requires latitude/longitude.'
-        );
-      } else if (values.latitude < -90 || values.latitude > 90) {
-        return ctx.badRequest('Your latitude value falls outside the possible range of -90 to 90.');
-      }
-    }
-  }
+  // if (reportModel.latitude != undefined) {
+  //   if (reportModel.latitude.required == true) {
+  //     if (values.latitude == undefined) {
+  //       return ctx.badRequest(
+  //         'You are missing a latitude value, this is a body POI which requires latitude/longitude.'
+  //       );
+  //     } else if (values.latitude < -90 || values.latitude > 90) {
+  //       return ctx.badRequest('Your latitude value falls outside the possible range of -90 to 90.');
+  //     }
+  //   }
+  // }
 
   // Check longitude has a value if required that is between -180 & 180
-  if (reportModel.latitude != undefined) {
-    if (reportModel.longitude.required == true) {
-      if (values.longitude == undefined) {
-        return ctx.badRequest(
-          'You are missing a longitude value, this is a body POI which requires longitude/longitude.'
-        );
-      } else if (values.longitude < -180 || values.longitude > 180) {
-        return ctx.badRequest(
-          'Your longitude value falls outside the possible range of -180 to 180.'
-        );
-      }
-    }
-  }
+  // if (reportModel.longitude != undefined) {
+  //   if (reportModel.longitude.required == true) {
+  //     if (values.longitude == undefined) {
+  //       return ctx.badRequest(
+  //         'You are missing a longitude value, this is a body POI which requires longitude/longitude.'
+  //       );
+  //     } else if (values.longitude < -180 || values.longitude > 180) {
+  //       return ctx.badRequest(
+  //         'Your longitude value falls outside the possible range of -180 to 180.'
+  //       );
+  //     }
+  //   }
+  // }
 
   // Check reportStatus has a value and is in the enum
   // ["pending", "updated", "verified", "accepted", "declined", "issue", "duplicate"]
