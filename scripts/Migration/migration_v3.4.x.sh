@@ -20,4 +20,8 @@ sleep 10
 
 # Import core dump
 echo "Running core migration"
-yarn strapi config:restore -f core_dump/dump_3.4.3.json -s replace
+yarn strapi config:restore -f core_dump/dump_3.4.x.json -s replace
+
+# Strapi Migration Guide Script
+echo "Running Strapi migration guide script"
+node scripts/Migration/migrate_v3.4.x_strapi.js ./

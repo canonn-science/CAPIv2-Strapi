@@ -521,8 +521,6 @@
           "reportType",
           "systemName",
           "bodyName",
-          "latitude",
-          "longitude",
           "cmdrName",
           "clientVersion",
           "reportStatus"
@@ -620,9 +618,7 @@
           "site": {
             "required": [
               "id",
-              "siteID",
-              "latitude",
-              "longitude"
+              "siteID"
             ],
             "properties": {
               "id": {
@@ -674,8 +670,6 @@
           "reportType",
           "systemName",
           "bodyName",
-          "latitude",
-          "longitude",
           "cmdrName",
           "clientVersion",
           "reportStatus"
