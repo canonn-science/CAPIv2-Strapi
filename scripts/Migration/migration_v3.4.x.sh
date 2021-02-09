@@ -45,4 +45,9 @@ echo "Running Strapi migration guide script"
 NODE_ENV=$APP_ENV node scripts/Migration/migrate_v3.4.x_strapi.js ./
 sleep 10
 
+# Strapi admin users fix
+echo "Fixing Strapi admin users"
+mysql --user=$DATA_USER --password=$DATA_PASS $DATA_TABLE < scripts/Migration/migrate_v3.4.x_fixAdmin.sql
+sleep 10
+
 echo "Migration done!"
