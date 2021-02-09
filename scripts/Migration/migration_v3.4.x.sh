@@ -1,11 +1,13 @@
 #!/bin/bash
-DATA_USER=$1
-DATA_PASS=$2
-DATA_TABLE=$3
+APP_ENV=$1
 
-USER_USER=$4
-USER_PASS=$5
-USER_TABLE=$6
+DATA_USER=$2
+DATA_PASS=$3
+DATA_TABLE=$4
+
+USER_USER=$5
+USER_PASS=$6
+USER_TABLE=$7
 
 # Run SQL Migration
 echo "Running data migration"
@@ -35,12 +37,12 @@ sleep 10
 
 # Import core dump
 echo "Running core migration"
-yarn strapi config:restore -f core_dump/dump_3.4.x.json -s replace
+NODE_ENV=$APP_ENV yarn strapi config:restore -f core_dump/dump_3.4.x.json -s replace
 sleep 10
 
 # Strapi Migration Guide Script
 echo "Running Strapi migration guide script"
-node scripts/Migration/migrate_v3.4.x_strapi.js ./
+NODE_ENV=$APP_ENV node scripts/Migration/migrate_v3.4.x_strapi.js ./
 sleep 10
 
 echo "Migration done!"
