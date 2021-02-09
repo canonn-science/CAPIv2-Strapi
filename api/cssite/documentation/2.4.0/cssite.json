@@ -1,0 +1,1025 @@
+{
+  "paths": {
+    "/cssites": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Cssite"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Cssite"
+        ],
+        "parameters": [
+          {
+            "name": "_limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of results possible",
+            "schema": {
+              "type": "integer"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_sort",
+            "in": "query",
+            "required": false,
+            "description": "Sort according to a specific field.",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_start",
+            "in": "query",
+            "required": false,
+            "description": "Skip a specific number of entries (especially useful for pagination)",
+            "schema": {
+              "type": "integer"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "=",
+            "in": "query",
+            "required": false,
+            "description": "Get entries that matches exactly your input",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_ne",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are not equals to something",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_lt",
+            "in": "query",
+            "required": false,
+            "description": "Get record that are lower than a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_lte",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are lower than or equal to a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_gt",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are greater than a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_gte",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are greater than  or equal a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_contains",
+            "in": "query",
+            "required": false,
+            "description": "Get records that contains a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_containss",
+            "in": "query",
+            "required": false,
+            "description": "Get records that contains (case sensitive) a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_in",
+            "in": "query",
+            "required": false,
+            "description": "Get records that matches any value in the array of values",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_nin",
+            "in": "query",
+            "required": false,
+            "description": "Get records that doesn't match any value in the array of values",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "deprecated": false
+          }
+        ]
+      },
+      "post": {
+        "deprecated": false,
+        "description": "Create a new record",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cssite"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Cssite"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewCssite"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cssites/count": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "count": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Cssite"
+        ],
+        "parameters": []
+      }
+    },
+    "/cssites/{id}": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cssite"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Cssite"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "put": {
+        "deprecated": false,
+        "description": "Update a record",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cssite"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Cssite"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewCssite"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "delete": {
+        "deprecated": false,
+        "description": "Delete a record",
+        "responses": {
+          "200": {
+            "description": "deletes a single record based on the ID supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Cssite"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Cssite": {
+        "required": [
+          "id",
+          "siteID",
+          "verified"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "system": {
+            "required": [
+              "id",
+              "systemName"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "systemName": {
+                "type": "string"
+              },
+              "id64": {
+                "type": "string"
+              },
+              "edsmID": {
+                "type": "integer"
+              },
+              "edsmCoordX": {
+                "type": "number"
+              },
+              "edsmCoordY": {
+                "type": "number"
+              },
+              "edsmCoordZ": {
+                "type": "number"
+              },
+              "edsmCoordLocked": {
+                "type": "boolean"
+              },
+              "missingSkipCount": {
+                "type": "integer"
+              },
+              "bodies": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "region": {
+                "type": "string"
+              },
+              "primaryStar": {
+                "type": "object"
+              },
+              "apsites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "bmsites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "btsites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "cssites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "fgsites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "fmsites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "gbsites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "gensites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "grsites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "gssites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "gvsites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "gysites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "lssites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "tbsites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "tssites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "twsites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "body": {
+            "required": [
+              "id",
+              "bodyName"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "system": {
+                "type": "string"
+              },
+              "bodyName": {
+                "type": "string"
+              },
+              "id64": {
+                "type": "string"
+              },
+              "edsmID": {
+                "type": "integer"
+              },
+              "bodyID": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "string"
+              },
+              "subType": {
+                "type": "string"
+              },
+              "offset": {
+                "type": "integer"
+              },
+              "distanceToArrival": {
+                "type": "integer"
+              },
+              "isMainStar": {
+                "type": "boolean"
+              },
+              "isScoopable": {
+                "type": "boolean"
+              },
+              "isLandable": {
+                "type": "boolean"
+              },
+              "age": {
+                "type": "integer"
+              },
+              "luminosity": {
+                "type": "string"
+              },
+              "absoluteMagnitude": {
+                "type": "number"
+              },
+              "solarMasses": {
+                "type": "number"
+              },
+              "solarRadius": {
+                "type": "number"
+              },
+              "gravity": {
+                "type": "number"
+              },
+              "earthMasses": {
+                "type": "number"
+              },
+              "radius": {
+                "type": "number"
+              },
+              "surfaceTemperature": {
+                "type": "number"
+              },
+              "surfacePressure": {
+                "type": "number"
+              },
+              "volcanismType": {
+                "type": "string"
+              },
+              "atmosphereType": {
+                "type": "string"
+              },
+              "terraformingState": {
+                "type": "string"
+              },
+              "orbitalPeriod": {
+                "type": "number"
+              },
+              "semiMajorAxis": {
+                "type": "number"
+              },
+              "orbitalEccentricity": {
+                "type": "number"
+              },
+              "orbitalInclination": {
+                "type": "number"
+              },
+              "argOfPeriapsis": {
+                "type": "number"
+              },
+              "rotationalPeriod": {
+                "type": "number"
+              },
+              "rotationalPeriodTidallyLocked": {
+                "type": "boolean"
+              },
+              "axialTilt": {
+                "type": "number"
+              },
+              "solidComposition": {
+                "type": "object"
+              },
+              "atmosphere": {
+                "type": "object"
+              },
+              "material": {
+                "type": "object"
+              },
+              "missingSkipCount": {
+                "type": "integer"
+              },
+              "rings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "apsites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "bmsites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "btsites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "cssites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "fgsites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "fmsites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "gbsites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "gensites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "grsites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "gssites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "gvsites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "gysites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "lssites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "tbsites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "tssites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "twsites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "siteID": {
+            "type": "integer"
+          },
+          "latitude": {
+            "type": "number"
+          },
+          "longitude": {
+            "type": "number"
+          },
+          "type": {
+            "required": [
+              "id",
+              "type"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "journalName": {
+                "type": "string"
+              },
+              "journalID": {
+                "type": "integer"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "frontierID": {
+            "type": "integer"
+          },
+          "verified": {
+            "type": "boolean"
+          },
+          "visible": {
+            "type": "boolean",
+            "default": true
+          },
+          "discoveredBy": {
+            "required": [
+              "id",
+              "cmdrName"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "cmdrName": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "NewCssite": {
+        "required": [
+          "siteID",
+          "verified"
+        ],
+        "properties": {
+          "system": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "siteID": {
+            "type": "integer"
+          },
+          "latitude": {
+            "type": "number"
+          },
+          "longitude": {
+            "type": "number"
+          },
+          "type": {
+            "type": "string"
+          },
+          "frontierID": {
+            "type": "integer"
+          },
+          "verified": {
+            "type": "boolean"
+          },
+          "visible": {
+            "type": "boolean",
+            "default": true
+          },
+          "discoveredBy": {
+            "type": "string"
+          },
+          "created_by": {
+            "type": "string"
+          },
+          "updated_by": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Cssite"
+    }
+  ]
+}

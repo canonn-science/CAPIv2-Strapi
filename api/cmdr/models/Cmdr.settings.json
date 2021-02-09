@@ -1,15 +1,13 @@
 {
-  "connection": "users",
+  "kind": "collectionType",
+  "connection": "default",
   "collectionName": "cmdrs",
   "info": {
     "name": "cmdr"
   },
   "options": {
     "increments": true,
-    "timestamps": [
-      "created_at",
-      "updated_at"
-    ],
+    "timestamps": ["created_at", "updated_at"],
     "comment": ""
   },
   "attributes": {
@@ -17,10 +15,6 @@
       "unique": true,
       "type": "string",
       "required": true
-    },
-    "cmdrkill": {
-      "model": "cmdrkill",
-      "via": "cmdr"
     }
   }
 }

@@ -1,15 +1,12 @@
 {
-  "connection": "users",
+  "connection": "default",
   "collectionName": "users-permissions_user",
   "info": {
     "name": "user",
     "description": ""
   },
   "options": {
-    "timestamps": [
-      "created_at",
-      "updated_at"
-    ]
+    "timestamps": ["created_at", "updated_at"]
   },
   "attributes": {
     "username": {
@@ -56,12 +53,13 @@
       "plugin": "users-permissions",
       "configurable": false
     },
+    "confirmationToken": {
+      "type": "string",
+      "configurable": false,
+      "private": true
+    },
     "cmdrs": {
       "collection": "cmdr"
-    },
-    "authtokens": {
-      "collection": "authtoken",
-      "via": "user"
     }
   }
 }
