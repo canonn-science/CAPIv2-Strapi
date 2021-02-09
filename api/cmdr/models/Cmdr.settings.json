@@ -1,16 +1,13 @@
 {
   "kind": "collectionType",
-  "connection": "users",
+  "connection": "default",
   "collectionName": "cmdrs",
   "info": {
     "name": "cmdr"
   },
   "options": {
     "increments": true,
-    "timestamps": [
-      "created_at",
-      "updated_at"
-    ],
+    "timestamps": ["created_at", "updated_at"],
     "comment": ""
   },
   "attributes": {
