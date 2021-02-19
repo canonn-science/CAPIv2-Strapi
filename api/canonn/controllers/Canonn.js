@@ -78,6 +78,10 @@ module.exports = {
 
   submitReport: async (ctx) => {
     let requestBody = ctx.request.body;
+    let format =
+      typeof ctx.request.headers.reportformat != 'undefined'
+        ? ctx.request.headers.reportformat
+        : 'unknown';
     let model;
     let type;
 

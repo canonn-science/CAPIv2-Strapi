@@ -1252,22 +1252,25 @@
             }
           },
           "cmdrs": {
-            "required": [
-              "id",
-              "cmdrName"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "cmdrName": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "cmdrName"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "cmdrName": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
               }
             }
           }
@@ -1313,7 +1316,10 @@
             "type": "string"
           },
           "cmdrs": {
-            "type": "string"
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "created_by": {
             "type": "string"

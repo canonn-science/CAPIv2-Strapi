@@ -562,7 +562,10 @@
                   "type": "string"
                 },
                 "cmdrs": {
-                  "type": "string"
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 },
                 "created_by": {
                   "type": "string"

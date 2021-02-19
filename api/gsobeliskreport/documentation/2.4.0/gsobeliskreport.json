@@ -539,10 +539,19 @@
                 "type": "string"
               },
               "userType": {
-                "type": "string"
+                "type": "string",
+                "enum": [
+                  "console",
+                  "pc"
+                ]
               },
               "reportType": {
-                "type": "string"
+                "type": "string",
+                "enum": [
+                  "new",
+                  "update",
+                  "error"
+                ]
               },
               "systemName": {
                 "type": "string"
@@ -596,7 +605,16 @@
                 }
               },
               "reportStatus": {
-                "type": "string"
+                "type": "string",
+                "enum": [
+                  "pending",
+                  "updated",
+                  "verified",
+                  "accepted",
+                  "declined",
+                  "issue",
+                  "duplicate"
+                ]
               },
               "reportComment": {
                 "type": "string"

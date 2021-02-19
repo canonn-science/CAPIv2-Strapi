@@ -14,7 +14,7 @@
       "name": "GNU-GPLv3",
       "url": "https://github.com/canonn-science/CAPIv2-Strapi/blob/development/LICENSE"
     },
-    "x-generation-date": "02/08/2021 7:54:40 PM"
+    "x-generation-date": "02/18/2021 6:41:46 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -59185,10 +59185,19 @@
                 "type": "string"
               },
               "userType": {
-                "type": "string"
+                "type": "string",
+                "enum": [
+                  "console",
+                  "pc"
+                ]
               },
               "reportType": {
-                "type": "string"
+                "type": "string",
+                "enum": [
+                  "new",
+                  "update",
+                  "error"
+                ]
               },
               "systemName": {
                 "type": "string"
@@ -59242,7 +59251,16 @@
                 }
               },
               "reportStatus": {
-                "type": "string"
+                "type": "string",
+                "enum": [
+                  "pending",
+                  "updated",
+                  "verified",
+                  "accepted",
+                  "declined",
+                  "issue",
+                  "duplicate"
+                ]
               },
               "reportComment": {
                 "type": "string"
@@ -60967,10 +60985,19 @@
                 "type": "string"
               },
               "userType": {
-                "type": "string"
+                "type": "string",
+                "enum": [
+                  "console",
+                  "pc"
+                ]
               },
               "reportType": {
-                "type": "string"
+                "type": "string",
+                "enum": [
+                  "new",
+                  "update",
+                  "error"
+                ]
               },
               "systemName": {
                 "type": "string"
@@ -61024,7 +61051,16 @@
                 }
               },
               "reportStatus": {
-                "type": "string"
+                "type": "string",
+                "enum": [
+                  "pending",
+                  "updated",
+                  "verified",
+                  "accepted",
+                  "declined",
+                  "issue",
+                  "duplicate"
+                ]
               },
               "reportComment": {
                 "type": "string"
@@ -70423,7 +70459,10 @@
                   "type": "string"
                 },
                 "cmdrs": {
-                  "type": "string"
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 },
                 "created_by": {
                   "type": "string"
@@ -70539,22 +70578,25 @@
             }
           },
           "cmdrs": {
-            "required": [
-              "id",
-              "cmdrName"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "cmdrName": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "cmdrName"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "cmdrName": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
               }
             }
           }
@@ -70600,7 +70642,10 @@
             "type": "string"
           },
           "cmdrs": {
-            "type": "string"
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "created_by": {
             "type": "string"
