@@ -50,27 +50,20 @@ module.exports = (strapi) => {
         try {
           // Only send model analytics, skip admin and graphql
           if (model && model in strapi.models) {
-            await Countly.request({
-              app_key: settings.key,
-              device_id: uid,
-              events: JSON.stringify([
-                {
-                  request: ctx.request.method + ' ' + ctx.request.path,
-                },
-              ]),
-              metrics: JSON.stringify({
-                $current_url: strapi.config.server.url + ctx.request.path,
-                method: ctx.request.method,
-                path: ctx.request.path,
-                status: ctx.response.status,
-                model,
-                query: ctx.query,
-                params: ctx.params,
-                userData,
-                requestBody: ctx.request.body,
-                requestHeaders: ctx.request.headers,
-                responseHeaders: ctx.response.headers,
-              }),
+            await Countly.add_event({
+              key: 'apiRequest',
+              route: ctx.request.method + ' ' + ctx.request.path,
+              $current_url: strapi.config.server.url + ctx.request.path,
+              method: ctx.request.method,
+              path: ctx.request.path,
+              status: ctx.response.status,
+              model,
+              query: ctx.query,
+              params: ctx.params,
+              userData,
+              requestBody: ctx.request.body,
+              requestHeaders: ctx.request.headers,
+              responseHeaders: ctx.response.headers,
             });
           }
         } catch (error) {
