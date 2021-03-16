@@ -1,8 +1,8 @@
 module.exports = ({ env }) => ({
   load: {
     before: ['responseTime', 'logger', 'cors', 'responses', 'gzip'],
-    order: ['users-permissions', 'range', 'posthog', 'cache'],
-    after: ['parser', 'router', 'sentry', 'users-permissions', 'range', 'posthog', 'cache'],
+    order: ['users-permissions', 'range', 'COUNTLY', 'cache'],
+    after: ['parser', 'router', 'sentry', 'users-permissions', 'range', 'COUNTLY', 'cache'],
   },
   settings: {
     range: {
@@ -47,11 +47,12 @@ module.exports = ({ env }) => ({
         'Accept',
       ],
     },
-    posthog: {
-      enabled: env.bool('POSTHOG_ENABLED', false),
-      send: env.bool('POSTHOG_SEND', false),
-      key: env('POSTHOG_KEY'),
-      host: env('POSTHOG_HOST'),
+    countly: {
+      enabled: env.bool('COUNTLY_ENABLED', false),
+      send: env.bool('COUNTLY_SEND', false),
+      key: env('COUNTLY_KEY'),
+      host: env('COUNTLY_HOST'),
+      debug: env.bool('COUNTLY_DEBUG', false),
     },
     cache: {
       enabled: env.bool('CACHE_ENABLED', false),
