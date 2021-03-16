@@ -47,13 +47,6 @@ module.exports = ({ env }) => ({
         'Accept',
       ],
     },
-    countly: {
-      enabled: env.bool('COUNTLY_ENABLED', false),
-      send: env.bool('COUNTLY_SEND', false),
-      key: env('COUNTLY_KEY'),
-      host: env('COUNTLY_HOST'),
-      debug: env.bool('COUNTLY_DEBUG', false),
-    },
     cache: {
       enabled: env.bool('CACHE_ENABLED', false),
       logs: false,
