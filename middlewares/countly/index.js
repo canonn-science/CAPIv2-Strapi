@@ -47,28 +47,29 @@ module.exports = (strapi) => {
           userData = { userType: 'anon' };
         }
 
-        try {
-          // Only send model analytics, skip admin and graphql
-          if (model && model in strapi.models) {
-            await Countly.add_event({
-              key: 'apiRequest',
-              route: ctx.request.method + ' ' + ctx.request.path,
-              $current_url: strapi.config.server.url + ctx.request.path,
-              method: ctx.request.method,
-              path: ctx.request.path,
-              status: ctx.response.status,
-              model,
-              query: ctx.query,
-              params: ctx.params,
-              userData,
-              requestBody: ctx.request.body,
-              requestHeaders: ctx.request.headers,
-              responseHeaders: ctx.response.headers,
-            });
-          }
-        } catch (error) {
-          // Do nothing
-        }
+        // try {
+        //   // Only send model analytics, skip admin and graphql
+        //   if (model && model in strapi.models) {
+        //   }
+        // } catch (error) {
+        //   // Do nothing
+        // }
+
+        await Countly.add_event({
+          key: 'apiRequest',
+          route: ctx.request.method + ' ' + ctx.request.path,
+          $current_url: strapi.config.server.url + ctx.request.path,
+          method: ctx.request.method,
+          path: ctx.request.path,
+          status: ctx.response.status,
+          model,
+          query: ctx.query,
+          params: ctx.params,
+          userData,
+          requestBody: ctx.request.body,
+          requestHeaders: ctx.request.headers,
+          responseHeaders: ctx.response.headers,
+        });
         await Countly.end_session();
       });
     },
