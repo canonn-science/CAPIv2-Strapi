@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cmdrs",
+  "info": {
+    "singularName": "cmdr",
+    "pluralName": "cmdrs",
+    "displayName": "CMDRs",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false,
+    "comment": ""
+  },
+  "attributes": {
+    "cmdrName": {
+      "unique": true,
+      "type": "string",
+      "required": true
+    },
+    "platform": {
+      "type": "enumeration",
+      "enum": [
+        "pc",
+        "console"
+      ],
+      "default": "pc",
+      "required": true
+    },
+    "verified": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}

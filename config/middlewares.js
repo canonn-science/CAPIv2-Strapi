@@ -24,14 +24,14 @@ module.exports = [
       },
     },
   },
-  {
-    name: `strapi::compression`,
-    config: {
-      options: {
-        br: false,
-      },
-    },
-  },
+  // {
+  //   name: `strapi::compression`,
+  //   config: {
+  //     options: {
+  //       br: false,
+  //     },
+  //   },
+  // },
   'strapi::favicon',
   'strapi::public',
 ];
