@@ -1,12 +1,11 @@
 {
-  "name": "capiv2",
-  "private": true,
-  "version": "2.4.0",
-  "description": "Canonn APIv2",
-  "repository": "https://github.com/canonn-science/CAPIv2-Strapi",
+  "name": "cannapi",
+  "private": false,
+  "version": "3.0.0",
+  "description": "Canonn's Core API",
+  "repository": "https://github.com/canonn-science/CANNAPI",
   "main": "./server.js",
   "scripts": {
-    "localdev": "node server.js",
     "develop": "strapi develop",
     "start": "strapi start",
     "clean": "rm -Rf node_modules build .cache yarn.lock",
@@ -19,32 +18,13 @@
     "core:restore:merge": "strapi configuration:restore --file core_dump/dump_manual.json",
     "core:restore:keep": "strapi configuration:restore --file core_dump/dump_manual.json"
   },
-  "devDependencies": {
-    "babel-eslint": "^10.0.2",
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb": "^13.0.0",
-    "eslint-plugin-import": "^2.11.0",
-    "eslint-plugin-react": "^7.7.0"
-  },
+  "devDependencies": {},
   "dependencies": {
-    "@sentry/node": "^5.27.4",
-    "countly-sdk-nodejs": "^20.11.0",
-    "knex": "^0.21.12",
-    "mysql": "latest",
-    "passport-discord": "^0.1.4",
-    "strapi": "3.5.3",
-    "strapi-admin": "3.5.3",
-    "strapi-connector-bookshelf": "3.5.3",
-    "strapi-middleware-cache": "^1.0.11",
-    "strapi-plugin-content-manager": "3.5.3",
-    "strapi-plugin-content-type-builder": "3.5.3",
-    "strapi-plugin-documentation": "3.5.3",
-    "strapi-plugin-email": "3.5.3",
-    "strapi-plugin-graphql": "3.5.3",
-    "strapi-plugin-upload": "3.5.3",
-    "strapi-plugin-users-permissions": "3.5.3",
-    "strapi-utils": "3.5.3",
-    "uniqid": "^5.2.0"
+    "@strapi/strapi": "4.0.0-beta.17",
+    "@strapi/plugin-users-permissions": "4.0.0-beta.17",
+    "@strapi/plugin-i18n": "4.0.0-beta.17",
+    "pg": "8.6.0",
+    "passport-discord": "^0.1.4"
   },
   "author": {
     "name": "Canonn R&D",
@@ -75,8 +55,8 @@
     "uuid": "487b0283-ba92-4503-96ef-8f62b4293b36"
   },
   "engines": {
-    "node": ">=10.16.0 <=15.x.x",
-    "npm": ">= 6.0.0"
+    "node": ">=12.x.x <=16.x.x",
+    "npm": ">=6.0.0"
   },
   "license": "GPL-3.0"
 }
